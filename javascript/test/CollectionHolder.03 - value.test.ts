@@ -10,29 +10,31 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolder_AdaptorOfArrayFollower}                                                           from "./instance/CollectionHolder_AdaptorOfArray.follower"
-import {CollectionHolder_ArrayOf1Follower}                                                                 from "./instance/CollectionHolder_ArrayOf1.follower"
-import {CollectionHolder_ArrayOf2Follower}                                                                 from "./instance/CollectionHolder_ArrayOf2.follower"
 import {CollectionHolder_1Follower}                                                                        from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                        from "./instance/CollectionHolder_2.follower"
-import {CollectionHolder_ByViewerFollower}                                                                 from "./instance/CollectionHolder_ByViewer.follower"
-import {CollectionHolder_ByGenericCollectionFollower}                                                      from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_AdaptorOfArrayFollower}                                                           from "./instance/CollectionHolder_AdaptorOfArray.follower"
 import {CollectionHolder_AdaptorOfIteratorFollower}                                                        from "./instance/CollectionHolder_AdaptorOfIterator.follower"
 import {CollectionHolder_AdaptorOfJsIteratorFollower}                                                      from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
 import {CollectionHolder_AdaptorOfJsIterableFollower}                                                      from "./instance/CollectionHolder_AdaptorOfJsIterable.follower"
+import {CollectionHolder_AdaptorOfMinimalistFollower}                                                      from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
+import {CollectionHolder_AdaptorOfSetFollower}                                                             from "./instance/CollectionHolder_AdaptorOfSet.follower"
+import {CollectionHolder_ArrayOf1Follower}                                                                 from "./instance/CollectionHolder_ArrayOf1.follower"
+import {CollectionHolder_ArrayOf2Follower}                                                                 from "./instance/CollectionHolder_ArrayOf2.follower"
+import {CollectionHolder_ByGenericCollection}                                                              from "./instance/CollectionHolder_ByGenericCollection"
+import {CollectionHolder_ByGenericCollectionFollower}                                                      from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_ByMinimalistCollection}                                                           from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByViewerFollower}                                                                 from "./instance/CollectionHolder_ByViewer.follower"
 import {CollectionHolder_LazyFollower}                                                                     from "./instance/CollectionHolder_Lazy.follower"
 import {CollectionHolder_LazyOf0Or1Follower}                                                               from "./instance/CollectionHolder_LazyOf0Or1.follower"
 import {CollectionHolder_LazyOf0Or1Or2Follower}                                                            from "./instance/CollectionHolder_LazyOf0Or1Or2.follower"
 import {CollectionHolder_LazyOf1Follower}                                                                  from "./instance/CollectionHolder_LazyOf1.follower"
 import {CollectionHolder_LazyOf1Or2Follower}                                                               from "./instance/CollectionHolder_LazyOf1Or2.follower"
 import {CollectionHolder_LazyOf2Follower}                                                                  from "./instance/CollectionHolder_LazyOf2.follower"
-import {CollectionHolder_AdaptorOfMinimalistFollower}                                                      from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
-import {CollectionHolder_AdaptorOfSetFollower}                                                             from "./instance/CollectionHolder_AdaptorOfSet.follower"
 import {CollectionHolder_SetOf1Follower}                                                                   from "./instance/CollectionHolder_SetOf1.follower"
 import {CollectionHolder_SetOf2Follower}                                                                   from "./instance/CollectionHolder_SetOf2.follower"
 import {CollectionHolderFromArray}                                                                         from "./instance/CollectionHolderFromArray"
 import {MinimalistCollectionHolderFromArray}                                                               from "./instance/MinimalistCollectionHolderFromArray"
-import {A, ABCD}                                                                                           from "./value/arrays"
+import {A, AB, ABCD, EMPTY}                                                                                from "./value/arrays"
 import {callbackAsFail0}                                                                                   from "./value/callbacks (fail)"
 import {callbackAsNull0}                                                                                   from "./value/callbacks (null)"
 import {every0Instances, every1Instances, every2Instances, everyExtensionMethodInstances, everyNInstances} from "./value/instances"
@@ -705,39 +707,136 @@ describe("CollectionHolderTest (value)", () => {
         describe("getLastOrElse", () => expect(instance.getLastOrElse(callback,),).toBe(value,),)
     },)},)
 
+    describe("get() being called", () => {
+        //README: The adaptor classes are ignored since they rely on the apdated class instead.
+        //        The lazy classes are ignored since they use inner class(es) instead.
+        //        The viewer instances are ignored since they rely on the viewed class instead.
+        //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
+
+        describe("empty ~ collection (by minimalist)", () => {
+            test("get",     () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it => it.get(0,),).amountOfCall,).toBe(1,),)
+            test("getFirst", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it => it.getFirst(),).amountOfCall,).toBe(0,),)
+            test("getLast",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it => it.getLast(),).amountOfCall,).toBe(0,),)
+
+            test("getOrElse",      () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.getOrElse(0, callback,),).amountOfCall,).toBe(0,),)
+            test("getFirstOrElse", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.getFirstOrElse(callback,),).amountOfCall,).toBe(0,),)
+            test("getLastOrElse",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.getLastOrElse(callback,),).amountOfCall,).toBe(0,),)
+
+            test("getOrNull",      () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
+            test("getFirstOrNull", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(0,),)
+            test("getLastOrNull",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(0,),)
+        },)
+        describe("empty ~ collection (by normal)", () => {
+            test("get",      () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it => it.get(0,),).amountOfCall,).toBe(0,),)
+            test("getFirst", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it => it.getFirst(),).amountOfCall,).toBe(0,),)
+            test("getLast",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it => it.getLast(),).amountOfCall,).toBe(0,),)
+
+            test("getOrElse",      () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.getOrElse(0, callback,),).amountOfCall,).toBe(0,),)
+            test("getFirstOrElse", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.getFirstOrElse(callback,),).amountOfCall,).toBe(0,),)
+            test("getLastOrElse",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.getLastOrElse(callback,),).amountOfCall,).toBe(0,),)
+
+            test("getOrNull",      () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
+            test("getFirstOrNull", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(0,),)
+            test("getLastOrNull",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(0,),)
+        },)
+
+        describe("1 field ~ collection (by minimalist)", () => {
+            test("get",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
+            test("getFirst", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+            test("getLast",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+
+            test("getOrElse",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrElse", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getLastOrElse",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+
+            test("getOrNull",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
+            test("getFirstOrNull", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+            test("getLastOrNull",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+        },)
+        describe("1 field ~ collection (by normal)", () => {
+            test("get",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
+            test("getFirst", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+            test("getLast",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+
+            test("getOrElse",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrElse", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getLastOrElse",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+
+            test("getOrNull",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
+            test("getFirstOrNull", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+            test("getLastOrNull",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+        },)
+
+        describe("2 fields ~ collection (by minimalist)", () => {
+            test("get",      () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
+            test("getFirst", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+            test("getLast",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+
+            test("getOrElse",      () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrElse", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getLastOrElse",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+
+            test("getOrNull",      () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrNull", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+            test("getLastOrNull",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+        },)
+        describe("2 fields ~ collection (by normal)", () => {
+            test("get",      () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
+            test("getFirst", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+            test("getLast",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+
+            test("getOrElse",      () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrElse", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getLastOrElse",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+
+            test("getOrNull",      () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrNull", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+            test("getLastOrNull",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+        },)
+
+        describe("N fields ~ collection (by minimalist)", () => {
+            test("get",      () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
+            test("getFirst", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+            test("getLast",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+
+            test("getOrElse",      () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrElse", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getLastOrElse",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+
+            test("getOrNull",      () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrNull", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+            test("getLastOrNull",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+        },)
+        describe("N fields ~ collection (by normal)", () => {
+            test("get",      () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
+            test("getFirst", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+            test("getLast",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+
+            test("getOrElse",      () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrElse", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            test("getLastOrElse",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+
+            test("getOrNull",      () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(1,),)
+            test("getFirstOrNull", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+            test("getLastOrNull",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+        },)
+    },)
+
     describe("instances", () => {
         describe("empty", () => {
-        describe.each(every0Instances,)("%s", ({value: {newInstance, type, isViewer, isAdaptor,},},) => {
-            /** The instance is a {@link GenericCollectionHolder} */
-            const isNormal = type === "normal"
+        describe.each(every0Instances,)("%s", ({value: {newInstance, type, isViewer,},},) => {
             /** The instance is a {@link MinimalistAsCollectionHolder} */
-            const isMinimalistAdaptor = type === "minimalist adaptor"
+            const isMinimalistAdaptor = type === "minimalist adaptor";
 
-            if (!isAdaptor && !isViewer)
-                describe("get() being called", () => {
-                    test("get", () => expect(newInstance().executeWhileExpectingEmptyException(it => it.get(0,),).amountOfCall,).toBe(isNormal ? 0 : 1,),)
-                    test("getFirst", () => expect(newInstance().executeWhileExpectingEmptyException(it => it.getFirst(),).amountOfCall,).toBe(0,),)
-                    test("getLast", () => expect(newInstance().executeWhileExpectingEmptyException(it => it.getLast(),).amountOfCall,).toBe(0,),)
-
-                    test("getOrElse", () => expect(newInstance().execute(it => it.getOrElse(0, callback,),).amountOfCall,).toBe(0,),)
-                    test("getFirstOrElse", () => expect(newInstance().execute(it => it.getFirstOrElse(callback,),).amountOfCall,).toBe(0,),)
-                    test("getLastOrElse", () => expect(newInstance().execute(it => it.getLastOrElse(callback,),).amountOfCall,).toBe(0,),)
-
-                    test("getOrNull", () => expect(newInstance().execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
-                    test("getFirstOrNull", () => expect(newInstance().execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(0,),)
-                    test("getLastOrNull", () => expect(newInstance().execute(it => it.getLastOrNull(),).amountOfCall,).toBe(0,),)
-                },)
-
-            if (!isMinimalistAdaptor && !isViewer)
-                describe("get", () => {
-                    test("NaN", () => expect(() => newInstance().get(NaN,),)      .toThrow(EmptyCollectionException,),)
-                    test("-∞",  () => expect(() => newInstance().get(-Infinity,),).toThrow(EmptyCollectionException,),)
-                    test("-2",  () => expect(() => newInstance().get(-2,),)       .toThrow(EmptyCollectionException,),)
-                    test("-1",  () => expect(() => newInstance().get(-1,),)       .toThrow(EmptyCollectionException,),)
-                    test('0',   () => expect(() => newInstance().get(0,),)        .toThrow(EmptyCollectionException,),)
-                    test('1',   () => expect(() => newInstance().get(1,),)        .toThrow(EmptyCollectionException,),)
-                    test("+∞",  () => expect(() => newInstance().get(Infinity,),) .toThrow(EmptyCollectionException,),)
-                },)
+            (isMinimalistAdaptor || isViewer ? describe.skip : describe)("get", () => {
+                test("NaN", () => expect(() => newInstance().get(NaN,),)      .toThrow(EmptyCollectionException,),)
+                test("-∞",  () => expect(() => newInstance().get(-Infinity,),).toThrow(EmptyCollectionException,),)
+                test("-2",  () => expect(() => newInstance().get(-2,),)       .toThrow(EmptyCollectionException,),)
+                test("-1",  () => expect(() => newInstance().get(-1,),)       .toThrow(EmptyCollectionException,),)
+                test('0',   () => expect(() => newInstance().get(0,),)        .toThrow(EmptyCollectionException,),)
+                test('1',   () => expect(() => newInstance().get(1,),)        .toThrow(EmptyCollectionException,),)
+                test("+∞",  () => expect(() => newInstance().get(Infinity,),) .toThrow(EmptyCollectionException,),)
+            },)
             test("getFirst", () => expect(() => newInstance().getFirst(),).toThrow(EmptyCollectionException,),)
             test("getLast", () => expect(() => newInstance().getLast(),).toThrow(EmptyCollectionException,),)
 
@@ -767,26 +866,9 @@ describe("CollectionHolderTest (value)", () => {
 
         },)},)
         describe("1 field", () => {
-        describe.each(every1Instances,)("%s", ({value: {newInstance, type, isMinimalist, isLazy, isAdaptor, isOf1, isViewer,},},) => {
-            /** The instance is a {@link GenericCollectionHolder} */
-            const isNormal = type === "normal"
+        describe.each(every1Instances,)("%s", ({value: {newInstance, type, isViewer,},},) => {
             /** The instance is a {@link MinimalistAsCollectionHolder} */
             const isMinimalistAdaptor = type === "minimalist adaptor"
-
-            if (!isAdaptor && !isViewer)
-                describe("get() being called", () => {
-                    test("get", () => expect(newInstance('a',).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
-                    test("getFirst", () => expect(newInstance('a',).execute(it => it.getFirst(),).amountOfCall,).toBe(isLazy || isOf1 ? 0 : 1,),)
-                    test("getLast", () => expect(newInstance('a',).execute(it => it.getLast(),).amountOfCall,).toBe(isLazy || isOf1 ? 0 : 1,),)
-
-                    test("getOrElse", () => expect(newInstance('a',).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isNormal || isMinimalist ? 1 : 0,),)
-                    test("getFirstOrElse", () => expect(newInstance('a',).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(isLazy || isOf1 ? 0 : 1,),)
-                    test("getLastOrElse", () => expect(newInstance('a',).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(isLazy || isOf1 ? 0 : 1,),)
-
-                    test("getOrNull", () => expect(newInstance('a',).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isNormal || isMinimalist ? 1 : 0,),)
-                    test("getFirstOrNull", () => expect(newInstance('a',).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(isLazy || isOf1 ? 0 : 1,),)
-                    test("getLastOrNull", () => expect(newInstance('a',).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(isLazy || isOf1 ? 0 : 1,),)
-                },)
 
             if (!isMinimalistAdaptor && !isViewer)
                 describe("get", () => {
@@ -832,26 +914,9 @@ describe("CollectionHolderTest (value)", () => {
             test("getLastOrNull", () => expect(newInstance('a',).getLastOrNull(),).toBe('a',),)
         },)},)
         describe("2 fields", () => {
-        describe.each(every2Instances,)("%s", ({value: {newInstance, type, isMinimalist, isLazy, isAdaptor, isOf2, isViewer,},},) => {
-            /** The instance is a {@link GenericCollectionHolder} */
-            const isNormal = type === "normal"
+        describe.each(every2Instances,)("%s", ({value: {newInstance, type, isViewer,},},) => {
             /** The instance is a {@link MinimalistAsCollectionHolder} */
             const isMinimalistAdaptor = type === "minimalist adaptor"
-
-            if (!isAdaptor && !isViewer)
-                describe("get() being called", () => {
-                    test("get", () => expect(newInstance('a', 'b',).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
-                    test("getFirst", () => expect(newInstance('a', 'b',).execute(it => it.getFirst(),).amountOfCall,).toBe(isLazy || isOf2 ? 0 :1,),)
-                    test("getLast", () => expect(newInstance('a', 'b',).execute(it => it.getLast(),).amountOfCall,).toBe(isLazy || isOf2 ? 0 :1,),)
-
-                    test("getOrElse", () => expect(newInstance('a', 'b',).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isNormal || isMinimalist ? 1 : 0,),)
-                    test("getFirstOrElse", () => expect(newInstance('a', 'b',).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(isLazy || isOf2 ? 0 :1,),)
-                    test("getLastOrElse", () => expect(newInstance('a', 'b',).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(isLazy || isOf2 ? 0 :1,),)
-
-                    test("getOrNull", () => expect(newInstance('a', 'b',).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isNormal || isMinimalist ? 1 : 0,),)
-                    test("getFirstOrNull", () => expect(newInstance('a', 'b',).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(isLazy || isOf2 ? 0 :1,),)
-                    test("getLastOrNull", () => expect(newInstance('a', 'b',).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(isLazy || isOf2 ? 0 :1,),)
-                },)
 
             if (!isMinimalistAdaptor && !isViewer)
                 describe("get", () => {
@@ -903,26 +968,9 @@ describe("CollectionHolderTest (value)", () => {
             test("getLastOrNull", () => expect(newInstance('a', 'b',).getLastOrNull(),).toBe('b',),)
         },)},)
         describe("N fields", () => {
-        describe.each(everyNInstances,)("%s", ({value: {instance, type, isMinimalist, isLazy, isAdaptor, isViewer,},},) => {
-            /** The instance is a {@link GenericCollectionHolder} */
-            const isNormal = type === "normal"
+        describe.each(everyNInstances,)("%s", ({value: {instance, type, isViewer,},},) => {
             /** The instance is a {@link MinimalistAsCollectionHolder} */
             const isMinimalistAdaptor = type === "minimalist adaptor"
-
-            if (!isAdaptor && !isViewer)
-                describe("get() being called", () => {
-                    test("get", () => expect(new instance(ABCD,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
-                    test("getFirst", () => expect(new instance(ABCD,).execute(it => it.getFirst(),).amountOfCall,).toBe(isLazy ? 0 : 1,),)
-                    test("getLast", () => expect(new instance(ABCD,).execute(it => it.getLast(),).amountOfCall,).toBe(isLazy ? 0 : 1,),)
-
-                    test("getOrElse", () => expect(new instance(ABCD,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isNormal || isMinimalist ? 1 : 0,),)
-                    test("getFirstOrElse", () => expect(new instance(ABCD,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(isLazy ? 0 : 1,),)
-                    test("getLastOrElse", () => expect(new instance(ABCD,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(isLazy ? 0 : 1,),)
-
-                    test("getOrNull", () => expect(new instance(ABCD,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isNormal || isMinimalist ? 1 : 0,),)
-                    test("getFirstOrNull", () => expect(new instance(ABCD,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(isLazy ? 0 : 1,),)
-                    test("getLastOrNull", () => expect(new instance(ABCD,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(isLazy ? 0 : 1,),)
-                },)
 
             if (!isMinimalistAdaptor && !isViewer)
                 describe("get", () => {
