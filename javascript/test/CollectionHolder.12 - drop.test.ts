@@ -10,27 +10,29 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolder_AdaptorOfArrayFollower}                                                                                                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_AdaptorOfArray.follower"
-import {CollectionHolder_ArrayOf1Follower}                                                                                                                                                                                                                                                                                                                                                          from "./instance/CollectionHolder_ArrayOf1.follower"
-import {CollectionHolder_ArrayOf2Follower}                                                                                                                                                                                                                                                                                                                                                          from "./instance/CollectionHolder_ArrayOf2.follower"
 import {CollectionHolder_1Follower}                                                                                                                                                                                                                                                                                                                                                                 from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                                                                                                                                                                                                                                                                                                                 from "./instance/CollectionHolder_2.follower"
-import {CollectionHolder_ByViewerFollower}                                                                                                                                                                                                                                                                                                                                                          from "./instance/CollectionHolder_ByViewer.follower"
-import {CollectionHolder_ByGenericCollectionFollower}                                                                                                                                                                                                                                                                                                                                               from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_AdaptorOfArrayFollower}                                                                                                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_AdaptorOfArray.follower"
 import {CollectionHolder_AdaptorOfIteratorFollower}                                                                                                                                                                                                                                                                                                                                                 from "./instance/CollectionHolder_AdaptorOfIterator.follower"
 import {CollectionHolder_AdaptorOfJsIteratorFollower}                                                                                                                                                                                                                                                                                                                                               from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
 import {CollectionHolder_AdaptorOfJsIterableFollower}                                                                                                                                                                                                                                                                                                                                               from "./instance/CollectionHolder_AdaptorOfJsIterable.follower"
+import {CollectionHolder_AdaptorOfMinimalistFollower}                                                                                                                                                                                                                                                                                                                                               from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
+import {CollectionHolder_AdaptorOfSetFollower}                                                                                                                                                                                                                                                                                                                                                      from "./instance/CollectionHolder_AdaptorOfSet.follower"
+import {CollectionHolder_ArrayOf1Follower}                                                                                                                                                                                                                                                                                                                                                          from "./instance/CollectionHolder_ArrayOf1.follower"
+import {CollectionHolder_ArrayOf2Follower}                                                                                                                                                                                                                                                                                                                                                          from "./instance/CollectionHolder_ArrayOf2.follower"
+import {CollectionHolder_ByGenericCollectionFollower}                                                                                                                                                                                                                                                                                                                                               from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_ByGenericCollection}                                                                                                                                                                                                                                                                                                                                                       from "./instance/CollectionHolder_ByGenericCollection"
+import {CollectionHolder_ByMinimalistCollection}                                                                                                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByViewerFollower}                                                                                                                                                                                                                                                                                                                                                          from "./instance/CollectionHolder_ByViewer.follower"
 import {CollectionHolder_LazyFollower}                                                                                                                                                                                                                                                                                                                                                              from "./instance/CollectionHolder_Lazy.follower"
 import {CollectionHolder_LazyOf0Or1Follower}                                                                                                                                                                                                                                                                                                                                                        from "./instance/CollectionHolder_LazyOf0Or1.follower"
 import {CollectionHolder_LazyOf0Or1Or2Follower}                                                                                                                                                                                                                                                                                                                                                     from "./instance/CollectionHolder_LazyOf0Or1Or2.follower"
 import {CollectionHolder_LazyOf1Follower}                                                                                                                                                                                                                                                                                                                                                           from "./instance/CollectionHolder_LazyOf1.follower"
 import {CollectionHolder_LazyOf1Or2Follower}                                                                                                                                                                                                                                                                                                                                                        from "./instance/CollectionHolder_LazyOf1Or2.follower"
 import {CollectionHolder_LazyOf2Follower}                                                                                                                                                                                                                                                                                                                                                           from "./instance/CollectionHolder_LazyOf2.follower"
-import {CollectionHolder_AdaptorOfMinimalistFollower}                                                                                                                                                                                                                                                                                                                                               from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
-import {CollectionHolder_AdaptorOfSetFollower}                                                                                                                                                                                                                                                                                                                                                      from "./instance/CollectionHolder_AdaptorOfSet.follower"
 import {CollectionHolder_SetOf1Follower}                                                                                                                                                                                                                                                                                                                                                            from "./instance/CollectionHolder_SetOf1.follower"
 import {CollectionHolder_SetOf2Follower}                                                                                                                                                                                                                                                                                                                                                            from "./instance/CollectionHolder_SetOf2.follower"
-import {A, AB, ABC, ABCD, B, BCD, CD, D}                                                                                                                                                                                                                                                                                                                                                            from "./value/arrays"
+import {A, AB, ABC, ABCD, B, BCD, CD, D, EMPTY}                                                                                                                                                                                                                                                                                                                                                     from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                                                                                                                                                                                          from "./value/callbacks (fail)"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}                                                                                                                                                                                                                                                                                    from "./value/callbacks (boolean)"
 import {callbackIsOver0, callbackIsOver0Alt, callbackIsOver1, callbackIsOver1Alt, callbackIsOver2, callbackIsOver2Alt, callbackIsOver3, callbackIsOver3Alt, callbackIsOver4, callbackIsOver4Alt, callbackIsUnder0, callbackIsUnder0Alt, callbackIsUnder1, callbackIsUnder1Alt, callbackIsUnder2, callbackIsUnder2Alt, callbackIsUnder3, callbackIsUnder3Alt, callbackIsUnder4, callbackIsUnder4Alt} from "./value/callbacks (number)"
@@ -409,45 +411,369 @@ describe("CollectionHolderTest (drop)", () => {
         },)
     },)},)
 
+    describe("get() being called", () => {
+        //README: The adaptor classes are ignored since they rely on the apdated class instead.
+        //        The lazy classes are ignored since they use inner class(es) instead.
+        //        The viewer instances are ignored since they rely on the viewed class instead.
+        //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
+
+        describe("empty ~ collection (by minimalist)", () => {
+            describe("drop", () => {
+                test('0', () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(0,),)
+                test('1', () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhile", () => {
+                test("(T, number) → boolean", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhileIndexed", () => {
+                test("(number, T) → boolean", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",    () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+
+            describe("dropLast", () => {
+                test('0', () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(0,),)
+                test('1', () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhile", () => {
+                test("(T, number) → boolean", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhileIndexed", () => {
+                test("(number, T) → boolean", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",    () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("empty ~ collection (by normal)", () => {
+            describe("drop", () => {
+                test('0', () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(0,),)
+                test('1', () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhile", () => {
+                test("(T, number) → boolean", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhileIndexed", () => {
+                test("(number, T) → boolean", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",    () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+
+            describe("dropLast", () => {
+                test('0', () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(0,),)
+                test('1', () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhile", () => {
+                test("(T, number) → boolean", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhileIndexed", () => {
+                test("(number, T) → boolean", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",    () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+        },)
+
+        describe("1 field ~ collection (by minimalist)", () => {
+            describe("drop", () => {
+                test('0', () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(1,),)
+                test('1', () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(0,),)
+                test('2', () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("dropWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+
+            describe("dropLast", () => {
+                test('0', () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(1,),)
+                test('1', () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(0,),)
+                test('2', () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("dropLastWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+        },)
+        describe("1 field ~ collection (by normal)", () => {
+            describe("drop", () => {
+                test('0', () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(1,),)
+                test('1', () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(0,),)
+                test('2', () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("dropWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+
+            describe("dropLast", () => {
+                test('0', () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(1,),)
+                test('1', () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(0,),)
+                test('2', () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("dropLastWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+        },)
+
+        describe("2 fields ~ collection (by minimalist)", () => {
+            describe("drop", () => {
+                test('0', () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(2,),)
+                test('1', () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(1,),)
+                test('2', () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(0,),)
+                test('3', () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.drop(3,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+            describe("dropWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+
+            describe("dropLast", () => {
+                test('0', () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(2,),)
+                test('1', () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(1,),)
+                test('2', () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(0,),)
+                test('3', () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(3,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+            describe("dropLastWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+        },)
+        describe("2 fields ~ collection (by normal)", () => {
+            describe("drop", () => {
+                test('0', () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(2,),)
+                test('1', () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(1,),)
+                test('2', () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(0,),)
+                test('3', () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.drop(3,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+            describe("dropWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+
+            describe("dropLast", () => {
+                test('0', () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(2,),)
+                test('1', () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(1,),)
+                test('2', () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(0,),)
+                test('3', () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(3,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+            describe("dropLastWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+        },)
+
+        describe("N fields ~ collection (by minimalist)", () => {
+            describe("drop", () => {
+                test('0', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(4,),)
+                test('1', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(3,),)
+                test('2', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(2,),)
+                test('3', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(3,),).amountOfCall,).toBe(1,),)
+                test('4', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(4,),).amountOfCall,).toBe(0,),)
+                test('5', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(5,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+            describe("dropWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+
+            describe("dropLast", () => {
+                test('0', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(4,),)
+                test('1', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(3,),)
+                test('2', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(2,),)
+                test('3', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(3,),).amountOfCall,).toBe(1,),)
+                test('4', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(4,),).amountOfCall,).toBe(0,),)
+                test('5', () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(5,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+            describe("dropLastWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+        },)
+        describe("N fields ~ collection (by normal)", () => {
+            describe("drop", () => {
+                test('0', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(8,),)
+                test('1', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(3,),)
+                test('2', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(2,),)
+                test('3', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(3,),).amountOfCall,).toBe(1,),)
+                test('4', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(4,),).amountOfCall,).toBe(0,),)
+                test('5', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(5,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+            describe("dropWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+
+            describe("dropLast", () => {
+                test('0', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(8,),)
+                test('1', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(3,),)
+                test('2', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(2,),)
+                test('3', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(3,),).amountOfCall,).toBe(1,),)
+                test('4', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(4,),).amountOfCall,).toBe(0,),)
+                test('5', () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(5,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("dropLastWhile", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+            describe("dropLastWhileIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+        },)
+
+    },)
+
     describe("instances", () => {
         describe("empty", () => {
-        describe.each(every0Instances,)("%s", ({value: {newInstance, isLazy, isViewer, isAdaptor,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isViewer)
-                describe("get() being called", () => {
-                    describe("drop", () => {
-                        test('0', () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(0,),)
-                        test('1', () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropWhile", () => {
-                        test("(T, number) → boolean", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → boolean",         () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",          () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropWhileIndexed", () => {
-                        test("(number, T) → boolean", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(number) → boolean",    () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",          () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("dropLast", () => {
-                        test('0', () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(0,),)
-                        test('1', () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropLastWhile", () => {
-                        test("(T, number) → boolean", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → boolean",         () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",          () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropLastWhileIndexed", () => {
-                        test("(number, T) → boolean", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(number) → boolean",    () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",          () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(every0Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("drop", () => {
                 test("NaN", () => expect(newInstance().drop(NaN,),)      .toBe(emptyCollectionHolder,),)
@@ -491,58 +817,7 @@ describe("CollectionHolderTest (drop)", () => {
 
         },)},)
         describe("1 field", () => {
-        describe.each(every1Instances,)("%s", ({value: {newInstance, isAdaptor, isLazy, isOf1, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The instances of 1 are ignored since the get() is never called, it is "get value1" being called
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isOf1 && !isViewer)
-                describe("get() being called", () => {
-                    describe("drop", () => {
-                        test('0', () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(1,),)
-                        test('1', () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(0,),)
-                        test('2', () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropWhile", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("dropWhileIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(number) → false",    () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-                    },)
-
-                    describe("dropLast", () => {
-                        test('0', () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(1,),)
-                        test('1', () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(0,),)
-                        test('2', () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropLastWhile", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("dropLastWhileIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(number) → false",    () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-                    },)
-                },)
+        describe.each(every1Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("drop", () => {
                 test("NaN", () => expect(() => newInstance('a',).drop(NaN,),)                .toThrow(ForbiddenIndexException,),)
@@ -618,60 +893,7 @@ describe("CollectionHolderTest (drop)", () => {
 
         },)},)
         describe("2 fields", () => {
-        describe.each(every2Instances,)("%s", ({value: {newInstance, isAdaptor, isLazy, isOf2, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The instances of 2 are ignored since the get() is never called, it is "get value1|2" being called
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isOf2 && !isViewer)
-                describe("get() being called", () => {
-                    describe("drop", () => {
-                        test('0', () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(2,),)
-                        test('1', () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(1,),)
-                        test('2', () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(0,),)
-                        test('3', () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.drop(3,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropWhile", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("dropWhileIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(number) → true",     () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(number) → false",    () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
-                    },)
-
-                    describe("dropLast", () => {
-                        test('0', () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(2,),)
-                        test('1', () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(1,),)
-                        test('2', () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(0,),)
-                        test('3', () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLast(3,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropLastWhile", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("dropLastWhileIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(number) → true",     () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(number) → false",    () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
-                    },)
-                },)
+        describe.each(every2Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("drop", () => {
                 test("NaN", () => expect(() => newInstance('a', 'b',).drop(NaN,),)                .toThrow(ForbiddenIndexException,),)
@@ -759,65 +981,7 @@ describe("CollectionHolderTest (drop)", () => {
 
         },)},)
         describe("N fields", () => {
-        describe.each(everyNInstances,)("%s", ({value: {instance, isAdaptor, isLazy, isViewer, type,},},) => {
-            /** The instance is a {@link GenericCollectionHolder} */
-            const isNormal = type === "normal"
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isViewer)
-                describe("get() being called", () => {
-                    describe("drop", () => {
-                        test('0', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(0,),).amountOfCall,).toBe(isNormal ? 8 : 4,),)
-                        test('1', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(1,),).amountOfCall,).toBe(3,),)
-                        test('2', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(2,),).amountOfCall,).toBe(2,),)
-                        test('3', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(3,),).amountOfCall,).toBe(1,),)
-                        test('4', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(4,),).amountOfCall,).toBe(0,),)
-                        test('5', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(5,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropWhile", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
-                        test("() → true",           () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhile(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
-                    },)
-                    describe("dropWhileIndexed", () => {
-                        test("(number, T) → true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(number) → true",     () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(number) → false",    () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
-                    },)
-
-                    describe("dropLast", () => {
-                        test('0', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(0,),).amountOfCall,).toBe(isNormal ? 8 : 4,),)
-                        test('1', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(1,),).amountOfCall,).toBe(3,),)
-                        test('2', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(2,),).amountOfCall,).toBe(2,),)
-                        test('3', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(3,),).amountOfCall,).toBe(1,),)
-                        test('4', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(4,),).amountOfCall,).toBe(0,),)
-                        test('5', () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(5,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("dropLastWhile", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
-                        test("() → true",           () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
-                    },)
-                    describe("dropLastWhileIndexed", () => {
-                        test("(number, T) → true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(number) → true",     () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(number) → false",    () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
-                    },)
-                },)
+        describe.each(everyNInstances,)("%s", ({value: {instance,},},) => {
 
             describe("drop", () => {
                 test("NaN", () => expect(() => new instance(ABCD,).drop(NaN,),)                .toThrow(ForbiddenIndexException,),)
