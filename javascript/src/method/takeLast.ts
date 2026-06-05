@@ -19,7 +19,6 @@ import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LateRetriever}                 from "../LateRetriever"
 import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {ForbiddenIndexException}       from "../exception/ForbiddenIndexException"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -41,7 +40,7 @@ export function takeLast<const T, >(collection: Nullable<| MinimalistCollectionH
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return __coreByCollectionHolder(collection, n,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __coreByArray(collection, n,)
     if (isMinimalistCollectionHolder(collection,))
         return __coreByMinimalistCollectionHolder(collection, n,)

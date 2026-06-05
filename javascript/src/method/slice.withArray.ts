@@ -18,7 +18,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__get}                         from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -42,7 +41,7 @@ export function sliceWithArray<const T, >(collection: Nullable<| MinimalistColle
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return sliceWithArrayByCollectionHolder(collection, indices,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return sliceWithArrayByArray(collection, indices,)
     if (isMinimalistCollectionHolder(collection,))
         return sliceWithArrayByMinimalistCollectionHolder(collection, indices,)

@@ -17,17 +17,14 @@ import type {CollectionIterator}                                 from "../iterat
 import type {MinimalistCollectionHolder}                         from "../MinimalistCollectionHolder"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../type/possibleInstance"
 
-import {isArray}                                                                                                                                                                                                 from "./isArray"
 import {isArrayByStructure}                                                                                                                                                                                      from "./isArrayByStructure"
 import {isCollectionIterator}                                                                                                                                                                                    from "./isCollectionIterator"
 import {isCollectionIteratorByStructure}                                                                                                                                                                         from "./isCollectionIteratorByStructure"
 import {isCollectionHolder}                                                                                                                                                                                      from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                                                                                                                                                                           from "./isCollectionHolderByStructure"
-import {isIterator}                                                                                                                                                                                              from "./isIterator"
 import {isIteratorByStructure}                                                                                                                                                                                   from "./isIteratorByStructure"
 import {isMinimalistCollectionHolder}                                                                                                                                                                            from "./isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}                                                                                                                                                                 from "./isMinimalistCollectionHolderByStructure"
-import {isSet}                                                                                                                                                                                                   from "./isSet"
 import {isSetByStructure}                                                                                                                                                                                        from "./isSetByStructure"
 import {sliceWithARange, sliceWithARangeByArray, sliceWithARangeByCollectionHolder, sliceWithARangeByMinimalistCollectionHolder}                                                                                 from "./slice.withARange"
 import {sliceWithArray, sliceWithArrayByArray, sliceWithArrayByCollectionHolder, sliceWithArrayByMinimalistCollectionHolder}                                                                                     from "./slice.withArray"
@@ -214,9 +211,9 @@ export function slice<const T, >(collection: Nullable<| MinimalistCollectionHold
 export function slice<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, indicesOrFrom: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number> = null, to: NullableNumber = null,) {
     if (indicesOrFrom == null)
         return sliceWithARange(collection, indicesOrFrom, to,)
-    if (isArray(indicesOrFrom,))
+    if (indicesOrFrom instanceof Array)
         return sliceWithArray(collection, indicesOrFrom,)
-    if (isSet(indicesOrFrom,))
+    if (indicesOrFrom instanceof Set)
         return sliceWithSet(collection, indicesOrFrom,)
     if (isCollectionHolder(indicesOrFrom,))
         return sliceWithCollectionHolder(collection, indicesOrFrom,)
@@ -224,7 +221,7 @@ export function slice<const T, >(collection: Nullable<| MinimalistCollectionHold
         return sliceWithMinimalistCollectionHolder(collection, indicesOrFrom,)
     if (isCollectionIterator(indicesOrFrom,))
         return sliceWithCollectionIterator(collection, indicesOrFrom,)
-    if (isIterator(indicesOrFrom,))
+    if (indicesOrFrom instanceof Iterator)
         return sliceWithIterator(collection, indicesOrFrom,)
     if (typeof indicesOrFrom == "number")
         return sliceWithARange(collection, indicesOrFrom, to,)
@@ -419,9 +416,9 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFrom: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number> = null, to: NullableNumber = null,) {
     if (indicesOrFrom == null)
         return sliceWithARangeByMinimalistCollectionHolder(collection, indicesOrFrom, to,)
-    if (isArray(indicesOrFrom,))
+    if (indicesOrFrom instanceof Array)
         return sliceWithArrayByMinimalistCollectionHolder(collection, indicesOrFrom,)
-    if (isSet(indicesOrFrom,))
+    if (indicesOrFrom instanceof Set)
         return sliceWithSetByMinimalistCollectionHolder(collection, indicesOrFrom,)
     if (isCollectionHolder(indicesOrFrom,))
         return sliceWithCollectionHolderByMinimalistCollectionHolder(collection, indicesOrFrom,)
@@ -429,7 +426,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
         return sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder(collection, indicesOrFrom,)
     if (isCollectionIterator(indicesOrFrom,))
         return sliceWithCollectionIteratorByMinimalistCollectionHolder(collection, indicesOrFrom,)
-    if (isIterator(indicesOrFrom,))
+    if (indicesOrFrom instanceof Iterator)
         return sliceWithIteratorByMinimalistCollectionHolder(collection, indicesOrFrom,)
     if (typeof indicesOrFrom == "number")
         return sliceWithARangeByMinimalistCollectionHolder(collection, indicesOrFrom, to,)
@@ -623,9 +620,9 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFrom: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number> = null, to: NullableNumber = null,) {
     if (indicesOrFrom == null)
         return sliceWithARangeByCollectionHolder(collection, indicesOrFrom, to,)
-    if (isArray(indicesOrFrom,))
+    if (indicesOrFrom instanceof Array)
         return sliceWithArrayByCollectionHolder(collection, indicesOrFrom,)
-    if (isSet(indicesOrFrom,))
+    if (indicesOrFrom instanceof Set)
         return sliceWithSetByCollectionHolder(collection, indicesOrFrom,)
     if (isCollectionHolder(indicesOrFrom,))
         return sliceWithCollectionHolderByCollectionHolder(collection, indicesOrFrom,)
@@ -633,7 +630,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
         return sliceWithMinimalistCollectionHolderByCollectionHolder(collection, indicesOrFrom,)
     if (isCollectionIterator(indicesOrFrom,))
         return sliceWithCollectionIteratorByCollectionHolder(collection, indicesOrFrom,)
-    if (isIterator(indicesOrFrom,))
+    if (indicesOrFrom instanceof Iterator)
         return sliceWithIteratorByCollectionHolder(collection, indicesOrFrom,)
     if (typeof indicesOrFrom == "number")
         return sliceWithARangeByCollectionHolder(collection, indicesOrFrom, to,)
@@ -827,9 +824,9 @@ export function sliceByArray<const T, >(collection: Nullable<Array<T>>, indicesO
 export function sliceByArray<const T, >(collection: Nullable<Array<T>>, indicesOrFrom: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number> = null, to: NullableNumber = null,) {
     if (indicesOrFrom == null)
         return sliceWithARangeByArray(collection, indicesOrFrom, to,)
-    if (isArray(indicesOrFrom,))
+    if (indicesOrFrom instanceof Array)
         return sliceWithArrayByArray(collection, indicesOrFrom,)
-    if (isSet(indicesOrFrom,))
+    if (indicesOrFrom instanceof Set)
         return sliceWithSetByArray(collection, indicesOrFrom,)
     if (isCollectionHolder(indicesOrFrom,))
         return sliceWithCollectionHolderByArray(collection, indicesOrFrom,)
@@ -837,7 +834,7 @@ export function sliceByArray<const T, >(collection: Nullable<Array<T>>, indicesO
         return sliceWithMinimalistCollectionHolderByArray(collection, indicesOrFrom,)
     if (isCollectionIterator(indicesOrFrom,))
         return sliceWithCollectionIteratorByArray(collection, indicesOrFrom,)
-    if (isIterator(indicesOrFrom,))
+    if (indicesOrFrom instanceof Iterator)
         return sliceWithIteratorByArray(collection, indicesOrFrom,)
     if (typeof indicesOrFrom == "number")
         return sliceWithARangeByArray(collection, indicesOrFrom, to,)

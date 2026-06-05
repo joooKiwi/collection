@@ -19,7 +19,6 @@ import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyCollectionHolder}          from "../LazyCollectionHolder"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -49,7 +48,7 @@ export function takeLastWhile<const T, >(collection: Nullable<| MinimalistCollec
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return takeLastWhileByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return takeLastWhileByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return takeLastWhileByMinimalistCollectionHolder(collection, predicate,)

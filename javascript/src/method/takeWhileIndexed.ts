@@ -19,7 +19,6 @@ import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -57,7 +56,7 @@ export function takeWhileIndexed<const T, >(collection: Nullable<| MinimalistCol
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return takeWhileIndexedByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return takeWhileIndexedByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return takeWhileIndexedByMinimalistCollectionHolder(collection, predicate,)

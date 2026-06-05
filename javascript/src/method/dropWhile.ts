@@ -19,7 +19,6 @@ import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyCollectionHolder}          from "../LazyCollectionHolder"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -57,7 +56,7 @@ export function dropWhile<const T, >(collection: Nullable<| MinimalistCollection
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return dropWhileByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return dropWhileByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return dropWhileByMinimalistCollectionHolder(collection, predicate,)

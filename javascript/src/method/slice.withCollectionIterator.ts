@@ -19,7 +19,6 @@ import type {CollectionIterator}         from "../iterator/CollectionIterator"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__get}                         from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -43,7 +42,7 @@ export function sliceWithCollectionIterator<const T, >(collection: Nullable<| Mi
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return sliceWithCollectionIteratorByCollectionHolder(collection, indices,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return sliceWithCollectionIteratorByArray(collection, indices,)
     if (isMinimalistCollectionHolder(collection,))
         return sliceWithCollectionIteratorByMinimalistCollectionHolder(collection, indices,)
