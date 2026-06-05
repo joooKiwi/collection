@@ -13,6 +13,7 @@
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                              from "../../src/CollectionHolder"
+import type {CollectionIterator}                                                                                                                            from "../../src/iterator/CollectionIterator"
 import type {BooleanCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
 import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
@@ -103,6 +104,7 @@ export class CollectionHolder_AdaptorOfJsIterableFollower
 
     public toReverse_amountOfCall = 0
 
+    public toIterator_amountOfCall = 0
     public joinToString_amountOfCall = 0
 
     //#endregion -------------------- Fields --------------------
@@ -488,6 +490,11 @@ export class CollectionHolder_AdaptorOfJsIterableFollower
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
+
+    public override toIterator(): CollectionIterator<string> {
+        this.toIterator_amountOfCall++
+        return super.toIterator()
+    }
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<string>>,): string {
         this.joinToString_amountOfCall++

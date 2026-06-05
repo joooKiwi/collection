@@ -15,6 +15,7 @@ import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} fro
 import type {CollectionHolder}                                                                                                                              from "../../src/CollectionHolder"
 import type {CollectionHolderOf1}                                                                                                                           from "../../src/CollectionHolderOf1"
 import type {EmptyCollectionHolder}                                                                                                                         from "../../src/EmptyCollectionHolder"
+import type {CollectionIteratorOf2}                                                                                                                         from "../../src/iterator/CollectionIteratorOf2"
 import type {BooleanCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
 import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
@@ -104,6 +105,7 @@ export class CollectionHolder_2Follower
 
     public toReverse_amountOfCall = 0
 
+    public toIterator_amountOfCall = 0
     public joinToString_amountOfCall = 0
 
     //#endregion -------------------- Fields --------------------
@@ -491,6 +493,11 @@ export class CollectionHolder_2Follower
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
+
+    public override toIterator(): CollectionIteratorOf2<string> {
+        this.toIterator_amountOfCall++
+        return super.toIterator()
+    }
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<string>>,): string {
         this.joinToString_amountOfCall++

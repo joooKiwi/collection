@@ -158,6 +158,8 @@ export interface CollectionHolderFollower<out T,>
     /** The amount of time {@link CollectionHolder.toReverse} has been called */
     readonly toReverse_amountOfCall: number
 
+    /** The amount of time {@link CollectionHolder.toIterator} has been called */
+    readonly toIterator_amountOfCall: number
     /** The amount of time {@link CollectionHolder.joinToString} has been called */
     readonly joinToString_amountOfCall: number
     
