@@ -3605,14 +3605,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (n === 1)
             return new CollectionHolderOf1(this.value2,)
         if (n === 2)
-            return this
+            return EmptyCollectionHolder.get
         if (n > 1)
             return EmptyCollectionHolder.get
         if (n > 0)
             return new CollectionHolderOf1(this.value2,)
+        if (n === -1)
+            return new CollectionHolderOf1(this.value2,)
         if (n <= -2)
-            return EmptyCollectionHolder.get
-        return this
+            return this
+        return EmptyCollectionHolder.get
     }
 
     //#endregion -------------------- Drop --------------------
@@ -3717,14 +3719,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (n === 1)
             return new CollectionHolderOf1(this.value1,)
         if (n === 2)
-            return this
+            return EmptyCollectionHolder.get
         if (n > 1)
             return EmptyCollectionHolder.get
         if (n > 0)
             return new CollectionHolderOf1(this.value1,)
+        if (n === -1)
+            return new CollectionHolderOf1(this.value1,)
         if (n <= -2)
-            return EmptyCollectionHolder.get
-        return this
+            return this
+        return EmptyCollectionHolder.get
     }
 
     //#endregion -------------------- Drop last --------------------
@@ -3751,22 +3755,24 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     #dropLastWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
-        if (predicate(value1,))
-            if (predicate(this.value2,))
+        const value2 = this.value2
+        if (predicate(value2,))
+            if (predicate(value1,))
                 return null
             else
                 return new Couple(new Optional(value1,), EmptyOptional.get,)
-        return new Couple(new Optional(value1,), new Optional(this.value2,),)
+        return new Couple(new Optional(value1,), new Optional(value2,),)
     }
 
     #dropLastWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
-        if (predicate(value1, 0,))
-            if (predicate(this.value2, 1,))
+        const value2 = this.value2
+        if (predicate(value2, 1,))
+            if (predicate(value1, 0,))
                 return null
             else
                 return new Couple(new Optional(value1,), EmptyOptional.get,)
-        return new Couple(new Optional(value1,), new Optional(this.value2,),)
+        return new Couple(new Optional(value1,), new Optional(value2,),)
     }
 
     //#endregion -------------------- Drop last while --------------------
@@ -3792,8 +3798,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     #dropLastWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
-        if (predicate(0,))
-            if (predicate(1,))
+        if (predicate(1,))
+            if (predicate(0,))
                 return null
             else
                 return new Couple(new Optional(this.value1,), EmptyOptional.get,)
@@ -3802,12 +3808,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     #dropLastWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
-        if (predicate(0, value1,))
-            if (predicate(1, this.value2,))
+        const value2 = this.value2
+        if (predicate(1, value2,))
+            if (predicate(0, value1,))
                 return null
             else
                 return new Couple(new Optional(value1,), EmptyOptional.get,)
-        return new Couple(new Optional(value1,), new Optional(this.value2,),)
+        return new Couple(new Optional(value1,), new Optional(value2,),)
     }
 
     //#endregion -------------------- Drop last while indexed --------------------
