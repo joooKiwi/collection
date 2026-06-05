@@ -3897,7 +3897,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (transform.length >= 2)
             return new LazyCollectionHolderOf0Or1Or2<U>(() => {
                 const newValue1 = transform(0, this.value1,)
-                const newValue2 = transform(2, this.value2,)
+                const newValue2 = transform(1, this.value2,)
                 if (newValue1 == null)
                     if (newValue2 == null)
                         return null
