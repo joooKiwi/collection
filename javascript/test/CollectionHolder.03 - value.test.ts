@@ -66,7 +66,7 @@ describe("CollectionHolderTest (value)", () => {
     //#region -------------------- Reusable values --------------------
 
     /** An index that exist in the alias tests */
-    const existantIndex = 2
+    const existantIndex = 0
     /** An impossible index in the alias tests */
     const invalidIndex = NaN
 
@@ -749,7 +749,7 @@ describe("CollectionHolderTest (value)", () => {
             test("getFirstOrElse", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
             test("getLastOrElse",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
 
-            test("getOrNull",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
+            test("getOrNull",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(1,),)
             test("getFirstOrNull", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
             test("getLastOrNull",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
         },)
@@ -762,7 +762,7 @@ describe("CollectionHolderTest (value)", () => {
             test("getFirstOrElse", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
             test("getLastOrElse",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
 
-            test("getOrNull",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
+            test("getOrNull",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(1,),)
             test("getFirstOrNull", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
             test("getLastOrNull",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
         },)

@@ -46,6 +46,7 @@ import {LazyCollectionHolderOf2}       from "../src/LazyCollectionHolderOf2"
 import {SetAsCollectionHolder}         from "../src/SetAsCollectionHolder"
 import {SetOf1AsCollectionHolder}      from "../src/SetOf1AsCollectionHolder"
 import {SetOf2AsCollectionHolder}      from "../src/SetOf2AsCollectionHolder"
+import {IndexOutOfBoundsException}     from "../src/exception/IndexOutOfBoundsException"
 import {EmptyOptional}                 from "../src/optional/EmptyOptional"
 import {Optional}                      from "../src/optional/Optional"
 import {Couple}                        from "../src/tuple/Couple"
@@ -554,29 +555,29 @@ describe("CollectionHolderTest (constructor)", () => {
         test("[1]", () => expect(new LazyCollectionHolderOf2(() => new Couple("a", "b",),)[1],).toBe('b',),)
     },)
     describe("LazyCollectionHolderOf0Or1", () => {
-        test('0', () => expect(() => new LazyCollectionHolderOf0Or1(() => EmptyOptional.get,)[0],) .toThrow(TypeError,),)
+        test('0', () => expect(() => new LazyCollectionHolderOf0Or1(() => EmptyOptional.get,)[0],) .toThrow(IndexOutOfBoundsException,),)
         test('1', () => expect(      new LazyCollectionHolderOf0Or1(() => new Optional('a',),)[0],).toBe('a',),)
     },)
     describe("LazyCollectionHolderOf0Or1Or2", () => {
-        test("null [0]",                         () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => null,)[0],)                                                            .toThrow(TypeError,),)
-        test("null [1]",                         () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => null,)[1],)                                                            .toThrow(TypeError,),)
-        test("undefined [0]",                    () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => undefined,)[0],)                                                       .toThrow(TypeError,),)
-        test("undefined [1]",                    () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => undefined,)[1],)                                                       .toThrow(TypeError,),)
-        test("empty optional [0]",               () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => EmptyOptional.get,)[0],)                                               .toThrow(TypeError,),)
-        test("empty optional [1]",               () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => EmptyOptional.get,)[1],)                                               .toThrow(TypeError,),)
-        test("couple (only empty) [0]",          () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Couple(EmptyOptional.get, EmptyOptional.get,),)[0],)               .toThrow(TypeError,),)
-        test("couple (only empty) [1]",          () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Couple(EmptyOptional.get, EmptyOptional.get,),)[1],)               .toThrow(TypeError,),)
-        test("optional couple (only empty) [0]", () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(EmptyOptional.get, EmptyOptional.get,),),)[1],).toThrow(TypeError,),)
-        test("optional couple (only empty) [1]", () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(EmptyOptional.get, EmptyOptional.get,),),)[1],).toThrow(TypeError,),)
+        test("null [0]",                         () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => null,)[0],)                                                            .toThrow(IndexOutOfBoundsException,),)
+        test("null [1]",                         () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => null,)[1],)                                                            .toThrow(IndexOutOfBoundsException,),)
+        test("undefined [0]",                    () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => undefined,)[0],)                                                       .toThrow(IndexOutOfBoundsException,),)
+        test("undefined [1]",                    () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => undefined,)[1],)                                                       .toThrow(IndexOutOfBoundsException,),)
+        test("empty optional [0]",               () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => EmptyOptional.get,)[0],)                                               .toThrow(IndexOutOfBoundsException,),)
+        test("empty optional [1]",               () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => EmptyOptional.get,)[1],)                                               .toThrow(IndexOutOfBoundsException,),)
+        test("couple (only empty) [0]",          () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Couple(EmptyOptional.get, EmptyOptional.get,),)[0],)               .toThrow(IndexOutOfBoundsException,),)
+        test("couple (only empty) [1]",          () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Couple(EmptyOptional.get, EmptyOptional.get,),)[1],)               .toThrow(IndexOutOfBoundsException,),)
+        test("optional couple (only empty) [0]", () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(EmptyOptional.get, EmptyOptional.get,),),)[1],).toThrow(IndexOutOfBoundsException,),)
+        test("optional couple (only empty) [1]", () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(EmptyOptional.get, EmptyOptional.get,),),)[1],).toThrow(IndexOutOfBoundsException,),)
 
         test("couple (1 before) [0]",          () => expect(      new LazyCollectionHolderOf0Or1Or2(() => new Couple(new Optional("a",), EmptyOptional.get,),)[0],)               .toBe("a",),)
-        test("couple (1 before) [1]",          () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Couple(new Optional("a",), EmptyOptional.get,),)[1],)               .toThrow(TypeError,),)
+        test("couple (1 before) [1]",          () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Couple(new Optional("a",), EmptyOptional.get,),)[1],)               .toThrow(IndexOutOfBoundsException,),)
         test("optional couple (1 before) [0]", () => expect(      new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(new Optional("a",), EmptyOptional.get,),),)[0],).toBe("a",),)
-        test("optional couple (1 before) [1]", () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(new Optional("a",), EmptyOptional.get,),),)[1],).toThrow(TypeError,),)
+        test("optional couple (1 before) [1]", () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(new Optional("a",), EmptyOptional.get,),),)[1],).toThrow(IndexOutOfBoundsException,),)
         test("couple (1 after) [0]",           () => expect(      new LazyCollectionHolderOf0Or1Or2(() => new Couple(EmptyOptional.get, new Optional("a",),),)[0],)               .toBe("a",),)
-        test("couple (1 after) [1]",           () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Couple(EmptyOptional.get, new Optional("a",),),)[1],)               .toThrow(TypeError,),)
+        test("couple (1 after) [1]",           () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Couple(EmptyOptional.get, new Optional("a",),),)[1],)               .toThrow(IndexOutOfBoundsException,),)
         test("optional couple (1 after) [0]",  () => expect(      new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(EmptyOptional.get, new Optional("a",),),),)[0],).toBe("a",),)
-        test("optional couple (1 after) [1]",  () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(EmptyOptional.get, new Optional("a",),),),)[1],).toThrow(TypeError,),)
+        test("optional couple (1 after) [1]",  () => expect(() => new LazyCollectionHolderOf0Or1Or2(() => new Optional(new Couple(EmptyOptional.get, new Optional("a",),),),)[1],).toThrow(IndexOutOfBoundsException,),)
 
         test("couple (2) [0]",          () => expect(new LazyCollectionHolderOf0Or1Or2(() => new Couple(new Optional("a",), new Optional("b",),),)[0],)               .toBe("a",),)
         test("couple (2) [1]",          () => expect(new LazyCollectionHolderOf0Or1Or2(() => new Couple(new Optional("a",), new Optional("b",),),)[1],)               .toBe("b",),)
@@ -585,7 +586,7 @@ describe("CollectionHolderTest (constructor)", () => {
     },)
     describe("LazyCollectionHolderOf1Or2", () => {
         test("1 field [0]",  () => expect(      new LazyCollectionHolderOf1Or2(() => new Couple('a', EmptyOptional.get,),)[0],) .toBe('a',),)
-        test("1 field [1]",  () => expect(() => new LazyCollectionHolderOf1Or2(() => new Couple('a', EmptyOptional.get,),)[1],) .toThrow(TypeError,),)
+        test("1 field [1]",  () => expect(() => new LazyCollectionHolderOf1Or2(() => new Couple('a', EmptyOptional.get,),)[1],) .toThrow(IndexOutOfBoundsException,),)
         test("2 fields [0]", () => expect(      new LazyCollectionHolderOf1Or2(() => new Couple("a", new Optional("b",),),)[0],).toBe('a',),)
         test("2 fields [1]", () => expect(      new LazyCollectionHolderOf1Or2(() => new Couple("a", new Optional("b",),),)[1],).toBe('b',),)
     },)
