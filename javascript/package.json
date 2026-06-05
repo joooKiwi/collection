@@ -44,16 +44,6 @@
       "import":  "./dist/ecmascript module/exception/index.js",
       "require": "./dist/common javascript/exception/index.js"
     },
-    "./handler": {
-      "types":   "./dist/types/handler/index.d.ts",
-      "import":  "./dist/ecmascript module/handler/index.js",
-      "require": "./dist/common javascript/handler/index.js"
-    },
-    "./handler/value": {
-      "types":   "./dist/types/handler/value/index.d.ts",
-      "import":  "./dist/ecmascript module/handler/value/index.js",
-      "require": "./dist/common javascript/handler/value/index.js"
-    },
     "./iterable": {
       "types":   "./dist/types/iterable/index.d.ts",
       "import":  "./dist/ecmascript module/iterable/index.js",
@@ -74,6 +64,16 @@
       "import":  "./dist/ecmascript module/method/index.js",
       "require": "./dist/common javascript/method/index.js"
     },
+    "./optional": {
+      "types":   "./dist/types/optional/index.d.ts",
+      "import":  "./dist/ecmascript module/optional/index.js",
+      "require": "./dist/common javascript/optional/index.js"
+    },
+    "./tuple": {
+      "types":   "./dist/types/tuple/index.d.ts",
+      "import":  "./dist/ecmascript module/tuple/index.js",
+      "require": "./dist/common javascript/tuple/index.js"
+    },
     "./type": { "types": "./dist/types/method/index.d.ts" },
 
     "./*": {
@@ -85,16 +85,6 @@
       "types":   "./dist/types/exception/*.d.ts",
       "import":  "./dist/ecmascript module/exception/*.js",
       "require": "./dist/common javascript/exception/*.js"
-    },
-    "./handler/*": {
-      "types":   "./dist/types/handler/*.d.ts",
-      "import":  "./dist/ecmascript module/handler/*.js",
-      "require": "./dist/common javascript/handler/*.js"
-    },
-    "./handler/value/*": {
-      "types":   "./dist/types/handler/value/*.d.ts",
-      "import":  "./dist/ecmascript module/handler/value/*.js",
-      "require": "./dist/common javascript/handler/value/*.js"
     },
     "./iterable/*": {
       "types":   "./dist/types/iterable/*.d.ts",
@@ -115,6 +105,16 @@
       "types":   "./dist/types/method/*.d.ts",
       "import":  "./dist/ecmascript module/method/*.js",
       "require": "./dist/common javascript/method/*.js"
+    },
+    "./optional/*": {
+      "types":   "./dist/types/optional/*.d.ts",
+      "import":  "./dist/ecmascript module/optional/*.js",
+      "require": "./dist/common javascript/optional/*.js"
+    },
+    "./tuple/*": {
+      "types":   "./dist/tuple/method/*.d.ts",
+      "import":  "./dist/ecmascript module/tuple/*.js",
+      "require": "./dist/common javascript/tuple/*.js"
     },
     "./type/*": { "types": "./dist/types/method/*.d.ts" }
   },
