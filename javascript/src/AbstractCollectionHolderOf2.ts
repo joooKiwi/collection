@@ -239,11 +239,11 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 2
         if (limit >= 2)
             return 2
-        if (limit < -2)
+        if (limit <= -2)
             return 0
-        if (limit < -1)
+        if (limit <= -1)
             return 1
-        return 2
+        return limit as | 0 | 1 | 2
     }
 
     //#endregion -------------------- Validate methods (private) --------------------
@@ -4126,7 +4126,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (limit == null)
             if (transform.length === 1)
                 return `${prefix ?? "["}${(transform as (value: T,) => string)(this.value1,)}${separator ?? ", "}${(transform as (value: T,) => string)(this.value2,)}${postfix ?? "]"}`
-            else if (transform.length === 1)
+            else if (transform.length >= 2)
                 return `${prefix ?? "["}${transform(this.value1, 0,)}${separator ?? ", "}${transform(this.value2, 1,)}${postfix ?? "]"}`
             else
                 return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${(transform as () => string)()}${postfix ?? "]"}`
@@ -4137,13 +4137,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (lastIndex === 1)
             if (transform.length === 1)
                 return `${prefix ?? "["}${(transform as (value: T,) => string)(this.value1,)}${separator ?? ", "}${truncated ?? "…"}${postfix ?? "]"}`
-            else if (transform.length === 1)
+            else if (transform.length >= 2)
                 return `${prefix ?? "["}${transform(this.value1, 0,)}${separator ?? ", "}${truncated ?? "…"}${postfix ?? "]"}`
             else
                 return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${truncated ?? "…"}${postfix ?? "]"}`
         if (transform.length === 1)
             return `${prefix ?? "["}${(transform as (value: T,) => string)(this.value1,)}${separator ?? ", "}${(transform as (value: T,) => string)(this.value2,)}${postfix ?? "]"}`
-        else if (transform.length === 1)
+        else if (transform.length >= 2)
             return `${prefix ?? "["}${transform(this.value1, 0,)}${separator ?? ", "}${transform(this.value2, 1,)}${postfix ?? "]"}`
         else
             return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${(transform as () => string)()}${postfix ?? "]"}`

@@ -146,9 +146,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return 1
         if (limit >= 1)
             return 1
-        if (limit < -1)
-            return 0
-        return 1
+        return 0
     }
 
     /**
@@ -1989,7 +1987,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         if (limit == null)
             if (transform.length === 1)
                 return `${prefix ?? '['}${(transform as (value: T,) => string)(this.value,)}${postfix ?? ']'}`
-            else if (transform.length === 1)
+            else if (transform.length >= 2)
                 return `${prefix ?? '['}${transform(this.value, 0,)}${postfix ?? ']'}`
             else
                 return `${prefix ?? '['}${(transform as () => string)()}${postfix ?? ']'}`
@@ -1999,7 +1997,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return `${prefix ?? '['}${truncated ?? '…'}${postfix ?? ']'}`
         if (transform.length === 1)
             return `${prefix ?? '['}${(transform as (value: T,) => string)(this.value,)}${postfix ?? ']'}`
-        else if (transform.length === 1)
+        else if (transform.length >= 2)
             return `${prefix ?? '['}${transform(this.value, 0,)}${postfix ?? ']'}`
         else
             return `${prefix ?? '['}${(transform as () => string)()}${postfix ?? ']'}`
