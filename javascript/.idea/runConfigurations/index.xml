@@ -2,6 +2,7 @@
   <configuration default="false" name="index" type="CompoundRunConfigurationType">
     <toRun name="index ~ EmptyCollectionHolder" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ aliases" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ get() being called" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ instances ~ 1 field" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ instances ~ 2 fields" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
