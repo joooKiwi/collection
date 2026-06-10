@@ -234,7 +234,7 @@ export class LazyCollectionHolder<const T = unknown, >
                 if (isSetByStructure<T>(referenceFound,))
                     return instanceBySet(referenceFound,)
                 if (isCollectionHolderByStructure<T>(referenceFound,))
-                    return instanceByMinimalistCollectionHolder(referenceFound,)
+                    return instanceByCollectionHolder(referenceFound,)
                 if (isMinimalistCollectionHolderByStructure<T>(referenceFound,))
                     return instanceByMinimalistCollectionHolder(referenceFound,)
                 if (isCollectionIteratorByStructure<T>(referenceFound,))
