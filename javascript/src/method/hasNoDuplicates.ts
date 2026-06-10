@@ -79,11 +79,9 @@ export function hasNoDuplicatesByCollectionHolder<const T, >(collection: Nullabl
         return true
     if (collection.isEmpty)
         return true
-
-    const size = collection.size
-    if (size == 1)
+    if (collection.hasExactly1Element)
         return true
-    return __validate(collection, size,)
+    return __validate(collection, collection.size,)
 }
 
 /**
