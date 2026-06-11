@@ -37,7 +37,7 @@ export class CollectionHolder_AdaptorOfJsIterator<const T, >
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
         const $this = this
-        this.instance = new class CollectionHolder_CountingGetByIteratorAdaptor
+        this.instance = new class CollectionHolder_CountingGetByJsIteratorAdaptor
             extends JsIteratorAsCollectionHolder<T, ArrayIterator<T>> {
 
             public override get(index: number,): T {
