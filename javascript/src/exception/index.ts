@@ -12,6 +12,7 @@
 
 export {EmptyCollectionException}            from "./EmptyCollectionException"
 export {ForbiddenIndexException}             from "./ForbiddenIndexException"
+export {IndexNotFoundException}              from "./IndexNotFoundException"
 export {IndexOutOfBoundsException}           from "./IndexOutOfBoundsException"
 export {InvalidIndexRangeException}          from "./InvalidIndexRangeException"
 export {NoElementFoundInCollectionException} from "./NoElementFoundInCollectionException"

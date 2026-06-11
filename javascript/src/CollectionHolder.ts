@@ -1128,8 +1128,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @return {number} The first index associated to the {@link element} found
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
@@ -1148,7 +1148,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index associated to the {@link element} found after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
@@ -1169,7 +1169,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.indexOf
@@ -1187,8 +1187,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @return {number} The first index associated to the {@link element} found
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
@@ -1208,7 +1208,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index associated to the {@link element} found after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
@@ -1230,7 +1230,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.indexOf
@@ -1284,8 +1284,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @return {number} The last index associated to the {@link element} found
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
@@ -1304,7 +1304,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index associated to the {@link element} found after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
@@ -1325,7 +1325,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index associated to the {@link element} found between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.lastIndexOf
@@ -1363,8 +1363,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
@@ -1381,7 +1381,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1400,7 +1400,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findIndex
@@ -1416,8 +1416,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias CollectionHolder.indexOfFirst
@@ -1435,7 +1435,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1455,7 +1455,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findIndex
@@ -1472,8 +1472,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias CollectionHolder.indexOfFirst
@@ -1491,7 +1491,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1511,7 +1511,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findIndex
@@ -1577,8 +1577,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
@@ -1595,7 +1595,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1614,7 +1614,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findIndex
@@ -1630,8 +1630,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias CollectionHolder.indexOfFirstIndexed
@@ -1649,7 +1649,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1669,7 +1669,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findIndex
@@ -1686,8 +1686,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias indexOfFirstIndexed
@@ -1705,7 +1705,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1725,7 +1725,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findIndex
@@ -1792,8 +1792,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The last index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
@@ -1810,7 +1810,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -1829,7 +1829,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findLastIndex
@@ -1845,8 +1845,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The last index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @alias CollectionHolder.indexOfLast
@@ -1864,7 +1864,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -1884,7 +1884,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findLastIndex
@@ -1935,8 +1935,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The last index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
@@ -1953,7 +1953,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -1972,7 +1972,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findLastIndex
@@ -1988,8 +1988,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The last index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexNotFoundException   No index could be found
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @alias CollectionHolder.indexOfLastIndexed
@@ -2007,7 +2007,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
+     * @throws IndexNotFoundException    No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -2027,7 +2027,7 @@ export interface CollectionHolder<out T = unknown, >
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws IndexNotFoundException     No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see ReadonlyArray.findLastIndex

@@ -29,6 +29,7 @@ import type {CollectionHolderOf2}                                               
 import {CollectionIteratorOf2}                                                                                            from "./iterator/CollectionIteratorOf2"
 import {ForbiddenIndexException}                                                                                          from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                        from "./exception/IndexOutOfBoundsException"
+import {IndexNotFoundException}                                                                                           from "./exception/IndexNotFoundException"
 import {InvalidIndexRangeException}                                                                                       from "./exception/InvalidIndexRangeException"
 import {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./method/asString"
 import {isArrayByStructure}                                                                                               from "./method/isArrayByStructure"
@@ -645,13 +646,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     #firstIndexOf_find1(element: T,): 0 {
         if (this.value1 === element)
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #firstIndexOf_find2(element: T,): 1 {
         if (this.value2 === element)
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 1,)
     }
 
     #firstIndexOf_findInRange(element: T,): | 0 | 1 {
@@ -659,7 +660,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (this.value2 === element)
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     //#endregion -------------------- First index of --------------------
@@ -782,13 +783,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     #lastIndexOf_find1(element: T,): 0 {
         if (this.value1 === element)
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #lastIndexOf_find2(element: T,): 1 {
         if (this.value2 === element)
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 1,)
     }
 
     #lastIndexOf_findInRange(element: T,): | 0 | 1 {
@@ -796,7 +797,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (this.value1 === element)
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
     }
 
     //#endregion -------------------- Last index of --------------------
@@ -956,13 +957,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     #indexOfFirst_with0Argument_find1(predicate: () => boolean,): 0 {
         if (predicate())
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfFirst_with0Argument_find2(predicate: () => boolean,): 1 {
         if (predicate())
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirst_with0Argument_findInRange(predicate: () => boolean,): | 0 | 1 {
@@ -970,19 +971,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate())
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirst_with1Argument_find1(predicate: (value: T1,) => boolean,): 0 {
         if (predicate(this.value1,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfFirst_with1Argument_find2(predicate: (value: T2,) => boolean,): 1 {
         if (predicate(this.value2,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirst_with1Argument_findInRange(predicate: (value: | T1 | T2,) => boolean,): | 0 | 1 {
@@ -990,19 +991,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate(this.value2,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirst_with2Argument_find1(predicate: (value: T1, index: 0,) => boolean,): 0 {
         if (predicate(this.value1, 0,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfFirst_with2Argument_find2(predicate: (value: T2, index: 1,) => boolean,): 1 {
         if (predicate(this.value2, 1,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirst_with2Argument_findInRange(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): | 0 | 1 {
@@ -1010,7 +1011,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate(this.value2, 1,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     //#endregion -------------------- Index of first --------------------
@@ -1246,13 +1247,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     #indexOfFirstIndexed_with0Argument_find1(predicate: () => boolean,): 0 {
         if (predicate())
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfFirstIndexed_with0Argument_find2(predicate: () => boolean,): 1 {
         if (predicate())
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirstIndexed_with0Argument_findInRange(predicate: () => boolean,): | 0 | 1 {
@@ -1260,19 +1261,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate())
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirstIndexed_with1Argument_find1(predicate: (index: 0,) => boolean,): 0 {
         if (predicate(0,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfFirstIndexed_with1Argument_find2(predicate: (index: 1,) => boolean,): 1 {
         if (predicate(1,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirstIndexed_with1Argument_findInRange(predicate: (index: | 0 | 1,) => boolean,): | 0 | 1 {
@@ -1280,19 +1281,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate(1,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirstIndexed_with2Argument_find1(predicate: (index: 0, value: T1,) => boolean,): 0 {
         if (predicate(0, this.value1,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfFirstIndexed_with2Argument_find2(predicate: (index: 1, value: T2,) => boolean,): 1 {
         if (predicate(1, this.value2,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfFirstIndexed_with2Argument_findInRange(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): | 0 | 1 {
@@ -1300,7 +1301,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate(1, this.value2,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     //#endregion -------------------- Index of first indexed --------------------
@@ -1537,13 +1538,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     #indexOfLast_with0Argument_find1(predicate: () => boolean,): 0 {
         if (predicate())
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
     }
 
     #indexOfLast_with0Argument_find2(predicate: () => boolean,): 1 {
         if (predicate())
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
     }
 
     #indexOfLast_with0Argument_findInRange(predicate: () => boolean,): | 0 | 1 {
@@ -1551,19 +1552,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate())
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
     }
 
     #indexOfLast_with1Argument_find1(predicate: (value: T1,) => boolean,): 0 {
         if (predicate(this.value1,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
     }
 
     #indexOfLast_with1Argument_find2(predicate: (value: T2,) => boolean,): 1 {
         if (predicate(this.value2,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
     }
 
     #indexOfLast_with1Argument_findInRange(predicate: (value: | T1 | T2,) => boolean,): | 0 | 1 {
@@ -1571,19 +1572,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate(this.value1,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
     }
 
     #indexOfLast_with2Argument_find1(predicate: (value: T1, index: 0,) => boolean,): 0 {
         if (predicate(this.value1, 0,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
     }
 
     #indexOfLast_with2Argument_find2(predicate: (value: T2, index: 1,) => boolean,): 1 {
         if (predicate(this.value2, 1,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
     }
 
     #indexOfLast_with2Argument_findInRange(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): | 0 | 1 {
@@ -1591,7 +1592,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate(this.value1, 0,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
     }
 
     //#endregion -------------------- Index of last --------------------
@@ -1827,13 +1828,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     #indexOfLastIndexed_with0Argument_find1(predicate: () => boolean,): 0 {
         if (predicate())
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
     }
 
     #indexOfLastIndexed_with0Argument_find2(predicate: () => boolean,): 1 {
         if (predicate())
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
     }
 
     #indexOfLastIndexed_with0Argument_findInRange(predicate: () => boolean,): | 0 | 1 {
@@ -1841,19 +1842,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate())
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
     }
 
     #indexOfLastIndexed_with1Argument_find1(predicate: (index: 0,) => boolean,): 0 {
         if (predicate(0,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
     }
 
     #indexOfLastIndexed_with1Argument_find2(predicate: (index: 1,) => boolean,): 1 {
         if (predicate(1,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
     }
 
     #indexOfLastIndexed_with1Argument_findInRange(predicate: (index: | 0 | 1) => boolean,): | 0 | 1 {
@@ -1861,19 +1862,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate(0,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
     }
 
     #indexOfLastIndexed_with2Argument_find1(predicate: (index: 0, value: T1,) => boolean,): 0 {
         if (predicate(0, this.value1,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
     }
 
     #indexOfLastIndexed_with2Argument_find2(predicate: (index: 1, value: T2,) => boolean,): 1 {
         if (predicate(1, this.value2,))
             return 1
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
     }
 
     #indexOfLastIndexed_with2Argument_findInRange(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): | 0 | 1 {
@@ -1881,7 +1882,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate(0, this.value1,))
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
     }
 
     //#endregion -------------------- Index of last indexed --------------------

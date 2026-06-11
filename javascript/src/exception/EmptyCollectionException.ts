@@ -12,7 +12,7 @@
 
 import type {Nullable, NullableString, NullOr, NumericOrObject} from "@joookiwi/type"
 
-import {IndexOutOfBoundsException} from "./IndexOutOfBoundsException"
+import {IndexNotFoundException} from "./IndexNotFoundException"
 
 /**
  * An {@link Error exception} made to tell that the {@link CollectionHolder collection}
@@ -20,7 +20,7 @@ import {IndexOutOfBoundsException} from "./IndexOutOfBoundsException"
  */
 export class EmptyCollectionException<const T extends NullOr<NumericOrObject> = null,
     const CAUSE extends Error = never, >
-    extends IndexOutOfBoundsException<T, CAUSE> {
+    extends IndexNotFoundException<T, CAUSE> {
 
     /**
      * The default message that is used in the {@link constructor} when the message is <code>null</code>

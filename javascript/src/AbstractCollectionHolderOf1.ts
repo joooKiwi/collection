@@ -26,6 +26,7 @@ import {LazyCollectionHolderOf0Or1}                                             
 import {CollectionIteratorOf1}                                                                                            from "./iterator/CollectionIteratorOf1"
 import {ForbiddenIndexException}                                                                                          from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                        from "./exception/IndexOutOfBoundsException"
+import {IndexNotFoundException}                                                                                           from "./exception/IndexNotFoundException"
 import {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./method/asString"
 import {isArrayByStructure}                                                                                               from "./method/isArrayByStructure"
 import {isCollectionHolder}                                                                                               from "./method/isCollectionHolder"
@@ -431,7 +432,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         this.#validateEndingIndex(to,)
         if (this.value === element)
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {
@@ -462,15 +463,15 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             if ((predicate as (value: T,) => boolean)(this.value,))
                 return 0
             else
-                throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+                throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
         if (predicate.length >= 2)
             if (predicate(this.value, 0,))
                 return 0
             else
-                throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+                throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
         if ((predicate as () => boolean)())
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {
@@ -502,15 +503,15 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             if ((predicate as (index: number,) => boolean)(0,))
                 return 0
             else
-                throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+                throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
         if (predicate.length >= 2)
             if (predicate(0, this.value,))
                 return 0
             else
-                throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+                throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
         if ((predicate as () => boolean)())
             return 0
-        throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {

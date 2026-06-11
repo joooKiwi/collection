@@ -16,7 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyCollectionException}                          from "../exception/EmptyCollectionException"
-import {IndexOutOfBoundsException}                         from "../exception/IndexOutOfBoundsException"
+import {IndexNotFoundException}                            from "../exception/IndexNotFoundException"
 import {NullCollectionException}                           from "../exception/NullCollectionException"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
 import {isArray}                                           from "./isArray"
@@ -33,9 +33,9 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
  * @return {number} The first index associated to the {@link element} found
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
+ * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
@@ -56,7 +56,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
@@ -79,7 +79,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
- * @throws IndexOutOfBoundsException  No index could be found
+ * @throws IndexNotFoundException     No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.indexOf
@@ -111,9 +111,9 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @param collection The nullable collection
  * @param element    The element to find
  * @return {number} The first index associated to the {@link element} found
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
+ * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
@@ -134,7 +134,7 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
@@ -157,7 +157,7 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
- * @throws IndexOutOfBoundsException  No index could be found
+ * @throws IndexNotFoundException     No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.indexOf
@@ -188,9 +188,9 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @param collection The nullable collection
  * @param element    The element to find
  * @return {number} The first index associated to the {@link element} found
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
@@ -211,7 +211,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
@@ -234,7 +234,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
- * @throws IndexOutOfBoundsException  No index could be found
+ * @throws IndexNotFoundException     No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.indexOf
@@ -265,9 +265,9 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @param collection The nullable collection
  * @param element    The element to find
  * @return {number} The first index associated to the {@link element} found
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
+ * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
@@ -288,7 +288,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<Array<T>>, e
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
@@ -311,7 +311,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<Array<T>>, e
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
- * @throws IndexOutOfBoundsException  No index could be found
+ * @throws IndexNotFoundException     No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.indexOf
@@ -515,7 +515,7 @@ function __findInRange<const T, >(collection: MinimalistCollectionHolder<T>, ele
     while (++index <= endingIndex)
         if (collection.get(index,) === element)
             return index
-    throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
+    throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 function __findInRangeByArray<const T, >(collection: Array<T>, element: T, startingIndex: number, endingIndex: number,) {
@@ -523,7 +523,7 @@ function __findInRangeByArray<const T, >(collection: Array<T>, element: T, start
     while (++index <= endingIndex)
         if (collection[index] === element)
             return index
-    throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
+    throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 //#endregion -------------------- Loop methods --------------------

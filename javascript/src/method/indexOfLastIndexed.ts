@@ -17,7 +17,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {ReverseBooleanCallback}     from "../type/callback"
 
 import {EmptyCollectionException}                          from "../exception/EmptyCollectionException"
-import {IndexOutOfBoundsException}                         from "../exception/IndexOutOfBoundsException"
+import {IndexNotFoundException}                            from "../exception/IndexNotFoundException"
 import {NullCollectionException}                           from "../exception/NullCollectionException"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
 import {isArray}                                           from "./isArray"
@@ -34,9 +34,9 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
+ * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
@@ -55,7 +55,7 @@ export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistC
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -76,7 +76,7 @@ export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistC
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
- * @throws IndexOutOfBoundsException  No index could be found
+ * @throws IndexNotFoundException     No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.findLastIndex
@@ -108,7 +108,7 @@ export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistC
  * @return {number} The last index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
@@ -127,7 +127,7 @@ export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collec
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -148,7 +148,7 @@ export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collec
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
- * @throws IndexOutOfBoundsException  No index could be found
+ * @throws IndexNotFoundException     No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.findLastIndex
@@ -177,9 +177,9 @@ export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collec
  * @param collection The nullable collection
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
@@ -198,7 +198,7 @@ export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Null
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -219,7 +219,7 @@ export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Null
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
- * @throws IndexOutOfBoundsException  No index could be found
+ * @throws IndexNotFoundException     No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.findLastIndex
@@ -248,9 +248,9 @@ export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Null
  * @param collection The nullable collection
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
+ * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
@@ -269,7 +269,7 @@ export function indexOfLastIndexedByArray<const T, >(collection: Nullable<Array<
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
+ * @throws IndexNotFoundException    No index could be found
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -290,7 +290,7 @@ export function indexOfLastIndexedByArray<const T, >(collection: Nullable<Array<
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
- * @throws IndexOutOfBoundsException  No index could be found
+ * @throws IndexNotFoundException     No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.findLastIndex
@@ -540,7 +540,7 @@ function __with0Argument(predicate: () => boolean, startingIndex: number, ending
     while (--index >= startingIndex)
         if (predicate())
             return index
-    throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
+    throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 
@@ -549,7 +549,7 @@ function __with1Argument(predicate: (index: number,) => boolean, startingIndex: 
     while (--index >= startingIndex)
         if (predicate(index,))
             return index
-    throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
+    throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 
@@ -558,7 +558,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (--index >= startingIndex)
         if (predicate(index, collection.get(index,),))
             return index
-    throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
+    throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (index: number, value: T,) => boolean, startingIndex: number, endingIndex: number,) {
@@ -566,7 +566,7 @@ function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (ind
     while (--index >= startingIndex)
         if (predicate(index, collection[index] as T,))
             return index
-    throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
+    throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 //#endregion -------------------- Loop methods --------------------
