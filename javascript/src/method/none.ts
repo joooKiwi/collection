@@ -112,12 +112,12 @@ export function noneByMinimalistCollectionHolder<const T, >(collection: Nullable
     if (collection == null)
         return true
     if (predicate == null)
-        return collection.size == 0
+        return collection.size === 0
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, size,)
@@ -155,7 +155,7 @@ export function noneByCollectionHolder<const T, >(collection: Nullable<Collectio
         return collection.isEmpty
     if (collection.isEmpty)
         return true
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, collection.size,)
@@ -190,12 +190,12 @@ export function noneByArray<const T, >(collection: Nullable<Array<T>>, predicate
     if (collection == null)
         return true
     if (predicate == null)
-        return collection.length == 0
+        return collection.length === 0
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, size,)

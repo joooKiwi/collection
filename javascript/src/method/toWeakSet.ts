@@ -60,7 +60,7 @@ export function toWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >
         return CollectionConstants.EMPTY_WEAK_SET
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return CollectionConstants.EMPTY_WEAK_SET
     return __withDuplicate(collection, size,)
 }
@@ -92,7 +92,7 @@ export function toWeakSetByArray<const T extends WeakKey, >(collection: Nullable
         return CollectionConstants.EMPTY_WEAK_SET
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return CollectionConstants.EMPTY_WEAK_SET
     return __withDuplicateByArray(collection, size,)
 }

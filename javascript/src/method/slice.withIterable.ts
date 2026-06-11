@@ -68,7 +68,7 @@ export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCo
 export function sliceWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
-    if (collection.size == 0)
+    if (collection.size === 0)
         return EmptyCollectionHolder.get
 
     const iterator: Iterator<number, unknown, unknown> = indices[Symbol.iterator]()
@@ -116,7 +116,7 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
 export function sliceWithIterableByArray<const T, >(collection: Nullable<Array<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
-    if (collection.length == 0)
+    if (collection.length === 0)
         return EmptyCollectionHolder.get
 
     const iterator: Iterator<number, unknown, unknown> = indices[Symbol.iterator]()

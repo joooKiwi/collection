@@ -94,9 +94,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
         if (Number.isNaN(from,))
             throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", from,)
-        if (from == Number.NEGATIVE_INFINITY)
+        if (from === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", from,)
-        if (from == Number.POSITIVE_INFINITY)
+        if (from === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", from,)
 
         if (from === 0)
@@ -126,9 +126,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (Number.isNaN(from,))
             return null
-        if (from == Number.NEGATIVE_INFINITY)
+        if (from === Number.NEGATIVE_INFINITY)
             return null
-        if (from == Number.POSITIVE_INFINITY)
+        if (from === Number.POSITIVE_INFINITY)
             return null
         if (from === 0)
             return 0
@@ -154,9 +154,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
         if (Number.isNaN(to,))
             throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with NaN.", to,)
-        if (to == Number.NEGATIVE_INFINITY)
+        if (to === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", to,)
-        if (to == Number.POSITIVE_INFINITY)
+        if (to === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", to,)
 
         if (to === 0)
@@ -186,9 +186,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (Number.isNaN(to,))
             return null
-        if (to == Number.NEGATIVE_INFINITY)
+        if (to === Number.NEGATIVE_INFINITY)
             return null
-        if (to == Number.POSITIVE_INFINITY)
+        if (to === Number.POSITIVE_INFINITY)
             return null
         if (to === 0)
             return 0
@@ -219,7 +219,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
                 throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}”.`, from, to,)
             else
                 throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
-        if (from == startingIndex)
+        if (from === startingIndex)
             throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}”.`, from, to,)
         throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
     }

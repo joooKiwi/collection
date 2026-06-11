@@ -55,7 +55,7 @@ export class CollectionHandlerBySet<const T = unknown,
     public constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
         const size = this.#size = reference.size
-        if (size == 0) {
+        if (size === 0) {
             this.#hasFinished = this.#isEmpty = true
             this.#hasNull = false
             return
@@ -134,9 +134,9 @@ export class CollectionHandlerBySet<const T = unknown,
 
         if (Number.isNaN(index,))
             return new NaNIndexValueHolder(index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             return new NegativeInfinityIndexValueHolder(index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             return new PositiveInfinityIndexValueHolder(index,)
 
         const collection = this._collection
@@ -144,7 +144,7 @@ export class CollectionHandlerBySet<const T = unknown,
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
-        if (index == size)
+        if (index === size)
             return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
@@ -156,11 +156,11 @@ export class CollectionHandlerBySet<const T = unknown,
             const iterator = this._iterator
             const indexPlus1 = index + 1
             const lastIndexRetrieved = this._lastIndexRetrieved
-            let indexToFind = lastIndexRetrieved == -1 ? -1 : lastIndexRetrieved
+            let indexToFind = lastIndexRetrieved === -1 ? -1 : lastIndexRetrieved
             while (++indexToFind < indexPlus1)
                 collection[indexToFind] = iterator.next().value
 
-            if (lastIndexRetrieved == size)
+            if (lastIndexRetrieved === size)
                 this._hasFinished = true
 
             return new ValidValueHolder(collection[this._lastIndexRetrieved = indexToFind - 1] as T,)
@@ -180,11 +180,11 @@ export class CollectionHandlerBySet<const T = unknown,
         const iterator = this._iterator
         const indexToRetrievePlus1 = indexToRetrieve + 1
         const lastIndexRetrieved = this._lastIndexRetrieved
-        let indexToFind = lastIndexRetrieved == -1 ? -1 : lastIndexRetrieved
+        let indexToFind = lastIndexRetrieved === -1 ? -1 : lastIndexRetrieved
         while (++indexToFind < indexToRetrievePlus1)
             collection[indexToFind] = iterator.next().value
 
-        if (indexToFind == size)
+        if (indexToFind === size)
             this._hasFinished = true
 
         return new ValidValueHolder(collection[this._lastIndexRetrieved = indexToFind - 1] as T,)

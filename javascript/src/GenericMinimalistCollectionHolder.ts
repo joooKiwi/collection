@@ -105,7 +105,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -113,7 +113,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference[0] as T,],)
                 return
             }
@@ -121,7 +121,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 this.#array = Object.freeze([reference[0] as T, reference[1] as T,],)
                 return
             }
@@ -147,7 +147,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -155,7 +155,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
                 return
             }
@@ -163,7 +163,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 const iterator = reference[Symbol.iterator]()
                 this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
                 return
@@ -199,7 +199,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             const size = this.#size = reference.size
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference.getFirst(),],)
                 return
             }
@@ -207,7 +207,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 this.#array = Object.freeze([reference.getFirst(), reference.getLast(),],)
                 return
             }
@@ -233,7 +233,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -241,7 +241,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference.get(0,),],)
                 return
             }
@@ -249,7 +249,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 this.#array = Object.freeze([reference.get(0,), reference.get(1,),],)
                 return
             }
@@ -283,7 +283,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             const size = this.#size = reference.size
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference.nextValue,],)
                 return
             }
@@ -291,7 +291,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 this.#array = Object.freeze([reference.nextValue, reference.nextValue,],)
                 return
             }
@@ -348,7 +348,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -356,7 +356,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference[0] as T,],)
                 return
             }
@@ -364,7 +364,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 this.#array = Object.freeze([reference[0] as T, reference[1] as T,],)
                 return
             }
@@ -390,7 +390,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -398,7 +398,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
                 return
             }
@@ -406,7 +406,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 const iterator = reference[Symbol.iterator]()
                 this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
                 return
@@ -442,7 +442,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             const size = this.#size = reference.size
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference.getFirst(),],)
                 return
             }
@@ -450,7 +450,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 this.#array = Object.freeze([reference.getFirst(), reference.getLast(),],)
                 return
             }
@@ -476,7 +476,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -484,7 +484,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference.get(0,),],)
                 return
             }
@@ -492,7 +492,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 this.#array = Object.freeze([reference.get(0,), reference.get(1,),],)
                 return
             }
@@ -526,7 +526,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             const size = this.#size = reference.size
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference.nextValue,],)
                 return
             }
@@ -534,7 +534,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 this.#array = Object.freeze([reference.nextValue, reference.nextValue,],)
                 return
             }
@@ -594,7 +594,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -602,7 +602,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
                 return
             }
@@ -610,7 +610,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
             }
@@ -640,7 +640,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -648,7 +648,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
                 return
             }
@@ -656,7 +656,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
             }
@@ -686,7 +686,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (size === 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -694,7 +694,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            if (size === 1) {
                 this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
                 return
             }
@@ -702,7 +702,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            if (size === 2) {
                 const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
                 return
@@ -771,14 +771,14 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
     public override get(index: number,): T {
         const size = this.size
-        if (size == 0)
+        if (size === 0)
             throw new EmptyCollectionException(null, index,)
 
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
 
         const array = this._array
@@ -787,7 +787,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
         if (index > size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
-        if (index == size)
+        if (index === size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return array[index] as T

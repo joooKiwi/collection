@@ -211,14 +211,14 @@ function __coreByCollectionHolder(collection: CollectionHolder, separator: strin
 
 function __coreByMinimalistCollectionHolder(collection: MinimalistCollectionHolder, separator: string, prefix: string, postfix: string,) {
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
     return __withNothing(collection, separator, prefix, postfix, size,)
 }
 
 function __coreByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string,) {
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
     return __withNothingByArray(collection, separator, prefix, postfix, size,)
 }
@@ -232,35 +232,35 @@ function __coreWithLimitByCollectionHolder(collection: CollectionHolder, separat
 
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
+    if (lastIndex === 0)
         return prefix + truncated + postfix
-    if (lastIndex == size)
+    if (lastIndex === size)
         return __withNothing(collection, separator, prefix, postfix, size,)
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
 }
 
 function __coreWithLimitByMinimalistCollectionHolder(collection: MinimalistCollectionHolder, separator: string, prefix: string, postfix: string, limit: number, truncated: string,) {
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
+    if (lastIndex === 0)
         return prefix + truncated + postfix
-    if (lastIndex == size)
+    if (lastIndex === size)
         return __withNothing(collection, separator, prefix, postfix, size,)
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
 }
 
 function __coreWithLimitByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string, limit: number, truncated: string,) {
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
+    if (lastIndex === 0)
         return prefix + truncated + postfix
-    if (lastIndex == size)
+    if (lastIndex === size)
         return __withNothingByArray(collection, separator, prefix, postfix, size,)
     return __withTruncatedByArray(collection, separator, prefix, postfix, lastIndex, truncated,)
 }
@@ -274,16 +274,16 @@ function __coreWithLimitAndTransformByCollectionHolder<const T, >(collection: Co
 
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
+    if (lastIndex === 0)
         return prefix + truncated + postfix
-    if (lastIndex == size)
-        if (transform.length == 1)
+    if (lastIndex === size)
+        if (transform.length === 1)
             return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
         else if (transform.length >= 2)
             return __with2Argument(collection, separator, prefix, postfix, size, transform,)
         else
             return __with0Argument(separator, prefix, postfix, size, transform as () => string,)
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __withTruncatedAnd1Argument(collection, separator, prefix, postfix, lastIndex, truncated, transform as (value: T,) => string,)
     else if (transform.length >= 2)
         return __withTruncatedAnd2Argument(collection, separator, prefix, postfix, lastIndex, truncated, transform,)
@@ -292,20 +292,20 @@ function __coreWithLimitAndTransformByCollectionHolder<const T, >(collection: Co
 
 function __coreWithLimitAndTransformByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, separator: string, prefix: string, postfix: string, limit: number, truncated: string, transform: StringCallback<T>,) {
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
+    if (lastIndex === 0)
         return prefix + truncated  + postfix
-    if (lastIndex == size)
-        if (transform.length == 1)
+    if (lastIndex === size)
+        if (transform.length === 1)
             return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
         else if (transform.length >= 2)
             return __with2Argument(collection, separator, prefix, postfix, size, transform,)
         else
             return __with0Argument(separator, prefix, postfix, size, transform as () => string,)
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __withTruncatedAnd1Argument(collection, separator, prefix, postfix, lastIndex, truncated, transform as (value: T,) => string,)
     else if (transform.length >= 2)
         return __withTruncatedAnd2Argument(collection, separator, prefix, postfix, lastIndex, truncated, transform,)
@@ -314,20 +314,20 @@ function __coreWithLimitAndTransformByMinimalistCollectionHolder<const T, >(coll
 
 function __coreWithLimitAndTransformByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, limit: number, truncated: string, transform: StringCallback<T>,) {
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
+    if (lastIndex === 0)
         return prefix + truncated + postfix
-    if (lastIndex == size)
-        if (transform.length == 1)
+    if (lastIndex === size)
+        if (transform.length === 1)
             return __with1ArgumentByArray(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
         else if (transform.length >= 2)
             return __with2ArgumentByArray(collection, separator, prefix, postfix, size, transform,)
         else
             return __with0Argument(separator, prefix, postfix, size, transform as () => string,)
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __withTruncatedAnd1ArgumentByArray(collection, separator, prefix, postfix, lastIndex, truncated, transform as (value: T,) => string,)
     else if (transform.length >= 2)
         return __withTruncatedAnd2ArgumentByArray(collection, separator, prefix, postfix, lastIndex, truncated, transform,)
@@ -340,7 +340,7 @@ function __coreWithLimitAndTransformByArray<const T, >(collection: Array<T>, sep
 function __coreWithTransformByCollectionHolder<const T, >(collection: CollectionHolder<T>, separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
     if (collection.isEmpty)
         return prefix + postfix
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __with1Argument(collection, separator, prefix, postfix, collection.size, transform as (value: T,) => string,)
     if (transform.length >= 2)
         return __with2Argument(collection, separator, prefix, postfix, collection.size, transform,)
@@ -349,9 +349,9 @@ function __coreWithTransformByCollectionHolder<const T, >(collection: Collection
 
 function __coreWithTransformByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
     if (transform.length >= 2)
         return __with2Argument(collection, separator, prefix, postfix, size, transform,)
@@ -360,9 +360,9 @@ function __coreWithTransformByMinimalistCollectionHolder<const T, >(collection: 
 
 function __coreWithTransformByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __with1ArgumentByArray(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
     if (transform.length >= 2)
         return __with2ArgumentByArray(collection, separator, prefix, postfix, size, transform,)

@@ -54,7 +54,7 @@ export class CollectionHandlerByArray<const T = unknown,
     public constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
         const size = this.#size = reference.length
-        if (size == 0) {
+        if (size === 0) {
             this.#hasFinished = this.#isEmpty = true
             this.#hasNull = this.#hasDuplicate = false
             return
@@ -192,9 +192,9 @@ export class CollectionHandlerByArray<const T = unknown,
 
         if (Number.isNaN(index,))
             return new NaNIndexValueHolder(index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             return new NegativeInfinityIndexValueHolder(index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             return new PositiveInfinityIndexValueHolder(index,)
 
         const collection = this._collection
@@ -202,7 +202,7 @@ export class CollectionHandlerByArray<const T = unknown,
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
-        if (index == size)
+        if (index === size)
             return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
@@ -211,7 +211,7 @@ export class CollectionHandlerByArray<const T = unknown,
             if (this.hasFinished)
                 return new ValidValueHolder(collection[index] as T,)
 
-            if (size - 1 == this._amountOfElementRetrieved++)
+            if (size - 1 === this._amountOfElementRetrieved++)
                 this._hasFinished = true
             return new ValidValueHolder(collection[index] = this._reference[index] as T,)
         }
@@ -227,7 +227,7 @@ export class CollectionHandlerByArray<const T = unknown,
         if (indexToRetrieve in collection)
             return new ValidValueHolder(collection[indexToRetrieve] as T,)
 
-        if (size - 1 == this._amountOfElementRetrieved++)
+        if (size - 1 === this._amountOfElementRetrieved++)
             this._hasFinished = true
         return new ValidValueHolder(collection[indexToRetrieve] = this._reference[indexToRetrieve] as T,)
     }

@@ -14,6 +14,8 @@ import type {Array, MutableArray} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {CollectionConstants} from "../CollectionConstants"
+
 /** @internal */
 export function __values<const T, >(collection: MinimalistCollectionHolder<T>, size: number,): MutableArray<T> {
     const array = new Array<T>(size,)
@@ -51,7 +53,7 @@ export function __uniqueValues<const T, >(collection: MinimalistCollectionHolder
                 array1[amountOfItemAdded++] = value
     }
 
-    if (amountOfItemAdded == size)
+    if (amountOfItemAdded === size)
         return array1
 
     //#endregion -------------------- Possibly remove duplicates --------------------
@@ -84,7 +86,7 @@ export function __uniqueValuesByArray<const T, >(collection: Array<T>, size: num
                 array1[amountOfItemAdded++] = value
     }
 
-    if (amountOfItemAdded == size)
+    if (amountOfItemAdded === size)
         return array1
 
     //#endregion -------------------- Possibly remove duplicates --------------------
@@ -116,4 +118,93 @@ export function __associativeValuesByArray<const T, >(collection: Array<T>, size
     while (index-- > 0)
         array[index] = [index, collection[index] as T,]
     return array
+}
+
+
+
+/**
+ * Reduce the given {@link collection} to a {@link newSize new size}
+ *
+ * @param collection The collection to reduce its size
+ * @param newSize    The new size of the {@link collection} that will be returned
+ * @note It imply that {@link newSize} is under the size of the {@link collection}
+ * @internal
+ */
+export function __reduceTo<const T, >(collection: MinimalistCollectionHolder<T>, newSize: number,): Array<T> {
+    if (newSize === 0)
+        return CollectionConstants.EMPTY_ARRAY
+
+    const newArray = new Array<T>(newSize,)
+    let index = -1
+    while (++index < newSize)
+        newArray[index] = collection.get(index,)
+    return newArray
+}
+
+/**
+ * Reduce the given {@link collection} to a {@link newSize new size}
+ *
+ * @param collection The collection to reduce its size
+ * @param newSize    The new size of the {@link collection} that will be returned
+ * @note It imply that {@link newSize} is under the size of the {@link collection}
+ * @internal
+ */
+export function __reduceToByArray<const T, >(collection: Array<T>, newSize: number,): Array<T> {
+    if (newSize === 0)
+        return CollectionConstants.EMPTY_ARRAY
+
+    const newArray = new Array<T>(newSize,)
+    let index = -1
+    while (++index < newSize)
+        newArray[index] = collection[index] as T
+    return newArray
+}
+
+
+/**
+ * Reduce the given {@link collection} from a {@link startingIndex starting point} to its end
+ *
+ * @param collection    The collection to reduce its size
+ * @param startingIndex The first index to retrieve the values
+ * @param size          The size of the {@link collection}
+ * @note It imply that {@link startingIndex} is under the size of the {@link collection}
+ * @internal
+ */
+export function __reduceFrom<const T, >(collection: MinimalistCollectionHolder<T>, startingIndex: number, size: number,): Array<T> {
+    const newSize = size - startingIndex - 1
+    if (newSize === 0)
+        return CollectionConstants.EMPTY_ARRAY
+    if (newSize === 1)
+        return [collection.get(startingIndex + 1,),]
+
+    const newArray = new Array<T>(newSize,)
+    let indexAdded = 0
+    let index = startingIndex
+    while (++index < size)
+        newArray[indexAdded++] = collection.get(index,)
+    return newArray
+}
+
+/**
+ * Reduce the given {@link collection} from a {@link startingIndex starting point} to its end
+ *
+ * @param collection    The collection to reduce its size
+ * @param startingIndex The first index to retrieve the values
+ * @param size          The size of the {@link collection}
+ * @note It imply that {@link startingIndex} is under the size of the {@link collection}
+ * @internal
+ */
+export function __reduceFromByArray<const T, >(collection: Array<T>, startingIndex: number, size: number,): Array<T> {
+    const newSize = size - startingIndex - 1
+    if (newSize === 0)
+        return CollectionConstants.EMPTY_ARRAY
+    if (newSize === 1)
+        return [collection[startingIndex + 1] as T,]
+
+    const newArray = new Array<T>(newSize,)
+    let indexAdded = 0
+    let index = startingIndex
+    while (++index < size)
+        newArray[indexAdded++] = collection[index] as T
+    return newArray
 }

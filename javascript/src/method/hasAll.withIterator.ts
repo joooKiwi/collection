@@ -68,7 +68,7 @@ export function hasAllWithIteratorByMinimalistCollectionHolder<const T, >(collec
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     return __validate(collection, values, iteratorResult.value, size,)
 }
@@ -116,7 +116,7 @@ export function hasAllWithIteratorByArray<const T, >(collection: Nullable<Array<
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     return __validateByArray(collection, values, iteratorResult.value, size,)
 }

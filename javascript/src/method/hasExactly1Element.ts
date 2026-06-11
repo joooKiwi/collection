@@ -127,7 +127,7 @@ export function hasExactly1ElementByMinimalistCollectionHolder<const T, const CO
 export function hasExactly1ElementByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,) {
     if (collection == null)
         return false
-    return collection.size == 1
+    return collection.size === 1
 }
 
 /**
@@ -147,7 +147,7 @@ export function hasExactly1ElementByCollectionHolder<const T, const COLLECTION e
 export function hasExactly1ElementByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,) {
     if (collection == null)
         return false
-    return collection.size == 1
+    return collection.size === 1
 }
 
 /**
@@ -167,5 +167,5 @@ export function hasExactly1ElementByArray<const T, const COLLECTION extends Null
 export function hasExactly1ElementByArray<const T, >(collection: Nullable<Array<T>>,) {
     if (collection == null)
         return false
-    return collection.length == 1
+    return collection.length === 1
 }

@@ -60,13 +60,13 @@ export function hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHol
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
     if (values == null)
         return false
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return false
     return __validate(collection, values, size, valuesSize,)
 }
@@ -87,7 +87,7 @@ export function hasNotOneWithMinimalistCollectionHolderByCollectionHolder<const 
         return false
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return false
     return __validate(collection, values, collection.size, valuesSize,)
 }
@@ -104,13 +104,13 @@ export function hasNotOneWithMinimalistCollectionHolderByArray<const T, >(collec
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
     if (values == null)
         return false
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return false
     return __validateByArray(collection, values, size, valuesSize,)
 }
@@ -124,7 +124,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     const firstValue = values.get(0,)
     let index1 = -1
     while (++index1 < size)
-        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) == firstValue)
+        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
             return false
 
     const sizeMinus1 = size - 1
@@ -153,7 +153,7 @@ function __validateByArray<const T, >(collection: Array<T>, values: MinimalistCo
     const firstValue = values.get(0,)
     let index1 = -1
     while (++index1 < size)
-        if ((tempArray[++tempArrayIndex] = collection[index1] as T) == firstValue)
+        if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
             return false
 
     const sizeMinus1 = size - 1

@@ -59,7 +59,7 @@ export function toMutableMapByMinimalistCollectionHolder<const T, >(collection: 
         return new Map()
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return new Map()
     return __newMutableMap(collection, size,)
 }
@@ -89,7 +89,7 @@ export function toMutableMapByArray<const T, >(collection: Nullable<Array<T>>,):
         return new Map()
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return new Map()
     return __newMutableMapByArray(collection, size,)
 }

@@ -149,9 +149,9 @@ export function allByMinimalistCollectionHolder<const T, >(collection: Nullable<
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, size,)
@@ -197,7 +197,7 @@ export function allByCollectionHolder<const T, >(collection: Nullable<Collection
         return true
     if (collection.isEmpty)
         return true
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, collection.size,)
@@ -243,9 +243,9 @@ export function allByArray<const T, >(collection: Nullable<Array<T>>, predicate:
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, size,)

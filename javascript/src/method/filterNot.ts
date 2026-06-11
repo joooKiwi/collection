@@ -116,9 +116,9 @@ export function filterNotByMinimalistCollectionHolder<const T, >(collection: Nul
         return EmptyCollectionHolder.get
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, size,),)
     if (predicate.length >= 2)
         return new LazyCollectionHolder(() => __with2Argument(collection, predicate, size,),)
@@ -163,7 +163,7 @@ export function filterNotByCollectionHolder<const T, >(collection: Nullable<Coll
         return EmptyCollectionHolder.get
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,),)
     if (predicate.length >= 2)
         return new LazyCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
@@ -208,9 +208,9 @@ export function filterNotByArray<const T, >(collection: Nullable<Array<T>>, pred
         return EmptyCollectionHolder.get
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, size,),)
     if (predicate.length >= 2)
         return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, predicate, size,),)

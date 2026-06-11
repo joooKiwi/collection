@@ -60,7 +60,7 @@ export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nulla
         return CollectionConstants.EMPTY_ARRAY
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return CollectionConstants.EMPTY_ARRAY
     return __newArray(collection, size,)
 }
@@ -90,7 +90,7 @@ export function toArrayByArray<const T, >(collection: Nullable<Array<T>>,): Arra
         return CollectionConstants.EMPTY_ARRAY
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return CollectionConstants.EMPTY_ARRAY
     return __newArrayByArray(collection, size,)
 }

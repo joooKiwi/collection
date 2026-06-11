@@ -60,7 +60,7 @@ export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullab
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
     return __validate(collection, value, size,)
 }
@@ -92,7 +92,7 @@ export function hasNotByArray<const T, >(collection: Nullable<Array<T>>, value: 
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
     return __validateByArray(collection, value, size,)
 }

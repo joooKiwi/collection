@@ -226,9 +226,9 @@ function __anyByMinimalistCollectionHolder<const T, >(collection: Nullable<Minim
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, size,)
@@ -240,7 +240,7 @@ function __anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolde
         return false
     if (collection.isEmpty)
         return false
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, collection.size,)
@@ -252,9 +252,9 @@ function __anyByArray<const T, >(collection: Nullable<Array<T>>, predicate: Bool
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, size,)

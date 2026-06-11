@@ -63,7 +63,7 @@ export function toLowerCaseStringByMinimalistCollectionHolder<const T, >(collect
         return "[]"
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return "[]"
     return __toString(collection, size,)
 }
@@ -97,7 +97,7 @@ export function toLowerCaseStringByArray<const T, >(collection: Nullable<Array<T
         return "[]"
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return "[]"
     return __toStringByArray(collection, size,)
 }

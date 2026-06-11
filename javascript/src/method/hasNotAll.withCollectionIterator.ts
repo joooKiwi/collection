@@ -63,7 +63,7 @@ export function hasNotAllWithCollectionIteratorByMinimalistCollectionHolder<cons
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
     return __validate(collection, values, size, values.size,)
 }
@@ -103,7 +103,7 @@ export function hasNotAllWithCollectionIteratorByArray<const T, >(collection: Nu
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
     return __validateByArray(collection, values, size, values.size,)
 }

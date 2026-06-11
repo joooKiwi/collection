@@ -70,7 +70,7 @@ export function getLastByMinimalistCollectionHolder<const T, >(collection: Nulla
         throw new NullCollectionException()
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException()
     return collection.get(size - 1,)
 }
@@ -114,7 +114,7 @@ export function getLastByArray<const T, >(collection: Nullable<Array<T>>,): T {
         throw new NullCollectionException()
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException()
     return collection[size - 1] as T
 }

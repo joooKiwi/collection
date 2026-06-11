@@ -64,7 +64,7 @@ export function getFirstOrNullByMinimalistCollectionHolder<const T, >(collection
         return null
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return null
     return collection.get(0,)
 }
@@ -102,7 +102,7 @@ export function getFirstOrNullByArray<const T, >(collection: Nullable<Array<T>>,
         return null
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return null
     return collection[0] as T
 }

@@ -790,7 +790,7 @@ function instanceByCollectionIterator<const T, >(reference: CollectionIterator<T
 }
 
 function instanceByIterableWithSize<const T, >(reference: Iterable<T, unknown, unknown>, size: number,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | JsIterableAsCollectionHolder<T> {
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
     if (size === 1)
         return new LateRetriever.LazyCollectionHolderOf1(() => reference[Symbol.iterator]().next().value as T,)

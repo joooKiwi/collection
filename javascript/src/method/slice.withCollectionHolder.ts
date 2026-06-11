@@ -68,7 +68,7 @@ export function sliceWithCollectionHolder<const T, >(collection: Nullable<| Mini
 export function sliceWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: CollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
-    if (collection.size == 0)
+    if (collection.size === 0)
         return EmptyCollectionHolder.get
     if (indices.isEmpty)
         return EmptyCollectionHolder.get
@@ -110,7 +110,7 @@ export function sliceWithCollectionHolderByCollectionHolder<const T, >(collectio
 export function sliceWithCollectionHolderByArray<const T, >(collection: Nullable<Array<T>>, indices: CollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
-    if (collection.length == 0)
+    if (collection.length === 0)
         return EmptyCollectionHolder.get
     if (indices.isEmpty)
         return EmptyCollectionHolder.get

@@ -79,9 +79,9 @@ export function mapNotNullIndexedByMinimalistCollectionHolder<const T, const U e
         return EmptyCollectionHolder.get
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
-    if (transform.length == 1)
+    if (transform.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
     if (transform.length >= 2)
         return new LazyCollectionHolder(() => __with2Argument(collection, transform, size,),)
@@ -108,7 +108,7 @@ export function mapNotNullIndexedByCollectionHolder<const T, const U extends Non
         return EmptyCollectionHolder.get
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
-    if (transform.length == 1)
+    if (transform.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, collection.size,),)
     if (transform.length >= 2)
         return new LazyCollectionHolder(() => __with2Argument(collection, transform, collection.size,),)
@@ -135,9 +135,9 @@ export function mapNotNullIndexedByArray<const T, const U extends NonNullable<un
         return EmptyCollectionHolder.get
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
-    if (transform.length == 1)
+    if (transform.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
     if (transform.length >= 2)
         return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)

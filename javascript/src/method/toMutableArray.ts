@@ -59,7 +59,7 @@ export function toMutableArrayByMinimalistCollectionHolder<const T, >(collection
         return []
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return []
     return __newMutableArray(collection, size,)
 }
@@ -89,7 +89,7 @@ export function toMutableArrayByArray<const T, >(collection: Nullable<Array<T>>,
         return []
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return []
     return __newMutableArrayByArray(collection, size,)
 }

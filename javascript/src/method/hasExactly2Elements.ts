@@ -127,7 +127,7 @@ export function hasExactly2ElementsByMinimalistCollectionHolder<const T, const C
 export function hasExactly2ElementsByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,) {
     if (collection == null)
         return false
-    return collection.size == 2
+    return collection.size === 2
 }
 
 /**
@@ -147,7 +147,7 @@ export function hasExactly2ElementsByCollectionHolder<const T, const COLLECTION 
 export function hasExactly2ElementsByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,) {
     if (collection == null)
         return false
-    return collection.size == 2
+    return collection.size === 2
 }
 
 /**
@@ -167,5 +167,5 @@ export function hasExactly2ElementsByArray<const T, const COLLECTION extends Nul
 export function hasExactly2ElementsByArray<const T, >(collection: Nullable<Array<T>>,) {
     if (collection == null)
         return false
-    return collection.length == 2
+    return collection.length === 2
 }

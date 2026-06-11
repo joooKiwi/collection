@@ -60,7 +60,7 @@ export function toSetByMinimalistCollectionHolder<const T, >(collection: Nullabl
         return CollectionConstants.EMPTY_SET
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return CollectionConstants.EMPTY_SET
     return __withDuplicate(collection, size,)
 }
@@ -92,7 +92,7 @@ export function toSetByArray<const T, >(collection: Nullable<Array<T>>,): Set<T>
         return CollectionConstants.EMPTY_SET
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return CollectionConstants.EMPTY_SET
     return __withDuplicateByArray(collection, size,)
 }

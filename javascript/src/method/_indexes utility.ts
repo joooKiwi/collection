@@ -28,14 +28,14 @@ import {InvalidIndexRangeException} from "../exception/InvalidIndexRangeExceptio
 export function __startingIndex(value: number, size: number,): number {
     if (Number.isNaN(value,))
         throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", value,)
-    if (value == Number.NEGATIVE_INFINITY)
+    if (value === Number.NEGATIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", value,)
-    if (value == Number.POSITIVE_INFINITY)
+    if (value === Number.POSITIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", value,)
 
     if (value > size)
         throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is over the collection size “${size}”.`, value,)
-    if (value == size)
+    if (value === size)
         throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is the collection size “${size}”.`, value,)
 
     let startingIndex = value
@@ -57,14 +57,14 @@ export function __startingIndex(value: number, size: number,): number {
 export function __startingIndexOrNull(value: number, size: number,): NullOrNumber {
     if (Number.isNaN(value,))
         return null
-    if (value == Number.NEGATIVE_INFINITY)
+    if (value === Number.NEGATIVE_INFINITY)
         return null
-    if (value == Number.POSITIVE_INFINITY)
+    if (value === Number.POSITIVE_INFINITY)
         return null
 
     if (value > size)
         return null
-    if (value == size)
+    if (value === size)
         return null
 
     let startingIndex = value
@@ -88,14 +88,14 @@ export function __startingIndexOrNull(value: number, size: number,): NullOrNumbe
 export function __endingIndex(value: number, size: number,) {
     if (Number.isNaN(value,))
         throw new ForbiddenIndexException("Forbidden index. The ending index cannot be determined with NaN.", value,)
-    if (value == Number.NEGATIVE_INFINITY)
+    if (value === Number.NEGATIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", value,)
-    if (value == Number.POSITIVE_INFINITY)
+    if (value === Number.POSITIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", value,)
 
     if (value > size)
         throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is over the collection size “${size}”.`, value,)
-    if (value == size)
+    if (value === size)
         throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is the collection size “${size}”.`, value,)
 
     let endingIndex = value
@@ -117,14 +117,14 @@ export function __endingIndex(value: number, size: number,) {
 export function __endingIndexOrNull(value: number, size: number,): NullOrNumber {
     if (Number.isNaN(value,))
         return null
-    if (value == Number.NEGATIVE_INFINITY)
+    if (value === Number.NEGATIVE_INFINITY)
         return null
-    if (value == Number.POSITIVE_INFINITY)
+    if (value === Number.POSITIVE_INFINITY)
         return null
 
     if (value > size)
         return null
-    if (value == size)
+    if (value === size)
         return null
 
     let endingIndex = value
@@ -147,9 +147,9 @@ export function __endingIndexOrNull(value: number, size: number,): NullOrNumber 
 export function __lastIndex(value: number, size: number,): number {
     if (Number.isNaN(value,))
         throw new ForbiddenIndexException("Forbidden index. The value cannot be determined with NaN.", value,)
-    if (value == Number.NEGATIVE_INFINITY)
+    if (value === Number.NEGATIVE_INFINITY)
         return 0
-    if (value == Number.POSITIVE_INFINITY)
+    if (value === Number.POSITIVE_INFINITY)
         return size
     if (value >= size)
         return size
@@ -177,12 +177,12 @@ export function __validateInRange(from: number, startingIndex: number, to: numbe
     if (endingIndex >= startingIndex)
         return
 
-    if (to == endingIndex)
-        if (from == startingIndex)
+    if (to === endingIndex)
+        if (from === startingIndex)
             throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}”.`, from, to,)
         else
             throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
-    if (from == startingIndex)
+    if (from === startingIndex)
         throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}”.`, from, to,)
     throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
 }

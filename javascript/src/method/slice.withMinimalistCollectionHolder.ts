@@ -68,11 +68,11 @@ export function sliceWithMinimalistCollectionHolder<const T, >(collection: Nulla
 export function sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
-    if (collection.size == 0)
+    if (collection.size === 0)
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicesSize == 0)
+    if (indicessize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
@@ -95,7 +95,7 @@ export function sliceWithMinimalistCollectionHolderByCollectionHolder<const T, >
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicesSize == 0)
+    if (indicessize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
@@ -114,11 +114,11 @@ export function sliceWithMinimalistCollectionHolderByCollectionHolder<const T, >
 export function sliceWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<Array<T>>, indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
-    if (collection.length == 0)
+    if (collection.length === 0)
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicesSize == 0)
+    if (indicessize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArrayByArray(collection, indices, indicesSize,),)
 }

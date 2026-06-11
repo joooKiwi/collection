@@ -60,9 +60,9 @@ export function hasDuplicateByMinimalistCollectionHolder<const T, >(collection: 
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
-    if (size == 1)
+    if (size === 1)
         return false
     return __validate(collection, size,)
 }
@@ -96,9 +96,9 @@ export function hasDuplicateByArray<const T, >(collection: Nullable<Array<T>>,):
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
-    if (size == 1)
+    if (size === 1)
         return false
     return __validateByArray(collection, size,)
 }

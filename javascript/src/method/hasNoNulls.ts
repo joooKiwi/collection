@@ -60,7 +60,7 @@ export function hasNoNullsByMinimalistCollectionHolder<const T, >(collection: Nu
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
     return __validate(collection, size,)
 }
@@ -92,7 +92,7 @@ export function hasNoNullsByArray<const T, >(collection: Nullable<Array<T>>,): b
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
     return __validateByArray(collection, size,)
 }

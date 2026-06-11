@@ -58,13 +58,13 @@ export function hasNotAllWithArrayByMinimalistCollectionHolder<const T, >(collec
         return false
 
     const valuesSize = values.length
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return false
     if (collection == null)
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
     return __validate(collection, values, size, valuesSize,)
 }
@@ -81,7 +81,7 @@ export function hasNotAllWithArrayByCollectionHolder<const T, >(collection: Null
         return false
 
     const valuesSize = values.length
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return false
     if (collection == null)
         return true
@@ -102,13 +102,13 @@ export function hasNotAllWithArrayByArray<const T, >(collection: Nullable<Array<
         return false
 
     const valuesSize = values.length
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return false
     if (collection == null)
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
     return __validateByArray(collection, values, size, valuesSize,)
 }

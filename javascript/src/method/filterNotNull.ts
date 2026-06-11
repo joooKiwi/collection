@@ -65,7 +65,7 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
         return EmptyCollectionHolder.get
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
 
     const temporaryArray = new Array<T>(size,)
@@ -106,7 +106,7 @@ export function filterNotNullByArray<const T, >(collection: Nullable<Array<T>>,)
         return EmptyCollectionHolder.get
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
 
     const temporaryArray = new Array<T>(size,)

@@ -101,7 +101,7 @@ export function dropWhileByMinimalistCollectionHolder<const T, >(collection: Nul
     const size = collection.size
     if (size === 0)
         return EmptyCollectionHolder.get
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
         return new LazyCollectionHolder(() => __with2Argument(collection, size, predicate,),)
@@ -138,7 +138,7 @@ export function dropWhileByCollectionHolder<const T, >(collection: Nullable<Coll
         return EmptyCollectionHolder.get
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
         return new LazyCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
@@ -177,7 +177,7 @@ export function dropWhileByArray<const T, >(collection: Nullable<Array<T>>, pred
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
         return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)

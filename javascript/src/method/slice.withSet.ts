@@ -68,11 +68,11 @@ export function sliceWithSet<const T, >(collection: Nullable<| MinimalistCollect
 export function sliceWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: NumberSet,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
-    if (collection.size == 0)
+    if (collection.size === 0)
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicesSize == 0)
+    if (indicessize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
@@ -95,7 +95,7 @@ export function sliceWithSetByCollectionHolder<const T, >(collection: Nullable<C
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicesSize == 0)
+    if (indicessize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
@@ -114,11 +114,11 @@ export function sliceWithSetByCollectionHolder<const T, >(collection: Nullable<C
 export function sliceWithSetByArray<const T, >(collection: Nullable<Array<T>>, indices: NumberSet,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
-    if (collection.length == 0)
+    if (collection.length === 0)
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicesSize == 0)
+    if (indicessize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArrayByArray(collection, indices, indicesSize,),)
 }

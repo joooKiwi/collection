@@ -104,9 +104,9 @@ export function findLastIndexedByMinimalistCollectionHolder<const T, >(collectio
         throw new NullCollectionException()
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, size,)
@@ -145,7 +145,7 @@ export function findLastIndexedByCollectionHolder<const T, >(collection: Nullabl
         throw new NullCollectionException()
     if (collection.isEmpty)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, collection.size,)
@@ -184,9 +184,9 @@ export function findLastIndexedByArray<const T, >(collection: Nullable<Array<T>>
         throw new NullCollectionException()
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, size,)

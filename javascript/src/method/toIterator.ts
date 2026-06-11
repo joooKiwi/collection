@@ -58,7 +58,7 @@ export function toIterator<const T, >(collection: Nullable<| MinimalistCollectio
 export function toIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionIterator<T> {
     if (collection == null)
         return EmptyCollectionIterator.get
-    if (collection.size == 0)
+    if (collection.size === 0)
         return EmptyCollectionIterator.get
     return new GenericCollectionIterator(new LateRetriever.MinimalistAsCollectionHolder<T>(collection,),)
 }
@@ -86,7 +86,7 @@ export function toIteratorByCollectionHolder<const T, >(collection: Nullable<Col
 export function toIteratorByArray<const T, >(collection: Nullable<Array<T>>,): CollectionIterator<T> {
     if (collection == null)
         return EmptyCollectionIterator.get
-    if (collection.length == 0)
+    if (collection.length === 0)
         return EmptyCollectionIterator.get
     return new GenericCollectionIterator(new LateRetriever.ArrayAsCollectionHolder<T>(collection,),)
 }

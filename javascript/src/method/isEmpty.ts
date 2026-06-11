@@ -187,7 +187,7 @@ export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION ex
 export function isEmptyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,) {
     if (collection == null)
         return true
-    return collection.size == 0
+    return collection.size === 0
 }
 
 /**
@@ -217,7 +217,7 @@ export function isEmptyByCollectionHolder<const T, const COLLECTION extends Null
 export function isEmptyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,) {
     if (collection == null)
         return true
-    return collection.size == 0
+    return collection.size === 0
 }
 
 /**
@@ -247,5 +247,5 @@ export function isEmptyByArray<const T, const COLLECTION extends Nullable<Array<
 export function isEmptyByArray<const T, >(collection: Nullable<Array<T>>,) {
     if (collection == null)
         return true
-    return collection.length == 0
+    return collection.length === 0
 }

@@ -29,19 +29,19 @@ import {IndexOutOfBoundsException} from "../exception/IndexOutOfBoundsException"
  */
 export function __get<const T, >(array: Array<T>, index: number,): T {
     const size = array.length
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException(null, index,)
     if (Number.isNaN(index,))
         throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
-    if (index == Number.NEGATIVE_INFINITY)
+    if (index === Number.NEGATIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
-    if (index == Number.POSITIVE_INFINITY)
+    if (index === Number.POSITIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
     if (index in array)
         return array[index] as T
     if (index > size)
         throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
-    if (index == size)
+    if (index === size)
         throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
     if (index >= 0)
         return array[index] as T
@@ -61,7 +61,7 @@ export function __get<const T, >(array: Array<T>, index: number,): T {
  * @internal
  */
 export function __reduceTo<const T, >(array: Array<T>, newSize: number,): Array<T> {
-    if (newSize == 0)
+    if (newSize === 0)
         return CollectionConstants.EMPTY_ARRAY
 
     const newArray = new Array<T>(newSize,)

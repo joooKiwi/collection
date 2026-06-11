@@ -79,9 +79,9 @@ export function mapNotNullByMinimalistCollectionHolder<const T, const U extends 
         return EmptyCollectionHolder.get
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
-    if (transform.length == 1)
+    if (transform.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(collection, transform as (value: T,) => Nullable<U>, size,),)
     if (transform.length >= 2)
         return new LazyCollectionHolder(() => __with2Argument(collection, transform, size,),)
@@ -108,7 +108,7 @@ export function mapNotNullByCollectionHolder<const T, const U extends NonNullabl
         return EmptyCollectionHolder.get
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
-    if (transform.length == 1)
+    if (transform.length === 1)
         return new LazyCollectionHolder(() => __with1Argument(collection, transform as (value: T,) => Nullable<U>, collection.size,),)
     if (transform.length >= 2)
         return new LazyCollectionHolder(() => __with2Argument(collection, transform, collection.size,),)
@@ -135,9 +135,9 @@ export function mapNotNullByArray<const T, const U extends NonNullable<unknown>,
         return EmptyCollectionHolder.get
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return EmptyCollectionHolder.get
-    if (transform.length == 1)
+    if (transform.length === 1)
         return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, transform as (value: T,) => Nullable<U>, size,),)
     if (transform.length >= 2)
         return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)

@@ -87,7 +87,7 @@ export function getLastOrElseByMinimalistCollectionHolder<const T, >(collection:
         return defaultValue()
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return defaultValue()
     return collection.get(collection.size - 1,)
 }
@@ -145,7 +145,7 @@ export function getLastOrElseByArray<const T, >(collection: Nullable<Array<T>>, 
     if (collection == null)
         return defaultValue()
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return defaultValue()
     return collection[collection.length - 1]
 }

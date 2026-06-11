@@ -60,7 +60,7 @@ export function hasNotOneWithIteratorByMinimalistCollectionHolder<const T, >(col
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
     if (values == null)
         return false
@@ -106,7 +106,7 @@ export function hasNotOneWithIteratorByArray<const T, >(collection: Nullable<Arr
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
     if (values == null)
         return false

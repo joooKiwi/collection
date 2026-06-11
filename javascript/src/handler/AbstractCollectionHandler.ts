@@ -46,7 +46,7 @@ export abstract class AbstractCollectionHandler<const T = unknown,
 
     public abstract get size(): number
 
-    public get isEmpty(): boolean { return this.size == 0 }
+    public get isEmpty(): boolean { return this.size === 0 }
 
     public abstract get hasNull(): boolean
 

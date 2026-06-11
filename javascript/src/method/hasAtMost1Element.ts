@@ -129,7 +129,7 @@ export function hasAtMost1ElementByMinimalistCollectionHolder<const T, >(collect
         return true
 
     const size = collection.size
-    return size == 0 || size == 1
+    return size === 0 || size === 1
 }
 
 /**
@@ -171,5 +171,5 @@ export function hasAtMost1ElementByArray<const T, >(collection: Nullable<Array<T
         return true
 
     const size = collection.length
-    return size == 0 || size == 1
+    return size === 0 || size === 1
 }

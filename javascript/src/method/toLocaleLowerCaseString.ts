@@ -65,7 +65,7 @@ export function toLocaleLowerCaseStringByMinimalistCollectionHolder<const T, >(c
         return "[]"
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return "[]"
     if (locale == null)
         return __withNoLocale(collection, size,)
@@ -105,7 +105,7 @@ export function toLocaleLowerCaseStringByArray<const T, >(collection: Nullable<A
         return "[]"
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return "[]"
     if (locale == null)
         return __withNoLocaleByArray(collection, size,)

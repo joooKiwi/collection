@@ -84,9 +84,9 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
 
         if (Number.isNaN(from,))
             throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", from,)
-        if (from == Number.NEGATIVE_INFINITY)
+        if (from === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", from,)
-        if (from == Number.POSITIVE_INFINITY)
+        if (from === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", from,)
 
         if (from === 0)
@@ -114,9 +114,9 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
 
         if (Number.isNaN(to,))
             throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with NaN.", to,)
-        if (to == Number.NEGATIVE_INFINITY)
+        if (to === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", to,)
-        if (to == Number.POSITIVE_INFINITY)
+        if (to === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", to,)
 
         if (to === 0)

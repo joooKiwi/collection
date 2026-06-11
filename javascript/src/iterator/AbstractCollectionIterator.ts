@@ -195,7 +195,7 @@ export abstract class AbstractCollectionIterator<const T, >
             return this._getValue(1,)
         }
 
-        if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
+        if (currentIndex === this._sizeMinus2) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
             const nextCurrentIndex = this._currentIndex = currentIndex + 1
             this._nextIndex = null
@@ -247,7 +247,7 @@ export abstract class AbstractCollectionIterator<const T, >
             return this._getIteratorValue(this._currentIndex = 1,)
         }
 
-        if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
+        if (currentIndex === this._sizeMinus2) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
             this._nextIndex = null
             const nextCurrentIndex = this._currentIndex = currentIndex + 1
@@ -342,7 +342,7 @@ export abstract class AbstractCollectionIterator<const T, >
             return this._getValue(previousCurrentIndex,)
         }
 
-        if (currentIndex == 1) { // At the 2nd index
+        if (currentIndex === 1) { // At the 2nd index
             this._previousIndex = null
             this._currentIndex = 0
             this._nextIndex = 1
@@ -396,7 +396,7 @@ export abstract class AbstractCollectionIterator<const T, >
             return this._getIteratorValue(previousCurrentIndex,)
         }
 
-        if (currentIndex == 1) { // At the 2nd index
+        if (currentIndex === 1) { // At the 2nd index
             this._previousIndex = null
             this._currentIndex = 0
             this._nextIndex = 1

@@ -54,7 +54,7 @@ export class SetAsCollectionHolder<const T = unknown,
     public constructor(reference: REFERENCE,) {
         super()
         this.#reference = reference
-        this.#isEmpty = (this.#size = reference.size) == 0
+        this.#isEmpty = (this.#size = reference.size) === 0
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -107,9 +107,9 @@ export class SetAsCollectionHolder<const T = unknown,
 
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
 
         if (index in this)
@@ -118,7 +118,7 @@ export class SetAsCollectionHolder<const T = unknown,
         const size = this.size
         if (index > size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
-        if (index == size)
+        if (index === size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return this.#getUntil(index, size,)

@@ -68,13 +68,13 @@ export function getOrNullByMinimalistCollectionHolder<const T, >(collection: Nul
         return null
     if (Number.isNaN(index,))
         return null
-    if (index == Number.NEGATIVE_INFINITY)
+    if (index === Number.NEGATIVE_INFINITY)
         return null
-    if (index == Number.POSITIVE_INFINITY)
+    if (index === Number.POSITIVE_INFINITY)
         return null
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return null
     if (index >= size)
         return null
@@ -104,9 +104,9 @@ export function getOrNullByCollectionHolder<const T, >(collection: Nullable<Coll
         return null
     if (Number.isNaN(index,))
         return null
-    if (index == Number.NEGATIVE_INFINITY)
+    if (index === Number.NEGATIVE_INFINITY)
         return null
-    if (index == Number.POSITIVE_INFINITY)
+    if (index === Number.POSITIVE_INFINITY)
         return null
     if (collection.isEmpty)
         return null
@@ -140,13 +140,13 @@ export function getOrNullByArray<const T, >(collection: Nullable<Array<T>>, inde
         return null
     if (Number.isNaN(index,))
         return null
-    if (index == Number.NEGATIVE_INFINITY)
+    if (index === Number.NEGATIVE_INFINITY)
         return null
-    if (index == Number.POSITIVE_INFINITY)
+    if (index === Number.POSITIVE_INFINITY)
         return null
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return null
     if (index >= size)
         return null

@@ -337,7 +337,7 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, 0, size - 1,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, 0, size - 1,)
@@ -347,7 +347,7 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
 function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, 0, collection.size - 1,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, 0, collection.size - 1,)
@@ -358,7 +358,7 @@ function __core0ByArray<const T, >(collection: Array<T>, predicate: ReverseBoole
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, 0, size - 1,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, 0, size - 1,)
@@ -387,7 +387,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, __startingIndex(from, size,), size - 1,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, __startingIndex(from, size,), size - 1,)
@@ -399,7 +399,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
         throw new EmptyCollectionException()
 
     const size = collection.size
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, __startingIndex(from, size,), size - 1,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, __startingIndex(from, size,), size - 1,)
@@ -410,7 +410,7 @@ function __core1ByArray<const T, >(collection: Array<T>, predicate: ReverseBoole
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, __startingIndex(from, size,), size - 1,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, __startingIndex(from, size,), size - 1,)
@@ -443,7 +443,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, startingIndex, endingIndex,)
@@ -458,7 +458,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, startingIndex, endingIndex,)
@@ -473,7 +473,7 @@ function __core2ByArray<const T, >(collection: Array<T>, predicate: ReverseBoole
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, startingIndex, endingIndex,)
@@ -502,7 +502,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, 0, __endingIndex(to, size,),)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, 0, __endingIndex(to, size,),)
@@ -512,7 +512,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
 function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, to: number,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, 0, __endingIndex(to, collection.size,),)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, 0, __endingIndex(to, collection.size,),)
@@ -523,7 +523,7 @@ function __coreWithNoFromByArray<const T, >(collection: Array<T>, predicate: Rev
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(predicate as (value: number,) => boolean, 0, __endingIndex(to, size,),)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, 0, __endingIndex(to, size,),)

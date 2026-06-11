@@ -231,7 +231,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -244,7 +244,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[0] as T
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -259,7 +259,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const firstValue = this[0] = reference[0] as T
                 const secondValue = this[1] = reference[1] as T
                 this.#hasAtMost2Elements = true
@@ -292,7 +292,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -305,7 +305,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value as T
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -319,7 +319,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const iterator = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
@@ -414,7 +414,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -427,7 +427,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference.get(0,)
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -442,7 +442,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const firstValue = this[0] = reference.get(0,)
                 const secondValue = this[1] = reference.get(1,)
                 this.#hasAtMost2Elements = true
@@ -577,7 +577,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -590,7 +590,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[0] as T
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -605,7 +605,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const firstValue = this[0] = reference[0] as T
                 const secondValue = this[1] = reference[1] as T
                 this.#hasAtMost2Elements = true
@@ -638,7 +638,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -651,7 +651,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value as T
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -665,7 +665,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const iterator = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
@@ -760,7 +760,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -773,7 +773,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference.get(0,)
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -788,7 +788,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const firstValue = this[0] = reference.get(0,)
                 const secondValue = this[1] = reference.get(1,)
                 this.#hasAtMost2Elements = true
@@ -926,7 +926,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -939,7 +939,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value as T
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -954,7 +954,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
@@ -991,7 +991,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -1004,7 +1004,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value as T
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -1019,7 +1019,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
@@ -1056,7 +1056,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
@@ -1069,7 +1069,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 1) --------------------
 
             this.#isNotEmpty = true
-            if (this.#hasExactly1Element = size == 1) {
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value as T
                 this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
@@ -1084,7 +1084,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
             this.#hasAtMost1Element = false
             this.#hasAtLeast2Elements = true
-            if (this.#hasExactly2Elements = size == 2) {
+            if (this.#hasExactly2Elements = size === 2) {
                 const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
@@ -1189,9 +1189,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
 
         const array = this._array
@@ -1201,7 +1201,7 @@ export class GenericCollectionHolder<const T = unknown, >
         const size = this.size
         if (index > size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
-        if (index == size)
+        if (index === size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return array[index] as T

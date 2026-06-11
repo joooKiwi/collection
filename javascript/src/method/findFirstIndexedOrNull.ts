@@ -93,9 +93,9 @@ export function findFirstIndexedOrNullByMinimalistCollectionHolder<const T, >(co
         return null
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, size,)
@@ -130,7 +130,7 @@ export function findFirstIndexedOrNullByCollectionHolder<const T, >(collection: 
         return null
     if (collection.isEmpty)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, collection.size,)
@@ -165,9 +165,9 @@ export function findFirstIndexedOrNullByArray<const T, >(collection: Nullable<Ar
         return null
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, size,)

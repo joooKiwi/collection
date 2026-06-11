@@ -79,9 +79,9 @@ export function forEachIndexedByMinimalistCollectionHolder<const T, >(collection
         return
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return
-    if (action.length == 1)
+    if (action.length === 1)
         __with1Argument(action as (index: number,) => void, size,)
     else if (action.length >= 2)
         __with2Argument(collection, action, size,)
@@ -109,7 +109,7 @@ export function forEachIndexedByCollectionHolder<const T, >(collection: Nullable
         return
     if (collection.isEmpty)
         return
-    if (action.length == 1)
+    if (action.length === 1)
         __with1Argument(action as (index: number,) => void, collection.size,)
     else if (action.length >= 2)
         __with2Argument(collection, action, collection.size,)
@@ -137,9 +137,9 @@ export function forEachIndexedByArray<const T, >(collection: Nullable<Array<T>>,
         return
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return
-    if (action.length == 1)
+    if (action.length === 1)
         __with1Argument(action as (index: number,) => void, size,)
     else if (action.length >= 2)
         __with2ArgumentByArray(collection, action, size,)

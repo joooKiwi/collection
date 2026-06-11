@@ -60,7 +60,7 @@ export function hasOneWithIterableByMinimalistCollectionHolder<const T, >(collec
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
@@ -108,7 +108,7 @@ export function hasOneWithIterableByArray<const T, >(collection: Nullable<Array<
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true

@@ -287,7 +287,7 @@ export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection
         return collection
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return collection
 
     let index = -1
@@ -420,7 +420,7 @@ export function requireNoNullsByArray<const T, >(collection: Nullable<readonly N
         return collection
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return collection
 
     let index = -1

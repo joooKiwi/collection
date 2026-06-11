@@ -70,7 +70,7 @@ export function getFirstByMinimalistCollectionHolder<const T, >(collection: Null
         throw new NullCollectionException()
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException()
     return collection.get(0,)
 }
@@ -112,7 +112,7 @@ export function getFirstByArray<const T, >(collection: Nullable<Array<T>>,): T {
         throw new NullCollectionException()
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException()
     return collection[0] as T
 }

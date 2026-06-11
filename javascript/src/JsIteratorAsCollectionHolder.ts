@@ -994,14 +994,17 @@ export class JsIteratorAsCollectionHolder<const T = unknown,
     public override get(index: number,): T {
         if (this.isEmpty)
             throw new EmptyCollectionException(null, index,)
+
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
+
         if (index in this)
             return this[index] as T
+
         if (index < 0) {
             // We retrieve all the items and get calculate to get a positive index
             const indexToRetrieve = this.size + index
@@ -1052,14 +1055,17 @@ export class JsIteratorAsCollectionHolder<const T = unknown,
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         if (this.isEmpty)
             return defaultValue(index,)
+
         if (Number.isNaN(index,))
             return defaultValue(index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index ==- Number.NEGATIVE_INFINITY)
             return defaultValue(index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index ==- Number.POSITIVE_INFINITY)
             return defaultValue(index,)
+
         if (index in this)
             return this[index] as T
+
         if (index < 0) {
             const indexToRetrieve = this.size + index
             if (indexToRetrieve in this)
@@ -1107,14 +1113,17 @@ export class JsIteratorAsCollectionHolder<const T = unknown,
     public override getOrNull(index: number,): NullOr<T> {
         if (this.isEmpty)
             return null
+
         if (Number.isNaN(index,))
             return null
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             return null
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             return null
+
         if (index in this)
             return this[index] as T
+
         if (index < 0) {
             const indexToRetrieve = this.size + index
             if (indexToRetrieve in this)

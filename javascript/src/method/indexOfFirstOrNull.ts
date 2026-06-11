@@ -158,7 +158,7 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const size = collection.size
     if (size === 0)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, 0, size - 1,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, 0, size - 1,)
@@ -168,7 +168,7 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
 function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: BooleanCallback<T>,) {
     if (collection.isEmpty)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, 0, collection.size - 1,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, 0, collection.size - 1,)
@@ -179,7 +179,7 @@ function __core0ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
     const size = collection.length
     if (size === 0)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, 0, size - 1,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, 0, size - 1,)
@@ -212,7 +212,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const startingIndex = __startingIndexOrNull(from, size,)
     if (startingIndex == null)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, size - 1,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, startingIndex, size - 1,)
@@ -227,7 +227,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
     const startingIndex = __startingIndexOrNull(from, size,)
     if (startingIndex == null)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, size - 1,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, startingIndex, size - 1,)
@@ -242,7 +242,7 @@ function __core1ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
     const startingIndex = __startingIndexOrNull(from, size,)
     if (startingIndex == null)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, startingIndex, size - 1,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, startingIndex, size - 1,)
@@ -281,7 +281,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
         return null
     if (endingIndex < startingIndex)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, startingIndex, endingIndex,)
@@ -302,7 +302,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
         return null
     if (endingIndex < startingIndex)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, startingIndex, endingIndex,)
@@ -323,7 +323,7 @@ function __core2ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
         return null
     if (endingIndex < startingIndex)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, startingIndex, endingIndex,)
@@ -356,7 +356,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
     const endingIndex = __endingIndexOrNull(to, size,)
     if (endingIndex == null)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, 0, endingIndex,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, 0, endingIndex,)
@@ -370,7 +370,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
     const endingIndex = __endingIndexOrNull(to, collection.size,)
     if (endingIndex == null)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, 0, endingIndex,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, 0, endingIndex,)
@@ -385,7 +385,7 @@ function __coreWithNoFromByArray<const T, >(collection: Array<T>, predicate: Boo
     const endingIndex = __endingIndexOrNull(to, size,)
     if (endingIndex == null)
         return null
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, 0, endingIndex,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, 0, endingIndex,)

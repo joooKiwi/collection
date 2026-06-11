@@ -170,28 +170,28 @@ export class EmptyCollectionHolder
 
     public first<const S, >(..._: Array<unknown>): never
     public first() {
-        if (arguments.length == 0)
+        if (arguments.length === 0)
             this.getFirst()
         this.findFirst()
     }
 
     public firstOrNull<const S, >(..._: Array<unknown>): null
     public firstOrNull() {
-        if (arguments.length == 0)
+        if (arguments.length === 0)
             return this.getFirstOrNull()
         return this.findFirstOrNull()
     }
 
     public firstIndexed<const S, >(..._: Array<unknown>): never
     public firstIndexed() {
-        if (arguments.length == 0)
+        if (arguments.length === 0)
             this.getFirst()
         this.findFirstIndexed()
     }
 
     public firstIndexedOrNull<const S, >(..._: Array<unknown>): null
     public firstIndexedOrNull() {
-        if (arguments.length == 0)
+        if (arguments.length === 0)
             return this.getFirstOrNull()
         return this.findFirstIndexedOrNull()
     }
@@ -201,28 +201,28 @@ export class EmptyCollectionHolder
 
     public last<const S, >(..._: Array<unknown>): never
     public last() {
-        if (arguments.length == 0)
+        if (arguments.length === 0)
             this.getLast()
         this.findLast()
     }
 
     public lastOrNull<const S, >(..._: Array<unknown>): null
     public lastOrNull() {
-        if (arguments.length == 0)
+        if (arguments.length === 0)
             return this.getLastOrNull()
         return this.findLastOrNull()
     }
 
     public lastIndexed<const S, >(..._: Array<unknown>): never
     public lastIndexed() {
-        if (arguments.length == 0)
+        if (arguments.length === 0)
             this.getLast()
         this.findLastIndexed()
     }
 
     public lastIndexedOrNull<const S, >(..._: Array<unknown>): null
     public lastIndexedOrNull() {
-        if (arguments.length == 0)
+        if (arguments.length === 0)
             return this.getLastOrNull()
         return this.findLastIndexedOrNull()
     }
@@ -523,28 +523,28 @@ export class EmptyCollectionHolder
         if (values == null)
             return true
         if (isArray(values,))
-            return values.length == 0
+            return values.length === 0
         if (isSet(values,))
-            return values.size == 0
+            return values.size === 0
         if (isCollectionHolder(values,))
             return values.isEmpty
         if (isMinimalistCollectionHolder(values,))
-            return values.size == 0
+            return values.size === 0
         if (isCollectionIterator(values,))
-            return values.size == 0
+            return values.size === 0
         if (isIterator(values,))
             return values.next().done === true
 
         if (isArrayByStructure(values,))
-            return values.length == 0
+            return values.length === 0
         if (isSetByStructure(values,))
-            return values.size == 0
+            return values.size === 0
         if (isCollectionHolderByStructure<unknown>(values,))
             return values.isEmpty
         if (isMinimalistCollectionHolderByStructure<unknown>(values,))
-            return values.size == 0
+            return values.size === 0
         if (isCollectionIteratorByStructure<unknown>(values,))
-            return values.size == 0
+            return values.size === 0
         if (isIteratorByStructure<unknown>(values,))
             return values.next().done === true
 

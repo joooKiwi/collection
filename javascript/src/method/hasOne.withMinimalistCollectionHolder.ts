@@ -60,13 +60,13 @@ export function hasOneWithMinimalistCollectionHolderByMinimalistCollectionHolder
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return true
     return __validate(collection, values, size, valuesSize,)
 }
@@ -87,7 +87,7 @@ export function hasOneWithMinimalistCollectionHolderByCollectionHolder<const T, 
         return true
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return true
     return __validate(collection, values, collection.size, valuesSize,)
 }
@@ -104,13 +104,13 @@ export function hasOneWithMinimalistCollectionHolderByArray<const T, >(collectio
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuessize === 0)
         return true
     return __validateByArray(collection, values, size, valuesSize,)
 }
@@ -124,7 +124,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     const firstValue = values.get(0,)
     let index1 = -1
     while (++index1 < size)
-        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) == firstValue)
+        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
             return true
 
     const sizeMinus1 = size - 1
@@ -152,7 +152,7 @@ function __validateByArray<const T, >(collection: Array<T>, values: MinimalistCo
     const firstValue = values.get(0,)
     let index1 = -1
     while (++index1 < size)
-        if ((tempArray[++tempArrayIndex] = collection[index1] as T) == firstValue)
+        if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
             return true
 
     const sizeMinus1 = size - 1
