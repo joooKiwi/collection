@@ -16,6 +16,7 @@
     <toRun name="index ~ instances ~ empty" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ methods" type="JavaScriptTestRunnerJest" />
     <toRun name="inner-collection" type="JavaScriptTestRunnerJest" />
+    <toRun name="is" type="JavaScriptTestRunnerJest" />
     <toRun name="javascript exclusive" type="JavaScriptTestRunnerJest" />
     <toRun name="joinToString" type="JavaScriptTestRunnerJest" />
     <toRun name="loop" type="JavaScriptTestRunnerJest" />
@@ -25,7 +26,7 @@
     <toRun name="slice" type="JavaScriptTestRunnerJest" />
     <toRun name="take" type="JavaScriptTestRunnerJest" />
     <toRun name="value" type="JavaScriptTestRunnerJest" />
-    <toRun name="∞ iterator" type="JavaScriptTestRunnerJest" />
+    <toRun name="∞" type="JavaScriptTestRunnerJest" />
     <method v="2" />
   </configuration>
 </component>

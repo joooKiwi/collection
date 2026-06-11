@@ -30,7 +30,7 @@
     <toRun name="slice" type="JavaScriptTestRunnerJest" />
     <toRun name="take" type="JavaScriptTestRunnerJest" />
     <toRun name="value" type="JavaScriptTestRunnerJest" />
-    <toRun name="∞ iterator" type="JavaScriptTestRunnerJest" />
+    <toRun name="∞" type="JavaScriptTestRunnerJest" />
     <method v="2" />
   </configuration>
 </component>
