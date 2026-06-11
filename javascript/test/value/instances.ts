@@ -53,6 +53,8 @@ import {CollectionHolder_LazyOf1Or2}                               from "../inst
 import {CollectionHolder_LazyOf2}                                  from "../instance/CollectionHolder_LazyOf2"
 import {CollectionHolder_SetOf1}                                   from "../instance/CollectionHolder_SetOf1"
 import {CollectionHolder_SetOf2}                                   from "../instance/CollectionHolder_SetOf2"
+import {InfiniteCollectionHolder_FromJsIterable}                   from "../instance/InfiniteCollectionHolder_FromJsIterable"
+import {InfiniteCollectionHolder_FromJsIterator}                   from "../instance/InfiniteCollectionHolder_FromJsIterator"
 import {EMPTY}                                                     from "./arrays"
 
 /** A constant to give the {@link EmptyCollectionHolder} instance directly */
@@ -199,6 +201,16 @@ export const everyNInstances = [
     new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy",                instance: CollectionHolder_Lazy, },                   "collection (lazy)",),
     new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "minimalist viewer",   instance: CollectionHolder_ByMinimalistViewer, },     "collection (by minimalist viewer)",),
     new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "viewer",              instance: CollectionHolder_ByViewer, },               "collection (by viewer)",),
+] as const
+
+/**
+ * The possible instances and extension function (that should be used as an ∞ container)
+ * currently exported to the public as a mocked {@link CollectionHolder}
+ * to apply on tests
+ */
+export const everyInfiniteInstances = [
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator adaptor", instance: InfiniteCollectionHolder_FromJsIterator, }, "collection (js iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable adaptor", instance: InfiniteCollectionHolder_FromJsIterable, }, "collection (js iterable adaptor)",),
 ] as const
 
 /**
