@@ -66,7 +66,7 @@ export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collectio
         return true
 
     const valuesSize = values.length
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return true
     return __validate(collection, values, size, valuesSize,)
 }
@@ -87,7 +87,7 @@ export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullabl
         return true
 
     const valuesSize = values.length
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return true
     return __validate(collection, values, collection.size, valuesSize,)
 }
@@ -110,7 +110,7 @@ export function hasOneWithArrayByArray<const T, >(collection: Nullable<Array<T>>
         return true
 
     const valuesSize = values.length
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return true
     return __validateByArray(collection, values, size, valuesSize,)
 }

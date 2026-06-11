@@ -66,7 +66,7 @@ export function hasNotOneWithSetByMinimalistCollectionHolder<const T, >(collecti
         return false
 
     const valuesSize = values.size
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return false
     return __validate(collection, values, size, valuesSize,)
 }
@@ -87,7 +87,7 @@ export function hasNotOneWithSetByCollectionHolder<const T, >(collection: Nullab
         return false
 
     const valuesSize = values.size
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return false
     return __validate(collection, values, collection.size, valuesSize,)
 }
@@ -110,7 +110,7 @@ export function hasNotOneWithSetByArray<const T, >(collection: Nullable<Array<T>
         return false
 
     const valuesSize = values.size
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return false
     return __validateByArray(collection, values, size, valuesSize,)
 }

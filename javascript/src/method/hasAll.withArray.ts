@@ -62,7 +62,7 @@ export function hasAllWithArrayByMinimalistCollectionHolder<const T, >(collectio
         return true
 
     const valuesSize = values.length
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return true
     if (collection == null)
         return false
@@ -87,7 +87,7 @@ export function hasAllWithArrayByCollectionHolder<const T, >(collection: Nullabl
         return true
 
     const valuesSize = values.length
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return true
     if (collection == null)
         return false
@@ -110,7 +110,7 @@ export function hasAllWithArrayByArray<const T, >(collection: Nullable<Array<T>>
         return true
 
     const valuesSize = values.length
-    if (valuessize === 0)
+    if (valuesSize === 0)
         return true
     if (collection == null)
         return false
