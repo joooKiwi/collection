@@ -6101,14 +6101,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -6118,14 +6118,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -6135,14 +6135,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -6152,14 +6152,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -6169,14 +6169,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -6186,14 +6186,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -6203,14 +6203,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -6220,14 +6220,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -6237,14 +6237,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -6254,14 +6254,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -6271,14 +6271,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -6288,14 +6288,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -6305,25 +6305,25 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("T[]") @Nested class Array {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(AB)).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasOne(AB)).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasOne(AB)).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasOne(AB)).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(AB)).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasOne(AB)).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasOne(AB)).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasOne(AB)).getAmountOfCall()); }
                 }
             }
             @TestInstance(PER_CLASS) @Nested class hasNotOne {
@@ -6491,76 +6491,76 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
 
                 @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
                 }
                 /*TODO re-enable once the CollectionHolder.toIterator utility has been created*/ @Disabled @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
                 }
 
                 @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
@@ -6571,14 +6571,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -6588,14 +6588,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -6605,14 +6605,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -6622,14 +6622,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -6639,14 +6639,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -6656,14 +6656,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -6673,14 +6673,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -6690,14 +6690,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -6707,14 +6707,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -6724,14 +6724,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -6741,14 +6741,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -6758,14 +6758,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -6775,25 +6775,25 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, instances.this.newInstance(A).execute(it ->     it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, instances.this.newInstance(AB).execute(it ->    it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("T[]") @Nested class Array {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(AB)).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(AB)).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(AB)).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(AB)).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(AB)).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasNotOne(AB)).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasNotOne(AB)).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(AB)).getAmountOfCall()); }
                 }
             }
 
@@ -6962,76 +6962,76 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
 
                 @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
                 }
                 /*TODO re-enable once the CollectionHolder.toIterator utility has been created*/ @Disabled @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
                 }
 
                 @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
@@ -7042,14 +7042,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -7059,14 +7059,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -7076,14 +7076,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -7093,14 +7093,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -7110,14 +7110,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -7127,14 +7127,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -7144,14 +7144,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -7161,14 +7161,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -7178,14 +7178,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -7195,14 +7195,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -7212,14 +7212,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -7229,14 +7229,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -7246,25 +7246,25 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("T[]") @Nested class Array {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(AB)).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(AB)).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(AB)).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(AB)).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(AB)).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasAll(AB)).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasAll(AB)).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(AB)).getAmountOfCall()); }
                 }
             }
             @TestInstance(PER_CLASS) @Nested class hasNotAll {
@@ -7432,76 +7432,76 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
 
                 @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaListIterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaSpliterator<>(AB))).getAmountOfCall()); }
                 }
                 @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaEnumeration<>(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsJavaIterable<>(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsMinimalistCollection<>(AB))).getAmountOfCall()); }
                 }
                 /*TODO re-enable once the CollectionHolder.toIterator utility has been created*/ @Disabled @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsCollection<>(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
                 }
 
                 @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
@@ -7512,14 +7512,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -7529,14 +7529,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -7546,14 +7546,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -7563,14 +7563,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    /*TODO re-enable once Set.of(T[]) has been fixed*/ @Disabled @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -7580,14 +7580,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -7597,14 +7597,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -7614,14 +7614,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -7631,14 +7631,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -7648,14 +7648,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -7665,14 +7665,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -7682,14 +7682,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -7699,14 +7699,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
                 @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -7716,25 +7716,25 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#endregion -------------------- Required test configuration --------------------
 
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, instances.this.newInstance(EMPTY).execute(it -> it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, instances.this.newInstance(A).execute(it ->     it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, instances.this.newInstance(AB).execute(it ->    it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
 
                 @DisplayName("T[]") @Nested class Array {
-                    @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(AB)).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("1 field (empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(AB)).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("2 fields (empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(AB)).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(EMPTY)).getAmountOfCall()); }
-                    @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(AB)).getAmountOfCall()); }
+                    @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(AB)).getAmountOfCall()); }
+                    @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(2, newInstance(A).execute(it ->     it.hasNotAll(AB)).getAmountOfCall()); }
+                    @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(3, newInstance(AB).execute(it ->    it.hasNotAll(AB)).getAmountOfCall()); }
+                    @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(EMPTY)).getAmountOfCall()); }
+                    @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(AB)).getAmountOfCall()); }
                 }
             }
 
