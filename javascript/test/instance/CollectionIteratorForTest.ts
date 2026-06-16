@@ -20,9 +20,6 @@ import type {CollectionIterator} from "../../src/iterator/CollectionIterator"
 export interface CollectionIteratorForTest<out T, >
     extends CollectionIterator<T> {
 
-    /** The amount of time a specific method (non-aliased method) has been called */
-    readonly amountOfCall: number
-
     /**
      * Do an action on the curent {@link CollectionIteratorForTest instance}
      * and return itself afterward
