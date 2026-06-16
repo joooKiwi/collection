@@ -10,1112 +10,597 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionIterator} from "../src/iterator/CollectionIterator"
-
-import {CollectionHolderFromArray}                   from "./instance/CollectionHolderFromArray"
-import {GenericCollectionIterator_CurrentIndexAlias} from "./instance/GenericCollectionIterator_CurrentIndexAlias"
-import {A, AB, ABCD, EMPTY}                          from "./value/arrays"
+import {CollectionIterator_ByGenericIterator}                                               from "./instance/CollectionIterator_ByGenericIterator"
+import {CollectionIterator_ByGenericIteratorFollower}                                       from "./instance/CollectionIterator_ByGenericIterator.follower"
+import {CollectionIterator_1Follower}                                                       from "./instance/CollectionIterator_1.follower"
+import {CollectionIterator_2Follower}                                                       from "./instance/CollectionIterator_2.follower"
+import {ABCD, EMPTY}                                                                        from "./value/arrays"
+import {afterLastIteratorValue, beforeFirstIteratorValue, every1Iterators, every2Iterators} from "./value/instances"
 
 import {CollectionConstants}                 from "../src/CollectionConstants"
 import {NoElementFoundInCollectionException} from "../src/exception/NoElementFoundInCollectionException"
 import {EmptyCollectionIterator}             from "../src/iterator/EmptyCollectionIterator"
-import {GenericCollectionIterator}           from "../src/iterator/GenericCollectionIterator"
-import {GenericAfterLastIteratorValue}       from "../src/iterator/value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}     from "../src/iterator/value/GenericBeforeFirstIteratorValue"
 import {GenericCollectionIteratorValue}      from "../src/iterator/value/GenericCollectionIteratorValue"
 
 describe("CollectionIteratorTest", () => {
+    const EMPTY_CALLBACK = () => {}
 
     describe("EmptyCollectionIterator", () => {
         const instance = EmptyCollectionIterator.get
 
-        describe("index", () => {
-            test("current",  () => expect(instance.currentIndex,).toBeNull(),)
-            test("first", () => expect(instance.firstIndex,).toBeNull(),)
-            test("last", () => expect(instance.lastIndex,).toBeNull(),)
-            test("next",     () => expect(instance.nextIndex,).toBeNull(),)
-            test("previous", () => expect(instance.previousIndex,).toBeNull(),)
-        },)
-        describe("has", () => {
-            test("next",     () => expect(instance.hasNext,).toBeFalse(),)
-            test("previous", () => expect(instance.hasPrevious,).toBeFalse(),)
-        },)
-        describe("value", () => {
-            test("next",     () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
-            test("previous", () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionException,),)
-        },)
-        describe("iterator result", () => {
-            describe("next", () => {
-                test("done",      () => expect(instance.next().done,).toBeTrue(),)
-                test("isDone",    () => expect(instance.next().isDone(),).toBeTrue(),)
-                test("isNotDone", () => expect(instance.next().isNotDone(),).toBeFalse(),)
-                test("value",     () => expect(instance.next().value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
-            },)
-            describe("previous", () => {
-                test("done",      () => expect(instance.previous().done,).toBeTrue(),)
-                test("isDone",    () => expect(instance.previous().isDone(),).toBeTrue(),)
-                test("isNotDone", () => expect(instance.previous().isNotDone(),).toBeFalse(),)
-                test("value",     () => expect(instance.previous().value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
-            },)
-        },)
+        test("currentIndex",  () => expect(instance.currentIndex,).toBeNull(),)
+        test("firstIndex",    () => expect(instance.firstIndex,).toBeNull(),)
+        test("lastIndex",     () => expect(instance.lastIndex,).toBeNull(),)
+        test("nextIndex",     () => expect(instance.nextIndex,).toBeNull(),)
+        test("previousIndex", () => expect(instance.previousIndex,).toBeNull(),)
+        test("hasNext",       () => expect(instance.hasNext,).toBeFalse(),)
+        test("hasPrevious",   () => expect(instance.hasPrevious,).toBeFalse(),)
+        test("nextValue",     () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("previousValue", () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("next",          () => expect(instance.next(),).toBe(afterLastIteratorValue,),)
+        test("previous",      () => expect(instance.previous(),).toBe(beforeFirstIteratorValue,),)
         test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)
     },)
 
     describe("aliases", () => {
-    describe("GenericCollectionIterator", () => {
-        test("index", () => expect(new GenericCollectionIterator_CurrentIndexAlias().execute(it => it.index,).amountOfCall,).toBe(1,),)
-    },)},)
-
-    describe("GenericCollectionIterator", () => {
-        const EMPTY_CALLBACK = () => {}
-
-        describe("empty", () => {
-            //#region -------------------- Values / type declaration --------------------
-
-            let instance: GenericCollectionIterator<never>
-
-            const array = EMPTY
-
-            //#endregion -------------------- Values / type declaration --------------------
-            beforeEach(() => instance = new GenericCollectionIterator(new CollectionHolderFromArray(array,),),)
-
-            describe("index", () => {
-                test("current",  () => expect(instance.currentIndex,).toBeNull(),)
-                test("first", () => expect(instance.firstIndex,).toBeNull(),)
-                test("last", () => expect(instance.lastIndex,).toBeNull(),)
-                test("next",     () => expect(instance.nextIndex,).toBeNull(),)
-                test("previous", () => expect(instance.previousIndex,).toBeNull(),)
-            },)
-            describe("has", () => {
-                test("next",     () => expect(instance.hasNext,).toBeFalse(),)
-                test("previous", () => expect(instance.hasPrevious,).toBeFalse(),)
-            },)
-            describe("value", () => {
-                test("next",     () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                test("previous", () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionException,),)
-            },)
-            describe("iterator result", () => {
-                describe("next", () => {
-                    test("done",  () => expect(instance.next().done,).toBeTrue(),)
-                    test("value", () => expect(instance.next().value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
-                },)
-                describe("previous", () => {
-                    test("done",  () => expect(instance.previous().done,).toBeTrue(),)
-                    test("value", () => expect(instance.previous().value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
-                },)
-            },)
-            test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)
-        },)
-        describe("1 field", () => {
-            //#region -------------------- Values / type declaration --------------------
-
-            let instance: GenericCollectionIterator<PossibleValue>
-
-            const array = A
-            type PossibleValue = typeof array[number]
-            type PossibleIndex = 0
-            const index = 0 satisfies PossibleIndex
-
-            const value = 'a' satisfies PossibleValue
-
-            //#endregion -------------------- Values / type declaration --------------------
-            beforeEach(() => instance = new GenericCollectionIterator(new CollectionHolderFromArray(array,),),)
-
-            describe("index", () => {
-                describe("current", () => {
-                    test("initial", () => expect(instance.currentIndex,).toBeNull(),)
-
-                    test("after 1 next",                () => expect(do1Next(instance,)            .currentIndex,).toBe(index,),)
-                    test("after 1 previous",            () => expect(do1Previous(instance,)        .currentIndex,).toBe(index,),)
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).currentIndex,).toBe(index,),)
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).currentIndex,).toBe(index,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .currentIndex,).toBe(index,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .currentIndex,).toBe(index,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .currentIndex,).toBe(index,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .currentIndex,).toBe(index,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index,),)
-                    },)
-                },)
-                test("first", () => expect(instance.firstIndex,).toBe(index,),)
-                test("last", () => expect(instance.lastIndex,).toBe(index,),)
-                describe("next", () => {
-                    test("initial", () => expect(instance.nextIndex,).toBe(index,),)
-
-                    test("after 1 next",                () => expect(do1Next(instance,)            .nextIndex,).toBeNull(),)
-                    test("after 1 previous",            () => expect(do1Previous(instance,)        .nextIndex,).toBeNull(),)
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).nextIndex,).toBeNull(),)
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).nextIndex,).toBeNull(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .nextIndex,).toBeNull(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).nextIndex,).toBeNull(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .nextIndex,).toBeNull(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).nextIndex,).toBeNull(),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previousIndex,).toBe(index,),)
-
-                    test("after 1 next",                () => expect(do1Next(instance,)            .previousIndex,).toBeNull(),)
-                    test("after 1 previous",            () => expect(do1Previous(instance,)        .previousIndex,).toBeNull(),)
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previousIndex,).toBeNull(),)
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).previousIndex,).toBeNull(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previousIndex,).toBeNull(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previousIndex,).toBeNull(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previousIndex,).toBeNull(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previousIndex,).toBeNull(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previousIndex,).toBeNull(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previousIndex,).toBeNull(),)
-                    },)
-                },)
-            },)
-            describe("has", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.hasNext,).toBeTrue(),)
-
-                    test("after 1 next",                () => expect(do1Next(instance,)            .hasNext,).toBeFalse(),)
-                    test("after 1 previous",            () => expect(do1Previous(instance,)        .hasNext,).toBeFalse(),)
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).hasNext,).toBeFalse(),)
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).hasNext,).toBeFalse(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasNext,).toBeFalse(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasNext,).toBeFalse(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasNext,).toBeFalse(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasNext,).toBeFalse(),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.hasPrevious,).toBeTrue(),)
-
-                    test("after 1 next",                () => expect(do1Next(instance,)            .hasPrevious,).toBeFalse(),)
-                    test("after 1 previous",            () => expect(do1Previous(instance,)        .hasPrevious,).toBeFalse(),)
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).hasPrevious,).toBeFalse(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasPrevious,).toBeFalse(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasPrevious,).toBeFalse(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasPrevious,).toBeFalse(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasPrevious,).toBeFalse(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasPrevious,).toBeFalse(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasPrevious,).toBeFalse(),)
-                    },)
-                },)
-            },)
-            describe("value", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.nextValue,).toBe(value,),)
-
-                    test("after 1 next",                () => expect(() => do1Next(instance,)            .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 previous",            () => expect(() => do1Previous(instance,)        .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 previous and 1 next", () => expect(() => do1PreviousAnd1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 next and 1 previous", () => expect(() => do1NextAnd1Previous(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance              .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 next",     () => expect(() => do1Next(instance,)    .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 previous", () => expect(() => do1Previous(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance              .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 next",     () => expect(() => do1Next(instance,)    .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 previous", () => expect(() => do1Previous(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previousValue,).toBe(value,),)
-
-                    test("after 1 next",                () => expect(() => do1Next(instance,)            .previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 previous",            () => expect(() => do1Previous(instance,)        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 previous and 1 next", () => expect(() => do1PreviousAnd1Next(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 next and 1 previous", () => expect(() => do1NextAnd1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance              .previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 next",     () => expect(() => do1Next(instance,)    .previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 previous", () => expect(() => do1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance              .previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 next",     () => expect(() => do1Next(instance,)    .previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 previous", () => expect(() => do1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    },)
-                },)
-            },)
-            describe("iterator result", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 next",                () => expect(do1Next(instance,)            .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 1 previous",            () => expect(do1Previous(instance,)        .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 next",                () => expect(do1Next(instance,)            .previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 1 previous",            () => expect(do1Previous(instance,)        .previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    },)
-                },)
-            },)
-            test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)
-        },)
-        describe("2 fields", () => {
-            //#region -------------------- Values / type declaration --------------------
-
-            let instance: GenericCollectionIterator<PossibleValue>
-
-            const array = AB
-            type PossibleValue = typeof array[number]
-            type PossibleIndex = | 0 | 1
-            const index1 = 0 satisfies PossibleIndex
-            const index2 = 1 satisfies PossibleIndex
-
-            const value1 = 'a' satisfies PossibleValue
-            const value2 = 'b' satisfies PossibleValue
-
-            //#endregion -------------------- Values / type declaration --------------------
-            beforeEach(() => instance = new GenericCollectionIterator(new CollectionHolderFromArray(array,),),)
-
-            describe("index", () => {
-                describe("current", () => {
-                    test("initial", () => expect(instance.currentIndex,).toBeNull(),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).currentIndex,).toBe(index1,),)
-                    test("after 2 next", () => expect(do2Next(instance,).currentIndex,).toBe(index2,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index2,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).currentIndex,).toBe(index1,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).currentIndex,).toBe(index2,),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).currentIndex,).toBe(index2,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).currentIndex,).toBe(index2,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).currentIndex,).toBe(index2,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).currentIndex,).toBe(index1,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).currentIndex,).toBe(index1,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).currentIndex,).toBe(index1,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).currentIndex,).toBe(index1,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .currentIndex,).toBe(index2,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .currentIndex,).toBe(index2,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .currentIndex,).toBe(index2,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index1,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).currentIndex,).toBe(index1,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .currentIndex,).toBe(index2,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .currentIndex,).toBe(index2,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .currentIndex,).toBe(index2,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index1,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).currentIndex,).toBe(index1,),)
-                    },)
-                },)
-                test("first", () => expect(instance.firstIndex,).toBe(index1,),)
-                test("last", () => expect(instance.lastIndex,).toBe(index2,),)
-                describe("next", () => {
-                    test("initial", () => expect(instance.nextIndex,).toBe(index1,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).nextIndex,).toBe(index2,),)
-                    test("after 2 next", () => expect(do2Next(instance,).nextIndex,).toBeNull(),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).nextIndex,).toBeNull(),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).nextIndex,).toBe(index2,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).nextIndex,).toBeNull(),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).nextIndex,).toBeNull(),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).nextIndex,).toBeNull(),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).nextIndex,).toBeNull(),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).nextIndex,).toBe(index2,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).nextIndex,).toBe(index2,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).nextIndex,).toBe(index2,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).nextIndex,).toBe(index2,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .nextIndex,).toBeNull(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).nextIndex,).toBe(index2,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).nextIndex,).toBe(index2,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .nextIndex,).toBeNull(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).nextIndex,).toBe(index2,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).nextIndex,).toBe(index2,),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previousIndex,).toBe(index2,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).previousIndex,).toBeNull(),)
-                    test("after 2 next", () => expect(do2Next(instance,).previousIndex,).toBe(index1,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).previousIndex,).toBe(index1,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).previousIndex,).toBeNull(),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previousIndex,).toBe(index1,),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).previousIndex,).toBe(index1,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).previousIndex,).toBe(index1,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).previousIndex,).toBe(index1,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).previousIndex,).toBeNull(),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).previousIndex,).toBeNull(),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).previousIndex,).toBeNull(),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).previousIndex,).toBeNull(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previousIndex,).toBe(index1,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previousIndex,).toBe(index1,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previousIndex,).toBe(index1,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previousIndex,).toBeNull(),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previousIndex,).toBeNull(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previousIndex,).toBe(index1,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previousIndex,).toBe(index1,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previousIndex,).toBe(index1,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previousIndex,).toBeNull(),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previousIndex,).toBeNull(),)
-                    },)
-                },)
-            },)
-            describe("has", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.hasNext,).toBeTrue(),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).hasNext,).toBeTrue(),)
-                    test("after 2 next", () => expect(do2Next(instance,).hasNext,).toBeFalse(),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).hasNext,).toBeFalse(),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).hasNext,).toBeTrue(),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).hasNext,).toBeFalse(),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).hasNext,).toBeFalse(),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).hasNext,).toBeFalse(),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).hasNext,).toBeFalse(),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).hasNext,).toBeTrue(),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).hasNext,).toBeTrue(),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).hasNext,).toBeTrue(),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).hasNext,).toBeTrue(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasNext,).toBeFalse(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasNext,).toBeTrue(),)
-                        test("+ 2 previous", () => expect(do1Previous(instance,).hasNext,).toBeTrue(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasNext,).toBeFalse(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasNext,).toBeTrue(),)
-                        test("+ 2 previous", () => expect(do1Previous(instance,).hasNext,).toBeTrue(),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.hasPrevious,).toBeTrue(),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 2 next", () => expect(do2Next(instance,).hasPrevious,).toBeTrue(),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).hasPrevious,).toBeTrue(),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).hasPrevious,).toBeFalse(),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).hasPrevious,).toBeTrue(),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).hasPrevious,).toBeTrue(),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).hasPrevious,).toBeTrue(),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).hasPrevious,).toBeTrue(),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).hasPrevious,).toBeFalse(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasPrevious,).toBeTrue(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasPrevious,).toBeTrue(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .hasPrevious,).toBeTrue(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasPrevious,).toBeFalse(),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).hasPrevious,).toBeFalse(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasPrevious,).toBeTrue(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasPrevious,).toBeTrue(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .hasPrevious,).toBeTrue(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasPrevious,).toBeFalse(),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).hasPrevious,).toBeFalse(),)
-                    },)
-                },)
-            },)
-            describe("value", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.nextValue,).toBe(value1,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).nextValue,).toBe(value2,),)
-                    test("after 2 next", () => expect(() => do2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-
-                    test("after 1 previous", () => expect(() => do1Previous(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).nextValue,).toBe(value2,),)
-
-                    test("after 1 previous and 1 next", () => expect(() => do1PreviousAnd1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 previous and 1 next", () => expect(() => do2PreviousAnd1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 previous and 2 next", () => expect(() => do1PreviousAnd2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 previous and 2 next", () => expect(() => do2PreviousAnd2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).nextValue,).toBe(value2,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).nextValue,).toBe(value2,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).nextValue,).toBe(value2,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).nextValue,).toBe(value2,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance          .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 next",     () => expect(() => do1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 2 next",     () => expect(() => do2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,)  .nextValue,).toBe(value2,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,)  .nextValue,).toBe(value2,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance          .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 next",     () => expect(() => do1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 2 next",     () => expect(() => do2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,)  .nextValue,).toBe(value2,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,)  .nextValue,).toBe(value2,),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previousValue,).toBe(value2,),)
-
-                    test("after 1 next", () => expect(() => do1Next(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 next", () => expect(do2Next(instance,)      .previousValue,).toBe(value1,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,)      .previousValue,).toBe(value1,),)
-                    test("after 2 previous", () => expect(() => do2Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previousValue,).toBe(value1),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).previousValue,).toBe(value1,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).previousValue,).toBe(value1,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).previousValue,).toBe(value1,),)
-
-                    test("after 1 next and 1 previous", () => expect(() => do1NextAnd1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 next and 1 previous", () => expect(() => do2NextAnd1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 next and 2 previous", () => expect(() => do1NextAnd2Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 next and 2 previous", () => expect(() => do2NextAnd2Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance                    .previousValue,).toBe(value1,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)          .previousValue,).toBe(value1,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)          .previousValue,).toBe(value1,),)
-                        test("+ 1 previous", () => expect(() => do1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 2 previous", () => expect(() => do2Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance                    .previousValue,).toBe(value1,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)          .previousValue,).toBe(value1,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)          .previousValue,).toBe(value1,),)
-                        test("+ 1 previous", () => expect(() => do1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 2 previous", () => expect(() => do2Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    },)
-                },)
-            },)
-            describe("iterator result", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 next", () => expect(do2Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 2 next", () => expect(do2Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    },)
-                },)
-            },)
-            test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)
-        },)
-        describe("4 fields", () => {
-            //#region -------------------- Values / type declaration --------------------
-
-            let instance: GenericCollectionIterator<PossibleValue>
-
-            const array = ABCD
-            type PossibleValue = typeof array[number]
-            type PossibleIndex = | 0 | 1 | 2 | 3
-            const index1 = 0 satisfies PossibleIndex
-            const index2 = 1 satisfies PossibleIndex
-            const index3 = 2 satisfies PossibleIndex
-            const index4 = 3 satisfies PossibleIndex
-
-            const value1 = 'a' satisfies PossibleValue
-            const value2 = 'b' satisfies PossibleValue
-            const value3 = 'c' satisfies PossibleValue
-            const value4 = 'd' satisfies PossibleValue
-
-            //#endregion -------------------- Values / type declaration --------------------
-            beforeEach(() => instance = new GenericCollectionIterator(new CollectionHolderFromArray(array,),),)
-
-            describe("index", () => {
-                describe("current", () => {
-                    test("initial", () => expect(instance.currentIndex,).toBeNull(),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).currentIndex,).toBe(index1,),)
-                    test("after 2 next", () => expect(do2Next(instance,).currentIndex,).toBe(index2,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index4,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).currentIndex,).toBe(index3,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).currentIndex,).toBe(index4,),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).currentIndex,).toBe(index4,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).currentIndex,).toBe(index4,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).currentIndex,).toBe(index4,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).currentIndex,).toBe(index1,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).currentIndex,).toBe(index1,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).currentIndex,).toBe(index1,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).currentIndex,).toBe(index1,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .currentIndex,).toBe(index4,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .currentIndex,).toBe(index4,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .currentIndex,).toBe(index4,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index3,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).currentIndex,).toBe(index2,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .currentIndex,).toBe(index4,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .currentIndex,).toBe(index4,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .currentIndex,).toBe(index4,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index3,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).currentIndex,).toBe(index2,),)
-                    },)
-                },)
-                test("first", () => expect(instance.firstIndex,).toBe(index1,),)
-                test("last", () => expect(instance.lastIndex,).toBe(index4,),)
-                describe("next", () => {
-                    test("initial", () => expect(instance.nextIndex,).toBe(index1,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).nextIndex,).toBe(index2,),)
-                    test("after 2 next", () => expect(do2Next(instance,).nextIndex,).toBe(index3,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).nextIndex,).toBeNull(),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).nextIndex,).toBe(index4,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).nextIndex,).toBeNull(),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).nextIndex,).toBeNull(),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).nextIndex,).toBeNull(),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).nextIndex,).toBeNull(),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).nextIndex,).toBe(index2,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).nextIndex,).toBe(index2,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).nextIndex,).toBe(index2,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).nextIndex,).toBe(index2,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .nextIndex,).toBeNull(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).nextIndex,).toBe(index4,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).nextIndex,).toBe(index3,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .nextIndex,).toBeNull(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .nextIndex,).toBeNull(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).nextIndex,).toBe(index4,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).nextIndex,).toBe(index3,),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previousIndex,).toBe(index4,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).previousIndex,).toBeNull(),)
-                    test("after 2 next", () => expect(do2Next(instance,).previousIndex,).toBe(index1,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).previousIndex,).toBe(index3,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).previousIndex,).toBe(index2,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previousIndex,).toBe(index3,),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).previousIndex,).toBe(index3,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).previousIndex,).toBe(index3,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).previousIndex,).toBe(index3,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).previousIndex,).toBeNull(),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).previousIndex,).toBeNull(),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).previousIndex,).toBeNull(),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).previousIndex,).toBeNull(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previousIndex,).toBe(index3,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previousIndex,).toBe(index3,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previousIndex,).toBe(index3,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previousIndex,).toBe(index2,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previousIndex,).toBe(index1,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previousIndex,).toBe(index3,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previousIndex,).toBe(index3,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previousIndex,).toBe(index3,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previousIndex,).toBe(index2,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previousIndex,).toBe(index1,),)
-                    },)
-                },)
-            },)
-            describe("has", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.hasNext,).toBeTrue(),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).hasNext,).toBeTrue(),)
-                    test("after 2 next", () => expect(do2Next(instance,).hasNext,).toBeTrue(),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).hasNext,).toBeFalse(),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).hasNext,).toBeTrue(),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).hasNext,).toBeFalse(),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).hasNext,).toBeFalse(),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).hasNext,).toBeFalse(),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).hasNext,).toBeFalse(),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).hasNext,).toBeTrue(),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).hasNext,).toBeTrue(),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).hasNext,).toBeTrue(),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).hasNext,).toBeTrue(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasNext,).toBeFalse(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasNext,).toBeTrue(),)
-                        test("+ 2 previous", () => expect(do1Previous(instance,).hasNext,).toBeTrue(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasNext,).toBeFalse(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .hasNext,).toBeFalse(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasNext,).toBeTrue(),)
-                        test("+ 2 previous", () => expect(do1Previous(instance,).hasNext,).toBeTrue(),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.hasPrevious,).toBeTrue(),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 2 next", () => expect(do2Next(instance,).hasPrevious,).toBeTrue(),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).hasPrevious,).toBeTrue(),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).hasPrevious,).toBeTrue(),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).hasPrevious,).toBeTrue(),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).hasPrevious,).toBeTrue(),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).hasPrevious,).toBeTrue(),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).hasPrevious,).toBeTrue(),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).hasPrevious,).toBeFalse(),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).hasPrevious,).toBeFalse(),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasPrevious,).toBeTrue(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasPrevious,).toBeTrue(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .hasPrevious,).toBeTrue(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasPrevious,).toBeTrue(),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).hasPrevious,).toBeTrue(),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .hasPrevious,).toBeTrue(),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .hasPrevious,).toBeTrue(),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .hasPrevious,).toBeTrue(),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).hasPrevious,).toBeTrue(),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).hasPrevious,).toBeTrue(),)
-                    },)
-                },)
-            },)
-            describe("value", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.nextValue,).toBe(value1,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).nextValue,).toBe(value2,),)
-                    test("after 2 next", () => expect(do2Next(instance,).nextValue,).toBe(value3,),)
-
-                    test("after 1 previous", () => expect(() => do1Previous(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,)      .nextValue,).toBe(value4,),)
-
-                    test("after 1 previous and 1 next", () => expect(() => do1PreviousAnd1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 previous and 1 next", () => expect(() => do2PreviousAnd1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 previous and 2 next", () => expect(() => do1PreviousAnd2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 previous and 2 next", () => expect(() => do2PreviousAnd2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).nextValue,).toBe(value2,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).nextValue,).toBe(value2,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).nextValue,).toBe(value2,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).nextValue,).toBe(value2,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance          .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 next",     () => expect(() => do1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 2 next",     () => expect(() => do2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,)  .nextValue,).toBe(value4,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,)  .nextValue,).toBe(value3,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance          .nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 next",     () => expect(() => do1Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 2 next",     () => expect(() => do2Next(instance,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,)  .nextValue,).toBe(value4,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,)  .nextValue,).toBe(value3,),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previousValue,).toBe(value4,),)
-
-                    test("after 1 next", () => expect(() => do1Next(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 next", () => expect(do2Next(instance,)      .previousValue,).toBe(value1,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).previousValue,).toBe(value3,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).previousValue,).toBe(value2,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previousValue,).toBe(value3),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).previousValue,).toBe(value3,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).previousValue,).toBe(value3,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).previousValue,).toBe(value3,),)
-
-                    test("after 1 next and 1 previous", () => expect(() => do1NextAnd1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 next and 1 previous", () => expect(() => do2NextAnd1Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 1 next and 2 previous", () => expect(() => do1NextAnd2Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-                    test("after 2 next and 2 previous", () => expect(() => do2NextAnd2Previous(instance,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previousValue,).toBe(value3,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previousValue,).toBe(value3,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previousValue,).toBe(value3,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previousValue,).toBe(value2,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previousValue,).toBe(value1,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previousValue,).toBe(value3,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previousValue,).toBe(value3,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previousValue,).toBe(value3,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previousValue,).toBe(value2,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previousValue,).toBe(value1,),)
-                    },)
-                },)
-            },)
-            describe("iterator result", () => {
-                describe("next", () => {
-                    test("initial", () => expect(instance.next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 next", () => expect(do2Next(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .next(),).toBeInstanceOf(GenericAfterLastIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).next(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    },)
-                },)
-                describe("previous", () => {
-                    test("initial", () => expect(instance.previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 next", () => expect(do1Next(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 2 next", () => expect(do2Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 previous", () => expect(do1Previous(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 previous", () => expect(do2Previous(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-
-                    test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 1 next and 2 previous", () => expect(do1NextAnd2Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-                    test("after 2 next and 2 previous", () => expect(do2NextAnd2Previous(instance,).previous(),).toBeInstanceOf(GenericBeforeFirstIteratorValue,),)
-
-                    describe("after forEach", () => {
-                        beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    },)
-                    describe("after forEachIndexed", () => {
-                        beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(instance              .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 1 next",     () => expect(do1Next(instance,)    .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 next",     () => expect(do2Next(instance,)    .previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 1 previous", () => expect(do1Previous(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                        test("+ 2 previous", () => expect(do2Previous(instance,).previous(),).toBeInstanceOf(GenericCollectionIteratorValue,),)
-                    },)
-                },)
-            },)
-            test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)
-        },)
+        test("GenericCollectionIterator", () => expect(new CollectionIterator_ByGenericIteratorFollower().execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
+        test("CollectionIteratorOf1",     () => expect(new CollectionIterator_1Follower()                .execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
+        test("CollectionIteratorOf2",     () => expect(new CollectionIterator_2Follower()                .execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
     },)
 
+    describe("empty", () => {
+    describe("GenericCollectionIterator", () => {
+        test("currentIndex",  () => expect(      new CollectionIterator_ByGenericIterator(EMPTY,).currentIndex,).toBeNull(),)
+        test("firstIndex",    () => expect(      new CollectionIterator_ByGenericIterator(EMPTY,).firstIndex,).toBeNull(),)
+        test("lastIndex",     () => expect(      new CollectionIterator_ByGenericIterator(EMPTY,).lastIndex,).toBeNull(),)
+        test("nextIndex",     () => expect(      new CollectionIterator_ByGenericIterator(EMPTY,).nextIndex,).toBeNull(),)
+        test("previousIndex", () => expect(      new CollectionIterator_ByGenericIterator(EMPTY,).previousIndex,).toBeNull(),)
+        test("hasNext",       () => expect(      new CollectionIterator_ByGenericIterator(EMPTY,).hasNext,).toBeFalse(),)
+        test("hasPrevious",   () => expect(      new CollectionIterator_ByGenericIterator(EMPTY,).hasPrevious,).toBeFalse(),)
+        test("nextValue",     () => expect(() => new CollectionIterator_ByGenericIterator(EMPTY,).nextValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("previousValue", () => expect(() => new CollectionIterator_ByGenericIterator(EMPTY,).previousValue,).toThrow(NoElementFoundInCollectionException,),)
+
+        describe("iterator value", () => {
+            test("next, done",          () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().done,)           .toBeTrue(),)
+            test("next, isDone",        () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().isDone(),)       .toBeTrue(),)
+            test("next, isNotDone",     () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().isNotDone(),)    .toBeFalse(),)
+            test("next, value",         () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().value,)          .toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
+            test("previous, done",      () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().done,)       .toBeTrue(),)
+            test("previous, isDone",    () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().isDone(),)   .toBeTrue(),)
+            test("previous, isNotDone", () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().isNotDone(),).toBeFalse(),)
+            test("previous, value",     () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().value,)      .toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
+        },)
+    },) },)
+
+    describe("1 field", () => {
+    describe.each(every1Iterators,)("%s", ({value: {newInstance, iteratorValue,},},) => {
+        test("firstIndex",                              () => expect(      newInstance('a',)                                              .firstIndex,)   .toBe(0,),)
+        test("lastIndex",                               () => expect(      newInstance('a',)                                              .lastIndex,)    .toBe(0,),)
+        test("currentIndex",                            () => expect(      newInstance('a',)                                              .currentIndex,) .toBeNull(),)
+        test("next, currentIndex",                      () => expect(      newInstance('a',).do1Next()                                    .currentIndex,) .toBe(0,),)
+        test("previous, currentIndex",                  () => expect(      newInstance('a',).do1Previous()                                .currentIndex,) .toBe(0,),)
+        test("previous, next, currentIndex",            () => expect(      newInstance('a',).do1PreviousAnd1Next()                        .currentIndex,) .toBe(0,),)
+        test("next, previous, currentIndex",            () => expect(      newInstance('a',).do1NextAnd1Previous()                        .currentIndex,) .toBe(0,),)
+        test("forEach, currentIndex",                   () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,)                     .currentIndex,) .toBe(0,),)
+        test("forEach, next, currentIndex",             () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .currentIndex,) .toBe(0,),)
+        test("forEach, previous, currentIndex",         () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .currentIndex,) .toBe(0,),)
+        test("forEachIndexed, currentIndex",            () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .currentIndex,) .toBe(0,),)
+        test("forEachIndexed, next, currentIndex",      () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .currentIndex,) .toBe(0,),)
+        test("forEachIndexed, previous, currentIndex",  () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().currentIndex,) .toBe(0,),)
+        test("nextIndex",                               () => expect(      newInstance('a',)                                              .nextIndex,)    .toBe(0,),)
+        test("next, nextIndex",                         () => expect(      newInstance('a',).do1Next()                                    .nextIndex,)    .toBeNull(),)
+        test("previous, nextIndex",                     () => expect(      newInstance('a',).do1Previous()                                .nextIndex,)    .toBeNull(),)
+        test("previous, next, nextIndex",               () => expect(      newInstance('a',).do1PreviousAnd1Next()                        .nextIndex,)    .toBeNull(),)
+        test("next, previous, nextIndex",               () => expect(      newInstance('a',).do1NextAnd1Previous()                        .nextIndex,)    .toBeNull(),)
+        test("forEach, nextIndex",                      () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,)                     .nextIndex,)    .toBeNull(),)
+        test("forEach, next, nextIndex",                () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .nextIndex,)    .toBeNull(),)
+        test("forEach, previous, nextIndex",            () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, nextIndex",               () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, next, nextIndex",         () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, previous, nextIndex",     () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().nextIndex,)    .toBeNull(),)
+        test("previousIndex",                           () => expect(      newInstance('a',)                                              .previousIndex,).toBe(0,),)
+        test("next, previousIndex",                     () => expect(      newInstance('a',).do1Next()                                    .previousIndex,).toBeNull(),)
+        test("previous, previousIndex",                 () => expect(      newInstance('a',).do1Previous()                                .previousIndex,).toBeNull(),)
+        test("previous, next, previousIndex",           () => expect(      newInstance('a',).do1PreviousAnd1Next()                        .previousIndex,).toBeNull(),)
+        test("next, previous, previousIndex",           () => expect(      newInstance('a',).do1NextAnd1Previous()                        .previousIndex,).toBeNull(),)
+        test("forEach, previousIndex",                  () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,)                     .previousIndex,).toBeNull(),)
+        test("forEach, next, previousIndex",            () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .previousIndex,).toBeNull(),)
+        test("forEach, previous, previousIndex",        () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .previousIndex,).toBeNull(),)
+        test("forEachIndexed, previousIndex",           () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .previousIndex,).toBeNull(),)
+        test("forEachIndexed, next, previousIndex",     () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previousIndex,).toBeNull(),)
+        test("forEachIndexed, previous, previousIndex", () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previousIndex,).toBeNull(),)
+        test("hasNext",                                 () => expect(      newInstance('a',)                                              .hasNext,)      .toBeTrue(),)
+        test("next, hasNext",                           () => expect(      newInstance('a',).do1Next()                                    .hasNext,)      .toBeFalse(),)
+        test("previous, hasNext",                       () => expect(      newInstance('a',).do1Previous()                                .hasNext,)      .toBeFalse(),)
+        test("previous, next, hasNext",                 () => expect(      newInstance('a',).do1PreviousAnd1Next()                        .hasNext,)      .toBeFalse(),)
+        test("next, previous, hasNext",                 () => expect(      newInstance('a',).do1NextAnd1Previous()                        .hasNext,)      .toBeFalse(),)
+        test("forEach, hasNext",                        () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,)                     .hasNext,)      .toBeFalse(),)
+        test("forEach, next, hasNext",                  () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .hasNext,)      .toBeFalse(),)
+        test("forEach, previous, hasNext",              () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, hasNext",                 () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, next, hasNext",           () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, previous, hasNext",       () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().hasNext,)      .toBeFalse(),)
+        test("hasPrevious",                             () => expect(      newInstance('a',)                                              .hasPrevious,)  .toBeTrue(),)
+        test("next, hasPrevious",                       () => expect(      newInstance('a',).do1Next()                                    .hasPrevious,)  .toBeFalse(),)
+        test("previous, hasPrevious",                   () => expect(      newInstance('a',).do1Previous()                                .hasPrevious,)  .toBeFalse(),)
+        test("previous, next, hasPrevious",             () => expect(      newInstance('a',).do1PreviousAnd1Next()                        .hasPrevious,)  .toBeFalse(),)
+        test("next, previous, hasPrevious",             () => expect(      newInstance('a',).do1NextAnd1Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("forEach, hasPrevious",                    () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,)                     .hasPrevious,)  .toBeFalse(),)
+        test("forEach, next, hasPrevious",              () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .hasPrevious,)  .toBeFalse(),)
+        test("forEach, previous, hasPrevious",          () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .hasPrevious,)  .toBeFalse(),)
+        test("forEachIndexed, hasPrevious",             () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .hasPrevious,)  .toBeFalse(),)
+        test("forEachIndexed, next, hasPrevious",       () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .hasPrevious,)  .toBeFalse(),)
+        test("forEachIndexed, previous, hasPrevious",   () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().hasPrevious,)  .toBeFalse(),)
+        test("nextValue",                               () => expect(      newInstance('a',)                                              .nextValue,)    .toBe('a',),)
+        test("next, nextValue",                         () => expect(() => newInstance('a',).do1Next()                                    .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("previous, nextValue",                     () => expect(() => newInstance('a',).do1Previous()                                .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("previous, next, nextValue",               () => expect(() => newInstance('a',).do1PreviousAnd1Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("next, previous, nextValue",               () => expect(() => newInstance('a',).do1NextAnd1Previous()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, nextValue",                      () => expect(() => newInstance('a',).forEach(EMPTY_CALLBACK,)                     .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, next, nextValue",                () => expect(() => newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, previous, nextValue",            () => expect(() => newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, nextValue",               () => expect(() => newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, next, nextValue",         () => expect(() => newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, previous, nextValue",     () => expect(() => newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("previousValue",                           () => expect(      newInstance('a',)                                              .previousValue,).toBe('a',),)
+        test("next, previousValue",                     () => expect(() => newInstance('a',).do1Next()                                    .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("previous, previousValue",                 () => expect(() => newInstance('a',).do1Previous()                                .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("previous, next, previousValue",           () => expect(() => newInstance('a',).do1PreviousAnd1Next()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("next, previous, previousValue",           () => expect(() => newInstance('a',).do1NextAnd1Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, previousValue",                  () => expect(() => newInstance('a',).forEach(EMPTY_CALLBACK,)                     .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, next, previousValue",            () => expect(() => newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, previous, previousValue",        () => expect(() => newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, previousValue",           () => expect(() => newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, next, previousValue",     () => expect(() => newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, previous, previousValue", () => expect(() => newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("next",                                    () => expect(      newInstance('a',)                                              .next(),)       .toBeInstanceOf(iteratorValue,),)
+        test("next, next",                              () => expect(      newInstance('a',).do1Next()                                    .next(),)       .toBe(afterLastIteratorValue,),)
+        test("previous, next",                          () => expect(      newInstance('a',).do1Previous()                                .next(),)       .toBe(afterLastIteratorValue,),)
+        test("previous, next, next",                    () => expect(      newInstance('a',).do1PreviousAnd1Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("next, previous, next",                    () => expect(      newInstance('a',).do1NextAnd1Previous()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, next",                           () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,)                     .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, next, next",                     () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, previous, next",                 () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, next",                    () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, next, next",              () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, previous, next",          () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().next(),)       .toBe(afterLastIteratorValue,),)
+        test("previous",                                () => expect(      newInstance('a',)                                              .previous(),)   .toBeInstanceOf(iteratorValue,),)
+        test("next, previous",                          () => expect(      newInstance('a',).do1Next()                                    .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("previous, previous",                      () => expect(      newInstance('a',).do1Previous()                                .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("previous, next, previous",                () => expect(      newInstance('a',).do1PreviousAnd1Next()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("next, previous, previous",                () => expect(      newInstance('a',).do1NextAnd1Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEach, previous",                       () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,)                     .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEach, next, previous",                 () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Next()           .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEach, previous, previous",             () => expect(      newInstance('a',).forEach(EMPTY_CALLBACK,).do1Previous()       .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEachIndexed, previous",                () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,)              .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEachIndexed, next, previous",          () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEachIndexed, previous, previous",      () => expect(      newInstance('a',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previous(),)   .toBe(beforeFirstIteratorValue,),)
+    },)},)
+
+    describe("2 fields", () => {
+    describe.each(every2Iterators,)("%s", ({value: {newInstance, iteratorValue1, iteratorValue2,},},) => {
+        test("firstIndex",                                () => expect(      newInstance('a', 'b',)                                              .firstIndex,)   .toBe(0,),)
+        test("lastIndex",                                 () => expect(      newInstance('a', 'b',)                                              .lastIndex,)    .toBe(1,),)
+        test("currentIndex",                              () => expect(      newInstance('a', 'b',)                                              .currentIndex,) .toBeNull(),)
+        test("1 next, currentIndex",                      () => expect(      newInstance('a', 'b',).do1Next()                                    .currentIndex,) .toBe(0,),)
+        test("2 next, currentIndex",                      () => expect(      newInstance('a', 'b',).do2Next()                                    .currentIndex,) .toBe(1,),)
+        test("1 previous, currentIndex",                  () => expect(      newInstance('a', 'b',).do1Previous()                                .currentIndex,) .toBe(1,),)
+        test("2 previous, currentIndex",                  () => expect(      newInstance('a', 'b',).do2Previous()                                .currentIndex,) .toBe(0,),)
+        test("1 previous, 1 next, currentIndex",          () => expect(      newInstance('a', 'b',).do1PreviousAnd1Next()                        .currentIndex,) .toBe(1,),)
+        test("1 previous, 2 next, currentIndex",          () => expect(      newInstance('a', 'b',).do1PreviousAnd2Next()                        .currentIndex,) .toBe(1,),)
+        test("2 previous, 1 next, currentIndex",          () => expect(      newInstance('a', 'b',).do2PreviousAnd1Next()                        .currentIndex,) .toBe(1,),)
+        test("2 previous, 2 next, currentIndex",          () => expect(      newInstance('a', 'b',).do2PreviousAnd2Next()                        .currentIndex,) .toBe(1,),)
+        test("1 next, 1 previous, currentIndex",          () => expect(      newInstance('a', 'b',).do1NextAnd1Previous()                        .currentIndex,) .toBe(0,),)
+        test("1 next, 2 previous, currentIndex",          () => expect(      newInstance('a', 'b',).do1NextAnd2Previous()                        .currentIndex,) .toBe(0,),)
+        test("2 next, 1 previous, currentIndex",          () => expect(      newInstance('a', 'b',).do2NextAnd1Previous()                        .currentIndex,) .toBe(0,),)
+        test("2 next, 2 previous, currentIndex",          () => expect(      newInstance('a', 'b',).do2NextAnd2Previous()                        .currentIndex,) .toBe(0,),)
+        test("forEach, currentIndex",                     () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .currentIndex,) .toBe(1,),)
+        test("forEach, 1 next, currentIndex",             () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .currentIndex,) .toBe(1,),)
+        test("forEach, 2 next, currentIndex",             () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .currentIndex,) .toBe(1,),)
+        test("forEach, 1 previous, currentIndex",         () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .currentIndex,) .toBe(0,),)
+        test("forEach, 2 previous, currentIndex",         () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .currentIndex,) .toBe(0,),)
+        test("forEachIndexed, currentIndex",              () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .currentIndex,) .toBe(1,),)
+        test("forEachIndexed, 1 next, currentIndex",      () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .currentIndex,) .toBe(1,),)
+        test("forEachIndexed, 2 next, currentIndex",      () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .currentIndex,) .toBe(1,),)
+        test("forEachIndexed, 1 previous, currentIndex",  () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().currentIndex,) .toBe(0,),)
+        test("forEachIndexed, 2 previous, currentIndex",  () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().currentIndex,) .toBe(0,),)
+        test("nextIndex",                                 () => expect(      newInstance('a', 'b',)                                              .nextIndex,)    .toBe(0,),)
+        test("1 next, nextIndex",                         () => expect(      newInstance('a', 'b',).do1Next()                                    .nextIndex,)    .toBe(1,),)
+        test("2 next, nextIndex",                         () => expect(      newInstance('a', 'b',).do2Next()                                    .nextIndex,)    .toBeNull(),)
+        test("1 previous, nextIndex",                     () => expect(      newInstance('a', 'b',).do1Previous()                                .nextIndex,)    .toBeNull(),)
+        test("2 previous, nextIndex",                     () => expect(      newInstance('a', 'b',).do2Previous()                                .nextIndex,)    .toBe(1,),)
+        test("1 previous, 1 next, nextIndex",             () => expect(      newInstance('a', 'b',).do1PreviousAnd1Next()                        .nextIndex,)    .toBeNull(),)
+        test("1 previous, 2 next, nextIndex",             () => expect(      newInstance('a', 'b',).do1PreviousAnd2Next()                        .nextIndex,)    .toBeNull(),)
+        test("2 previous, 1 next, nextIndex",             () => expect(      newInstance('a', 'b',).do2PreviousAnd1Next()                        .nextIndex,)    .toBeNull(),)
+        test("2 previous, 2 next, nextIndex",             () => expect(      newInstance('a', 'b',).do2PreviousAnd2Next()                        .nextIndex,)    .toBeNull(),)
+        test("1 next, 1 previous, nextIndex",             () => expect(      newInstance('a', 'b',).do1NextAnd1Previous()                        .nextIndex,)    .toBe(1,),)
+        test("1 next, 2 previous, nextIndex",             () => expect(      newInstance('a', 'b',).do1NextAnd2Previous()                        .nextIndex,)    .toBe(1,),)
+        test("2 next, 1 previous, nextIndex",             () => expect(      newInstance('a', 'b',).do2NextAnd1Previous()                        .nextIndex,)    .toBe(1,),)
+        test("2 next, 2 previous, nextIndex",             () => expect(      newInstance('a', 'b',).do2NextAnd2Previous()                        .nextIndex,)    .toBe(1,),)
+        test("forEach, nextIndex",                        () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .nextIndex,)    .toBeNull(),)
+        test("forEach, 1 next, nextIndex",                () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .nextIndex,)    .toBeNull(),)
+        test("forEach, 2 next, nextIndex",                () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .nextIndex,)    .toBeNull(),)
+        test("forEach, 1 previous, nextIndex",            () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .nextIndex,)    .toBe(1,),)
+        test("forEach, 2 previous, nextIndex",            () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .nextIndex,)    .toBe(1,),)
+        test("forEachIndexed, nextIndex",                 () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, 1 next, nextIndex",         () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, 2 next, nextIndex",         () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, 1 previous, nextIndex",     () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().nextIndex,)    .toBe(1,),)
+        test("forEachIndexed, 2 previous, nextIndex",     () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().nextIndex,)    .toBe(1,),)
+        test("previousIndex",                             () => expect(      newInstance('a', 'b',)                                              .previousIndex,).toBe(1,),)
+        test("1 next, previousIndex",                     () => expect(      newInstance('a', 'b',).do1Next()                                    .previousIndex,).toBeNull(),)
+        test("2 next, previousIndex",                     () => expect(      newInstance('a', 'b',).do2Next()                                    .previousIndex,).toBe(0,),)
+        test("1 previous, previousIndex",                 () => expect(      newInstance('a', 'b',).do1Previous()                                .previousIndex,).toBe(0,),)
+        test("2 previous, previousIndex",                 () => expect(      newInstance('a', 'b',).do2Previous()                                .previousIndex,).toBeNull(),)
+        test("1 previous, 1 next, previousIndex",         () => expect(      newInstance('a', 'b',).do1PreviousAnd1Next()                        .previousIndex,).toBe(0,),)
+        test("1 previous, 2 next, previousIndex",         () => expect(      newInstance('a', 'b',).do1PreviousAnd2Next()                        .previousIndex,).toBe(0,),)
+        test("2 previous, 1 next, previousIndex",         () => expect(      newInstance('a', 'b',).do2PreviousAnd1Next()                        .previousIndex,).toBe(0,),)
+        test("2 previous, 2 next, previousIndex",         () => expect(      newInstance('a', 'b',).do2PreviousAnd2Next()                        .previousIndex,).toBe(0,),)
+        test("1 next, 1 previous, previousIndex",         () => expect(      newInstance('a', 'b',).do1NextAnd1Previous()                        .previousIndex,).toBeNull(),)
+        test("1 next, 2 previous, previousIndex",         () => expect(      newInstance('a', 'b',).do1NextAnd2Previous()                        .previousIndex,).toBeNull(),)
+        test("2 next, 1 previous, previousIndex",         () => expect(      newInstance('a', 'b',).do2NextAnd1Previous()                        .previousIndex,).toBeNull(),)
+        test("2 next, 2 previous, previousIndex",         () => expect(      newInstance('a', 'b',).do2NextAnd2Previous()                        .previousIndex,).toBeNull(),)
+        test("forEach, previousIndex",                    () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .previousIndex,).toBe(0,),)
+        test("forEach, 1 next, previousIndex",            () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .previousIndex,).toBe(0,),)
+        test("forEach, 2 next, previousIndex",            () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .previousIndex,).toBe(0,),)
+        test("forEach, 1 previous, previousIndex",        () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .previousIndex,).toBeNull(),)
+        test("forEach, 2 previous, previousIndex",        () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .previousIndex,).toBeNull(),)
+        test("forEachIndexed, previousIndex",             () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .previousIndex,).toBe(0,),)
+        test("forEachIndexed, 1 next, previousIndex",     () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previousIndex,).toBe(0,),)
+        test("forEachIndexed, 2 next, previousIndex",     () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .previousIndex,).toBe(0,),)
+        test("forEachIndexed, 1 previous, previousIndex", () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previousIndex,).toBeNull(),)
+        test("forEachIndexed, 2 previous, previousIndex", () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().previousIndex,).toBeNull(),)
+        test("hasNext",                                   () => expect(      newInstance('a', 'b',)                                              .hasNext,)      .toBeTrue(),)
+        test("1 next, hasNext",                           () => expect(      newInstance('a', 'b',).do1Next()                                    .hasNext,)      .toBeTrue(),)
+        test("2 next, hasNext",                           () => expect(      newInstance('a', 'b',).do2Next()                                    .hasNext,)      .toBeFalse(),)
+        test("1 previous, hasNext",                       () => expect(      newInstance('a', 'b',).do1Previous()                                .hasNext,)      .toBeFalse(),)
+        test("2 previous, hasNext",                       () => expect(      newInstance('a', 'b',).do2Previous()                                .hasNext,)      .toBeTrue(),)
+        test("1 previous, 1 next, hasNext",               () => expect(      newInstance('a', 'b',).do1PreviousAnd1Next()                        .hasNext,)      .toBeFalse(),)
+        test("1 previous, 2 next, hasNext",               () => expect(      newInstance('a', 'b',).do1PreviousAnd2Next()                        .hasNext,)      .toBeFalse(),)
+        test("2 previous, 1 next, hasNext",               () => expect(      newInstance('a', 'b',).do2PreviousAnd1Next()                        .hasNext,)      .toBeFalse(),)
+        test("2 previous, 2 next, hasNext",               () => expect(      newInstance('a', 'b',).do2PreviousAnd2Next()                        .hasNext,)      .toBeFalse(),)
+        test("1 next, 1 previous, hasNext",               () => expect(      newInstance('a', 'b',).do1NextAnd1Previous()                        .hasNext,)      .toBeTrue(),)
+        test("1 next, 2 previous, hasNext",               () => expect(      newInstance('a', 'b',).do1NextAnd2Previous()                        .hasNext,)      .toBeTrue(),)
+        test("2 next, 1 previous, hasNext",               () => expect(      newInstance('a', 'b',).do2NextAnd1Previous()                        .hasNext,)      .toBeTrue(),)
+        test("2 next, 2 previous, hasNext",               () => expect(      newInstance('a', 'b',).do2NextAnd2Previous()                        .hasNext,)      .toBeTrue(),)
+        test("forEach, hasNext",                          () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .hasNext,)      .toBeFalse(),)
+        test("forEach, 1 next, hasNext",                  () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .hasNext,)      .toBeFalse(),)
+        test("forEach, 2 next, hasNext",                  () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .hasNext,)      .toBeFalse(),)
+        test("forEach, 1 previous, hasNext",              () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .hasNext,)      .toBeTrue(),)
+        test("forEach, 2 previous, hasNext",              () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .hasNext,)      .toBeTrue(),)
+        test("forEachIndexed, hasNext",                   () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, 1 next, hasNext",           () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, 2 next, hasNext",           () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, 1 previous, hasNext",       () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().hasNext,)      .toBeTrue(),)
+        test("forEachIndexed, 2 previous, hasNext",       () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().hasNext,)      .toBeTrue(),)
+        test("hasPrevious",                               () => expect(      newInstance('a', 'b',)                                              .hasPrevious,)  .toBeTrue(),)
+        test("1 next, hasPrevious",                       () => expect(      newInstance('a', 'b',).do1Next()                                    .hasPrevious,)  .toBeFalse(),)
+        test("2 next, hasPrevious",                       () => expect(      newInstance('a', 'b',).do2Next()                                    .hasPrevious,)  .toBeTrue(),)
+        test("1 previous, hasPrevious",                   () => expect(      newInstance('a', 'b',).do1Previous()                                .hasPrevious,)  .toBeTrue(),)
+        test("2 previous, hasPrevious",                   () => expect(      newInstance('a', 'b',).do2Previous()                                .hasPrevious,)  .toBeFalse(),)
+        test("1 previous, 1 next, hasPrevious",           () => expect(      newInstance('a', 'b',).do1PreviousAnd1Next()                        .hasPrevious,)  .toBeTrue(),)
+        test("1 previous, 2 next, hasPrevious",           () => expect(      newInstance('a', 'b',).do1PreviousAnd2Next()                        .hasPrevious,)  .toBeTrue(),)
+        test("2 previous, 1 next, hasPrevious",           () => expect(      newInstance('a', 'b',).do2PreviousAnd1Next()                        .hasPrevious,)  .toBeTrue(),)
+        test("2 previous, 2 next, hasPrevious",           () => expect(      newInstance('a', 'b',).do2PreviousAnd2Next()                        .hasPrevious,)  .toBeTrue(),)
+        test("1 next, 1 previous, hasPrevious",           () => expect(      newInstance('a', 'b',).do1NextAnd1Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("1 next, 2 previous, hasPrevious",           () => expect(      newInstance('a', 'b',).do1NextAnd2Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("2 next, 1 previous, hasPrevious",           () => expect(      newInstance('a', 'b',).do2NextAnd1Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("2 next, 2 previous, hasPrevious",           () => expect(      newInstance('a', 'b',).do2NextAnd2Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("forEach, hasPrevious",                      () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .hasPrevious,)  .toBeTrue(),)
+        test("forEach, 1 next, hasPrevious",              () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .hasPrevious,)  .toBeTrue(),)
+        test("forEach, 2 next, hasPrevious",              () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .hasPrevious,)  .toBeTrue(),)
+        test("forEach, 1 previous, hasPrevious",          () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .hasPrevious,)  .toBeFalse(),)
+        test("forEach, 2 previous, hasPrevious",          () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .hasPrevious,)  .toBeFalse(),)
+        test("forEachIndexed, hasPrevious",               () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .hasPrevious,)  .toBeTrue(),)
+        test("forEachIndexed, 1 next, hasPrevious",       () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .hasPrevious,)  .toBeTrue(),)
+        test("forEachIndexed, 2 next, hasPrevious",       () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .hasPrevious,)  .toBeTrue(),)
+        test("forEachIndexed, 1 previous, hasPrevious",   () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().hasPrevious,)  .toBeFalse(),)
+        test("forEachIndexed, 2 previous, hasPrevious",   () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().hasPrevious,)  .toBeFalse(),)
+        test("nextValue",                                 () => expect(      newInstance('a', 'b',)                                              .nextValue,)    .toBe('a',),)
+        test("1 next, nextValue",                         () => expect(      newInstance('a', 'b',).do1Next()                                    .nextValue,)    .toBe('b',),)
+        test("2 next, nextValue",                         () => expect(() => newInstance('a', 'b',).do2Next()                                    .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("1 previous, nextValue",                     () => expect(() => newInstance('a', 'b',).do1Previous()                                .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("2 previous, nextValue",                     () => expect(      newInstance('a', 'b',).do2Previous()                                .nextValue,)    .toBe('b',),)
+        test("1 previous, 1 next, nextValue",             () => expect(() => newInstance('a', 'b',).do1PreviousAnd1Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("1 previous, 2 next, nextValue",             () => expect(() => newInstance('a', 'b',).do1PreviousAnd2Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("2 previous, 1 next, nextValue",             () => expect(() => newInstance('a', 'b',).do2PreviousAnd1Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("2 previous, 2 next, nextValue",             () => expect(() => newInstance('a', 'b',).do2PreviousAnd2Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("1 next, 1 previous, nextValue",             () => expect(      newInstance('a', 'b',).do1NextAnd1Previous()                        .nextValue,)    .toBe('b',),)
+        test("1 next, 2 previous, nextValue",             () => expect(      newInstance('a', 'b',).do1NextAnd2Previous()                        .nextValue,)    .toBe('b',),)
+        test("2 next, 1 previous, nextValue",             () => expect(      newInstance('a', 'b',).do2NextAnd1Previous()                        .nextValue,)    .toBe('b',),)
+        test("2 next, 2 previous, nextValue",             () => expect(      newInstance('a', 'b',).do2NextAnd2Previous()                        .nextValue,)    .toBe('b',),)
+        test("forEach, nextValue",                        () => expect(() => newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, 1 next, nextValue",                () => expect(() => newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, 2 next, nextValue",                () => expect(() => newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, 1 previous, nextValue",            () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .nextValue,)    .toBe('b',),)
+        test("forEach, 2 previous, nextValue",            () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .nextValue,)    .toBe('b',),)
+        test("forEachIndexed, nextValue",                 () => expect(() => newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, 1 next, nextValue",         () => expect(() => newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, 2 next, nextValue",         () => expect(() => newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, 1 previous, nextValue",     () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().nextValue,)    .toBe('b',),)
+        test("forEachIndexed, 2 previous, nextValue",     () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().nextValue,)    .toBe('b',),)
+        test("previousValue",                             () => expect(      newInstance('a', 'b',)                                              .previousValue,).toBe('b',),)
+        test("1 next, previousValue",                     () => expect(() => newInstance('a', 'b',).do1Next()                                    .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("2 next, previousValue",                     () => expect(      newInstance('a', 'b',).do2Next()                                    .previousValue,).toBe('a',),)
+        test("1 previous, previousValue",                 () => expect(      newInstance('a', 'b',).do1Previous()                                .previousValue,).toBe('a',),)
+        test("2 previous, previousValue",                 () => expect(() => newInstance('a', 'b',).do2Previous()                                .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("1 previous, 1 next, previousValue",         () => expect(      newInstance('a', 'b',).do1PreviousAnd1Next()                        .previousValue,).toBe('a',),)
+        test("1 previous, 2 next, previousValue",         () => expect(      newInstance('a', 'b',).do1PreviousAnd2Next()                        .previousValue,).toBe('a',),)
+        test("2 previous, 1 next, previousValue",         () => expect(      newInstance('a', 'b',).do2PreviousAnd1Next()                        .previousValue,).toBe('a',),)
+        test("2 previous, 2 next, previousValue",         () => expect(      newInstance('a', 'b',).do2PreviousAnd2Next()                        .previousValue,).toBe('a',),)
+        test("1 next, 1 previous, previousValue",         () => expect(() => newInstance('a', 'b',).do1NextAnd1Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("1 next, 2 previous, previousValue",         () => expect(() => newInstance('a', 'b',).do1NextAnd2Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("2 next, 1 previous, previousValue",         () => expect(() => newInstance('a', 'b',).do2NextAnd1Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("2 next, 2 previous, previousValue",         () => expect(() => newInstance('a', 'b',).do2NextAnd2Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, previousValue",                    () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .previousValue,).toBe('a',),)
+        test("forEach, 1 next, previousValue",            () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .previousValue,).toBe('a',),)
+        test("forEach, 2 next, previousValue",            () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .previousValue,).toBe('a',),)
+        test("forEach, 1 previous, previousValue",        () => expect(() => newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, 2 previous, previousValue",        () => expect(() => newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, previousValue",             () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .previousValue,).toBe('a',),)
+        test("forEachIndexed, 1 next, previousValue",     () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previousValue,).toBe('a',),)
+        test("forEachIndexed, 2 next, previousValue",     () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .previousValue,).toBe('a',),)
+        test("forEachIndexed, 1 previous, previousValue", () => expect(() => newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, 2 previous, previousValue", () => expect(() => newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("next",                                      () => expect(      newInstance('a', 'b',)                                              .next(),)       .toBeInstanceOf(iteratorValue1,),)
+        test("1 next, next",                              () => expect(      newInstance('a', 'b',).do1Next()                                    .next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("2 next, next",                              () => expect(      newInstance('a', 'b',).do2Next()                                    .next(),)       .toBe(afterLastIteratorValue,),)
+        test("1 previous, next",                          () => expect(      newInstance('a', 'b',).do1Previous()                                .next(),)       .toBe(afterLastIteratorValue,),)
+        test("2 previous, next",                          () => expect(      newInstance('a', 'b',).do2Previous()                                .next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("1 previous, 1 next, next",                  () => expect(      newInstance('a', 'b',).do1PreviousAnd1Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("1 previous, 2 next, next",                  () => expect(      newInstance('a', 'b',).do1PreviousAnd2Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("2 previous, 1 next, next",                  () => expect(      newInstance('a', 'b',).do2PreviousAnd1Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("2 previous, 2 next, next",                  () => expect(      newInstance('a', 'b',).do2PreviousAnd2Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("1 next, 1 previous, next",                  () => expect(      newInstance('a', 'b',).do1NextAnd1Previous()                        .next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("1 next, 2 previous, next",                  () => expect(      newInstance('a', 'b',).do1NextAnd2Previous()                        .next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("2 next, 1 previous, next",                  () => expect(      newInstance('a', 'b',).do2NextAnd1Previous()                        .next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("2 next, 2 previous, next",                  () => expect(      newInstance('a', 'b',).do2NextAnd2Previous()                        .next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("forEach, next",                             () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, 1 next, next",                     () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, 2 next, next",                     () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, 1 previous, next",                 () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("forEach, 2 previous, next",                 () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("forEachIndexed, next",                      () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, 1 next, next",              () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, 2 next, next",              () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, 1 previous, next",          () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("forEachIndexed, 2 previous, next",          () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().next(),)       .toBeInstanceOf(iteratorValue2,),)
+        test("previous",                                  () => expect(      newInstance('a', 'b',)                                              .previous(),)   .toBeInstanceOf(iteratorValue2,),)
+        test("1 next, previous",                          () => expect(      newInstance('a', 'b',).do1Next()                                    .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("2 next, previous",                          () => expect(      newInstance('a', 'b',).do2Next()                                    .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("1 previous, previous",                      () => expect(      newInstance('a', 'b',).do1Previous()                                .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("2 previous, previous",                      () => expect(      newInstance('a', 'b',).do2Previous()                                .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("1 previous, 1 next, previous",              () => expect(      newInstance('a', 'b',).do1PreviousAnd1Next()                        .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("1 previous, 2 next, previous",              () => expect(      newInstance('a', 'b',).do1PreviousAnd2Next()                        .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("2 previous, 1 next, previous",              () => expect(      newInstance('a', 'b',).do2PreviousAnd1Next()                        .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("2 previous, 2 next, previous",              () => expect(      newInstance('a', 'b',).do2PreviousAnd2Next()                        .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("1 next, 1 previous, previous",              () => expect(      newInstance('a', 'b',).do1NextAnd1Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("1 next, 2 previous, previous",              () => expect(      newInstance('a', 'b',).do1NextAnd2Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("2 next, 1 previous, previous",              () => expect(      newInstance('a', 'b',).do2NextAnd1Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("2 next, 2 previous, previous",              () => expect(      newInstance('a', 'b',).do2NextAnd2Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEach, previous",                         () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,)                     .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("forEach, 1 next, previous",                 () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Next()           .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("forEach, 2 next, previous",                 () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Next()           .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("forEach, 1 previous, previous",             () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do1Previous()       .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEach, 2 previous, previous",             () => expect(      newInstance('a', 'b',).forEach(EMPTY_CALLBACK,).do2Previous()       .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEachIndexed, previous",                  () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,)              .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("forEachIndexed, 1 next, previous",          () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("forEachIndexed, 2 next, previous",          () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .previous(),)   .toBeInstanceOf(iteratorValue1,),)
+        test("forEachIndexed, 1 previous, previous",      () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEachIndexed, 2 previous, previous",      () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().previous(),)   .toBe(beforeFirstIteratorValue,),)
+    },)},)
+
+    describe("4 fields", () => {
+    describe("GenericCollectionIterator", () => {
+        test("firstIndex",                                () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .firstIndex,)   .toBe(0,),)
+        test("lastIndex",                                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .lastIndex,)    .toBe(3,),)
+        test("currentIndex",                              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .currentIndex,) .toBeNull(),)
+        test("1 next, currentIndex",                      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .currentIndex,) .toBe(0,),)
+        test("2 next, currentIndex",                      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .currentIndex,) .toBe(1,),)
+        test("1 previous, currentIndex",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .currentIndex,) .toBe(3,),)
+        test("2 previous, currentIndex",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .currentIndex,) .toBe(2,),)
+        test("1 previous, 1 next, currentIndex",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .currentIndex,) .toBe(3,),)
+        test("1 previous, 2 next, currentIndex",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .currentIndex,) .toBe(3,),)
+        test("2 previous, 1 next, currentIndex",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .currentIndex,) .toBe(3,),)
+        test("2 previous, 2 next, currentIndex",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .currentIndex,) .toBe(3,),)
+        test("1 next, 1 previous, currentIndex",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .currentIndex,) .toBe(0,),)
+        test("1 next, 2 previous, currentIndex",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .currentIndex,) .toBe(0,),)
+        test("2 next, 1 previous, currentIndex",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .currentIndex,) .toBe(0,),)
+        test("2 next, 2 previous, currentIndex",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .currentIndex,) .toBe(0,),)
+        test("forEach, currentIndex",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .currentIndex,) .toBe(3,),)
+        test("forEach, 1 next, currentIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .currentIndex,) .toBe(3,),)
+        test("forEach, 2 next, currentIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .currentIndex,) .toBe(3,),)
+        test("forEach, 1 previous, currentIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .currentIndex,) .toBe(2,),)
+        test("forEach, 2 previous, currentIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .currentIndex,) .toBe(1,),)
+        test("forEachIndexed, currentIndex",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .currentIndex,) .toBe(3,),)
+        test("forEachIndexed, 1 next, currentIndex",      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .currentIndex,) .toBe(3,),)
+        test("forEachIndexed, 2 next, currentIndex",      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .currentIndex,) .toBe(3,),)
+        test("forEachIndexed, 1 previous, currentIndex",  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().currentIndex,) .toBe(2,),)
+        test("forEachIndexed, 2 previous, currentIndex",  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().currentIndex,) .toBe(1,),)
+        test("nextIndex",                                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .nextIndex,)    .toBe(0,),)
+        test("1 next, nextIndex",                         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .nextIndex,)    .toBe(1,),)
+        test("2 next, nextIndex",                         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .nextIndex,)    .toBe(2,),)
+        test("1 previous, nextIndex",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .nextIndex,)    .toBeNull(),)
+        test("2 previous, nextIndex",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .nextIndex,)    .toBe(3,),)
+        test("1 previous, 1 next, nextIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .nextIndex,)    .toBeNull(),)
+        test("1 previous, 2 next, nextIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .nextIndex,)    .toBeNull(),)
+        test("2 previous, 1 next, nextIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .nextIndex,)    .toBeNull(),)
+        test("2 previous, 2 next, nextIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .nextIndex,)    .toBeNull(),)
+        test("1 next, 1 previous, nextIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .nextIndex,)    .toBe(1,),)
+        test("1 next, 2 previous, nextIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .nextIndex,)    .toBe(1,),)
+        test("2 next, 1 previous, nextIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .nextIndex,)    .toBe(1,),)
+        test("2 next, 2 previous, nextIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .nextIndex,)    .toBe(1,),)
+        test("forEach, nextIndex",                        () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .nextIndex,)    .toBeNull(),)
+        test("forEach, 1 next, nextIndex",                () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .nextIndex,)    .toBeNull(),)
+        test("forEach, 2 next, nextIndex",                () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .nextIndex,)    .toBeNull(),)
+        test("forEach, 1 previous, nextIndex",            () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .nextIndex,)    .toBe(3,),)
+        test("forEach, 2 previous, nextIndex",            () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .nextIndex,)    .toBe(2,),)
+        test("forEachIndexed, nextIndex",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, 1 next, nextIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, 2 next, nextIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .nextIndex,)    .toBeNull(),)
+        test("forEachIndexed, 1 previous, nextIndex",     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().nextIndex,)    .toBe(3,),)
+        test("forEachIndexed, 2 previous, nextIndex",     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().nextIndex,)    .toBe(2,),)
+        test("previousIndex",                             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .previousIndex,).toBe(3,),)
+        test("1 next, previousIndex",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .previousIndex,).toBeNull(),)
+        test("2 next, previousIndex",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .previousIndex,).toBe(0,),)
+        test("1 previous, previousIndex",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .previousIndex,).toBe(2,),)
+        test("2 previous, previousIndex",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .previousIndex,).toBe(1,),)
+        test("1 previous, 1 next, previousIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .previousIndex,).toBe(2,),)
+        test("1 previous, 2 next, previousIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .previousIndex,).toBe(2,),)
+        test("2 previous, 1 next, previousIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .previousIndex,).toBe(2,),)
+        test("2 previous, 2 next, previousIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .previousIndex,).toBe(2,),)
+        test("1 next, 1 previous, previousIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .previousIndex,).toBeNull(),)
+        test("1 next, 2 previous, previousIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .previousIndex,).toBeNull(),)
+        test("2 next, 1 previous, previousIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .previousIndex,).toBeNull(),)
+        test("2 next, 2 previous, previousIndex",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .previousIndex,).toBeNull(),)
+        test("forEach, previousIndex",                    () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .previousIndex,).toBe(2,),)
+        test("forEach, 1 next, previousIndex",            () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .previousIndex,).toBe(2,),)
+        test("forEach, 2 next, previousIndex",            () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .previousIndex,).toBe(2,),)
+        test("forEach, 1 previous, previousIndex",        () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .previousIndex,).toBe(1,),)
+        test("forEach, 2 previous, previousIndex",        () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .previousIndex,).toBe(0,),)
+        test("forEachIndexed, previousIndex",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .previousIndex,).toBe(2,),)
+        test("forEachIndexed, 1 next, previousIndex",     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previousIndex,).toBe(2,),)
+        test("forEachIndexed, 2 next, previousIndex",     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .previousIndex,).toBe(2,),)
+        test("forEachIndexed, 1 previous, previousIndex", () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previousIndex,).toBe(1,),)
+        test("forEachIndexed, 2 previous, previousIndex", () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().previousIndex,).toBe(0,),)
+        test("hasNext",                                   () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .hasNext,)      .toBeTrue(),)
+        test("1 next, hasNext",                           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .hasNext,)      .toBeTrue(),)
+        test("2 next, hasNext",                           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .hasNext,)      .toBeTrue(),)
+        test("1 previous, hasNext",                       () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .hasNext,)      .toBeFalse(),)
+        test("2 previous, hasNext",                       () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .hasNext,)      .toBeTrue(),)
+        test("1 previous, 1 next, hasNext",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .hasNext,)      .toBeFalse(),)
+        test("1 previous, 2 next, hasNext",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .hasNext,)      .toBeFalse(),)
+        test("2 previous, 1 next, hasNext",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .hasNext,)      .toBeFalse(),)
+        test("2 previous, 2 next, hasNext",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .hasNext,)      .toBeFalse(),)
+        test("1 next, 1 previous, hasNext",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .hasNext,)      .toBeTrue(),)
+        test("1 next, 2 previous, hasNext",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .hasNext,)      .toBeTrue(),)
+        test("2 next, 1 previous, hasNext",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .hasNext,)      .toBeTrue(),)
+        test("2 next, 2 previous, hasNext",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .hasNext,)      .toBeTrue(),)
+        test("forEach, hasNext",                          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .hasNext,)      .toBeFalse(),)
+        test("forEach, 1 next, hasNext",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .hasNext,)      .toBeFalse(),)
+        test("forEach, 2 next, hasNext",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .hasNext,)      .toBeFalse(),)
+        test("forEach, 1 previous, hasNext",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .hasNext,)      .toBeTrue(),)
+        test("forEach, 2 previous, hasNext",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .hasNext,)      .toBeTrue(),)
+        test("forEachIndexed, hasNext",                   () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, 1 next, hasNext",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, 2 next, hasNext",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .hasNext,)      .toBeFalse(),)
+        test("forEachIndexed, 1 previous, hasNext",       () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().hasNext,)      .toBeTrue(),)
+        test("forEachIndexed, 2 previous, hasNext",       () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().hasNext,)      .toBeTrue(),)
+        test("hasPrevious",                               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .hasPrevious,)  .toBeTrue(),)
+        test("1 next, hasPrevious",                       () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .hasPrevious,)  .toBeFalse(),)
+        test("2 next, hasPrevious",                       () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .hasPrevious,)  .toBeTrue(),)
+        test("1 previous, hasPrevious",                   () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .hasPrevious,)  .toBeTrue(),)
+        test("2 previous, hasPrevious",                   () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .hasPrevious,)  .toBeTrue(),)
+        test("1 previous, 1 next, hasPrevious",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .hasPrevious,)  .toBeTrue(),)
+        test("1 previous, 2 next, hasPrevious",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .hasPrevious,)  .toBeTrue(),)
+        test("2 previous, 1 next, hasPrevious",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .hasPrevious,)  .toBeTrue(),)
+        test("2 previous, 2 next, hasPrevious",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .hasPrevious,)  .toBeTrue(),)
+        test("1 next, 1 previous, hasPrevious",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("1 next, 2 previous, hasPrevious",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("2 next, 1 previous, hasPrevious",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("2 next, 2 previous, hasPrevious",           () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .hasPrevious,)  .toBeFalse(),)
+        test("forEach, hasPrevious",                      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .hasPrevious,)  .toBeTrue(),)
+        test("forEach, 1 next, hasPrevious",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .hasPrevious,)  .toBeTrue(),)
+        test("forEach, 2 next, hasPrevious",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .hasPrevious,)  .toBeTrue(),)
+        test("forEach, 1 previous, hasPrevious",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .hasPrevious,)  .toBeTrue(),)
+        test("forEach, 2 previous, hasPrevious",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .hasPrevious,)  .toBeTrue(),)
+        test("forEachIndexed, hasPrevious",               () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .hasPrevious,)  .toBeTrue(),)
+        test("forEachIndexed, 1 next, hasPrevious",       () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .hasPrevious,)  .toBeTrue(),)
+        test("forEachIndexed, 2 next, hasPrevious",       () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .hasPrevious,)  .toBeTrue(),)
+        test("forEachIndexed, 1 previous, hasPrevious",   () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().hasPrevious,)  .toBeTrue(),)
+        test("forEachIndexed, 2 previous, hasPrevious",   () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().hasPrevious,)  .toBeTrue(),)
+        test("nextValue",                                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .nextValue,)    .toBe('a',),)
+        test("1 next, nextValue",                         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .nextValue,)    .toBe('b',),)
+        test("2 next, nextValue",                         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .nextValue,)    .toBe('c',),)
+        test("1 previous, nextValue",                     () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("2 previous, nextValue",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .nextValue,)    .toBe('d',),)
+        test("1 previous, 1 next, nextValue",             () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("1 previous, 2 next, nextValue",             () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("2 previous, 1 next, nextValue",             () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("2 previous, 2 next, nextValue",             () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("1 next, 1 previous, nextValue",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .nextValue,)    .toBe('b',),)
+        test("1 next, 2 previous, nextValue",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .nextValue,)    .toBe('b',),)
+        test("2 next, 1 previous, nextValue",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .nextValue,)    .toBe('b',),)
+        test("2 next, 2 previous, nextValue",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .nextValue,)    .toBe('b',),)
+        test("forEach, nextValue",                        () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, 1 next, nextValue",                () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, 2 next, nextValue",                () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, 1 previous, nextValue",            () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .nextValue,)    .toBe('d',),)
+        test("forEach, 2 previous, nextValue",            () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .nextValue,)    .toBe('c',),)
+        test("forEachIndexed, nextValue",                 () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, 1 next, nextValue",         () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, 2 next, nextValue",         () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .nextValue,)    .toThrow(NoElementFoundInCollectionException,),)
+        test("forEachIndexed, 1 previous, nextValue",     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().nextValue,)    .toBe('d',),)
+        test("forEachIndexed, 2 previous, nextValue",     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().nextValue,)    .toBe('c',),)
+        test("previousValue",                             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .previousValue,).toBe('d',),)
+        test("1 next, previousValue",                     () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("2 next, previousValue",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .previousValue,).toBe('a',),)
+        test("1 previous, previousValue",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .previousValue,).toBe('c',),)
+        test("2 previous, previousValue",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .previousValue,).toBe('b',),)
+        test("1 previous, 1 next, previousValue",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .previousValue,).toBe('c',),)
+        test("1 previous, 2 next, previousValue",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .previousValue,).toBe('c',),)
+        test("2 previous, 1 next, previousValue",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .previousValue,).toBe('c',),)
+        test("2 previous, 2 next, previousValue",         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .previousValue,).toBe('c',),)
+        test("1 next, 1 previous, previousValue",         () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("1 next, 2 previous, previousValue",         () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("2 next, 1 previous, previousValue",         () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("2 next, 2 previous, previousValue",         () => expect(() => new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .previousValue,).toThrow(NoElementFoundInCollectionException,),)
+        test("forEach, previousValue",                    () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .previousValue,).toBe('c',),)
+        test("forEach, 1 next, previousValue",            () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .previousValue,).toBe('c',),)
+        test("forEach, 2 next, previousValue",            () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .previousValue,).toBe('c',),)
+        test("forEach, 1 previous, previousValue",        () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .previousValue,).toBe('b',),)
+        test("forEach, 2 previous, previousValue",        () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .previousValue,).toBe('a',),)
+        test("forEachIndexed, previousValue",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .previousValue,).toBe('c',),)
+        test("forEachIndexed, 1 next, previousValue",     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previousValue,).toBe('c',),)
+        test("forEachIndexed, 2 next, previousValue",     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .previousValue,).toBe('c',),)
+        test("forEachIndexed, 1 previous, previousValue", () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previousValue,).toBe('b',),)
+        test("forEachIndexed, 2 previous, previousValue", () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().previousValue,).toBe('a',),)
+        test("next",                                      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 next, next",                              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("2 next, next",                              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 previous, next",                          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .next(),)       .toBe(afterLastIteratorValue,),)
+        test("2 previous, next",                          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 previous, 1 next, next",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("1 previous, 2 next, next",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("2 previous, 1 next, next",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("2 previous, 2 next, next",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .next(),)       .toBe(afterLastIteratorValue,),)
+        test("1 next, 1 previous, next",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 next, 2 previous, next",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("2 next, 1 previous, next",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("2 next, 2 previous, next",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEach, next",                             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, 1 next, next",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, 2 next, next",                     () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEach, 1 previous, next",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEach, 2 previous, next",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEachIndexed, next",                      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, 1 next, next",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, 2 next, next",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .next(),)       .toBe(afterLastIteratorValue,),)
+        test("forEachIndexed, 1 previous, next",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEachIndexed, 2 previous, next",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().next(),)       .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("previous",                                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 next, previous",                          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Next()                                    .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("2 next, previous",                          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Next()                                    .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 previous, previous",                      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1Previous()                                .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("2 previous, previous",                      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2Previous()                                .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 previous, 1 next, previous",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd1Next()                        .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 previous, 2 next, previous",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1PreviousAnd2Next()                        .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("2 previous, 1 next, previous",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd1Next()                        .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("2 previous, 2 next, previous",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2PreviousAnd2Next()                        .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("1 next, 1 previous, previous",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd1Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("1 next, 2 previous, previous",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do1NextAnd2Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("2 next, 1 previous, previous",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd1Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("2 next, 2 previous, previous",              () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).do2NextAnd2Previous()                        .previous(),)   .toBe(beforeFirstIteratorValue,),)
+        test("forEach, previous",                         () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,)                     .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEach, 1 next, previous",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Next()           .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEach, 2 next, previous",                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Next()           .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEach, 1 previous, previous",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do1Previous()       .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEach, 2 previous, previous",             () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEach(EMPTY_CALLBACK,).do2Previous()       .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEachIndexed, previous",                  () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,)              .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEachIndexed, 1 next, previous",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Next()    .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEachIndexed, 2 next, previous",          () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Next()    .previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEachIndexed, 1 previous, previous",      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do1Previous().previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+        test("forEachIndexed, 2 previous, previous",      () => expect(      new CollectionIterator_ByGenericIterator(ABCD,).forEachIndexed(EMPTY_CALLBACK,).do2Previous().previous(),)   .toBeInstanceOf(GenericCollectionIteratorValue,),)
+    },)},)
+
 },)
-
-//#region -------------------- next / previous operation --------------------
-
-function do1Next<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.next()
-    return iterator
-}
-
-function do2Next<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.next()
-    iterator.next()
-    return iterator
-}
-
-function do1Previous<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.previous()
-    return iterator
-}
-
-function do2Previous<const const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.previous()
-    iterator.previous()
-    return iterator
-}
-
-
-function do1PreviousAnd1Next<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.previous()
-    iterator.next()
-    return iterator
-}
-
-function do1PreviousAnd2Next<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.previous()
-    iterator.next()
-    iterator.next()
-    return iterator
-}
-
-function do2PreviousAnd1Next<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.previous()
-    iterator.previous()
-    iterator.next()
-    return iterator
-}
-
-function do2PreviousAnd2Next<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.previous()
-    iterator.previous()
-    iterator.next()
-    iterator.next()
-    return iterator
-}
-
-
-function do1NextAnd1Previous<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.next()
-    iterator.previous()
-    return iterator
-}
-
-function do1NextAnd2Previous<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.next()
-    iterator.previous()
-    iterator.previous()
-    return iterator
-}
-
-function do2NextAnd1Previous<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.next()
-    iterator.next()
-    iterator.previous()
-    return iterator
-}
-
-function do2NextAnd2Previous<const ITERATOR extends CollectionIterator, >(iterator: ITERATOR,) {
-    iterator.next()
-    iterator.next()
-    iterator.previous()
-    iterator.previous()
-    return iterator
-}
-
-//#endregion -------------------- next / previous operation --------------------
