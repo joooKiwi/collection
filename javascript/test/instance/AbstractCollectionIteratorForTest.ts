@@ -36,6 +36,87 @@ export abstract class AbstractCollectionIteratorForTest<const T, >
         return this
     }
 
+
+    public do1Next(): this {
+        this.next()
+        return this
+    }
+
+    public do2Next(): this {
+        this.next()
+        this.next()
+        return this
+    }
+
+    public do1Previous(): this {
+        this.previous()
+        return this
+    }
+
+    public do2Previous(): this {
+        this.previous()
+        this.previous()
+        return this
+    }
+
+
+    public do1PreviousAnd1Next(): this {
+        this.previous()
+        this.next()
+        return this
+    }
+
+    public do1PreviousAnd2Next(): this {
+        this.previous()
+        this.next()
+        this.next()
+        return this
+    }
+
+    public do2PreviousAnd1Next(): this {
+        this.previous()
+        this.previous()
+        this.next()
+        return this
+    }
+
+    public do2PreviousAnd2Next(): this {
+        this.previous()
+        this.previous()
+        this.next()
+        this.next()
+        return this
+    }
+
+
+    public do1NextAnd1Previous(): this {
+        this.next()
+        this.previous()
+        return this
+    }
+
+    public do1NextAnd2Previous(): this {
+        this.next()
+        this.previous()
+        this.previous()
+        return this
+    }
+
+    public do2NextAnd1Previous(): this {
+        this.next()
+        this.next()
+        this.previous()
+        return this
+    }
+
+    public do2NextAnd2Previous(): this {
+        this.next()
+        this.next()
+        this.previous()
+        this.previous()
+        return this
+    }
+
     //#endregion -------------------- Test utility methods --------------------
     //#region -------------------- Size methods --------------------
 
