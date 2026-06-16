@@ -25,7 +25,7 @@ public final class InstanceClassUtil {
 
     public final Class<? extends CollectionHolderForTest<?, ?>> instanceClass;
 
-    public @Nullable Class<? extends EmptyCollectionException> __emptyExceptionClass;
+    public @Nullable Class<? extends EmptyCollectionException> emptyExceptionClass;
 
     @MagicConstant(valuesFromClass = Types.class) private @NonNls @Nullable String __type;
 
@@ -59,13 +59,13 @@ public final class InstanceClassUtil {
     //#region -------------------- Getter method --------------------
 
     public Class<? extends EmptyCollectionException> emptyExceptionClass() {
-        final var value = __emptyExceptionClass;
+        final var value = emptyExceptionClass;
         if (value != null)
             return value;
 
         if (isNull())
-            return __emptyExceptionClass = NullCollectionException.class;
-        return __emptyExceptionClass = EmptyCollectionException.class;
+            return emptyExceptionClass = NullCollectionException.class;
+        return emptyExceptionClass = EmptyCollectionException.class;
     }
 
 
