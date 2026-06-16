@@ -37,6 +37,8 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
         extends CopyOnWriteArrayList<T>
         implements MutableList<T> {
 
+    @Serial private static final long serialVersionUID = 6548810844245615952L;
+
     //#region -------------------- Sub class --------------------
 
     /// A view of a subdivided or reversed [MutableCopyOnWriteArrayList]
@@ -46,6 +48,8 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
             extends MutableCopyOnWriteArrayList<T> {
 
         //#region -------------------- Fields --------------------
+
+        @Serial private static final long serialVersionUID = -4303293806816374648L;
 
         private final List<T> __reference;
 

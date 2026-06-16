@@ -50,9 +50,9 @@ public class EmptyDeque<T extends @Nullable Object>
 
     @Contract(value = ALWAYS_NULL_0, pure = true) @Override public @Nullable T peek() { return null; }
 
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public @Nullable T peekFirst() { return null; }
+    @Contract(value = ALWAYS_NULL_0, pure = true) @Override public @Nullable T peekFirst() { return null; }
 
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public @Nullable T peekLast() { return null; }
+    @Contract(value = ALWAYS_NULL_0, pure = true) @Override public @Nullable T peekLast() { return null; }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As reverse methods --------------------

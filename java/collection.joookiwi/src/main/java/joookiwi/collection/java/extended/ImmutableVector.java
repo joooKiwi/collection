@@ -247,7 +247,7 @@ public class ImmutableVector<T extends @Nullable Object>
         final var array = elementData;
         var index = -1;
         for (final var value : values)
-            array[index] = value;
+            array[++index] = value;
     }
 
     //#endregion -------------------- values --------------------
