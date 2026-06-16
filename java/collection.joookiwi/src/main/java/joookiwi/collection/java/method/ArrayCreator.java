@@ -53,7 +53,7 @@ public final class ArrayCreator
 
     //#region -------------------- ∅ --------------------
 
-    /// An [Object] (casted to [T]) [empty Array][java.lang.reflect.Array]
+    /// An [Object] (cast to [T]) [empty Array][java.lang.reflect.Array]
     public static <T extends @Nullable Object> T @Unmodifiable [] Array() {
         final var valueHolder = __emptyArray;
         if (valueHolder == null) {
@@ -244,24 +244,23 @@ public final class ArrayCreator
     /// @param <T> The type
     /// @param type The [Class] type to get a new empty array
     @Contract(value = ALWAYS_NEW_1, pure = true)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final Class<? extends T> type) {
         if (type == Object.class)
             return Array();
 
         final var map = __otherEmptyArrays;
         if (map.containsKey(type)) {
-            final var valueFound = map.get(type).get();
+            @SuppressWarnings("unchecked cast") final var valueFound = (T @Nullable []) map.get(type).get();
             if (valueFound != null)
-                return (T[]) valueFound;
+                return valueFound;
         }
-        final var newValue = (T[]) Array.newInstance(type, 0);
+        @SuppressWarnings("unchecked cast") final var newValue = (T[]) Array.newInstance(type, 0);
         map.put(type, new WeakReference<>(newValue));
         return newValue;
     }
 
-    @Contract(value = ALWAYS_NEW_2, pure = true)
     @SuppressWarnings("unchecked cast")
+    @Contract(value = ALWAYS_NEW_2, pure = true)
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final Class<? extends T> type, int size) {
         if (size == 0)
             return Array(type);
@@ -273,13 +272,12 @@ public final class ArrayCreator
     //#endregion -------------------- type --------------------
     //#region -------------------- value --------------------
 
-    @SuppressWarnings("unchecked cast")
     @Contract(value = ALWAYS_NEW_1, pure = true)
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value) {
         if (value == null)
-            return (T[]) new Object[]{null,};
+            return sizedArray(1);
 
-        final var newArray = (T[]) Array.newInstance(value.getClass());
+        @SuppressWarnings("unchecked cast") final var newArray = Array((Class<? extends T>) value.getClass(), 1);
         newArray[0] = value;
         return newArray;
     }
@@ -507,9 +505,9 @@ public final class ArrayCreator
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T @Nullable @Unmodifiable [] values,
                                                                         final int newSize) {
         if (values == null)
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         if (values.length == 0)
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values, newSize);
     }
 
@@ -595,150 +593,138 @@ public final class ArrayCreator
 
 
     @Contract(ALWAYS_NEW_2)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable Iterable<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values instanceof CollectionHolder<? extends T> valuesAsCollectionHolder)
             if (valuesAsCollectionHolder.isEmpty())
-                return (T[]) new Object[newSize];
+                return sizedArray(newSize); // TODO: find the array type to keep its continuity
             else
                 return __newInstance(valuesAsCollectionHolder, newSize);
         if (values instanceof List<? extends T> valuesAsList)
             if (valuesAsList.isEmpty())
-                return (T[]) new Object[newSize];
+                return sizedArray(newSize); // TODO: find the array type to keep its continuity
             else
                 return __newInstance(valuesAsList, newSize);
         return __newInstance(values.iterator(), newSize);
     }
 
     @Contract(ALWAYS_NEW_2)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable @Unmodifiable Collection<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values.isEmpty())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         if (values instanceof List<? extends T>)
             return __newInstance((List<? extends T>) values, newSize);
         return __newInstance(values.iterator(), newSize);
     }
 
     @Contract(ALWAYS_NEW_2)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable @Unmodifiable List<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values.isEmpty())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values, newSize);
     }
 
     @Contract(ALWAYS_NEW_2)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable @Unmodifiable Set<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values.isEmpty())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values.iterator(), newSize);
     }
 
     @Contract(ALWAYS_NEW_2)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable @Unmodifiable Queue<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values.isEmpty())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values.iterator(), newSize);
     }
 
     @Contract(ALWAYS_NEW_2)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable @Unmodifiable Deque<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values.isEmpty())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values.iterator(), newSize);
     }
 
     @Contract(ALWAYS_NEW_2)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable MinimalistCollectionHolder<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values.size() == 0)
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values, newSize);
     }
 
     @Contract(ALWAYS_NEW_2)
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable CollectionHolder<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values.isEmpty())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values, newSize);
     }
 
 
     @Contract(value = ALWAYS_NEW_2, mutates = "param1")
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable Iterator<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (!values.hasNext())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         if (values instanceof CollectionIterator<? extends T> valuesAsCollectionIterator)
             if (valuesAsCollectionIterator.isEmpty())
-                return (T[]) new Object[newSize];
+                return sizedArray(newSize); // TODO: find the array type to keep its continuity
             else
                 return __newInstance(valuesAsCollectionIterator, newSize);
         return __newInstance(values, newSize);
     }
 
     @Contract(value = ALWAYS_NEW_2, mutates = "param1")
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable Spliterator<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         return __newInstance(values, newSize);
     }
 
     @Contract(value = ALWAYS_NEW_2, mutates = "param1")
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable Enumeration<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (!values.hasMoreElements())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values, newSize);
     }
 
     @Contract(value = ALWAYS_NEW_2, mutates = "param1")
-    @SuppressWarnings("unchecked cast")
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable CollectionIterator<? extends T> values,
                                                                         final int newSize) {
-        if (values == null)
-            return (T[]) new Object[newSize];
+        if (values == null) // We cannot determine the type since there is no values
+            return sizedArray(newSize);
         if (values.isEmpty())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         if (!values.hasNext())
-            return (T[]) new Object[newSize];
+            return sizedArray(newSize); // TODO: find the array type to keep its continuity
         return __newInstance(values, newSize);
     }
 
