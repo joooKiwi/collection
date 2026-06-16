@@ -3,6 +3,7 @@ package joookiwi.collection.java.method;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
+import joookiwi.collection.java.LazyCollectionHolderOf1;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -149,7 +150,7 @@ public final class Take
         if (n == 0)
             return EmptyCollectionHolder.getInstance();
         if (n == 1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0)});
+            return new LazyCollectionHolderOf1<>(() -> collection.get(0));
         if (n > 0)
             if (n >= size)
                 return new GenericCollectionHolder<>(collection);
@@ -160,7 +161,7 @@ public final class Take
 
         final var n2 = n + size;
         if (n2 == 1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0)});
+            return new LazyCollectionHolderOf1<>(() -> collection.get(0));
         return new GenericCollectionHolder<>(__getAll(collection, n2));
     }
 
@@ -171,7 +172,7 @@ public final class Take
         if (n == 0)
             return EmptyCollectionHolder.getInstance();
         if (n == 1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst()});
+            return new LazyCollectionHolderOf1<>(collection::getFirst);
 
         final var size = collection.size();
         if (n > 0)
@@ -184,7 +185,7 @@ public final class Take
 
         final var n2 = n + size;
         if (n2 == 1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst()});
+            return new LazyCollectionHolderOf1<>(collection::getFirst);
         return new GenericCollectionHolder<>(__getAll(collection, n2));
     }
 
@@ -196,7 +197,7 @@ public final class Take
         if (n == 0)
             return EmptyCollectionHolder.getInstance();
         if (n == 1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0]});
+            return new LazyCollectionHolderOf1<>(() -> collection[0]);
         if (n > 0)
             if (n >= size)
                 return new GenericCollectionHolder<>(collection);
@@ -207,7 +208,7 @@ public final class Take
 
         final var n2 = n + size;
         if (n2 == 1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0]});
+            return new LazyCollectionHolderOf1<>(() -> collection[0]);
         return new GenericCollectionHolder<>(__getAll(collection, n2));
     }
 

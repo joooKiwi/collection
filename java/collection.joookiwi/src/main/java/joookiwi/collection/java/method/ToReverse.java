@@ -3,6 +3,7 @@ package joookiwi.collection.java.method;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
+import joookiwi.collection.java.LazyCollectionHolderOf1;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -618,18 +619,17 @@ public final class ToReverse
         if (size == 0)
             return EmptyCollectionHolder.getInstance();
         if (size == 1)
-            return new GenericCollectionHolder<>(collection);
+            return new LazyCollectionHolderOf1<>(() -> collection.get(0));
         return new GenericCollectionHolder<>(__all(collection, size));
     }
 
-    @SuppressWarnings("unchecked cast")
     private static <T extends @Nullable Object> CollectionHolder<T> __core0(final CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
             return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 1)
-            return (CollectionHolder<T>) collection;
+            return new LazyCollectionHolderOf1<>(collection::getFirst);
         return new GenericCollectionHolder<>(__all(collection, size));
     }
 
@@ -638,7 +638,7 @@ public final class ToReverse
         if (size == 0)
             return EmptyCollectionHolder.getInstance();
         if (size == 1)
-            return new GenericCollectionHolder<>(collection);
+            return new LazyCollectionHolderOf1<>(() -> collection[0]);
         return new GenericCollectionHolder<>(__all(collection, size));
     }
 
@@ -652,6 +652,9 @@ public final class ToReverse
             return EmptyCollectionHolder.getInstance();
 
         final var startingIndex = _startingIndex(from, size);
+        final var sizeMinus1 = size - 1;
+        if (startingIndex == sizeMinus1)
+            return new LazyCollectionHolderOf1<>(() -> collection.get(sizeMinus1));
         return new GenericCollectionHolder<>(__fromStart(collection, size, startingIndex));
     }
 
@@ -662,6 +665,8 @@ public final class ToReverse
 
         final var size = collection.size();
         final var startingIndex = _startingIndex(from, size);
+        if (startingIndex == size - 1)
+            return new LazyCollectionHolderOf1<>(collection::getLast);
         return new GenericCollectionHolder<>(__fromStart(collection, size, startingIndex));
     }
 
@@ -672,6 +677,9 @@ public final class ToReverse
             return EmptyCollectionHolder.getInstance();
 
         final var startingIndex = _startingIndex(from, size);
+        final var sizeMinus1 = size - 1;
+        if (startingIndex == sizeMinus1)
+            return new LazyCollectionHolderOf1<>(() -> collection[sizeMinus1]);
         return new GenericCollectionHolder<>(__fromStart(collection, size, startingIndex));
     }
 
@@ -689,7 +697,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         _validateInRange(from, startingIndex, to, endingIndex);
         if (startingIndex == endingIndex)
-            return new GenericCollectionHolder<>(__single(collection, startingIndex));
+            return new LazyCollectionHolderOf1<>(() -> collection.get(startingIndex));
         return new GenericCollectionHolder<>(__fromStartToEnd(collection, startingIndex, endingIndex));
     }
 
@@ -704,7 +712,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         _validateInRange(from, startingIndex, to, endingIndex);
         if (startingIndex == endingIndex)
-            return new GenericCollectionHolder<>(__single(collection, startingIndex));
+            return new LazyCollectionHolderOf1<>(() -> collection.get(startingIndex));
         return new GenericCollectionHolder<>(__fromStartToEnd(collection, startingIndex, endingIndex));
     }
 
@@ -719,7 +727,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         _validateInRange(from, startingIndex, to, endingIndex);
         if (startingIndex == endingIndex)
-            return new GenericCollectionHolder<>(__single(collection, startingIndex));
+            return new LazyCollectionHolderOf1<>(() -> collection[startingIndex]);
         return new GenericCollectionHolder<>(__fromStartToEnd(collection, startingIndex, endingIndex));
     }
 
@@ -734,7 +742,7 @@ public final class ToReverse
 
         final var endingIndex = _endingIndex(to, size);
         if (endingIndex == 0)
-            return new GenericCollectionHolder<>(__single(collection, 0));
+            return new LazyCollectionHolderOf1<>(() -> collection.get( 0));
         return new GenericCollectionHolder<>(__toEnd(collection, endingIndex));
     }
 
@@ -745,7 +753,7 @@ public final class ToReverse
 
         final var endingIndex = _endingIndex(to, collection.size());
         if (endingIndex == 0)
-            return new GenericCollectionHolder<>(__single(collection, 0));
+            return new LazyCollectionHolderOf1<>(collection::getFirst);
         return new GenericCollectionHolder<>(__toEnd(collection, endingIndex));
     }
 
@@ -757,7 +765,7 @@ public final class ToReverse
 
         final var endingIndex = _endingIndex(to, size);
         if (endingIndex == 0)
-            return new GenericCollectionHolder<>(__single(collection, 0));
+            return new LazyCollectionHolderOf1<>(() -> collection[0]);
         return new GenericCollectionHolder<>(__toEnd(collection, endingIndex));
     }
 
@@ -765,14 +773,6 @@ public final class ToReverse
 
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
-
-    @SuppressWarnings("unchecked cast")
-    private static <T extends @Nullable Object> T @Unmodifiable [] __single(final MinimalistCollectionHolder<? extends T> collection,
-                                                                            final int index) { return (T[]) new Object[]{collection.get(index),}; }
-
-    @SuppressWarnings("unchecked cast")
-    private static <T extends @Nullable Object> T @Unmodifiable [] __single(final T @Unmodifiable [] collection,
-                                                                            final int index) { return (T[]) new Object[]{collection[index],}; }
 
 
     private static <T extends @Nullable Object> T @Unmodifiable [] __all(final MinimalistCollectionHolder<? extends T> collection,

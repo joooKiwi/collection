@@ -3,6 +3,7 @@ package joookiwi.collection.java.method;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
+import joookiwi.collection.java.LazyCollectionHolderOf1;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -127,7 +128,7 @@ public final class DropLast
 
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0),});
+            return new LazyCollectionHolderOf1<>(() -> collection.get(0));
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -138,7 +139,7 @@ public final class DropLast
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0),});
+            return new LazyCollectionHolderOf1<>(() -> collection.get(0));
         return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 
@@ -152,7 +153,7 @@ public final class DropLast
         final var size = collection.size();
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst(),});
+            return new LazyCollectionHolderOf1<>(collection::getFirst);
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -163,7 +164,7 @@ public final class DropLast
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst(),});
+            return new LazyCollectionHolderOf1<>(collection::getFirst);
         return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 
@@ -177,7 +178,7 @@ public final class DropLast
 
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0],});
+            return new LazyCollectionHolderOf1<>(() -> collection[0]);
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -188,7 +189,7 @@ public final class DropLast
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0],});
+            return new LazyCollectionHolderOf1<>(() -> collection[0]);
         return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 

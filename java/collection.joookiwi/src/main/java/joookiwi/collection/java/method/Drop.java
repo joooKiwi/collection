@@ -3,6 +3,7 @@ package joookiwi.collection.java.method;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
+import joookiwi.collection.java.LazyCollectionHolderOf1;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -141,7 +142,6 @@ public final class Drop
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Core methods --------------------
 
-    @SuppressWarnings("unchecked cast")
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                            final int n) {
         final var size = collection.size();
@@ -152,7 +152,7 @@ public final class Drop
 
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(sizeMinus1),});
+            return new LazyCollectionHolderOf1<>(() -> collection.get(sizeMinus1));
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -163,11 +163,10 @@ public final class Drop
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(sizeMinus1),});
+            return new LazyCollectionHolderOf1<>(() -> collection.get(sizeMinus1));
         return new GenericCollectionHolder<>(__getAll(collection, size, n2));
     }
 
-    @SuppressWarnings("unchecked cast")
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection,
                                                                            final int n) {
         if (collection.isEmpty())
@@ -178,7 +177,7 @@ public final class Drop
         final var size = collection.size();
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getLast(),});
+            return new LazyCollectionHolderOf1<>(collection::getLast);
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -189,11 +188,10 @@ public final class Drop
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getLast(),});
+            return new LazyCollectionHolderOf1<>(collection::getLast);
         return new GenericCollectionHolder<>(__getAll(collection, size, n2));
     }
 
-    @SuppressWarnings("unchecked cast")
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection,
                                                                            final int n) {
         final var size = collection.length;
@@ -204,7 +202,7 @@ public final class Drop
 
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[sizeMinus1],});
+            return new LazyCollectionHolderOf1<>(() -> collection[sizeMinus1]);
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -215,7 +213,7 @@ public final class Drop
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[sizeMinus1],});
+            return new LazyCollectionHolderOf1<>(() -> collection[sizeMinus1]);
         return new GenericCollectionHolder<>(__getAll(collection, size, n + size));
     }
 
