@@ -100,7 +100,7 @@ public final class Instances {
             Arguments.of(Named.of("collection (by normal)",            CollectionHolder_ByGenericCollection.class)),
             Arguments.of(Named.of("collection (by array)",             CollectionHolder_ByArrayCollection.class)),
             Arguments.of(Named.of("collection (by minimalist viewer)", CollectionHolder_ByMinimalistViewer.class)),
-            Arguments.of(Named.of("collection (by normal viewer)",     CollectionHolder_ByViewer.class)),
+            Arguments.of(Named.of("collection (by viewer)",            CollectionHolder_ByViewer.class)),
     };
 
 
