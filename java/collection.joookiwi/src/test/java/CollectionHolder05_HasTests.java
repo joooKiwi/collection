@@ -4750,38 +4750,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         @Test void hasNot() { assertTrue(instance.hasNot(null)); }
 
         @TestInstance(PER_CLASS) @Nested class hasOne {
+            @DisplayName("null") @Nested class Null {
+                @DisplayName("Java Iterator<T>")              @Test void javaIterator()               { assertFalse(stringInstance.hasOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("Java ListIterator<T>")          @Test void javaListIterator()           { assertFalse(stringInstance.hasOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("Java Spliterator<T>")           @Test void javaSpliterator()            { assertFalse(stringInstance.hasOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("Java Enumeration<T>")           @Test void javaEnumeration()            { assertFalse(stringInstance.hasOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("Java Iterable<T>")              @Test void javaIterable()               { assertFalse(stringInstance.hasOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalistCollectionHolder() { assertFalse(stringInstance.hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("CollectionHolder<T>")           @Test void collectionHolder()           { assertFalse(stringInstance.hasOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("Java Collection<T>")            @Test void javaCollection()             { assertFalse(stringInstance.hasOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("Java SequencedCollection<T>")   @Test void javaSequencedCollection()    { assertFalse(stringInstance.hasOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("Java List<T>")                  @Test void javaList()                   { assertFalse(stringInstance.hasOne(NULL_JAVA_LIST)); }
+                @DisplayName("Java ArrayList<T>")             @Test void javaArrayList()              { assertFalse(stringInstance.hasOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("Java CopyOnWriteArrayList<T>")  @Test void javaCopyOnWriteArrayList()   { assertFalse(stringInstance.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("Java LinkedList<T>")            @Test void javaLinkedList()             { assertFalse(stringInstance.hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("Java Vector<T>")                @Test void javaVector()                 { assertFalse(stringInstance.hasOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("Java Set<T>")                   @Test void javaSet()                    { assertFalse(stringInstance.hasOne(NULL_JAVA_SET)); }
+                @DisplayName("Java SequencedSet<T>")          @Test void javaSequencedSet()           { assertFalse(stringInstance.hasOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("Java SortedSet<T>")             @Test void javaSortedSet()              { assertFalse(stringInstance.hasOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("Java NavigableSet<T>")          @Test void javaNavigableSet()           { assertFalse(stringInstance.hasOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("Java ConcurrentSkipListSet<T>") @Test void javaConcurrentSkipListSet()  { assertFalse(stringInstance.hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("Java CopyOnWriteArraySet<T>")   @Test void javaCopyOnWriteArraySet()    { assertFalse(stringInstance.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("Java HashSet<T>")               @Test void javaHashSet()                { assertFalse(stringInstance.hasOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("Java LinkedHashSet<T>")         @Test void javaLinkedHashSet()          { assertFalse(stringInstance.hasOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("Java TreeSet<T>")               @Test void javaTreeSet()                { assertFalse(stringInstance.hasOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("Java Queue<T>")                 @Test void javaQueue()                  { assertFalse(stringInstance.hasOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("Java BlockingQueue<T>")         @Test void javaBlockingQueue()          { assertFalse(stringInstance.hasOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("Java TransferQueue<T>")         @Test void javaTransferQueue()          { assertFalse(stringInstance.hasOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("Java ArrayBlockingQueue<T>")    @Test void javaArrayBlockingQueue()     { assertFalse(stringInstance.hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("Java ConcurrentLinkedQueue<T>") @Test void javaConcurrentLinkedQueue()  { assertFalse(stringInstance.hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("Java LinkedBlockingQueue<T>")   @Test void javaLinkedBlockingQueue()    { assertFalse(stringInstance.hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("Java LinkedTransferQueue<T>")   @Test void javaLinkedTransferQueue()    { assertFalse(stringInstance.hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("Java PriorityBlockingQueue<T>") @Test void javaPriorityBlockingQueue()  { assertFalse(stringInstance.hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("Java PriorityQueue<T>")         @Test void javaPriorityQueue()          { assertFalse(stringInstance.hasOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("Java SynchronousQueue<T>")      @Test void javaSynchronousQueue()       { assertFalse(stringInstance.hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("Java Deque<T>")                 @Test void javaDeque()                  { assertFalse(stringInstance.hasOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("Java BlockingDeque<T>")         @Test void javaBlockingDeque()          { assertFalse(stringInstance.hasOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("Java ArrayDeque<T>")            @Test void javaArrayDeque()             { assertFalse(stringInstance.hasOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("Java ConcurrentLinkedDeque<T>") @Test void javaConcurrentLinkedDeque()  { assertFalse(stringInstance.hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("Java LinkedBlockingDeque<T>")   @Test void javaLinkedBlockingDeque()    { assertFalse(stringInstance.hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("Java Stack<T>")                 @Test void javaStack()                  { assertFalse(stringInstance.hasOne(NULL_JAVA_STACK)); }
+                @DisplayName("T[]")                           @Test void array()                      { assertFalse(stringInstance.hasOne(NULL_ARRAY)); }
+            }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterator<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaListIterator<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaSpliterator<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaEnumeration<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(NULL_JAVA_ITERABLE)); }
                                          @Test void empty()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(new ArrayAsJavaIterable<>(AB))); }
@@ -4789,18 +4826,16 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(new ArrayAsMinimalistCollection<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(new ArrayAsCollection<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
@@ -4811,11 +4846,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
@@ -4826,11 +4860,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
@@ -4841,11 +4874,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
@@ -4856,11 +4888,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
@@ -4871,11 +4902,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
@@ -4886,11 +4916,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
@@ -4901,11 +4930,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
@@ -4916,11 +4944,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
@@ -4931,11 +4958,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
@@ -4946,11 +4972,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
@@ -4961,11 +4986,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
@@ -4976,75 +5000,108 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(newInstance(ABCD))); }
 
             }
 
             @DisplayName("T[]") @Nested class Array {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasOne(NULL_ARRAY)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasOne(A)); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasOne(AB)); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasOne(ABCD)); }
+                                         @Test void empty() { assertFalse(stringInstance.hasOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasOne(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasOne(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasOne(ABCD)); }
             }
 
         }
         @TestInstance(PER_CLASS) @Nested class hasNotOne {
+            @DisplayName("null") @Nested class Null {
+                @DisplayName("Java Iterator<T>")              @Test void javaIterator()               { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("Java ListIterator<T>")          @Test void javaListIterator()           { assertTrue(stringInstance.hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("Java Spliterator<T>")           @Test void javaSpliterator()            { assertTrue(stringInstance.hasNotOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("Java Enumeration<T>")           @Test void javaEnumeration()            { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("Java Iterable<T>")              @Test void javaIterable()               { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalistCollectionHolder() { assertTrue(stringInstance.hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("CollectionHolder<T>")           @Test void collectionHolder()           { assertTrue(stringInstance.hasNotOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("Java Collection<T>")            @Test void javaCollection()             { assertTrue(stringInstance.hasNotOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("Java List<T>")                  @Test void javaList()                   { assertTrue(stringInstance.hasNotOne(NULL_JAVA_LIST)); }
+                @DisplayName("Java ArrayList<T>")             @Test void javaArrayList()              { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("Java CopyOnWriteArrayList<T>")  @Test void javaCopyOnWriteArrayList()   { assertTrue(stringInstance.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("Java LinkedList<T>")            @Test void javaLinkedList()             { assertTrue(stringInstance.hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("Java Vector<T>")                @Test void javaVector()                 { assertTrue(stringInstance.hasNotOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("Java SequencedCollection<T>")   @Test void javaSequencedCollection()    { assertTrue(stringInstance.hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("Java Set<T>")                   @Test void javaSet()                    { assertTrue(stringInstance.hasNotOne(NULL_JAVA_SET)); }
+                @DisplayName("Java SequencedSet<T>")          @Test void javaSequencedSet()           { assertTrue(stringInstance.hasNotOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("Java SortedSet<T>")             @Test void javaSortedSet()              { assertTrue(stringInstance.hasNotOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("Java NavigableSet<T>")          @Test void javaNavigableSet()           { assertTrue(stringInstance.hasNotOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("Java ConcurrentSkipListSet<T>") @Test void javaConcurrentSkipListSet()  { assertTrue(stringInstance.hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("Java CopyOnWriteArraySet<T>")   @Test void javaCopyOnWriteArraySet()    { assertTrue(stringInstance.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("Java HashSet<T>")               @Test void javaHashSet()                { assertTrue(stringInstance.hasNotOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("Java LinkedHashSet<T>")         @Test void javaLinkedHashSet()          { assertTrue(stringInstance.hasNotOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("Java TreeSet<T>")               @Test void javaTreeSet()                { assertTrue(stringInstance.hasNotOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("Java Queue<T>")                 @Test void javaQueue()                  { assertTrue(stringInstance.hasNotOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("Java BlockingQueue<T>")         @Test void javaBlockingQueue()          { assertTrue(stringInstance.hasNotOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("Java TransferQueue<T>")         @Test void javaTransferQueue()          { assertTrue(stringInstance.hasNotOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("Java ArrayBlockingQueue<T>")    @Test void javaArrayBlockingQueue()     { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("Java ConcurrentLinkedQueue<T>") @Test void javaConcurrentLinkedQueue()  { assertTrue(stringInstance.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("Java LinkedBlockingQueue<T>")   @Test void javaLinkedBlockingQueue()    { assertTrue(stringInstance.hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("Java LinkedTransferQueue<T>")   @Test void javaLinkedTransferQueue()    { assertTrue(stringInstance.hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("Java PriorityBlockingQueue<T>") @Test void javaPriorityBlockingQueue()  { assertTrue(stringInstance.hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("Java PriorityQueue<T>")         @Test void javaPriorityQueue()          { assertTrue(stringInstance.hasNotOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("Java SynchronousQueue<T>")      @Test void javaSynchronousQueue()       { assertTrue(stringInstance.hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("Java Deque<T>")                 @Test void javaDeque()                  { assertTrue(stringInstance.hasNotOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("Java BlockingDeque<T>")         @Test void javaBlockingDeque()          { assertTrue(stringInstance.hasNotOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("Java ArrayDeque<T>")            @Test void javaArrayDeque()             { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("Java ConcurrentLinkedDeque<T>") @Test void javaConcurrentLinkedDeque()  { assertTrue(stringInstance.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("Java LinkedBlockingDeque<T>")   @Test void javaLinkedBlockingDeque()    { assertTrue(stringInstance.hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("Java Stack<T>")                 @Test void javaStack()                  { assertTrue(stringInstance.hasNotOne(NULL_JAVA_STACK)); }
+                @DisplayName("T[]")                           @Test void array()                      { assertTrue(stringInstance.hasNotOne(NULL_ARRAY)); }
+            }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterator<>(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterable<>(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(new ArrayAsCollection<>(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
@@ -5055,11 +5112,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
@@ -5070,11 +5126,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
@@ -5085,11 +5140,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
@@ -5100,11 +5154,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
@@ -5115,11 +5168,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
@@ -5130,11 +5182,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
@@ -5145,11 +5196,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
@@ -5160,11 +5210,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
@@ -5175,11 +5224,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
@@ -5190,11 +5238,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
@@ -5205,11 +5252,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
@@ -5220,76 +5266,109 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(newInstance(ABCD))); }
 
             }
 
             @DisplayName("T[]") @Nested class Array {
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasNotOne(NULL_ARRAY)); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasNotOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasNotOne(A)); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasNotOne(AB)); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasNotOne(ABCD)); }
+                                         @Test void empty() { assertTrue(stringInstance.hasNotOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasNotOne(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasNotOne(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasNotOne(ABCD)); }
             }
 
         }
 
         @TestInstance(PER_CLASS) @Nested class hasAll {
+            @DisplayName("null") @Nested class Null {
+                @DisplayName("Java Iterator<T>")              @Test void javaIterator()               { assertTrue(stringInstance.hasAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("Java ListIterator<T>")          @Test void javaListIterator()           { assertTrue(stringInstance.hasAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("Java Spliterator<T>")           @Test void javaSpliterator()            { assertTrue(stringInstance.hasAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("Java Enumeration<T>")           @Test void javaEnumeration()            { assertTrue(stringInstance.hasAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("Java Iterable<T>")              @Test void javaIterable()               { assertTrue(stringInstance.hasAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalistCollectionHolder() { assertTrue(stringInstance.hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("CollectionHolder<T>")           @Test void collectionHolder()           { assertTrue(stringInstance.hasAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("Java Collection<T>")            @Test void javaCollection()             { assertTrue(stringInstance.hasAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("Java List<T>")                  @Test void javaList()                   { assertTrue(stringInstance.hasAll(NULL_JAVA_LIST)); }
+                @DisplayName("Java ArrayList<T>")             @Test void javaArrayList()              { assertTrue(stringInstance.hasAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("Java CopyOnWriteArrayList<T>")  @Test void javaCopyOnWriteArrayList()   { assertTrue(stringInstance.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("Java LinkedList<T>")            @Test void javaLinkedList()             { assertTrue(stringInstance.hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("Java Vector<T>")                @Test void javaVector()                 { assertTrue(stringInstance.hasAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("Java SequencedCollection<T>")   @Test void javaSequencedCollection()    { assertTrue(stringInstance.hasAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("Java Set<T>")                   @Test void javaSet()                    { assertTrue(stringInstance.hasAll(NULL_JAVA_SET)); }
+                @DisplayName("Java SequencedSet<T>")          @Test void javaSequencedSet()           { assertTrue(stringInstance.hasAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("Java SortedSet<T>")             @Test void javaSortedSet()              { assertTrue(stringInstance.hasAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("Java NavigableSet<T>")          @Test void javaNavigableSet()           { assertTrue(stringInstance.hasAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("Java ConcurrentSkipListSet<T>") @Test void javaConcurrentSkipListSet()  { assertTrue(stringInstance.hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("Java CopyOnWriteArraySet<T>")   @Test void javaCopyOnWriteArraySet()    { assertTrue(stringInstance.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("Java HashSet<T>")               @Test void javaHashSet()                { assertTrue(stringInstance.hasAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("Java LinkedHashSet<T>")         @Test void javaLinkedHashSet()          { assertTrue(stringInstance.hasAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("Java TreeSet<T>")               @Test void javaTreeSet()                { assertTrue(stringInstance.hasAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("Java Queue<T>")                 @Test void javaQueue()                  { assertTrue(stringInstance.hasAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("Java BlockingQueue<T>")         @Test void javaBlockingQueue()          { assertTrue(stringInstance.hasAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("Java TransferQueue<T>")         @Test void javaTransferQueue()          { assertTrue(stringInstance.hasAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("Java ArrayBlockingQueue<T>")    @Test void javaArrayBlockingQueue()     { assertTrue(stringInstance.hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("Java ConcurrentLinkedQueue<T>") @Test void javaConcurrentLinkedQueue()  { assertTrue(stringInstance.hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("Java LinkedBlockingQueue<T>")   @Test void javaLinkedBlockingQueue()    { assertTrue(stringInstance.hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("Java LinkedTransferQueue<T>")   @Test void javaLinkedTransferQueue()    { assertTrue(stringInstance.hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("Java PriorityBlockingQueue<T>") @Test void javaPriorityBlockingQueue()  { assertTrue(stringInstance.hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("Java PriorityQueue<T>")         @Test void javaPriorityQueue()          { assertTrue(stringInstance.hasAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("Java SynchronousQueue<T>")      @Test void javaSynchronousQueue()       { assertTrue(stringInstance.hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("Java Deque<T>")                 @Test void javaDeque()                  { assertTrue(stringInstance.hasAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("Java BlockingDeque<T>")         @Test void javaBlockingDeque()          { assertTrue(stringInstance.hasAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("Java ArrayDeque<T>")            @Test void javaArrayDeque()             { assertTrue(stringInstance.hasAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("Java ConcurrentLinkedDeque<T>") @Test void javaConcurrentLinkedDeque()  { assertTrue(stringInstance.hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("Java LinkedBlockingDeque<T>")   @Test void javaLinkedBlockingDeque()    { assertTrue(stringInstance.hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("Java Stack<T>")                 @Test void javaStack()                  { assertTrue(stringInstance.hasAll(NULL_JAVA_STACK)); }
+                @DisplayName("T[]")                           @Test void array()                      { assertTrue(stringInstance.hasAll(NULL_ARRAY)); }
+            }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterator<>(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaListIterator<>(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaSpliterator<>(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaEnumeration<>(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterable<>(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(new ArrayAsMinimalistCollection<>(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(new ArrayAsCollection<>(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
@@ -5300,11 +5379,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
@@ -5315,11 +5393,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
@@ -5330,11 +5407,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
@@ -5345,11 +5421,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
@@ -5360,11 +5435,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
@@ -5375,11 +5449,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
@@ -5390,11 +5463,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
@@ -5405,11 +5477,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
@@ -5420,11 +5491,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue(stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue(stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
@@ -5435,11 +5505,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
@@ -5450,11 +5519,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
@@ -5465,75 +5533,108 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(newInstance(ABCD))); }
 
             }
 
             @DisplayName("T[]") @Nested class Array {
-                @DisplayName("null")     @Test void testNull() { assertTrue( stringInstance.hasAll(NULL_ARRAY)); }
-                                         @Test void empty()    { assertTrue( stringInstance.hasAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasAll(A)); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasAll(AB)); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasAll(ABCD)); }
+                                         @Test void empty() { assertTrue( stringInstance.hasAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasAll(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasAll(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasAll(ABCD)); }
             }
 
         }
         @TestInstance(PER_CLASS) @Nested class hasNotAll {
+            @DisplayName("null") @Nested class Null {
+                @DisplayName("Java Iterator<T>")              @Test void javaIterator()               { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("Java ListIterator<T>")          @Test void javaListIterator()           { assertFalse(stringInstance.hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("Java Spliterator<T>")           @Test void javaSpliterator()            { assertFalse(stringInstance.hasNotAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("Java Enumeration<T>")           @Test void javaEnumeration()            { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("Java Iterable<T>")              @Test void javaIterable()               { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalistCollectionHolder() { assertFalse(stringInstance.hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("CollectionHolder<T>")           @Test void collectionHolder()           { assertFalse(stringInstance.hasNotAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("Java Collection<T>")            @Test void javaCollection()             { assertFalse(stringInstance.hasNotAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("Java List<T>")                  @Test void javaList()                   { assertFalse(stringInstance.hasNotAll(NULL_JAVA_LIST)); }
+                @DisplayName("Java ArrayList<T>")             @Test void javaArrayList()              { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("Java CopyOnWriteArrayList<T>")  @Test void javaCopyOnWriteArrayList()   { assertFalse(stringInstance.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("Java LinkedList<T>")            @Test void javaLinkedList()             { assertFalse(stringInstance.hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("Java Vector<T>")                @Test void javaVector()                 { assertFalse(stringInstance.hasNotAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("Java SequencedCollection<T>")   @Test void javaSequencedCollection()    { assertFalse(stringInstance.hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("Java Set<T>")                   @Test void javaSet()                    { assertFalse(stringInstance.hasNotAll(NULL_JAVA_SET)); }
+                @DisplayName("Java SequencedSet<T>")          @Test void javaSequencedSet()           { assertFalse(stringInstance.hasNotAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("Java SortedSet<T>")             @Test void javaSortedSet()              { assertFalse(stringInstance.hasNotAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("Java NavigableSet<T>")          @Test void javaNavigableSet()           { assertFalse(stringInstance.hasNotAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("Java ConcurrentSkipListSet<T>") @Test void javaConcurrentSkipListSet()  { assertFalse(stringInstance.hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("Java CopyOnWriteArraySet<T>")   @Test void javaCopyOnWriteArraySet()    { assertFalse(stringInstance.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("Java HashSet<T>")               @Test void javaHashSet()                { assertFalse(stringInstance.hasNotAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("Java LinkedHashSet<T>")         @Test void javaLinkedHashSet()          { assertFalse(stringInstance.hasNotAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("Java TreeSet<T>")               @Test void javaTreeSet()                { assertFalse(stringInstance.hasNotAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("Java Queue<T>")                 @Test void javaQueue()                  { assertFalse(stringInstance.hasNotAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("Java BlockingQueue<T>")         @Test void javaBlockingQueue()          { assertFalse(stringInstance.hasNotAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("Java TransferQueue<T>")         @Test void javaTransferQueue()          { assertFalse(stringInstance.hasNotAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("Java ArrayBlockingQueue<T>")    @Test void javaArrayBlockingQueue()     { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("Java ConcurrentLinkedQueue<T>") @Test void javaConcurrentLinkedQueue()  { assertFalse(stringInstance.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("Java LinkedBlockingQueue<T>")   @Test void javaLinkedBlockingQueue()    { assertFalse(stringInstance.hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("Java LinkedTransferQueue<T>")   @Test void javaLinkedTransferQueue()    { assertFalse(stringInstance.hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("Java PriorityBlockingQueue<T>") @Test void javaPriorityBlockingQueue()  { assertFalse(stringInstance.hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("Java PriorityQueue<T>")         @Test void javaPriorityQueue()          { assertFalse(stringInstance.hasNotAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("Java SynchronousQueue<T>")      @Test void javaSynchronousQueue()       { assertFalse(stringInstance.hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("Java Deque<T>")                 @Test void javaDeque()                  { assertFalse(stringInstance.hasNotAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("Java BlockingDeque<T>")         @Test void javaBlockingDeque()          { assertFalse(stringInstance.hasNotAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("Java ArrayDeque<T>")            @Test void javaArrayDeque()             { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("Java ConcurrentLinkedDeque<T>") @Test void javaConcurrentLinkedDeque()  { assertFalse(stringInstance.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("Java LinkedBlockingDeque<T>")   @Test void javaLinkedBlockingDeque()    { assertFalse(stringInstance.hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("Java Stack<T>")                 @Test void javaStack()                  { assertFalse(stringInstance.hasNotAll(NULL_JAVA_STACK)); }
+                @DisplayName("T[]")                           @Test void array()                      { assertFalse(stringInstance.hasNotAll(NULL_ARRAY)); }
+            }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterator<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterable<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(new ArrayAsCollection<>(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
@@ -5544,11 +5645,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
@@ -5559,11 +5659,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
@@ -5574,11 +5673,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
@@ -5589,11 +5687,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
@@ -5604,11 +5701,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
@@ -5619,11 +5715,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
@@ -5634,11 +5729,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
@@ -5649,11 +5743,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
@@ -5664,11 +5757,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
@@ -5679,11 +5771,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
@@ -5694,11 +5785,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
@@ -5709,20 +5799,18 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(newInstance(ABCD))); }
 
             }
 
             @DisplayName("T[]") @Nested class Array {
-                @DisplayName("null")     @Test void testNull() { assertFalse(stringInstance.hasNotAll(NULL_ARRAY)); }
-                                         @Test void empty()    { assertFalse(stringInstance.hasNotAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( stringInstance.hasNotAll(A)); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( stringInstance.hasNotAll(AB)); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( stringInstance.hasNotAll(ABCD)); }
+                                         @Test void empty() { assertFalse(stringInstance.hasNotAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( stringInstance.hasNotAll(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( stringInstance.hasNotAll(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( stringInstance.hasNotAll(ABCD)); }
             }
 
         }
@@ -5733,7 +5821,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         @Test void hasDuplicate()    { assertFalse(instance.hasDuplicate()); }
         @Test void hasNoDuplicates() { assertTrue(instance.hasNoDuplicates()); }
 
-        @Test void requireNoNulls() { assertDoesNotThrow(() -> instance.requireNoNulls()); }
+        @Test void requireNoNulls() { assertDoesNotThrow(instance::requireNoNulls); }
 
     }
 
@@ -5769,17 +5857,176 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @TestInstance(PER_CLASS) @Nested class hasOne {
+                @DisplayName("null") @Nested class Null {
+                    @DisplayName("0 fields (Java Iterator<T>)")              @Test void javaIterator0()               { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ListIterator<T>)")          @Test void javaListIterator0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Spliterator<T>)")           @Test void javaSpliterator0()            { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Enumeration<T>)")           @Test void javaEnumeration0()            { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Iterable<T>)")              @Test void javaIterable0()               { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder0() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (CollectionHolder<T>)")           @Test void collectionHolder0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Collection<T>)")            @Test void javaCollection0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java List<T>)")                  @Test void javaList0()                   { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayList<T>)")             @Test void javaArrayList0()              { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList0()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedList<T>)")            @Test void javaLinkedList0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Vector<T>)")                @Test void javaVector0()                 { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Set<T>)")                   @Test void javaSet0()                    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SortedSet<T>)")             @Test void javaSortedSet0()              { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java HashSet<T>)")               @Test void javaHashSet0()                { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java TreeSet<T>)")               @Test void javaTreeSet0()                { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Queue<T>)")                 @Test void javaQueue0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue0()     { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue0()       { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Deque<T>)")                 @Test void javaDeque0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Stack<T>)")                 @Test void javaStack0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (T[])")                           @Test void array0()                      { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Iterator<T>)")               @Test void javaIterator1()               { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ListIterator<T>)")           @Test void javaListIterator1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Spliterator<T>)")            @Test void javaSpliterator1()            { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Enumeration<T>)")            @Test void javaEnumeration1()            { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Iterable<T>)")               @Test void javaIterable1()               { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (MinimalistCollectionHolder<T>)")  @Test void minimalistCollectionHolder1() { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("1 field (CollectionHolder<T>)")            @Test void collectionHolder1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Collection<T>)")             @Test void javaCollection1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SequencedCollection<T>)")    @Test void javaSequencedCollection1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java List<T>)")                   @Test void javaList1()                   { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayList<T>)")              @Test void javaArrayList1()              { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java CopyOnWriteArrayList<T>)")   @Test void javaCopyOnWriteArrayList1()   { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedList<T>)")             @Test void javaLinkedList1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("1 field (Java Vector<T>)")                 @Test void javaVector1()                 { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Set<T>)")                    @Test void javaSet1()                    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SequencedSet<T>)")           @Test void javaSequencedSet1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SortedSet<T>)")              @Test void javaSortedSet1()              { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java NavigableSet<T>)")           @Test void javaNavigableSet1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentSkipListSet<T>)")  @Test void javaConcurrentSkipListSet1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java CopyOnWriteArraySet<T>)")    @Test void javaCopyOnWriteArraySet1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java HashSet<T>)")                @Test void javaHashSet1()                { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedHashSet<T>)")          @Test void javaLinkedHashSet1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("1 field (Java TreeSet<T>)")                @Test void javaTreeSet1()                { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Queue<T>)")                  @Test void javaQueue1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java BlockingQueue<T>)")          @Test void javaBlockingQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java TransferQueue<T>)")          @Test void javaTransferQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayBlockingQueue<T>)")     @Test void javaArrayBlockingQueue1()     { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentLinkedQueue<T>)")  @Test void javaConcurrentLinkedQueue1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedBlockingQueue<T>)")    @Test void javaLinkedBlockingQueue1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedTransferQueue<T>)")    @Test void javaLinkedTransferQueue1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java PriorityBlockingQueue<T>)")  @Test void javaPriorityBlockingQueue1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java PriorityQueue<T>)")          @Test void javaPriorityQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SynchronousQueue<T>)")       @Test void javaSynchronousQueue1()       { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Deque<T>)")                  @Test void javaDeque1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java BlockingDeque<T>)")          @Test void javaBlockingDeque1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayDeque<T>)")             @Test void javaArrayDeque1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentLinkedDeque<T>)")  @Test void javaConcurrentLinkedDeque1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedBlockingDeque<T>)")    @Test void javaLinkedBlockingDeque1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Stack<T>)")                  @Test void javaStack1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (T[])")                            @Test void array1()                      { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Iterator<T>)")              @Test void javaIterator2()               { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ListIterator<T>)")          @Test void javaListIterator2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Spliterator<T>)")           @Test void javaSpliterator2()            { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Enumeration<T>)")           @Test void javaEnumeration2()            { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Iterable<T>)")              @Test void javaIterable2()               { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder2() { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (CollectionHolder<T>)")           @Test void collectionHolder2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Collection<T>)")            @Test void javaCollection2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java List<T>)")                  @Test void javaList2()                   { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayList<T>)")             @Test void javaArrayList2()              { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList2()   { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedList<T>)")            @Test void javaLinkedList2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Vector<T>)")                @Test void javaVector2()                 { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Set<T>)")                   @Test void javaSet2()                    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SortedSet<T>)")             @Test void javaSortedSet2()              { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java HashSet<T>)")               @Test void javaHashSet2()                { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java TreeSet<T>)")               @Test void javaTreeSet2()                { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Queue<T>)")                 @Test void javaQueue2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue2()     { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue2()       { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Deque<T>)")                 @Test void javaDeque2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Stack<T>)")                 @Test void javaStack2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (T[])")                           @Test void array2()                      { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Iterator<T>)")              @Test void javaIterator4()               { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ListIterator<T>)")          @Test void javaListIterator4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Spliterator<T>)")           @Test void javaSpliterator4()            { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Enumeration<T>)")           @Test void javaEnumeration4()            { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Iterable<T>)")              @Test void javaIterable4()               { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder4() { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (CollectionHolder<T>)")           @Test void collectionHolder4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Collection<T>)")            @Test void javaCollection4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java List<T>)")                  @Test void javaList4()                   { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayList<T>)")             @Test void javaArrayList4()              { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList4()   { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedList<T>)")            @Test void javaLinkedList4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Vector<T>)")                @Test void javaVector4()                 { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Set<T>)")                   @Test void javaSet4()                    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SortedSet<T>)")             @Test void javaSortedSet4()              { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java HashSet<T>)")               @Test void javaHashSet4()                { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java TreeSet<T>)")               @Test void javaTreeSet4()                { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Queue<T>)")                 @Test void javaQueue4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue4()     { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue4()       { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Deque<T>)")                 @Test void javaDeque4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Stack<T>)")                 @Test void javaStack4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (T[])")                           @Test void array4()                      { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_ARRAY))                                    .getAmountOfCall()); }
+                }
+
                 @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                    @DisplayName("0 fields (null)")      @Test void test0_null()     { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(NULL_JAVA_ITERATOR)).getAmountOfCall()); }
                     @DisplayName("0 fields (empty)")     @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
                     @DisplayName("0 fields (non-empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("1 field (null)")       @Test void test1_null()     { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(NULL_JAVA_ITERATOR)).getAmountOfCall()); }
                     @DisplayName("1 field (empty)")      @Test void test1_empty()    { assertEquals(0, newInstance(A).execute(it ->     it.hasOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
                     @DisplayName("1 field (non-empty)")  @Test void test1_nonEmpty() { assertEquals(1, newInstance(A).execute(it ->     it.hasOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("2 fields (null)")      @Test void test2_null()     { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(NULL_JAVA_ITERATOR)).getAmountOfCall()); }
                     @DisplayName("2 fields (empty)")     @Test void test2_empty()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
                     @DisplayName("2 fields (non-empty)") @Test void test2_nonEmpty() { assertEquals(1, newInstance(AB).execute(it ->    it.hasOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
-                    @DisplayName("4 fields (null)")      @Test void test4_null()     { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(NULL_JAVA_ITERATOR)).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)")     @Test void test4_empty()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
                 }
@@ -6080,6 +6327,169 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
             }
             @TestInstance(PER_CLASS) @Nested class hasNotOne {
+                @DisplayName("null") @Nested class Null {
+                    @DisplayName("0 fields (Java Iterator<T>)")              @Test void javaIterator0()               { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ListIterator<T>)")          @Test void javaListIterator0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Spliterator<T>)")           @Test void javaSpliterator0()            { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Enumeration<T>)")           @Test void javaEnumeration0()            { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Iterable<T>)")              @Test void javaIterable0()               { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder0() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (CollectionHolder<T>)")           @Test void collectionHolder0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Collection<T>)")            @Test void javaCollection0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java List<T>)")                  @Test void javaList0()                   { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayList<T>)")             @Test void javaArrayList0()              { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList0()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedList<T>)")            @Test void javaLinkedList0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Vector<T>)")                @Test void javaVector0()                 { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Set<T>)")                   @Test void javaSet0()                    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SortedSet<T>)")             @Test void javaSortedSet0()              { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java HashSet<T>)")               @Test void javaHashSet0()                { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java TreeSet<T>)")               @Test void javaTreeSet0()                { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Queue<T>)")                 @Test void javaQueue0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue0()     { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue0()       { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Deque<T>)")                 @Test void javaDeque0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Stack<T>)")                 @Test void javaStack0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (T[])")                           @Test void array0()                      { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Iterator<T>)")               @Test void javaIterator1()               { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ListIterator<T>)")           @Test void javaListIterator1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Spliterator<T>)")            @Test void javaSpliterator1()            { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Enumeration<T>)")            @Test void javaEnumeration1()            { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Iterable<T>)")               @Test void javaIterable1()               { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (MinimalistCollectionHolder<T>)")  @Test void minimalistCollectionHolder1() { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("1 field (CollectionHolder<T>)")            @Test void collectionHolder1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Collection<T>)")             @Test void javaCollection1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SequencedCollection<T>)")    @Test void javaSequencedCollection1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java List<T>)")                   @Test void javaList1()                   { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayList<T>)")              @Test void javaArrayList1()              { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java CopyOnWriteArrayList<T>)")   @Test void javaCopyOnWriteArrayList1()   { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedList<T>)")             @Test void javaLinkedList1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("1 field (Java Vector<T>)")                 @Test void javaVector1()                 { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Set<T>)")                    @Test void javaSet1()                    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SequencedSet<T>)")           @Test void javaSequencedSet1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SortedSet<T>)")              @Test void javaSortedSet1()              { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java NavigableSet<T>)")           @Test void javaNavigableSet1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentSkipListSet<T>)")  @Test void javaConcurrentSkipListSet1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java CopyOnWriteArraySet<T>)")    @Test void javaCopyOnWriteArraySet1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java HashSet<T>)")                @Test void javaHashSet1()                { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedHashSet<T>)")          @Test void javaLinkedHashSet1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("1 field (Java TreeSet<T>)")                @Test void javaTreeSet1()                { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Queue<T>)")                  @Test void javaQueue1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java BlockingQueue<T>)")          @Test void javaBlockingQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java TransferQueue<T>)")          @Test void javaTransferQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayBlockingQueue<T>)")     @Test void javaArrayBlockingQueue1()     { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentLinkedQueue<T>)")  @Test void javaConcurrentLinkedQueue1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedBlockingQueue<T>)")    @Test void javaLinkedBlockingQueue1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedTransferQueue<T>)")    @Test void javaLinkedTransferQueue1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java PriorityBlockingQueue<T>)")  @Test void javaPriorityBlockingQueue1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java PriorityQueue<T>)")          @Test void javaPriorityQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SynchronousQueue<T>)")       @Test void javaSynchronousQueue1()       { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Deque<T>)")                  @Test void javaDeque1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java BlockingDeque<T>)")          @Test void javaBlockingDeque1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayDeque<T>)")             @Test void javaArrayDeque1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentLinkedDeque<T>)")  @Test void javaConcurrentLinkedDeque1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedBlockingDeque<T>)")    @Test void javaLinkedBlockingDeque1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Stack<T>)")                  @Test void javaStack1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (T[])")                            @Test void array1()                      { assertEquals(0, newInstance(A).execute(it ->     it.hasNotOne(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Iterator<T>)")              @Test void javaIterator2()               { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ListIterator<T>)")          @Test void javaListIterator2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Spliterator<T>)")           @Test void javaSpliterator2()            { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Enumeration<T>)")           @Test void javaEnumeration2()            { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Iterable<T>)")              @Test void javaIterable2()               { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder2() { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (CollectionHolder<T>)")           @Test void collectionHolder2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Collection<T>)")            @Test void javaCollection2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java List<T>)")                  @Test void javaList2()                   { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayList<T>)")             @Test void javaArrayList2()              { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList2()   { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedList<T>)")            @Test void javaLinkedList2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Vector<T>)")                @Test void javaVector2()                 { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Set<T>)")                   @Test void javaSet2()                    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SortedSet<T>)")             @Test void javaSortedSet2()              { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java HashSet<T>)")               @Test void javaHashSet2()                { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java TreeSet<T>)")               @Test void javaTreeSet2()                { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Queue<T>)")                 @Test void javaQueue2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue2()     { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue2()       { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Deque<T>)")                 @Test void javaDeque2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Stack<T>)")                 @Test void javaStack2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (T[])")                           @Test void array2()                      { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotOne(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Iterator<T>)")              @Test void javaIterator4()               { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ListIterator<T>)")          @Test void javaListIterator4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Spliterator<T>)")           @Test void javaSpliterator4()            { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Enumeration<T>)")           @Test void javaEnumeration4()            { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Iterable<T>)")              @Test void javaIterable4()               { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder4() { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (CollectionHolder<T>)")           @Test void collectionHolder4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Collection<T>)")            @Test void javaCollection4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java List<T>)")                  @Test void javaList4()                   { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayList<T>)")             @Test void javaArrayList4()              { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList4()   { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedList<T>)")            @Test void javaLinkedList4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Vector<T>)")                @Test void javaVector4()                 { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Set<T>)")                   @Test void javaSet4()                    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SortedSet<T>)")             @Test void javaSortedSet4()              { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java HashSet<T>)")               @Test void javaHashSet4()                { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java TreeSet<T>)")               @Test void javaTreeSet4()                { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Queue<T>)")                 @Test void javaQueue4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue4()     { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue4()       { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Deque<T>)")                 @Test void javaDeque4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Stack<T>)")                 @Test void javaStack4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (T[])")                           @Test void array4()                      { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotOne(NULL_ARRAY))                                    .getAmountOfCall()); }
+                }
+
                 @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                     @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
                     @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotOne(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
@@ -6388,6 +6798,169 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @TestInstance(PER_CLASS) @Nested class hasAll {
+                @DisplayName("null") @Nested class Null {
+                    @DisplayName("0 fields (Java Iterator<T>)")              @Test void javaIterator0()               { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ListIterator<T>)")          @Test void javaListIterator0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Spliterator<T>)")           @Test void javaSpliterator0()            { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Enumeration<T>)")           @Test void javaEnumeration0()            { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Iterable<T>)")              @Test void javaIterable0()               { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder0() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (CollectionHolder<T>)")           @Test void collectionHolder0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Collection<T>)")            @Test void javaCollection0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java List<T>)")                  @Test void javaList0()                   { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayList<T>)")             @Test void javaArrayList0()              { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList0()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedList<T>)")            @Test void javaLinkedList0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Vector<T>)")                @Test void javaVector0()                 { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Set<T>)")                   @Test void javaSet0()                    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SortedSet<T>)")             @Test void javaSortedSet0()              { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java HashSet<T>)")               @Test void javaHashSet0()                { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java TreeSet<T>)")               @Test void javaTreeSet0()                { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Queue<T>)")                 @Test void javaQueue0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue0()     { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue0()       { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Deque<T>)")                 @Test void javaDeque0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Stack<T>)")                 @Test void javaStack0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (T[])")                           @Test void array0()                      { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Iterator<T>)")               @Test void javaIterator1()               { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ListIterator<T>)")           @Test void javaListIterator1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Spliterator<T>)")            @Test void javaSpliterator1()            { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Enumeration<T>)")            @Test void javaEnumeration1()            { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Iterable<T>)")               @Test void javaIterable1()               { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (MinimalistCollectionHolder<T>)")  @Test void minimalistCollectionHolder1() { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("1 field (CollectionHolder<T>)")            @Test void collectionHolder1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Collection<T>)")             @Test void javaCollection1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SequencedCollection<T>)")    @Test void javaSequencedCollection1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java List<T>)")                   @Test void javaList1()                   { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayList<T>)")              @Test void javaArrayList1()              { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java CopyOnWriteArrayList<T>)")   @Test void javaCopyOnWriteArrayList1()   { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedList<T>)")             @Test void javaLinkedList1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("1 field (Java Vector<T>)")                 @Test void javaVector1()                 { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Set<T>)")                    @Test void javaSet1()                    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SequencedSet<T>)")           @Test void javaSequencedSet1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SortedSet<T>)")              @Test void javaSortedSet1()              { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java NavigableSet<T>)")           @Test void javaNavigableSet1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentSkipListSet<T>)")  @Test void javaConcurrentSkipListSet1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java CopyOnWriteArraySet<T>)")    @Test void javaCopyOnWriteArraySet1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java HashSet<T>)")                @Test void javaHashSet1()                { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedHashSet<T>)")          @Test void javaLinkedHashSet1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("1 field (Java TreeSet<T>)")                @Test void javaTreeSet1()                { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Queue<T>)")                  @Test void javaQueue1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java BlockingQueue<T>)")          @Test void javaBlockingQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java TransferQueue<T>)")          @Test void javaTransferQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayBlockingQueue<T>)")     @Test void javaArrayBlockingQueue1()     { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentLinkedQueue<T>)")  @Test void javaConcurrentLinkedQueue1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedBlockingQueue<T>)")    @Test void javaLinkedBlockingQueue1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedTransferQueue<T>)")    @Test void javaLinkedTransferQueue1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java PriorityBlockingQueue<T>)")  @Test void javaPriorityBlockingQueue1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java PriorityQueue<T>)")          @Test void javaPriorityQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SynchronousQueue<T>)")       @Test void javaSynchronousQueue1()       { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Deque<T>)")                  @Test void javaDeque1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java BlockingDeque<T>)")          @Test void javaBlockingDeque1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayDeque<T>)")             @Test void javaArrayDeque1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentLinkedDeque<T>)")  @Test void javaConcurrentLinkedDeque1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedBlockingDeque<T>)")    @Test void javaLinkedBlockingDeque1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Stack<T>)")                  @Test void javaStack1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (T[])")                            @Test void array1()                      { assertEquals(0, newInstance(A).execute(it ->     it.hasAll(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Iterator<T>)")              @Test void javaIterator2()               { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ListIterator<T>)")          @Test void javaListIterator2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Spliterator<T>)")           @Test void javaSpliterator2()            { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Enumeration<T>)")           @Test void javaEnumeration2()            { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Iterable<T>)")              @Test void javaIterable2()               { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder2() { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (CollectionHolder<T>)")           @Test void collectionHolder2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Collection<T>)")            @Test void javaCollection2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java List<T>)")                  @Test void javaList2()                   { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayList<T>)")             @Test void javaArrayList2()              { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList2()   { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedList<T>)")            @Test void javaLinkedList2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Vector<T>)")                @Test void javaVector2()                 { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Set<T>)")                   @Test void javaSet2()                    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SortedSet<T>)")             @Test void javaSortedSet2()              { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java HashSet<T>)")               @Test void javaHashSet2()                { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java TreeSet<T>)")               @Test void javaTreeSet2()                { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Queue<T>)")                 @Test void javaQueue2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue2()     { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue2()       { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Deque<T>)")                 @Test void javaDeque2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Stack<T>)")                 @Test void javaStack2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (T[])")                           @Test void array2()                      { assertEquals(0, newInstance(AB).execute(it ->    it.hasAll(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Iterator<T>)")              @Test void javaIterator4()               { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ListIterator<T>)")          @Test void javaListIterator4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Spliterator<T>)")           @Test void javaSpliterator4()            { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Enumeration<T>)")           @Test void javaEnumeration4()            { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Iterable<T>)")              @Test void javaIterable4()               { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder4() { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (CollectionHolder<T>)")           @Test void collectionHolder4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Collection<T>)")            @Test void javaCollection4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java List<T>)")                  @Test void javaList4()                   { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayList<T>)")             @Test void javaArrayList4()              { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList4()   { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedList<T>)")            @Test void javaLinkedList4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Vector<T>)")                @Test void javaVector4()                 { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Set<T>)")                   @Test void javaSet4()                    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SortedSet<T>)")             @Test void javaSortedSet4()              { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java HashSet<T>)")               @Test void javaHashSet4()                { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java TreeSet<T>)")               @Test void javaTreeSet4()                { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Queue<T>)")                 @Test void javaQueue4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue4()     { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue4()       { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Deque<T>)")                 @Test void javaDeque4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Stack<T>)")                 @Test void javaStack4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (T[])")                           @Test void array4()                      { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasAll(NULL_ARRAY))                                    .getAmountOfCall()); }
+                }
+
                 @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                     @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
                     @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
@@ -6695,6 +7268,169 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
             }
             @TestInstance(PER_CLASS) @Nested class hasNotAll {
+                @DisplayName("null") @Nested class Null {
+                    @DisplayName("0 fields (Java Iterator<T>)")              @Test void javaIterator0()               { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ListIterator<T>)")          @Test void javaListIterator0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Spliterator<T>)")           @Test void javaSpliterator0()            { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Enumeration<T>)")           @Test void javaEnumeration0()            { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Iterable<T>)")              @Test void javaIterable0()               { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder0() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (CollectionHolder<T>)")           @Test void collectionHolder0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Collection<T>)")            @Test void javaCollection0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java List<T>)")                  @Test void javaList0()                   { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayList<T>)")             @Test void javaArrayList0()              { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList0()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedList<T>)")            @Test void javaLinkedList0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Vector<T>)")                @Test void javaVector0()                 { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Set<T>)")                   @Test void javaSet0()                    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SortedSet<T>)")             @Test void javaSortedSet0()              { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet0()           { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java HashSet<T>)")               @Test void javaHashSet0()                { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java TreeSet<T>)")               @Test void javaTreeSet0()                { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Queue<T>)")                 @Test void javaQueue0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue0()     { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue0()       { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Deque<T>)")                 @Test void javaDeque0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque0()          { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque0()             { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque0()  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque0()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("0 fields (Java Stack<T>)")                 @Test void javaStack0()                  { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("0 fields (T[])")                           @Test void array0()                      { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Iterator<T>)")               @Test void javaIterator1()               { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ListIterator<T>)")           @Test void javaListIterator1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Spliterator<T>)")            @Test void javaSpliterator1()            { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Enumeration<T>)")            @Test void javaEnumeration1()            { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Iterable<T>)")               @Test void javaIterable1()               { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (MinimalistCollectionHolder<T>)")  @Test void minimalistCollectionHolder1() { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("1 field (CollectionHolder<T>)")            @Test void collectionHolder1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Collection<T>)")             @Test void javaCollection1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SequencedCollection<T>)")    @Test void javaSequencedCollection1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java List<T>)")                   @Test void javaList1()                   { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayList<T>)")              @Test void javaArrayList1()              { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java CopyOnWriteArrayList<T>)")   @Test void javaCopyOnWriteArrayList1()   { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedList<T>)")             @Test void javaLinkedList1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("1 field (Java Vector<T>)")                 @Test void javaVector1()                 { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Set<T>)")                    @Test void javaSet1()                    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SequencedSet<T>)")           @Test void javaSequencedSet1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SortedSet<T>)")              @Test void javaSortedSet1()              { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("1 field (Java NavigableSet<T>)")           @Test void javaNavigableSet1()           { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentSkipListSet<T>)")  @Test void javaConcurrentSkipListSet1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java CopyOnWriteArraySet<T>)")    @Test void javaCopyOnWriteArraySet1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java HashSet<T>)")                @Test void javaHashSet1()                { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedHashSet<T>)")          @Test void javaLinkedHashSet1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("1 field (Java TreeSet<T>)")                @Test void javaTreeSet1()                { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Queue<T>)")                  @Test void javaQueue1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java BlockingQueue<T>)")          @Test void javaBlockingQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java TransferQueue<T>)")          @Test void javaTransferQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayBlockingQueue<T>)")     @Test void javaArrayBlockingQueue1()     { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentLinkedQueue<T>)")  @Test void javaConcurrentLinkedQueue1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedBlockingQueue<T>)")    @Test void javaLinkedBlockingQueue1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedTransferQueue<T>)")    @Test void javaLinkedTransferQueue1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java PriorityBlockingQueue<T>)")  @Test void javaPriorityBlockingQueue1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java PriorityQueue<T>)")          @Test void javaPriorityQueue1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java SynchronousQueue<T>)")       @Test void javaSynchronousQueue1()       { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Deque<T>)")                  @Test void javaDeque1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java BlockingDeque<T>)")          @Test void javaBlockingDeque1()          { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ArrayDeque<T>)")             @Test void javaArrayDeque1()             { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("1 field (Java ConcurrentLinkedDeque<T>)")  @Test void javaConcurrentLinkedDeque1()  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("1 field (Java LinkedBlockingDeque<T>)")    @Test void javaLinkedBlockingDeque1()    { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("1 field (Java Stack<T>)")                  @Test void javaStack1()                  { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("1 field (T[])")                            @Test void array1()                      { assertEquals(0, newInstance(A).execute(it ->     it.hasNotAll(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Iterator<T>)")              @Test void javaIterator2()               { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ListIterator<T>)")          @Test void javaListIterator2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Spliterator<T>)")           @Test void javaSpliterator2()            { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Enumeration<T>)")           @Test void javaEnumeration2()            { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Iterable<T>)")              @Test void javaIterable2()               { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder2() { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (CollectionHolder<T>)")           @Test void collectionHolder2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Collection<T>)")            @Test void javaCollection2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java List<T>)")                  @Test void javaList2()                   { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayList<T>)")             @Test void javaArrayList2()              { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList2()   { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedList<T>)")            @Test void javaLinkedList2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Vector<T>)")                @Test void javaVector2()                 { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Set<T>)")                   @Test void javaSet2()                    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SortedSet<T>)")             @Test void javaSortedSet2()              { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet2()           { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java HashSet<T>)")               @Test void javaHashSet2()                { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java TreeSet<T>)")               @Test void javaTreeSet2()                { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Queue<T>)")                 @Test void javaQueue2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue2()     { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue2()       { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Deque<T>)")                 @Test void javaDeque2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque2()          { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque2()             { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque2()  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque2()    { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("2 fields (Java Stack<T>)")                 @Test void javaStack2()                  { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("2 fields (T[])")                           @Test void array2()                      { assertEquals(0, newInstance(AB).execute(it ->    it.hasNotAll(NULL_ARRAY))                                    .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Iterator<T>)")              @Test void javaIterator4()               { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_ITERATOR))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ListIterator<T>)")          @Test void javaListIterator4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_LIST_ITERATOR))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Spliterator<T>)")           @Test void javaSpliterator4()            { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_SPLITERATOR))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Enumeration<T>)")           @Test void javaEnumeration4()            { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_ENUMERATION))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Iterable<T>)")              @Test void javaIterable4()               { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_ITERABLE))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder4() { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (CollectionHolder<T>)")           @Test void collectionHolder4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_COLLECTION_HOLDER))                        .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Collection<T>)")            @Test void javaCollection4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_COLLECTION))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION))                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java List<T>)")                  @Test void javaList4()                   { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_LIST))                                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayList<T>)")             @Test void javaArrayList4()              { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_ARRAY_LIST))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList4()   { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST))            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedList<T>)")            @Test void javaLinkedList4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)).getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Vector<T>)")                @Test void javaVector4()                 { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_VECTOR))                              .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Set<T>)")                   @Test void javaSet4()                    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_SET))                                 .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_SEQUENCED_SET))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SortedSet<T>)")             @Test void javaSortedSet4()              { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_SORTED_SET))                          .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet4()           { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_NAVIGABLE_SET))                       .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET))            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java HashSet<T>)")               @Test void javaHashSet4()                { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_HASH_SET))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_LINKED_HASH_SET))                     .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java TreeSet<T>)")               @Test void javaTreeSet4()                { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_TREE_SET))                            .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Queue<T>)")                 @Test void javaQueue4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_QUEUE))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_BLOCKING_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_TRANSFER_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue4()     { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE))                .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_PRIORITY_QUEUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue4()       { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE))                   .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Deque<T>)")                 @Test void javaDeque4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_DEQUE))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque4()          { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_BLOCKING_DEQUE))                      .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque4()             { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_ARRAY_DEQUE))                         .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque4()  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE))             .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque4()    { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE))               .getAmountOfCall()); }
+                    @DisplayName("4 fields (Java Stack<T>)")                 @Test void javaStack4()                  { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_JAVA_STACK))                               .getAmountOfCall()); }
+                    @DisplayName("4 fields (T[])")                           @Test void array4()                      { assertEquals(0, newInstance(ABCD).execute(it ->  it.hasNotAll(NULL_ARRAY))                                    .getAmountOfCall()); }
+                }
+
                 @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                     @DisplayName("0 fields (empty)") @Test void test0_empty()    { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))).getAmountOfCall()); }
                     @DisplayName("0 fields (empty)") @Test void test0_nonEmpty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.hasNotAll(new ArrayAsJavaIterator<>(AB))).getAmountOfCall()); }
@@ -7095,13 +7831,174 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @TestInstance(PER_CLASS) @Nested class hasOne {
+            @DisplayName("null") @Nested class Null {
+                @DisplayName("0 fields (Java Iterator<T>)")              @Test void javaIterator0()               { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("0 fields (Java ListIterator<T>)")          @Test void javaListIterator0()           { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("0 fields (Java Spliterator<T>)")           @Test void javaSpliterator0()            { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("0 fields (Java Enumeration<T>)")           @Test void javaEnumeration0()            { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("0 fields (Java Iterable<T>)")              @Test void javaIterable0()               { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("0 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder0() { assertFalse(newInstance(EMPTY).hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("0 fields (CollectionHolder<T>)")           @Test void collectionHolder0()           { assertFalse(newInstance(EMPTY).hasOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("0 fields (Java Collection<T>)")            @Test void javaCollection0()             { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("0 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection0()    { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("0 fields (Java List<T>)")                  @Test void javaList0()                   { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_LIST)); }
+                @DisplayName("0 fields (Java ArrayList<T>)")             @Test void javaArrayList0()              { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("0 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList0()   { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("0 fields (Java LinkedList<T>)")            @Test void javaLinkedList0()             { assertFalse(newInstance(EMPTY).hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("0 fields (Java Vector<T>)")                @Test void javaVector0()                 { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("0 fields (Java Set<T>)")                   @Test void javaSet0()                    { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_SET)); }
+                @DisplayName("0 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet0()           { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("0 fields (Java SortedSet<T>)")             @Test void javaSortedSet0()              { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("0 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet0()           { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("0 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet0()  { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("0 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet0()    { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("0 fields (Java HashSet<T>)")               @Test void javaHashSet0()                { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("0 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet0()          { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("0 fields (Java TreeSet<T>)")               @Test void javaTreeSet0()                { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("0 fields (Java Queue<T>)")                 @Test void javaQueue0()                  { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("0 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue0()          { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue0()          { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("0 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue0()     { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue0()  { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("0 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue0()    { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue0()    { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("0 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue0()  { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue0()          { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("0 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue0()       { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("0 fields (Java Deque<T>)")                 @Test void javaDeque0()                  { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("0 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque0()          { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("0 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque0()             { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("0 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque0()  { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("0 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque0()    { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("0 fields (Java Stack<T>)")                 @Test void javaStack0()                  { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_STACK)); }
+                @DisplayName("0 fields (T[])")                           @Test void array0()                      { assertFalse(newInstance(EMPTY).hasOne(NULL_ARRAY)); }
+                @DisplayName("1 field (Java Iterator<T>)")               @Test void javaIterator1()               { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("1 field (Java ListIterator<T>)")           @Test void javaListIterator1()           { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("1 field (Java Spliterator<T>)")            @Test void javaSpliterator1()            { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("1 field (Java Enumeration<T>)")            @Test void javaEnumeration1()            { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("1 field (Java Iterable<T>)")               @Test void javaIterable1()               { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("1 field (MinimalistCollectionHolder<T>)")  @Test void minimalistCollectionHolder1() { assertTrue( newInstance(A)    .hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("1 field (CollectionHolder<T>)")            @Test void collectionHolder1()           { assertTrue( newInstance(A)    .hasOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("1 field (Java Collection<T>)")             @Test void javaCollection1()             { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("1 field (Java SequencedCollection<T>)")    @Test void javaSequencedCollection1()    { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("1 field (Java List<T>)")                   @Test void javaList1()                   { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_LIST)); }
+                @DisplayName("1 field (Java ArrayList<T>)")              @Test void javaArrayList1()              { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("1 field (Java CopyOnWriteArrayList<T>)")   @Test void javaCopyOnWriteArrayList1()   { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("1 field (Java LinkedList<T>)")             @Test void javaLinkedList1()             { assertTrue( newInstance(A)    .hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("1 field (Java Vector<T>)")                 @Test void javaVector1()                 { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("1 field (Java Set<T>)")                    @Test void javaSet1()                    { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_SET)); }
+                @DisplayName("1 field (Java SequencedSet<T>)")           @Test void javaSequencedSet1()           { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("1 field (Java SortedSet<T>)")              @Test void javaSortedSet1()              { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("1 field (Java NavigableSet<T>)")           @Test void javaNavigableSet1()           { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("1 field (Java ConcurrentSkipListSet<T>)")  @Test void javaConcurrentSkipListSet1()  { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("1 field (Java CopyOnWriteArraySet<T>)")    @Test void javaCopyOnWriteArraySet1()    { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("1 field (Java HashSet<T>)")                @Test void javaHashSet1()                { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("1 field (Java LinkedHashSet<T>)")          @Test void javaLinkedHashSet1()          { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("1 field (Java TreeSet<T>)")                @Test void javaTreeSet1()                { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("1 field (Java Queue<T>)")                  @Test void javaQueue1()                  { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("1 field (Java BlockingQueue<T>)")          @Test void javaBlockingQueue1()          { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java TransferQueue<T>)")          @Test void javaTransferQueue1()          { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("1 field (Java ArrayBlockingQueue<T>)")     @Test void javaArrayBlockingQueue1()     { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java ConcurrentLinkedQueue<T>)")  @Test void javaConcurrentLinkedQueue1()  { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("1 field (Java LinkedBlockingQueue<T>)")    @Test void javaLinkedBlockingQueue1()    { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java LinkedTransferQueue<T>)")    @Test void javaLinkedTransferQueue1()    { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("1 field (Java PriorityBlockingQueue<T>)")  @Test void javaPriorityBlockingQueue1()  { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java PriorityQueue<T>)")          @Test void javaPriorityQueue1()          { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("1 field (Java SynchronousQueue<T>)")       @Test void javaSynchronousQueue1()       { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("1 field (Java Deque<T>)")                  @Test void javaDeque1()                  { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("1 field (Java BlockingDeque<T>)")          @Test void javaBlockingDeque1()          { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("1 field (Java ArrayDeque<T>)")             @Test void javaArrayDeque1()             { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("1 field (Java ConcurrentLinkedDeque<T>)")  @Test void javaConcurrentLinkedDeque1()  { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("1 field (Java LinkedBlockingDeque<T>)")    @Test void javaLinkedBlockingDeque1()    { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("1 field (Java Stack<T>)")                  @Test void javaStack1()                  { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_STACK)); }
+                @DisplayName("1 field (T[])")                            @Test void array1()                      { assertTrue( newInstance(A)    .hasOne(NULL_ARRAY)); }
+                @DisplayName("2 fields (Java Iterator<T>)")              @Test void javaIterator2()               { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("2 fields (Java ListIterator<T>)")          @Test void javaListIterator2()           { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("2 fields (Java Spliterator<T>)")           @Test void javaSpliterator2()            { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("2 fields (Java Enumeration<T>)")           @Test void javaEnumeration2()            { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("2 fields (Java Iterable<T>)")              @Test void javaIterable2()               { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("2 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder2() { assertTrue( newInstance(AB)   .hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("2 fields (CollectionHolder<T>)")           @Test void collectionHolder2()           { assertTrue( newInstance(AB)   .hasOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("2 fields (Java Collection<T>)")            @Test void javaCollection2()             { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("2 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection2()    { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("2 fields (Java List<T>)")                  @Test void javaList2()                   { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_LIST)); }
+                @DisplayName("2 fields (Java ArrayList<T>)")             @Test void javaArrayList2()              { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("2 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList2()   { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("2 fields (Java LinkedList<T>)")            @Test void javaLinkedList2()             { assertTrue( newInstance(AB)   .hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("2 fields (Java Vector<T>)")                @Test void javaVector2()                 { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("2 fields (Java Set<T>)")                   @Test void javaSet2()                    { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_SET)); }
+                @DisplayName("2 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet2()           { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("2 fields (Java SortedSet<T>)")             @Test void javaSortedSet2()              { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("2 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet2()           { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("2 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet2()  { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("2 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet2()    { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("2 fields (Java HashSet<T>)")               @Test void javaHashSet2()                { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("2 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet2()          { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("2 fields (Java TreeSet<T>)")               @Test void javaTreeSet2()                { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("2 fields (Java Queue<T>)")                 @Test void javaQueue2()                  { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("2 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue2()          { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue2()          { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("2 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue2()     { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue2()  { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("2 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue2()    { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue2()    { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("2 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue2()  { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue2()          { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("2 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue2()       { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("2 fields (Java Deque<T>)")                 @Test void javaDeque2()                  { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("2 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque2()          { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("2 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque2()             { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("2 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque2()  { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("2 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque2()    { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("2 fields (Java Stack<T>)")                 @Test void javaStack2()                  { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_STACK)); }
+                @DisplayName("2 fields (T[])")                           @Test void array2()                      { assertTrue( newInstance(AB)   .hasOne(NULL_ARRAY)); }
+                @DisplayName("4 fields (Java Iterator<T>)")              @Test void javaIterator4()               { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("4 fields (Java ListIterator<T>)")          @Test void javaListIterator4()           { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("4 fields (Java Spliterator<T>)")           @Test void javaSpliterator4()            { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("4 fields (Java Enumeration<T>)")           @Test void javaEnumeration4()            { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("4 fields (Java Iterable<T>)")              @Test void javaIterable4()               { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("4 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder4() { assertTrue( newInstance(ABCD) .hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("4 fields (CollectionHolder<T>)")           @Test void collectionHolder4()           { assertTrue( newInstance(ABCD) .hasOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("4 fields (Java Collection<T>)")            @Test void javaCollection4()             { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("4 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection4()    { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("4 fields (Java List<T>)")                  @Test void javaList4()                   { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_LIST)); }
+                @DisplayName("4 fields (Java ArrayList<T>)")             @Test void javaArrayList4()              { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("4 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList4()   { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("4 fields (Java LinkedList<T>)")            @Test void javaLinkedList4()             { assertTrue( newInstance(ABCD) .hasOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("4 fields (Java Vector<T>)")                @Test void javaVector4()                 { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("4 fields (Java Set<T>)")                   @Test void javaSet4()                    { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_SET)); }
+                @DisplayName("4 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet4()           { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("4 fields (Java SortedSet<T>)")             @Test void javaSortedSet4()              { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("4 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet4()           { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("4 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet4()  { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("4 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet4()    { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("4 fields (Java HashSet<T>)")               @Test void javaHashSet4()                { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("4 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet4()          { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("4 fields (Java TreeSet<T>)")               @Test void javaTreeSet4()                { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("4 fields (Java Queue<T>)")                 @Test void javaQueue4()                  { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("4 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue4()          { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue4()          { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("4 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue4()     { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue4()  { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("4 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue4()    { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue4()    { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("4 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue4()  { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue4()          { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("4 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue4()       { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("4 fields (Java Deque<T>)")                 @Test void javaDeque4()                  { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("4 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque4()          { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("4 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque4()             { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("4 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque4()  { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("4 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque4()    { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("4 fields (Java Stack<T>)")                 @Test void javaStack4()                  { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_STACK)); }
+                @DisplayName("4 fields (T[])")                           @Test void array4()                      { assertTrue( newInstance(ABCD) .hasOne(NULL_ARRAY)); }
+            }
+
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ITERATOR)); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaIterator<>(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaIterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaIterator<>(E))); }
@@ -7109,7 +8006,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaIterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaIterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaIterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaIterator<>(B))); }
@@ -7118,7 +8014,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaIterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaIterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaIterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaIterator<>(B))); }
@@ -7131,12 +8026,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasOne(new ArrayAsJavaIterator<>(EFGH))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaListIterator<>(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaListIterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaListIterator<>(E))); }
@@ -7144,7 +8037,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaListIterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaListIterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaListIterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaListIterator<>(B))); }
@@ -7153,7 +8045,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaListIterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaListIterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaListIterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaListIterator<>(B))); }
@@ -7166,12 +8057,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasOne(new ArrayAsJavaListIterator<>(EFGH))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaSpliterator<>(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaSpliterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaSpliterator<>(E))); }
@@ -7179,7 +8068,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaSpliterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaSpliterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaSpliterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaSpliterator<>(B))); }
@@ -7188,7 +8076,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaSpliterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaSpliterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaSpliterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaSpliterator<>(B))); }
@@ -7201,12 +8088,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasOne(new ArrayAsJavaSpliterator<>(EFGH))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaEnumeration<>(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaEnumeration<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaEnumeration<>(E))); }
@@ -7214,7 +8099,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaEnumeration<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaEnumeration<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaEnumeration<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaEnumeration<>(B))); }
@@ -7223,7 +8107,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaEnumeration<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaEnumeration<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaEnumeration<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaEnumeration<>(B))); }
@@ -7237,12 +8120,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(newInstance(EMPTY).hasOne(NULL_JAVA_ITERABLE)); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaIterable<>(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsJavaIterable<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasOne(NULL_JAVA_ITERABLE)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaIterable<>(E))); }
@@ -7250,7 +8131,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaIterable<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasOne(new ArrayAsJavaIterable<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasOne(new ArrayAsJavaIterable<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasOne(NULL_JAVA_ITERABLE)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaIterable<>(B))); }
@@ -7259,7 +8139,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaIterable<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsJavaIterable<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasOne(new ArrayAsJavaIterable<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasOne(NULL_JAVA_ITERABLE)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsJavaIterable<>(B))); }
@@ -7273,12 +8152,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(newInstance(EMPTY).hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsMinimalistCollection<>(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsMinimalistCollection<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasOne(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasOne(new ArrayAsMinimalistCollection<>(E))); }
@@ -7286,7 +8163,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasOne(new ArrayAsMinimalistCollection<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasOne(new ArrayAsMinimalistCollection<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasOne(new ArrayAsMinimalistCollection<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsMinimalistCollection<>(B))); }
@@ -7295,7 +8171,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasOne(new ArrayAsMinimalistCollection<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsMinimalistCollection<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasOne(new ArrayAsMinimalistCollection<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsMinimalistCollection<>(B))); }
@@ -7308,12 +8183,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasOne(new ArrayAsMinimalistCollection<>(EFGH))); }
             }
             /*TODO re-enable once the CollectionHolder.toIterator utility has been created*/ @Disabled @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(newInstance(EMPTY).hasOne(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsCollection<>(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsCollection<>(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(newInstance(EMPTY).hasOne(new ArrayAsCollection<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasOne(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasOne(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasOne(new ArrayAsCollection<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasOne(new ArrayAsCollection<>(E))); }
@@ -7321,7 +8194,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasOne(new ArrayAsCollection<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasOne(new ArrayAsCollection<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasOne(new ArrayAsCollection<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasOne(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsCollection<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasOne(new ArrayAsCollection<>(B))); }
@@ -7330,7 +8202,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasOne(new ArrayAsCollection<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasOne(new ArrayAsCollection<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasOne(new ArrayAsCollection<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasOne(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsCollection<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasOne(new ArrayAsCollection<>(B))); }
@@ -7351,12 +8222,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7364,7 +8233,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7373,7 +8241,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7393,12 +8260,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7406,7 +8271,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7415,7 +8279,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7435,12 +8298,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7448,7 +8309,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7457,7 +8317,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7477,12 +8336,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7490,7 +8347,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7499,7 +8355,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7519,12 +8374,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7532,7 +8385,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7541,7 +8393,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7561,12 +8412,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7574,7 +8423,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7583,7 +8431,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7603,12 +8450,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7616,7 +8461,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7625,7 +8469,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7645,12 +8488,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7658,7 +8499,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7667,7 +8507,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7687,12 +8526,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7700,7 +8537,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7709,7 +8545,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7729,12 +8564,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7742,7 +8575,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7751,7 +8583,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7771,12 +8602,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7784,7 +8613,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7793,7 +8621,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7813,12 +8640,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7826,7 +8651,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7835,7 +8659,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7855,12 +8678,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(instances.this.newInstance(EMPTY).hasOne(nullInstance())); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(EMPTY))); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(A))); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(AB))); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(E))); }
@@ -7868,7 +8689,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(B))); }
@@ -7877,7 +8697,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(B))); }
@@ -7891,12 +8710,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("T[]") @Nested class Array {
-                @DisplayName("0 fields (null)") @Test void test0_null() { assertFalse(newInstance(EMPTY).hasOne(NULL_ARRAY)); }
                 @DisplayName("0 fields (none)") @Test void test0_none() { assertFalse(newInstance(EMPTY).hasOne(EMPTY)); }
                 @DisplayName("0 fields (a)")    @Test void test0_a()    { assertFalse(newInstance(EMPTY).hasOne(A)); }
                 @DisplayName("0 fields (ab)")   @Test void test0_ab()   { assertFalse(newInstance(EMPTY).hasOne(AB)); }
                 @DisplayName("0 fields (abcd)") @Test void test0_abcd() { assertFalse(newInstance(EMPTY).hasOne(ABCD)); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasOne(NULL_ARRAY)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasOne(EMPTY)); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasOne(A)); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasOne(E)); }
@@ -7904,7 +8721,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasOne(EF)); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasOne(ABCD)); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasOne(EFGH)); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasOne(NULL_ARRAY)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasOne(EMPTY)); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasOne(A)); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasOne(B)); }
@@ -7913,7 +8729,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasOne(EF)); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasOne(ABCD)); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasOne(EFGH)); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasOne(NULL_ARRAY)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasOne(EMPTY)); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasOne(A)); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasOne(B)); }
@@ -7927,13 +8742,174 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
         }
         @TestInstance(PER_CLASS) @Nested class hasNotOne {
+            @DisplayName("null") @Nested class Null {
+                @DisplayName("0 fields (Java Iterator<T>)")              @Test void javaIterator0()               { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("0 fields (Java ListIterator<T>)")          @Test void javaListIterator0()           { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("0 fields (Java Spliterator<T>)")           @Test void javaSpliterator0()            { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("0 fields (Java Enumeration<T>)")           @Test void javaEnumeration0()            { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("0 fields (Java Iterable<T>)")              @Test void javaIterable0()               { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("0 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder0() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("0 fields (CollectionHolder<T>)")           @Test void collectionHolder0()           { assertTrue( newInstance(EMPTY).hasNotOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("0 fields (Java Collection<T>)")            @Test void javaCollection0()             { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("0 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection0()    { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("0 fields (Java List<T>)")                  @Test void javaList0()                   { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_LIST)); }
+                @DisplayName("0 fields (Java ArrayList<T>)")             @Test void javaArrayList0()              { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("0 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList0()   { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("0 fields (Java LinkedList<T>)")            @Test void javaLinkedList0()             { assertTrue( newInstance(EMPTY).hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("0 fields (Java Vector<T>)")                @Test void javaVector0()                 { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("0 fields (Java Set<T>)")                   @Test void javaSet0()                    { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_SET)); }
+                @DisplayName("0 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet0()           { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("0 fields (Java SortedSet<T>)")             @Test void javaSortedSet0()              { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("0 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet0()           { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("0 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet0()  { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("0 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet0()    { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("0 fields (Java HashSet<T>)")               @Test void javaHashSet0()                { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("0 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet0()          { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("0 fields (Java TreeSet<T>)")               @Test void javaTreeSet0()                { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("0 fields (Java Queue<T>)")                 @Test void javaQueue0()                  { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("0 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue0()          { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue0()          { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("0 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue0()     { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue0()  { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("0 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue0()    { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue0()    { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("0 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue0()  { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue0()          { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("0 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue0()       { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("0 fields (Java Deque<T>)")                 @Test void javaDeque0()                  { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("0 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque0()          { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("0 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque0()             { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("0 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque0()  { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("0 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque0()    { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("0 fields (Java Stack<T>)")                 @Test void javaStack0()                  { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_STACK)); }
+                @DisplayName("0 fields (T[])")                           @Test void array0()                      { assertTrue( newInstance(EMPTY).hasNotOne(NULL_ARRAY)); }
+                @DisplayName("1 field (Java Iterator<T>)")               @Test void javaIterator1()               { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("1 field (Java ListIterator<T>)")           @Test void javaListIterator1()           { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("1 field (Java Spliterator<T>)")            @Test void javaSpliterator1()            { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("1 field (Java Enumeration<T>)")            @Test void javaEnumeration1()            { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("1 field (Java Iterable<T>)")               @Test void javaIterable1()               { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("1 field (MinimalistCollectionHolder<T>)")  @Test void minimalistCollectionHolder1() { assertFalse(newInstance(A)    .hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("1 field (CollectionHolder<T>)")            @Test void collectionHolder1()           { assertFalse(newInstance(A)    .hasNotOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("1 field (Java Collection<T>)")             @Test void javaCollection1()             { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("1 field (Java SequencedCollection<T>)")    @Test void javaSequencedCollection1()    { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("1 field (Java List<T>)")                   @Test void javaList1()                   { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_LIST)); }
+                @DisplayName("1 field (Java ArrayList<T>)")              @Test void javaArrayList1()              { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("1 field (Java CopyOnWriteArrayList<T>)")   @Test void javaCopyOnWriteArrayList1()   { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("1 field (Java LinkedList<T>)")             @Test void javaLinkedList1()             { assertFalse(newInstance(A)    .hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("1 field (Java Vector<T>)")                 @Test void javaVector1()                 { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("1 field (Java Set<T>)")                    @Test void javaSet1()                    { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_SET)); }
+                @DisplayName("1 field (Java SequencedSet<T>)")           @Test void javaSequencedSet1()           { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("1 field (Java SortedSet<T>)")              @Test void javaSortedSet1()              { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("1 field (Java NavigableSet<T>)")           @Test void javaNavigableSet1()           { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("1 field (Java ConcurrentSkipListSet<T>)")  @Test void javaConcurrentSkipListSet1()  { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("1 field (Java CopyOnWriteArraySet<T>)")    @Test void javaCopyOnWriteArraySet1()    { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("1 field (Java HashSet<T>)")                @Test void javaHashSet1()                { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("1 field (Java LinkedHashSet<T>)")          @Test void javaLinkedHashSet1()          { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("1 field (Java TreeSet<T>)")                @Test void javaTreeSet1()                { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("1 field (Java Queue<T>)")                  @Test void javaQueue1()                  { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("1 field (Java BlockingQueue<T>)")          @Test void javaBlockingQueue1()          { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java TransferQueue<T>)")          @Test void javaTransferQueue1()          { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("1 field (Java ArrayBlockingQueue<T>)")     @Test void javaArrayBlockingQueue1()     { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java ConcurrentLinkedQueue<T>)")  @Test void javaConcurrentLinkedQueue1()  { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("1 field (Java LinkedBlockingQueue<T>)")    @Test void javaLinkedBlockingQueue1()    { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java LinkedTransferQueue<T>)")    @Test void javaLinkedTransferQueue1()    { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("1 field (Java PriorityBlockingQueue<T>)")  @Test void javaPriorityBlockingQueue1()  { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java PriorityQueue<T>)")          @Test void javaPriorityQueue1()          { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("1 field (Java SynchronousQueue<T>)")       @Test void javaSynchronousQueue1()       { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("1 field (Java Deque<T>)")                  @Test void javaDeque1()                  { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("1 field (Java BlockingDeque<T>)")          @Test void javaBlockingDeque1()          { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("1 field (Java ArrayDeque<T>)")             @Test void javaArrayDeque1()             { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("1 field (Java ConcurrentLinkedDeque<T>)")  @Test void javaConcurrentLinkedDeque1()  { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("1 field (Java LinkedBlockingDeque<T>)")    @Test void javaLinkedBlockingDeque1()    { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("1 field (Java Stack<T>)")                  @Test void javaStack1()                  { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_STACK)); }
+                @DisplayName("1 field (T[])")                            @Test void array1()                      { assertFalse(newInstance(A)    .hasNotOne(NULL_ARRAY)); }
+                @DisplayName("2 fields (Java Iterator<T>)")              @Test void javaIterator2()               { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("2 fields (Java ListIterator<T>)")          @Test void javaListIterator2()           { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("2 fields (Java Spliterator<T>)")           @Test void javaSpliterator2()            { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("2 fields (Java Enumeration<T>)")           @Test void javaEnumeration2()            { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("2 fields (Java Iterable<T>)")              @Test void javaIterable2()               { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("2 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder2() { assertFalse(newInstance(AB)   .hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("2 fields (CollectionHolder<T>)")           @Test void collectionHolder2()           { assertFalse(newInstance(AB)   .hasNotOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("2 fields (Java Collection<T>)")            @Test void javaCollection2()             { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("2 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection2()    { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("2 fields (Java List<T>)")                  @Test void javaList2()                   { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_LIST)); }
+                @DisplayName("2 fields (Java ArrayList<T>)")             @Test void javaArrayList2()              { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("2 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList2()   { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("2 fields (Java LinkedList<T>)")            @Test void javaLinkedList2()             { assertFalse(newInstance(AB)   .hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("2 fields (Java Vector<T>)")                @Test void javaVector2()                 { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("2 fields (Java Set<T>)")                   @Test void javaSet2()                    { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_SET)); }
+                @DisplayName("2 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet2()           { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("2 fields (Java SortedSet<T>)")             @Test void javaSortedSet2()              { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("2 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet2()           { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("2 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet2()  { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("2 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet2()    { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("2 fields (Java HashSet<T>)")               @Test void javaHashSet2()                { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("2 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet2()          { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("2 fields (Java TreeSet<T>)")               @Test void javaTreeSet2()                { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("2 fields (Java Queue<T>)")                 @Test void javaQueue2()                  { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("2 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue2()          { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue2()          { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("2 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue2()     { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue2()  { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("2 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue2()    { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue2()    { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("2 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue2()  { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue2()          { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("2 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue2()       { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("2 fields (Java Deque<T>)")                 @Test void javaDeque2()                  { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("2 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque2()          { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("2 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque2()             { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("2 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque2()  { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("2 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque2()    { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("2 fields (Java Stack<T>)")                 @Test void javaStack2()                  { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_STACK)); }
+                @DisplayName("2 fields (T[])")                           @Test void array2()                      { assertFalse(newInstance(AB)   .hasNotOne(NULL_ARRAY)); }
+                @DisplayName("4 fields (Java Iterator<T>)")              @Test void javaIterator4()               { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ITERATOR)); }
+                @DisplayName("4 fields (Java ListIterator<T>)")          @Test void javaListIterator4()           { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("4 fields (Java Spliterator<T>)")           @Test void javaSpliterator4()            { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("4 fields (Java Enumeration<T>)")           @Test void javaEnumeration4()            { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("4 fields (Java Iterable<T>)")              @Test void javaIterable4()               { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ITERABLE)); }
+                @DisplayName("4 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder4() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("4 fields (CollectionHolder<T>)")           @Test void collectionHolder4()           { assertFalse(newInstance(ABCD) .hasNotOne(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("4 fields (Java Collection<T>)")            @Test void javaCollection4()             { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_COLLECTION)); }
+                @DisplayName("4 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection4()    { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("4 fields (Java List<T>)")                  @Test void javaList4()                   { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_LIST)); }
+                @DisplayName("4 fields (Java ArrayList<T>)")             @Test void javaArrayList4()              { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("4 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList4()   { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("4 fields (Java LinkedList<T>)")            @Test void javaLinkedList4()             { assertFalse(newInstance(ABCD) .hasNotOne((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("4 fields (Java Vector<T>)")                @Test void javaVector4()                 { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_VECTOR)); }
+                @DisplayName("4 fields (Java Set<T>)")                   @Test void javaSet4()                    { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_SET)); }
+                @DisplayName("4 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet4()           { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("4 fields (Java SortedSet<T>)")             @Test void javaSortedSet4()              { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("4 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet4()           { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("4 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet4()  { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("4 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet4()    { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("4 fields (Java HashSet<T>)")               @Test void javaHashSet4()                { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_HASH_SET)); }
+                @DisplayName("4 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet4()          { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("4 fields (Java TreeSet<T>)")               @Test void javaTreeSet4()                { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_TREE_SET)); }
+                @DisplayName("4 fields (Java Queue<T>)")                 @Test void javaQueue4()                  { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_QUEUE)); }
+                @DisplayName("4 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue4()          { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue4()          { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("4 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue4()     { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue4()  { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("4 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue4()    { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue4()    { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("4 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue4()  { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue4()          { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("4 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue4()       { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("4 fields (Java Deque<T>)")                 @Test void javaDeque4()                  { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_DEQUE)); }
+                @DisplayName("4 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque4()          { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("4 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque4()             { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("4 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque4()  { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("4 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque4()    { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("4 fields (Java Stack<T>)")                 @Test void javaStack4()                  { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_STACK)); }
+                @DisplayName("4 fields (T[])")                           @Test void array4()                      { assertFalse(newInstance(ABCD) .hasNotOne(NULL_ARRAY)); }
+            }
+
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaIterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaIterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaIterator<>(E))); }
@@ -7941,7 +8917,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaIterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaIterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaIterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaIterator<>(B))); }
@@ -7950,7 +8925,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaIterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaIterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaIterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaIterator<>(B))); }
@@ -7963,12 +8937,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotOne(new ArrayAsJavaIterator<>(EFGH))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaListIterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaListIterator<>(E))); }
@@ -7976,7 +8948,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaListIterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaListIterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaListIterator<>(B))); }
@@ -7985,7 +8956,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaListIterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaListIterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaListIterator<>(B))); }
@@ -7998,12 +8968,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotOne(new ArrayAsJavaListIterator<>(EFGH))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaSpliterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaSpliterator<>(E))); }
@@ -8011,7 +8979,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaSpliterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaSpliterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaSpliterator<>(B))); }
@@ -8020,7 +8987,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaSpliterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaSpliterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaSpliterator<>(B))); }
@@ -8033,12 +8999,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotOne(new ArrayAsJavaSpliterator<>(EFGH))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaEnumeration<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaEnumeration<>(E))); }
@@ -8046,7 +9010,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaEnumeration<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaEnumeration<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaEnumeration<>(B))); }
@@ -8055,7 +9018,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaEnumeration<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaEnumeration<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaEnumeration<>(B))); }
@@ -8069,12 +9031,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_JAVA_ITERABLE)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaIterable<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsJavaIterable<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotOne(NULL_JAVA_ITERABLE)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaIterable<>(E))); }
@@ -8082,7 +9042,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaIterable<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsJavaIterable<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsJavaIterable<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotOne(NULL_JAVA_ITERABLE)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaIterable<>(B))); }
@@ -8091,7 +9050,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaIterable<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsJavaIterable<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsJavaIterable<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_JAVA_ITERABLE)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsJavaIterable<>(B))); }
@@ -8105,12 +9063,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsMinimalistCollection<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsMinimalistCollection<>(E))); }
@@ -8118,7 +9074,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsMinimalistCollection<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsMinimalistCollection<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsMinimalistCollection<>(B))); }
@@ -8127,7 +9082,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsMinimalistCollection<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsMinimalistCollection<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsMinimalistCollection<>(B))); }
@@ -8140,12 +9094,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotOne(new ArrayAsMinimalistCollection<>(EFGH))); }
             }
             /*TODO re-enable once the CollectionHolder.toIterator utility has been created*/ @Disabled @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsCollection<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsCollection<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotOne(new ArrayAsCollection<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotOne(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsCollection<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsCollection<>(E))); }
@@ -8153,7 +9105,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsCollection<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasNotOne(new ArrayAsCollection<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotOne(new ArrayAsCollection<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotOne(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsCollection<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsCollection<>(B))); }
@@ -8162,7 +9113,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsCollection<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasNotOne(new ArrayAsCollection<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotOne(new ArrayAsCollection<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsCollection<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotOne(new ArrayAsCollection<>(B))); }
@@ -8183,12 +9133,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8196,7 +9144,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8205,7 +9152,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8225,12 +9171,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8238,7 +9182,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8247,7 +9190,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8267,12 +9209,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8280,7 +9220,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8289,7 +9228,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8309,12 +9247,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8322,7 +9258,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8331,7 +9266,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8351,12 +9285,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8364,7 +9296,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8373,7 +9304,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8393,12 +9323,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8406,7 +9334,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8415,7 +9342,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8435,12 +9361,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8448,7 +9372,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8457,7 +9380,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8477,12 +9399,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8490,7 +9410,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8499,7 +9418,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8519,12 +9437,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8532,7 +9448,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8541,7 +9456,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8561,12 +9475,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8574,7 +9486,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8583,7 +9494,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8603,12 +9513,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8616,7 +9524,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8625,7 +9532,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8645,12 +9551,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8658,7 +9562,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8667,7 +9570,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8687,12 +9589,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotOne(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotOne(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(E))); }
@@ -8700,7 +9600,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(B))); }
@@ -8709,7 +9608,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotOne(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(B))); }
@@ -8723,12 +9621,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("T[]") @Nested class Array {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasNotOne(NULL_ARRAY)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasNotOne(EMPTY)); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotOne(A)); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotOne(AB)); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotOne(ABCD)); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotOne(NULL_ARRAY)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotOne(EMPTY)); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotOne(A)); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotOne(E)); }
@@ -8736,7 +9632,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotOne(EF)); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasNotOne(ABCD)); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotOne(EFGH)); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotOne(NULL_ARRAY)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotOne(EMPTY)); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotOne(A)); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotOne(B)); }
@@ -8745,7 +9640,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotOne(EF)); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasNotOne(ABCD)); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotOne(EFGH)); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotOne(NULL_ARRAY)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotOne(EMPTY)); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotOne(A)); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotOne(B)); }
@@ -8760,13 +9654,174 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @TestInstance(PER_CLASS) @Nested class hasAll {
+            @DisplayName("null") @Nested class Null {
+                @DisplayName("0 fields (Java Iterator<T>)")              @Test void javaIterator0()               { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("0 fields (Java ListIterator<T>)")          @Test void javaListIterator0()           { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("0 fields (Java Spliterator<T>)")           @Test void javaSpliterator0()            { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("0 fields (Java Enumeration<T>)")           @Test void javaEnumeration0()            { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("0 fields (Java Iterable<T>)")              @Test void javaIterable0()               { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("0 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder0() { assertTrue(newInstance(EMPTY).hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("0 fields (CollectionHolder<T>)")           @Test void collectionHolder0()           { assertTrue(newInstance(EMPTY).hasAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("0 fields (Java Collection<T>)")            @Test void javaCollection0()             { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("0 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection0()    { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("0 fields (Java List<T>)")                  @Test void javaList0()                   { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_LIST)); }
+                @DisplayName("0 fields (Java ArrayList<T>)")             @Test void javaArrayList0()              { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("0 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList0()   { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("0 fields (Java LinkedList<T>)")            @Test void javaLinkedList0()             { assertTrue(newInstance(EMPTY).hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("0 fields (Java Vector<T>)")                @Test void javaVector0()                 { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("0 fields (Java Set<T>)")                   @Test void javaSet0()                    { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_SET)); }
+                @DisplayName("0 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet0()           { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("0 fields (Java SortedSet<T>)")             @Test void javaSortedSet0()              { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("0 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet0()           { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("0 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet0()  { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("0 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet0()    { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("0 fields (Java HashSet<T>)")               @Test void javaHashSet0()                { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("0 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet0()          { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("0 fields (Java TreeSet<T>)")               @Test void javaTreeSet0()                { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("0 fields (Java Queue<T>)")                 @Test void javaQueue0()                  { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("0 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue0()          { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue0()          { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("0 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue0()     { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue0()  { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("0 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue0()    { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue0()    { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("0 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue0()  { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue0()          { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("0 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue0()       { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("0 fields (Java Deque<T>)")                 @Test void javaDeque0()                  { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("0 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque0()          { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("0 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque0()             { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("0 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque0()  { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("0 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque0()    { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("0 fields (Java Stack<T>)")                 @Test void javaStack0()                  { assertTrue(newInstance(EMPTY).hasAll(NULL_JAVA_STACK)); }
+                @DisplayName("0 fields (T[])")                           @Test void array0()                      { assertTrue(newInstance(EMPTY).hasAll(NULL_ARRAY)); }
+                @DisplayName("1 field (Java Iterator<T>)")               @Test void javaIterator1()               { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("1 field (Java ListIterator<T>)")           @Test void javaListIterator1()           { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("1 field (Java Spliterator<T>)")            @Test void javaSpliterator1()            { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("1 field (Java Enumeration<T>)")            @Test void javaEnumeration1()            { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("1 field (Java Iterable<T>)")               @Test void javaIterable1()               { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("1 field (MinimalistCollectionHolder<T>)")  @Test void minimalistCollectionHolder1() { assertTrue(newInstance(A)    .hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("1 field (CollectionHolder<T>)")            @Test void collectionHolder1()           { assertTrue(newInstance(A)    .hasAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("1 field (Java Collection<T>)")             @Test void javaCollection1()             { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("1 field (Java SequencedCollection<T>)")    @Test void javaSequencedCollection1()    { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("1 field (Java List<T>)")                   @Test void javaList1()                   { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_LIST)); }
+                @DisplayName("1 field (Java ArrayList<T>)")              @Test void javaArrayList1()              { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("1 field (Java CopyOnWriteArrayList<T>)")   @Test void javaCopyOnWriteArrayList1()   { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("1 field (Java LinkedList<T>)")             @Test void javaLinkedList1()             { assertTrue(newInstance(A)    .hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("1 field (Java Vector<T>)")                 @Test void javaVector1()                 { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("1 field (Java Set<T>)")                    @Test void javaSet1()                    { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_SET)); }
+                @DisplayName("1 field (Java SequencedSet<T>)")           @Test void javaSequencedSet1()           { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("1 field (Java SortedSet<T>)")              @Test void javaSortedSet1()              { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("1 field (Java NavigableSet<T>)")           @Test void javaNavigableSet1()           { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("1 field (Java ConcurrentSkipListSet<T>)")  @Test void javaConcurrentSkipListSet1()  { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("1 field (Java CopyOnWriteArraySet<T>)")    @Test void javaCopyOnWriteArraySet1()    { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("1 field (Java HashSet<T>)")                @Test void javaHashSet1()                { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("1 field (Java LinkedHashSet<T>)")          @Test void javaLinkedHashSet1()          { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("1 field (Java TreeSet<T>)")                @Test void javaTreeSet1()                { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("1 field (Java Queue<T>)")                  @Test void javaQueue1()                  { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("1 field (Java BlockingQueue<T>)")          @Test void javaBlockingQueue1()          { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java TransferQueue<T>)")          @Test void javaTransferQueue1()          { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("1 field (Java ArrayBlockingQueue<T>)")     @Test void javaArrayBlockingQueue1()     { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java ConcurrentLinkedQueue<T>)")  @Test void javaConcurrentLinkedQueue1()  { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("1 field (Java LinkedBlockingQueue<T>)")    @Test void javaLinkedBlockingQueue1()    { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java LinkedTransferQueue<T>)")    @Test void javaLinkedTransferQueue1()    { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("1 field (Java PriorityBlockingQueue<T>)")  @Test void javaPriorityBlockingQueue1()  { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java PriorityQueue<T>)")          @Test void javaPriorityQueue1()          { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("1 field (Java SynchronousQueue<T>)")       @Test void javaSynchronousQueue1()       { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("1 field (Java Deque<T>)")                  @Test void javaDeque1()                  { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("1 field (Java BlockingDeque<T>)")          @Test void javaBlockingDeque1()          { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("1 field (Java ArrayDeque<T>)")             @Test void javaArrayDeque1()             { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("1 field (Java ConcurrentLinkedDeque<T>)")  @Test void javaConcurrentLinkedDeque1()  { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("1 field (Java LinkedBlockingDeque<T>)")    @Test void javaLinkedBlockingDeque1()    { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("1 field (Java Stack<T>)")                  @Test void javaStack1()                  { assertTrue(newInstance(A)    .hasAll(NULL_JAVA_STACK)); }
+                @DisplayName("1 field (T[])")                            @Test void array1()                      { assertTrue(newInstance(A)    .hasAll(NULL_ARRAY)); }
+                @DisplayName("2 fields (Java Iterator<T>)")              @Test void javaIterator2()               { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("2 fields (Java ListIterator<T>)")          @Test void javaListIterator2()           { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("2 fields (Java Spliterator<T>)")           @Test void javaSpliterator2()            { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("2 fields (Java Enumeration<T>)")           @Test void javaEnumeration2()            { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("2 fields (Java Iterable<T>)")              @Test void javaIterable2()               { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("2 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder2() { assertTrue(newInstance(AB)   .hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("2 fields (CollectionHolder<T>)")           @Test void collectionHolder2()           { assertTrue(newInstance(AB)   .hasAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("2 fields (Java Collection<T>)")            @Test void javaCollection2()             { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("2 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection2()    { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("2 fields (Java List<T>)")                  @Test void javaList2()                   { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_LIST)); }
+                @DisplayName("2 fields (Java ArrayList<T>)")             @Test void javaArrayList2()              { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("2 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList2()   { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("2 fields (Java LinkedList<T>)")            @Test void javaLinkedList2()             { assertTrue(newInstance(AB)   .hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("2 fields (Java Vector<T>)")                @Test void javaVector2()                 { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("2 fields (Java Set<T>)")                   @Test void javaSet2()                    { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_SET)); }
+                @DisplayName("2 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet2()           { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("2 fields (Java SortedSet<T>)")             @Test void javaSortedSet2()              { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("2 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet2()           { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("2 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet2()  { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("2 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet2()    { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("2 fields (Java HashSet<T>)")               @Test void javaHashSet2()                { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("2 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet2()          { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("2 fields (Java TreeSet<T>)")               @Test void javaTreeSet2()                { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("2 fields (Java Queue<T>)")                 @Test void javaQueue2()                  { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("2 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue2()          { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue2()          { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("2 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue2()     { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue2()  { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("2 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue2()    { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue2()    { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("2 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue2()  { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue2()          { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("2 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue2()       { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("2 fields (Java Deque<T>)")                 @Test void javaDeque2()                  { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("2 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque2()          { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("2 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque2()             { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("2 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque2()  { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("2 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque2()    { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("2 fields (Java Stack<T>)")                 @Test void javaStack2()                  { assertTrue(newInstance(AB)   .hasAll(NULL_JAVA_STACK)); }
+                @DisplayName("2 fields (T[])")                           @Test void array2()                      { assertTrue(newInstance(AB)   .hasAll(NULL_ARRAY)); }
+                @DisplayName("4 fields (Java Iterator<T>)")              @Test void javaIterator4()               { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("4 fields (Java ListIterator<T>)")          @Test void javaListIterator4()           { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("4 fields (Java Spliterator<T>)")           @Test void javaSpliterator4()            { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("4 fields (Java Enumeration<T>)")           @Test void javaEnumeration4()            { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("4 fields (Java Iterable<T>)")              @Test void javaIterable4()               { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("4 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder4() { assertTrue(newInstance(ABCD) .hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("4 fields (CollectionHolder<T>)")           @Test void collectionHolder4()           { assertTrue(newInstance(ABCD) .hasAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("4 fields (Java Collection<T>)")            @Test void javaCollection4()             { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("4 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection4()    { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("4 fields (Java List<T>)")                  @Test void javaList4()                   { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_LIST)); }
+                @DisplayName("4 fields (Java ArrayList<T>)")             @Test void javaArrayList4()              { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("4 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList4()   { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("4 fields (Java LinkedList<T>)")            @Test void javaLinkedList4()             { assertTrue(newInstance(ABCD) .hasAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("4 fields (Java Vector<T>)")                @Test void javaVector4()                 { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("4 fields (Java Set<T>)")                   @Test void javaSet4()                    { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_SET)); }
+                @DisplayName("4 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet4()           { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("4 fields (Java SortedSet<T>)")             @Test void javaSortedSet4()              { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("4 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet4()           { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("4 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet4()  { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("4 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet4()    { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("4 fields (Java HashSet<T>)")               @Test void javaHashSet4()                { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("4 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet4()          { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("4 fields (Java TreeSet<T>)")               @Test void javaTreeSet4()                { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("4 fields (Java Queue<T>)")                 @Test void javaQueue4()                  { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("4 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue4()          { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue4()          { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("4 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue4()     { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue4()  { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("4 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue4()    { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue4()    { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("4 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue4()  { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue4()          { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("4 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue4()       { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("4 fields (Java Deque<T>)")                 @Test void javaDeque4()                  { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("4 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque4()          { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("4 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque4()             { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("4 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque4()  { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("4 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque4()    { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("4 fields (Java Stack<T>)")                 @Test void javaStack4()                  { assertTrue(newInstance(ABCD) .hasAll(NULL_JAVA_STACK)); }
+                @DisplayName("4 fields (T[])")                           @Test void array4()                      { assertTrue(newInstance(ABCD) .hasAll(NULL_ARRAY)); }
+            }
+
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasAll(NULL_JAVA_ITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasAll(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaIterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaIterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasAll(NULL_JAVA_ITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaIterator<>(E))); }
@@ -8774,7 +9829,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaIterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaIterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaIterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasAll(NULL_JAVA_ITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaIterator<>(B))); }
@@ -8783,7 +9837,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaIterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaIterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaIterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasAll(NULL_JAVA_ITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaIterator<>(B))); }
@@ -8796,12 +9849,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasAll(new ArrayAsJavaIterator<>(EFGH))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasAll(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasAll(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaListIterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaListIterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasAll(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaListIterator<>(E))); }
@@ -8809,7 +9860,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaListIterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaListIterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaListIterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasAll(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaListIterator<>(B))); }
@@ -8818,7 +9868,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaListIterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaListIterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaListIterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasAll(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaListIterator<>(B))); }
@@ -8831,12 +9880,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasAll(new ArrayAsJavaListIterator<>(EFGH))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasAll(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaSpliterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaSpliterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasAll(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaSpliterator<>(E))); }
@@ -8844,7 +9891,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaSpliterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaSpliterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaSpliterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasAll(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaSpliterator<>(B))); }
@@ -8853,7 +9899,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaSpliterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaSpliterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaSpliterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasAll(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaSpliterator<>(B))); }
@@ -8866,12 +9911,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasAll(new ArrayAsJavaSpliterator<>(EFGH))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasAll(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaEnumeration<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaEnumeration<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasAll(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaEnumeration<>(E))); }
@@ -8879,7 +9922,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaEnumeration<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaEnumeration<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaEnumeration<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasAll(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaEnumeration<>(B))); }
@@ -8888,7 +9930,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaEnumeration<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaEnumeration<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaEnumeration<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasAll(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaEnumeration<>(B))); }
@@ -8902,12 +9943,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasAll(NULL_JAVA_ITERABLE)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasAll(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaIterable<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsJavaIterable<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasAll(NULL_JAVA_ITERABLE)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasAll(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaIterable<>(E))); }
@@ -8915,7 +9954,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaIterable<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaIterable<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasAll(new ArrayAsJavaIterable<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasAll(NULL_JAVA_ITERABLE)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsJavaIterable<>(B))); }
@@ -8924,7 +9962,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaIterable<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaIterable<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsJavaIterable<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasAll(NULL_JAVA_ITERABLE)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsJavaIterable<>(B))); }
@@ -8938,12 +9975,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsMinimalistCollection<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsMinimalistCollection<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasAll(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasAll(new ArrayAsMinimalistCollection<>(E))); }
@@ -8951,7 +9986,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasAll(new ArrayAsMinimalistCollection<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasAll(new ArrayAsMinimalistCollection<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasAll(new ArrayAsMinimalistCollection<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsMinimalistCollection<>(B))); }
@@ -8960,7 +9994,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasAll(new ArrayAsMinimalistCollection<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsMinimalistCollection<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsMinimalistCollection<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsMinimalistCollection<>(B))); }
@@ -8973,12 +10006,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasAll(new ArrayAsMinimalistCollection<>(EFGH))); }
             }
             /*TODO re-enable once the CollectionHolder.toIterator utility has been created*/ @Disabled @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasAll(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasAll(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsCollection<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsCollection<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(newInstance(EMPTY).hasAll(new ArrayAsCollection<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasAll(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasAll(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasAll(new ArrayAsCollection<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasAll(new ArrayAsCollection<>(E))); }
@@ -8986,7 +10017,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasAll(new ArrayAsCollection<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasAll(new ArrayAsCollection<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasAll(new ArrayAsCollection<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasAll(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasAll(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsCollection<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasAll(new ArrayAsCollection<>(B))); }
@@ -8995,7 +10025,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasAll(new ArrayAsCollection<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsCollection<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasAll(new ArrayAsCollection<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasAll(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsCollection<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasAll(new ArrayAsCollection<>(B))); }
@@ -9016,12 +10045,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9029,7 +10056,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9038,7 +10064,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9058,12 +10083,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9071,7 +10094,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9080,7 +10102,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9100,12 +10121,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9113,7 +10132,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9122,7 +10140,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9142,12 +10159,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9155,7 +10170,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9164,7 +10178,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9184,12 +10197,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9197,7 +10208,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9206,7 +10216,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9226,12 +10235,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9239,7 +10246,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9248,7 +10254,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9268,12 +10273,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9281,7 +10284,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9290,7 +10292,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9310,12 +10311,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9323,7 +10322,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9332,7 +10330,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9352,12 +10349,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9365,7 +10360,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9374,7 +10368,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9394,12 +10387,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue(instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue(instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue(instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue(instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue(instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9407,7 +10398,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue(instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue(instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue(instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue(instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9416,7 +10406,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue(instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue(instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue(instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue(instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9436,12 +10425,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9449,7 +10436,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9458,7 +10444,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9478,12 +10463,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9491,7 +10474,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9500,7 +10482,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9520,12 +10501,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( instances.this.newInstance(EMPTY).hasAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( instances.this.newInstance(EMPTY).hasAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( instances.this.newInstance(A)    .hasAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( instances.this.newInstance(A)    .hasAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(E))); }
@@ -9533,7 +10512,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( instances.this.newInstance(AB)   .hasAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( instances.this.newInstance(AB)   .hasAll(newInstance(B))); }
@@ -9542,7 +10520,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( instances.this.newInstance(ABCD) .hasAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(B))); }
@@ -9556,12 +10533,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("T[]") @Nested class Array {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertTrue( newInstance(EMPTY).hasAll(NULL_ARRAY)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertTrue( newInstance(EMPTY).hasAll(EMPTY)); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(newInstance(EMPTY).hasAll(A)); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(newInstance(EMPTY).hasAll(AB)); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(newInstance(EMPTY).hasAll(ABCD)); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertTrue( newInstance(A)    .hasAll(NULL_ARRAY)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertTrue( newInstance(A)    .hasAll(EMPTY)); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertTrue( newInstance(A)    .hasAll(A)); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(newInstance(A)    .hasAll(E)); }
@@ -9569,7 +10544,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(newInstance(A)    .hasAll(EF)); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(newInstance(A)    .hasAll(ABCD)); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(newInstance(A)    .hasAll(EFGH)); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertTrue( newInstance(AB)   .hasAll(NULL_ARRAY)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertTrue( newInstance(AB)   .hasAll(EMPTY)); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertTrue( newInstance(AB)   .hasAll(A)); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertTrue( newInstance(AB)   .hasAll(B)); }
@@ -9578,7 +10552,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(newInstance(AB)   .hasAll(EF)); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(newInstance(AB)   .hasAll(ABCD)); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(newInstance(AB)   .hasAll(EFGH)); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertTrue( newInstance(ABCD) .hasAll(NULL_ARRAY)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertTrue( newInstance(ABCD) .hasAll(EMPTY)); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertTrue( newInstance(ABCD) .hasAll(A)); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertTrue( newInstance(ABCD) .hasAll(B)); }
@@ -9592,13 +10565,174 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
         }
         @TestInstance(PER_CLASS) @Nested class hasNotAll {
+            @DisplayName("null") @Nested class Null {
+                @DisplayName("0 fields (Java Iterator<T>)")              @Test void javaIterator0()               { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("0 fields (Java ListIterator<T>)")          @Test void javaListIterator0()           { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("0 fields (Java Spliterator<T>)")           @Test void javaSpliterator0()            { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("0 fields (Java Enumeration<T>)")           @Test void javaEnumeration0()            { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("0 fields (Java Iterable<T>)")              @Test void javaIterable0()               { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("0 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder0() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("0 fields (CollectionHolder<T>)")           @Test void collectionHolder0()           { assertFalse(newInstance(EMPTY).hasNotAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("0 fields (Java Collection<T>)")            @Test void javaCollection0()             { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("0 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection0()    { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("0 fields (Java List<T>)")                  @Test void javaList0()                   { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_LIST)); }
+                @DisplayName("0 fields (Java ArrayList<T>)")             @Test void javaArrayList0()              { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("0 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList0()   { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("0 fields (Java LinkedList<T>)")            @Test void javaLinkedList0()             { assertFalse(newInstance(EMPTY).hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("0 fields (Java Vector<T>)")                @Test void javaVector0()                 { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("0 fields (Java Set<T>)")                   @Test void javaSet0()                    { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_SET)); }
+                @DisplayName("0 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet0()           { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("0 fields (Java SortedSet<T>)")             @Test void javaSortedSet0()              { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("0 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet0()           { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("0 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet0()  { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("0 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet0()    { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("0 fields (Java HashSet<T>)")               @Test void javaHashSet0()                { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("0 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet0()          { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("0 fields (Java TreeSet<T>)")               @Test void javaTreeSet0()                { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("0 fields (Java Queue<T>)")                 @Test void javaQueue0()                  { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("0 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue0()          { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue0()          { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("0 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue0()     { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue0()  { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("0 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue0()    { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue0()    { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("0 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue0()  { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("0 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue0()          { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("0 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue0()       { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("0 fields (Java Deque<T>)")                 @Test void javaDeque0()                  { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("0 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque0()          { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("0 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque0()             { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("0 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque0()  { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("0 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque0()    { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("0 fields (Java Stack<T>)")                 @Test void javaStack0()                  { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_STACK)); }
+                @DisplayName("0 fields (T[])")                           @Test void array0()                      { assertFalse(newInstance(EMPTY).hasNotAll(NULL_ARRAY)); }
+                @DisplayName("1 field (Java Iterator<T>)")               @Test void javaIterator1()               { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("1 field (Java ListIterator<T>)")           @Test void javaListIterator1()           { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("1 field (Java Spliterator<T>)")            @Test void javaSpliterator1()            { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("1 field (Java Enumeration<T>)")            @Test void javaEnumeration1()            { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("1 field (Java Iterable<T>)")               @Test void javaIterable1()               { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("1 field (MinimalistCollectionHolder<T>)")  @Test void minimalistCollectionHolder1() { assertFalse(newInstance(A)    .hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("1 field (CollectionHolder<T>)")            @Test void collectionHolder1()           { assertFalse(newInstance(A)    .hasNotAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("1 field (Java Collection<T>)")             @Test void javaCollection1()             { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("1 field (Java SequencedCollection<T>)")    @Test void javaSequencedCollection1()    { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("1 field (Java List<T>)")                   @Test void javaList1()                   { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_LIST)); }
+                @DisplayName("1 field (Java ArrayList<T>)")              @Test void javaArrayList1()              { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("1 field (Java CopyOnWriteArrayList<T>)")   @Test void javaCopyOnWriteArrayList1()   { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("1 field (Java LinkedList<T>)")             @Test void javaLinkedList1()             { assertFalse(newInstance(A)    .hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("1 field (Java Vector<T>)")                 @Test void javaVector1()                 { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("1 field (Java Set<T>)")                    @Test void javaSet1()                    { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_SET)); }
+                @DisplayName("1 field (Java SequencedSet<T>)")           @Test void javaSequencedSet1()           { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("1 field (Java SortedSet<T>)")              @Test void javaSortedSet1()              { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("1 field (Java NavigableSet<T>)")           @Test void javaNavigableSet1()           { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("1 field (Java ConcurrentSkipListSet<T>)")  @Test void javaConcurrentSkipListSet1()  { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("1 field (Java CopyOnWriteArraySet<T>)")    @Test void javaCopyOnWriteArraySet1()    { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("1 field (Java HashSet<T>)")                @Test void javaHashSet1()                { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("1 field (Java LinkedHashSet<T>)")          @Test void javaLinkedHashSet1()          { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("1 field (Java TreeSet<T>)")                @Test void javaTreeSet1()                { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("1 field (Java Queue<T>)")                  @Test void javaQueue1()                  { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("1 field (Java BlockingQueue<T>)")          @Test void javaBlockingQueue1()          { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java TransferQueue<T>)")          @Test void javaTransferQueue1()          { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("1 field (Java ArrayBlockingQueue<T>)")     @Test void javaArrayBlockingQueue1()     { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java ConcurrentLinkedQueue<T>)")  @Test void javaConcurrentLinkedQueue1()  { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("1 field (Java LinkedBlockingQueue<T>)")    @Test void javaLinkedBlockingQueue1()    { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java LinkedTransferQueue<T>)")    @Test void javaLinkedTransferQueue1()    { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("1 field (Java PriorityBlockingQueue<T>)")  @Test void javaPriorityBlockingQueue1()  { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("1 field (Java PriorityQueue<T>)")          @Test void javaPriorityQueue1()          { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("1 field (Java SynchronousQueue<T>)")       @Test void javaSynchronousQueue1()       { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("1 field (Java Deque<T>)")                  @Test void javaDeque1()                  { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("1 field (Java BlockingDeque<T>)")          @Test void javaBlockingDeque1()          { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("1 field (Java ArrayDeque<T>)")             @Test void javaArrayDeque1()             { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("1 field (Java ConcurrentLinkedDeque<T>)")  @Test void javaConcurrentLinkedDeque1()  { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("1 field (Java LinkedBlockingDeque<T>)")    @Test void javaLinkedBlockingDeque1()    { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("1 field (Java Stack<T>)")                  @Test void javaStack1()                  { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_STACK)); }
+                @DisplayName("1 field (T[])")                            @Test void array1()                      { assertFalse(newInstance(A)    .hasNotAll(NULL_ARRAY)); }
+                @DisplayName("2 fields (Java Iterator<T>)")              @Test void javaIterator2()               { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("2 fields (Java ListIterator<T>)")          @Test void javaListIterator2()           { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("2 fields (Java Spliterator<T>)")           @Test void javaSpliterator2()            { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("2 fields (Java Enumeration<T>)")           @Test void javaEnumeration2()            { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("2 fields (Java Iterable<T>)")              @Test void javaIterable2()               { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("2 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder2() { assertFalse(newInstance(AB)   .hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("2 fields (CollectionHolder<T>)")           @Test void collectionHolder2()           { assertFalse(newInstance(AB)   .hasNotAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("2 fields (Java Collection<T>)")            @Test void javaCollection2()             { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("2 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection2()    { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("2 fields (Java List<T>)")                  @Test void javaList2()                   { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_LIST)); }
+                @DisplayName("2 fields (Java ArrayList<T>)")             @Test void javaArrayList2()              { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("2 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList2()   { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("2 fields (Java LinkedList<T>)")            @Test void javaLinkedList2()             { assertFalse(newInstance(AB)   .hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("2 fields (Java Vector<T>)")                @Test void javaVector2()                 { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("2 fields (Java Set<T>)")                   @Test void javaSet2()                    { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_SET)); }
+                @DisplayName("2 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet2()           { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("2 fields (Java SortedSet<T>)")             @Test void javaSortedSet2()              { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("2 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet2()           { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("2 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet2()  { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("2 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet2()    { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("2 fields (Java HashSet<T>)")               @Test void javaHashSet2()                { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("2 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet2()          { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("2 fields (Java TreeSet<T>)")               @Test void javaTreeSet2()                { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("2 fields (Java Queue<T>)")                 @Test void javaQueue2()                  { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("2 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue2()          { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue2()          { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("2 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue2()     { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue2()  { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("2 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue2()    { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue2()    { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("2 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue2()  { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("2 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue2()          { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("2 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue2()       { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("2 fields (Java Deque<T>)")                 @Test void javaDeque2()                  { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("2 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque2()          { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("2 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque2()             { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("2 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque2()  { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("2 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque2()    { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("2 fields (Java Stack<T>)")                 @Test void javaStack2()                  { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_STACK)); }
+                @DisplayName("2 fields (T[])")                           @Test void array2()                      { assertFalse(newInstance(AB)   .hasNotAll(NULL_ARRAY)); }
+                @DisplayName("4 fields (Java Iterator<T>)")              @Test void javaIterator4()               { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ITERATOR)); }
+                @DisplayName("4 fields (Java ListIterator<T>)")          @Test void javaListIterator4()           { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
+                @DisplayName("4 fields (Java Spliterator<T>)")           @Test void javaSpliterator4()            { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_SPLITERATOR)); }
+                @DisplayName("4 fields (Java Enumeration<T>)")           @Test void javaEnumeration4()            { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ENUMERATION)); }
+                @DisplayName("4 fields (Java Iterable<T>)")              @Test void javaIterable4()               { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ITERABLE)); }
+                @DisplayName("4 fields (MinimalistCollectionHolder<T>)") @Test void minimalistCollectionHolder4() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                @DisplayName("4 fields (CollectionHolder<T>)")           @Test void collectionHolder4()           { assertFalse(newInstance(ABCD) .hasNotAll(NULL_COLLECTION_HOLDER)); }
+                @DisplayName("4 fields (Java Collection<T>)")            @Test void javaCollection4()             { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_COLLECTION)); }
+                @DisplayName("4 fields (Java SequencedCollection<T>)")   @Test void javaSequencedCollection4()    { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                @DisplayName("4 fields (Java List<T>)")                  @Test void javaList4()                   { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_LIST)); }
+                @DisplayName("4 fields (Java ArrayList<T>)")             @Test void javaArrayList4()              { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ARRAY_LIST)); }
+                @DisplayName("4 fields (Java CopyOnWriteArrayList<T>)")  @Test void javaCopyOnWriteArrayList4()   { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                @DisplayName("4 fields (Java LinkedList<T>)")            @Test void javaLinkedList4()             { assertFalse(newInstance(ABCD) .hasNotAll((List<? extends String>) NULL_JAVA_LINKED_LIST)); }
+                @DisplayName("4 fields (Java Vector<T>)")                @Test void javaVector4()                 { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_VECTOR)); }
+                @DisplayName("4 fields (Java Set<T>)")                   @Test void javaSet4()                    { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_SET)); }
+                @DisplayName("4 fields (Java SequencedSet<T>)")          @Test void javaSequencedSet4()           { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_SEQUENCED_SET)); }
+                @DisplayName("4 fields (Java SortedSet<T>)")             @Test void javaSortedSet4()              { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_SORTED_SET)); }
+                @DisplayName("4 fields (Java NavigableSet<T>)")          @Test void javaNavigableSet4()           { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_NAVIGABLE_SET)); }
+                @DisplayName("4 fields (Java ConcurrentSkipListSet<T>)") @Test void javaConcurrentSkipListSet4()  { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                @DisplayName("4 fields (Java CopyOnWriteArraySet<T>)")   @Test void javaCopyOnWriteArraySet4()    { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                @DisplayName("4 fields (Java HashSet<T>)")               @Test void javaHashSet4()                { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_HASH_SET)); }
+                @DisplayName("4 fields (Java LinkedHashSet<T>)")         @Test void javaLinkedHashSet4()          { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_LINKED_HASH_SET)); }
+                @DisplayName("4 fields (Java TreeSet<T>)")               @Test void javaTreeSet4()                { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_TREE_SET)); }
+                @DisplayName("4 fields (Java Queue<T>)")                 @Test void javaQueue4()                  { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_QUEUE)); }
+                @DisplayName("4 fields (Java BlockingQueue<T>)")         @Test void javaBlockingQueue4()          { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java TransferQueue<T>)")         @Test void javaTransferQueue4()          { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                @DisplayName("4 fields (Java ArrayBlockingQueue<T>)")    @Test void javaArrayBlockingQueue4()     { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java ConcurrentLinkedQueue<T>)") @Test void javaConcurrentLinkedQueue4()  { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                @DisplayName("4 fields (Java LinkedBlockingQueue<T>)")   @Test void javaLinkedBlockingQueue4()    { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java LinkedTransferQueue<T>)")   @Test void javaLinkedTransferQueue4()    { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                @DisplayName("4 fields (Java PriorityBlockingQueue<T>)") @Test void javaPriorityBlockingQueue4()  { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                @DisplayName("4 fields (Java PriorityQueue<T>)")         @Test void javaPriorityQueue4()          { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                @DisplayName("4 fields (Java SynchronousQueue<T>)")      @Test void javaSynchronousQueue4()       { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                @DisplayName("4 fields (Java Deque<T>)")                 @Test void javaDeque4()                  { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_DEQUE)); }
+                @DisplayName("4 fields (Java BlockingDeque<T>)")         @Test void javaBlockingDeque4()          { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                @DisplayName("4 fields (Java ArrayDeque<T>)")            @Test void javaArrayDeque4()             { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ARRAY_DEQUE)); }
+                @DisplayName("4 fields (Java ConcurrentLinkedDeque<T>)") @Test void javaConcurrentLinkedDeque4()  { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                @DisplayName("4 fields (Java LinkedBlockingDeque<T>)")   @Test void javaLinkedBlockingDeque4()    { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                @DisplayName("4 fields (Java Stack<T>)")                 @Test void javaStack4()                  { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_STACK)); }
+                @DisplayName("4 fields (T[])")                           @Test void array4()                      { assertFalse(newInstance(ABCD) .hasNotAll(NULL_ARRAY)); }
+            }
+
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(newInstance(EMPTY).hasNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaIterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaIterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaIterator<>(E))); }
@@ -9606,7 +10740,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaIterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaIterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaIterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaIterator<>(B))); }
@@ -9615,7 +10748,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaIterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaIterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaIterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaIterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaIterator<>(B))); }
@@ -9628,12 +10760,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotAll(new ArrayAsJavaIterator<>(EFGH))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(newInstance(EMPTY).hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaListIterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaListIterator<>(E))); }
@@ -9641,7 +10771,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaListIterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaListIterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaListIterator<>(B))); }
@@ -9650,7 +10779,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaListIterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaListIterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaListIterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaListIterator<>(B))); }
@@ -9663,12 +10791,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotAll(new ArrayAsJavaListIterator<>(EFGH))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(newInstance(EMPTY).hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaSpliterator<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaSpliterator<>(E))); }
@@ -9676,7 +10802,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaSpliterator<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaSpliterator<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaSpliterator<>(B))); }
@@ -9685,7 +10810,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaSpliterator<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaSpliterator<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_SPLITERATOR)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaSpliterator<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaSpliterator<>(B))); }
@@ -9698,12 +10822,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotAll(new ArrayAsJavaSpliterator<>(EFGH))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(newInstance(EMPTY).hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaEnumeration<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaEnumeration<>(E))); }
@@ -9711,7 +10833,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaEnumeration<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaEnumeration<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaEnumeration<>(B))); }
@@ -9720,7 +10841,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaEnumeration<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaEnumeration<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ENUMERATION)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaEnumeration<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaEnumeration<>(B))); }
@@ -9734,12 +10854,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_JAVA_ITERABLE)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(newInstance(EMPTY).hasNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaIterable<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsJavaIterable<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotAll(NULL_JAVA_ITERABLE)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaIterable<>(E))); }
@@ -9747,7 +10865,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaIterable<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaIterable<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsJavaIterable<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotAll(NULL_JAVA_ITERABLE)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsJavaIterable<>(B))); }
@@ -9756,7 +10873,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaIterable<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaIterable<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsJavaIterable<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_JAVA_ITERABLE)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaIterable<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsJavaIterable<>(B))); }
@@ -9770,12 +10886,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(newInstance(EMPTY).hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsMinimalistCollection<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsMinimalistCollection<>(E))); }
@@ -9783,7 +10897,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsMinimalistCollection<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsMinimalistCollection<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsMinimalistCollection<>(B))); }
@@ -9792,7 +10905,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsMinimalistCollection<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsMinimalistCollection<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsMinimalistCollection<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsMinimalistCollection<>(B))); }
@@ -9805,12 +10917,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotAll(new ArrayAsMinimalistCollection<>(EFGH))); }
             }
             /*TODO re-enable once the CollectionHolder.toIterator utility has been created*/ @Disabled @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(newInstance(EMPTY).hasNotAll(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsCollection<>(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsCollection<>(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotAll(new ArrayAsCollection<>(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotAll(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotAll(new ArrayAsCollection<>(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsCollection<>(E))); }
@@ -9818,7 +10928,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsCollection<>(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsCollection<>(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotAll(new ArrayAsCollection<>(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotAll(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsCollection<>(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotAll(new ArrayAsCollection<>(B))); }
@@ -9827,7 +10936,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsCollection<>(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsCollection<>(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotAll(new ArrayAsCollection<>(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_COLLECTION_HOLDER)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsCollection<>(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsCollection<>(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotAll(new ArrayAsCollection<>(B))); }
@@ -9848,12 +10956,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -9861,7 +10967,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -9870,7 +10975,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -9890,12 +10994,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -9903,7 +11005,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -9912,7 +11013,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -9932,12 +11032,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -9945,7 +11043,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -9954,7 +11051,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -9974,12 +11070,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -9987,7 +11081,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -9996,7 +11089,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10016,12 +11108,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10029,7 +11119,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10038,7 +11127,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10058,12 +11146,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10071,7 +11157,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10080,7 +11165,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10100,12 +11184,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10113,7 +11195,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10122,7 +11203,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10142,12 +11222,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10155,7 +11233,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10164,7 +11241,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10184,12 +11260,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10197,7 +11271,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10206,7 +11279,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10226,12 +11298,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10239,7 +11309,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10248,7 +11317,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10268,12 +11336,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10281,7 +11347,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10290,7 +11355,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10310,12 +11374,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10323,7 +11385,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10332,7 +11393,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10352,12 +11412,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(nullInstance())); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(instances.this.newInstance(EMPTY).hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(A))); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(AB))); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( instances.this.newInstance(EMPTY).hasNotAll(newInstance(ABCD))); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(instances.this.newInstance(A)    .hasNotAll(nullInstance())); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(instances.this.newInstance(A)    .hasNotAll(newInstance(A))); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(E))); }
@@ -10365,7 +11423,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EF))); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( instances.this.newInstance(A)    .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(nullInstance())); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(A))); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(instances.this.newInstance(AB)   .hasNotAll(newInstance(B))); }
@@ -10374,7 +11431,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EF))); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( instances.this.newInstance(AB)   .hasNotAll(newInstance(EFGH))); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(nullInstance())); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EMPTY))); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(A))); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(B))); }
@@ -10388,12 +11444,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @DisplayName("T[]") @Nested class Array {
-                @DisplayName("empty (null)")    @Test void empty_null() { assertFalse(newInstance(EMPTY).hasNotAll(NULL_ARRAY)); }
                 @DisplayName("empty (none)")    @Test void empty_none() { assertFalse(newInstance(EMPTY).hasNotAll(EMPTY)); }
                 @DisplayName("empty (a)")       @Test void empty_a()    { assertTrue( newInstance(EMPTY).hasNotAll(A)); }
                 @DisplayName("empty (ab)")      @Test void empty_ab()   { assertTrue( newInstance(EMPTY).hasNotAll(AB)); }
                 @DisplayName("empty (abcd)")    @Test void empty_abcd() { assertTrue( newInstance(EMPTY).hasNotAll(ABCD)); }
-                @DisplayName("1 field (null)")  @Test void test1_null() { assertFalse(newInstance(A)    .hasNotAll(NULL_ARRAY)); }
                 @DisplayName("1 field (none)")  @Test void test1_none() { assertFalse(newInstance(A)    .hasNotAll(EMPTY)); }
                 @DisplayName("1 field (a)")     @Test void test1_a()    { assertFalse(newInstance(A)    .hasNotAll(A)); }
                 @DisplayName("1 field (e)")     @Test void test1_e()    { assertTrue( newInstance(A)    .hasNotAll(E)); }
@@ -10401,7 +11455,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("1 field (ef)")    @Test void test1_ef()   { assertTrue( newInstance(A)    .hasNotAll(EF)); }
                 @DisplayName("1 field (abcd)")  @Test void test1_abcd() { assertTrue( newInstance(A)    .hasNotAll(ABCD)); }
                 @DisplayName("1 field (efgh)")  @Test void test1_efgh() { assertTrue( newInstance(A)    .hasNotAll(EFGH)); }
-                @DisplayName("2 fields (null)") @Test void test2_null() { assertFalse(newInstance(AB)   .hasNotAll(NULL_ARRAY)); }
                 @DisplayName("2 fields (none)") @Test void test2_none() { assertFalse(newInstance(AB)   .hasNotAll(EMPTY)); }
                 @DisplayName("2 fields (a)")    @Test void test2_a()    { assertFalse(newInstance(AB)   .hasNotAll(A)); }
                 @DisplayName("2 fields (b)")    @Test void test2_b()    { assertFalse(newInstance(AB)   .hasNotAll(B)); }
@@ -10410,7 +11463,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("2 fields (ef)")   @Test void test2_ef()   { assertTrue( newInstance(AB)   .hasNotAll(EF)); }
                 @DisplayName("2 fields (abcd)") @Test void test2_abcd() { assertTrue( newInstance(AB)   .hasNotAll(ABCD)); }
                 @DisplayName("2 fields (efgh)") @Test void test2_efgh() { assertTrue( newInstance(AB)   .hasNotAll(EFGH)); }
-                @DisplayName("4 fields (null)") @Test void test4_null() { assertFalse(newInstance(ABCD) .hasNotAll(NULL_ARRAY)); }
                 @DisplayName("4 fields (none)") @Test void test4_none() { assertFalse(newInstance(ABCD) .hasNotAll(EMPTY)); }
                 @DisplayName("4 fields (a)")    @Test void test4_a()    { assertFalse(newInstance(ABCD) .hasNotAll(A)); }
                 @DisplayName("4 fields (b)")    @Test void test4_b()    { assertFalse(newInstance(ABCD) .hasNotAll(B)); }
