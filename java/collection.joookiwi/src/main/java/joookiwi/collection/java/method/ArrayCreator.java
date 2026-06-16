@@ -310,8 +310,50 @@ public final class ArrayCreator
     //#region -------------------- value1, value2 --------------------
 
     @Contract(value = ALWAYS_NEW_2, pure = true)
-    @SuppressWarnings("unchecked cast")
-    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2) { return (T[]) new Object[]{value1, value2,}; }
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2) {
+        if (value1 == null)
+            if (value2 == null)
+                return sizedArray(2);
+            else { // We have null (value1) and value2
+                @SuppressWarnings("unchecked cast") final var newArray = Array((Class<? extends T>) value2.getClass(), 2);
+                newArray[0] = null;
+                newArray[1] = value2;
+                return newArray;
+            }
+        if (value2 == null) { // We have value1 and null (value2)
+            @SuppressWarnings("unchecked cast") final var newArray = Array((Class<? extends T>) value1.getClass(), 2);
+            newArray[0] = value1;
+            newArray[1] = null;
+            return newArray;
+        }
+
+        final var value1Class = value1.getClass();
+        final var value2Class = value2.getClass();
+        if (value1Class == value2Class) { // We have the same type on both value1 & value2
+            @SuppressWarnings("unchecked cast") final var newArray = Array((Class<? extends T>) value1Class, 2);
+            newArray[0] = value1;
+            newArray[1] = value2;
+            return newArray;
+        }
+        if (value1Class.isAssignableFrom(value2Class)) { // value1 is of the parent type
+            @SuppressWarnings("unchecked cast") final var newArray = Array((Class<? extends T>) value1Class, 2);
+            newArray[0] = value1;
+            newArray[1] = value2;
+            return newArray;
+        }
+        if (value2Class.isAssignableFrom(value1Class)) { // value2 is of the parent type
+            @SuppressWarnings("unchecked cast") final var newArray = Array((Class<? extends T>) value2Class, 2);
+            newArray[0] = value1;
+            newArray[1] = value2;
+            return newArray;
+        }
+
+        // Object is the common ancestor of both types
+        @SuppressWarnings("unchecked cast") final var newArray = Array((Class<? extends T>) Object.class, 2);
+        newArray[0] = value1;
+        newArray[1] = value2;
+        return newArray;
+    }
 
     @Contract(value = ALWAYS_NEW_2, pure = true)
     public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2) { return new boolean[]{value1, value2,}; }
