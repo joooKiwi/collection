@@ -30,7 +30,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An mutable behaviour of a [Stack]
+/// A mutable behaviour of a [Stack]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault

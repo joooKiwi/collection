@@ -29,7 +29,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE_AS_LONG;
 import static joookiwi.collection.java.NumericConstants.MAX_SHORT_VALUE_AS_LONG;
 import static joookiwi.collection.java.method.ToCollection.toCollection;
 
-/// An mutable behaviour of a [LinkedBlockingDeque]
+/// A mutable behaviour of a [LinkedBlockingDeque]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault

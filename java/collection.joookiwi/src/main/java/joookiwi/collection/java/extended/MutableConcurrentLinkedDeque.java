@@ -257,7 +257,7 @@ public class MutableConcurrentLinkedDeque<T>
             offerLast(values[index]);
     }
 
-    /// Create an mutable instance of [ConcurrentLinkedDeque]
+    /// Create a mutable instance of [ConcurrentLinkedDeque]
     public MutableConcurrentLinkedDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }
 
     //#endregion -------------------- values --------------------
