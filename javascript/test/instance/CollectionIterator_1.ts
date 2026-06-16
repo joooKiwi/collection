@@ -59,7 +59,7 @@ export class CollectionIterator_1<const T, >
     //#endregion -------------------- End-point index methods --------------------
     //#region -------------------- Current methods --------------------
 
-    public get currentIndex(): 0 { return this.instance.currentIndex }
+    public get currentIndex(): NullOrZeroNumber { return this.instance.currentIndex }
 
     //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------

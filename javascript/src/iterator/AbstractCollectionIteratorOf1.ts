@@ -79,38 +79,36 @@ export abstract class AbstractCollectionIteratorOf1<const T, >
 
     //#region -------------------- Current methods --------------------
 
-    public override get currentIndex(): 0 { return 0 }
+    public override get currentIndex(): NullOrZeroNumber {
+        if (this.#isAtTheCurrentValue)
+            return 0
+        return null
+    }
 
     //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------
 
-    public override get hasNext(): boolean { return this.#isAtTheCurrentValue = !this.#isAtTheCurrentValue }
+    public override get hasNext(): boolean { return !this.#isAtTheCurrentValue }
 
     public override get nextIndex(): NullOrZeroNumber {
-        if (this.#isAtTheCurrentValue) {
-            this.#isAtTheCurrentValue = false
+        if (this.#isAtTheCurrentValue)
             return null
-        }
 
         this.#isAtTheCurrentValue = true
         return 0
     }
 
     public override get nextValue(): T {
-        if (this.#isAtTheCurrentValue) {
-            this.#isAtTheCurrentValue = false
+        if (this.#isAtTheCurrentValue)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or after the end of the line.",)
-        }
 
         this.#isAtTheCurrentValue = true
         return this.value
     }
 
     public override next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> {
-        if (this.#isAtTheCurrentValue) {
-            this.#isAtTheCurrentValue = false
+        if (this.#isAtTheCurrentValue)
             return GenericAfterLastIteratorValue.get
-        }
 
         this.#isAtTheCurrentValue = true
         return this._valueResult
@@ -119,33 +117,27 @@ export abstract class AbstractCollectionIteratorOf1<const T, >
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
 
-    public override get hasPrevious(): boolean { return this.#isAtTheCurrentValue = !this.#isAtTheCurrentValue }
+    public override get hasPrevious(): boolean { return !this.#isAtTheCurrentValue }
 
     public override get previousIndex(): NullOrZeroNumber {
-        if (this.#isAtTheCurrentValue) {
-            this.#isAtTheCurrentValue = false
+        if (this.#isAtTheCurrentValue)
             return null
-        }
 
         this.#isAtTheCurrentValue = true
         return 0
     }
 
     public override get previousValue(): T {
-        if (this.#isAtTheCurrentValue) {
-            this.#isAtTheCurrentValue = false
+        if (this.#isAtTheCurrentValue)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or before the start of the line.",)
-        }
 
         this.#isAtTheCurrentValue = true
         return this.value
     }
 
     public override previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> {
-        if (this.#isAtTheCurrentValue) {
-            this.#isAtTheCurrentValue = false
+        if (this.#isAtTheCurrentValue)
             return GenericBeforeFirstIteratorValue.get
-        }
 
         this.#isAtTheCurrentValue = true
         return this._valueResult
@@ -167,7 +159,7 @@ export abstract class AbstractCollectionIteratorOf1<const T, >
             return this
 
         operation(this.value, 0,)
-        this.#isAtTheCurrentValue = false
+        this.#isAtTheCurrentValue = true
         return this
     }
 
@@ -176,7 +168,7 @@ export abstract class AbstractCollectionIteratorOf1<const T, >
             return this
 
         operation(0, this.value,)
-        this.#isAtTheCurrentValue = false
+        this.#isAtTheCurrentValue = true
         return this
     }
 
