@@ -35,6 +35,7 @@ public final class ArrayCreator
 
     private static @Nullable WeakReference<Object @Nullable @Unmodifiable []> __emptyArray;
     private static final java.util.Map<Class<?>, WeakReference<Object @Unmodifiable []>> __otherEmptyArrays = new IdentityHashMap<>();
+    private static final java.util.Map<Integer, WeakReference<Object @Unmodifiable []>> __sizedArrays = new IdentityHashMap<>();
     private static @Nullable WeakReference<boolean @Unmodifiable []> __emptyBooleanArray;
     private static @Nullable WeakReference<char @Unmodifiable []> __emptyCharArray;
     private static @Nullable WeakReference<byte @Unmodifiable []> __emptyByteArray;
@@ -270,6 +271,27 @@ public final class ArrayCreator
     }
 
     //#endregion -------------------- type --------------------
+    //#region -------------------- size --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] sizedArray(final int size) {
+        if (size == 0)
+            return Array();
+        if (size < 0)
+            throw new IndexOutOfBoundsException("No array can be created with a negative size (“" + size + "”).", size);//TODO: replace with a negative index exception instead
+
+        final var map = __sizedArrays;
+        if (map.containsKey(size)) {
+            @SuppressWarnings("unchecked cast") final var valueFound = (T @Nullable []) map.get(size).get();
+            if (valueFound != null)
+                return valueFound;
+        }
+
+        @SuppressWarnings("unchecked cast") final var newValue = (T[]) new Object[size];
+        map.put(size, new WeakReference<>(newValue));
+        return newValue;
+    }
+
+    //#endregion -------------------- size --------------------
     //#region -------------------- value --------------------
 
     @Contract(value = ALWAYS_NEW_1, pure = true)
