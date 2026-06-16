@@ -2026,12 +2026,10 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         if (transform == null)
             if (limit == null)
                 return `${prefix ?? '['}${this.value}${postfix ?? ']'}`
-            else {
-                const lastIndex = this.#getLastIndex(limit,)
-                if (lastIndex === 0)
-                    return `${prefix ?? '['}${truncated ?? '…'}${postfix ?? ']'}`
+            else if (this.#getLastIndex(limit,) === 0)
+                return `${prefix ?? '['}${truncated ?? '…'}${postfix ?? ']'}`
+            else
                 return `${prefix ?? '['}${this.value}${postfix ?? ']'}`
-            }
         if (limit == null)
             if (transform.length === 1)
                 return `${prefix ?? '['}${(transform as (value: T,) => string)(this.value,)}${postfix ?? ']'}`
@@ -2039,16 +2037,13 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
                 return `${prefix ?? '['}${transform(this.value, 0,)}${postfix ?? ']'}`
             else
                 return `${prefix ?? '['}${(transform as () => string)()}${postfix ?? ']'}`
-
-        const lastIndex = this.#getLastIndex(limit,)
-        if (lastIndex === 0)
+        if (this.#getLastIndex(limit,) === 0)
             return `${prefix ?? '['}${truncated ?? '…'}${postfix ?? ']'}`
         if (transform.length === 1)
             return `${prefix ?? '['}${(transform as (value: T,) => string)(this.value,)}${postfix ?? ']'}`
-        else if (transform.length >= 2)
+        if (transform.length >= 2)
             return `${prefix ?? '['}${transform(this.value, 0,)}${postfix ?? ']'}`
-        else
-            return `${prefix ?? '['}${(transform as () => string)()}${postfix ?? ']'}`
+        return `${prefix ?? '['}${(transform as () => string)()}${postfix ?? ']'}`
     }
 
     //#endregion -------------------- Join to string --------------------
