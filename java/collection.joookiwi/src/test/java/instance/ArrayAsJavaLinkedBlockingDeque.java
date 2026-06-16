@@ -50,9 +50,9 @@ public final class ArrayAsJavaLinkedBlockingDeque<T>
     @Override public int remainingCapacity() { return get().remainingCapacity(); }
     @Override public boolean isEmpty() { return get().isEmpty(); }
 
-    @Override public T peek() { return get().peek(); }
-    @Override public T peekFirst() { return get().peekFirst(); }
-    @Override public T peekLast() { return get().peekLast(); }
+    @Override public @Nullable T peek() { return get().peek(); }
+    @Override public @Nullable T peekFirst() { return get().peekFirst(); }
+    @Override public @Nullable T peekLast() { return get().peekLast(); }
     @Override public T element() { return get().element(); }
     @Override public T getFirst() { return get().getFirst(); }
     @Override public T getLast() { return get().getLast(); }
@@ -91,9 +91,9 @@ public final class ArrayAsJavaLinkedBlockingDeque<T>
     @Override public T takeFirst() throws InterruptedException { return get().takeFirst(); }
     @Override public T takeLast() throws InterruptedException { return get().takeLast(); }
 
-    @Override public T poll() { return get().poll(); }
-    @Override public T pollFirst() { return get().pollFirst(); }
-    @Override public T pollLast() { return get().pollLast(); }
+    @Override public @Nullable T poll() { return get().poll(); }
+    @Override public @Nullable T pollFirst() { return get().pollFirst(); }
+    @Override public @Nullable T pollLast() { return get().pollLast(); }
     @Override public @Nullable T poll(final long timeout, final TimeUnit unit) throws InterruptedException { return get().poll(timeout, unit); }
     @Override public @Nullable T pollFirst(final long timeout, final TimeUnit unit) throws InterruptedException { return get().pollFirst(timeout, unit); }
     @Override public @Nullable T pollLast(final long timeout, final TimeUnit unit) throws InterruptedException { return get().pollLast(timeout, unit); }

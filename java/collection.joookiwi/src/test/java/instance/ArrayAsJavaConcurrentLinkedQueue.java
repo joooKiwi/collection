@@ -47,7 +47,7 @@ public final class ArrayAsJavaConcurrentLinkedQueue<T>
     @Override public int size() { return get().size(); }
     @Override public boolean isEmpty() { return get().isEmpty(); }
 
-    @Override public T peek() { return get().peek(); }
+    @Override public @Nullable T peek() { return get().peek(); }
     @Override public T element() { return get().element(); }
 
     @Override public boolean offer(final T value) { return get().offer(value); }
@@ -63,7 +63,7 @@ public final class ArrayAsJavaConcurrentLinkedQueue<T>
     @Override public boolean removeAll(final Collection<?> values) { return get().removeAll(values); }
     @Override public boolean removeIf(final Predicate<? super T> filter) { return get().removeIf(filter); }
 
-    @Override public T poll() { return get().poll(); }
+    @Override public @Nullable T poll() { return get().poll(); }
 
     @Override public boolean retainAll(final Collection<?> values) { return get().retainAll(values); }
 
