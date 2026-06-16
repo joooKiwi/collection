@@ -34,8 +34,4 @@ public abstract class AbstractJavaNavigableSetTests {
         }
     }
 
-    /// Give `null` to a typed [NavigableSet]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable NavigableSet<T> nullInstance() { return null; }
-
 }

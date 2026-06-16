@@ -34,8 +34,4 @@ public abstract class AbstractJavaSequencedCollectionTests {
         }
     }
 
-    /// Give `null` to a typed [SequencedCollection]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable SequencedCollection<T> nullInstance() { return null; }
-
 }

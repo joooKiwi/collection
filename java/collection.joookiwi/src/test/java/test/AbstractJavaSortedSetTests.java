@@ -34,8 +34,4 @@ public abstract class AbstractJavaSortedSetTests {
         }
     }
 
-    /// Give `null` to a typed [SortedSet]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable SortedSet<T> nullInstance() { return null; }
-
 }

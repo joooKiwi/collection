@@ -34,8 +34,4 @@ public abstract class AbstractJavaBlockingQueueTests {
         }
     }
 
-    /// Give `null` to a typed [BlockingQueue]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable BlockingQueue<T> nullInstance() { return null; }
-
 }

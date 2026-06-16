@@ -34,8 +34,4 @@ public abstract class AbstractJavaBlockingDequeTests {
         }
     }
 
-    /// Give `null` to a typed [BlockingDeque]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable BlockingDeque<T> nullInstance() { return null; }
-
 }

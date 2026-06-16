@@ -34,8 +34,4 @@ public abstract class AbstractJavaCollectionTests {
         }
     }
 
-    /// Give `null` to a typed [Collection]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable Collection<T> nullInstance() { return null; }
-
 }

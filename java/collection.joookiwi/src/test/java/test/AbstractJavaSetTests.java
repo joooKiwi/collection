@@ -34,8 +34,4 @@ public abstract class AbstractJavaSetTests {
         }
     }
 
-    /// Give `null` to a typed [Set]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable Set<T> nullInstance() { return null; }
-
 }
