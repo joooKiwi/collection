@@ -32,10 +32,10 @@ public final class MutableSequencedCollectionCreator
     //#region -------------------- values --------------------
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableCollection<T> MutableCollection(final @Nullable MinimalistCollectionHolder<? extends T> values) { return ToMutableSequencedCollection.toMutableSequencedCollection(values); }
+    public static <T extends @Nullable Object> MutableCollection<T> MutableSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> values) { return ToMutableSequencedCollection.toMutableSequencedCollection(values); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableCollection<T> MutableCollection(final @Nullable CollectionHolder<? extends T> values) { return ToMutableSequencedCollection.toMutableSequencedCollection(values); }
+    public static <T extends @Nullable Object> MutableCollection<T> MutableSequencedCollection(final @Nullable CollectionHolder<? extends T> values) { return ToMutableSequencedCollection.toMutableSequencedCollection(values); }
 
     @Contract(ALWAYS_NEW_1)
     public static <T extends @Nullable Object> MutableSequencedCollection<T> MutableSequencedCollection(final T @Nullable @Unmodifiable [] values) { return ToMutableSequencedCollection.toMutableSequencedCollection(values); }
