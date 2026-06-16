@@ -30,6 +30,8 @@ import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollection
  * @note This class should be inherited if new classes are being made to be more usable by the tools
  * @typeParam T The type
  * @see AbstractCollectionHolder
+ * @see AbstractCollectionHolderOf1
+ * @see AbstractCollectionHolderOf2
  * @see CollectionViewer
  * @see LazyCollectionHolder
  * @see LazyCollectionHolderOf0Or1
