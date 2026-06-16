@@ -1371,7 +1371,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
-    public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
+    public override slice(from?: NullableNumber, to?: NullableNumber,): this
     public override slice(indices: NumberArray,): CollectionHolder<T>
     public override slice(indices: NumberSet,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
@@ -1381,7 +1381,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): | this | CollectionHolder<T>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         //#region -------------------- 0 arguments --------------------
 
@@ -1500,27 +1500,27 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
 
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice()} */
-    protected _sliceWith0Argument(): CollectionHolder<T> {
-        return new LateRetriever.LazyCollectionHolderOf1(() => this.value,)
+    protected _sliceWith0Argument(): this {
+        return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from)} */
-    protected _sliceWith1Argument(from: number,): CollectionHolder<T> {
+    protected _sliceWith1Argument(from: number,): this {
         this.#validateStartingIndex(from,)
         return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from, to)} */
-    protected _sliceWith2Argument(from: number, to: number,): CollectionHolder<T> {
+    protected _sliceWith2Argument(from: number, to: number,): this {
         this.#validateStartingIndex(from,)
         this.#validateEndingIndex(to,)
-        return new LateRetriever.LazyCollectionHolderOf1(() => this.value,)
+        return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, to)} */
-    protected _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): CollectionHolder<T> {
+    protected _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): this {
         this.#validateEndingIndex(to,)
-        return new LateRetriever.LazyCollectionHolderOf1(() => this.value,)
+        return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberArray)} */
