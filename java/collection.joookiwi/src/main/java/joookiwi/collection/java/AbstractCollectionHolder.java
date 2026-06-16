@@ -30,7 +30,6 @@ import java.util.SortedSet;
 import java.util.Spliterator;
 import java.util.TreeMap;
 import java.util.WeakHashMap;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -158,7 +157,6 @@ import joookiwi.collection.java.method.HasDuplicate;
 import joookiwi.collection.java.method.HasNoDuplicates;
 import joookiwi.collection.java.method.HasNoNulls;
 import joookiwi.collection.java.method.HasNot;
-import joookiwi.collection.java.method.HasNotAll;
 import joookiwi.collection.java.method.HasNotAll;
 import joookiwi.collection.java.method.HasNotOne;
 import joookiwi.collection.java.method.HasNull;
@@ -293,18 +291,15 @@ import static joookiwi.collection.java.NumericConstants.NULL_INT;
 /// It only uses the extension function for the method implementation.
 ///
 /// @param <T> The type
-/// @implNote The instance remove a good chuck of redundant call with either `null` or aliases as `final` methods.
-///           In the case of needed overriden, implementing [CollectionHolder] should be used directly instead.
-/// @see AbstractOf1CollectionHolder
-/// @see AbstractOf2CollectionHolder
+/// @apiNote This class is used to help reduce the complexity when needed and calling its generic [CollectionHolder] extension method if applicable
+/// @see AbstractCollectionHolderOf1
+/// @see AbstractCollectionHolderOf2
 /// @see EmptyCollectionHolder
-/// @see GenericCollectionHolder
 /// @see ArrayAsCollectionHolder
-/// @see CollectionViewer
+/// @see GenericCollectionHolder
 @NotNullByDefault
 public abstract class AbstractCollectionHolder<T extends @Nullable Object>
-        extends AbstractMinimalistCollectionHolder<T>
-        implements CollectionHolder<T> {
+        extends AbstractUnimplementedCollectionHolder<T> {
 
     //#region -------------------- Constructor --------------------
 
@@ -315,22 +310,12 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- Size methods --------------------
 
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int length() { return size(); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int count() { return size(); }
-
     @Override public boolean isEmpty() { return IsEmpty.isEmpty(this); }
     @Override public boolean isNotEmpty() { return IsNotEmpty.isNotEmpty(this); }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 
-    //#region -------------------- Get --------------------
-
-    @Override public final T at(final int index) { return get(index); }
-
-    @Override public final T elementAt(final int index) { return get(index); }
-
-    //#endregion -------------------- Get --------------------
     //#region -------------------- Get first --------------------
 
     @Override public T getFirst() { return GetFirst.getFirst(this); }
@@ -346,12 +331,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 
     @Override public T getOrElse(final int index, final IntFunction<? extends T> defaultValue) { return GetOrElse.getOrElse(this, index, defaultValue); }
     @Override public T getOrElse(final int index, final Supplier<? extends T>    defaultValue) { return GetOrElse.getOrElse(this, index, defaultValue); }
-
-    @Override public final T atOrElse(final int index, final IntFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Override public final T atOrElse(final int index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-
-    @Override public final T elementAtOrElse(final int index, final IntFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Override public final T elementAtOrElse(final int index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
 
     //#endregion -------------------- Get or else --------------------
     //#region -------------------- Get first or else --------------------
@@ -369,10 +348,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 
     @Override public @Nullable T getOrNull(final int index) { return GetOrNull.getOrNull(this, index); }
 
-    @Override public final @Nullable T atOrNull(final int index) { return getOrNull(index); }
-
-    @Override public final @Nullable T elementAtOrNull(final int index) { return getOrNull(index); }
-
     //#endregion -------------------- Get or null --------------------
     //#region -------------------- Get first or null --------------------
 
@@ -385,201 +360,11 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 
     //#endregion -------------------- Get last or null --------------------
 
-    //#region -------------------- First --------------------
-
-    @Override public final T first() { return getFirst(); }
-
-    @Override public final T first(final @Nullable ObjIntPredicate<? super T> predicate) {
-        if (predicate == null)
-            return getFirst();
-        return findFirst(predicate);
-    }
-
-    @Override public final T first(final @Nullable Predicate<? super T> predicate) {
-        if (predicate == null)
-            return getFirst();
-        return findFirst(predicate);
-    }
-
-    @Override public final T first(final @Nullable BooleanSupplier predicate) {
-        if (predicate == null)
-            return getFirst();
-        return findFirst(predicate);
-    }
-
-    //#endregion -------------------- First --------------------
-    //#region -------------------- First indexed --------------------
-
-    @Override public final T firstIndexed() { return getFirst(); }
-
-    @Override public final T firstIndexed(final @Nullable IntObjPredicate<? super T> predicate) {
-        if (predicate == null)
-            return getFirst();
-        return findFirstIndexed(predicate);
-    }
-
-    @Override public final T firstIndexed(final @Nullable IntPredicate predicate) {
-        if (predicate == null)
-            return getFirst();
-        return findFirstIndexed(predicate);
-    }
-
-    @Override public final T firstIndexed(final @Nullable BooleanSupplier predicate) {
-        if (predicate == null)
-            return getFirst();
-        return findFirstIndexed(predicate);
-    }
-
-    //#endregion -------------------- First indexed --------------------
-    //#region -------------------- First or null --------------------
-
-    @Override public final @Nullable T firstOrNull() { return getFirstOrNull(); }
-
-    @Override public final @Nullable T firstOrNull(final @Nullable ObjIntPredicate<? super T> predicate) {
-        if (predicate == null)
-            return getFirstOrNull();
-        return findFirstOrNull(predicate);
-    }
-
-    @Override public final @Nullable T firstOrNull(final @Nullable Predicate<? super T> predicate) {
-        if (predicate == null)
-            return getFirstOrNull();
-        return findFirstOrNull(predicate);
-    }
-
-    @Override public final @Nullable T firstOrNull(final @Nullable BooleanSupplier predicate) {
-        if (predicate == null)
-            return getFirstOrNull();
-        return findFirstOrNull(predicate);
-    }
-
-    //#endregion -------------------- First or null --------------------
-    //#region -------------------- First indexed or null --------------------
-
-    @Override public final @Nullable T firstIndexedOrNull() { return getFirstOrNull(); }
-
-    @Override public final @Nullable T firstIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate) {
-        if (predicate == null)
-            return getFirstOrNull();
-        return findFirstIndexedOrNull(predicate);
-    }
-
-    @Override public final @Nullable T firstIndexedOrNull(final @Nullable IntPredicate predicate) {
-        if (predicate == null)
-            return getFirstOrNull();
-        return findFirstIndexedOrNull(predicate);
-    }
-
-    @Override public final @Nullable T firstIndexedOrNull(final @Nullable BooleanSupplier predicate) {
-        if (predicate == null)
-            return getFirstOrNull();
-        return findFirstIndexedOrNull(predicate);
-    }
-
-    //#endregion -------------------- First indexed or null --------------------
-
-    //#region -------------------- Last --------------------
-
-    @Override public final T last() { return getLast(); }
-
-    @Override public final T last(final @Nullable ObjIntPredicate<? super T> predicate) {
-        if (predicate == null)
-            return getLast();
-        return findLast(predicate);
-    }
-
-    @Override public final T last(final @Nullable Predicate<? super T> predicate) {
-        if (predicate == null)
-            return getLast();
-        return findLast(predicate);
-    }
-
-    @Override public final T last(final @Nullable BooleanSupplier predicate) {
-        if (predicate == null)
-            return getLast();
-        return findLast(predicate);
-    }
-
-    //#endregion -------------------- Last --------------------
-    //#region -------------------- Last indexed --------------------
-
-    @Override public final T lastIndexed() { return getLast(); }
-
-    @Override public final T lastIndexed(final @Nullable IntObjPredicate<? super T> predicate) {
-        if (predicate == null)
-            return getLast();
-        return findLastIndexed(predicate);
-    }
-
-    @Override public final T lastIndexed(final @Nullable IntPredicate predicate) {
-        if (predicate == null)
-            return getLast();
-        return findLastIndexed(predicate);
-    }
-
-    @Override public final T lastIndexed(final @Nullable BooleanSupplier predicate) {
-        if (predicate == null)
-            return getLast();
-        return findLastIndexed(predicate);
-    }
-
-    //#endregion -------------------- Last indexed --------------------
-    //#region -------------------- Last or null --------------------
-
-    @Override public final @Nullable T lastOrNull() { return getLastOrNull(); }
-
-    @Override public final @Nullable T lastOrNull(final @Nullable ObjIntPredicate<? super T> predicate) {
-        if (predicate == null)
-            return getLastOrNull();
-        return findLastOrNull(predicate);
-    }
-
-    @Override public final @Nullable T lastOrNull(final @Nullable Predicate<? super T> predicate) {
-        if (predicate == null)
-            return getLastOrNull();
-        return findLastOrNull(predicate);
-    }
-
-    @Override public final @Nullable T lastOrNull(final @Nullable BooleanSupplier predicate) {
-        if (predicate == null)
-            return getLastOrNull();
-        return findLastOrNull(predicate);
-    }
-
-    //#endregion -------------------- Last or null --------------------
-    //#region -------------------- Last indexed or null --------------------
-
-    @Override public final @Nullable T lastIndexedOrNull() { return getLastOrNull(); }
-
-    @Override public final @Nullable T lastIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate) {
-        if (predicate == null)
-            return getLastOrNull();
-        return findLastIndexedOrNull(predicate);
-    }
-
-    @Override public final @Nullable T lastIndexedOrNull(final @Nullable IntPredicate predicate) {
-        if (predicate == null)
-            return getLastOrNull();
-        return findLastIndexedOrNull(predicate);
-    }
-
-    @Override public final @Nullable T lastIndexedOrNull(final @Nullable BooleanSupplier predicate) {
-        if (predicate == null)
-            return getLastOrNull();
-        return findLastIndexedOrNull(predicate);
-    }
-
-    //#endregion -------------------- Last indexed or null --------------------
-
     //#region -------------------- Find first --------------------
 
     @Override public T findFirst(final ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(this, predicate); }
     @Override public T findFirst(final Predicate<? super T>       predicate) { return FindFirst.findFirst(this, predicate); }
     @Override public T findFirst(final BooleanSupplier            predicate) { return FindFirst.findFirst(this, predicate); }
-
-    @Override public final T find(final ObjIntPredicate<? super T> predicate) { return findFirst(predicate); }
-    @Override public final T find(final Predicate<? super T>       predicate) { return findFirst(predicate); }
-    @Override public final T find(final BooleanSupplier            predicate) { return findFirst(predicate); }
 
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find first indexed --------------------
@@ -588,10 +373,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public T findFirstIndexed(final IntPredicate               predicate) { return FindFirstIndexed.findFirstIndexed(this, predicate); }
     @Override public T findFirstIndexed(final BooleanSupplier            predicate) { return FindFirstIndexed.findFirstIndexed(this, predicate); }
 
-    @Override public final T findIndexed(final IntObjPredicate<? super T> predicate) { return findFirstIndexed(predicate); }
-    @Override public final T findIndexed(final IntPredicate               predicate) { return findFirstIndexed(predicate); }
-    @Override public final T findIndexed(final BooleanSupplier            predicate) { return findFirstIndexed(predicate); }
-
     //#endregion -------------------- Find first indexed --------------------
     //#region -------------------- Find first or null --------------------
 
@@ -599,20 +380,12 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public @Nullable T findFirstOrNull(final Predicate<? super T>       predicate) { return FindFirstOrNull.findFirstOrNull(this, predicate); }
     @Override public @Nullable T findFirstOrNull(final BooleanSupplier            predicate) { return FindFirstOrNull.findFirstOrNull(this, predicate); }
 
-    @Override public final @Nullable T findOrNull(final ObjIntPredicate<? super T> predicate) { return findFirstOrNull(predicate); }
-    @Override public final @Nullable T findOrNull(final Predicate<? super T>       predicate) { return findFirstOrNull(predicate); }
-    @Override public final @Nullable T findOrNull(final BooleanSupplier            predicate) { return findFirstOrNull(predicate); }
-
     //#endregion -------------------- Find first or null --------------------
     //#region -------------------- Find first indexed or null --------------------
 
     @Override public @Nullable T findFirstIndexedOrNull(final IntObjPredicate<? super T> predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(this, predicate); }
     @Override public @Nullable T findFirstIndexedOrNull(final IntPredicate               predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(this, predicate); }
     @Override public @Nullable T findFirstIndexedOrNull(final BooleanSupplier            predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(this, predicate); }
-
-    @Override public final @Nullable T findIndexedOrNull(final IntObjPredicate<? super T> predicate) { return findFirstIndexedOrNull(predicate); }
-    @Override public final @Nullable T findIndexedOrNull(final IntPredicate               predicate) { return findFirstIndexedOrNull(predicate); }
-    @Override public final @Nullable T findIndexedOrNull(final BooleanSupplier            predicate) { return findFirstIndexedOrNull(predicate); }
 
     //#endregion -------------------- Find first indexed or null --------------------
 
@@ -678,17 +451,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
         return firstIndexOf(element, from.intValue(), to.intValue());
     }
 
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T element                                                          ) { return firstIndexOf(element); }
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T element, final int               from                            ) { return firstIndexOf(element, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T element, final @Nullable Integer from                            ) { return firstIndexOf(element, from); }
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T element, final int               from, final int               to) { return firstIndexOf(element, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T element, final @Nullable Integer from, final int               to) { return firstIndexOf(element, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T element, final int               from, final @Nullable Integer to) { return firstIndexOf(element, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T element, final @Nullable Integer from, final @Nullable Integer to) { return firstIndexOf(element, from, to); }
-
     //#endregion -------------------- First index of --------------------
     //#region -------------------- First index of or null --------------------
 
@@ -719,17 +481,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
             return firstIndexOfOrNull(element, from.intValue());
         return firstIndexOfOrNull(element, from.intValue(), to.intValue());
     }
-
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T element                                                          ) { return firstIndexOfOrNull(element); }
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T element, final int               from                            ) { return firstIndexOfOrNull(element, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T element, final @Nullable Integer from                            ) { return firstIndexOfOrNull(element, from); }
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T element, final int               from, final int               to) { return firstIndexOfOrNull(element, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T element, final @Nullable Integer from, final int               to) { return firstIndexOfOrNull(element, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T element, final int               from, final @Nullable Integer to) { return firstIndexOfOrNull(element, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T element, final @Nullable Integer from, final @Nullable Integer to) { return firstIndexOfOrNull(element, from, to); }
 
     //#endregion -------------------- First index of or null --------------------
 
@@ -883,52 +634,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
         return indexOfFirst(predicate, from.intValue(), to.intValue());
     }
 
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final ObjIntPredicate<? super T> predicate                                                          ) { return indexOfFirst(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final Predicate<? super T>       predicate                                                          ) { return indexOfFirst(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final BooleanSupplier            predicate                                                          ) { return indexOfFirst(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final ObjIntPredicate<? super T> predicate, final int               from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final Predicate<? super T>       predicate, final int               from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final Predicate<? super T>       predicate, final int               from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final ObjIntPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final Predicate<? super T>       predicate, final int               from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final Predicate<? super T>       predicate, final @Nullable Integer from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndex(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final ObjIntPredicate<? super T> predicate                                                          ) { return indexOfFirst(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final Predicate<? super T>       predicate                                                          ) { return indexOfFirst(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final BooleanSupplier            predicate                                                          ) { return indexOfFirst(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final ObjIntPredicate<? super T> predicate, final int               from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final Predicate<? super T>       predicate, final int               from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirst(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final Predicate<? super T>       predicate, final int               from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final ObjIntPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final Predicate<? super T>       predicate, final int               from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final Predicate<? super T>       predicate, final @Nullable Integer from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndex(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirst(predicate, from, to); }
-
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first or null --------------------
 
@@ -1016,52 +721,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
             return indexOfFirstOrNull(predicate, from.intValue());
         return indexOfFirstOrNull(predicate, from.intValue(), to.intValue());
     }
-
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final ObjIntPredicate<? super T> predicate                                                          ) { return indexOfFirstOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final Predicate<? super T>       predicate                                                          ) { return indexOfFirstOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final BooleanSupplier            predicate                                                          ) { return indexOfFirstOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final Predicate<? super T>       predicate, final int               from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final Predicate<? super T>       predicate, final int               from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final Predicate<? super T>       predicate, final int               from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final ObjIntPredicate<? super T> predicate                                                          ) { return indexOfFirstOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final Predicate<? super T>       predicate                                                          ) { return indexOfFirstOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final BooleanSupplier            predicate                                                          ) { return indexOfFirstOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final Predicate<? super T>       predicate, final int               from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirstOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final Predicate<? super T>       predicate, final int               from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final Predicate<? super T>       predicate, final int               from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstOrNull(predicate, from, to); }
 
     //#endregion -------------------- Index of first or null --------------------
     //#region -------------------- Index of first indexed --------------------
@@ -1151,52 +810,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
         return indexOfFirstIndexed(predicate, from.intValue(), to.intValue());
     }
 
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfFirstIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate                                                          ) { return indexOfFirstIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate                                                          ) { return indexOfFirstIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfFirstIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate                                                          ) { return indexOfFirstIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate                                                          ) { return indexOfFirstIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
-
     //#endregion -------------------- Index of first indexed --------------------
     //#region -------------------- Index of first indexed or null --------------------
 
@@ -1284,52 +897,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
             return indexOfFirstIndexedOrNull(predicate, from.intValue());
         return indexOfFirstIndexedOrNull(predicate, from.intValue(), to.intValue());
     }
-
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfFirstIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntPredicate               predicate                                                          ) { return indexOfFirstIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final BooleanSupplier            predicate                                                          ) { return indexOfFirstIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntPredicate               predicate, final int               from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntPredicate               predicate, final int               from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findFirstIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfFirstIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntPredicate               predicate                                                          ) { return indexOfFirstIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final BooleanSupplier            predicate                                                          ) { return indexOfFirstIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntPredicate               predicate, final int               from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntPredicate               predicate, final int               from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexedOrNull(predicate, from, to); }
 
     //#endregion -------------------- Index of first indexed or null --------------------
 
@@ -1420,29 +987,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
         return indexOfLast(predicate, from.intValue(), to.intValue());
     }
 
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final ObjIntPredicate<? super T> predicate                                                          ) { return indexOfLast(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final Predicate<? super T>       predicate                                                          ) { return indexOfLast(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final BooleanSupplier            predicate                                                          ) { return indexOfLast(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final ObjIntPredicate<? super T> predicate, final int               from                            ) { return indexOfLast(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final Predicate<? super T>       predicate, final int               from                            ) { return indexOfLast(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final BooleanSupplier            predicate, final int               from                            ) { return indexOfLast(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfLast(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return indexOfLast(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfLast(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final Predicate<? super T>       predicate, final int               from, final int               to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final ObjIntPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final Predicate<? super T>       predicate, final int               from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final Predicate<? super T>       predicate, final @Nullable Integer from, final int               to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndex(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
-
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last or null --------------------
 
@@ -1530,29 +1074,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
             return indexOfLastOrNull(predicate, from.intValue());
         return indexOfLastOrNull(predicate, from.intValue(), to.intValue());
     }
-
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final ObjIntPredicate<? super T> predicate                                                          ) { return indexOfLastOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final Predicate<? super T>       predicate                                                          ) { return indexOfLastOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final BooleanSupplier            predicate                                                          ) { return indexOfLastOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from                            ) { return indexOfLastOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final Predicate<? super T>       predicate, final int               from                            ) { return indexOfLastOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final BooleanSupplier            predicate, final int               from                            ) { return indexOfLastOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfLastOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return indexOfLastOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfLastOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final Predicate<? super T>       predicate, final int               from, final int               to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final Predicate<? super T>       predicate, final int               from, final @Nullable Integer to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final int               to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastOrNull(predicate, from, to); }
 
     //#endregion -------------------- Index of last or null --------------------
     //#region -------------------- Index of last indexed --------------------
@@ -1642,29 +1163,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
         return indexOfLastIndexed(predicate, from.intValue(), to.intValue());
     }
 
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfLastIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate                                                          ) { return indexOfLastIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate                                                          ) { return indexOfLastIndexed(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfLastIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final int               from                            ) { return indexOfLastIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final int               from                            ) { return indexOfLastIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfLastIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfLastIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfLastIndexed(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final int               from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
-
     //#endregion -------------------- Index of last indexed --------------------
     //#region -------------------- Index of last indexed or null --------------------
 
@@ -1753,29 +1251,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
         return indexOfLastIndexedOrNull(predicate, from.intValue(), to.intValue());
     }
 
-
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfLastIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntPredicate               predicate                                                          ) { return indexOfLastIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final BooleanSupplier            predicate                                                          ) { return indexOfLastIndexedOrNull(predicate); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfLastIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntPredicate               predicate, final int               from                            ) { return indexOfLastIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from                            ) { return indexOfLastIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfLastIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfLastIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfLastIndexedOrNull(predicate, from); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntPredicate               predicate, final int               from, final int               to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-    @Override public final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer findLastIndexIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexedOrNull(predicate, from, to); }
-
     //#endregion -------------------- Index of last indexed or null --------------------
 
     //#endregion -------------------- Index methods --------------------
@@ -1787,30 +1262,15 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean all(final Predicate<? super T>       predicate) { return All.all(this, predicate); }
     @Override public boolean all(final BooleanSupplier            predicate) { return All.all(this, predicate); }
 
-    @Override public final boolean every(final ObjIntPredicate<? super T> predicate) { return all(predicate); }
-    @Override public final boolean every(final Predicate<? super T>       predicate) { return all(predicate); }
-    @Override public final boolean every(final BooleanSupplier            predicate) { return all(predicate); }
-
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
-
-    @Override public final boolean any() { return isNotEmpty(); }
 
     @Override public boolean any(final @Nullable ObjIntPredicate<? super T> predicate) { return Any.any(this, predicate); }
     @Override public boolean any(final @Nullable Predicate<? super T>       predicate) { return Any.any(this, predicate); }
     @Override public boolean any(final @Nullable BooleanSupplier            predicate) { return Any.any(this, predicate); }
 
-
-    @Override public final boolean some() { return isNotEmpty(); }
-
-    @Override public final boolean some(final @Nullable ObjIntPredicate<? super T> predicate) { return any(predicate); }
-    @Override public final boolean some(final @Nullable Predicate<? super T>       predicate) { return any(predicate); }
-    @Override public final boolean some(final @Nullable BooleanSupplier            predicate) { return any(predicate); }
-
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
-
-    @Override public final boolean none() { return isEmpty(); }
 
     @Override public boolean none(final @Nullable ObjIntPredicate<? super T> predicate) { return None.none(this, predicate); }
     @Override public boolean none(final @Nullable Predicate<? super T>       predicate) { return None.none(this, predicate); }
@@ -1818,59 +1278,26 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 
     //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has null --------------------
+    //#region -------------------- Has ‥ --------------------
 
     @Override public boolean hasNull() { return HasNull.hasNull(this); }
 
-    @Override public final boolean includesNull() { return hasNull(); }
-
-    @Override public final boolean containsNull() { return hasNull(); }
-
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has no nulls --------------------
-
     @Override public boolean hasNoNulls() { return HasNoNulls.hasNoNulls(this); }
-
-    @Override public final boolean includesNoNulls() { return hasNoNulls(); }
-
-    @Override public final boolean containsNoNulls() { return hasNoNulls(); }
-
-    //#endregion -------------------- Has no nulls --------------------
-    //#region -------------------- Has duplicate --------------------
 
     @Override public boolean hasDuplicate() { return HasDuplicate.hasDuplicate(this); }
 
-    @Override public final boolean includesDuplicate() { return hasDuplicate(); }
-
-    @Override public final boolean containsDuplicate() { return hasDuplicate(); }
-
-    //#endregion -------------------- Has duplicate --------------------
-    //#region -------------------- Has no duplicates --------------------
-
     @Override public boolean hasNoDuplicates() { return HasNoDuplicates.hasNoDuplicates(this); }
 
-    @Override public final boolean includesNoDuplicates() { return hasNoDuplicates(); }
-
-    @Override public final boolean containsNoDuplicates() { return hasNoDuplicates(); }
-
-    //#endregion -------------------- Has duplicate --------------------
+    //#endregion -------------------- Has ‥ --------------------
 
     //#region -------------------- Has --------------------
 
     @Override public boolean has(final T value) { return Has.has(this, value); }
 
-    @Override public final boolean includes(final T value) { return has(value); }
-
-    @Override public final boolean contains(final T value) { return  has(value); }
-
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has not --------------------
 
     @Override public boolean hasNot(final T value) { return HasNot.hasNot(this, value); }
-
-    @Override public final boolean includesNot(final T value) { return hasNot(value); }
-
-    @Override public final boolean containsNot(final T value) { return  hasNot(value); }
 
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
@@ -1893,42 +1320,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean hasOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return HasOne.hasOne(this, values); }
     @Override public boolean hasOne(final T @Nullable @Unmodifiable []                               values) { return HasOne.hasOne(this, values); }
 
-    @Override public final boolean includesOne(final @Nullable Iterator<? extends T>                            values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable ListIterator<? extends T>                        values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable Spliterator<? extends T>                         values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable Enumeration<? extends T>                         values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable Iterable<? extends T>                            values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable CollectionHolder<? extends T>                    values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable Set<? extends T>                   values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable SequencedSet<? extends T>          values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasOne(values); }
-    @Override public final boolean includesOne(final T @Nullable @Unmodifiable []                               values) { return hasOne(values); }
-
-    @Override public final boolean containsOne(final @Nullable Iterator<? extends T>                            values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable ListIterator<? extends T>                        values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable Spliterator<? extends T>                         values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable Enumeration<? extends T>                         values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable Iterable<? extends T>                            values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable CollectionHolder<? extends T>                    values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable Set<? extends T>                   values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable SequencedSet<? extends T>          values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasOne(values); }
-    @Override public final boolean containsOne(final T @Nullable @Unmodifiable []                               values) { return hasOne(values); }
-
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
@@ -1949,42 +1340,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return HasNotOne.hasNotOne(this, values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return HasNotOne.hasNotOne(this, values); }
     @Override public boolean hasNotOne(final T @Nullable @Unmodifiable []                               values) { return HasNotOne.hasNotOne(this, values); }
-
-    @Override public final boolean includesNotOne(final @Nullable Iterator<? extends T>                            values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable ListIterator<? extends T>                        values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable Spliterator<? extends T>                         values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable Enumeration<? extends T>                         values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable Iterable<? extends T>                            values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable CollectionHolder<? extends T>                    values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Set<? extends T>                   values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable SequencedSet<? extends T>          values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final T @Nullable @Unmodifiable []                               values) { return hasNotOne(values); }
-
-    @Override public final boolean containsNotOne(final @Nullable Iterator<? extends T>                            values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable ListIterator<? extends T>                        values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable Spliterator<? extends T>                         values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable Enumeration<? extends T>                         values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable Iterable<? extends T>                            values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable CollectionHolder<? extends T>                    values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Set<? extends T>                   values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable SequencedSet<? extends T>          values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final T @Nullable @Unmodifiable []                               values) { return hasNotOne(values); }
 
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
@@ -2007,42 +1362,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean hasAll(final @Nullable @Unmodifiable Deque<? extends T>                      values) { return HasAll.hasAll(this, values); }
     @Override public boolean hasAll(final T @Nullable @Unmodifiable []                                    values) { return HasAll.hasAll(this, values); }
 
-    @Override public final boolean includesAll(final @Nullable Iterator<? extends T>                            values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable ListIterator<? extends T>                        values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable Spliterator<? extends T>                         values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable Enumeration<? extends T>                         values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable Iterable<? extends T>                            values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable CollectionHolder<? extends T>                    values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable Set<? extends T>                   values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable SequencedSet<? extends T>          values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasAll(values); }
-    @Override public final boolean includesAll(final T @Nullable @Unmodifiable []                               values) { return hasAll(values); }
-
-    @Override public final boolean containsAll(final @Nullable Iterator<? extends T>                            values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable ListIterator<? extends T>                        values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable Spliterator<? extends T>                         values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable Enumeration<? extends T>                         values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable Iterable<? extends T>                            values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable CollectionHolder<? extends T>                    values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable Set<? extends T>                   values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable SequencedSet<? extends T>          values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasAll(values); }
-    @Override public final boolean containsAll(final T @Nullable @Unmodifiable []                               values) { return hasAll(values); }
-
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
@@ -2064,42 +1383,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Deque<? extends T>                      values) { return HasNotAll.hasNotAll(this, values); }
     @Override public boolean hasNotAll(final T @Nullable @Unmodifiable []                                    values) { return HasNotAll.hasNotAll(this, values); }
 
-    @Override public final boolean includesNotAll(final @Nullable Iterator<? extends T>                            values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable ListIterator<? extends T>                        values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable Spliterator<? extends T>                         values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable Enumeration<? extends T>                         values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable Iterable<? extends T>                            values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable CollectionHolder<? extends T>                    values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Set<? extends T>                   values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable SequencedSet<? extends T>          values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final T @Nullable @Unmodifiable []                               values) { return hasNotAll(values); }
-
-    @Override public final boolean containsNotAll(final @Nullable Iterator<? extends T>                            values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable ListIterator<? extends T>                        values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable Spliterator<? extends T>                         values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable Enumeration<? extends T>                         values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable Iterable<? extends T>                            values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable CollectionHolder<? extends T>                    values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Set<? extends T>                   values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable SequencedSet<? extends T>          values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final T @Nullable @Unmodifiable []                               values) { return hasNotAll(values); }
-
     //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
@@ -2118,11 +1401,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 //    @Override public <R extends @Nullable Object> R reduce(final UnaryOperator<R>                operation) { return Reduce.reduce(this, operation); }
 //    @Override public <R extends @Nullable Object> R reduce(final Supplier<? extends R>           operation) { return Reduce.reduce(this, operation); }
 //
-//    @Override public final <R extends @Nullable Object> R reduce(final ObjIntAccumulator<? super T, R> operation, final R initial) { return fold(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduce(final ObjAccumulator<? super T, R>    operation, final R initial) { return fold(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduce(final UnaryOperator<R>                operation, final R initial) { return fold(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduce(final Supplier<? extends R>           operation, final R initial) { return fold(initial, operation); }
-//
 //    //#endregion -------------------- Reduce --------------------
 //    //#region -------------------- Reduce or null --------------------
 //
@@ -2138,11 +1416,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 //    @Override public <R extends @Nullable Object> R reduceIndexed(final IntAccumulator<R>               operation) { return ReduceIndexed.reduceIndexed(this, operation); }
 //    @Override public <R extends @Nullable Object> R reduceIndexed(final UnaryOperator<R>                operation) { return ReduceIndexed.reduceIndexed(this, operation); }
 //    @Override public <R extends @Nullable Object> R reduceIndexed(final Supplier<? extends R>           operation) { return ReduceIndexed.reduceIndexed(this, operation); }
-//
-//    @Override public final <R extends @Nullable Object> R reduceIndexed(final IntObjAccumulator<? super T, R> operation, final R initial) { return foldIndexed(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceIndexed(final IntAccumulator<R>               operation, final R initial) { return foldIndexed(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceIndexed(final UnaryOperator<R>                operation, final R initial) { return foldIndexed(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceIndexed(final Supplier<? extends R>           operation, final R initial) { return foldIndexed(initial, operation); }
 //
 //    //#endregion -------------------- Reduce indexed --------------------
 //    //#region -------------------- Reduce indexed or null --------------------
@@ -2161,11 +1434,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 //    @Override public <R extends @Nullable Object> R reduceRight(final UnaryOperator<R>                operation) { return ReduceRight.reduceRight(this, operation); }
 //    @Override public <R extends @Nullable Object> R reduceRight(final Supplier<? extends R>           operation) { return ReduceRight.reduceRight(this, operation); }
 //
-//    @Override public final <R extends @Nullable Object> R reduceRight(final ObjIntAccumulator<? super T, R> operation, final R initial) { return foldRight(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceRight(final ObjAccumulator<? super T, R>    operation, final R initial) { return foldRight(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceRight(final UnaryOperator<R>                operation, final R initial) { return foldRight(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceRight(final Supplier<? extends R>           operation, final R initial) { return foldRight(initial, operation); }
-//
 //    //#endregion -------------------- Reduce right --------------------
 //    //#region -------------------- Reduce right or null --------------------
 //
@@ -2181,11 +1449,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 //    @Override public <R extends @Nullable Object> R reduceRightIndexed(final IntAccumulator<R>               operation) { return ReduceRightIndexed.reduceRightIndexed(this, operation); }
 //    @Override public <R extends @Nullable Object> R reduceRightIndexed(final UnaryOperator<R>                operation) { return ReduceRightIndexed.reduceRightIndexed(this, operation); }
 //    @Override public <R extends @Nullable Object> R reduceRightIndexed(final Supplier<? extends R>           operation) { return ReduceRightIndexed.reduceRightIndexed(this, operation); }
-//
-//    @Override public final <R extends @Nullable Object> R reduceRightIndexed(final IntObjAccumulator<? super T, R> operation, final R initial) { return foldRightIndexed(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceRightIndexed(final IntAccumulator<R>               operation, final R initial) { return foldRightIndexed(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceRightIndexed(final UnaryOperator<R>                operation, final R initial) { return foldRightIndexed(initial, operation); }
-//    @Override public final <R extends @Nullable Object> R reduceRightIndexed(final Supplier<? extends R>           operation, final R initial) { return foldRightIndexed(initial, operation); }
 //
 //    //#endregion -------------------- Reduce right indexed --------------------
 //    //#region -------------------- Reduce right indexed or null --------------------
@@ -2345,126 +1608,53 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public       CollectionHolder<T> take(int     n) { return Take.take(this, n); }
     @Override public final CollectionHolder<T> take(Integer n) { return take(n.intValue()); }
 
-    @Override public final CollectionHolder<T> limit(int     n) { return take(n); }
-    @Override public final CollectionHolder<T> limit(Integer n) { return take(n); }
-
-    //#endregion -------------------- Take --------------------
-    //#region -------------------- Take while --------------------
-
     @Override public CollectionHolder<T> takeWhile(ObjIntPredicate<? super T> predicate) { return TakeWhile.takeWhile(this, predicate); }
     @Override public CollectionHolder<T> takeWhile(Predicate<? super T>       predicate) { return TakeWhile.takeWhile(this, predicate); }
     @Override public CollectionHolder<T> takeWhile(BooleanSupplier            predicate) { return TakeWhile.takeWhile(this, predicate); }
-
-    @Override public final CollectionHolder<T> limitWhile(ObjIntPredicate<? super T> predicate) { return takeWhile(predicate); }
-    @Override public final CollectionHolder<T> limitWhile(Predicate<? super T>       predicate) { return takeWhile(predicate); }
-    @Override public final CollectionHolder<T> limitWhile(BooleanSupplier            predicate) { return takeWhile(predicate); }
-
-    //#endregion -------------------- Take while --------------------
-    //#region -------------------- Take while indexed --------------------
 
     @Override public CollectionHolder<T> takeWhileIndexed(IntObjPredicate<? super T> predicate) { return TakeWhileIndexed.takeWhileIndexed(this, predicate); }
     @Override public CollectionHolder<T> takeWhileIndexed(IntPredicate               predicate) { return TakeWhileIndexed.takeWhileIndexed(this, predicate); }
     @Override public CollectionHolder<T> takeWhileIndexed(BooleanSupplier            predicate) { return TakeWhileIndexed.takeWhileIndexed(this, predicate); }
 
-    @Override public final CollectionHolder<T> limitWhileIndexed(IntObjPredicate<? super T> predicate) { return takeWhileIndexed(predicate); }
-    @Override public final CollectionHolder<T> limitWhileIndexed(IntPredicate               predicate) { return takeWhileIndexed(predicate); }
-    @Override public final CollectionHolder<T> limitWhileIndexed(BooleanSupplier            predicate) { return takeWhileIndexed(predicate); }
-
-    //#endregion -------------------- Take while indexed --------------------
-    //#region -------------------- Take last --------------------
 
     @Override public       CollectionHolder<T> takeLast(int     n) { return TakeLast.takeLast(this, n); }
     @Override public final CollectionHolder<T> takeLast(Integer n) { return takeLast(n.intValue()); }
-
-    @Override public final CollectionHolder<T> limitLast(int     n) { return takeLast(n); }
-    @Override public final CollectionHolder<T> limitLast(Integer n) { return takeLast(n); }
-
-    //#endregion -------------------- Take last --------------------
-    //#region -------------------- Take last while --------------------
 
     @Override public CollectionHolder<T> takeLastWhile(ObjIntPredicate<? super T> predicate) { return TakeLastWhile.takeLastWhile(this, predicate); }
     @Override public CollectionHolder<T> takeLastWhile(Predicate<? super T>       predicate) { return TakeLastWhile.takeLastWhile(this, predicate); }
     @Override public CollectionHolder<T> takeLastWhile(BooleanSupplier            predicate) { return TakeLastWhile.takeLastWhile(this, predicate); }
 
-    @Override public final CollectionHolder<T> limitLastWhile(ObjIntPredicate<? super T> predicate) { return takeLastWhile(predicate); }
-    @Override public final CollectionHolder<T> limitLastWhile(Predicate<? super T>       predicate) { return takeLastWhile(predicate); }
-    @Override public final CollectionHolder<T> limitLastWhile(BooleanSupplier            predicate) { return takeLastWhile(predicate); }
-
-    //#endregion -------------------- Take last while --------------------
-    //#region -------------------- Take last while indexed --------------------
-
     @Override public CollectionHolder<T> takeLastWhileIndexed(IntObjPredicate<? super T> predicate) { return TakeLastWhileIndexed.takeLastWhileIndexed(this, predicate); }
     @Override public CollectionHolder<T> takeLastWhileIndexed(IntPredicate               predicate) { return TakeLastWhileIndexed.takeLastWhileIndexed(this, predicate); }
     @Override public CollectionHolder<T> takeLastWhileIndexed(BooleanSupplier            predicate) { return TakeLastWhileIndexed.takeLastWhileIndexed(this, predicate); }
 
-    @Override public final CollectionHolder<T> limitLastWhileIndexed(IntObjPredicate<? super T> predicate) { return takeLastWhileIndexed(predicate); }
-    @Override public final CollectionHolder<T> limitLastWhileIndexed(IntPredicate               predicate) { return takeLastWhileIndexed(predicate); }
-    @Override public final CollectionHolder<T> limitLastWhileIndexed(BooleanSupplier            predicate) { return takeLastWhileIndexed(predicate); }
-
-    //#endregion -------------------- Take last while indexed --------------------
-
+    //#endregion -------------------- Take --------------------
     //#region -------------------- Drop --------------------
 
     @Override public       CollectionHolder<T> drop(int     n) { return Drop.drop(this, n); }
     @Override public final CollectionHolder<T> drop(Integer n) { return drop(n.intValue()); }
 
-    @Override public final CollectionHolder<T> skip(int     n) { return drop(n); }
-    @Override public final CollectionHolder<T> skip(Integer n) { return drop(n); }
-
-    //#endregion -------------------- Drop --------------------
-    //#region -------------------- Drop while --------------------
-
     @Override public CollectionHolder<T> dropWhile(ObjIntPredicate<? super T> predicate) { return DropWhile.dropWhile(this, predicate); }
     @Override public CollectionHolder<T> dropWhile(Predicate<? super T>       predicate) { return DropWhile.dropWhile(this, predicate); }
     @Override public CollectionHolder<T> dropWhile(BooleanSupplier            predicate) { return DropWhile.dropWhile(this, predicate); }
-
-    @Override public final CollectionHolder<T> skipWhile(ObjIntPredicate<? super T> predicate) { return dropWhile(predicate); }
-    @Override public final CollectionHolder<T> skipWhile(Predicate<? super T>       predicate) { return dropWhile(predicate); }
-    @Override public final CollectionHolder<T> skipWhile(BooleanSupplier            predicate) { return dropWhile(predicate); }
-
-    //#endregion -------------------- Drop while --------------------
-    //#region -------------------- Drop while indexed --------------------
 
     @Override public CollectionHolder<T> dropWhileIndexed(IntObjPredicate<? super T> predicate) { return DropWhileIndexed.dropWhileIndexed(this, predicate); }
     @Override public CollectionHolder<T> dropWhileIndexed(IntPredicate               predicate) { return DropWhileIndexed.dropWhileIndexed(this, predicate); }
     @Override public CollectionHolder<T> dropWhileIndexed(BooleanSupplier            predicate) { return DropWhileIndexed.dropWhileIndexed(this, predicate); }
 
-    @Override public final CollectionHolder<T> skipWhileIndexed(IntObjPredicate<? super T> predicate) { return dropWhileIndexed(predicate); }
-    @Override public final CollectionHolder<T> skipWhileIndexed(IntPredicate               predicate) { return dropWhileIndexed(predicate); }
-    @Override public final CollectionHolder<T> skipWhileIndexed(BooleanSupplier            predicate) { return dropWhileIndexed(predicate); }
-
-    //#endregion -------------------- Drop while indexed --------------------
-    //#region -------------------- Drop last --------------------
 
     @Override public       CollectionHolder<T> dropLast(int     n) { return DropLast.dropLast(this, n); }
     @Override public final CollectionHolder<T> dropLast(Integer n) { return dropLast(n.intValue()); }
-
-    @Override public final CollectionHolder<T> skipLast(int     n) { return dropLast(n); }
-    @Override public final CollectionHolder<T> skipLast(Integer n) { return dropLast(n); }
-
-    //#endregion -------------------- Drop last --------------------
-    //#region -------------------- Drop while --------------------
 
     @Override public CollectionHolder<T> dropLastWhile(ObjIntPredicate<? super T> predicate) { return DropLastWhile.dropLastWhile(this, predicate); }
     @Override public CollectionHolder<T> dropLastWhile(Predicate<? super T>       predicate) { return DropLastWhile.dropLastWhile(this, predicate); }
     @Override public CollectionHolder<T> dropLastWhile(BooleanSupplier            predicate) { return DropLastWhile.dropLastWhile(this, predicate); }
 
-    @Override public final CollectionHolder<T> skipLastWhile(ObjIntPredicate<? super T> predicate) { return dropLastWhile(predicate); }
-    @Override public final CollectionHolder<T> skipLastWhile(Predicate<? super T>       predicate) { return dropLastWhile(predicate); }
-    @Override public final CollectionHolder<T> skipLastWhile(BooleanSupplier            predicate) { return dropLastWhile(predicate); }
-
-    //#endregion -------------------- Drop while --------------------
-    //#region -------------------- Drop while indexed --------------------
-
     @Override public CollectionHolder<T> dropLastWhileIndexed(IntObjPredicate<? super T> predicate) { return DropLastWhileIndexed.dropLastWhileIndexed(this, predicate); }
     @Override public CollectionHolder<T> dropLastWhileIndexed(IntPredicate               predicate) { return DropLastWhileIndexed.dropLastWhileIndexed(this, predicate); }
     @Override public CollectionHolder<T> dropLastWhileIndexed(BooleanSupplier            predicate) { return DropLastWhileIndexed.dropLastWhileIndexed(this, predicate); }
 
-    @Override public final CollectionHolder<T> skipLastWhileIndexed(IntObjPredicate<? super T> predicate) { return dropLastWhileIndexed(predicate); }
-    @Override public final CollectionHolder<T> skipLastWhileIndexed(IntPredicate               predicate) { return dropLastWhileIndexed(predicate); }
-    @Override public final CollectionHolder<T> skipLastWhileIndexed(BooleanSupplier            predicate) { return dropLastWhileIndexed(predicate); }
-
-    //#endregion -------------------- Drop while indexed --------------------
+    //#endregion -------------------- Drop --------------------
 
     //#region -------------------- Map --------------------
 
@@ -2561,28 +1751,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
             return toReverse(from.intValue());
         return toReverse(from.intValue(), to.intValue());
     }
-
-
-    @Override public final CollectionHolder<T> toReversed(                                                        ) { return toReverse(); }
-
-    @Override public final CollectionHolder<T> toReversed(final int               from                            ) { return toReverse(from); }
-    @Override public final CollectionHolder<T> toReversed(final @Nullable Integer from                            ) { return toReverse(from); }
-
-    @Override public final CollectionHolder<T> toReversed(final int               from, final int               to) { return toReverse(from, to); }
-    @Override public final CollectionHolder<T> toReversed(final int               from, final @Nullable Integer to) { return toReverse(from, to); }
-    @Override public final CollectionHolder<T> toReversed(final @Nullable Integer from, final int               to) { return toReverse(from, to); }
-    @Override public final CollectionHolder<T> toReversed(final @Nullable Integer from, final @Nullable Integer to) { return toReverse(from, to); }
-
-
-    @Override public final CollectionHolder<T> reversed(                                                        ) { return toReverse(); }
-
-    @Override public final CollectionHolder<T> reversed(final int               from                            ) { return toReverse(from); }
-    @Override public final CollectionHolder<T> reversed(final @Nullable Integer from                            ) { return toReverse(from); }
-
-    @Override public final CollectionHolder<T> reversed(final int               from, final int               to) { return toReverse(from, to); }
-    @Override public final CollectionHolder<T> reversed(final int               from, final @Nullable Integer to) { return toReverse(from, to); }
-    @Override public final CollectionHolder<T> reversed(final @Nullable Integer from, final int               to) { return toReverse(from, to); }
-    @Override public final CollectionHolder<T> reversed(final @Nullable Integer from, final @Nullable Integer to) { return toReverse(from, to); }
 
     //#endregion -------------------- To reverse --------------------
 
@@ -4928,795 +4096,9 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 
     //#endregion -------------------- Join to string (separator, prefix, postfix, limit, truncate, transform () → string) --------------------
 
-    //#region -------------------- Join ∅ (alias) methods --------------------
-
-    public final String join() { return joinToString(); }
-
-    //#endregion -------------------- Join ∅ (alias) methods --------------------
-    //#region -------------------- Join (alias - separator) methods --------------------
-
-    public final String join(final @Nullable String    separator) { return joinToString(separator); }
-    public final String join(final @Nullable Character separator) { return joinToString(separator); }
-    public final String join(final char                separator) { return joinToString(separator); }
-
-    //#endregion -------------------- Join (alias - separator) methods --------------------
-    //#region -------------------- Join (alias - separator, prefix) methods --------------------
-
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix) { return joinToString(separator, prefix); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix) { return joinToString(separator, prefix); }
-    public final String join(final @Nullable String    separator, final char                prefix) { return joinToString(separator, prefix); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix) { return joinToString(separator, prefix); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix) { return joinToString(separator, prefix); }
-    public final String join(final @Nullable Character separator, final char                prefix) { return joinToString(separator, prefix); }
-    public final String join(final char                separator, final @Nullable String    prefix) { return joinToString(separator, prefix); }
-    public final String join(final char                separator, final @Nullable Character prefix) { return joinToString(separator, prefix); }
-    public final String join(final char                separator, final char                prefix) { return joinToString(separator, prefix); }
-
-    //#endregion -------------------- Join (alias - separator, prefix) methods --------------------
-    //#region -------------------- Join (alias - separator, prefix, postfix) methods --------------------
-
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable String    separator, final char                prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable String    separator, final char                prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable String    separator, final char                prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final char                prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final char                prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final @Nullable Character separator, final char                prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final @Nullable String    prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final @Nullable String    prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final @Nullable String    prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final @Nullable Character prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final @Nullable Character prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final @Nullable Character prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final char                prefix, final @Nullable String    postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final char                prefix, final @Nullable Character postfix) { return joinToString(separator, prefix, postfix); }
-    public final String join(final char                separator, final char                prefix, final char                postfix) { return joinToString(separator, prefix, postfix); }
-
-    //#endregion -------------------- Join (alias - separator, prefix, postfix) methods --------------------
-    //#region -------------------- Join (alias - separator, prefix, postfix, limit) methods --------------------
-
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final char                prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final char                prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final char                prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable String    separator, final char                prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final char                prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final char                prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final char                prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final @Nullable Character separator, final char                prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable String    prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable String    prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable String    prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable Character prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable Character prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable Character prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final char                prefix, final @Nullable String    postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final char                prefix, final @Nullable Character postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final char                prefix, final char                postfix, int               limit) { return joinToString(separator, prefix, postfix, limit); }
-    public final String join(final char                separator, final char                prefix, final char                postfix, final @Nullable Integer limit) { return joinToString(separator, prefix, postfix, limit); }
-
-    //#endregion -------------------- Join (alias - separator, prefix, postfix, limit) methods --------------------
-    //#region -------------------- Join (alias - separator, prefix, postfix, limit, truncated) --------------------
-
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated) { return joinToString(separator, prefix, postfix, limit, truncated); }
-
-    //#endregion -------------------- Join (alias - separator, prefix, postfix, limit, truncated) --------------------
-    //#region -------------------- Join (alias - separator, prefix, postfix, limit, truncated, transform (T, int) → string) --------------------
-
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable ObjIntFunction<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-
-    //#endregion -------------------- Join (alias - separator, prefix, postfix, limit, truncated, transform (T, int) → string) --------------------
-    //#region -------------------- Join (alias - separator, prefix, postfix, limit, truncated, transform (T) → string) --------------------
-
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Function<? super T, String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-
-    //#endregion -------------------- Join (alias - separator, prefix, postfix, limit, truncated, transform (T) → string) --------------------
-    //#region -------------------- Join (alias - separator, prefix, postfix, limit, truncated, transform () → string) --------------------
-
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable String       separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final @Nullable Character    separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable String    prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final @Nullable Character prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable String    postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final int               limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable String       truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final @Nullable Character    truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-    @Override public final String join(final char                   separator, final char                prefix, final char                postfix, final @Nullable Integer limit, final char                   truncated, @Nullable Supplier<String> transform) { return joinToString(separator, prefix, postfix, limit, truncated, transform); }
-
-    //#endregion -------------------- Join (alias - separator, prefix, postfix, limit, truncated, transform () → string) --------------------
-
     //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
-    //#region -------------------- Java methods --------------------
-
-    @Override public final CollectionIterator<T> iterator() { return toIterator(); }
-
-    @Override public final Spliterator<T> spliterator() { return toSpliterator(); }
-
-    //#endregion -------------------- Java methods --------------------
     //#region -------------------- Comparison methods --------------------
 
     //#region -------------------- Equals --------------------
@@ -5759,16 +4141,9 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public AbstractCollectionHolder<T> clone() {
-        try {
-            return (AbstractCollectionHolder<T>) super.clone();
-        } catch (CloneNotSupportedException exception) {
-            throw new InternalError("The “clone” method was not expected to be thrown in “" + getClass().getSimpleName() + "”.", exception);
-        }
-    }
+    @Override public AbstractCollectionHolder<T> clone() { return (AbstractCollectionHolder<T>) super.clone(); }
 
 //    @MustBeInvokedByOverriders
 //    @Contract(ALWAYS_NEW_0)
