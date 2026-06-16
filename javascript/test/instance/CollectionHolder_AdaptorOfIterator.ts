@@ -372,14 +372,16 @@ export class CollectionHolder_AdaptorOfIterator<const T, >
 
 
     public override onEach(action: ValueIndexCallback<T>,): this {
-        if (this.instance.onEach(action,) !== this.instance)
+        const instance = this.instance
+        if (instance.onEach(action,) !== instance)
             throw new Error("The expected return type for the method “onEach” was supposed to be the same instance",)
         return this
     }
 
     public override onEachIndexed(action: IndexValueCallback<T>,): this {
-        if (this.instance.onEachIndexed(action,) !== this.instance)
-            throw new Error("The expected return type for the method “onEach” was supposed to be the same instance",)
+        const instance = this.instance
+        if (instance.onEachIndexed(action,) !== instance)
+            throw new Error("The expected return type for the method “onEachIndexed” was supposed to be the same instance",)
         return this
     }
 

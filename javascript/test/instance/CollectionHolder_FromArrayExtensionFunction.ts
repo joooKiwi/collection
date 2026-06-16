@@ -692,12 +692,16 @@ export class CollectionHolder_FromArrayExtensionFunction<const T , >
 
 
     public override onEach(action: ValueIndexCallback<T>,): this {
-        onEachByArray(this.array, action,)
+        const array = this.array
+        if (onEachByArray(array, action,) !== array)
+            throw new Error("The expected return type for the method “onEach” was supposed to be the same instance",)
         return this
     }
 
     public override onEachIndexed(action: IndexValueCallback<T>,): this {
-        onEachIndexedByArray(this.array, action,)
+        const array = this.array
+        if (onEachIndexedByArray(array, action,) !== array)
+            throw new Error("The expected return type for the method “onEachIndexed” was supposed to be the same instance",)
         return this
     }
 
