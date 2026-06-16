@@ -4144,10 +4144,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
                 return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${truncated ?? "…"}${postfix ?? "]"}`
         if (transform.length === 1)
             return `${prefix ?? "["}${(transform as (value: T,) => string)(this.value1,)}${separator ?? ", "}${(transform as (value: T,) => string)(this.value2,)}${postfix ?? "]"}`
-        else if (transform.length >= 2)
+        if (transform.length >= 2)
             return `${prefix ?? "["}${transform(this.value1, 0,)}${separator ?? ", "}${transform(this.value2, 1,)}${postfix ?? "]"}`
-        else
-            return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${(transform as () => string)()}${postfix ?? "]"}`
+        return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${(transform as () => string)()}${postfix ?? "]"}`
     }
 
     //#endregion -------------------- Join to string --------------------
