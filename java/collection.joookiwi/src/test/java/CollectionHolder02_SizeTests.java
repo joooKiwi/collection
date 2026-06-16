@@ -55,9 +55,7 @@ import static value.Sizes.SIZE_VALUES;
         @Test void isNotEmpty() { assertFalse(instance.isNotEmpty()); }
     }
 
-    @FieldSource("values")
-//    @TestInstance(PER_CLASS)
-    @ParameterizedClass(name = "{0} {1}") @Nested class instances extends AbstractInstancesTests {
+    @FieldSource("values")/* @TestInstance(PER_CLASS)*/ @ParameterizedClass(name = "{0} {1}") @Nested class instances extends AbstractInstancesTests {
 
         //#region -------------------- Required test configuration --------------------
 
