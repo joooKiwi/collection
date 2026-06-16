@@ -21,6 +21,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 @NotNullByDefault
 public final class ToMutableArrayList
         extends UtilityWithTable {
+    //TODO: Add initialCapacity of type "Integer?"
 
     @Contract(ALWAYS_FAIL_0)
     private ToMutableArrayList() { throw new ImpossibleConstructionException("The utility class “ToMutableArrayList” cannot be constructed.", ToMutableArrayList.class); }
