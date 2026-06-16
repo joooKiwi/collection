@@ -17,6 +17,12 @@ import {EmptyCollectionHolder}                                     from "../../s
 import {EmptyCollectionException}                                  from "../../src/exception/EmptyCollectionException"
 import {NullCollectionException}                                   from "../../src/exception/NullCollectionException"
 import {EmptyCollectionIterator}                                   from "../../src/iterator/EmptyCollectionIterator"
+import {GenericAfterLastIteratorValue}                             from "../../src/iterator/value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}                           from "../../src/iterator/value/GenericBeforeFirstIteratorValue"
+import {GenericCollectionIteratorValue}                            from "../../src/iterator/value/GenericCollectionIteratorValue"
+import {IteratorValueOf1}                                          from "../../src/iterator/value/IteratorValueOf1"
+import {IteratorValueOf1On2}                                       from "../../src/iterator/value/IteratorValueOf1On2"
+import {IteratorValueOf2On2}                                       from "../../src/iterator/value/IteratorValueOf2On2"
 import {Holder}                                                    from "../Holder"
 import {arrayOf1}                                                  from "../helper/arrayOf1"
 import {arrayOf2}                                                  from "../helper/arrayOf2"
@@ -53,6 +59,9 @@ import {CollectionHolder_LazyOf1Or2}                               from "../inst
 import {CollectionHolder_LazyOf2}                                  from "../instance/CollectionHolder_LazyOf2"
 import {CollectionHolder_SetOf1}                                   from "../instance/CollectionHolder_SetOf1"
 import {CollectionHolder_SetOf2}                                   from "../instance/CollectionHolder_SetOf2"
+import {CollectionIterator_1}                                      from "../instance/CollectionIterator_1"
+import {CollectionIterator_2}                                      from "../instance/CollectionIterator_2"
+import {CollectionIterator_ByGenericIterator}                      from "../instance/CollectionIterator_ByGenericIterator"
 import {InfiniteCollectionHolder_FromJsIterable}                   from "../instance/InfiniteCollectionHolder_FromJsIterable"
 import {InfiniteCollectionHolder_FromJsIterator}                   from "../instance/InfiniteCollectionHolder_FromJsIterator"
 import {EMPTY}                                                     from "./arrays"
@@ -61,6 +70,11 @@ import {EMPTY}                                                     from "./array
 export const emptyCollectionHolder = EmptyCollectionHolder.get
 /** A constant to give the {@link EmptyCollectionIterator} instance directly */
 export const emptyCollectionIterator = EmptyCollectionIterator.get
+
+/** A constant to give the {@link GenericAfterLastIteratorValue} instance directly */
+export const afterLastIteratorValue = GenericAfterLastIteratorValue.get
+/** A constant to give the {@link GenericBeforeFirstIteratorValue} instance directly */
+export const beforeFirstIteratorValue = GenericBeforeFirstIteratorValue.get
 
 /**
  * The possible instances and extension function currently exported to the public as a mocked {@link CollectionHolder}
@@ -157,6 +171,18 @@ export const every1Instances = [
 ] as const
 
 /**
+ * The possible instances (that should be used as a single value container)
+ * currently exported to the public as a mocked {@link CollectionIterator}
+ * to apply on tests
+ *
+ * @implNote Only a single value should be sent to the `newInstance` method
+ */
+export const every1Iterators = [
+    new Holder({iteratorValue: GenericCollectionIteratorValue, newInstance: <const T, >(value: T,) => new CollectionIterator_ByGenericIterator(arrayOf1(value,),),}, "GenericCollectionIterator",),
+    new Holder({iteratorValue: IteratorValueOf1,               newInstance: <const T, >(value: T,) => new CollectionIterator_1(value,),},                            "CollectionIteratorOf1",),
+] as const
+
+/**
  * The possible instances (that should be used as a double value container)
  * currently exported to the public as a mocked {@link CollectionHolder}
  * to apply on tests
@@ -181,6 +207,18 @@ export const every2Instances = [
     new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 2",           newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_LazyOf2<| T1 | T2, T1, T2>(value1, value2,), },                   "collection (2 lazy)",),
     new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "minimalist viewer",   newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_ByMinimalistViewer<| T1 | T2>(arrayOf2(value1, value2,),), },     "collection (by minimalist viewer)",),
     new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "viewer",              newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_ByViewer<| T1 | T2>(arrayOf2(value1, value2,),), },               "collection (by viewer)",),
+] as const
+
+/**
+ * The possible instances (that should be used as a double value container)
+ * currently exported to the public as a mocked {@link CollectionIterator}
+ * to apply on tests
+ *
+ * @implNote Only a double value should be sent to the `newInstance` method
+ */
+export const every2Iterators = [
+    new Holder({iteratorValue1: GenericCollectionIteratorValue, iteratorValue2: GenericCollectionIteratorValue, newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionIterator_ByGenericIterator(arrayOf2(value1, value2,),),}, "GenericCollectionIterator",),
+    new Holder({iteratorValue1: IteratorValueOf1On2,            iteratorValue2: IteratorValueOf2On2,            newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionIterator_2(value1, value2,),},                            "CollectionIteratorOf2",),
 ] as const
 
 /**
