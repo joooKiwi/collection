@@ -73,6 +73,31 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#region -------------------- Validate methods (private) --------------------
 
     /**
+     * Validate that the value is either `null`, 0 or -1
+     *
+     * @param index The value to compare
+     * @throws IndexOutOfBoundsException The value is equal or over 1 (before or after calculation)
+     * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     */
+    #validateIndex(index: number,): void {
+        if (index === 0)
+            return
+        if (index === -1)
+            return
+        if (Number.isNaN(index,))
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
+        if (index === Number.NEGATIVE_INFINITY)
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
+        if (index === Number.POSITIVE_INFINITY)
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
+        if (index > 1)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (1).`, index,)
+        if (index === 1)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (1).`, index,)
+        throw new IndexOutOfBoundsException(`"Index out of bound. The index “${index}” (“${index + 1}” after calculation) is under 0."`, index,)
+    }
+
+    /**
      * Validate if the value is either `null`, 0 or -1
      *
      * @param from The value to validate
@@ -1482,7 +1507,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from)} */
     protected _sliceWith1Argument(from: number,): CollectionHolder<T> {
         this.#validateStartingIndex(from,)
-        return new LateRetriever.LazyCollectionHolderOf1(() => this.value,)
+        return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from, to)} */
@@ -1503,11 +1528,17 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const indicesSize = indices.length
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
+
         return new LazyCollectionHolder(() => {
+            const value = this.value
+            let index1 = indicesSize
+            while (index1-- > 0)
+                this.#validateIndex(indices[index1] as number,)
+
             const newArray = new Array<T>(indicesSize,)
-            let index = indicesSize
-            while (index-- > 0)
-                newArray[index] = this.get(indices[index]!,)
+            let index2 = indicesSize
+            while (index2-- > 0)
+                newArray[index2] = value
             return Object.freeze(newArray,)
         },)
     }
@@ -1517,12 +1548,18 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const indicesSize = indices.size
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
+
         return new LazyCollectionHolder(() => {
-            const newArray = new Array<T>(indicesSize,)
+            const value = this.value
             const iterator = indices[Symbol.iterator]()
-            let index = -1
-            while (++index < indicesSize)
-                newArray[index] = this.get(iterator.next().value!,)
+            let index1 = indicesSize
+            while (index1-- > 0)
+                this.#validateIndex(iterator.next().value as number,)
+
+            const newArray = new Array<T>(indicesSize,)
+            let index2 = -1
+            while (++index2 < indicesSize)
+                newArray[index2] = value
             return Object.freeze(newArray,)
         },)
     }
@@ -1532,11 +1569,17 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const indicesSize = indices.size
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
+
         return new LazyCollectionHolder(() => {
+            const value = this.value
+            let index1 = indicesSize
+            while (index1-- > 0)
+                this.#validateIndex(indices.get(index1,),)
+
             const newArray = new Array<T>(indicesSize,)
-            let index = indicesSize
-            while (index-- > 0)
-                newArray[index] = this.get(indices.get(index,),)
+            let index2 = indicesSize
+            while (index2-- > 0)
+                newArray[index2] = value
             return Object.freeze(newArray,)
         },)
     }
@@ -1545,12 +1588,18 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     protected _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
+
         return new LazyCollectionHolder(() => {
+            const value = this.value
             const indicesSize = indices.size
+            let index1 = indicesSize
+            while (index1-- > 0)
+                this.#validateIndex(indices.get(index1,),)
+
             const newArray = new Array<T>(indicesSize,)
-            let index = indicesSize
-            while (index-- > 0)
-                newArray[index] = this.get(indices.get(index,),)
+            let index2 = indicesSize
+            while (index2-- > 0)
+                newArray[index2] = value
             return Object.freeze(newArray,)
         },)
     }
@@ -1559,12 +1608,18 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     protected _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
+
         return new LazyCollectionHolder(() => {
+            const value = this.value
             const indicesSize = indices.size
+            let index1 = indicesSize
+            while (index1-- > 0)
+                this.#validateIndex(indices.previousValue,)
+
             const newArray = new Array<T>(indicesSize,)
-            let index = indicesSize
-            while (index-- > 0)
-                newArray[index] = this.get(indices.previousValue,)
+            let index2 = indicesSize
+            while (index2-- > 0)
+                newArray[index2] = value
             return Object.freeze(newArray,)
         },)
     }
@@ -1574,10 +1629,20 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         let iteratorResult = indices.next()
         if (iteratorResult.done)
             return EmptyCollectionHolder.get
+
         return new LazyCollectionHolder(() => {
-            const newArray = [this.get(iteratorResult.value as number,),]
-            while (!(iteratorResult = indices.next()).done)
-                newArray.push(this.get(iteratorResult.value!,),)
+            const value = this.value
+            this.#validateIndex(iteratorResult.value as number,)
+            let newSize = 1
+            while (!(iteratorResult = indices.next()).done) {
+                this.#validateIndex(iteratorResult.value as number,)
+                newSize++
+            }
+
+            const newArray = new Array<T>(newSize,)
+            let index = newSize
+            while (index-- > 0)
+                newArray[index] = value
             return Object.freeze(newArray,)
         },)
     }
@@ -1588,10 +1653,20 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
             return EmptyCollectionHolder.get
+
         return new LazyCollectionHolder(() => {
-            const newArray = [this.get(iteratorResult.value as number,),]
-            while (!(iteratorResult = iterator.next()).done)
-                newArray.push(this.get(iteratorResult.value!,),)
+            const value = this.value
+            this.#validateIndex(iteratorResult.value as number,)
+            let newSize = 1
+            while (!(iteratorResult = iterator.next()).done) {
+                this.#validateIndex(iteratorResult.value as number,)
+                newSize++
+            }
+
+            const newArray = new Array<T>(newSize,)
+            let index = newSize
+            while (index-- > 0)
+                newArray[index] = value
             return Object.freeze(newArray,)
         },)
     }
