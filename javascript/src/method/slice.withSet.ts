@@ -72,7 +72,7 @@ export function sliceWithSetByMinimalistCollectionHolder<const T, >(collection: 
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicessize === 0)
+    if (indicesSize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
@@ -95,7 +95,7 @@ export function sliceWithSetByCollectionHolder<const T, >(collection: Nullable<C
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicessize === 0)
+    if (indicesSize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
@@ -118,7 +118,7 @@ export function sliceWithSetByArray<const T, >(collection: Nullable<Array<T>>, i
         return EmptyCollectionHolder.get
 
     const indicesSize = indices.size
-    if (indicessize === 0)
+    if (indicesSize === 0)
         return EmptyCollectionHolder.get
     return new LazyCollectionHolder(() => __newArrayByArray(collection, indices, indicesSize,),)
 }
