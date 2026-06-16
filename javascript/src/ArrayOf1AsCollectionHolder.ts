@@ -33,15 +33,15 @@ export class ArrayOf1AsCollectionHolder<const T = unknown,
     public override readonly 0: T
     readonly #reference: WeakRef<REFERENCE>
     readonly #value: T
-    #hasNull?: boolean
-    #hasNoNulls?: boolean
+    readonly #hasNull: boolean
+    readonly #hasNoNulls: boolean
 
     public constructor(reference: REFERENCE,) {
         super()
         if (reference.length !== 1)
             throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 1.`,)
         this.#reference = new WeakRef(reference,)
-        this.#value = this[0] = reference[0]
+        this.#hasNoNulls = !(this.#hasNull = (this.#value = this[0] = reference[0]) == null)
     }
 
     /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
@@ -54,8 +54,8 @@ export class ArrayOf1AsCollectionHolder<const T = unknown,
      */
     protected get _reference(): UndefinedOr<REFERENCE> { return this.#reference.deref() }
 
-    public override get hasNull(): boolean { return this.#hasNull ?? super.hasNull }
+    public override get hasNull(): boolean { return this.#hasNull }
 
-    public override get hasNoNulls(): boolean { return this.#hasNoNulls ?? super.hasNoNulls }
+    public override get hasNoNulls(): boolean { return this.#hasNoNulls }
 
 }
