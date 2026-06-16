@@ -999,9 +999,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const value = this.value
         let index = -1
         while (++index < size)
-            if (value === values[index])
-                continue
-            else
+            if (value !== values[index])
                 return false
         return true
     }
@@ -1016,9 +1014,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const iterator = values[Symbol.iterator]()
         let index = -1
         while (++index < size)
-            if (value === iterator.next().value)
-                continue
-            else
+            if (value !== iterator.next().value)
                 return false
         return true
     }
@@ -1032,9 +1028,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const value = this.value
         let index = -1
         while (++index < size)
-            if (value === values.get(index,))
-                continue
-            else
+            if (value !== values.get(index,))
                 return false
         return true
     }
@@ -1048,9 +1042,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const size = values.size
         let index = -1
         while (++index < size)
-            if (value === values.get(index,))
-                continue
-            else
+            if (value !== values.get(index,))
                 return false
         return true
     }
@@ -1064,9 +1056,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const size = values.size
         let index = -1
         while (++index < size)
-            if (value === values.nextValue)
-                continue
-            else
+            if (value !== values.nextValue)
                 return false
         return true
     }
@@ -1082,9 +1072,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return false
 
         while (!(iteratorResult = values.next()).done)
-            if (value === iteratorResult.value)
-                continue
-            else
+            if (value !== iteratorResult.value)
                 return false
         return true
     }
@@ -1101,9 +1089,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return false
 
         while (!(iteratorResult = iterator.next()).done)
-            if (value === iteratorResult.value)
-                continue
-            else
+            if (value !== iteratorResult.value)
                 return false
         return true
     }
@@ -1167,9 +1153,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const value = this.value
         let index = -1
         while (++index < size)
-            if (value === values[index])
-                continue
-            else
+            if (value !== values[index])
                 return true
         return false
     }
@@ -1184,9 +1168,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const iterator = values[Symbol.iterator]()
         let index = -1
         while (++index < size)
-            if (value === iterator.next().value)
-                continue
-            else
+            if (value !== iterator.next().value)
                 return true
         return false
     }
@@ -1200,9 +1182,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const value = this.value
         let index = -1
         while (++index < size)
-            if (value === values.get(index,))
-                continue
-            else
+            if (value !== values.get(index,))
                 return true
         return false
     }
@@ -1216,9 +1196,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const size = values.size
         let index = -1
         while (++index < size)
-            if (value === values.get(index,))
-                continue
-            else
+            if (value !== values.get(index,))
                 return true
         return false
     }
@@ -1232,9 +1210,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         const size = values.size
         let index = -1
         while (++index < size)
-            if (value === values.nextValue)
-                continue
-            else
+            if (value !== values.nextValue)
                 return true
         return false
     }
@@ -1250,9 +1226,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return true
 
         while (!(iteratorResult = values.next()).done)
-            if (value === iteratorResult.value)
-                continue
-            else
+            if (value !== iteratorResult.value)
                 return true
         return false
     }
@@ -1269,9 +1243,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return true
 
         while (!(iteratorResult = iterator.next()).done)
-            if (value === iteratorResult.value)
-                continue
-            else
+            if (value !== iteratorResult.value)
                 return true
         return false
     }
