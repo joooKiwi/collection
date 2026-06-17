@@ -390,7 +390,7 @@ describe("CollectionIteratorTest", () => {
         test("forEachIndexed, 2 previous, previous",      () => expect(      newInstance('a', 'b',).forEachIndexed(EMPTY_CALLBACK,).do2Previous().previous(),)   .toBe(beforeFirstIteratorValue,),)
     },)},)
 
-    describe("4 fields", () => {
+    describe("N fields", () => {
     describe("GenericCollectionIterator", () => {
         test("firstIndex",                                () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .firstIndex,)   .toBe(0,),)
         test("lastIndex",                                 () => expect(      new CollectionIterator_ByGenericIterator(ABCD,)                                              .lastIndex,)    .toBe(3,),)

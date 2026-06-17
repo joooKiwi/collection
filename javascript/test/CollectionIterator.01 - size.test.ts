@@ -163,7 +163,7 @@ describe("CollectionIteratorTest (size)", () => {
         },)
     },)
 
-    describe("4 fields", () => {
+    describe("N fields", () => {
     describe("GenericCollectionIterator", () => {
         test("size",                () => expect(new CollectionIterator_ByGenericIterator(ABCD,).size,)               .toBe(4,),)
         test("isEmpty",             () => expect(new CollectionIterator_ByGenericIterator(ABCD,).isEmpty,)            .toBeFalse(),)
