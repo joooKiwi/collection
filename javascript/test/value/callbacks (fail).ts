@@ -10,8 +10,6 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {BooleanCallback, ReverseBooleanCallback} from "../../src/type/callback"
-
 export const callbackAsFail0 = (): never => {
     throw new Error("The test was not expected to have the callback being called",)
 }
@@ -22,18 +20,68 @@ export const callbackAsFail2 = (_1: unknown, _2: unknown,): never => {
     throw new Error("The test was not expected to have the callback being called",)
 }
 
-export function callbackAsFalseToFailAfter(value: number,): BooleanCallback<unknown> {
-    return (_, i,) => {
-        if (i > value)
-            throw new Error(`The test was not expected to exceed the index “${value}” on the callback`,)
-        return false
-    }
-}
+export const callbackAsFailAfter1Call0 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 1)
+        return callbackAsFail0
+    amountOfTime++
+    return () => {}
+})()
+export const callbackAsFailAfter1Call1 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 1)
+        return callbackAsFail1
+    amountOfTime++
+    return (_: unknown,) => {}
+})()
+export const callbackAsFailAfter1Call2 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 1)
+        return callbackAsFail2
+    amountOfTime++
+    return (_1: unknown, _2: unknown,) => {}
+})()
 
-export function callbackAsFalseToFailAfterAlt(value: number,): ReverseBooleanCallback<unknown> {
-    return i => {
-        if (i > value)
-            throw new Error(`The test was not expected to exceed the index “${value}” on the callback`,)
-        return false
-    }
-}
+export const callbackAsFailAfter2Calls0 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 2)
+        return callbackAsFail0
+    amountOfTime++
+    return () => {}
+})()
+export const callbackAsFailAfter2Calls1 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 2)
+        return callbackAsFail1
+    amountOfTime++
+    return (_: unknown,) => {}
+})()
+export const callbackAsFailAfter2Calls2 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 2)
+        return callbackAsFail2
+    amountOfTime++
+    return (_1: unknown, _2: unknown,) => {}
+})()
+
+export const callbackAsFailAfter4Calls0 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 4)
+        return callbackAsFail0
+    amountOfTime++
+    return () => {}
+})()
+export const callbackAsFailAfter4Calls1 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 4)
+        return callbackAsFail1
+    amountOfTime++
+    return (_: unknown,) => {}
+})()
+export const callbackAsFailAfter4Calls2 = (() => {
+    let amountOfTime = 0
+    if (amountOfTime === 4)
+        return callbackAsFail2
+    amountOfTime++
+    return (_1: unknown, _2: unknown,) => {}
+})()
