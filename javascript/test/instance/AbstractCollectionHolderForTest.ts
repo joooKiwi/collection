@@ -21,6 +21,7 @@ import type {CollectionHolderName}                                              
 
 import {EmptyCollectionException}   from "../../src/exception/EmptyCollectionException"
 import {ForbiddenIndexException}    from "../../src/exception/ForbiddenIndexException"
+import {IndexNotFoundException}     from "../../src/exception/IndexNotFoundException"
 import {IndexOutOfBoundsException}  from "../../src/exception/IndexOutOfBoundsException"
 import {InvalidIndexRangeException} from "../../src/exception/InvalidIndexRangeException"
 
@@ -51,6 +52,17 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public execute(action: (instance: this,) => void,): this {
         action(this,)
         return this
+    }
+
+    public executeWhileExpectingIndexNotFound(action: (instance: this,) => void,): this {
+        try {
+            action(this,)
+        } catch (exception) {
+            if (exception instanceof IndexNotFoundException)
+                return this
+            throw exception
+        }
+        throw new Error("The exception “IndexNotFoundException” was expected to be thrown.",)
     }
 
     public executeWhileExpectingIndexOutOfBound(action: (instance: this,) => void,): this {

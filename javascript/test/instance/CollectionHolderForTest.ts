@@ -24,6 +24,15 @@ export interface CollectionHolderForTest<out T, >
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}
+     * while expecting a {@link IndexNotFoundException} to be thrown
+     * and return itself afterward
+     *
+     * @param action The action to do
+     */
+    executeWhileExpectingIndexNotFound(action: (instance: this,) => void,): this
+
+    /**
+     * Do an action on the curent {@link CollectionHolderForTest instance}
      * while expecting a {@link IndexOutOfBoundsException} to be thrown
      * and return itself afterward
      *
