@@ -10,13 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
- import {CollectionHolder_ByGenericCollection}                                                              from "./instance/CollectionHolder_ByGenericCollection"
-import {CollectionHolder_ByMinimalistCollection}                                                           from "./instance/CollectionHolder_ByMinimalistCollection"
-import {expectToBeInstance}                                                                                from "./expect/expectToBeInstance"
-import {A, AB, ABCD, EMPTY}                                                                                from "./value/arrays"
-import {callback0, callback1, callback2}                                                                   from "./value/callbacks"
-import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                 from "./value/callbacks (fail)"
-import {every0Instances, every1Instances, every2Instances, everyExtensionMethodInstances, everyNInstances} from "./value/instances"
+import {CollectionHolder_ByGenericCollection}                                                                                                                                                                                                                                                                       from "./instance/CollectionHolder_ByGenericCollection"
+import {CollectionHolder_ByMinimalistCollection}                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_ByMinimalistCollection"
+import {expectToBeInstance}                                                                                                                                                                                                                                                                                         from "./expect/expectToBeInstance"
+import {A, AB, ABCD, EMPTY}                                                                                                                                                                                                                                                                                         from "./value/arrays"
+import {callback0, callback1, callback2}                                                                                                                                                                                                                                                                            from "./value/callbacks"
+import {callbackAsFail0, callbackAsFail1, callbackAsFail2, callbackAsFailAfter1Call0, callbackAsFailAfter1Call1, callbackAsFailAfter1Call2, callbackAsFailAfter2Calls0, callbackAsFailAfter2Calls1, callbackAsFailAfter2Calls2, callbackAsFailAfter4Calls0, callbackAsFailAfter4Calls1, callbackAsFailAfter4Calls2} from "./value/callbacks (fail)"
+import {every0Instances, every1Instances, every2Instances, everyExtensionMethodInstances, everyNInstances}                                                                                                                                                                                                          from "./value/instances"
 
 import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
@@ -235,39 +235,80 @@ describe("CollectionHolderTest (forEach / onEach)", () => {
 
     },)
 
+    describe("for‥of", () => {
+        test("EmptyCollectionHolder", () => expect(() => { for (const _ of EmptyCollectionHolder.get); },).not.toThrow(),)
+        describe("empty",    () => { test.each(every0Instances,)("%s", ({value: {newInstance,},},) => expect(() =>  { for (const _ of newInstance().toIterator()); },)         .not.toThrow(),) },)
+        describe("1 field",  () => { test.each(every1Instances,)("%s", ({value: {newInstance,},},) => expect(() =>  { for (const _ of newInstance('a',).toIterator()); },)     .not.toThrow(),) },)
+        describe("2 fields", () => { test.each(every2Instances,)("%s", ({value: {newInstance,},},) => expect(() =>  { for (const _ of newInstance('a', 'b',).toIterator()); },).not.toThrow(),) },)
+        describe("N fields", () => { test.each(everyNInstances,)("%s", ({value: {instance,},},) =>    expect(() =>  { for (const _ of new instance(ABCD,).toIterator()); },)   .not.toThrow(),) },)
+    },)
+
     describe("instances", () => {
         describe("empty", () => {
         describe.each(every0Instances,)("%s", ({value: {newInstance,},},) => {
 
+            describe("forEach", () => {
+                test("(T, number) → void", () => expect(() => newInstance().forEach(callbackAsFail2,),).not.toThrow(),)
+                test("(T) → void",         () => expect(() => newInstance().forEach(callbackAsFail1,),).not.toThrow(),)
+                test("() → void",          () => expect(() => newInstance().forEach(callbackAsFail0,),).not.toThrow(),)
+            },)
+            describe("forEachIndexed", () => {
+                test("(T, number) → void", () => expect(() => newInstance().forEachIndexed(callbackAsFail2,),).not.toThrow(),)
+                test("(T) → void",         () => expect(() => newInstance().forEachIndexed(callbackAsFail1,),).not.toThrow(),)
+                test("() → void",          () => expect(() => newInstance().forEachIndexed(callbackAsFail0,),).not.toThrow(),)
+            },)
+
             describe("onEach", () => {
-                test("empty: (T, number) → void", () => expectToBeInstance(newInstance(), it => it.onEach(callbackAsFail2,),),)
-                test("empty: (T) → void",         () => expectToBeInstance(newInstance(), it => it.onEach(callbackAsFail1,),),)
-                test("empty: () → void",          () => expectToBeInstance(newInstance(), it => it.onEach(callbackAsFail0,),),)
+                test("(T, number) → void", () => expectToBeInstance(newInstance(), it => it.onEach(callbackAsFail2,),),)
+                test("(T) → void",         () => expectToBeInstance(newInstance(), it => it.onEach(callbackAsFail1,),),)
+                test("() → void",          () => expectToBeInstance(newInstance(), it => it.onEach(callbackAsFail0,),),)
             },)
             describe("onEachIndexed", () => {
-                test("empty: (number, T) → void", () => expectToBeInstance(newInstance(), it => it.onEachIndexed(callbackAsFail2,),),)
-                test("empty: (number) → void",    () => expectToBeInstance(newInstance(), it => it.onEachIndexed(callbackAsFail1,),),)
-                test("empty: () → void",          () => expectToBeInstance(newInstance(), it => it.onEachIndexed(callbackAsFail0,),),)
+                test("(number, T) → void", () => expectToBeInstance(newInstance(), it => it.onEachIndexed(callbackAsFail2,),),)
+                test("(number) → void",    () => expectToBeInstance(newInstance(), it => it.onEachIndexed(callbackAsFail1,),),)
+                test("() → void",          () => expectToBeInstance(newInstance(), it => it.onEachIndexed(callbackAsFail0,),),)
             },)
 
         },)},)
         describe("1 field", () => {
         describe.each(every1Instances,)("%s", ({value: {newInstance,},},) => {
 
+            describe("forEach", () => {
+                test("(T, number) → void", () => expect(() => newInstance('a',).forEach(callbackAsFailAfter1Call2,),).not.toThrow(),)
+                test("(T) → void",         () => expect(() => newInstance('a',).forEach(callbackAsFailAfter1Call1,),).not.toThrow(),)
+                test("() → void",          () => expect(() => newInstance('a',).forEach(callbackAsFailAfter1Call0,),).not.toThrow(),)
+            },)
+            describe("forEachIndexed", () => {
+                test("(T, number) → void", () => expect(() => newInstance('a',).forEachIndexed(callbackAsFailAfter1Call2,),).not.toThrow(),)
+                test("(T) → void",         () => expect(() => newInstance('a',).forEachIndexed(callbackAsFailAfter1Call1,),).not.toThrow(),)
+                test("() → void",          () => expect(() => newInstance('a',).forEachIndexed(callbackAsFailAfter1Call0,),).not.toThrow(),)
+            },)
+
             describe("onEach", () => {
-                test("1 field: (T, number) → void", () => expectToBeInstance(newInstance('a',), it => it.onEach(callback2,),),)
-                test("1 field: (T) → void",         () => expectToBeInstance(newInstance('a',), it => it.onEach(callback1,),),)
-                test("1 field: () → void",          () => expectToBeInstance(newInstance('a',), it => it.onEach(callback0,),),)
+                test("(T, number) → void", () => expectToBeInstance(newInstance('a',), it => it.onEach(callback2,),),)
+                test("(T) → void",         () => expectToBeInstance(newInstance('a',), it => it.onEach(callback1,),),)
+                test("() → void",          () => expectToBeInstance(newInstance('a',), it => it.onEach(callback0,),),)
             },)
             describe("onEachIndexed", () => {
-                test("1 field: (number, T) → void", () => expectToBeInstance(newInstance('a',), it => it.onEachIndexed(callback2,),),)
-                test("1 field: (number) → void",    () => expectToBeInstance(newInstance('a',), it => it.onEachIndexed(callback1,),),)
-                test("1 field: () → void",          () => expectToBeInstance(newInstance('a',), it => it.onEachIndexed(callback0,),),)
+                test("(number, T) → void", () => expectToBeInstance(newInstance('a',), it => it.onEachIndexed(callback2,),),)
+                test("(number) → void",    () => expectToBeInstance(newInstance('a',), it => it.onEachIndexed(callback1,),),)
+                test("() → void",          () => expectToBeInstance(newInstance('a',), it => it.onEachIndexed(callback0,),),)
             },)
 
         },)},)
         describe("2 fields", () => {
         describe.each(every2Instances,)("%s", ({value: {newInstance,},},) => {
+
+            describe("forEach", () => {
+                test("(T, number) → void", () => expect(() => newInstance('a', 'b',).forEach(callbackAsFailAfter2Calls2,),).not.toThrow(),)
+                test("(T) → void",         () => expect(() => newInstance('a', 'b',).forEach(callbackAsFailAfter2Calls1,),).not.toThrow(),)
+                test("() → void",          () => expect(() => newInstance('a', 'b',).forEach(callbackAsFailAfter2Calls0,),).not.toThrow(),)
+            },)
+            describe("forEachIndexed", () => {
+                test("(T, number) → void", () => expect(() => newInstance('a', 'b',).forEachIndexed(callbackAsFailAfter2Calls2,),).not.toThrow(),)
+                test("(T) → void",         () => expect(() => newInstance('a', 'b',).forEachIndexed(callbackAsFailAfter2Calls1,),).not.toThrow(),)
+                test("() → void",          () => expect(() => newInstance('a', 'b',).forEachIndexed(callbackAsFailAfter2Calls0,),).not.toThrow(),)
+            },)
 
             describe("onEach", () => {
                 test("(T, number) → void", () => expectToBeInstance(newInstance('a', 'b',), it => it.onEach(callback2,),),)
@@ -283,6 +324,17 @@ describe("CollectionHolderTest (forEach / onEach)", () => {
         },)},)
         describe("N fields", () => {
         describe.each(everyNInstances,)("%s", ({value: {instance,},},) => {
+
+            describe("forEach", () => {
+                test("(T, number) → void", () => expect(() => new instance(ABCD,).forEach(callbackAsFailAfter4Calls2,),).not.toThrow(),)
+                test("(T) → void",         () => expect(() => new instance(ABCD,).forEach(callbackAsFailAfter4Calls1,),).not.toThrow(),)
+                test("() → void",          () => expect(() => new instance(ABCD,).forEach(callbackAsFailAfter4Calls0,),).not.toThrow(),)
+            },)
+            describe("forEachIndexed", () => {
+                test("(T, number) → void", () => expect(() => new instance(ABCD,).forEachIndexed(callbackAsFailAfter4Calls2,),).not.toThrow(),)
+                test("(T) → void",         () => expect(() => new instance(ABCD,).forEachIndexed(callbackAsFailAfter4Calls1,),).not.toThrow(),)
+                test("() → void",          () => expect(() => new instance(ABCD,).forEachIndexed(callbackAsFailAfter4Calls0,),).not.toThrow(),)
+            },)
 
             describe("onEach", () => {
                 test("(T, number) → void", () => expectToBeInstance(new instance(ABCD,), it =>  it.onEach(callback2,),),)
