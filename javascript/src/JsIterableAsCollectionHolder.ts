@@ -71,13 +71,17 @@ export class JsIterableAsCollectionHolder<const T = unknown,
         if (size == null)
             return
         this.#size = size
-        this.#isEmpty = size === 0
+        const isEmpty = this.#isEmpty = size === 0
         this.#isNotEmpty = size !== 0
-        this.#hasExactly1Element = size === 1
-        this.#hasAtMost1Element = size <= 1
+        const hasExactly1Element = this.#hasExactly1Element = size === 1
+        this.#hasAtMost1Element = isEmpty || hasExactly1Element
         this.#hasAtLeast2Elements = size >= 2
-        this.#hasExactly2Elements = size === 2
-        this.#hasAtMost2Elements = size <= 2
+        this.#hasAtMost2Elements = isEmpty || hasExactly1Element || (this.#hasExactly2Elements = size === 2)
+        if (!(isEmpty || hasExactly1Element))
+            return
+
+        this.#hasDuplicate = false
+        this.#hasNoDuplicates = true
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -1059,10 +1063,33 @@ export class JsIterableAsCollectionHolder<const T = unknown,
 
         if (index < 0) {
             // We retrieve all the items and get calculate to get a positive index
-            const indexToRetrieve = this.size + index
+            const size = this.size
+            if (index > size)
+                throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
+            if (index === size)
+                throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
+
+            const indexToRetrieve = size + index
+            if (indexToRetrieve < 0)
+                throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
             if (indexToRetrieve in this)
                 return this[indexToRetrieve] as T
-            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
+
+            // We retrieve the element from a valid index
+            let lastIndexRetrieved = this.#lastIndexRetrieved
+            if (lastIndexRetrieved != null) // We should have the index in the instance if it is under the lastIndexRetrieved
+                if (indexToRetrieve <= lastIndexRetrieved)
+                    return this[indexToRetrieve] as T
+
+            let indexToFind = lastIndexRetrieved ?? -1
+            const iterator = this._iterator
+            let iteratorValue: IteratorResult<T, unknown>
+            while (!(iteratorValue = iterator.next()).done)
+                if (++indexToFind === indexToRetrieve)
+                    return this[indexToFind] = iteratorValue.value
+                else
+                    this[indexToFind] = iteratorValue.value
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) could not be found from the js iterable.`, index,)
         }
 
         // We will only search until the index on the Iterator has been reached.
@@ -1071,8 +1098,8 @@ export class JsIterableAsCollectionHolder<const T = unknown,
         const iterator = this._iterator
         const indexPlus1 = index + 1
         let iteratorValue: IteratorResult<T, unknown>
-        // It is impossible to get a null lastIndexRetrieved if we have validated from isEmpty
-        let indexToFind = this.#lastIndexRetrieved!
+        // We retrieve from the last index retrieved or -1 if nothing was retrieved at first
+        let indexToFind = this.#lastIndexRetrieved ?? -1
         while (++indexToFind < indexPlus1) {
             iteratorValue = iterator.next()
             if (iteratorValue.done) {
@@ -1095,8 +1122,12 @@ export class JsIterableAsCollectionHolder<const T = unknown,
     public override getFirst(): T {
         if (this.isEmpty)
             throw new EmptyCollectionException()
-        // It is impossible to get nothing since isEmpty has already been validated
-        return this[0] as T
+        if (0 in this)
+            return this[0] as T
+        const iteratorValue = this._iterator.next()
+        if (iteratorValue.done)
+            throw new EmptyCollectionException()
+        return this[this.#lastIndexRetrieved = 0] = iteratorValue.value
     }
 
     //#endregion -------------------- Get first --------------------
@@ -1120,9 +1151,33 @@ export class JsIterableAsCollectionHolder<const T = unknown,
             return this[index] as T
 
         if (index < 0) {
-            const indexToRetrieve = this.size + index
+            // We retrieve all the items and get calculate to get a positive index
+            const size = this.size
+            if (index > size)
+                return defaultValue(index,)
+            if (index === size)
+                return defaultValue(index,)
+
+            const indexToRetrieve = size + index
+            if (indexToRetrieve < 0)
+                return defaultValue(index,)
             if (indexToRetrieve in this)
                 return this[indexToRetrieve] as T
+
+            // We retrieve the element from a valid index
+            let lastIndexRetrieved = this.#lastIndexRetrieved
+            if (lastIndexRetrieved != null) // We should have the index in the instance if it is under the lastIndexRetrieved
+                if (indexToRetrieve <= lastIndexRetrieved)
+                    return this[indexToRetrieve] as T
+
+            let indexToFind = lastIndexRetrieved ?? -1
+            const iterator = this._iterator
+            let iteratorValue: IteratorResult<T, unknown>
+            while (!(iteratorValue = iterator.next()).done)
+                if (++indexToFind === indexToRetrieve)
+                    return this[indexToFind] = iteratorValue.value
+                else
+                    this[indexToFind] = iteratorValue.value
             return defaultValue(index,)
         }
 
@@ -1132,8 +1187,8 @@ export class JsIterableAsCollectionHolder<const T = unknown,
         const iterator = this._iterator
         const indexPlus1 = index + 1
         let iteratorValue: IteratorResult<T, unknown>
-        // It is impossible to get a null lastIndexRetrieved if we have validated from isEmpty
-        let indexToFind = this.#lastIndexRetrieved!
+        // We retrieve from the last index retrieved or -1 if nothing was retrieved at first
+        let indexToFind = this.#lastIndexRetrieved ?? -1
         while (++indexToFind < indexPlus1) {
             iteratorValue = iterator.next()
             if (iteratorValue.done) {
@@ -1156,8 +1211,12 @@ export class JsIterableAsCollectionHolder<const T = unknown,
     public override getFirstOrElse(defaultValue: ReturnCallback<unknown>,) {
         if (this.isEmpty)
             return defaultValue()
-        // It is impossible to get nothing since isEmpty has already been validated
-        return this[0] as T
+        if (0 in this)
+            return this[0] as T
+        const iteratorValue = this._iterator.next()
+        if (iteratorValue.done)
+            return defaultValue()
+        return this[this.#lastIndexRetrieved = 0] = iteratorValue.value
     }
 
     //#endregion -------------------- Get first or else --------------------
@@ -1179,9 +1238,33 @@ export class JsIterableAsCollectionHolder<const T = unknown,
             return this[index] as T
 
         if (index < 0) {
-            const indexToRetrieve = this.size + index
+            // We retrieve all the items and get calculate to get a positive index
+            const size = this.size
+            if (index > size)
+                return null
+            if (index === size)
+                return null
+
+            const indexToRetrieve = size + index
+            if (indexToRetrieve < 0)
+                return null
             if (indexToRetrieve in this)
                 return this[indexToRetrieve] as T
+
+            // We retrieve the element from a valid index
+            let lastIndexRetrieved = this.#lastIndexRetrieved
+            if (lastIndexRetrieved != null) // We should have the index in the instance if it is under the lastIndexRetrieved
+                if (indexToRetrieve <= lastIndexRetrieved)
+                    return this[indexToRetrieve] as T
+
+            let indexToFind = lastIndexRetrieved ?? -1
+            const iterator = this._iterator
+            let iteratorValue: IteratorResult<T, unknown>
+            while (!(iteratorValue = iterator.next()).done)
+                if (++indexToFind === indexToRetrieve)
+                    return this[indexToFind] = iteratorValue.value
+                else
+                    this[indexToFind] = iteratorValue.value
             return null
         }
 
@@ -1191,8 +1274,8 @@ export class JsIterableAsCollectionHolder<const T = unknown,
         const iterator = this._iterator
         const indexPlus1 = index + 1
         let iteratorValue: IteratorResult<T, unknown>
-        // It is impossible to get a null lastIndexRetrieved if we have validated from isEmpty
-        let indexToFind = this.#lastIndexRetrieved!
+        // We retrieve from the last index retrieved or -1 if nothing was retrieved at first
+        let indexToFind = this.#lastIndexRetrieved ?? -1
         while (++indexToFind < indexPlus1) {
             iteratorValue = iterator.next()
             if (iteratorValue.done) {
@@ -1213,8 +1296,12 @@ export class JsIterableAsCollectionHolder<const T = unknown,
     public override getFirstOrNull(): NullOr<T> {
         if (this.isEmpty)
             return null
-        // It is impossible to get nothing since isEmpty has already been validated
-        return this[0] as T
+        if (0 in this)
+            return this[0] as T
+        const iteratorValue = this._iterator.next()
+        if (iteratorValue.done)
+            return null
+        return this[this.#lastIndexRetrieved = 0] = iteratorValue.value
     }
 
     //#endregion -------------------- Get first or null --------------------
@@ -1354,9 +1441,9 @@ export class JsIterableAsCollectionHolder<const T = unknown,
                 return false
             }
 
-            const temporaryArray: MutableArray<T> = [iteratorResult.value,]
+            const temporaryArray: MutableArray<T> = [this[0] = iteratorResult.value,]
             let amountOfItemAdded = 1
-            let index1 = -1
+            let index1 = 0
             // We do straight validation with temporary array to not re-call the iterator
             while (!(iteratorResult = iterator.next()).done) {
                 const iteratorValue1 = this[++index1] = iteratorResult.value
@@ -1444,9 +1531,9 @@ export class JsIterableAsCollectionHolder<const T = unknown,
                 return true
             }
 
-            const temporaryArray: MutableArray<T> = [iteratorResult.value,]
+            const temporaryArray: MutableArray<T> = [this[0] = iteratorResult.value,]
             let amountOfItemAdded =  1
-            let index1 = -1
+            let index1 = 0
             // We do straight validation with temporary array to not re-call the iterator
             while (!(iteratorResult = iterator.next()).done) {
                 const iteratorValue = this[++index1] = iteratorResult.value
@@ -1464,7 +1551,6 @@ export class JsIterableAsCollectionHolder<const T = unknown,
             this.#hasDuplicate = false
             this.#hasNoDuplicates = true
             return true
-
         }
 
         // We compare the elements from the lastIndexRetrieved, and afterward, we loop through the iterator
