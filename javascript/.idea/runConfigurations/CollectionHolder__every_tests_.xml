@@ -15,6 +15,8 @@
     <toRun name="index ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ instances ~ empty" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ methods" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfFirst ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfLast ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
     <toRun name="inner-collection" type="JavaScriptTestRunnerJest" />
     <toRun name="is" type="JavaScriptTestRunnerJest" />
     <toRun name="javascript exclusive" type="JavaScriptTestRunnerJest" />

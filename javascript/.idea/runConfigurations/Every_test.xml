@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Every test" type="CompoundRunConfigurationType">
-    <toRun name="CollectionIterator (forEach)" type="JavaScriptTestRunnerJest" />
     <toRun name="CollectionIterator (javascript exclusive)" type="JavaScriptTestRunnerJest" />
+    <toRun name="CollectionIterator (loop)" type="JavaScriptTestRunnerJest" />
     <toRun name="CollectionIterator (normal)" type="JavaScriptTestRunnerJest" />
     <toRun name="CollectionIterator (size)" type="JavaScriptTestRunnerJest" />
     <toRun name="all / any / none" type="JavaScriptTestRunnerJest" />
@@ -19,6 +19,8 @@
     <toRun name="index ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ instances ~ empty" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ methods" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfFirst ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfLast ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
     <toRun name="inner-collection" type="JavaScriptTestRunnerJest" />
     <toRun name="is" type="JavaScriptTestRunnerJest" />
     <toRun name="javascript exclusive" type="JavaScriptTestRunnerJest" />

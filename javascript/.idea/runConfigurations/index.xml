@@ -8,6 +8,8 @@
     <toRun name="index ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ instances ~ empty" type="JavaScriptTestRunnerJest" />
     <toRun name="index ~ methods" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfFirst ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfLast ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
     <method v="2" />
   </configuration>
 </component>
