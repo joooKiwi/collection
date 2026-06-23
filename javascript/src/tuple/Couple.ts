@@ -12,7 +12,7 @@
 
 import type {Set} from "@joookiwi/type"
 
-import type {CollectionHolder} from "../CollectionHolder"
+import type {CollectionHolderOf2} from "../CollectionHolderOf2"
 
 import {LateRetriever} from "../LateRetriever"
 import {AbstractTuple} from "./AbstractTuple"
@@ -30,7 +30,7 @@ export class Couple<const T = unknown,
     readonly #value2: T2
     #array?: readonly [T1, T2,]
     #set?: Set<| T1 | T2>
-    #collection?: CollectionHolder<| T1 | T2>
+    #collection?: CollectionHolderOf2<T, T1, T2>
     readonly #hasNull: boolean
     readonly #hasNoNulls: boolean
     readonly #hasDuplicate: boolean
@@ -57,27 +57,31 @@ export class Couple<const T = unknown,
     public get value2(): T2 { return this.#value2 }
 
 
+    public override get size(): 2 { return 2 }
+
+    public override get isEmpty(): false { return false }
+    public override get isNotEmpty(): true { return true }
+
+    public override get hasExactly1Element(): false { return false }
+    public override get hasAtMost1Element(): false { return false }
+
+    public override get hasAtLeast2Elements(): true { return true }
+    public override get hasExactly2Elements(): true { return true }
+    public override get hasAtMost2Elements(): true { return true }
+
+
+    public override get hasNull(): boolean { return this.#hasNull }
+    public override get hasNoNulls(): boolean { return this.#hasNoNulls }
+
+    public override get hasDuplicate(): boolean { return this.#hasDuplicate }
+    public override get hasNoDuplicates(): boolean { return this.#hasNoDuplicates }
+
+
     public override toArray(): readonly [T1, T2,] { return this.#array ??= Object.freeze([this.value1, this.value2,],) }
 
     public override toSet(): Set<| T1 | T2> { return this.#set ??= Object.freeze(new Set([this.value1, this.value2,],),) }
 
-    public override toCollection(): CollectionHolder<| T1 | T2> { return this.#collection ??= new LateRetriever.CollectionHolderOf2<| T1 | T2>(this.value1, this.value2,) }
-
-
-    public override get size(): 2 { return 2 }
-
-    public override get isEmpty(): false { return false }
-
-    public override get isNotEmpty(): true { return true }
-
-    public override get hasNull(): boolean { return this.#hasNull }
-
-    public override get hasNoNulls(): boolean { return this.#hasNoNulls }
-
-    public override get hasDuplicate(): boolean { return this.#hasDuplicate }
-
-    public override get hasNoDuplicates(): boolean { return this.#hasNoDuplicates }
-
+    public override toCollection(): CollectionHolderOf2<T, T1, T2> { return this.#collection ??= new LateRetriever.CollectionHolderOf2(this.value1, this.value2,) }
 
     public override toString(): string {
         const value1 = this.value1
