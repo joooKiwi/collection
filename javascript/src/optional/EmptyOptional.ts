@@ -42,6 +42,11 @@ export class EmptyOptional
     public override ifPresentOrElse(_1: unknown, emptyAction: () => void, ..._2: Array<unknown>): void
     public override ifPresentOrElse(_: unknown, emptyAction: () => void,): void { emptyAction() }
 
+    public override or<const OPTIONAL extends Optional<never>, >(supplier: () => OPTIONAL,): OPTIONAL
+    public override or(supplier: () => Optional<never>,) {
+        return supplier()
+    }
+
 
     public override orElse(other: never,): never
     public override orElse<const U, >(other: U,): U
