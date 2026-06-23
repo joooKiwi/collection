@@ -323,9 +323,8 @@ export interface CollectionIterator<out T = unknown, >
      * <code>[object CollectionIterator]</code> instead of <code>[object Object]</code>
      *
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
-     * @readonly
      */
-    [Symbol.toStringTag]: CollectionIteratorName
+    readonly [Symbol.toStringTag]: CollectionIteratorName
 
     //#endregion -------------------- JavaScript methods --------------------
 
