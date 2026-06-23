@@ -23,7 +23,7 @@ public final class IsEmpty
 
     /// The [collection][MinimalistCollectionHolder] has no values
     ///
-    /// @param collection The collection to retrieve its [size][MinimalistCollectionHolder#size]
+    /// @param collection The [collection][MinimalistCollectionHolder] to compare its [size][MinimalistCollectionHolder#size]
     /// @param <T>        The `collection` type
     /// @see java.util.Map#isEmpty()
     /// @see java.util.Collection#isEmpty()
@@ -40,7 +40,7 @@ public final class IsEmpty
 
     /// The [collection][CollectionHolder] has no values
     ///
-    /// @param collection The collection to retrieve its [size][CollectionHolder#size]
+    /// @param collection The [collection][CollectionHolder] to compare its [size][CollectionHolder#size]
     /// @param <T>        The `collection` type
     /// @see java.util.Map#isEmpty()
     /// @see java.util.Collection#isEmpty()
@@ -57,7 +57,7 @@ public final class IsEmpty
 
     /// The `collection` has no values
     ///
-    /// @param collection The collection to retrieve its `size`
+    /// @param collection The collection to compare its `size`
     /// @param <T>        The `collection` type
     /// @see java.util.Map#isEmpty()
     /// @see java.util.Collection#isEmpty()
