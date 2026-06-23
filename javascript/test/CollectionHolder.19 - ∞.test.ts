@@ -45,9 +45,11 @@ describe.each(everyInfiniteInstances,)("%s", ({value: {instance,},},) => {
         test("hasAtMost2Elements[1]",  () => expect(new instance().execute(it => it.hasAtMost2Elements,)[2],) .toBe('a',),)
         test("hasAtMost2Elements[2]",  () => expect(new instance().execute(it => it.hasAtMost2Elements,)[3],) .toBeUndefined(),)
         test("hasDuplicate[0]",        () => expect(new instance().execute(it => it.hasDuplicate,)[0],)       .toBe('a',),)
-        test("hasDuplicate[1]",        () => expect(new instance().execute(it => it.hasDuplicate,)[1],)       .toBeUndefined(),)
+        test("hasDuplicate[1]",        () => expect(new instance().execute(it => it.hasDuplicate,)[1],)       .toBe('a',),)
+        test("hasDuplicate[2]",        () => expect(new instance().execute(it => it.hasDuplicate,)[2],)       .toBeUndefined(),)
         test("hasNoDuplicates[0]",     () => expect(new instance().execute(it => it.hasNoDuplicates,)[0],)    .toBe('a',),)
-        test("hasNoDuplicates[1]",     () => expect(new instance().execute(it => it.hasNoDuplicates,)[1],)    .toBeUndefined(),)
+        test("hasNoDuplicates[1]",     () => expect(new instance().execute(it => it.hasNoDuplicates,)[1],)    .toBe('a',),)
+        test("hasNoDuplicates[2]",     () => expect(new instance().execute(it => it.hasNoDuplicates,)[2],)    .toBeUndefined(),)
     },)
     describe("after ‥", () => {
         describe("get(0)", () => {
