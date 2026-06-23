@@ -24,7 +24,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 /**
  * The {@link collection} has a minimum of 2 values
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @extensionFunction
  */
 export function hasAtLeast2Elements<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
@@ -48,7 +48,7 @@ export function hasAtLeast2Elements<const T, >(collection: Nullable<| Minimalist
 /**
  * The {@link collection} has a minimum of 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtLeast2ElementsByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
@@ -60,7 +60,7 @@ export function hasAtLeast2ElementsByMinimalistCollectionHolder<const T, >(colle
 /**
  * The {@link collection} has a minimum of 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtLeast2ElementsByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): boolean {
@@ -72,7 +72,7 @@ export function hasAtLeast2ElementsByCollectionHolder<const T, >(collection: Nul
 /**
  * The {@link collection} has a minimum of 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtLeast2ElementsByArray<const T, >(collection: Nullable<Array<T>>,): boolean {

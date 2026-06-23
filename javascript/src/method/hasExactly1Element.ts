@@ -25,56 +25,56 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The collection {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1Element<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasExactly1ElementOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The collection {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1Element<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): HasExactly1ElementOnMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasExactly1Element<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): HasExactly1ElementOnArray<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @extensionFunction
  */
 export function hasExactly1Element<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T> = | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, >(collection: COLLECTION,): HasExactly1ElementOn<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1Element<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasExactly1ElementOnNullableCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1Element<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): HasExactly1ElementOnNullableMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasExactly1Element<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): HasExactly1ElementOnNullableArray<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @extensionFunction
  */
 export function hasExactly1Element<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, >(collection: COLLECTION,): HasExactly1ElementOnNullable<COLLECTION>
@@ -99,28 +99,28 @@ export function hasExactly1Element<const T, >(collection: Nullable<| MinimalistC
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1ElementByMinimalistCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasExactly1ElementOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1ElementByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasExactly1ElementOnNullableCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1ElementByMinimalistCollectionHolder<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): HasExactly1ElementOnMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1ElementByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): HasExactly1ElementOnNullableMinimalistCollectionHolder<COLLECTION>
@@ -133,14 +133,14 @@ export function hasExactly1ElementByMinimalistCollectionHolder<const T, >(collec
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1ElementByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasExactly1ElementOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasExactly1ElementByCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasExactly1ElementOnNullableCollectionHolder<COLLECTION>
@@ -153,14 +153,14 @@ export function hasExactly1ElementByCollectionHolder<const T, >(collection: Null
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasExactly1ElementByArray<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): HasExactly1ElementOnArray<COLLECTION>
 /**
  * The {@link collection} has exactly 1 element
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasExactly1ElementByArray<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): HasExactly1ElementOnNullableArray<COLLECTION>

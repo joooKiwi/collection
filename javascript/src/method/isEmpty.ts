@@ -25,7 +25,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 /**
  * The {@link collection} has no values
  *
- * @param collection The collection {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -37,7 +37,7 @@ export function isEmpty<const T, const COLLECTION extends CollectionHolder<T> = 
 /**
  * The {@link collection} has no values
  *
- * @param collection The collection {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -49,7 +49,7 @@ export function isEmpty<const T, const COLLECTION extends MinimalistCollectionHo
 /**
  * The {@link collection} has no values
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -61,7 +61,7 @@ export function isEmpty<const T, const COLLECTION extends Array<T> = Array<T>, >
 /**
  * The {@link collection} has no values
  *
- * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -73,7 +73,7 @@ export function isEmpty<const T, const COLLECTION extends | MinimalistCollection
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -85,7 +85,7 @@ export function isEmpty<const T, const COLLECTION extends Nullable<CollectionHol
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -97,7 +97,7 @@ export function isEmpty<const T, const COLLECTION extends Nullable<MinimalistCol
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -109,7 +109,7 @@ export function isEmpty<const T, const COLLECTION extends Nullable<Array<T>> = N
 /**
  * The {@link collection} has no values
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -139,7 +139,7 @@ export function isEmpty<const T, >(collection: Nullable<| MinimalistCollectionHo
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -151,7 +151,7 @@ export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION ex
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -163,7 +163,7 @@ export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION ex
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -175,7 +175,7 @@ export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION ex
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -193,7 +193,7 @@ export function isEmptyByMinimalistCollectionHolder<const T, >(collection: Nulla
 /**
  * The {@link collection} has no values
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -205,7 +205,7 @@ export function isEmptyByCollectionHolder<const T, const COLLECTION extends Coll
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -223,7 +223,7 @@ export function isEmptyByCollectionHolder<const T, >(collection: Nullable<Collec
 /**
  * The {@link collection} has no values
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
@@ -235,7 +235,7 @@ export function isEmptyByArray<const T, const COLLECTION extends Array<T> = Arra
 /**
  * The {@link collection} has no values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()

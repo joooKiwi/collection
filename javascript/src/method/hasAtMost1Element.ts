@@ -25,56 +25,56 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The collection {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1Element<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasAtMost1ElementOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The collection {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1Element<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): HasAtMost1ElementOnMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtMost1Element<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): HasAtMost1ElementOnArray<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @extensionFunction
  */
 export function hasAtMost1Element<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T> = | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, >(collection: COLLECTION,): HasAtMost1ElementOn<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1Element<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost1ElementOnNullableCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1Element<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost1ElementOnNullableMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtMost1Element<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): HasAtMost1ElementOnNullableArray<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @extensionFunction
  */
 export function hasAtMost1Element<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, >(collection: COLLECTION,): HasAtMost1ElementOnNullable<COLLECTION>
@@ -99,28 +99,28 @@ export function hasAtMost1Element<const T, >(collection: Nullable<| MinimalistCo
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1ElementByMinimalistCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasAtMost1ElementOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1ElementByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost1ElementOnNullableCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1ElementByMinimalistCollectionHolder<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): HasAtMost1ElementOnMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1ElementByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost1ElementOnNullableMinimalistCollectionHolder<COLLECTION>
@@ -135,14 +135,14 @@ export function hasAtMost1ElementByMinimalistCollectionHolder<const T, >(collect
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1ElementByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasAtMost1ElementOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost1ElementByCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost1ElementOnNullableCollectionHolder<COLLECTION>
@@ -155,14 +155,14 @@ export function hasAtMost1ElementByCollectionHolder<const T, >(collection: Nulla
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtMost1ElementByArray<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): HasAtMost1ElementOnArray<COLLECTION>
 /**
  * The {@link collection} has exactly 0 or 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtMost1ElementByArray<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): HasAtMost1ElementOnNullableArray<COLLECTION>

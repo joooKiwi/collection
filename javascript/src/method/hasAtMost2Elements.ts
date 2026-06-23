@@ -25,56 +25,56 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The collection {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2Elements<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasAtMost2ElementsOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The collection {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2Elements<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): HasAtMost2ElementsOnMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtMost2Elements<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): HasAtMost2ElementsOnArray<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @extensionFunction
  */
 export function hasAtMost2Elements<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T> = | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, >(collection: COLLECTION,): HasAtMost2ElementsOn<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2Elements<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost2ElementsOnNullableCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2Elements<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost2ElementsOnNullableMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtMost2Elements<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): HasAtMost2ElementsOnNullableArray<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @extensionFunction
  */
 export function hasAtMost2Elements<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, >(collection: COLLECTION,): HasAtMost2ElementsOnNullable<COLLECTION>
@@ -99,28 +99,28 @@ export function hasAtMost2Elements<const T, >(collection: Nullable<| MinimalistC
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2ElementsByMinimalistCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasAtMost2ElementsOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2ElementsByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost2ElementsOnNullableCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2ElementsByMinimalistCollectionHolder<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): HasAtMost2ElementsOnMinimalistCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2ElementsByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost2ElementsOnNullableMinimalistCollectionHolder<COLLECTION>
@@ -135,14 +135,14 @@ export function hasAtMost2ElementsByMinimalistCollectionHolder<const T, >(collec
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2ElementsByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): HasAtMost2ElementsOnCollectionHolder<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @extensionFunction
  */
 export function hasAtMost2ElementsByCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): HasAtMost2ElementsOnNullableCollectionHolder<COLLECTION>
@@ -155,14 +155,14 @@ export function hasAtMost2ElementsByCollectionHolder<const T, >(collection: Null
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtMost2ElementsByArray<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): HasAtMost2ElementsOnArray<COLLECTION>
 /**
  * The {@link collection} has exactly 0, 1 or 2 values
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @extensionFunction
  */
 export function hasAtMost2ElementsByArray<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): HasAtMost2ElementsOnNullableArray<COLLECTION>
