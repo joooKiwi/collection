@@ -167,8 +167,22 @@ public class CollectionViewer<T extends @Nullable Object,
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return getReference().size(); }
 
+
     @Override public boolean isEmpty() { return getReference().isEmpty(); }
+
     @Override public boolean isNotEmpty() { return getReference().isNotEmpty(); }
+
+
+    @Override public boolean hasExactly1Element() { return getReference().hasExactly1Element(); }
+
+    @Override public boolean hasAtMost1Element() { return getReference().hasAtMost1Element(); }
+
+
+    @Override public boolean hasAtLeast2Elements() { return getReference().hasAtLeast2Elements(); }
+
+    @Override public boolean hasExactly2Elements() { return getReference().hasExactly2Elements(); }
+
+    @Override public boolean hasAtMost2Elements() { return getReference().hasAtMost2Elements(); }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

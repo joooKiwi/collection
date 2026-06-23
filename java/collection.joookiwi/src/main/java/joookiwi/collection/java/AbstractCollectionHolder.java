@@ -153,7 +153,12 @@ import joookiwi.collection.java.method.GetLastOrNull;
 import joookiwi.collection.java.method.GetOrElse;
 import joookiwi.collection.java.method.GetOrNull;
 import joookiwi.collection.java.method.Has;
+import joookiwi.collection.java.method.HasAtLeast2Elements;
+import joookiwi.collection.java.method.HasAtMost1Element;
+import joookiwi.collection.java.method.HasAtMost2Elements;
 import joookiwi.collection.java.method.HasDuplicate;
+import joookiwi.collection.java.method.HasExactly1Element;
+import joookiwi.collection.java.method.HasExactly2Elements;
 import joookiwi.collection.java.method.HasNoDuplicates;
 import joookiwi.collection.java.method.HasNoNulls;
 import joookiwi.collection.java.method.HasNot;
@@ -311,7 +316,20 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Size methods --------------------
 
     @Override public boolean isEmpty() { return IsEmpty.isEmpty(this); }
+
     @Override public boolean isNotEmpty() { return IsNotEmpty.isNotEmpty(this); }
+
+
+    @Override public boolean hasExactly1Element() { return HasExactly1Element.hasExactly1Element(this); }
+
+    @Override public boolean hasAtMost1Element() { return HasAtMost1Element.hasAtMost1Element(this); }
+
+
+    @Override public boolean hasAtLeast2Elements() { return HasAtLeast2Elements.hasAtLeast2Elements(this); }
+
+    @Override public boolean hasExactly2Elements() { return HasExactly2Elements.hasExactly2Elements(this); }
+
+    @Override public boolean hasAtMost2Elements() { return HasAtMost2Elements.hasAtMost2Elements(this); }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

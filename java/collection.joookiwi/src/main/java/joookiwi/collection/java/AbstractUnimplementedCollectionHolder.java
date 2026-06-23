@@ -69,6 +69,25 @@ public abstract class AbstractUnimplementedCollectionHolder<T extends @Nullable 
     @Override public final @Range(from = 0, to = MAX_INT_VALUE) int length() { return size(); }
     @Override public final @Range(from = 0, to = MAX_INT_VALUE) int count() { return size(); }
 
+    @Override public final boolean hasAtLeast1Element() { return isNotEmpty(); }
+    @Override public final boolean containsAtLeast1Element() { return isNotEmpty(); }
+    @Override public final boolean includesAtLeast1Element() { return isNotEmpty(); }
+
+    @Override public final boolean containsExactly1Element() { return hasExactly1Element(); }
+    @Override public final boolean includesExactly1Element() { return hasExactly1Element(); }
+
+    @Override public final boolean containsAtMost1Element() { return hasAtMost1Element(); }
+    @Override public final boolean includesAtMost1Element() { return hasAtMost1Element(); }
+
+    @Override public final boolean containsAtLeast2Elements() { return hasAtLeast2Elements(); }
+    @Override public final boolean includesAtLeast2Elements() { return hasAtLeast2Elements(); }
+
+    @Override public final boolean containsExactly2Elements() { return hasExactly2Elements(); }
+    @Override public final boolean includesExactly2Elements() { return hasExactly2Elements(); }
+
+    @Override public final boolean containsAtMost2Elements() { return hasAtMost2Elements(); }
+    @Override public final boolean includesAtMost2Elements() { return hasAtMost2Elements(); }
+
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 
