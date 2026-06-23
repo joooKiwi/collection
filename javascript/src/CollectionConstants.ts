@@ -658,6 +658,19 @@ export namespace CollectionConstants {
      */
     export const COLLECTION_ITERATOR_TO_STRING_TAG = "CollectionIterator"
 
+    /**
+     * The {@link Symbol.toStringTag} of a {@link Tuple}
+     *
+     * @uniqueJavascriptVariable
+     */
+    export const TUPLE_TO_STRING_TAG = "Tuple"
+    /**
+     * The {@link Symbol.toStringTag} of a {@link Optional}
+     *
+     * @uniqueJavascriptVariable
+     */
+    export const OPTIONAL_TO_STRING_TAG = "Optional"
+
     //#endregion -------------------- Symbol.toString references --------------------
     //#region -------------------- Symbol references --------------------
 
