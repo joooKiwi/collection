@@ -1400,23 +1400,22 @@ export class JsIteratorAsCollectionHolder<const T = unknown,
             let index1 = 0
             // We do straight validation with temporary array to not re-call the iterator
             while (!(iteratorResult = reference.next()).done) {
-                const iteratorValue1 = this[++index1] = iteratorResult.value
+                const iteratorValue = this[++index1] = iteratorResult.value
                 let index2 = -1
                 while (++index2 < amountOfItemAdded)
-                    if (temporaryArray[index2] === iteratorValue1) {
+                    if (temporaryArray[index2] === iteratorValue) {
                         this.#lastIndexRetrieved = index1
                         this.#hasDuplicate = true
                         this.#hasNoDuplicates = false
                         return true
                     }
-                temporaryArray[amountOfItemAdded++] = iteratorValue1
+                temporaryArray[amountOfItemAdded++] = iteratorValue
             }
 
             this.#lastIndexRetrieved = index1
             this.#hasDuplicate = false
             this.#hasNoDuplicates = true
             return false
-
         }
 
         // We compare the elements from the lastIndexRetrieved, and afterward, we loop through the iterator
@@ -1504,7 +1503,6 @@ export class JsIteratorAsCollectionHolder<const T = unknown,
             this.#hasDuplicate = false
             this.#hasNoDuplicates = true
             return true
-
         }
 
         // We compare the elements from the lastIndexRetrieved, and afterward, we loop through the iterator
