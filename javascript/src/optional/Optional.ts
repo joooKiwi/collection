@@ -10,7 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {OptionalName} from "../type/toStringTag"
+import type {ReturnCallback} from "../type/callback"
+import type {OptionalName}   from "../type/toStringTag"
 
 export class Optional<const T = unknown, > {
 
@@ -86,8 +87,8 @@ export class Optional<const T = unknown, > {
      * @typeParam OPTIONAL The {@link supplier} {@link Optional} type
      * @param     supplier A supplier of {@link Optional} to receive
      */
-    public or<const OPTIONAL extends Optional<T>, >(supplier: () => OPTIONAL,): | this | OPTIONAL
-    public or(supplier: () => Optional<T>,) {
+    public or<const OPTIONAL extends Optional<T>, >(supplier: ReturnCallback<OPTIONAL>,): | this | OPTIONAL
+    public or(supplier: ReturnCallback<Optional<T>>,) {
         if (this.isPresent)
             return this
         return supplier()
@@ -120,7 +121,7 @@ export class Optional<const T = unknown, > {
      *
      * @param supplier The value to give if empty
      */
-    public orElseGet(supplier: () => T,): T
+    public orElseGet(supplier: ReturnCallback<T>,): T
     /**
      * Give the value if it presents.
      * Otherwise, returns the {@link supplier} return value
@@ -128,8 +129,8 @@ export class Optional<const T = unknown, > {
      * @typeParam U        The {@link supplier} return type
      * @param     supplier The value to give if empty
      */
-    public orElseGet<const U, >(supplier: () => U,): | T | U
-    public orElseGet(supplier: () => unknown,) {
+    public orElseGet<const U, >(supplier: ReturnCallback<U>,): | T | U
+    public orElseGet(supplier: ReturnCallback<unknown>,) {
         if (!this.#isPresent)
             return supplier()
         return this.#value

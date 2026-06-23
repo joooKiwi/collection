@@ -12,6 +12,8 @@
 
 import type {Array} from "@joookiwi/type"
 
+import type {ReturnCallback} from "../type/callback"
+
 import {Optional} from "./Optional"
 
 export class EmptyOptional
@@ -42,21 +44,23 @@ export class EmptyOptional
     public override ifPresentOrElse(_1: unknown, emptyAction: () => void, ..._2: Array<unknown>): void
     public override ifPresentOrElse(_: unknown, emptyAction: () => void,): void { emptyAction() }
 
-    public override or<const OPTIONAL extends Optional<never>, >(supplier: () => OPTIONAL,): OPTIONAL
-    public override or(supplier: () => Optional<never>,) {
+    public override or(supplier: ReturnCallback<never>, ..._: Array<unknown>): never
+    public override or<const OPTIONAL extends Optional<never>, >(supplier: ReturnCallback<OPTIONAL>, ..._: Array<unknown>): OPTIONAL
+    public override or(supplier: ReturnCallback<Optional<never>>,) {
         return supplier()
     }
 
 
-    public override orElse(other: never,): never
-    public override orElse<const U, >(other: U,): U
+    public override orElse(other: never, ..._: Array<unknown>): never
+    public override orElse<const U, >(other: U, ..._: Array<unknown>): U
     public override orElse(other: unknown,) { return other }
 
-    public override orElseGet(supplier: () => never,): never
-    public override orElseGet<const U, >(supplier: () => U,): U
-    public override orElseGet(supplier: () => unknown,) { return supplier() }
+    public override orElseGet(supplier: ReturnCallback<never>, ..._: Array<unknown>): never
+    public override orElseGet<const U, >(supplier: ReturnCallback<U>, ..._: Array<unknown>): U
+    public override orElseGet(supplier: ReturnCallback<unknown>,) { return supplier() }
 
-    public override orElseThrow(): never { throw new ReferenceError("Value not found exception. No value exist in an “EmptyOptional”.",) }
+    public override orElseThrow( ..._: Array<unknown>): never
+    public override orElseThrow() { throw new ReferenceError("Value not found exception. No value exist in an “EmptyOptional”.",) }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Present methods --------------------
