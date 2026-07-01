@@ -266,7 +266,7 @@ public final class FindLastIndexed
         while (index-- > 0)
             if (predicate.getAsBoolean())
                 return collection.get(index);
-        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
+        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size);
     }
 
     private static <T extends @Nullable Object> T __with0Argument(final T @Unmodifiable [] collection,
@@ -276,7 +276,7 @@ public final class FindLastIndexed
         while (index-- > 0)
             if (predicate.getAsBoolean())
                 return collection[index];
-        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
+        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size);
     }
 
 
@@ -287,7 +287,7 @@ public final class FindLastIndexed
         while (index-- > 0)
             if (predicate.test(index))
                 return collection.get(index);
-        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
+        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size);
     }
 
     private static <T extends @Nullable Object> T __with1Argument(final T @Unmodifiable [] collection,
@@ -297,7 +297,7 @@ public final class FindLastIndexed
         while (index-- > 0)
             if (predicate.test(index))
                 return collection[index];
-        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
+        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size);
     }
 
 
@@ -310,7 +310,7 @@ public final class FindLastIndexed
             if (predicate.test(index, value))
                 return value;
         }
-        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
+        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size);
     }
 
     private static <T extends @Nullable Object> T __with2Argument(final T @Unmodifiable [] collection,
@@ -322,7 +322,7 @@ public final class FindLastIndexed
             if (predicate.test(index, value))
                 return value;
         }
-        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
+        throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size);
     }
 
     //#endregion -------------------- Loop methods --------------------
