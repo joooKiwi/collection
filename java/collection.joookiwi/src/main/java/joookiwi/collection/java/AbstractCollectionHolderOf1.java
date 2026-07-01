@@ -56,6 +56,7 @@ import joookiwi.collection.java.callback.IntObjFunction;
 import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
+import joookiwi.collection.java.exception.IndexNotFoundException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.extended.ArrayAsMutableBlockingDeque;
 import joookiwi.collection.java.extended.ArrayAsMutableBlockingQueue;
@@ -190,9 +191,6 @@ import static joookiwi.collection.java.method.AsString.asUpperCaseString;
 public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         extends AbstractUnimplementedCollectionHolder<T>
         implements ClassWith1Value<T> {
-    //TODO: extends the AbstractMinimalistCollectionHolder instead to give a more appropriate method call
-    //      than the AbstractCollectionHolder instance.
-    //      The inherited instance is not really optimized for a size of 1.
 
     //#region -------------------- Constructor --------------------
 
