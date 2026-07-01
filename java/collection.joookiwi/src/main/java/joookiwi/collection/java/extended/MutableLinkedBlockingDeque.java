@@ -23,11 +23,9 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
-import static joookiwi.collection.java.NumericConstants.MAX_BYTE_VALUE_AS_LONG;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE_AS_LONG;
-import static joookiwi.collection.java.NumericConstants.MAX_SHORT_VALUE_AS_LONG;
-import static joookiwi.collection.java.method.ToCollection.toCollection;
+import static joookiwi.collection.java.helper.NumberComparator.max;
+import static joookiwi.collection.java.helper.NumberComparator.min;
 
 /// A mutable behaviour of a [LinkedBlockingDeque]
 ///
@@ -37,7 +35,7 @@ public class MutableLinkedBlockingDeque<T>
         extends LinkedBlockingDeque<T>
         implements MutableBlockingDeque<T> {
 
-    @Serial private static final long serialVersionUID = -8038291843928745343L;
+    @Serial private static final long serialVersionUID = 4471539133422400704L;
 
     //#region -------------------- Sub class --------------------
 
@@ -255,39 +253,27 @@ public class MutableLinkedBlockingDeque<T>
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) byte capacity) { super(capacity); }
+    public MutableLinkedBlockingDeque(final byte capacity) { super(min(capacity, 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) @Nullable Byte capacity) { super(capacity == null ? MAX_INT_VALUE : capacity); }
+    public MutableLinkedBlockingDeque(final @Nullable Byte capacity) { super(capacity == null ? MAX_INT_VALUE : min(capacity.byteValue(), 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) short capacity) { super(capacity); }
+    public MutableLinkedBlockingDeque(final short capacity) { super(min(capacity, 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) @Nullable Short capacity) { super(capacity == null ? MAX_INT_VALUE : capacity); }
+    public MutableLinkedBlockingDeque(final @Nullable Short capacity) { super(capacity == null ? MAX_INT_VALUE : min(capacity.shortValue(), 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) int capacity) { super(capacity); }
+    public MutableLinkedBlockingDeque(final int capacity) { super(min(capacity, 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) @Nullable Integer capacity) { super(capacity == null ? MAX_INT_VALUE : capacity); }
+    public MutableLinkedBlockingDeque(final @Nullable Integer capacity) { super(capacity == null ? MAX_INT_VALUE : min(capacity.intValue(), 1)); }
 
     //#endregion -------------------- capacity --------------------
     //#region -------------------- values --------------------
@@ -298,7 +284,7 @@ public class MutableLinkedBlockingDeque<T>
         super(MAX_INT_VALUE);
         if (values.length == 0)
             return;
-        addAll(toCollection(values));
+        addAll(new ArrayAsImmutableCollection<>(values));
     }
 
     /// Create a mutable instance of [LinkedBlockingDeque]
@@ -315,212 +301,140 @@ public class MutableLinkedBlockingDeque<T>
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) byte capacity) {
-        super(capacity);
-
+                                      final byte capacity) {
         final var size = values.length;
+        super(max(min(capacity, 1), size));
         if (size == 0)
             return;
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
-        addAll(toCollection(values));
+        addAll(new ArrayAsImmutableCollection<>(values));
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) @Nullable Byte capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
+                                      final @Nullable Byte capacity) {
         final var size = values.length;
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.byteValue(), 1), size));
         if (size == 0)
             return;
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
-        addAll(toCollection(values));
+        addAll(new ArrayAsImmutableCollection<>(values));
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) short capacity) {
-        super(capacity);
-
+                                      final short capacity) {
         final var size = values.length;
+        super(max(min(capacity, 1), size));
         if (size == 0)
             return;
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
-        addAll(toCollection(values));
+        addAll(new ArrayAsImmutableCollection<>(values));
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) @Nullable Short capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
+                                      final @Nullable Short capacity) {
         final var size = values.length;
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.shortValue(), 1), size));
         if (size == 0)
             return;
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
-        addAll(toCollection(values));
+        addAll(new ArrayAsImmutableCollection<>(values));
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) int capacity) {
-        super(capacity);
-
+                                      final int capacity) {
         final var size = values.length;
+        super(max(min(capacity, 1), size));
         if (size == 0)
             return;
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
-        addAll(toCollection(values));
+        addAll(new ArrayAsImmutableCollection<>(values));
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) @Nullable Integer capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
+                                      final @Nullable Integer capacity) {
         final var size = values.length;
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.intValue(), 1), size));
         if (size == 0)
             return;
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
-        addAll(toCollection(values));
+        addAll(new ArrayAsImmutableCollection<>(values));
     }
 
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) byte capacity) {
-        super(capacity);
-
-        if (values.isEmpty())
+                                      final byte capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(max(min(capacity, 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         addAll(values);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) @Nullable Byte capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
-        if (values.isEmpty())
+                                      final @Nullable Byte capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.byteValue(), 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         addAll(values);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) short capacity) {
-        super(capacity);
-
-        if (values.isEmpty())
+                                      final short capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(max(min(capacity, 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         addAll(values);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) @Nullable Short capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
-        if (values.isEmpty())
+                                      final @Nullable Short capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.shortValue(), 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         addAll(values);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) int capacity) {
-        super(capacity);
-
-        if (values.isEmpty())
+                                      final int capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(max(min(capacity, 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         addAll(values);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingDeque]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) @Nullable Integer capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
-        if (values.isEmpty())
+                                      final @Nullable Integer capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.intValue(), 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingDeque have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         addAll(values);
     }
 
