@@ -367,6 +367,13 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     @Contract(ALWAYS_FALSE_0) @Override public boolean isEmpty() { return false; }
     @Contract(ALWAYS_TRUE_0) @Override public boolean isNotEmpty() { return true; }
 
+    @Contract(ALWAYS_TRUE_0) @Override public boolean hasExactly1Element() { return true; }
+    @Contract(ALWAYS_TRUE_0) @Override public boolean hasAtMost1Element() { return true; }
+
+    @Contract(ALWAYS_FALSE_0) @Override public boolean hasAtLeast2Elements() { return false; }
+    @Contract(ALWAYS_FALSE_0) @Override public boolean hasExactly2Elements() { return false; }
+    @Contract(ALWAYS_TRUE_0) @Override public boolean hasAtMost2Elements() { return true; }
+
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 
