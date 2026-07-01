@@ -1853,7 +1853,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
     //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has null --------------------
+    //#region -------------------- Has ‥ --------------------
 
     @Override public boolean hasNull() {
         return value() == null;
@@ -1863,8 +1863,6 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         return value() != null;
     }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
 
     @Contract(ALWAYS_FALSE_0) @Override public boolean hasDuplicate() {
         return false;
@@ -1874,7 +1872,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         return true;
     }
 
-    //#endregion -------------------- Has duplicate --------------------
+    //#endregion -------------------- Has ‥ --------------------
 
     //#region -------------------- Has --------------------
 
@@ -1917,7 +1915,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
         final var value = value();
         final var isEqual = new AtomicBoolean();
-        final Consumer<T> isEqualAction = it -> isEqual.set(it == value);
+        final Consumer<T> isEqualAction = it -> isEqual.set(__equals(value, it));
         var canContinue = true;
         while (canContinue || isEqual.get())
             canContinue = values.tryAdvance(isEqualAction);
@@ -1986,7 +1984,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
         final var iterator = values.toIterator();
         while (iterator.hasNext())
-            if (__equals(value, iterator.next()))
+            if (__equals(value, iterator.nextValue()))
                 return true;
         return false;
     }
@@ -2097,7 +2095,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
         final var value = value();
         final var isEqual = new AtomicBoolean();
-        final Consumer<T> isEqualAction = it -> isEqual.set(it == value);
+        final Consumer<T> isEqualAction = it -> isEqual.set(__equals(value, it));
         var canContinue = true;
         while (canContinue || isEqual.get())
             canContinue = values.tryAdvance(isEqualAction);
@@ -2166,7 +2164,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
         final var iterator = values.toIterator();
         while (iterator.hasNext())
-            if (__equals(value, iterator.next()))
+            if (__equals(value, iterator.nextValue()))
                 return false;
         return true;
     }
@@ -2347,7 +2345,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
         final var iterator = values.toIterator();
         while (iterator.hasNext())
-            if (!__equals(value, iterator.next()))
+            if (!__equals(value, iterator.nextValue()))
                 return false;
         return true;
     }
@@ -2527,7 +2525,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
         final var iterator = values.toIterator();
         while (iterator.hasNext())
-            if (!__equals(value, iterator.next()))
+            if (!__equals(value, iterator.nextValue()))
                 return true;
         return false;
     }
