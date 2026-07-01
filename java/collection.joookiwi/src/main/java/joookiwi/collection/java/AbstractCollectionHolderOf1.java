@@ -436,40 +436,20 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var value = value();
         if (predicate.test(value, 0))
             return value;
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1);
     }
 
     @Override public T findFirst(final Predicate<? super T> predicate) {
         final var value = value();
         if (predicate.test(value))
             return value;
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1);
     }
 
     @Override public T findFirst(final BooleanSupplier predicate) {
         if (predicate.getAsBoolean())
             return value();
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0);
-    }
-
-
-    @Override public T findFirstIndexed(final IntObjPredicate<? super T> predicate) {
-        final var value = value();
-        if (predicate.test(0, value))
-            return value;
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
-    }
-
-    @Override public T findFirstIndexed(final IntPredicate predicate) {
-        if (predicate.test(0))
-            return value();
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
-    }
-
-    @Override public T findFirstIndexed(final BooleanSupplier predicate) {
-        if (predicate.getAsBoolean())
-            return value();
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1);
     }
 
 
@@ -491,6 +471,26 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         if (predicate.getAsBoolean())
             return value();
         return null;
+    }
+
+
+    @Override public T findFirstIndexed(final IntObjPredicate<? super T> predicate) {
+        final var value = value();
+        if (predicate.test(0, value))
+            return value;
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1);
+    }
+
+    @Override public T findFirstIndexed(final IntPredicate predicate) {
+        if (predicate.test(0))
+            return value();
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1);
+    }
+
+    @Override public T findFirstIndexed(final BooleanSupplier predicate) {
+        if (predicate.getAsBoolean())
+            return value();
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1);
     }
 
 
@@ -520,40 +520,20 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var value = value();
         if (predicate.test(value, 0))
             return value;
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1);
     }
 
     @Override public T findLast(final Predicate<? super T> predicate) {
         final var value = value();
         if (predicate.test(value))
             return value;
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1);
     }
 
     @Override public T findLast(final BooleanSupplier predicate) {
         if (predicate.getAsBoolean())
             return value();
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0);
-    }
-
-
-    @Override public T findLastIndexed(final IntObjPredicate<? super T> predicate) {
-        final var value = value();
-        if (predicate.test(0, value))
-            return value;
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0);
-    }
-
-    @Override public T findLastIndexed(final IntPredicate predicate) {
-        if (predicate.test(0))
-            return value();
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0);
-    }
-
-    @Override public T findLastIndexed(final BooleanSupplier predicate) {
-        if (predicate.getAsBoolean())
-            return value();
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1);
     }
 
 
@@ -575,6 +555,26 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         if (predicate.getAsBoolean())
             return value();
         return null;
+    }
+
+
+    @Override public T findLastIndexed(final IntObjPredicate<? super T> predicate) {
+        final var value = value();
+        if (predicate.test(0, value))
+            return value;
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1);
+    }
+
+    @Override public T findLastIndexed(final IntPredicate predicate) {
+        if (predicate.test(0))
+            return value();
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1);
+    }
+
+    @Override public T findLastIndexed(final BooleanSupplier predicate) {
+        if (predicate.getAsBoolean())
+            return value();
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1);
     }
 
 
