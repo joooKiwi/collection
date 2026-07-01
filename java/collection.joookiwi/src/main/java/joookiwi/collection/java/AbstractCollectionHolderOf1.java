@@ -607,8 +607,9 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     @Override public @Range(from = 0, to = 0) int firstIndexOf(final T element) {
         if (__equals(element))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
+
 
     @Override public final @Range(from = 0, to = 0) int firstIndexOf(final T element, final int from) {
         __validateStartingIndex(from);
@@ -652,6 +653,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return ZERO_INT;
         return null;
     }
+
 
     @Override public final @Range(from = 0, to = 0) @Nullable Integer firstIndexOfOrNull(final T element, final int from) {
         if (!__isIndexValid(from))
@@ -704,8 +706,9 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     @Override public @Range(from = 0, to = 0) int lastIndexOf(final T element) {
         if (__equals(element))
             return ZERO_INT;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
+
 
     @Override public final @Range(from = 0, to = 0) int lastIndexOf(final T element, final int from) {
         __validateStartingIndex(from);
@@ -749,6 +752,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return ZERO_INT;
         return null;
     }
+
 
     @Override public final @Range(from = 0, to = 0) @Nullable Integer lastIndexOfOrNull(final T element, final int from) {
         if (!__isIndexValid(from))
@@ -801,19 +805,19 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     @Override public @Range(from = 0, to = 0) int indexOfFirst(final ObjIntPredicate<? super T> predicate) {
         if (predicate.test(value(), 0))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
     @Override public @Range(from = 0, to = 0) int indexOfFirst(final Predicate<? super T> predicate) {
         if (predicate.test(value()))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
     @Override public @Range(from = 0, to = 0) int indexOfFirst(final BooleanSupplier predicate) {
         if (predicate.getAsBoolean())
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
 
@@ -1049,19 +1053,19 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     @Override public @Range(from = 0, to = 0) int indexOfFirstIndexed(final IntObjPredicate<? super T> predicate) {
         if (predicate.test(0, value()))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
     @Override public @Range(from = 0, to = 0) int indexOfFirstIndexed(final IntPredicate predicate) {
         if (predicate.test(0))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
     @Override public @Range(from = 0, to = 0) int indexOfFirstIndexed(final BooleanSupplier predicate) {
         if (predicate.getAsBoolean())
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
 
@@ -1298,19 +1302,19 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     @Override public @Range(from = 0, to = 0) int indexOfLast(final ObjIntPredicate<? super T> predicate) {
         if (predicate.test(value(), 0))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
     @Override public @Range(from = 0, to = 0) int indexOfLast(final Predicate<? super T> predicate) {
         if (predicate.test(value()))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
     @Override public @Range(from = 0, to = 0) int indexOfLast(final BooleanSupplier predicate) {
         if (predicate.getAsBoolean())
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
 
@@ -1546,19 +1550,19 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     @Override public @Range(from = 0, to = 0) int indexOfLastIndexed(final IntObjPredicate<? super T> predicate) {
         if (predicate.test(0, value()))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
     @Override public @Range(from = 0, to = 0) int indexOfLastIndexed(final IntPredicate predicate) {
         if (predicate.test(0))
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
     @Override public @Range(from = 0, to = 0) int indexOfLastIndexed(final BooleanSupplier predicate) {
         if (predicate.getAsBoolean())
             return 0;
-        throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1);
     }
 
 
