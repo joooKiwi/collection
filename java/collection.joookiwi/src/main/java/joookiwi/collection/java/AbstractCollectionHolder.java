@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.NavigableMap;
 import java.util.NavigableSet;
-import java.util.Objects;
 import java.util.PrimitiveIterator;
 import java.util.Queue;
 import java.util.SequencedCollection;
@@ -287,7 +286,6 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
-import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static joookiwi.collection.java.NumericConstants.NULL_INT;
 
@@ -4117,46 +4115,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
-    //#region -------------------- Comparison methods --------------------
-
-    //#region -------------------- Equals --------------------
-
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
-    @Override public boolean equals(final @Nullable Object other) {
-        if (other == null)
-            return false;
-        if (other == this)
-            return true;
-        if (!(other instanceof MinimalistCollectionHolder<?> otherConverted)) //Quick check without a lot of boilerplate methods to validate for the instanceof
-            return false;
-        if (isEmpty())
-            if (other instanceof CollectionHolder<?> otherConverted2)
-                return otherConverted2.isEmpty();
-            else
-                return otherConverted.size() == 0;
-
-        final var size = size();
-        if (size != otherConverted.size())
-            return false;
-
-        var index = -1;
-        while (++index < size) {
-            if (Objects.deepEquals(get(index), otherConverted.get(index)))
-                continue;
-            return false;
-        }
-        return true;
-    }
-
-    //#endregion -------------------- Equals --------------------
-    //#region -------------------- Reference equals --------------------
-
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
-    @Override public boolean referenceEquals(final @Nullable Object other) { return other == this; }
-
-    //#endregion -------------------- Reference equals --------------------
-
-    //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
