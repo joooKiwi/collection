@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
@@ -355,6 +356,60 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity);
     }
 
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                               final @Nullable Integer capacity) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), capacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                               final @Nullable Integer capacity) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size()), capacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                               final @Nullable Integer capacity) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), capacity);
+    }
+
     //#endregion -------------------- capacity --------------------
     //#region -------------------- capacity, (T, int) → U --------------------
 
@@ -415,6 +470,74 @@ public final class ToMutableArrayBlockingQueue
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                            final int capacity,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), capacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
@@ -495,6 +618,74 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), capacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
+    }
+
     //#endregion -------------------- capacity, (T) → U --------------------
     //#region -------------------- capacity, () → U --------------------
 
@@ -555,6 +746,74 @@ public final class ToMutableArrayBlockingQueue
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                            final int capacity,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), capacity);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), capacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity);
+        return new MutableArrayBlockingQueue<>(_values(collection.size(), transform), capacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
                                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
@@ -630,6 +889,192 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
     }
 
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                               final int capacity,
+                                                                               final @Nullable Boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                               final int capacity,
+                                                                               final @Nullable Boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size()), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                               final int capacity,
+                                                                               final @Nullable Boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                               final @Nullable Integer capacity,
+                                                                               final boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                               final @Nullable Integer capacity,
+                                                                               final boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size()), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                               final @Nullable Integer capacity,
+                                                                               final boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                               final @Nullable Integer capacity,
+                                                                               final @Nullable Boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                               final @Nullable Integer capacity,
+                                                                               final @Nullable Boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size()), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                               final @Nullable Integer capacity,
+                                                                               final @Nullable Boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
+    }
+
     //#endregion -------------------- capacity, isFair --------------------
     //#region -------------------- capacity, isFair, (T, int) → U --------------------
 
@@ -696,6 +1141,228 @@ public final class ToMutableArrayBlockingQueue
     public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                            final int capacity,
                                                                                                            final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
@@ -782,6 +1449,228 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
+    }
+
     //#endregion -------------------- capacity, isFair, (T) → U --------------------
     //#region -------------------- capacity, isFair, () → U --------------------
 
@@ -849,16 +1738,234 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final boolean isFair,
                                                                                                            final Supplier<? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
         final var size = collection.length;
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection.size(), transform), capacity, isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Integer capacity,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(capacity, isFair);
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
     }
 
@@ -918,6 +2025,68 @@ public final class ToMutableArrayBlockingQueue
     @Contract(ALWAYS_NEW_2)
     public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                final boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                               final @Nullable Boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size), isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                               final @Nullable Boolean isFair) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size()), isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// with a capacity as the `collection.length`
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                               final @Nullable Boolean isFair) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
@@ -993,6 +2162,80 @@ public final class ToMutableArrayBlockingQueue
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                            final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the `collection.length`
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Boolean isFair,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
@@ -1079,6 +2322,80 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), isFair);
     }
 
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the `collection.length`
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection, size, transform), isFair);
+    }
+
     //#endregion -------------------- isFair, (T) → U --------------------
     //#region -------------------- isFair, () → U --------------------
 
@@ -1145,6 +2462,80 @@ public final class ToMutableArrayBlockingQueue
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                            final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), isFair);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(size, transform), isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final @Nullable Boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayBlockingQueue<>(isFair);
+        if (collection.isEmpty())
+            return new MutableArrayBlockingQueue<>(isFair);
+        return new MutableArrayBlockingQueue<>(_values(collection.size(), transform), isFair);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
+    /// applying a transformation
+    /// with a capacity as the `collection.length`
+    /// (or [Integer#MAX_VALUE] if it is empty)
+    /// and the `fairness` specified
+    ///
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    /// @param collection The [nullable][Nullable] collection
+    /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`) (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
+    /// @param transform  The given transform
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final @Nullable Boolean isFair,
                                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
