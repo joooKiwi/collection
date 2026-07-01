@@ -22,10 +22,9 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
-import static joookiwi.collection.java.NumericConstants.MAX_BYTE_VALUE_AS_LONG;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE_AS_LONG;
-import static joookiwi.collection.java.NumericConstants.MAX_SHORT_VALUE_AS_LONG;
+import static joookiwi.collection.java.helper.NumberComparator.max;
+import static joookiwi.collection.java.helper.NumberComparator.min;
 import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [LinkedBlockingQueue]
@@ -51,39 +50,27 @@ public class MutableLinkedBlockingQueue<T>
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) byte capacity) { super(capacity); }
+    public MutableLinkedBlockingQueue(final byte capacity) { super(min(capacity, 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) @Nullable Byte capacity) { super(capacity == null ? MAX_INT_VALUE : capacity); }
+    public MutableLinkedBlockingQueue(final @Nullable Byte capacity) { super(capacity == null ? MAX_INT_VALUE : min(capacity.byteValue(), 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) short capacity) { super(capacity); }
+    public MutableLinkedBlockingQueue(final short capacity) { super(min(capacity, 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) @Nullable Short capacity) { super(capacity == null ? MAX_INT_VALUE : capacity); }
+    public MutableLinkedBlockingQueue(final @Nullable Short capacity) { super(capacity == null ? MAX_INT_VALUE : min(capacity.shortValue(), 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) int capacity) { super(capacity); }
+    public MutableLinkedBlockingQueue(final int capacity) { super(min(capacity, 1)); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    public MutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) @Nullable Integer capacity) { super(capacity == null ? MAX_INT_VALUE : capacity); }
+    public MutableLinkedBlockingQueue(final @Nullable Integer capacity) { super(capacity == null ? MAX_INT_VALUE : min(capacity.intValue(), 1)); }
 
     //#endregion -------------------- capacity --------------------
     //#region -------------------- values --------------------
@@ -103,18 +90,12 @@ public class MutableLinkedBlockingQueue<T>
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) byte capacity) {
-        super(capacity);
-
+                                      final byte capacity) {
         final var size = values.length;
+        super(max(min(capacity, 1), size));
         if (size == 0)
             return;
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         var index = -1;
         while (++index < size)
             offer(values[index]);
@@ -122,18 +103,12 @@ public class MutableLinkedBlockingQueue<T>
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) @Nullable Byte capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
+                                      final @Nullable Byte capacity) {
         final var size = values.length;
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.byteValue(), 1), size));
         if (size == 0)
             return;
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         var index = -1;
         while (++index < size)
             offer(values[index]);
@@ -141,18 +116,12 @@ public class MutableLinkedBlockingQueue<T>
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) short capacity) {
-        super(capacity);
-
+                                      final short capacity) {
         final var size = values.length;
+        super(max(min(capacity, 1), size));
         if (size == 0)
             return;
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         var index = -1;
         while (++index < size)
             offer(values[index]);
@@ -160,18 +129,12 @@ public class MutableLinkedBlockingQueue<T>
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) @Nullable Short capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
+                                      final @Nullable Short capacity) {
         final var size = values.length;
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.shortValue(), 1), size));
         if (size == 0)
             return;
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         var index = -1;
         while (++index < size)
             offer(values[index]);
@@ -179,18 +142,12 @@ public class MutableLinkedBlockingQueue<T>
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) int capacity) {
-        super(capacity);
-
+                                      final int capacity) {
         final var size = values.length;
+        super(max(min(capacity, 1), size));
         if (size == 0)
             return;
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         var index = -1;
         while (++index < size)
             offer(values[index]);
@@ -198,18 +155,12 @@ public class MutableLinkedBlockingQueue<T>
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the `values.length`
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                      final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) @Nullable Integer capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
+                                      final @Nullable Integer capacity) {
         final var size = values.length;
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.intValue(), 1), size));
         if (size == 0)
             return;
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         var index = -1;
         while (++index < size)
             offer(values[index]);
@@ -218,114 +169,78 @@ public class MutableLinkedBlockingQueue<T>
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) byte capacity) {
-        super(capacity);
-
-        if (values.isEmpty())
+                                      final byte capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(max(min(capacity, 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         for (final var value : values)
             offer(value);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_BYTE_VALUE_AS_LONG) @Nullable Byte capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
-        if (values.isEmpty())
+                                      final @Nullable Byte capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.byteValue(), 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         for (final var value : values)
             offer(value);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) short capacity) {
-        super(capacity);
-
-        if (values.isEmpty())
+                                      final short capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(max(min(capacity, 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         for (final var value : values)
             offer(value);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_SHORT_VALUE_AS_LONG) @Nullable Short capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
-        if (values.isEmpty())
+                                      final @Nullable Short capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.shortValue(), 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         for (final var value : values)
             offer(value);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) int capacity) {
-        super(capacity);
-
-        if (values.isEmpty())
+                                      final int capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(max(min(capacity, 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         for (final var value : values)
             offer(value);
     }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [Integer#MAX_VALUE] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
-    /// @throws IllegalStateException    The capacity was under the <code>values.[size][Collection#size()]</code>
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                      final @Range(from = 1, to = MAX_INT_VALUE_AS_LONG) @Nullable Integer capacity) {
-        super(capacity == null ? MAX_INT_VALUE : capacity);
-
-        if (values.isEmpty())
+                                      final @Nullable Integer capacity) {
+        final var isEmpty = values.isEmpty();
+        final var size = isEmpty ? 0 : values.size();
+        super(capacity == null ? MAX_INT_VALUE : max(min(capacity.intValue(), 1), size));
+        if (isEmpty)
             return;
-
-        final var size = values.size();
-        if (capacity != null && capacity < size)
-            throw new IllegalStateException("The mutable LinkedBlockingQueue have a capacity (" + capacity + ") under its values.size (" + size + ") received.");
         for (final var value : values)
             offer(value);
     }
