@@ -2274,18 +2274,139 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true) @Override public <U> ImmutableArrayBlockingQueue<U> toArrayBlockingQueue(final Function<? super T, ? extends U>       transform) { return ToArrayBlockingQueue.toArrayBlockingQueue(this, transform); }
     @Contract(pure = true) @Override public <U> ImmutableArrayBlockingQueue<U> toArrayBlockingQueue(final Supplier<? extends U>                  transform) { return ToArrayBlockingQueue.toArrayBlockingQueue(this, transform); }
 
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                                                               final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                                                               final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                                                               final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity,                       final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity,                       final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity,                       final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, transform); }
-    @Contract(value = ALWAYS_NEW_3, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, isFair, transform); }
-    @Contract(value = ALWAYS_NEW_3, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final boolean isFair, final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, isFair, transform); }
-    @Contract(value = ALWAYS_NEW_3, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final boolean isFair, final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, isFair, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                                         final boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, isFair, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                                         final boolean isFair, final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, isFair, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                                         final boolean isFair, final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, isFair, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                          final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                          final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                          final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity,                       final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity,                       final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity,                       final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_3, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity, final boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, isFair, transform); }
+    @Contract(value = ALWAYS_NEW_3, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity, final boolean isFair, final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, isFair, transform); }
+    @Contract(value = ALWAYS_NEW_3, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity, final boolean isFair, final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, capacity, isFair, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                    final boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, isFair, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                    final boolean isFair, final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, isFair, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                    final boolean isFair, final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(this, isFair, transform); }
+
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final Function<? super T, ? extends U> transform) {
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final Supplier<? extends U> transform) {
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(isFair, transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), isFair, transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final boolean isFair, final Function<? super T, ? extends U> transform) {
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(isFair, transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), isFair, transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final boolean isFair, final Supplier<? extends U> transform) {
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(isFair, transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), isFair, transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity, final @Nullable Boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (isFair == null)
+            return toMutableArrayBlockingQueue(capacity, transform);
+        return toMutableArrayBlockingQueue(capacity, isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity, final @Nullable Boolean isFair, final Function<? super T, ? extends U> transform) {
+        if (isFair == null)
+            return toMutableArrayBlockingQueue(capacity, transform);
+        return toMutableArrayBlockingQueue(capacity, isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final int capacity, final @Nullable Boolean isFair, final Supplier<? extends U> transform) {
+        if (isFair == null)
+            return toMutableArrayBlockingQueue(capacity, transform);
+        return toMutableArrayBlockingQueue(capacity, isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final @Nullable Boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (isFair == null)
+            if (capacity == null)
+                return toMutableArrayBlockingQueue(transform);
+            else
+                return toMutableArrayBlockingQueue(capacity.intValue(), transform);
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(isFair.booleanValue(), transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final @Nullable Boolean isFair, final Function<? super T, ? extends U> transform) {
+        if (isFair == null)
+            if (capacity == null)
+                return toMutableArrayBlockingQueue(transform);
+            else
+                return toMutableArrayBlockingQueue(capacity.intValue(), transform);
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(isFair.booleanValue(), transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Integer capacity, final @Nullable Boolean isFair, final Supplier<? extends U> transform) {
+        if (isFair == null)
+            if (capacity == null)
+                return toMutableArrayBlockingQueue(transform);
+            else
+                return toMutableArrayBlockingQueue(capacity.intValue(), transform);
+        if (capacity == null)
+            return toMutableArrayBlockingQueue(isFair.booleanValue(), transform);
+        return toMutableArrayBlockingQueue(capacity.intValue(), isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (isFair == null)
+            return toMutableArrayBlockingQueue(transform);
+        return toMutableArrayBlockingQueue(isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Boolean isFair, final Function<? super T, ? extends U> transform) {
+        if (isFair == null)
+            return toMutableArrayBlockingQueue(transform);
+        return toMutableArrayBlockingQueue(isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable Boolean isFair, final Supplier<? extends U> transform) {
+        if (isFair == null)
+            return toMutableArrayBlockingQueue(transform);
+        return toMutableArrayBlockingQueue(isFair.booleanValue(), transform);
+    }
 
     //#endregion -------------------- To array blocking queue --------------------
     //#region -------------------- To concurrent linked queue --------------------
@@ -2316,12 +2437,34 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public <U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final Function<? super T, ? extends U>       transform) { return ToLinkedBlockingQueue.toLinkedBlockingQueue(this, transform); }
     @Override public <U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final Supplier<? extends U>                  transform) { return ToLinkedBlockingQueue.toLinkedBlockingQueue(this, transform); }
 
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(                                                         final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(                                                         final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(                                                         final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(          final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(          final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(          final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final int capacity, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final int capacity, final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final int capacity, final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingQueue.toMutableLinkedBlockingQueue(this, capacity, transform); }
+
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable Integer capacity, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (capacity == null)
+            return toMutableLinkedBlockingQueue(transform);
+        return toMutableLinkedBlockingQueue(capacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable Integer capacity, final Function<? super T, ? extends U> transform) {
+        if (capacity == null)
+            return toMutableLinkedBlockingQueue(transform);
+        return toMutableLinkedBlockingQueue(capacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable Integer capacity, final Supplier<? extends U> transform) {
+        if (capacity == null)
+            return toMutableLinkedBlockingQueue(transform);
+        return toMutableLinkedBlockingQueue(capacity.intValue(), transform);
+    }
 
     //#endregion -------------------- To linked blocking queue --------------------
     //#region -------------------- To linked transfer queue --------------------
@@ -2480,6 +2623,28 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableSynchronousQueue<U> toMutableSynchronousQueue(final boolean isFair, final Function<? super T, ? extends U>       transform) { return ToMutableSynchronousQueue.toMutableSynchronousQueue(this, isFair, transform); }
     @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableSynchronousQueue<U> toMutableSynchronousQueue(final boolean isFair, final Supplier<? extends U>                  transform) { return ToMutableSynchronousQueue.toMutableSynchronousQueue(this, isFair, transform); }
 
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableSynchronousQueue<U> toMutableSynchronousQueue(final @Nullable Boolean isFair, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (isFair == null)
+            return toMutableSynchronousQueue(transform);
+        return toMutableSynchronousQueue(isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableSynchronousQueue<U> toMutableSynchronousQueue(final @Nullable Boolean isFair, final Function<? super T, ? extends U> transform) {
+        if (isFair == null)
+            return toMutableSynchronousQueue(transform);
+        return toMutableSynchronousQueue(isFair.booleanValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableSynchronousQueue<U> toMutableSynchronousQueue(final @Nullable Boolean isFair, final Supplier<? extends U> transform) {
+        if (isFair == null)
+            return toMutableSynchronousQueue(transform);
+        return toMutableSynchronousQueue(isFair.booleanValue(), transform);
+    }
+
     //#endregion -------------------- To synchronous queue --------------------
 
     //#region -------------------- To deque --------------------
@@ -2519,6 +2684,28 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayDeque<U> toMutableArrayDeque(final int initialCapacity, final Function<? super T, ? extends U>       transform) { return ToMutableArrayDeque.toMutableArrayDeque(this, initialCapacity, transform); }
     @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableArrayDeque<U> toMutableArrayDeque(final int initialCapacity, final Supplier<? extends U>                  transform) { return ToMutableArrayDeque.toMutableArrayDeque(this, initialCapacity, transform); }
 
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable Integer initialCapacity, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (initialCapacity == null)
+            return toMutableArrayDeque(transform);
+        return toMutableArrayDeque(initialCapacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable Integer initialCapacity, final Function<? super T, ? extends U> transform) {
+        if (initialCapacity == null)
+            return toMutableArrayDeque(transform);
+        return toMutableArrayDeque(initialCapacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable Integer initialCapacity, final Supplier<? extends U> transform) {
+        if (initialCapacity == null)
+            return toMutableArrayDeque(transform);
+        return toMutableArrayDeque(initialCapacity.intValue(), transform);
+    }
+
     //#endregion -------------------- To array deque --------------------
     //#region -------------------- To concurrent linked deque --------------------
 
@@ -2537,12 +2724,34 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Function<? super T, ? extends U>       transform) { return ToLinkedBlockingDeque.toLinkedBlockingDeque(this, transform); }
     @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Supplier<? extends U>                  transform) { return ToLinkedBlockingDeque.toLinkedBlockingDeque(this, transform); }
 
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(this, capacity, transform); }
+
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Nullable Integer capacity, final ObjIntFunction<? super T, ? extends U> transform) {
+        if (capacity == null)
+            return toMutableLinkedBlockingDeque(transform);
+        return toMutableLinkedBlockingDeque(capacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Nullable Integer capacity, final Function<? super T, ? extends U> transform) {
+        if (capacity == null)
+            return toMutableLinkedBlockingDeque(transform);
+        return toMutableLinkedBlockingDeque(capacity.intValue(), transform);
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @Override public final <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Nullable Integer capacity, final Supplier<? extends U> transform) {
+        if (capacity == null)
+            return toMutableLinkedBlockingDeque(transform);
+        return toMutableLinkedBlockingDeque(capacity.intValue(), transform);
+    }
 
     //#endregion -------------------- To linked blocking deque --------------------
     //#region -------------------- To stack --------------------
