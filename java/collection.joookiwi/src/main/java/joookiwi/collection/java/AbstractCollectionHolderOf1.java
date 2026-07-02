@@ -2703,8 +2703,6 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         });
     }
 
-    @Override public final CollectionHolder<T> slice(final PrimitiveIterator<? extends Integer, ?> indices) { return slice((Iterator<? extends Integer>) indices); }
-
     @Override public CollectionHolder<T> slice(final PrimitiveIterator.OfInt indices) {
         if (indices.hasNext())
             return EmptyCollectionHolder.getInstance();
@@ -2725,8 +2723,6 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         });
     }
 
-    @Override public final CollectionHolder<T> slice(final ListIterator<? extends Integer> indices) { return slice((Iterator<? extends Integer>) indices); }
-
     @Override public CollectionHolder<T> slice(final Spliterator<? extends Integer> indices) {
         if (indices.estimateSize() == 0L)
             return EmptyCollectionHolder.getInstance();
@@ -2745,8 +2741,6 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return newArray;
         });
     }
-
-    @Override public final CollectionHolder<T> slice(final Spliterator.OfPrimitive<? extends Integer, ? extends IntConsumer, ?> indices) { return slice((Spliterator<? extends Integer>) indices); }
 
     @Override public CollectionHolder<T> slice(final Spliterator.OfInt indices) {
         if (indices.estimateSize() == 0L)
@@ -2870,8 +2864,6 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         });
     }
 
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable SequencedCollection<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
     @Override public CollectionHolder<T> slice(final @Unmodifiable List<? extends Integer> indices) {
         if (indices.isEmpty())
             return EmptyCollectionHolder.getInstance();
@@ -2899,24 +2891,6 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return newArray;
         });
     }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable Set<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable SequencedSet<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable SortedSet<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable NavigableSet<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable Queue<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable BlockingQueue<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable TransferQueue<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable Deque<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
-
-    @Override public final CollectionHolder<T> slice(final @Unmodifiable BlockingDeque<? extends Integer> indices) { return slice((Collection<? extends Integer>) indices); }
 
     @Override public CollectionHolder<T> slice(final int @Unmodifiable [] indices) {
         final var indicesSize = indices.length;
