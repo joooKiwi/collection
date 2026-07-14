@@ -88,7 +88,11 @@ export class CollectionConstants {
         return EmptyCollectionHolder.get
     }
 
-    /** An {@link EmptyCollectionHolder} instance in a {@link Lazy} */
+    /**
+     * An {@link EmptyCollectionHolder} instance in a {@link Lazy}
+     *
+     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
+     */
     public static get LAZY_EMPTY_COLLECTION_HOLDER(): Lazy<EmptyCollectionHolder> {
         return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(EmptyCollectionHolder.get,)
     }
@@ -118,7 +122,11 @@ export class CollectionConstants {
         return EmptyCollectionIterator.get
     }
 
-    /** An {@link EmptyCollectionIterator} instance in a {@link Lazy} */
+    /**
+     * An {@link EmptyCollectionIterator} instance in a {@link Lazy}
+     *
+     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_ITERATOR}. This will be removed in version 2.1
+     */
     public static get LAZY_EMPTY_COLLECTION_ITERATOR(): Lazy<EmptyCollectionIterator> {
         return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(EmptyCollectionIterator.get,)
     }
