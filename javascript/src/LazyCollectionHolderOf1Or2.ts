@@ -10,9 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy}                                                                                                                                              from "@joookiwi/lazy"
 import type {Array, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
-import {lazy}                                                                                                                                                   from "@joookiwi/lazy"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {EmptyCollectionHolder}                                                                                                                                                                                                                                             from "./EmptyCollectionHolder"
@@ -31,6 +29,8 @@ import type {CollectionHolderOf2}              from "./CollectionHolderOf2"
 import {LateRetriever}                         from "./LateRetriever"
 import {IndexOutOfBoundsException}             from "./exception/IndexOutOfBoundsException"
 
+const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
+
 /**
  * An instance of {@link CollectionHolder} with only 2 possible inner-collection.
  * The first as {@link CollectionHolderOf1} and the second as {@link CollectionHolderOf2}.
@@ -43,33 +43,41 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
 
     //#region -------------------- Field --------------------
 
-    #firstValue?: T
-    #firstValueInitialized: boolean
-    #secondValue?: T
-    #secondValueInitialized: boolean
-    readonly #innerCollection: Lazy<| CollectionHolderOf2<T> | CollectionHolderOf1<T>>
+    #latePossibleValue: () => Couple<unknown, T, Optional<T>>
+    #value1?: T
+    #isValue1Initialized: boolean
+    #value2?: T
+    #isValue2Initialized: boolean
+    #innerCollection?: | CollectionHolderOf2<T> | CollectionHolderOf1<T>
 
     //#endregion -------------------- Field --------------------
     //#region -------------------- Constructor --------------------
 
     public constructor(latePossibleValue: () => Couple<unknown, T, Optional<T>>,) {
         super()
-        this.#firstValueInitialized = this.#secondValueInitialized = false
-        this.#innerCollection = lazy(() => {
-            const value = latePossibleValue()
-            const value2 = value.value2
-            if (value2.isEmpty)
-                return new LateRetriever.CollectionHolderOf1(value.value1,)
-            return new LateRetriever.CollectionHolderOf2(value.value1, value2.get,)
-        },)
+        this.#latePossibleValue = latePossibleValue
+        this.#isValue1Initialized = this.#isValue2Initialized = false
     }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    /** The internal value processed through the {@link constructor} in a {@link Lazy} instance */
+    /**
+     * The internal value processed through the {@link constructor}
+     *
+     * @initializedOnFirstCall
+     */
     protected get _innerCollection(): | CollectionHolderOf2<T> | CollectionHolderOf1<T> {
-        return this.#innerCollection.value
+        const value = this.#innerCollection
+        if (value != null)
+            return value
+
+        const couple = this.#latePossibleValue()
+        this.#latePossibleValue = FAIL_CALLBACK // We do not need the callback anymore once the value has been retrieved
+        const value2 = couple.value2
+        if (value2.isEmpty)
+            return this.#innerCollection = new LateRetriever.CollectionHolderOf1(couple.value1,)
+        return this.#innerCollection = new LateRetriever.CollectionHolderOf2(couple.value1, value2.get,)
     }
 
     public get 0(): T { return this.value1 }
@@ -77,22 +85,22 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     public get 1(): T { return this.value2 }
 
     public get value1(): T {
-        if (this.#firstValueInitialized)
-            return this.#firstValue as T
+        if (this.#isValue1Initialized)
+            return this.#value1 as T
 
-        this.#firstValueInitialized = true
-        return this.#firstValue = this._innerCollection[0]
+        this.#isValue1Initialized = true
+        return this.#value1 = this._innerCollection[0]
     }
 
     public get value2(): T {
-        if (this.#secondValueInitialized)
-            return this.#secondValue as T
+        if (this.#isValue2Initialized)
+            return this.#value2 as T
 
         const innerCollection = this._innerCollection
-        if (innerCollection.size === 1)
+        if (innerCollection.hasExactly1Element)
             throw new IndexOutOfBoundsException(`The inner collection received in the “${this.constructor.name}” does not have an existing second value.`, 1,)
-        this.#secondValueInitialized = true
-        return this.#secondValue = innerCollection[1]
+        this.#isValue2Initialized = true
+        return this.#value2 = innerCollection[1]
     }
 
     //#region -------------------- Size methods --------------------

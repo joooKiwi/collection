@@ -10,9 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy}                                                                                                                                                                                                                                       from "@joookiwi/lazy"
 import type {Array, EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptySet, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
-import {lazy}                                                                                                                                                                                                                                            from "@joookiwi/lazy"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -29,6 +27,8 @@ import {LateRetriever}                         from "./LateRetriever"
 import {EmptyCollectionHolder}                 from "./EmptyCollectionHolder"
 import {IndexOutOfBoundsException}             from "./exception/IndexOutOfBoundsException"
 
+const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
+
 /**
  * An instance of {@link CollectionHolder} with only 2 possible inner-collection.
  * The first as {@link EmptyCollectionHolder} and the second as {@link CollectionHolderOf1}.
@@ -41,43 +41,51 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     //#region -------------------- Field --------------------
 
-    #firstValue?: T
-    #firstValueInitialized: boolean
-    readonly #innerCollection: Lazy<| CollectionHolderOf1<T> | EmptyCollectionHolder>
+    #latePossibleValue: () => Optional<T>
+    #value1?: T
+    #isValue1Initialized: boolean
+    #innerCollection?: | CollectionHolderOf1<T> | EmptyCollectionHolder
 
     //#endregion -------------------- Field --------------------
     //#region -------------------- Constructor --------------------
 
     public constructor(latePossibleValue: () => Optional<T>,) {
         super()
-        this.#firstValueInitialized = false
-        this.#innerCollection = lazy(() => {
-            const value = latePossibleValue()
-            if (value.isPresent)
-                return new LateRetriever.CollectionHolderOf1(value.get,)
-            return EmptyCollectionHolder.get
-        },)
+        this.#latePossibleValue = latePossibleValue
+        this.#isValue1Initialized = false
     }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    /** The internal value processed through the {@link constructor} in a {@link Lazy} instance */
+    /**
+     * The internal value processed through the {@link constructor}
+     *
+     * @initializedOnFirstCall
+     */
     protected get _innerCollection(): | CollectionHolderOf1<T> | EmptyCollectionHolder {
-        return this.#innerCollection.value
+        const value = this.#innerCollection
+        if (value != null)
+            return value
+
+        const possibleValue = this.#latePossibleValue()
+        this.#latePossibleValue = FAIL_CALLBACK // We do not need the callback anymore once the value has been retrieved
+        if (possibleValue.isPresent)
+            return this.#innerCollection = new LateRetriever.CollectionHolderOf1(possibleValue.get,)
+        return this.#innerCollection = EmptyCollectionHolder.get
     }
 
     public get 0(): T { return this.value }
 
     public get value(): T {
-        if (this.#firstValueInitialized)
-            return this.#firstValue as T
+        if (this.#isValue1Initialized)
+            return this.#value1 as T
 
         const innerCollection = this._innerCollection
-        if (innerCollection.size === 0)
+        if (innerCollection.isEmpty)
             throw new IndexOutOfBoundsException(`The inner collection received in the “${this.constructor.name}” does not have an existing value.`, 0,)
-        this.#firstValueInitialized = true
-        return this.#firstValue = innerCollection[0]
+        this.#isValue1Initialized = true
+        return this.#value1 = innerCollection[0]
     }
 
     //#region -------------------- Size methods --------------------
