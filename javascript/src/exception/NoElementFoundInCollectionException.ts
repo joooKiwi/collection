@@ -27,13 +27,25 @@ export class NoElementFoundInCollectionException<const CAUSE extends Error = nev
      *
      * @see CollectionConstants.ITERATOR_IS_AT_THE_START_MESSAGE
      */
-    public static readonly AT_THE_START_MESSAGE: string = "No element found. The collection iterator is at or before the start of the line."
+    public static readonly AT_THE_START_MESSAGE: string = "No element found. The collection iterator is at the start of the line."
+    /**
+     * The message when the {@link CollectionIterator.previousValue} is not present
+     *
+     * @see CollectionConstants.ITERATOR_IS_AT_OR_BEFORE_THE_START_MESSAGE
+     */
+    public static readonly AT_OR_BEFORE_THE_START_MESSAGE: string = "No element found. The collection iterator is at or before the start of the line."
     /**
      * The message when the {@link CollectionIterator.nextValue} is not present
      *
      * @see CollectionConstants.ITERATOR_IS_AT_THE_END_MESSAGE
      */
-    public static readonly AT_THE_END_MESSAGE: string = "No element found. The collection iterator is at or after the end of the line."
+    public static readonly AT_THE_END_MESSAGE: string = "No element found. The collection iterator is at the end of the line."
+    /**
+     * The message when the {@link CollectionIterator.nextValue} is not present
+     *
+     * @see CollectionConstants.ITERATOR_IS_AT_OR_AFTER_THE_END_MESSAGE
+     */
+    public static readonly AT_OR_AFTER_THE_END_MESSAGE: string = "No element found. The collection iterator is at or after the end of the line."
 
     public override readonly name = this.constructor.name
     readonly #cause
