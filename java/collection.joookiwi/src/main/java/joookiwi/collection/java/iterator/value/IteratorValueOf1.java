@@ -8,6 +8,10 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 
+/// An implementation of an [InsideIteratorValue] with only a single value
+/// of a [CollectionIterator][joookiwi.collection.java.iterator.CollectionIterator]
+///
+/// @param <T> The element type
 @NotNullByDefault
 public class IteratorValueOf1<T extends @Nullable Object>
         extends AbstractIteratorValue<T>

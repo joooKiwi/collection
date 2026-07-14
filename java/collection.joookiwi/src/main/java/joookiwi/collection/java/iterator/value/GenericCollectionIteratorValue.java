@@ -10,6 +10,13 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
+/// An implementation of a [CollectionIteratorValue]
+/// with specified [CollectionIterator] (for debugging purpose),
+/// a [CollectionHolder] (for debugging purpose)
+/// and the [#index] to give the index that the [#value] needs to be retrieved
+///
+/// @param <T>          The element type
+/// @param <COLLECTION> The [CollectionHolder] source
 @NotNullByDefault
 public class GenericCollectionIteratorValue<T extends @Nullable Object,
         COLLECTION extends MinimalistCollectionHolder<? extends T>>
