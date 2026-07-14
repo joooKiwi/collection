@@ -23,7 +23,6 @@ import {EmptyCollectionHolder}                                                  
 import {LateRetriever}                                                                                                    from "./LateRetriever"
 import {LazyCollectionHolder}                                                                                             from "./LazyCollectionHolder"
 import {LazyCollectionHolderOf0Or1Or2}                                                                                    from "./LazyCollectionHolderOf0Or1Or2"
-import {LazyCollectionHolderOf1Or2}                                                                                       from "./LazyCollectionHolderOf1Or2"
 import {CollectionHolderOf1}                                                                                              from "./CollectionHolderOf1"
 import type {CollectionHolderOf2}                                                                                         from "./CollectionHolderOf2"
 import {CollectionIteratorOf2}                                                                                            from "./iterator/CollectionIteratorOf2"
@@ -79,175 +78,6 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
-
-    //#region -------------------- Validate methods (private) --------------------
-
-    /**
-     * Give the starting index as 0 or 1
-     *
-     * @param from The value to validate
-     * @throws IndexOutOfBoundsException The value is equal or over 2 (before or after calculation)
-     * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     */
-    #getStartingIndex(from: NullableNumber,): | 0 | 1 {
-        if (from == null)
-            return 0
-
-        if (Number.isNaN(from,))
-            throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", from,)
-        if (from === Number.NEGATIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", from,)
-        if (from === Number.POSITIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", from,)
-
-        if (from === 0)
-            return 0
-        if (from === 1)
-            return 1
-        if (from === -1)
-            return 1
-        if (from === -2)
-            return 0
-
-        if (from > 2)
-            throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” is over the collection size “2”.`, from,)
-        if (from === 2)
-            throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” is the collection size “2”.`, from,)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” (“${from + 1}” after calculation) is under 0.`, from,)
-    }
-
-    /**
-     * Give the starting index as 0 or 1
-     * and gives `null` if invalid or out of bound
-     *
-     * @param from The value to validate
-     */
-    #getStartingIndexOrNull(from: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (from == null)
-            return 0
-        if (Number.isNaN(from,))
-            return null
-        if (from === Number.NEGATIVE_INFINITY)
-            return null
-        if (from === Number.POSITIVE_INFINITY)
-            return null
-        if (from === 0)
-            return 0
-        if (from === 1)
-            return 1
-        if (from === -1)
-            return 1
-        if (from === -2)
-            return 0
-        return null
-    }
-
-    /**
-     * Give the ending index as 0 or 1
-     *
-     * @param to The value to validate
-     * @throws IndexOutOfBoundsException The value is equal or over 2 (before or after calculation)
-     * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     */
-    #getEndingIndex(to: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            return 1
-
-        if (Number.isNaN(to,))
-            throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with NaN.", to,)
-        if (to === Number.NEGATIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", to,)
-        if (to === Number.POSITIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", to,)
-
-        if (to === 0)
-            return 0
-        if (to === 1)
-            return 1
-        if (to === -1)
-            return 1
-        if (to === -2)
-            return 0
-
-        if (to > 2)
-            throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” is over the collection size “2”.`, to,)
-        if (to === 2)
-            throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” is the collection size “2”.`, to,)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” (“${to + 1}” after calculation) is under 0.`, to,)
-    }
-
-    /**
-     * Give the ending index as 0 or 1
-     * and gives `null` if invalid or out of bound
-     *
-     * @param to The value to validate
-     */
-    #getEndingIndexOrNull(to: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            return 1
-        if (Number.isNaN(to,))
-            return null
-        if (to === Number.NEGATIVE_INFINITY)
-            return null
-        if (to === Number.POSITIVE_INFINITY)
-            return null
-        if (to === 0)
-            return 0
-        if (to === 1)
-            return 1
-        if (to === -1)
-            return 1
-        if (to === -2)
-            return 0
-        return null
-    }
-
-    /**
-     * Validate that the {@link endingIndex} is not under the {@link startingIndex}
-     *
-     * @param from          The initial starting index
-     * @param startingIndex The computed starting index
-     * @param to            The initial ending index
-     * @param endingIndex   The computed ending index
-     * @throws InvalidIndexRangeException The {@link endingIndex} is under the {@link startingIndex}
-     */
-    #validateInRange(from: number, startingIndex: | 0 | 1, to: number, endingIndex: | 0 | 1,): void {
-        if (endingIndex >= startingIndex)
-            return
-
-        if (to === endingIndex)
-            if (from === startingIndex)
-                throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}”.`, from, to,)
-            else
-                throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
-        if (from === startingIndex)
-            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}”.`, from, to,)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
-    }
-
-    /**
-     * Get the last possible index as either 0, 1 or 2
-     *
-     * @param limit The limit to trimmed (if applicable)
-     * @throws ForbiddenIndexException The {@link limit} is {@link Number.NaN NaN}
-     */
-    #getLastIndex(limit: number,): | 0 | 1 | 2 {
-        if (Number.isNaN(limit,))
-            throw new ForbiddenIndexException("Forbidden index. The value cannot be determined with NaN.", limit,)
-        if (limit === Number.NEGATIVE_INFINITY)
-            return 0
-        if (limit === Number.POSITIVE_INFINITY)
-            return 2
-        if (limit >= 2)
-            return 2
-        if (limit <= -2)
-            return 0
-        if (limit <= -1)
-            return 1
-        return limit as | 0 | 1 | 2
-    }
-
-    //#endregion -------------------- Validate methods (private) --------------------
 
     //#region -------------------- Reference methods --------------------
 
@@ -311,6 +141,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     public override getLast(): T2 { return this.value2 }
 
+
     public override getOrElse<const U, const I extends number,>(index: I, defaultValue: IndexWithReturnCallback<U>,): I extends | 0 | -1 ? T1 : I extends | 1 | -2 ? T2 : U
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse<const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<T>,): I extends | 0 | -1 ? T1 : I extends | 1 | -2 ? T2 : T
@@ -331,7 +162,6 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     public override getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): T1
     public override getFirstOrElse(defaultValue: ReturnCallback<T>,): T1
     public override getFirstOrElse() { return this.value1 }
-
 
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): T2
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T2
@@ -369,7 +199,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             const value2 = this.value2
             if ((predicate as (value: T,) => boolean)(value2,))
                 return value2
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 2,)
         }
         if (predicate.length >= 2) {
             const value1 = this.value1
@@ -379,14 +209,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             const value2 = this.value2
             if (predicate(value2, 1,))
                 return value2
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 2,)
         }
 
         if ((predicate as () => boolean)())
             return this.value1
         if ((predicate as () => boolean)())
             return this.value2
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 2,)
     }
 
     public override findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -429,7 +259,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             else if ((predicate as (index: number,) => boolean)(1,))
                 return this.value2
             else
-                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 2,)
         if (predicate.length >= 2) {
             const value1 = this.value1
             if (predicate(0, value1,))
@@ -438,14 +268,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             const value2 = this.value2
             if (predicate(1, value2,))
                 return value2
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 2,)
         }
 
         if ((predicate as () => boolean)())
             return this.value1
         if ((predicate as () => boolean)())
             return this.value2
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 2,)
     }
 
     public override findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -490,7 +320,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             const value1 = this.value1
             if ((predicate as (value: T,) => boolean)(value1,))
                 return value1
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 2,)
         }
         if (predicate.length >= 2) {
             const value2 = this.value2
@@ -500,14 +330,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             const value1 = this.value1
             if (predicate(value1, 0,))
                 return value1
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 2,)
         }
 
         if ((predicate as () => boolean)())
             return this.value2
         if ((predicate as () => boolean)())
             return this.value1
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 2,)
     }
 
     public override findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -550,7 +380,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             else if ((predicate as (index: number,) => boolean)(0,))
                 return this.value1
             else
-                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0,)
+                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 2,)
         if (predicate.length >= 2) {
             const value2 = this.value2
             if (predicate(1, value2,))
@@ -559,14 +389,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             const value1 = this.value1
             if (predicate(0, value1,))
                 return value1
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 2,)
         }
 
         if ((predicate as () => boolean)())
             return this.value2
         if ((predicate as () => boolean)())
             return this.value1
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 2,)
     }
 
     public override findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -604,30 +434,18 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- First index of --------------------
 
-    public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            if (from == null)
-                return this.#firstIndexOf_core0(element,)
-            else
-                return this.#firstIndexOf_core1(element, from,)
-        if (from == null)
-            return this.#firstIndexOf_withNoFrom(element, to,)
-        return this.#firstIndexOf_core2(element, from, to,)
-    }
+    protected _firstIndexOf_core0(element: T,): | 0 | 1 { return this.#firstIndexOf_findInRange(element,) }
 
-
-    #firstIndexOf_core0(element: T,): | 0 | 1 { return this.#firstIndexOf_findInRange(element,) }
-
-    #firstIndexOf_core1(element: T, from: number,): | 0 | 1 {
-        if (this.#getStartingIndex(from,) === 0)
+    protected _firstIndexOf_core1(element: T, from: number,): | 0 | 1 {
+        if (__getStartingIndex(from,) === 0)
             return this.#firstIndexOf_findInRange(element,)
         return this.#firstIndexOf_find2(element,)
     }
 
-    #firstIndexOf_core2(element: T, from: number, to: number,): | 0 | 1 {
-        const startingIndex = this.#getStartingIndex(from,)
-        const endingIndex = this.#getEndingIndex(to,)
-        this.#validateInRange(from, startingIndex, to, endingIndex,)
+    protected _firstIndexOf_core2(element: T, from: number, to: number,): | 0 | 1 {
+        const startingIndex = __getStartingIndex(from,)
+        const endingIndex = __getEndingIndex(to,)
+        __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 0)
                 return this.#firstIndexOf_find1(element,)
@@ -636,8 +454,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#firstIndexOf_findInRange(element,)
     }
 
-    #firstIndexOf_withNoFrom(element: T, to: number,): | 0 | 1 {
-        if (this.#getEndingIndex(to,) === 0)
+    protected _firstIndexOf_withNoFrom(element: T, to: number,): | 0 | 1 {
+        if (__getEndingIndex(to,) === 0)
             return this.#firstIndexOf_find1(element,)
         return this.#firstIndexOf_findInRange(element,)
     }
@@ -663,25 +481,25 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
+
+    public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+        if (to == null)
+            if (from == null)
+                return this._firstIndexOf_core0(element,)
+            else
+                return this._firstIndexOf_core1(element, from,)
+        if (from == null)
+            return this._firstIndexOf_withNoFrom(element, to,)
+        return this._firstIndexOf_core2(element, from, to,)
+    }
+
     //#endregion -------------------- First index of --------------------
     //#region -------------------- First index of or null --------------------
 
-    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            if (from == null)
-                return this.#firstIndexOfOrNull_core0(element,)
-            else
-                return this.#firstIndexOfOrNull_core1(element, from,)
-        if (from == null)
-            return this.#firstIndexOfOrNull_withNoFrom(element, to,)
-        return this.#firstIndexOfOrNull_core2(element, from, to,)
-    }
+    protected _firstIndexOfOrNull_core0(element: T,): NullOrNumber<| 0 | 1> { return this.#firstIndexOfOrNull_findInRange(element,) }
 
-
-    #firstIndexOfOrNull_core0(element: T,): NullOrNumber<| 0 | 1> { return this.#firstIndexOfOrNull_findInRange(element,) }
-
-    #firstIndexOfOrNull_core1(element: T, from: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _firstIndexOfOrNull_core1(element: T, from: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
         if (startingIndex === 0)
@@ -689,12 +507,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#firstIndexOfOrNull_find2(element,)
     }
 
-    #firstIndexOfOrNull_core2(element: T, from: number, to: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _firstIndexOfOrNull_core2(element: T, from: number, to: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
 
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex < startingIndex)
@@ -707,8 +525,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#firstIndexOfOrNull_findInRange(element,)
     }
 
-    #firstIndexOfOrNull_withNoFrom(element: T, to: number,): NullOrNumber<| 0 | 1> {
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+    protected _firstIndexOfOrNull_withNoFrom(element: T, to: number,): NullOrNumber<| 0 | 1> {
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex === 0)
@@ -737,34 +555,34 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
+
+    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+        if (to == null)
+            if (from == null)
+                return this._firstIndexOfOrNull_core0(element,)
+            else
+                return this._firstIndexOfOrNull_core1(element, from,)
+        if (from == null)
+            return this._firstIndexOfOrNull_withNoFrom(element, to,)
+        return this._firstIndexOfOrNull_core2(element, from, to,)
+    }
+
     //#endregion -------------------- First index of or null --------------------
 
     //#region -------------------- Last index of --------------------
 
-    public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            if (from == null)
-                return this.#lastIndexOf_core0(element,)
-            else
-                return this.#lastIndexOf_core1(element, from,)
-        if (from == null)
-            return this.#lastIndexOf_withNoFrom(element, to,)
-        return this.#lastIndexOf_core2(element, from, to,)
-    }
+    protected _lastIndexOf_core0(element: T,): | 0 | 1 { return this.#lastIndexOf_findInRange(element,) }
 
-
-    #lastIndexOf_core0(element: T,): | 0 | 1 { return this.#lastIndexOf_findInRange(element,) }
-
-    #lastIndexOf_core1(element: T, from: number,): | 0 | 1 {
-        if (this.#getStartingIndex(from,) === 1)
+    protected _lastIndexOf_core1(element: T, from: number,): | 0 | 1 {
+        if (__getStartingIndex(from,) === 1)
             return this.#lastIndexOf_find2(element,)
         return this.#lastIndexOf_findInRange(element,)
     }
 
-    #lastIndexOf_core2(element: T, from: number, to: number,): | 0 | 1 {
-        const startingIndex = this.#getStartingIndex(from,)
-        const endingIndex = this.#getEndingIndex(to,)
-        this.#validateInRange(from, startingIndex, to, endingIndex,)
+    protected _lastIndexOf_core2(element: T, from: number, to: number,): | 0 | 1 {
+        const startingIndex = __getStartingIndex(from,)
+        const endingIndex = __getEndingIndex(to,)
+        __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 1)
                 return this.#lastIndexOf_find2(element,)
@@ -773,8 +591,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#lastIndexOf_findInRange(element,)
     }
 
-    #lastIndexOf_withNoFrom(element: T, to: number,): | 0 | 1 {
-        if (this.#getEndingIndex(to,) === 1)
+    protected _lastIndexOf_withNoFrom(element: T, to: number,): | 0 | 1 {
+        if (__getEndingIndex(to,) === 1)
             return this.#lastIndexOf_findInRange(element,)
         return this.#lastIndexOf_find1(element,)
     }
@@ -800,25 +618,25 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
     }
 
+
+    public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+        if (to == null)
+            if (from == null)
+                return this._lastIndexOf_core0(element,)
+            else
+                return this._lastIndexOf_core1(element, from,)
+        if (from == null)
+            return this._lastIndexOf_withNoFrom(element, to,)
+        return this._lastIndexOf_core2(element, from, to,)
+    }
+
     //#endregion -------------------- Last index of --------------------
     //#region -------------------- last index of or null --------------------
 
-    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            if (from == null)
-                return this.#lastIndexOfOrNull_core0(element,)
-            else
-                return this.#lastIndexOfOrNull_core1(element, from,)
-        if (from == null)
-            return this.#lastIndexOfOrNull_withNoFrom(element, to,)
-        return this.#lastIndexOfOrNull_core2(element, from, to,)
-    }
+    protected _lastIndexOfOrNull_core0(element: T,): NullOrNumber<| 0 | 1> { return this.#lastIndexOfOrNull_findInRange(element,) }
 
-
-    #lastIndexOfOrNull_core0(element: T,): NullOrNumber<| 0 | 1> { return this.#lastIndexOfOrNull_findInRange(element,) }
-
-    #lastIndexOfOrNull_core1(element: T, from: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _lastIndexOfOrNull_core1(element: T, from: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
         if (startingIndex === 1)
@@ -826,12 +644,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#lastIndexOfOrNull_findInRange(element,)
     }
 
-    #lastIndexOfOrNull_core2(element: T, from: number, to: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _lastIndexOfOrNull_core2(element: T, from: number, to: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
 
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex < startingIndex)
@@ -844,8 +662,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#lastIndexOfOrNull_findInRange(element,)
     }
 
-    #lastIndexOfOrNull_withNoFrom(element: T, to: number,): NullOrNumber<| 0 | 1> {
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+    protected _lastIndexOfOrNull_withNoFrom(element: T, to: number,): NullOrNumber<| 0 | 1> {
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex === 1)
@@ -874,23 +692,23 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
+
+    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+        if (to == null)
+            if (from == null)
+                return this._lastIndexOfOrNull_core0(element,)
+            else
+                return this._lastIndexOfOrNull_core1(element, from,)
+        if (from == null)
+            return this._lastIndexOfOrNull_withNoFrom(element, to,)
+        return this._lastIndexOfOrNull_core2(element, from, to,)
+    }
+
     //#endregion -------------------- last index of or null --------------------
 
     //#region -------------------- Index of first --------------------
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            if (from == null)
-                return this.#indexOfFirst_core0(predicate,)
-            else
-                return this.#indexOfFirst_core1(predicate, from,)
-        if (from == null)
-            return this.#indexOfFirst_coreWithNoFrom(predicate, to,)
-        return this.#indexOfFirst_core2(predicate, from, to,)
-    }
-
-
-    #indexOfFirst_core0(predicate: BooleanCallback<T>,): | 0 | 1 {
+    protected _indexOfFirst_core0(predicate: BooleanCallback<T>,): | 0 | 1 {
         if (predicate.length === 1)
             return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: T,) => boolean,)
         if (predicate.length >= 2)
@@ -898,8 +716,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirst_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfFirst_core1(predicate: BooleanCallback<T>, from: number,): | 0 | 1 {
-        if (this.#getStartingIndex(from,) === 0)
+    protected _indexOfFirst_core1(predicate: BooleanCallback<T>, from: number,): | 0 | 1 {
+        if (__getStartingIndex(from,) === 0)
             if (predicate.length === 1)
                 return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: T,) => boolean,)
             else if (predicate.length >= 2)
@@ -913,10 +731,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirst_with0Argument_find2(predicate as () => boolean,)
     }
 
-    #indexOfFirst_core2(predicate: BooleanCallback<T>, from: number, to: number,): | 0 | 1 {
-        const startingIndex = this.#getStartingIndex(from,)
-        const endingIndex = this.#getEndingIndex(to,)
-        this.#validateInRange(from, startingIndex, to, endingIndex,)
+    protected _indexOfFirst_core2(predicate: BooleanCallback<T>, from: number, to: number,): | 0 | 1 {
+        const startingIndex = __getStartingIndex(from,)
+        const endingIndex = __getEndingIndex(to,)
+        __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 0)
                 if (predicate.length === 1)
@@ -938,8 +756,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirst_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfFirst_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): | 0 | 1 {
-        if (this.#getEndingIndex(to,) === 0)
+    protected _indexOfFirst_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): | 0 | 1 {
+        if (__getEndingIndex(to,) === 0)
             if (predicate.length === 1)
                 return this.#indexOfFirst_with1Argument_find1(predicate as (value: T,) => boolean,)
             else if (predicate.length >= 2)
@@ -957,13 +775,37 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     #indexOfFirst_with0Argument_find1(predicate: () => boolean,): 0 {
         if (predicate())
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1,)
+    }
+
+    #indexOfFirst_with1Argument_find1(predicate: (value: T1,) => boolean,): 0 {
+        if (predicate(this.value1,))
+            return 0
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1,)
+    }
+
+    #indexOfFirst_with2Argument_find1(predicate: (value: T1, index: 0,) => boolean,): 0 {
+        if (predicate(this.value1, 0,))
+            return 0
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.", 1,)
     }
 
     #indexOfFirst_with0Argument_find2(predicate: () => boolean,): 1 {
         if (predicate())
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.", 2,)
+    }
+
+    #indexOfFirst_with1Argument_find2(predicate: (value: T2,) => boolean,): 1 {
+        if (predicate(this.value2,))
+            return 1
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.", 2,)
+    }
+
+    #indexOfFirst_with2Argument_find2(predicate: (value: T2, index: 1,) => boolean,): 1 {
+        if (predicate(this.value2, 1,))
+            return 1
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.", 2,)
     }
 
     #indexOfFirst_with0Argument_findInRange(predicate: () => boolean,): | 0 | 1 {
@@ -971,19 +813,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate())
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
-    }
-
-    #indexOfFirst_with1Argument_find1(predicate: (value: T1,) => boolean,): 0 {
-        if (predicate(this.value1,))
-            return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
-    }
-
-    #indexOfFirst_with1Argument_find2(predicate: (value: T2,) => boolean,): 1 {
-        if (predicate(this.value2,))
-            return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.", 2,)
     }
 
     #indexOfFirst_with1Argument_findInRange(predicate: (value: | T1 | T2,) => boolean,): | 0 | 1 {
@@ -991,19 +821,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate(this.value2,))
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
-    }
-
-    #indexOfFirst_with2Argument_find1(predicate: (value: T1, index: 0,) => boolean,): 0 {
-        if (predicate(this.value1, 0,))
-            return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
-    }
-
-    #indexOfFirst_with2Argument_find2(predicate: (value: T2, index: 1,) => boolean,): 1 {
-        if (predicate(this.value2, 1,))
-            return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.", 2,)
     }
 
     #indexOfFirst_with2Argument_findInRange(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): | 0 | 1 {
@@ -1011,25 +829,25 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 0
         if (predicate(this.value2, 1,))
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
+        throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.", 2,)
+    }
+
+
+    public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+        if (to == null)
+            if (from == null)
+                return this._indexOfFirst_core0(predicate,)
+            else
+                return this._indexOfFirst_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfFirst_coreWithNoFrom(predicate, to,)
+        return this._indexOfFirst_core2(predicate, from, to,)
     }
 
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first or null --------------------
 
-    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            if (from == null)
-                return this.#indexOfFirstOrNull_core0(predicate,)
-            else
-                return this.#indexOfFirstOrNull_core1(predicate, from,)
-        if (from == null)
-            return this.#indexOfFirstOrNull_coreWithNoFrom(predicate, to,)
-        return this.#indexOfFirstOrNull_core2(predicate, from, to,)
-    }
-
-
-    #indexOfFirstOrNull_core0(predicate: BooleanCallback<T>,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstOrNull_core0(predicate: BooleanCallback<T>,): NullOrNumber<| 0 | 1> {
         if (predicate.length === 1)
             return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
         if (predicate.length >= 2)
@@ -1037,8 +855,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfFirstOrNull_core1(predicate: BooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _indexOfFirstOrNull_core1(predicate: BooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
         if (startingIndex === 0)
@@ -1055,12 +873,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstOrNull_with0Argument_find2(predicate as () => boolean,)
     }
 
-    #indexOfFirstOrNull_core2(predicate: BooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _indexOfFirstOrNull_core2(predicate: BooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
 
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex < startingIndex)
@@ -1086,8 +904,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfFirstOrNull_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+    protected _indexOfFirstOrNull_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex === 0)
@@ -1165,22 +983,22 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
+
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+        if (to == null)
+            if (from == null)
+                return this._indexOfFirstOrNull_core0(predicate,)
+            else
+                return this._indexOfFirstOrNull_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfFirstOrNull_coreWithNoFrom(predicate, to,)
+        return this._indexOfFirstOrNull_core2(predicate, from, to,)
+    }
+
     //#endregion -------------------- Index of first or null --------------------
     //#region -------------------- Index of first indexed --------------------
 
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            if (from == null)
-                return this.#indexOfFirstIndexed_core0(predicate,)
-            else
-                return this.#indexOfFirstIndexed_core1(predicate, from,)
-        if (from == null)
-            return this.#indexOfFirstIndexed_coreWithNoFrom(predicate, to,)
-        return this.#indexOfFirstIndexed_core2(predicate, from, to,)
-    }
-
-
-    #indexOfFirstIndexed_core0(predicate: ReverseBooleanCallback<T>,): | 0 | 1 {
+    protected _indexOfFirstIndexed_core0(predicate: ReverseBooleanCallback<T>,): | 0 | 1 {
         if (predicate.length === 1)
             return this.#indexOfFirstIndexed_with1Argument_findInRange(predicate as (index: number,) => boolean,)
         if (predicate.length >= 2)
@@ -1188,8 +1006,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfFirstIndexed_core1(predicate: ReverseBooleanCallback<T>, from: number,): | 0 | 1 {
-        if (this.#getStartingIndex(from,) === 0)
+    protected _indexOfFirstIndexed_core1(predicate: ReverseBooleanCallback<T>, from: number,): | 0 | 1 {
+        if (__getStartingIndex(from,) === 0)
             if (predicate.length === 1)
                 return this.#indexOfFirstIndexed_with1Argument_findInRange(predicate as (index: number,) => boolean,)
             else if (predicate.length >= 2)
@@ -1203,10 +1021,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexed_with0Argument_find2(predicate as () => boolean,)
     }
 
-    #indexOfFirstIndexed_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): | 0 | 1 {
-        const startingIndex = this.#getStartingIndex(from,)
-        const endingIndex = this.#getEndingIndex(to,)
-        this.#validateInRange(from, startingIndex, to, endingIndex,)
+    protected _indexOfFirstIndexed_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): | 0 | 1 {
+        const startingIndex = __getStartingIndex(from,)
+        const endingIndex = __getEndingIndex(to,)
+        __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 0)
                 if (predicate.length === 1)
@@ -1228,8 +1046,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfFirstIndexed_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): | 0 | 1 {
-        if (this.#getEndingIndex(to,) === 0)
+    protected _indexOfFirstIndexed_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): | 0 | 1 {
+        if (__getEndingIndex(to,) === 0)
             if (predicate.length === 1)
                 return this.#indexOfFirstIndexed_with1Argument_find1(predicate as (index: number,) => boolean,)
             else if (predicate.length >= 2)
@@ -1304,22 +1122,22 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
+
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+        if (to == null)
+            if (from == null)
+                return this._indexOfFirstIndexed_core0(predicate,)
+            else
+                return this._indexOfFirstIndexed_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfFirstIndexed_coreWithNoFrom(predicate, to,)
+        return this._indexOfFirstIndexed_core2(predicate, from, to,)
+    }
+
     //#endregion -------------------- Index of first indexed --------------------
     //#region -------------------- Index of first indexed or null --------------------
 
-    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            if (from == null)
-                return this.#indexOfFirstIndexedOrNull_core0(predicate,)
-            else
-                return this.#indexOfFirstIndexedOrNull_core1(predicate, from,)
-        if (from == null)
-            return this.#indexOfFirstIndexedOrNull_coreWithNoFrom(predicate, to,)
-        return this.#indexOfFirstIndexedOrNull_core2(predicate, from, to,)
-    }
-
-
-    #indexOfFirstIndexedOrNull_core0(predicate: ReverseBooleanCallback<T>,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstIndexedOrNull_core0(predicate: ReverseBooleanCallback<T>,): NullOrNumber<| 0 | 1> {
         if (predicate.length === 1)
             return this.#indexOfFirstIndexedOrNull_with1Argument_findInRange(predicate as (index: number,) => boolean,)
         if (predicate.length >= 2)
@@ -1327,8 +1145,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfFirstIndexedOrNull_core1(predicate: ReverseBooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _indexOfFirstIndexedOrNull_core1(predicate: ReverseBooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
         if (startingIndex === 0)
@@ -1345,12 +1163,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexedOrNull_with0Argument_find2(predicate as () => boolean,)
     }
 
-    #indexOfFirstIndexedOrNull_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _indexOfFirstIndexedOrNull_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
 
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex < startingIndex)
@@ -1376,8 +1194,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfFirstIndexedOrNull_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+    protected _indexOfFirstIndexedOrNull_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex === 0)
@@ -1455,23 +1273,23 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
+
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+        if (to == null)
+            if (from == null)
+                return this._indexOfFirstIndexedOrNull_core0(predicate,)
+            else
+                return this._indexOfFirstIndexedOrNull_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfFirstIndexedOrNull_coreWithNoFrom(predicate, to,)
+        return this._indexOfFirstIndexedOrNull_core2(predicate, from, to,)
+    }
+
     //#endregion -------------------- Index of first indexed or null --------------------
 
     //#region -------------------- Index of last --------------------
 
-    public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            if (from == null)
-                return this.#indexOfLast_core0(predicate,)
-            else
-                return this.#indexOfLast_core1(predicate, from,)
-        if (from == null)
-            return this.#indexOfLast_coreWithNoFrom(predicate, to,)
-        return this.#indexOfLast_core2(predicate, from, to,)
-    }
-
-
-    #indexOfLast_core0(predicate: BooleanCallback<T>,): | 0 | 1 {
+    protected _indexOfLast_core0(predicate: BooleanCallback<T>,): | 0 | 1 {
         if (predicate.length === 1)
             return this.#indexOfLast_with1Argument_findInRange(predicate as (value: T,) => boolean,)
         if (predicate.length >= 2)
@@ -1479,8 +1297,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLast_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLast_core1(predicate: BooleanCallback<T>, from: number,): | 0 | 1 {
-        if (this.#getStartingIndex(from,) === 1)
+    protected _indexOfLast_core1(predicate: BooleanCallback<T>, from: number,): | 0 | 1 {
+        if (__getStartingIndex(from,) === 1)
             if (predicate.length === 1)
                 return this.#indexOfLast_with1Argument_find2(predicate as (value: T,) => boolean,)
             else if (predicate.length >= 2)
@@ -1494,10 +1312,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLast_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLast_core2(predicate: BooleanCallback<T>, from: number, to: number,): | 0 | 1 {
-        const startingIndex = this.#getStartingIndex(from,)
-        const endingIndex = this.#getEndingIndex(to,)
-        this.#validateInRange(from, startingIndex, to, endingIndex,)
+    protected _indexOfLast_core2(predicate: BooleanCallback<T>, from: number, to: number,): | 0 | 1 {
+        const startingIndex = __getStartingIndex(from,)
+        const endingIndex = __getEndingIndex(to,)
+        __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 1)
                 if (predicate.length === 1)
@@ -1519,8 +1337,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLast_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLast_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): | 0 | 1 {
-        if (this.#getEndingIndex(to,) === 1)
+    protected _indexOfLast_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): | 0 | 1 {
+        if (__getEndingIndex(to,) === 1)
             if (predicate.length === 1)
                 return this.#indexOfLast_with1Argument_findInRange(predicate as (value: T,) => boolean,)
             else if (predicate.length >= 2)
@@ -1535,16 +1353,28 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
+    public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+        if (to == null)
+            if (from == null)
+                return this._indexOfLast_core0(predicate,)
+            else
+                return this._indexOfLast_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfLast_coreWithNoFrom(predicate, to,)
+        return this._indexOfLast_core2(predicate, from, to,)
+    }
+
+
     #indexOfLast_with0Argument_find1(predicate: () => boolean,): 0 {
         if (predicate())
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfLast_with0Argument_find2(predicate: () => boolean,): 1 {
         if (predicate())
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLast_with0Argument_findInRange(predicate: () => boolean,): | 0 | 1 {
@@ -1552,19 +1382,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate())
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLast_with1Argument_find1(predicate: (value: T1,) => boolean,): 0 {
         if (predicate(this.value1,))
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfLast_with1Argument_find2(predicate: (value: T2,) => boolean,): 1 {
         if (predicate(this.value2,))
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLast_with1Argument_findInRange(predicate: (value: | T1 | T2,) => boolean,): | 0 | 1 {
@@ -1572,19 +1402,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate(this.value1,))
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLast_with2Argument_find1(predicate: (value: T1, index: 0,) => boolean,): 0 {
         if (predicate(this.value1, 0,))
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfLast_with2Argument_find2(predicate: (value: T2, index: 1,) => boolean,): 1 {
         if (predicate(this.value2, 1,))
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLast_with2Argument_findInRange(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): | 0 | 1 {
@@ -1592,25 +1422,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate(this.value1, 0,))
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last or null --------------------
 
-    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            if (from == null)
-                return this.#indexOfLastOrNull_core0(predicate,)
-            else
-                return this.#indexOfLastOrNull_core1(predicate, from,)
-        if (from == null)
-            return this.#indexOfLastOrNull_coreWithNoFrom(predicate, to,)
-        return this.#indexOfLastOrNull_core2(predicate, from, to,)
-    }
-
-
-    #indexOfLastOrNull_core0(predicate: BooleanCallback<T>,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastOrNull_core0(predicate: BooleanCallback<T>,): NullOrNumber<| 0 | 1> {
         if (predicate.length === 1)
             return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
         if (predicate.length >= 2)
@@ -1618,8 +1436,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastOrNull_core1(predicate: BooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _indexOfLastOrNull_core1(predicate: BooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
         if (startingIndex === 1)
@@ -1636,12 +1454,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastOrNull_core2(predicate: BooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _indexOfLastOrNull_core2(predicate: BooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
 
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex < startingIndex)
@@ -1667,8 +1485,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastOrNull_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+    protected _indexOfLastOrNull_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex === 1)
@@ -1683,6 +1501,18 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (predicate.length >= 2)
             return this.#indexOfLastOrNull_with2Argument_find1(predicate as (value: T,) => boolean,)
         return this.#indexOfLastOrNull_with0Argument_find1(predicate as () => boolean,)
+    }
+
+
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+        if (to == null)
+            if (from == null)
+                return this._indexOfLastOrNull_core0(predicate,)
+            else
+                return this._indexOfLastOrNull_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfLastOrNull_coreWithNoFrom(predicate, to,)
+        return this._indexOfLastOrNull_core2(predicate, from, to,)
     }
 
 
@@ -1749,19 +1579,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Index of last or null --------------------
     //#region -------------------- Index of last indexed --------------------
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            if (from == null)
-                return this.#indexOfLastIndexed_core0(predicate,)
-            else
-                return this.#indexOfLastIndexed_core1(predicate, from,)
-        if (from == null)
-            return this.#indexOfLastIndexed_coreWithNoFrom(predicate, to,)
-        return this.#indexOfLastIndexed_core2(predicate, from, to,)
-    }
-
-
-    #indexOfLastIndexed_core0(predicate: ReverseBooleanCallback<T>,): | 0 | 1 {
+    protected _indexOfLastIndexed_core0(predicate: ReverseBooleanCallback<T>,): | 0 | 1 {
         if (predicate.length === 1)
             return this.#indexOfLastIndexed_with1Argument_findInRange(predicate as (index: number,) => boolean,)
         if (predicate.length >= 2)
@@ -1769,8 +1587,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastIndexed_core1(predicate: ReverseBooleanCallback<T>, from: number,): | 0 | 1 {
-        if (this.#getStartingIndex(from,) === 1)
+    protected _indexOfLastIndexed_core1(predicate: ReverseBooleanCallback<T>, from: number,): | 0 | 1 {
+        if (__getStartingIndex(from,) === 1)
             if (predicate.length === 1)
                 return this.#indexOfLastIndexed_with1Argument_find2(predicate as (index: number,) => boolean,)
             else if (predicate.length >= 2)
@@ -1784,10 +1602,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastIndexed_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): | 0 | 1 {
-        const startingIndex = this.#getStartingIndex(from,)
-        const endingIndex = this.#getEndingIndex(to,)
-        this.#validateInRange(from, startingIndex, to, endingIndex,)
+    protected _indexOfLastIndexed_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): | 0 | 1 {
+        const startingIndex = __getStartingIndex(from,)
+        const endingIndex = __getEndingIndex(to,)
+        __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 1)
                 if (predicate.length === 1)
@@ -1809,8 +1627,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastIndexed_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): | 0 | 1 {
-        if (this.#getEndingIndex(to,) === 1)
+    protected _indexOfLastIndexed_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): | 0 | 1 {
+        if (__getEndingIndex(to,) === 1)
             if (predicate.length === 1)
                 return this.#indexOfLastIndexed_with1Argument_findInRange(predicate as (index: number,) => boolean,)
             else if (predicate.length >= 2)
@@ -1825,16 +1643,28 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+        if (to == null)
+            if (from == null)
+                return this._indexOfLastIndexed_core0(predicate,)
+            else
+                return this._indexOfLastIndexed_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfLastIndexed_coreWithNoFrom(predicate, to,)
+        return this._indexOfLastIndexed_core2(predicate, from, to,)
+    }
+
+
     #indexOfLastIndexed_with0Argument_find1(predicate: () => boolean,): 0 {
         if (predicate())
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfLastIndexed_with0Argument_find2(predicate: () => boolean,): 1 {
         if (predicate())
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLastIndexed_with0Argument_findInRange(predicate: () => boolean,): | 0 | 1 {
@@ -1842,19 +1672,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate())
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLastIndexed_with1Argument_find1(predicate: (index: 0,) => boolean,): 0 {
         if (predicate(0,))
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfLastIndexed_with1Argument_find2(predicate: (index: 1,) => boolean,): 1 {
         if (predicate(1,))
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLastIndexed_with1Argument_findInRange(predicate: (index: | 0 | 1) => boolean,): | 0 | 1 {
@@ -1862,19 +1692,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate(0,))
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLastIndexed_with2Argument_find1(predicate: (index: 0, value: T1,) => boolean,): 0 {
         if (predicate(0, this.value1,))
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     #indexOfLastIndexed_with2Argument_find2(predicate: (index: 1, value: T2,) => boolean,): 1 {
         if (predicate(1, this.value2,))
             return 1
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 0,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
     #indexOfLastIndexed_with2Argument_findInRange(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): | 0 | 1 {
@@ -1882,25 +1712,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return 1
         if (predicate(0, this.value1,))
             return 0
-        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, -1,)
+        throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 1,)
     }
 
     //#endregion -------------------- Index of last indexed --------------------
     //#region -------------------- Index of last indexed or null --------------------
 
-    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            if (from == null)
-                return this.#indexOfLastIndexedOrNull_core0(predicate,)
-            else
-                return this.#indexOfLastIndexedOrNull_core1(predicate, from,)
-        if (from == null)
-            return this.#indexOfLastIndexedOrNull_coreWithNoFrom(predicate, to,)
-        return this.#indexOfLastIndexedOrNull_core2(predicate, from, to,)
-    }
-
-
-    #indexOfLastIndexedOrNull_core0(predicate: ReverseBooleanCallback<T>,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastIndexedOrNull_core0(predicate: ReverseBooleanCallback<T>,): NullOrNumber<| 0 | 1> {
         if (predicate.length === 1)
             return this.#indexOfLastIndexedOrNull_with1Argument_findInRange(predicate as (index: number,) => boolean,)
         if (predicate.length >= 2)
@@ -1908,8 +1726,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastIndexedOrNull_core1(predicate: ReverseBooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _indexOfLastIndexedOrNull_core1(predicate: ReverseBooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
         if (startingIndex === 1)
@@ -1926,12 +1744,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastIndexedOrNull_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
-        const startingIndex = this.#getStartingIndexOrNull(from,)
+    protected _indexOfLastIndexedOrNull_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
+        const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
 
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex < startingIndex)
@@ -1957,8 +1775,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    #indexOfLastIndexedOrNull_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
-        const endingIndex = this.#getEndingIndexOrNull(to,)
+    protected _indexOfLastIndexedOrNull_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
+        const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex === 1)
@@ -1973,6 +1791,18 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (predicate.length >= 2)
             return this.#indexOfLastIndexedOrNull_with2Argument_find1(predicate as (index: number,) => boolean,)
         return this.#indexOfLastIndexedOrNull_with0Argument_find1(predicate as () => boolean,)
+    }
+
+
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+        if (to == null)
+            if (from == null)
+                return this._indexOfLastIndexedOrNull_core0(predicate,)
+            else
+                return this._indexOfLastIndexedOrNull_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfLastIndexedOrNull_coreWithNoFrom(predicate, to,)
+        return this._indexOfLastIndexedOrNull_core2(predicate, from, to,)
     }
 
 
@@ -2369,7 +2199,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             const value = values[index] as T
             if (value1 === value)
                 return false
-            else if (value2 === value)
+            if (value2 === value)
                 return false
         }
         return true
@@ -3220,43 +3050,37 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice()} */
-    protected _sliceWith0Argument(): CollectionHolder<T> {
-        return new LateRetriever.CollectionHolderOf2<T>(this.value1, this.value2,)
+    protected _sliceWith0Argument(): this {
+        return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from)} */
-    protected _sliceWith1Argument(from: number,): CollectionHolder<T> {
-        const startingIndex = this.#getStartingIndex(from,)
-        return new LazyCollectionHolderOf1Or2<T>(() => {
-            if (startingIndex === 0)
-                return new Couple(this.value1, new Optional(this.value2,),)
-            return new Couple(this.value2, EmptyOptional.get,)
-        },)
+    protected _sliceWith1Argument(from: number,): | this | CollectionHolderOf1<T> {
+        const startingIndex = __getStartingIndex(from,)
+        if (startingIndex == 0)
+            return this
+        return new CollectionHolderOf1<T>(this.value2,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from, to)} */
-    protected _sliceWith2Argument(from: number, to: number,): CollectionHolder<T> {
-        const startingIndex = this.#getStartingIndex(from,)
-        const endingIndex = this.#getEndingIndex(to,)
-        this.#validateInRange(from, startingIndex, to, endingIndex,)
-        return new LazyCollectionHolderOf1Or2<T>(() => {
-            if (startingIndex === endingIndex)
-                if (startingIndex === 0)
-                    return new Couple(this.value1, EmptyOptional.get,)
-                else
-                    return new Couple(this.value2, EmptyOptional.get,)
-            return new Couple(this.value1, new Optional(this.value2,),)
-        },)
+    protected _sliceWith2Argument(from: number, to: number,): | this | CollectionHolderOf1<T> {
+        const startingIndex = __getStartingIndex(from,)
+        const endingIndex = __getEndingIndex(to,)
+        __validateInRange(from, startingIndex, to, endingIndex,)
+        if (startingIndex === endingIndex)
+            if (startingIndex === 0)
+                return new CollectionHolderOf1(this.value1,)
+            else
+                return new CollectionHolderOf1(this.value2,)
+        return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, to)} */
-    protected _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): CollectionHolder<T> {
-        const endingIndex = this.#getEndingIndex(to,)
-        return new LazyCollectionHolderOf1Or2<T>(() => {
-            if (endingIndex === 0)
-                return new Couple(this.value1, EmptyOptional.get,)
-            return new Couple(this.value1, new Optional(this.value2,),)
-        },)
+    protected _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): | this | CollectionHolderOf1<T> {
+        const endingIndex = __getEndingIndex(to,)
+        if (endingIndex == 0)
+            return new CollectionHolderOf1(this.value1,)
+        return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberArray)} */
@@ -3265,10 +3089,15 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
+            const value1 = this.value1
+            const value2 = this.value2
             const newArray = new Array<T>(indicesSize,)
             let index = indicesSize
             while (index-- > 0)
-                newArray[index] = this.get(indices[index]!,)
+                if (__getIndex(indices[index]!,) === 0)
+                    newArray[index] = value1
+                else
+                    newArray[index] = value2
             return Object.freeze(newArray,)
         },)
     }
@@ -3279,11 +3108,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
+            const value1 = this.value1
+            const value2 = this.value2
             const newArray = new Array<T>(indicesSize,)
             const iterator = indices[Symbol.iterator]()
             let index = -1
             while (++index < indicesSize)
-                newArray[index] = this.get(iterator.next().value!,)
+                if (__getIndex(iterator.next().value!,) === 0)
+                    newArray[index] = value1
+                else
+                    newArray[index] = value2
             return Object.freeze(newArray,)
         },)
     }
@@ -3294,10 +3128,15 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
+            const value1 = this.value1
+            const value2 = this.value2
             const newArray = new Array<T>(indicesSize,)
             let index = indicesSize
             while (index-- > 0)
-                newArray[index] = this.get(indices.get(index,),)
+                if (__getIndex(indices.get(index,),) === 0)
+                    newArray[index] = value1
+                else
+                    newArray[index] = value2
             return Object.freeze(newArray,)
         },)
     }
@@ -3307,11 +3146,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
+            const value1 = this.value1
+            const value2 = this.value2
             const indicesSize = indices.size
             const newArray = new Array<T>(indicesSize,)
             let index = indicesSize
             while (index-- > 0)
-                newArray[index] = this.get(indices.get(index,),)
+                if (__getIndex(indices.get(index,),) === 0)
+                    newArray[index] = value1
+                else
+                    newArray[index] = value2
             return Object.freeze(newArray,)
         },)
     }
@@ -3321,11 +3165,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
+            const value1 = this.value1
+            const value2 = this.value2
             const indicesSize = indices.size
             const newArray = new Array<T>(indicesSize,)
             let index = indicesSize
             while (index-- > 0)
-                newArray[index] = this.get(indices.previousValue,)
+                if (__getIndex(indices.previousValue,) === 0)
+                    newArray[index] = value1
+                else
+                    newArray[index] = value2
             return Object.freeze(newArray,)
         },)
     }
@@ -3336,9 +3185,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (iteratorResult.done)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
-            const newArray = [this.get(iteratorResult.value as number,),]
+            const value1 = this.value1
+            const value2 = this.value2
+            const newArray = [__getIndex(iteratorResult.value as number,) === 0 ? value1 : value2,]
             while (!(iteratorResult = indices.next()).done)
-                newArray.push(this.get(iteratorResult.value!,),)
+                if (__getIndex(iteratorResult.value!,) === 0)
+                    newArray.push(value1,)
+                else
+                    newArray.push(value2,)
             return Object.freeze(newArray,)
         },)
     }
@@ -3350,15 +3204,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (iteratorResult.done)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
-            const newArray = [this.get(iteratorResult.value as number,),]
+            const value1 = this.value1
+            const value2 = this.value2
+            const newArray = [__getIndex(iteratorResult.value as number,) === 0 ? value1 : value2,]
             while (!(iteratorResult = iterator.next()).done)
-                newArray.push(this.get(iteratorResult.value!,),)
+                if (__getIndex(iteratorResult.value!,) === 0)
+                    newArray.push(value1,)
+                else
+                    newArray.push(value2,)
             return Object.freeze(newArray,)
         },)
     }
 
     //#endregion -------------------- Slice --------------------
-
     //#region -------------------- Take --------------------
 
     //#region -------------------- Take --------------------
@@ -3613,9 +3471,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return new CollectionHolderOf1(this.value2,)
         if (n === -1)
             return new CollectionHolderOf1(this.value2,)
-        if (n <= -2)
-            return this
-        return EmptyCollectionHolder.get
+        return this
     }
 
     //#endregion -------------------- Drop --------------------
@@ -4004,26 +3860,27 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T1> | CollectionHolderOf1<T2> {
         if (to == null)
             if (from == null)
-                return this.#toReverse_core0()
+                return this._toReverse_core0()
             else
-                return this.#toReverse_core1(from,)
+                return this._toReverse_core1(from,)
         if (from == null)
-            return this.#toReverse_coreWithNoFrom(to,)
-        return this.#toReverse_core2(from, to,)
+            return this._toReverse_coreWithNoFrom(to,)
+        return this._toReverse_core2(from, to,)
     }
 
-    #toReverse_core0(): CollectionHolderOf2<T, T2, T1> { return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,) }
 
-    #toReverse_core1(from: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T2> {
-        if (this.#getStartingIndex(from,) === 0)
+    protected _toReverse_core0(): CollectionHolderOf2<T, T2, T1> { return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,) }
+
+    protected _toReverse_core1(from: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T2> {
+        if (__getStartingIndex(from,) === 0)
             return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,)
         return new CollectionHolderOf1(this.value2,)
     }
 
-    #toReverse_core2(from: number, to: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T1> | CollectionHolderOf1<T2> {
-        const startingIndex = this.#getStartingIndex(from,)
-        const endingIndex = this.#getEndingIndex(to,)
-        this.#validateInRange(from, startingIndex, to, endingIndex,)
+    protected _toReverse_core2(from: number, to: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T1> | CollectionHolderOf1<T2> {
+        const startingIndex = __getStartingIndex(from,)
+        const endingIndex = __getEndingIndex(to,)
+        __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 0)
                 return new CollectionHolderOf1(this.value1,)
@@ -4032,8 +3889,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,)
     }
 
-    #toReverse_coreWithNoFrom(to: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T1> {
-        if (this.#getEndingIndex(to,) === 0)
+    protected _toReverse_coreWithNoFrom(to: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T1> {
+        if (__getEndingIndex(to,) === 0)
             return new CollectionHolderOf1(this.value1,)
         return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,)
     }
@@ -4112,41 +3969,56 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
+    protected _joinToString_core(separator: string, prefix: string, postfix: string) {
+        return `${prefix}${this.value1}${separator}${this.value2}${postfix}`
+    }
+
+    protected _joinToString_truncated0(prefix: string, postfix: string, truncated: string,) {
+        return `${prefix}${truncated}${postfix}`
+    }
+
+    protected _joinToString_truncated1(separator: string, prefix: string, postfix: string, truncated: string,) {
+        return `${prefix}${this.value1}${separator}${truncated}${postfix}`
+    }
+
+    protected _joinToString_truncatedTransform(separator: string, prefix: string, postfix: string, truncated: string, transform: StringCallback<T>,) {
+        if (transform.length === 1)
+            return `${prefix}${(transform as (value: T,) => string)(this.value1,)}${separator}${truncated}${postfix}`
+        if (transform.length >= 2)
+            return `${prefix}${transform(this.value1, 0,)}${separator}${truncated}${postfix}`
+        return `${prefix}${(transform as () => string)()}${separator}${truncated}${postfix}`
+    }
+
+    protected _joinToString_transform(separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
+        if (transform.length === 1)
+            return `${prefix}${(transform as (value: T,) => string)(this.value1,)}${separator}${(transform as (value: T,) => string)(this.value2,)}${postfix}`
+        if (transform.length >= 2)
+            return `${prefix}${transform(this.value1, 0,)}${separator}${transform(this.value2, 1,)}${postfix}`
+        return `${prefix}${(transform as () => string)()}${separator}${(transform as () => string)()}${postfix}`
+    }
+
+
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         if (transform == null)
             if (limit == null)
-                return `${prefix ?? "["}${this.value1}${separator ?? ", "}${this.value2}${postfix ?? "]"}`
+                return this._joinToString_core(prefix ?? '[', separator ?? ", ", postfix ?? ']',)
             else {
-                const lastIndex = this.#getLastIndex(limit,)
+                const lastIndex = __getLastIndex(limit,)
                 if (lastIndex === 0)
-                    return `${prefix ?? "["}${truncated ?? "…"}${postfix ?? "]"}`
+                    return this._joinToString_truncated0(prefix ?? '[', postfix ?? ']', truncated ?? '…',)
                 if (lastIndex === 1)
-                    return `${prefix ?? "["}${this.value1}${separator ?? ", "}${truncated ?? "…"}${postfix ?? "]"}`
-                return `${prefix ?? "["}${this.value1}${separator ?? ", "}${this.value2}${postfix ?? "]"}`
+                    return this._joinToString_truncated1(separator ?? ", ", prefix ?? '[', postfix ?? ']', truncated ?? '…',)
+                return this._joinToString_core(prefix ?? '[', separator ?? ", ", postfix ?? ']',)
             }
         if (limit == null)
-            if (transform.length === 1)
-                return `${prefix ?? "["}${(transform as (value: T,) => string)(this.value1,)}${separator ?? ", "}${(transform as (value: T,) => string)(this.value2,)}${postfix ?? "]"}`
-            else if (transform.length >= 2)
-                return `${prefix ?? "["}${transform(this.value1, 0,)}${separator ?? ", "}${transform(this.value2, 1,)}${postfix ?? "]"}`
-            else
-                return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${(transform as () => string)()}${postfix ?? "]"}`
+            return this._joinToString_transform(separator ?? ", ", prefix ?? '[', postfix ?? ']', transform,)
 
-        const lastIndex = this.#getLastIndex(limit,)
+        const lastIndex = __getLastIndex(limit,)
         if (lastIndex === 0)
-            return `${prefix ?? "["}${truncated ?? "…"}${postfix ?? "]"}`
+            return this._joinToString_truncated0(prefix ?? '[', postfix ?? ']', truncated ?? '…',)
         if (lastIndex === 1)
-            if (transform.length === 1)
-                return `${prefix ?? "["}${(transform as (value: T,) => string)(this.value1,)}${separator ?? ", "}${truncated ?? "…"}${postfix ?? "]"}`
-            else if (transform.length >= 2)
-                return `${prefix ?? "["}${transform(this.value1, 0,)}${separator ?? ", "}${truncated ?? "…"}${postfix ?? "]"}`
-            else
-                return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${truncated ?? "…"}${postfix ?? "]"}`
-        if (transform.length === 1)
-            return `${prefix ?? "["}${(transform as (value: T,) => string)(this.value1,)}${separator ?? ", "}${(transform as (value: T,) => string)(this.value2,)}${postfix ?? "]"}`
-        if (transform.length >= 2)
-            return `${prefix ?? "["}${transform(this.value1, 0,)}${separator ?? ", "}${transform(this.value2, 1,)}${postfix ?? "]"}`
-        return `${prefix ?? "["}${(transform as () => string)()}${separator ?? ", "}${(transform as () => string)()}${postfix ?? "]"}`
+            return this._joinToString_truncatedTransform(separator ?? ", ", prefix ?? '[', postfix ?? ']', truncated ?? '…', transform,)
+        return this._joinToString_transform(separator ?? ", ", prefix ?? '[', postfix ?? ']', transform,)
     }
 
     //#endregion -------------------- Join to string --------------------
@@ -4156,3 +4028,185 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Methods --------------------
 
 }
+
+//#region -------------------- Validate methods --------------------
+
+/**
+ * Give the starting index as 0 or 1
+ *
+ * @param from The value to validate
+ * @throws IndexOutOfBoundsException The value is equal or over 2 (before or after calculation)
+ * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ */
+function __getStartingIndex(from: NullableNumber,): | 0 | 1 {
+    if (from == null)
+        return 0
+
+    if (Number.isNaN(from,))
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", from,)
+    if (from === Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", from,)
+    if (from === Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", from,)
+
+    if (from === 0)
+        return 0
+    if (from === 1)
+        return 1
+    if (from === -1)
+        return 1
+    if (from === -2)
+        return 0
+
+    if (from > 2)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” is over the collection size “2”.`, from,)
+    if (from === 2)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” is the collection size “2”.`, from,)
+    throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” (“${from + 1}” after calculation) is under 0.`, from,)
+}
+
+/**
+ * Give the ending index as 0 or 1
+ *
+ * @param to The value to validate
+ * @throws IndexOutOfBoundsException The value is equal or over 2 (before or after calculation)
+ * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ */
+function __getEndingIndex(to: NullableNumber,): | 0 | 1 {
+    if (to == null)
+        return 1
+
+    if (Number.isNaN(to,))
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with NaN.", to,)
+    if (to === Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", to,)
+    if (to === Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", to,)
+
+    if (to === 0)
+        return 0
+    if (to === 1)
+        return 1
+    if (to === -1)
+        return 1
+    if (to === -2)
+        return 0
+
+    if (to > 2)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” is over the collection size “2”.`, to,)
+    if (to === 2)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” is the collection size “2”.`, to,)
+    throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” (“${to + 1}” after calculation) is under 0.`, to,)
+}
+
+/**
+ * Give the starting index as 0 or 1
+ * and throw a {@link ForbiddenIndexException} if invalid
+ * or throw a {@link IndexOutOfBoundsException} if out of bound
+ *
+ * @param value The value to validate
+ * @throws IndexOutOfBoundsException An indice is not in the current instance
+ * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ */
+function __getIndex(value: NullableNumber,): | 0 | 1 {
+    if (value == null)
+        return 0
+    if (Number.isNaN(value,))
+        throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", value,)
+    if (value === Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", value,)
+    if (value === Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", value,)
+    if (value === 0)
+        return 0
+    if (value === 1)
+        return 1
+    if (value === -1)
+        return 1
+    if (value === -2)
+        return 0
+    if (value > 2)
+        throw new IndexOutOfBoundsException(`Index out of bound. The index “${value}” is over the size of the collection (2).`, value,)
+    if (value === 2)
+        throw new IndexOutOfBoundsException(`Index out of bound. The index “${value}” is the size of the collection (2).`, value,)
+    throw new IndexOutOfBoundsException(`Index out of bound. The index “${value}” (${value + 1} after calculation) is under 0.`, value,)
+}
+
+/**
+ * Give the starting index as 0 or 1
+ * and gives `null` if invalid or out of bound
+ *
+ * @param from The value to validate
+ */
+function __getIndexOrNull(from: NullableNumber,): NullOrNumber<| 0 | 1> {
+    if (from == null)
+return 0
+if (Number.isNaN(from,))
+    return null
+if (from === Number.NEGATIVE_INFINITY)
+    return null
+if (from === Number.POSITIVE_INFINITY)
+    return null
+if (from === 0)
+    return 0
+if (from === 1)
+    return 1
+if (from === -1)
+    return 1
+if (from === -2)
+    return 0
+return null
+}
+
+/**
+ * Validate that the {@link endingIndex} is not under the {@link startingIndex}
+ *
+ * @param from          The initial starting index
+ * @param startingIndex The computed starting index
+ * @param to            The initial ending index
+ * @param endingIndex   The computed ending index
+ * @throws InvalidIndexRangeException The {@link endingIndex} is under the {@link startingIndex}
+ */
+function __validateInRange(from: number, startingIndex: | 0 | 1, to: number, endingIndex: | 0 | 1,): void {
+    if (endingIndex >= startingIndex)
+return
+
+if (to === endingIndex)
+    if (from === startingIndex)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}”.`, from, to,)
+    else
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
+if (from === startingIndex)
+    throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}”.`, from, to,)
+throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
+}
+
+/**
+ * Get the last possible index as either 0, 1 or 2
+ *
+ * @param limit The limit to trimmed (if applicable)
+ * @throws ForbiddenIndexException The {@link limit} is {@link Number.NaN NaN}
+ */
+function __getLastIndex(limit: number,): | 0 | 1 | 2 {
+    if (Number.isNaN(limit,))
+        throw new ForbiddenIndexException("Forbidden index. The value cannot be determined with NaN.", limit,)
+    if (limit === Number.NEGATIVE_INFINITY)
+        return 0
+    if (limit === Number.POSITIVE_INFINITY)
+        return 2
+    if (limit === 2)
+        return 2
+    if (limit === 1)
+        return 1
+    if (limit === 0)
+        return 0
+    if (limit > 2)
+        return 2
+    if (limit === -2)
+        return 0
+    if (limit === -1)
+        return 1
+    return 0
+}
+
+//#endregion -------------------- Validate methods --------------------

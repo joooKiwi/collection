@@ -70,126 +70,6 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    //#region -------------------- Validate methods (private) --------------------
-
-    /**
-     * Validate that the value is either `null`, 0 or -1
-     *
-     * @param index The value to compare
-     * @throws IndexOutOfBoundsException The value is equal or over 1 (before or after calculation)
-     * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     */
-    #validateIndex(index: number,): void {
-        if (index === 0)
-            return
-        if (index === -1)
-            return
-        if (Number.isNaN(index,))
-            throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
-        if (index === Number.NEGATIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
-        if (index === Number.POSITIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
-        if (index > 1)
-            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (1).`, index,)
-        if (index === 1)
-            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (1).`, index,)
-        throw new IndexOutOfBoundsException(`"Index out of bound. The index “${index}” (“${index + 1}” after calculation) is under 0."`, index,)
-    }
-
-    /**
-     * Validate if the value is either `null`, 0 or -1
-     *
-     * @param from The value to validate
-     * @throws IndexOutOfBoundsException The value is equal or over 1 (before or after calculation)
-     * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     */
-    #validateStartingIndex(from: NullableNumber,): void {
-        if (from == null)
-            return
-
-        if (Number.isNaN(from,))
-            throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", from,)
-        if (from === Number.NEGATIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", from,)
-        if (from === Number.POSITIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", from,)
-
-        if (from === 0)
-            return
-        if (from === -1)
-            return
-
-        if (from > 1)
-            throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” is over the collection size “1”.`, from,)
-        if (from === 1)
-            throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” is the collection size “1”.`, from,)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” (“${from + 1}” after calculation) is under 0.`, from,)
-    }
-
-    /**
-     * Validate if the value is either `null`, 0 or -1
-     *
-     * @param to The value to validate
-     * @throws IndexOutOfBoundsException The value is equal or over 1 (before or after calculation)
-     * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     */
-    #validateEndingIndex(to: NullableNumber,): void {
-        if (to == null)
-            return
-
-        if (Number.isNaN(to,))
-            throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with NaN.", to,)
-        if (to === Number.NEGATIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", to,)
-        if (to === Number.POSITIVE_INFINITY)
-            throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", to,)
-
-        if (to === 0)
-            return
-        if (to === -1)
-            return
-
-        if (to > 1)
-            throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” is over the collection size “1”.`, to,)
-        if (to === 1)
-            throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” is the collection size “1”.`, to,)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” (“${to + 1}” after calculation) is under 0.`, to,)
-    }
-
-    /**
-     * Get the last possible index as either 0 or 1
-     *
-     * @param limit The limit to trimmed (if applicable)
-     * @throws ForbiddenIndexException The {@link limit} is {@link Number.NaN NaN}
-     */
-    #getLastIndex(limit: number,): | 0 | 1 {
-        if (Number.isNaN(limit,))
-            throw new ForbiddenIndexException("Forbidden index. The value cannot be determined with NaN.", limit,)
-        if (limit === Number.NEGATIVE_INFINITY)
-            return 0
-        if (limit === Number.POSITIVE_INFINITY)
-            return 1
-        if (limit >= 1)
-            return 1
-        return 0
-    }
-
-    /**
-     * Tell if the value is either `null`, 0 or -1
-     *
-     * @param value The value to compare
-     */
-    #isIndexValid(value: NullableNumber,): value is Nullable<| -1 | 0> {
-        if (value == null)
-            return true
-        if (value === 0)
-            return true
-        return value === -1
-    }
-
-    //#endregion -------------------- Validate methods (private) --------------------
-
     //#region -------------------- Reference methods --------------------
 
     /** The only value of the current instance */
@@ -287,18 +167,18 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             const value = this.value
             if ((predicate as (value: T,) => boolean)(value,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1,)
         }
         if (predicate.length >= 2) {
             const value = this.value
             if (predicate(value, 0,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1,)
         }
 
         if ((predicate as () => boolean)())
             return this.value
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 0,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1,)
     }
 
     public override findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -329,17 +209,17 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             if ((predicate as (index: number,) => boolean)(0,))
                 return this.value
             else
-                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1,)
         if (predicate.length >= 2) {
             const value = this.value
             if (predicate(0, value,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1,)
         }
 
         if ((predicate as () => boolean)())
             return this.value
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1,)
     }
 
     public override findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -372,18 +252,18 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             const value = this.value
             if ((predicate as (value: T,) => boolean)(value,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1,)
         }
         if (predicate.length >= 2) {
             const value = this.value
             if (predicate(value, 0,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1,)
         }
 
         if ((predicate as () => boolean)())
             return this.value
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 0,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1,)
     }
 
     public override findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -414,17 +294,17 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             if ((predicate as (index: number,) => boolean)(0,))
                 return this.value
             else
-                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0,)
+                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1,)
         if (predicate.length >= 2) {
             const value = this.value
             if (predicate(0, value,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1,)
         }
 
         if ((predicate as () => boolean)())
             return this.value
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 0,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1,)
     }
 
     public override findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -453,17 +333,17 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#region -------------------- Index methods --------------------
 
     public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): 0 {
-        this.#validateStartingIndex(from,)
-        this.#validateEndingIndex(to,)
+        __validateStartingIndex(from,)
+        __validateEndingIndex(to,)
         if (this.value === element)
             return 0
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
     public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {
-        if (!this.#isIndexValid(from,))
+        if (!__isIndexValid(from,))
             return null
-        if (!this.#isIndexValid(to,))
+        if (!__isIndexValid(to,))
             return null
         if (this.value === element)
             return 0
@@ -481,8 +361,8 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
 
 
     public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 {
-        this.#validateStartingIndex(from,)
-        this.#validateEndingIndex(to,)
+        __validateStartingIndex(from,)
+        __validateEndingIndex(to,)
 
         if (predicate.length === 1)
             if ((predicate as (value: T,) => boolean)(this.value,))
@@ -500,9 +380,9 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     }
 
     public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {
-        if (!this.#isIndexValid(from,))
+        if (!__isIndexValid(from,))
             return null
-        if (!this.#isIndexValid(to,))
+        if (!__isIndexValid(to,))
             return null
 
         if (predicate.length === 1)
@@ -521,8 +401,8 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     }
 
     public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 {
-        this.#validateStartingIndex(from,)
-        this.#validateEndingIndex(to,)
+        __validateStartingIndex(from,)
+        __validateEndingIndex(to,)
 
         if (predicate.length === 1)
             if ((predicate as (index: number,) => boolean)(0,))
@@ -540,9 +420,9 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     }
 
     public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {
-        if (!this.#isIndexValid(from,))
+        if (!__isIndexValid(from,))
             return null
-        if (!this.#isIndexValid(to,))
+        if (!__isIndexValid(to,))
             return null
 
         if (predicate.length === 1)
@@ -1506,20 +1386,20 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from)} */
     protected _sliceWith1Argument(from: number,): this {
-        this.#validateStartingIndex(from,)
+        __validateStartingIndex(from,)
         return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from, to)} */
     protected _sliceWith2Argument(from: number, to: number,): this {
-        this.#validateStartingIndex(from,)
-        this.#validateEndingIndex(to,)
+        __validateStartingIndex(from,)
+        __validateEndingIndex(to,)
         return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, to)} */
     protected _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): this {
-        this.#validateEndingIndex(to,)
+        __validateEndingIndex(to,)
         return this
     }
 
@@ -1533,7 +1413,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             const value = this.value
             let index1 = indicesSize
             while (index1-- > 0)
-                this.#validateIndex(indices[index1] as number,)
+                __validateIndex(indices[index1] as number,)
 
             const newArray = new Array<T>(indicesSize,)
             let index2 = indicesSize
@@ -1554,7 +1434,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             const iterator = indices[Symbol.iterator]()
             let index1 = indicesSize
             while (index1-- > 0)
-                this.#validateIndex(iterator.next().value as number,)
+                __validateIndex(iterator.next().value as number,)
 
             const newArray = new Array<T>(indicesSize,)
             let index2 = -1
@@ -1574,7 +1454,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             const value = this.value
             let index1 = indicesSize
             while (index1-- > 0)
-                this.#validateIndex(indices.get(index1,),)
+                __validateIndex(indices.get(index1,),)
 
             const newArray = new Array<T>(indicesSize,)
             let index2 = indicesSize
@@ -1594,7 +1474,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             const indicesSize = indices.size
             let index1 = indicesSize
             while (index1-- > 0)
-                this.#validateIndex(indices.get(index1,),)
+                __validateIndex(indices.get(index1,),)
 
             const newArray = new Array<T>(indicesSize,)
             let index2 = indicesSize
@@ -1614,7 +1494,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             const indicesSize = indices.size
             let index1 = indicesSize
             while (index1-- > 0)
-                this.#validateIndex(indices.previousValue,)
+                __validateIndex(indices.previousValue,)
 
             const newArray = new Array<T>(indicesSize,)
             let index2 = indicesSize
@@ -1632,10 +1512,10 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
 
         return new LazyCollectionHolder(() => {
             const value = this.value
-            this.#validateIndex(iteratorResult.value as number,)
+            __validateIndex(iteratorResult.value as number,)
             let newSize = 1
             while (!(iteratorResult = indices.next()).done) {
-                this.#validateIndex(iteratorResult.value as number,)
+                __validateIndex(iteratorResult.value as number,)
                 newSize++
             }
 
@@ -1656,10 +1536,10 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
 
         return new LazyCollectionHolder(() => {
             const value = this.value
-            this.#validateIndex(iteratorResult.value as number,)
+            __validateIndex(iteratorResult.value as number,)
             let newSize = 1
             while (!(iteratorResult = iterator.next()).done) {
-                this.#validateIndex(iteratorResult.value as number,)
+                __validateIndex(iteratorResult.value as number,)
                 newSize++
             }
 
@@ -1944,8 +1824,8 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#region -------------------- To reverse --------------------
 
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): this {
-        this.#validateStartingIndex(from,)
-        this.#validateEndingIndex(to,)
+        __validateStartingIndex(from,)
+        __validateEndingIndex(to,)
         return this
     }
 
@@ -2021,29 +1901,37 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
+    protected _joinToString_core(prefix: string, postfix: string,): string {
+        return `${prefix}${this.value}${postfix}`
+    }
+
+    protected _joinToString_truncated(prefix: string, postfix: string, truncated: string,): string {
+        return `${prefix}${truncated}${postfix}`
+    }
+
+    protected _joinToString_transform(prefix: string, postfix: string, transform: StringCallback<T>,): string {
+        if (transform.length === 1)
+            return `${prefix}${(transform as (value: T,) => string)(this.value,)}${postfix}`
+        if (transform.length >= 2)
+            return `${prefix}${transform(this.value, 0,)}${postfix}`
+        return `${prefix}${(transform as () => string)()}${postfix}`
+    }
+
+
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
     public override joinToString(_?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,) {
         if (transform == null)
             if (limit == null)
-                return `${prefix ?? '['}${this.value}${postfix ?? ']'}`
-            else if (this.#getLastIndex(limit,) === 0)
-                return `${prefix ?? '['}${truncated ?? '…'}${postfix ?? ']'}`
+                return this._joinToString_core(prefix ?? '[', postfix ?? ']',)
+            else if (__getLastIndex(limit,) === 0)
+                return this._joinToString_truncated(prefix ?? '[', postfix ?? ']', truncated ?? '…',)
             else
-                return `${prefix ?? '['}${this.value}${postfix ?? ']'}`
+                return this._joinToString_core(prefix ?? '[', postfix ?? ']',)
         if (limit == null)
-            if (transform.length === 1)
-                return `${prefix ?? '['}${(transform as (value: T,) => string)(this.value,)}${postfix ?? ']'}`
-            else if (transform.length >= 2)
-                return `${prefix ?? '['}${transform(this.value, 0,)}${postfix ?? ']'}`
-            else
-                return `${prefix ?? '['}${(transform as () => string)()}${postfix ?? ']'}`
-        if (this.#getLastIndex(limit,) === 0)
-            return `${prefix ?? '['}${truncated ?? '…'}${postfix ?? ']'}`
-        if (transform.length === 1)
-            return `${prefix ?? '['}${(transform as (value: T,) => string)(this.value,)}${postfix ?? ']'}`
-        if (transform.length >= 2)
-            return `${prefix ?? '['}${transform(this.value, 0,)}${postfix ?? ']'}`
-        return `${prefix ?? '['}${(transform as () => string)()}${postfix ?? ']'}`
+            return this._joinToString_transform(prefix ?? '[', postfix ?? ']', transform,)
+        if (__getLastIndex(limit,) === 0)
+            return this._joinToString_truncated(prefix ?? '[', postfix ?? ']', truncated ?? '…',)
+        return this._joinToString_transform(prefix ?? '[', postfix ?? ']', transform,)
     }
 
     //#endregion -------------------- Join to string --------------------
@@ -2053,3 +1941,123 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Methods --------------------
 
 }
+
+//#region -------------------- Validate methods --------------------
+
+/**
+ * Validate that the value is either `null`, 0 or -1
+ *
+ * @param index The value to compare
+ * @throws IndexOutOfBoundsException The value is equal or over 1 (before or after calculation)
+ * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ */
+function __validateIndex(index: number,): void {
+    if (index === 0)
+        return
+    if (index === -1)
+        return
+    if (Number.isNaN(index,))
+        throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
+    if (index === Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
+    if (index === Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
+    if (index > 1)
+        throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (1).`, index,)
+    if (index === 1)
+        throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (1).`, index,)
+    throw new IndexOutOfBoundsException(`"Index out of bound. The index “${index}” (“${index + 1}” after calculation) is under 0."`, index,)
+}
+
+/**
+ * Validate if the value is either `null`, 0 or -1
+ *
+ * @param from The value to validate
+ * @throws IndexOutOfBoundsException The value is equal or over 1 (before or after calculation)
+ * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ */
+function __validateStartingIndex(from: NullableNumber,): void {
+    if (from == null)
+        return
+
+    if (Number.isNaN(from,))
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", from,)
+    if (from === Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", from,)
+    if (from === Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", from,)
+
+    if (from === 0)
+        return
+    if (from === -1)
+        return
+
+    if (from > 1)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” is over the collection size “1”.`, from,)
+    if (from === 1)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” is the collection size “1”.`, from,)
+    throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${from}” (“${from + 1}” after calculation) is under 0.`, from,)
+}
+
+/**
+ * Validate if the value is either `null`, 0 or -1
+ *
+ * @param to The value to validate
+ * @throws IndexOutOfBoundsException The value is equal or over 1 (before or after calculation)
+ * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ */
+function __validateEndingIndex(to: NullableNumber,): void {
+    if (to == null)
+        return
+
+    if (Number.isNaN(to,))
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with NaN.", to,)
+    if (to === Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", to,)
+    if (to === Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", to,)
+
+    if (to === 0)
+        return
+    if (to === -1)
+        return
+    
+    if (to > 1)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” is over the collection size “1”.`, to,)
+    if (to === 1)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” is the collection size “1”.`, to,)
+    throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${to}” (“${to + 1}” after calculation) is under 0.`, to,)
+}
+
+/**
+ * Get the last possible index as either 0 or 1
+ *
+ * @param limit The limit to trimmed (if applicable)
+ * @throws ForbiddenIndexException The {@link limit} is {@link Number.NaN NaN}
+ */
+function __getLastIndex(limit: number,): | 0 | 1 {
+    if (Number.isNaN(limit,))
+        throw new ForbiddenIndexException("Forbidden index. The value cannot be determined with NaN.", limit,)
+    if (limit === Number.NEGATIVE_INFINITY)
+        return 0
+    if (limit === Number.POSITIVE_INFINITY)
+        return 1
+    if (limit >= 1)
+        return 1
+    return 0
+}
+
+/**
+ * Tell if the value is either `null`, 0 or -1
+ *
+ * @param value The value to compare
+ */
+function __isIndexValid(value: NullableNumber,): value is Nullable<| -1 | 0> {
+    if (value == null)
+        return true
+    if (value === 0)
+        return true
+    return value === -1
+}
+
+//#endregion -------------------- Validate methods --------------------
