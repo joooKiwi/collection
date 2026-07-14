@@ -1,6 +1,7 @@
 package joookiwi.collection.java.iterator.value;
 
-import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.iterator.CollectionIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -19,18 +20,24 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @param <COLLECTION> The [CollectionHolder] source
 @NotNullByDefault
 public class GenericCollectionIteratorValue<T extends @Nullable Object,
-        COLLECTION extends MinimalistCollectionHolder<? extends T>>
+        REFERENCE extends CollectionIterator<? extends T>,
+        COLLECTION extends CollectionHolder<? extends T>>
         extends AbstractIteratorValue<T>
         implements CollectionIteratorValue<T> {
 
+    private final REFERENCE __iterator;
     private final COLLECTION __collection;
     private final @Range(from = 0, to = MAX_INT_VALUE) int __index;
 
-    public GenericCollectionIteratorValue(final COLLECTION collection, final @Range(from = 0, to = MAX_INT_VALUE) int index) {
+    public GenericCollectionIteratorValue(final REFERENCE iterator, final COLLECTION collection, final @Range(from = 0, to = MAX_INT_VALUE) int index) {
         super();
+        __iterator = iterator;
         __collection = collection;
         __index = index;
     }
+
+    @Contract(pure = true)
+    protected REFERENCE _iterator() { return __iterator; }
 
     @Contract(pure = true)
     @Override public COLLECTION collection() { return __collection; }
