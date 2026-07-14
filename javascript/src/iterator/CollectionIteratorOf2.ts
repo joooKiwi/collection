@@ -21,6 +21,8 @@ export class CollectionIteratorOf2<const T = unknown,
 
     readonly #value1: T1
     readonly #value2: T2
+    #valueResult1?: IteratorValueOf1On2<T1>
+    #valueResult2?: IteratorValueOf2On2<T2>
 
     public constructor(value1: T1, value2: T2,) {
         super()
@@ -32,9 +34,9 @@ export class CollectionIteratorOf2<const T = unknown,
 
     public override get value2(): T2 { return this.#value2 }
 
-    protected override get _valueResult1(): IteratorValueOf1On2<T1> { return new IteratorValueOf1On2(this.value1,) }
+    protected override get _valueResult1(): IteratorValueOf1On2<T1> { return this.#valueResult1 ??= new IteratorValueOf1On2(this.value1,) }
 
-    protected override get _valueResult2(): IteratorValueOf2On2<T2> { return new IteratorValueOf2On2(this.value2,) }
+    protected override get _valueResult2(): IteratorValueOf2On2<T2> { return this.#valueResult2 ??= new IteratorValueOf2On2(this.value2,) }
 
     public override [Symbol.iterator](): CollectionIteratorOf2<T, T1, T2> {
         return new CollectionIteratorOf2(this.value1, this.value2,)

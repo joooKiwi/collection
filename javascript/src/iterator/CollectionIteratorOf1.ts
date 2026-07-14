@@ -17,6 +17,7 @@ export class CollectionIteratorOf1<const T = unknown, >
     extends AbstractCollectionIteratorOf1<T> {
 
     readonly #value: T
+    #valueResult?: IteratorValueOf1<T>
 
     public constructor(value: T,) {
         super()
@@ -25,7 +26,7 @@ export class CollectionIteratorOf1<const T = unknown, >
 
     public override get value(): T { return this.#value }
 
-    protected override get _valueResult(): IteratorValueOf1<T> { return new IteratorValueOf1(this.value,) }
+    protected override get _valueResult(): IteratorValueOf1<T> { return this.#valueResult ??= new IteratorValueOf1(this.value,) }
 
     public override [Symbol.iterator](): CollectionIteratorOf1<T> {
         return new CollectionIteratorOf1(this.value,)
