@@ -130,9 +130,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return this.value2
         if (index === -2)
             return this.value1
-        if (index > 1)
+        if (index > 2)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (2).`, index,)
-        if (index === 1)
+        if (index === 2)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (2).`, index,)
         throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${index + 1} after calculation) is under 0.`, index,)
     }
@@ -3234,15 +3234,11 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return new CollectionHolderOf1(this.value1,)
         if (n === 2)
             return this
-        if (n > 1)
+        if (n > 2)
             return this
-        if (n > 0)
-            return new CollectionHolderOf1(this.value1,)
         if (n === -1)
             return new CollectionHolderOf1(this.value1,)
-        if (n <= -2)
-            return EmptyCollectionHolder.get
-        return this
+        return EmptyCollectionHolder.get
     }
 
     //#endregion -------------------- Take --------------------
@@ -3348,15 +3344,11 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return new CollectionHolderOf1(this.value2,)
         if (n === 2)
             return this
-        if (n > 1)
+        if (n > 2)
             return this
-        if (n > 0)
-            return new CollectionHolderOf1(this.value2,)
         if (n === -1)
             return new CollectionHolderOf1(this.value2,)
-        if (n <= -2)
-            return EmptyCollectionHolder.get
-        return this
+        return EmptyCollectionHolder.get
     }
 
     //#endregion -------------------- Take last --------------------
@@ -3465,10 +3457,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return new CollectionHolderOf1(this.value2,)
         if (n === 2)
             return EmptyCollectionHolder.get
-        if (n > 1)
+        if (n > 2)
             return EmptyCollectionHolder.get
-        if (n > 0)
-            return new CollectionHolderOf1(this.value2,)
         if (n === -1)
             return new CollectionHolderOf1(this.value2,)
         return this
@@ -3577,14 +3567,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return new CollectionHolderOf1(this.value1,)
         if (n === 2)
             return EmptyCollectionHolder.get
-        if (n > 1)
+        if (n > 2)
             return EmptyCollectionHolder.get
-        if (n > 0)
-            return new CollectionHolderOf1(this.value1,)
         if (n === -1)
             return new CollectionHolderOf1(this.value1,)
-        if (n <= -2)
-            return this
         return EmptyCollectionHolder.get
     }
 
