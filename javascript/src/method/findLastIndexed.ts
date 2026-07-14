@@ -201,7 +201,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (index-- > 0)
         if (predicate())
             return collection.get(index,)
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size,)
 }
 
 function __with0ArgumentByArray<const T, >(collection: Array<T>, predicate: () => boolean, size: number,) {
@@ -209,7 +209,7 @@ function __with0ArgumentByArray<const T, >(collection: Array<T>, predicate: () =
     while (index-- > 0)
         if (predicate())
             return collection[index] as T
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size,)
 }
 
 
@@ -218,7 +218,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (index-- > 0)
         if (predicate(index,))
             return collection.get(index,)
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size,)
 }
 
 function __with1ArgumentByArray<const T, >(collection: Array<T>, predicate: (index: number,) => boolean, size: number,) {
@@ -226,7 +226,7 @@ function __with1ArgumentByArray<const T, >(collection: Array<T>, predicate: (ind
     while (index-- > 0)
         if (predicate(index,))
             return collection[index] as T
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size,)
 }
 
 
@@ -237,7 +237,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
         if (predicate(index, value,))
             return value
     }
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size,)
 }
 
 function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (index: number, value: T,) => boolean, size: number,) {
@@ -247,7 +247,7 @@ function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (ind
         if (predicate(index, value,))
             return value
     }
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", size,)
 }
 
 //#endregion -------------------- Loop methods --------------------
