@@ -14,6 +14,19 @@ import type {Set, UndefinedOr} from "@joookiwi/type"
 
 import {AbstractCollectionHolderOf2} from "./AbstractCollectionHolderOf2"
 
+/**
+ * An instance of {@link CollectionHolder} adapted from an {@link ReadonlySet Set} having 2 values inside.
+ *
+ * Note that the value is directly retrieved from the set and it is kept
+ *
+ * @typeParam T  The type (by default `unknown`)
+ * @typeParam T1 The 1st type (by default `T`)
+ * @typeParam T2 The 2nd type (by default `T`)
+ * @see SetAsCollectionHolder
+ * @see ArrayOf2AsCollectionHolder
+ * @see CollectionHolderOf2
+ * @see LazyCollectionHolderOf2
+ */
 export class SetOf2AsCollectionHolder<const T = unknown,
     const T1 extends T = T,
     const T2 extends T = T,
