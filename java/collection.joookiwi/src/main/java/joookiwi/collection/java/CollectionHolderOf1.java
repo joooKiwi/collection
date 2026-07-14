@@ -1,11 +1,16 @@
 package joookiwi.collection.java;
 
+import java.util.function.Consumer;
+import java.util.function.IntConsumer;
+import java.util.function.ObjIntConsumer;
+import joookiwi.collection.java.callback.IntObjConsumer;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
 
 /// An instance of [CollectionHolder] with only a single value from its `constructor`
 ///
@@ -31,6 +36,15 @@ public class CollectionHolderOf1<T extends @Nullable Object>
     @Override public boolean hasNull() { return __hasNull; }
 
     @Override public boolean hasNoNulls() { return __hasNoNulls; }
+
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolderOf1<T> onEach(final ObjIntConsumer<? super T> action) { return (CollectionHolderOf1<T>) super.onEach(action); }
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolderOf1<T> onEach(final Consumer<? super T>       action) { return (CollectionHolderOf1<T>) super.onEach(action); }
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolderOf1<T> onEach(final Runnable                  action) { return (CollectionHolderOf1<T>) super.onEach(action); }
+
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolderOf1<T> onEachIndexed(final IntObjConsumer<? super T> action) { return (CollectionHolderOf1<T>) super.onEachIndexed(action); }
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolderOf1<T> onEachIndexed(final IntConsumer               action) { return (CollectionHolderOf1<T>) super.onEachIndexed(action); }
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolderOf1<T> onEachIndexed(final Runnable                  action) { return (CollectionHolderOf1<T>) super.onEachIndexed(action); }
+
 
 
     @MustBeInvokedByOverriders
