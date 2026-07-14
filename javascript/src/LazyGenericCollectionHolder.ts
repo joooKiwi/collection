@@ -17,7 +17,7 @@ import {LazyCollectionHolder} from "./LazyCollectionHolder"
  *
  * Meaning that the value in the instance are not retrieved until it is necessary.
  *
- * @typeParam T The element type
+ * @typeParam T The type (by default `unknown`)
  * @note The index in the instance may not be initialized if retrieved directly
  * @see GenericMinimalistCollectionHolder
  * @see GenericCollectionHolder

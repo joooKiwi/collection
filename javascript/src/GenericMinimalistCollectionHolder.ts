@@ -45,7 +45,7 @@ import {isSetByStructure}                        from "./method/isSetByStructure
  * But it is not {@link Object.isFrozen frozen} to ensure
  * the children can do their initialization.
  *
- * @typeParam T The element type
+ * @typeParam T The type (by default `unknown`)
  * @see GenericCollectionHolder
  * @see LazyCollectionHolder
  * @see EmptyCollectionHolder

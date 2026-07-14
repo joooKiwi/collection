@@ -156,7 +156,7 @@ import {toUpperCaseStringByCollectionHolder}                       from "./metho
  * It only uses the extension function for the method implementations.
  *
  * @apiNote This class is used to help reduce the complexity when needed and calling its generic {@link CollectionHolder} extension method if applicable
- * @typeParam T The type
+ * @typeParam T The type (by default `unknown`)
  * @see AbstractCollectionHolderOf1
  * @see AbstractCollectionHolderOf2
  * @see EmptyCollectionHolder

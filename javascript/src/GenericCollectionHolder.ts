@@ -160,7 +160,7 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * But it is not {@link Object.isFrozen frozen} to ensure
  * the children can do their initialization.
  *
- * @typeParam T The element type
+ * @typeParam T The type (by default `unknown`)
  * @see GenericMinimalistCollectionHolder
  * @see LazyCollectionHolder
  * @see EmptyCollectionHolder

@@ -19,7 +19,8 @@ import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
  *
  * Note that the value is directly retrieved from the array and it is kept
  *
- * @typeParam T The type
+ * @typeParam T          The type (by default `unknown`)
+ * @typeParam REFERENCE The reference passed in the constructor (by default `Set<T>`)
  * @see SetAsCollectionHolder
  * @see ArrayOf1AsCollectionHolder
  * @see CollectionHolderOf1

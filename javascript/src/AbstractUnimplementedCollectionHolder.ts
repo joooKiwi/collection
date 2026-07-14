@@ -28,7 +28,7 @@ import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollection
  *
  * @apiNote This class is used when not specifically requiring an optimization on the methods, just the non-aliased methods calls
  * @note This class should be inherited if new classes are being made to be more usable by the tools
- * @typeParam T The type
+ * @typeParam T The type (by default `unknown`)
  * @see AbstractCollectionHolder
  * @see AbstractCollectionHolderOf1
  * @see AbstractCollectionHolderOf2

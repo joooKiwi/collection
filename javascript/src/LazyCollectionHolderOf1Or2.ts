@@ -36,7 +36,7 @@ import {IndexOutOfBoundsException}             from "./exception/IndexOutOfBound
  * The first as {@link CollectionHolderOf1} and the second as {@link CollectionHolderOf2}.
  * Plus, the inner-collection is lazily retrieved.
  *
- * @typeParam T The type
+ * @typeParam T The type (by default `unknown`)
  */
 export class LazyCollectionHolderOf1Or2<const T = unknown, >
     extends AbstractUnimplementedCollectionHolder<T> {

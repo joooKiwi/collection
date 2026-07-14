@@ -16,7 +16,7 @@ import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
  * A definition of a {@link MinimalistCollectionHolder} to have a common ancestor.
  *
  * @note This class should be inherited if new classes are being made to be more usable by the tools
- * @typeParam T The type
+ * @typeParam T The type (by default `unknown`)
  * @see EmptyCollectionHolder
  * @see GenericMinimalistCollectionHolder
  */

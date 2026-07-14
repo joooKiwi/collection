@@ -20,7 +20,7 @@ import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
  *
  * It does retrieve the value only once from the callback received in its `constructor`.
  *
- * @typeParam T The type
+ * @typeParam T The type (by default `unknown`)
  * @see CollectionHolderOf1
  * @see ArrayOf1AsCollectionHolder
  */

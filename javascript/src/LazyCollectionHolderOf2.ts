@@ -22,7 +22,7 @@ import {AbstractCollectionHolderOf2} from "./AbstractCollectionHolderOf2"
  *
  * It does retrieve the value only once from the callback received in its `constructor`.
  *
- * @typeParam T The type
+ * @typeParam T The type (by default `unknown`)
  * @typeParam T1 The 1st type (by default `T`)
  * @typeParam T2 The 2nd type (by default `T`)
  * @see CollectionHolderOf2

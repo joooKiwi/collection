@@ -146,8 +146,8 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * Note that nothing excepting the {@link ReadonlyArray Array} received
  * are kept in the instance.
  *
- * @typeParam T         The element type
- * @typeParam REFERENCE The reference passed in the constructor
+ * @typeParam T         The type (by default `unknown`)
+ * @typeParam REFERENCE The reference passed in the constructor (by default `Array<T>`)
  * @adaptor
  */
 export class ArrayAsCollectionHolder<const T = unknown,

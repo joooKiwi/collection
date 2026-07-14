@@ -15,7 +15,7 @@ import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
 /**
  * An instance of [CollectionHolder] with only a single value from its `constructor`
  *
- * @typeParam T The type
+ * @typeParam T The type (by default `unknown`)
  * @see LazyCollectionHolderOf1
  * @see ArrayOf1AsCollectionHolder
  */
