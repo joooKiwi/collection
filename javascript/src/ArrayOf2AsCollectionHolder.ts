@@ -38,8 +38,8 @@ export class ArrayOf2AsCollectionHolder<const T = unknown,
     /** The internal value passed through the {@link constructor} in the {@link _reference} second field */
     public override readonly 1: T2
     readonly #reference: WeakRef<REFERENCE>
-    readonly #firstValue: T1
-    readonly #secondValue: T2
+    readonly #value1: T1
+    readonly #value2: T2
     readonly #hasNull: boolean
     readonly #hasNoNulls: boolean
     readonly #hasDuplicate: boolean
@@ -50,17 +50,17 @@ export class ArrayOf2AsCollectionHolder<const T = unknown,
         if (reference.length !== 2)
             throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 2.`,)
         this.#reference = new WeakRef(reference,)
-        const firstValue = this[0] = this.#firstValue = reference[0]
-        const secondValue = this[1] = this.#secondValue = reference[1]
-        this.#hasNoNulls = !(this.#hasNull = (firstValue == null || secondValue == null))
-        this.#hasNoDuplicates = !(this.#hasDuplicate = firstValue as T === secondValue as T)
+        const value1 = this[0] = this.#value1 = reference[0]
+        const value2 = this[1] = this.#value2 = reference[1]
+        this.#hasNoNulls = !(this.#hasNull = (value1 == null || value2 == null))
+        this.#hasNoDuplicates = !(this.#hasDuplicate = value1 as T === value2 as T)
     }
 
     /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
-    public override get value1(): T1 { return this.#firstValue }
+    public override get value1(): T1 { return this.#value1 }
 
     /** The internal value passed through the {@link constructor} in the {@link _reference} second field */
-    public override get value2(): T2 { return this.#secondValue }
+    public override get value2(): T2 { return this.#value2 }
 
     /**
      * The internal referenced passed through the {@link constructor}.
