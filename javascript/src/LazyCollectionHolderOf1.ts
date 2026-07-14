@@ -10,10 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy} from "@joookiwi/lazy"
-import {lazy}      from "@joookiwi/lazy"
-
 import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
+
+const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
 
 /**
  * An instance of [CollectionHolder] with only a single value but lazily retrieved.
@@ -27,23 +26,44 @@ import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
 export class LazyCollectionHolderOf1<const T = unknown, >
     extends AbstractCollectionHolderOf1<T> {
 
-    readonly #value: Lazy<T>
+    //#region -------------------- Field --------------------
+
+    #lateValue: () => T
+    #value?: T
+    #isValueInitialized: boolean
     #hasNull?: boolean
     #hasNoNulls?: boolean
 
+    //#endregion -------------------- Field --------------------
+    //#region -------------------- Constructor --------------------
+
     public constructor(lateValue: () => T,) {
         super()
-        this.#value = lazy(lateValue,)
+        this.#lateValue = lateValue
+        this.#isValueInitialized = false
     }
+
+    //#endregion -------------------- Constructor --------------------
+    //#region -------------------- Methods --------------------
 
     /** The internal value passed through the {@link constructor} */
     public override get 0() { return this.value }
 
     /** The internal value passed through the {@link constructor} */
-    public override get value(): T { return this.#value.value }
+    public override get value(): T {
+        if (this.#isValueInitialized)
+            return this.#value as T
+
+        const value = this.#value = this.#lateValue()
+        this.#lateValue = FAIL_CALLBACK // We do not need the callback anymore once the value has been retrieved
+        this.#isValueInitialized = true
+        return value
+    }
 
     public override get hasNull(): boolean { return this.#hasNull ?? super.hasNull }
 
     public override get hasNoNulls(): boolean { return this.#hasNoNulls ?? super.hasNoNulls }
+
+    //#endregion -------------------- Methods --------------------
 
 }
