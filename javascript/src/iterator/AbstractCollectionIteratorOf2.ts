@@ -116,11 +116,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     public override get hasNext(): boolean {
         if (this._isNextIndexInitialized)
             return this._nextIndex != null
-
-        const currentIndex = this._currentIndex
-        if (currentIndex == null)
-            return true
-        return currentIndex < this.size
+        return true
     }
 
 
@@ -136,7 +132,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
         const value = this.#nextIndex
         if (value !== undefined)
             return value
-        return this.#nextIndex = this.firstIndex
+        return this.#nextIndex = 0
     }
 
     /**
@@ -219,11 +215,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     public override get hasPrevious(): boolean {
         if (this._isPreviousIndexInitialized)
             return this._previousIndex != null
-
-        const currentIndex = this._currentIndex
-        if (currentIndex == null)
-            return true
-        return currentIndex > 0
+        return true
     }
 
 
@@ -239,7 +231,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
         const value = this.#previousIndex
         if (value !== undefined)
             return value
-        return this.#previousIndex = this.lastIndex
+        return this.#previousIndex = 1
     }
 
     /**
