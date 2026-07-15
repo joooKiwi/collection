@@ -39,9 +39,25 @@ import {prefixAndPostfixOnly}                    from "./method/joinToString"
 /**
  * A {@link CollectionHolder} with no values (as a singleton instance)
  *
+ * @see CollectionConstants.EMPTY_COLLECTION_HOLDER
  * @see GenericMinimalistCollectionHolder
+ * @see MinimalistAsCollectionHolder
  * @see GenericCollectionHolder
+ * @see ArrayAsCollectionHolder
+ * @see ArrayOf1AsCollectionHolder
+ * @see ArrayOf2AsCollectionHolder
+ * @see SetAsCollectionHolder
+ * @see SetOf1AsCollectionHolder
+ * @see SetOf2AsCollectionHolder
+ * @see IteratorAsCollectionHolder
+ * @see JsIterableAsCollectionHolder
+ * @see JsIteratorAsCollectionHolder
  * @see LazyCollectionHolder
+ * @see LazyCollectionHolderOf0Or1
+ * @see LazyCollectionHolderOf0Or1Or2
+ * @see LazyCollectionHolderOf1
+ * @see LazyCollectionHolderOf1Or2
+ * @see LazyCollectionHolderOf2
  * @singleton
  */
 export class EmptyCollectionHolder
