@@ -5227,81 +5227,80 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
-    protected String _joinToString(final String prefix, final String postfix) {
+    protected String _joinToString_core(final String prefix, final String postfix) {
         return prefix + value() + postfix;
     }
 
-    protected String _joinToString(final String prefix, final String postfix, final String truncated) {
+    protected String _joinToString_truncated(final String prefix, final String postfix, final String truncated) {
         return prefix + truncated + postfix;
     }
 
-    protected String _joinToString(final String prefix, final String postfix, final ObjIntFunction<? super T, String> transform) {
+    protected String _joinToString_transform(final String prefix, final String postfix, final ObjIntFunction<? super T, String> transform) {
         return prefix + transform.apply(value(), 0) + postfix;
     }
 
-    protected String _joinToString(final String prefix, final String postfix, final Function<? super T, String> transform) {
+    protected String _joinToString_transform(final String prefix, final String postfix, final Function<? super T, String> transform) {
         return prefix + transform.apply(value()) + postfix;
     }
 
-    protected String _joinToString(final String prefix, final String postfix, final Supplier<String> transform) {
+    protected String _joinToString_transform(final String prefix, final String postfix, final Supplier<String> transform) {
         return prefix + transform.get() + postfix;
     }
 
-
     //#region -------------------- Join to string ∅ --------------------
 
-    @Override public final String joinToString() { return _joinToString(DEFAULT_JOIN_PREFIX_STRING, DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString() { return _joinToString_core(DEFAULT_JOIN_PREFIX_STRING, DEFAULT_JOIN_POSTFIX_STRING); }
 
     //#endregion -------------------- Join to string ∅ --------------------
     //#region -------------------- Join to string (separator) --------------------
 
-    @Override public final String joinToString(final @Nullable String    separator) { return joinToString(DEFAULT_JOIN_PREFIX_STRING, DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final @Nullable Character separator) { return joinToString(DEFAULT_JOIN_PREFIX_STRING, DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final char                separator) { return joinToString(DEFAULT_JOIN_PREFIX_STRING, DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final @Nullable String    separator) { return _joinToString_core(DEFAULT_JOIN_PREFIX_STRING, DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final @Nullable Character separator) { return _joinToString_core(DEFAULT_JOIN_PREFIX_STRING, DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final char                separator) { return _joinToString_core(DEFAULT_JOIN_PREFIX_STRING, DEFAULT_JOIN_POSTFIX_STRING); }
 
     //#endregion -------------------- Join to string (separator) --------------------
     //#region -------------------- Join to string (separator, prefix) --------------------
 
-    @Override public final String joinToString(final @Nullable String    separator, final @Nullable String    prefix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final @Nullable String    separator, final @Nullable Character prefix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final @Nullable String    separator, final char                prefix) { return _joinToString(valueOf(prefix),                                                 DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final @Nullable Character separator, final @Nullable String    prefix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final @Nullable Character separator, final char                prefix) { return _joinToString(valueOf(prefix),                                                 DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final char                separator, final @Nullable String    prefix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final char                separator, final @Nullable Character prefix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), DEFAULT_JOIN_POSTFIX_STRING); }
-    @Override public final String joinToString(final char                separator, final char                prefix) { return _joinToString(valueOf(prefix),                                                 DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final @Nullable String    separator, final @Nullable String    prefix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final @Nullable String    separator, final @Nullable Character prefix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final @Nullable String    separator, final char                prefix) { return _joinToString_core(valueOf(prefix),                                                 DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final @Nullable Character separator, final @Nullable String    prefix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final @Nullable Character separator, final char                prefix) { return _joinToString_core(valueOf(prefix),                                                 DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final char                separator, final @Nullable String    prefix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final char                separator, final @Nullable Character prefix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), DEFAULT_JOIN_POSTFIX_STRING); }
+    @Override public final String joinToString(final char                separator, final char                prefix) { return _joinToString_core(valueOf(prefix),                                                 DEFAULT_JOIN_POSTFIX_STRING); }
 
     //#endregion -------------------- Join to string (separator, prefix) --------------------
     //#region -------------------- Join to string (separator, prefix, postfix) --------------------
 
-    @Override public final String joinToString(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable String    postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable Character postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final @Nullable String    separator, final @Nullable String    prefix, final char                postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            valueOf(postfix)); }
-    @Override public final String joinToString(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable String    postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable Character postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final @Nullable String    separator, final @Nullable Character prefix, final char                postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), valueOf(postfix)); }
-    @Override public final String joinToString(final @Nullable String    separator, final char                prefix, final @Nullable String    postfix) { return _joinToString(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final @Nullable String    separator, final char                prefix, final @Nullable Character postfix) { return _joinToString(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final @Nullable String    separator, final char                prefix, final char                postfix) { return _joinToString(valueOf(prefix),                                                 valueOf(postfix)); }
-    @Override public final String joinToString(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable String    postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable Character postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final @Nullable Character separator, final @Nullable String    prefix, final char                postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            valueOf(postfix)); }
-    @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String    postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char                postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), valueOf(postfix)); }
-    @Override public final String joinToString(final @Nullable Character separator, final char                prefix, final @Nullable String    postfix) { return _joinToString(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final @Nullable Character separator, final char                prefix, final @Nullable Character postfix) { return _joinToString(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final @Nullable Character separator, final char                prefix, final char                postfix) { return _joinToString(valueOf(prefix),                                                 valueOf(postfix)); }
-    @Override public final String joinToString(final char                separator, final @Nullable String    prefix, final @Nullable String    postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final char                separator, final @Nullable String    prefix, final @Nullable Character postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final char                separator, final @Nullable String    prefix, final char                postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            valueOf(postfix)); }
-    @Override public final String joinToString(final char                separator, final @Nullable Character prefix, final @Nullable String    postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final char                separator, final @Nullable Character prefix, final @Nullable Character postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final char                separator, final @Nullable Character prefix, final char                postfix) { return _joinToString(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), valueOf(postfix)); }
-    @Override public final String joinToString(final char                separator, final char                prefix, final @Nullable String    postfix) { return _joinToString(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
-    @Override public final String joinToString(final char                separator, final char                prefix, final @Nullable Character postfix) { return _joinToString(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
-    @Override public final String joinToString(final char                separator, final char                prefix, final char                postfix) { return _joinToString(valueOf(prefix),                                                 valueOf(postfix)); }
+    @Override public final String joinToString(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable String    postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final @Nullable String    separator, final @Nullable String    prefix, final @Nullable Character postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final @Nullable String    separator, final @Nullable String    prefix, final char                postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            valueOf(postfix)); }
+    @Override public final String joinToString(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable String    postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final @Nullable String    separator, final @Nullable Character prefix, final @Nullable Character postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final @Nullable String    separator, final @Nullable Character prefix, final char                postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), valueOf(postfix)); }
+    @Override public final String joinToString(final @Nullable String    separator, final char                prefix, final @Nullable String    postfix) { return _joinToString_core(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final @Nullable String    separator, final char                prefix, final @Nullable Character postfix) { return _joinToString_core(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final @Nullable String    separator, final char                prefix, final char                postfix) { return _joinToString_core(valueOf(prefix),                                                 valueOf(postfix)); }
+    @Override public final String joinToString(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable String    postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final @Nullable Character separator, final @Nullable String    prefix, final @Nullable Character postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final @Nullable Character separator, final @Nullable String    prefix, final char                postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            valueOf(postfix)); }
+    @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String    postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char                postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), valueOf(postfix)); }
+    @Override public final String joinToString(final @Nullable Character separator, final char                prefix, final @Nullable String    postfix) { return _joinToString_core(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final @Nullable Character separator, final char                prefix, final @Nullable Character postfix) { return _joinToString_core(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final @Nullable Character separator, final char                prefix, final char                postfix) { return _joinToString_core(valueOf(prefix),                                                 valueOf(postfix)); }
+    @Override public final String joinToString(final char                separator, final @Nullable String    prefix, final @Nullable String    postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final char                separator, final @Nullable String    prefix, final @Nullable Character postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final char                separator, final @Nullable String    prefix, final char                postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix,            valueOf(postfix)); }
+    @Override public final String joinToString(final char                separator, final @Nullable Character prefix, final @Nullable String    postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final char                separator, final @Nullable Character prefix, final @Nullable Character postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final char                separator, final @Nullable Character prefix, final char                postfix) { return _joinToString_core(prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString(), valueOf(postfix)); }
+    @Override public final String joinToString(final char                separator, final char                prefix, final @Nullable String    postfix) { return _joinToString_core(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix); }
+    @Override public final String joinToString(final char                separator, final char                prefix, final @Nullable Character postfix) { return _joinToString_core(valueOf(prefix),                                                 postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString()); }
+    @Override public final String joinToString(final char                separator, final char                prefix, final char                postfix) { return _joinToString_core(valueOf(prefix),                                                 valueOf(postfix)); }
 
     //#endregion -------------------- Join to string (separator, prefix, postfix) --------------------
     //#region -------------------- Join to string (separator, prefix, postfix, limit) --------------------
@@ -5310,486 +5309,486 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, DEFAULT_JOIN_TRUNCATED_STRING);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     //#endregion -------------------- Join to string (separator, prefix, postfix, limit) --------------------
@@ -5799,1458 +5798,1458 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_core(prefix2, postfix2);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (limit == null)
-            return _joinToString(prefix2, postfix2);
+            return _joinToString_core(prefix2, postfix2);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_core(prefix2, postfix2);
     }
 
     //#endregion -------------------- Join to string (separator, prefix, postfix, limit, truncated) --------------------
@@ -7260,30 +7259,30 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7291,16 +7290,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7308,16 +7307,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7325,46 +7324,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7372,16 +7371,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7389,16 +7388,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7406,46 +7405,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7453,16 +7452,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7470,16 +7469,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7487,46 +7486,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7534,16 +7533,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7551,16 +7550,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7568,46 +7567,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7615,16 +7614,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7632,16 +7631,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7649,46 +7648,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7696,16 +7695,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7713,16 +7712,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7730,46 +7729,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7777,16 +7776,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7794,16 +7793,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7811,46 +7810,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7858,16 +7857,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7875,16 +7874,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7892,46 +7891,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7939,16 +7938,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7956,16 +7955,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -7973,46 +7972,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8020,16 +8019,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8037,16 +8036,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8054,46 +8053,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8101,16 +8100,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8118,16 +8117,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8135,46 +8134,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8182,16 +8181,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8199,16 +8198,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8216,46 +8215,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8263,16 +8262,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8280,16 +8279,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8297,46 +8296,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8344,16 +8343,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8361,16 +8360,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8378,46 +8377,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8425,16 +8424,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8442,16 +8441,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8459,46 +8458,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8506,16 +8505,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8523,16 +8522,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8540,46 +8539,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8587,16 +8586,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8604,16 +8603,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8621,46 +8620,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8668,16 +8667,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8685,16 +8684,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8702,46 +8701,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8749,16 +8748,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8766,16 +8765,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8783,46 +8782,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8830,16 +8829,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8847,16 +8846,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8864,46 +8863,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8911,16 +8910,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8928,16 +8927,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8945,46 +8944,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -8992,16 +8991,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9009,16 +9008,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9026,46 +9025,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9073,16 +9072,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9090,16 +9089,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9107,46 +9106,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9154,16 +9153,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9171,16 +9170,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9188,46 +9187,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9235,16 +9234,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9252,16 +9251,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9269,46 +9268,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9316,16 +9315,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9333,16 +9332,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9350,46 +9349,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9397,16 +9396,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9414,16 +9413,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable ObjIntFunction<? super T, String> transform) {
@@ -9431,16 +9430,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     //#endregion -------------------- Join to string (separator, prefix, postfix, limit, truncate, transform (T, int) → string) --------------------
@@ -9450,30 +9449,30 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -9481,16 +9480,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -9498,16 +9497,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -9515,46 +9514,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -9562,16 +9561,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -9579,16 +9578,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -9596,46 +9595,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -9643,16 +9642,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -9660,16 +9659,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -9677,46 +9676,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -9724,16 +9723,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -9741,16 +9740,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -9758,46 +9757,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -9805,16 +9804,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -9822,16 +9821,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -9839,46 +9838,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -9886,16 +9885,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -9903,16 +9902,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -9920,46 +9919,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -9967,16 +9966,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -9984,16 +9983,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10001,46 +10000,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10048,16 +10047,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10065,16 +10064,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10082,46 +10081,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10129,16 +10128,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10146,16 +10145,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10163,46 +10162,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10210,16 +10209,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10227,16 +10226,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10244,46 +10243,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10291,16 +10290,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10308,16 +10307,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10325,46 +10324,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10372,16 +10371,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10389,16 +10388,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10406,46 +10405,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10453,16 +10452,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10470,16 +10469,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10487,46 +10486,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10534,16 +10533,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10551,16 +10550,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10568,46 +10567,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10615,16 +10614,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10632,16 +10631,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10649,46 +10648,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10696,16 +10695,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10713,16 +10712,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10730,46 +10729,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10777,16 +10776,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10794,16 +10793,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10811,46 +10810,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10858,16 +10857,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10875,16 +10874,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10892,46 +10891,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -10939,16 +10938,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -10956,16 +10955,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -10973,46 +10972,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -11020,16 +11019,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -11037,16 +11036,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -11054,46 +11053,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -11101,16 +11100,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -11118,16 +11117,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -11135,46 +11134,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -11182,16 +11181,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -11199,16 +11198,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -11216,46 +11215,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -11263,16 +11262,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -11280,16 +11279,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -11297,46 +11296,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -11344,16 +11343,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -11361,16 +11360,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -11378,46 +11377,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -11425,16 +11424,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -11442,16 +11441,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -11459,46 +11458,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -11506,16 +11505,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -11523,16 +11522,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -11540,46 +11539,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable Function<? super T, String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Function<? super T, String> transform) {
@@ -11587,16 +11586,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Function<? super T, String> transform) {
@@ -11604,16 +11603,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Function<? super T, String> transform) {
@@ -11621,16 +11620,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     //#endregion -------------------- Join to string (separator, prefix, postfix, limit, truncate, transform (T) → string) --------------------
@@ -11640,30 +11639,30 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -11671,16 +11670,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -11688,16 +11687,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -11705,46 +11704,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -11752,16 +11751,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -11769,16 +11768,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -11786,46 +11785,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -11833,16 +11832,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -11850,16 +11849,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -11867,46 +11866,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -11914,16 +11913,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -11931,16 +11930,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -11948,46 +11947,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -11995,16 +11994,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12012,16 +12011,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12029,46 +12028,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12076,16 +12075,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12093,16 +12092,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12110,46 +12109,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12157,16 +12156,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12174,16 +12173,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12191,46 +12190,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12238,16 +12237,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12255,16 +12254,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12272,46 +12271,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12319,16 +12318,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12336,16 +12335,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable String separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12353,46 +12352,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12400,16 +12399,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12417,16 +12416,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12434,46 +12433,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12481,16 +12480,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12498,16 +12497,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12515,46 +12514,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12562,16 +12561,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12579,16 +12578,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12596,46 +12595,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12643,16 +12642,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12660,16 +12659,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12677,46 +12676,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12724,16 +12723,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12741,16 +12740,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12758,46 +12757,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12805,16 +12804,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12822,16 +12821,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12839,46 +12838,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12886,16 +12885,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12903,16 +12902,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -12920,46 +12919,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -12967,16 +12966,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -12984,16 +12983,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13001,46 +13000,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13048,16 +13047,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13065,16 +13064,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final @Nullable Character separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13082,46 +13081,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13129,16 +13128,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13146,16 +13145,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13163,46 +13162,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13210,16 +13209,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13227,16 +13226,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13244,46 +13243,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix;
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13291,16 +13290,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13308,16 +13307,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable String prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13325,46 +13324,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13372,16 +13371,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13389,16 +13388,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13406,46 +13405,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13453,16 +13452,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13470,16 +13469,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13487,46 +13486,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = prefix == null ? DEFAULT_JOIN_PREFIX_STRING : prefix.toString();
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13534,16 +13533,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13551,16 +13550,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final @Nullable Character prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13568,46 +13567,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13615,16 +13614,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13632,16 +13631,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable String postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13649,46 +13648,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix;
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13696,16 +13695,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13713,16 +13712,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final @Nullable Character postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13730,46 +13729,46 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = postfix == null ? DEFAULT_JOIN_POSTFIX_STRING : postfix.toString();
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final int limit, final char truncated, final @Nullable Supplier<String> transform) {
         final var prefix2 = valueOf(prefix);
         final var postfix2 = valueOf(postfix);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
         if (transform == null)
-            return _joinToString(prefix2, postfix2);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_core(prefix2, postfix2);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable String truncated, final @Nullable Supplier<String> transform) {
@@ -13777,16 +13776,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated);
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final @Nullable Character truncated, final @Nullable Supplier<String> transform) {
@@ -13794,16 +13793,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+                return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, truncated == null ? DEFAULT_JOIN_TRUNCATED_STRING : truncated.toString());
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     @Override public final String joinToString(final char separator, final char prefix, final char postfix, final @Nullable Integer limit, final char truncated, final @Nullable Supplier<String> transform) {
@@ -13811,16 +13810,16 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         final var postfix2 = valueOf(postfix);
         if (transform == null)
             if (limit == null)
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
             else if (__getLastIndex(limit) == 0)
-                return _joinToString(prefix2, postfix2, valueOf(truncated));
+                return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
             else
-                return _joinToString(prefix2, postfix2);
+                return _joinToString_core(prefix2, postfix2);
         if (limit == null)
-            return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_transform(prefix2, postfix2, transform);
         if (__getLastIndex(limit) == 0)
-            return _joinToString(prefix2, postfix2, valueOf(truncated));
-        return _joinToString(prefix2, postfix2, transform);
+            return _joinToString_truncated(prefix2, postfix2, valueOf(truncated));
+        return _joinToString_transform(prefix2, postfix2, transform);
     }
 
     //#endregion -------------------- Join to string (separator, prefix, postfix, limit, truncate, transform () → string) --------------------
