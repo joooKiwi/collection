@@ -21,6 +21,15 @@ import {NoElementFoundInCollectionException} from "../exception/NoElementFoundIn
 import {GenericAfterLastIteratorValue}       from "./value/GenericAfterLastIteratorValue"
 import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIteratorValue"
 
+/**
+ * A {@link CollectionIterator} with no values (as a singleton instance)
+ *
+ * @see CollectionConstants.EMPTY_COLLECTION_ITERATOR
+ * @see GenericCollectionIterator
+ * @see CollectionIteratorOf1
+ * @see CollectionIteratorOf2
+ * @singleton
+ */
 export class EmptyCollectionIterator
     implements CollectionIterator<never> {
 
