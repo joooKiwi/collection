@@ -13,6 +13,9 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.method.AsString.asString;
 
+/// An instance of [Tuple] with only a single value from its `constructor`
+///
+/// @param <T> The type
 @NotNullByDefault
 public class Monuple<T extends @Nullable Object>
         extends AbstractTuple<T>
@@ -35,6 +38,7 @@ public class Monuple<T extends @Nullable Object>
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
+    /// The value passed through the `constructor` held by this instance
     public T value1() { return __value1; }
 
     //#region -------------------- Size methods --------------------

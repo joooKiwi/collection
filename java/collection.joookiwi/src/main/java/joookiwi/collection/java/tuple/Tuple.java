@@ -14,6 +14,12 @@ import java.util.Map;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
+/// A definition of a class with specific amount of values depending on the name being used.
+/// Note that the fields are only defined in the instance directly.
+///
+/// @see Empty
+/// @see Monuple
+/// @see Couple
 @NotNullByDefault
 public interface Tuple<T extends @Nullable Object>
         extends Cloneable {

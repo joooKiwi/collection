@@ -10,6 +10,16 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
+/// A definition of a [Tuple] to have a common ancestor.
+/// No state or reference is held in this instance.
+/// Only the aliases methods have implementation.
+///
+/// @apiNote This class is used when not specifically requiring an optimization on the methods, just the non-aliased methods calls
+/// @implNote This class should be inherited if new classes are being made to be more usable by the tools
+/// @param <T> The type
+/// @see Empty
+/// @see Monuple
+/// @see Couple
 @NotNullByDefault
 public abstract class AbstractTuple<T extends @Nullable Object>
         implements Tuple<T> {

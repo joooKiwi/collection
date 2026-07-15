@@ -13,6 +13,11 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.method.AsString.asString;
 
+/// An instance of [Tuple] with only 2 values from its `constructor`
+///
+/// @param <T>  The type
+/// @param <T1> The 1<sup>st</sup> type
+/// @param <T2> The 2<sup>nd</sup> type
 @NotNullByDefault
 public class Couple<T extends @Nullable Object,
         T1 extends T,

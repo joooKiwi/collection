@@ -17,6 +17,11 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.CommonContracts._1ST_IS_NOT_NULL_1;
 import static joookiwi.collection.java.annotation.AliasArgument.IGNORED;
 
+/// A [Tuple] with no values (as a [singleton][Singleton] instance)
+///
+/// @param <T> The type
+/// @see Monuple
+/// @see Couple
 @Singleton
 @NotNullByDefault
 public class Empty<T extends @Nullable Object>
