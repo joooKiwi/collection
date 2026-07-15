@@ -1082,6 +1082,15 @@ public abstract class AbstractUnimplementedCollectionHolder<T extends @Nullable 
 
     //#region -------------------- Conversion methods --------------------
 
+    //#region -------------------- To array --------------------
+
+    @Override public final                              T[] toTypedArray(                                                      ) { return toArray(); }
+    @Override public final <U extends @Nullable Object> U[] toTypedArray(final ObjIntFunction<? super T, ? extends U> transform) { return toArray(transform); }
+    @Override public final <U extends @Nullable Object> U[] toTypedArray(final Function<? super T, ? extends U>       transform) { return toArray(transform); }
+    @Override public final <U extends @Nullable Object> U[] toTypedArray(final Supplier<? extends U>                  transform) { return toArray(transform); }
+
+    //#endregion -------------------- To array --------------------
+
     //#region -------------------- To string --------------------
 
     @Override public abstract String toString();

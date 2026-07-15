@@ -1788,11 +1788,6 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public <U extends @Nullable Object> U[] toArray(final Function<? super T, ? extends U>       transform) { return ToArray.toArray(this, transform); }
     @Override public <U extends @Nullable Object> U[] toArray(final Supplier<? extends U>                  transform) { return ToArray.toArray(this, transform); }
 
-    @Override public final                              T[] toTypedArray(                                                      ) { return toArray(); }
-    @Override public final <U extends @Nullable Object> U[] toTypedArray(final ObjIntFunction<? super T, ? extends U> transform) { return toArray(transform); }
-    @Override public final <U extends @Nullable Object> U[] toTypedArray(final Function<? super T, ? extends U>       transform) { return toArray(transform); }
-    @Override public final <U extends @Nullable Object> U[] toTypedArray(final Supplier<? extends U>                  transform) { return toArray(transform); }
-
     //#endregion -------------------- To array --------------------
 
     //#region -------------------- To collection --------------------
