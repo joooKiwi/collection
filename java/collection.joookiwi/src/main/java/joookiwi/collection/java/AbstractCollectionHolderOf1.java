@@ -135,7 +135,6 @@ import joookiwi.collection.java.extended.MutableTransferQueue;
 import joookiwi.collection.java.extended.MutableTreeSet;
 import joookiwi.collection.java.extended.MutableVector;
 import joookiwi.collection.java.iterator.CollectionIteratorOf1;
-import joookiwi.collection.java.method.ToMutableHashSet;
 import joookiwi.collection.java.optional.EmptyOptional;
 import joookiwi.collection.java.optional.Optional;
 import org.jetbrains.annotations.Contract;
@@ -161,7 +160,6 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_TRUE_1;
-import static joookiwi.collection.java.NumericConstants.NULL_INT;
 import static joookiwi.collection.java.NumericConstants.ZERO_INT;
 import static joookiwi.collection.java.helper.NumberComparator.max;
 import static joookiwi.collection.java.method.ArrayCreator.Array;
@@ -3923,7 +3921,14 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
     @Contract(value = ALWAYS_NEW_2, pure = true)
     @Override public final MutableHashSet<T> toMutableHashSet(final @Nullable Integer initialCapacity, final @Nullable Float loadFactor) {
-        return ToMutableHashSet.toMutableHashSet(this, initialCapacity, loadFactor);
+        if (loadFactor == null)
+            if (initialCapacity == null)
+                return toMutableHashSet();
+            else
+                return toMutableHashSet(initialCapacity.intValue());
+        if (initialCapacity == null)
+            return toMutableHashSet(null, loadFactor.floatValue());
+        return toMutableHashSet(initialCapacity.intValue(), loadFactor.floatValue());
     }
 
     @Contract(value = ALWAYS_NEW_3, pure = true)
@@ -3953,7 +3958,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             if (loadFactor == null)
                 return toMutableHashSet(transform);
             else
-                return toMutableHashSet(NULL_INT, loadFactor.floatValue(), transform);
+                return toMutableHashSet(null, loadFactor.floatValue(), transform);
         if (loadFactor == null)
             return toMutableHashSet(initialCapacity.intValue(), transform);
         return toMutableHashSet(initialCapacity.intValue(), loadFactor.floatValue(), transform);
@@ -3965,7 +3970,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             if (loadFactor == null)
                 return toMutableHashSet(transform);
             else
-                return toMutableHashSet(NULL_INT, loadFactor.floatValue(), transform);
+                return toMutableHashSet(null, loadFactor.floatValue(), transform);
         if (loadFactor == null)
             return toMutableHashSet(initialCapacity.intValue(), transform);
         return toMutableHashSet(initialCapacity.intValue(), loadFactor.floatValue(), transform);
@@ -3977,7 +3982,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             if (loadFactor == null)
                 return toMutableHashSet(transform);
             else
-                return toMutableHashSet(NULL_INT, loadFactor.floatValue(), transform);
+                return toMutableHashSet(null, loadFactor.floatValue(), transform);
         if (loadFactor == null)
             return toMutableHashSet(initialCapacity.intValue(), transform);
         return toMutableHashSet(initialCapacity.intValue(), loadFactor.floatValue(), transform);
