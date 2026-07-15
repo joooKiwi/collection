@@ -1,6 +1,5 @@
 package joookiwi.collection.java;
 
-import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Deque;
@@ -41,7 +40,6 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TransferQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -163,11 +161,11 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_TRUE_1;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static joookiwi.collection.java.NumericConstants.NULL_INT;
 import static joookiwi.collection.java.NumericConstants.ZERO_INT;
 import static joookiwi.collection.java.helper.NumberComparator.max;
 import static joookiwi.collection.java.method.ArrayCreator.Array;
+import static joookiwi.collection.java.method.ArrayCreator.sizedArray;
 import static joookiwi.collection.java.method.AsString.asLocaleLowerCaseString;
 import static joookiwi.collection.java.method.AsString.asLocaleString;
 import static joookiwi.collection.java.method.AsString.asLocaleUpperCaseString;
@@ -205,7 +203,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     ///
     /// @param instanceValue The [#value] (_it is to not recall the method unnecessarily_)
     /// @param value         The value to compare
-    private boolean __equals(final T instanceValue, final T value) {
+    private static <T extends @Nullable Object> boolean __equals(final T instanceValue, final T value) {
         if (instanceValue == null)
             return value == null;
         if (instanceValue == value)
@@ -348,6 +346,14 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
         if (value == 0)
             return true;
         return value == -1;
+    }
+
+
+    @SuppressWarnings("unchecked cast")
+    private static <T extends @Nullable Object> T[] __newArrayOfType(final T value, final int newSize) {
+        if (value == null)
+            return sizedArray(newSize);
+        return Array((Class<? extends T>) value.getClass(), newSize);
     }
 
     //#endregion -------------------- Validate methods (private) --------------------
@@ -2695,7 +2701,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
                 newSize++;
             }
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[newSize] : (T[]) Array.newInstance(value.getClass(), newSize);
+            final var newArray = __newArrayOfType(value, newSize);
             var index = newSize;
             while (index-- > 0)
                 newArray[index] = value;
@@ -2715,7 +2721,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
                 newSize++;
             }
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[newSize] : (T[]) Array.newInstance(value.getClass(), newSize);
+            final var newArray = __newArrayOfType(value, newSize);
             var index = newSize;
             while (index-- > 0)
                 newArray[index] = value;
@@ -2729,13 +2735,12 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
         return new GenericCollectionHolder<>(() -> {
             final var value = value();
-            var newSize = new AtomicInteger();
+            var newSize = 0;
             while (indices.tryAdvance(AbstractCollectionHolderOf1::__validateIndex))
-                newSize.incrementAndGet();
+                newSize++;
 
-            final var newSize2 = newSize.get();
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[newSize2] : (T[]) Array.newInstance(value.getClass(), newSize2);
-            var index = newSize2;
+            final var newArray = __newArrayOfType(value, newSize);
+            var index = newSize;
             while (index-- > 0)
                 newArray[index] = value;
             return newArray;
@@ -2748,13 +2753,12 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
         return new GenericCollectionHolder<>(() -> {
             final var value = value();
-            var newSize = new AtomicInteger();
+            var newSize = 0;
             while (indices.tryAdvance((IntConsumer) AbstractCollectionHolderOf1::__validateIndex))
-                newSize.incrementAndGet();
+                newSize++;
 
-            final var newSize2 = newSize.get();
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[newSize2] : (T[]) Array.newInstance(value.getClass(), newSize2);
-            var index = newSize2;
+            final var newArray = __newArrayOfType(value, newSize);
+            var index = newSize;
             while (--index > 0)
                 newArray[index] = value;
             return newArray;
@@ -2773,7 +2777,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
                 newSize++;
             }
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[newSize] : (T[]) Array.newInstance(value.getClass(), newSize);
+            final var newArray = __newArrayOfType(value, newSize);
             var index = newSize;
             while (--index > 0)
                 newArray[index] = value;
@@ -2782,15 +2786,15 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     }
 
     @Override public CollectionHolder<T> slice(final Iterable<? extends Integer> indices) { return new GenericCollectionHolder<>(() -> {
-        final var iterator = indices.iterator();
         final var value = value();
+        final var iterator = indices.iterator();
         var newSize = 0;
         while (iterator.hasNext()) {
             __validateIndex(iterator.next());
             newSize++;
         }
 
-        @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[newSize] : (T[]) Array.newInstance(value.getClass(), newSize);
+        final var newArray = __newArrayOfType(value, newSize);
         var index = newSize;
         while (--index > 0)
             newArray[index] = value;
@@ -2808,7 +2812,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             while (index1++ < indicesSize)
                 __validateIndex(indices.get(index1));
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[indicesSize] : (T[]) Array.newInstance(value.getClass(), indicesSize);
+            final var newArray = __newArrayOfType(value, indicesSize);
             var index2 = indicesSize;
             while (--index2 > 0)
                 newArray[index2] = value;
@@ -2821,8 +2825,8 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return EmptyCollectionHolder.getInstance();
 
         return new GenericCollectionHolder<>(() -> {
-            final var indicesSize = indices.size();
             final var value = value();
+            final var indicesSize = indices.size();
             if (indices instanceof RandomAccess) {
                 // We will retrieve the values by index (since it is more effective)
                 var index1 = -1;
@@ -2833,10 +2837,10 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
                 final var iterator = indices.toIterator();
                 var index2 = -1;
                 while (index2++ < indicesSize)
-                    __validateIndex(iterator.next());
+                    __validateIndex(iterator.nextValue());
             }
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[indicesSize] : (T[]) Array.newInstance(value.getClass(), indicesSize);
+            final var newArray = __newArrayOfType(value, indicesSize);
             var index3 = indicesSize;
             while (--index3 > 0)
                 newArray[index3] = value;
@@ -2849,14 +2853,14 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return EmptyCollectionHolder.getInstance();
 
         return new GenericCollectionHolder<>(() -> {
+            final var value = value();
             final var indicesSize = indices.size();
             final var iterator = indices.iterator();
-            final var value = value();
             var index1 = -1;
             while (index1++ < indicesSize)
                 __validateIndex(iterator.next());
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[indicesSize] : (T[]) Array.newInstance(value.getClass(), indicesSize);
+            final var newArray = __newArrayOfType(value, indicesSize);
             var index2 = indicesSize;
             while (--index2 > 0)
                 newArray[index2] = value;
@@ -2869,8 +2873,8 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return EmptyCollectionHolder.getInstance();
 
         return new GenericCollectionHolder<>(() -> {
-            final var indicesSize = indices.size();
             final var value = value();
+            final var indicesSize = indices.size();
             if (indices instanceof RandomAccess) {
                 // We will retrieve the values by index (since it is more effective)
                 var index1 = -1;
@@ -2884,7 +2888,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
                     __validateIndex(iterator.next());
             }
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[indicesSize] : (T[]) Array.newInstance(value.getClass(), indicesSize);
+            final var newArray = __newArrayOfType(value, indicesSize);
             var index3 = indicesSize;
             while (--index3 > 0)
                 newArray[index3] = value;
@@ -2903,7 +2907,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             while (index1++ < indicesSize)
                 __validateIndex(indices[index1]);
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[indicesSize] : (T[]) Array.newInstance(value.getClass(), indicesSize);
+            final var newArray = __newArrayOfType(value, indicesSize);
             var index2 = indicesSize;
             while (--index2 > 0)
                 newArray[index2] = value;
@@ -2922,7 +2926,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             while (index1++ < indicesSize)
                 __validateIndex(indices[index1]);
 
-            @SuppressWarnings("unchecked cast") final T[] newArray = value == null ? (T[]) new Object[indicesSize] : (T[]) Array.newInstance(value.getClass(), indicesSize);
+            final var newArray = __newArrayOfType(value, indicesSize);
             var index2 = indicesSize;
             while (--index2 > 0)
                 newArray[index2] = value;
@@ -2989,7 +2993,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return EmptyCollectionHolder.getInstance();
         if (n == 1)
             return this;
-        if (n > 0)
+        if (n > 1)
             return this;
         if (n == -1)
             return this;
@@ -3047,7 +3051,7 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
             return this;
         if (n == 1)
             return EmptyCollectionHolder.getInstance();
-        if (n > 0)
+        if (n > 1)
             return EmptyCollectionHolder.getInstance();
         if (n == -1)
             return EmptyCollectionHolder.getInstance();
@@ -13844,12 +13848,6 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Equals --------------------
-    //#region -------------------- Reference equals --------------------
-
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
-    @Override public boolean referenceEquals(final @Nullable Object other) { return other == this; }
-
-    //#endregion -------------------- Reference equals --------------------
 
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
@@ -13862,11 +13860,11 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
 //    @MustBeInvokedByOverriders
 //    @Contract(ALWAYS_NEW_0)
-//    @Override public abstract AbstractOf1CollectionHolder<T> shallowClone();
+//    @Override public abstract AbstractOf1CollectionHolderOf1<T> shallowClone();
 //
 //    @MustBeInvokedByOverriders
 //    @Contract(ALWAYS_NEW_0)
-//    @Override public abstract AbstractOf1CollectionHolder<T> deepClone();
+//    @Override public abstract AbstractOf1CollectionHolderOf1<T> deepClone();
 
     //#endregion -------------------- Clone methods --------------------
 
