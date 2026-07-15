@@ -5209,20 +5209,20 @@ public abstract class AbstractCollectionHolderOf1<T extends @Nullable Object>
 
     //#region -------------------- To string --------------------
 
-    @Override public String toString() { return "[" + asString(value()) + ']'; }
+    @Override public String toString() { return '[' + asString(value()) + ']'; }
 
-    @Override public String toLocaleString(                             ) { return "[" + asLocaleString(value()) + ']'; }
-    @Override public String toLocaleString(final @Nullable Locale locale) { return "[" + asLocaleString(value(), locale) + ']'; }
+    @Override public String toLocaleString(                             ) { return '[' + asLocaleString(value()) + ']'; }
+    @Override public String toLocaleString(final @Nullable Locale locale) { return '[' + asLocaleString(value(), locale) + ']'; }
 
-    @Override public String toLowerCaseString() { return "[" + asLowerCaseString(value()) + ']'; }
+    @Override public String toLowerCaseString() { return '[' + asLowerCaseString(value()) + ']'; }
 
-    @Override public String toLocaleLowerCaseString(                             ) { return "[" + asLocaleLowerCaseString(value()) + ']'; }
-    @Override public String toLocaleLowerCaseString(final @Nullable Locale locale) { return "[" + asLocaleLowerCaseString(value(), locale) + ']'; }
+    @Override public String toLocaleLowerCaseString(                             ) { return '[' + asLocaleLowerCaseString(value()) + ']'; }
+    @Override public String toLocaleLowerCaseString(final @Nullable Locale locale) { return '[' + asLocaleLowerCaseString(value(), locale) + ']'; }
 
-    @Override public String toUpperCaseString() { return "[" + asUpperCaseString(value()) + ']'; }
+    @Override public String toUpperCaseString() { return '[' + asUpperCaseString(value()) + ']'; }
 
-    @Override public String toLocaleUpperCaseString(                             ) { return "[" + asLocaleUpperCaseString(value()) + ']'; }
-    @Override public String toLocaleUpperCaseString(final @Nullable Locale locale) { return "[" + asLocaleUpperCaseString(value(), locale) + ']'; }
+    @Override public String toLocaleUpperCaseString(                             ) { return '[' + asLocaleUpperCaseString(value()) + ']'; }
+    @Override public String toLocaleUpperCaseString(final @Nullable Locale locale) { return '[' + asLocaleUpperCaseString(value(), locale) + ']'; }
 
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
