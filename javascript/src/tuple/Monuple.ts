@@ -71,7 +71,7 @@ export class Monuple<const T = unknown, >
 
     public override toString(): string {
         const value1 = this.value1
-        return `(${value1 == null ? '' : value1})`
+        return `Monuple (${value1 == null ? '' : value1})`
     }
 
     //#endregion -------------------- Methods --------------------

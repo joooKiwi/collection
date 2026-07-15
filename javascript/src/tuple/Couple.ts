@@ -84,7 +84,7 @@ export class Couple<const T = unknown,
     public override toString(): string {
         const value1 = this.value1
         const value2 = this.value2
-        return `(${value1 == null ? '' : value1}, ${value2 == null ? '' : value2})`
+        return `Couple (${value1 == null ? '' : value1}, ${value2 == null ? '' : value2})`
     }
 
     //#endregion -------------------- Methods --------------------

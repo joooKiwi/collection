@@ -18,7 +18,6 @@ import type {TupleName} from "../type/toStringTag"
 import {CollectionConstants}     from "../CollectionConstants"
 import {EmptyCollectionHolder}   from "../EmptyCollectionHolder"
 import {EmptyCollectionIterator} from "../iterator/EmptyCollectionIterator"
-import {EmptyCollectionException} from "../exception"
 
 export class Empty
     implements Tuple<never> {
@@ -35,20 +34,6 @@ export class Empty
 
     //#endregion -------------------- Singleton usage --------------------
 
-    //#region -------------------- Fields methods --------------------
-
-    public get 0(): never { throw new EmptyCollectionException("No fourth value exist in an Empty", 0,) }
-    public get 1(): never { throw new EmptyCollectionException("No fourth value exist in an Empty", 1,) }
-    public get 2(): never { throw new EmptyCollectionException("No fourth value exist in an Empty", 2,) }
-    public get 3(): never { throw new EmptyCollectionException("No fourth value exist in an Empty", 3,) }
-    public get 4(): never { throw new EmptyCollectionException("No fifth value exist in an Empty", 4,) }
-    public get 5(): never { throw new EmptyCollectionException("No sixth value exist in an Empty", 5,) }
-    public get 6(): never { throw new EmptyCollectionException("No seventh value exist in an Empty", 6,) }
-    public get 7(): never { throw new EmptyCollectionException("No eighth value exist in an Empty", 7,) }
-    public get 8(): never { throw new EmptyCollectionException("No ninth value exist in an Empty", 8,) }
-    public get 9(): never { throw new EmptyCollectionException("No tenth value exist in an Empty", 9,) }
-
-    //#endregion -------------------- Fields methods --------------------
     //#region -------------------- Size methods --------------------
 
     public get size(): 0 { return 0 }
@@ -117,7 +102,7 @@ export class Empty
 
     public toCollection(): EmptyCollectionHolder { return EmptyCollectionHolder.get }
 
-    public toString(): string { return "()" }
+    public toString(): string { return "Empty ()" }
 
     //#endregion -------------------- Conversion methods --------------------
 
