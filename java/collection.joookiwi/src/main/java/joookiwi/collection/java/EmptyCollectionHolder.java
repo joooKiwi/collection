@@ -243,6 +243,14 @@ import static joookiwi.collection.java.method.MutableVectorCreator.MutableVector
 /// @see CollectionConstants#emptyCollectionHolder
 /// @see GenericMinimalistCollectionHolder
 /// @see GenericCollectionHolder
+/// @see ArrayAsCollectionHolder
+/// @see ArrayOf1AsCollectionHolder
+/// @see ArrayOf2AsCollectionHolder
+/// @see LazyCollectionHolderOf0Or1
+/// @see LazyCollectionHolderOf0Or1Or2
+/// @see LazyCollectionHolderOf1
+/// @see LazyCollectionHolderOf1Or2
+/// @see LazyCollectionHolderOf2
 @Singleton
 @NotNullByDefault
 public class EmptyCollectionHolder<T extends @Nullable Object>
