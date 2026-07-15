@@ -1,6 +1,7 @@
 package joookiwi.collection.java.tuple;
 
 import joookiwi.collection.java.CollectionHolderOf1;
+import joookiwi.collection.java.method.ArrayCreator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -21,6 +22,8 @@ public class Monuple<T extends @Nullable Object>
 
     private final T __value1;
 
+    private T @Nullable [] __array;
+
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
@@ -30,6 +33,7 @@ public class Monuple<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor --------------------
+    //#region -------------------- Methods --------------------
 
     public T value1() { return __value1; }
 
@@ -48,16 +52,48 @@ public class Monuple<T extends @Nullable Object>
     @Contract(ALWAYS_TRUE_0) @Override public boolean hasAtMost2Elements() { return true; }
 
     //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Has ‥ --------------------
+
+    @Override public boolean hasNull() {
+        return value1() == null;
+    }
+
+    @Override public boolean hasNoNulls() {
+        return value1() != null;
+    }
+
+
+    @Contract(ALWAYS_FALSE_0) @Override public boolean hasDuplicate() {
+        return false;
+    }
+
+    @Contract(ALWAYS_TRUE_0) @Override public boolean hasNoDuplicates() {
+        return true;
+    }
+
+    //#endregion -------------------- Has ‥ --------------------
     //#region -------------------- Conversion methods --------------------
+
+    @Override public T[] toArray() {
+        final var value = __array;
+        if (value != null)
+            return value;
+        return __array = ArrayCreator.Array(value1());
+    }
 
     @Override public CollectionHolderOf1<T> toCollection() { return new CollectionHolderOf1<>(value1()); }
 
     @Override public String toString() { return "Monuple (" + asString(value1()) + ')'; }
 
     //#endregion -------------------- Conversion methods --------------------
+    //#region -------------------- Cloneable methods --------------------
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
     @Override public Monuple<T> clone() { return (Monuple<T>) super.clone(); }
+
+    //#endregion -------------------- Cloneable methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }

@@ -3,6 +3,7 @@ package joookiwi.collection.java.tuple;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.annotation.Alias;
 import joookiwi.collection.java.annotation.OnlyGivePositiveValue;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -10,6 +11,7 @@ import org.jetbrains.annotations.Range;
 import java.util.Collection;
 import java.util.Map;
 
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 @NotNullByDefault
@@ -144,18 +146,116 @@ public interface Tuple<T extends @Nullable Object>
     @Alias("hasAtMost2Elements") default boolean includesAtMost2Elements() { return hasAtMost2Elements(); }
 
     //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Has ‥ --------------------
+
+    //#region -------------------- Has null --------------------
+
+    /// The [Tuple] has at least one `null`
+    ///
+    /// @return `true` only if one element is `null`
+    boolean hasNull();
+
+    /// The [Tuple] has at least one `null`
+    ///
+    /// @return `true` only if one element is `null`
+    @Alias("hasNull") default boolean includesNull() { return hasNull(); }
+
+    /// The [Tuple] has at least one `null`
+    ///
+    /// @return `true` only if one element is `null`
+    @Alias("hasNull") default boolean containsNull() { return hasNull(); }
+
+    //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has no nulls --------------------
+
+    /// The [Tuple] has no `null`
+    ///
+    /// @return `true` only if no element is `null`
+    boolean hasNoNulls();
+
+    /// The [Tuple] has no `null`
+    ///
+    /// @return `true` only if no element is `null`
+    @Alias("hasNoNulls") default boolean includesNoNulls() { return hasNoNulls(); }
+
+    /// The [Tuple] has no `null`
+    ///
+    /// @return `true` only if no element is `null`
+    @Alias("hasNoNulls") default boolean containsNoNulls() { return hasNoNulls(); }
+
+    //#endregion -------------------- Has no nulls --------------------
+    //#region -------------------- Has duplicate --------------------
+
+    /// The [Tuple] has at least one duplicate value
+    ///
+    /// @return `true` only if one element is equal (== or [equals][#equals]) to another one
+    boolean hasDuplicate();
+
+    /// The [Tuple] has at least one duplicate value
+    ///
+    /// @return `true` only if one element is equal (== or [equals][#equals]) to another one
+    @Alias("hasDuplicate") default boolean includesDuplicate() { return hasDuplicate(); }
+
+    /// The [Tuple] has at least one duplicate value
+    ///
+    /// @return `true` only if one element is equal (== or [equals][#equals]) to another one
+    @Alias("hasDuplicate") default boolean containsDuplicate() { return hasDuplicate(); }
+
+    //#endregion -------------------- Has duplicate --------------------
+    //#region -------------------- Has no duplicates --------------------
+
+    /// The [Tuple] has no duplicate value
+    ///
+    /// @return `true` only if no element is equal (== or [equals][#equals]) to another one
+    boolean hasNoDuplicates();
+
+    /// The [Tuple] has no duplicate value
+    ///
+    /// @return `true` only if no element is equal (== or [equals][#equals]) to another one
+    @Alias("hasNoDuplicates") default boolean includesNoDuplicates() { return hasNoDuplicates(); }
+
+    /// The [Tuple] has no duplicate value
+    ///
+    /// @return `true` only if no element is equal (== or [equals][#equals]) to another one
+    @Alias("hasNoDuplicates") default boolean containsNoDuplicates() { return hasNoDuplicates(); }
+
+    //#endregion -------------------- Has no duplicates --------------------
+
+    //#endregion -------------------- Has ‥ --------------------
     //#region -------------------- Conversion methods --------------------
+
+    T[] toArray();
 
     CollectionHolder<T> toCollection();
 
     @Override String toString();
 
     //#endregion -------------------- Conversion methods --------------------
+    //#region -------------------- Comparison methods --------------------
+
+    @Override int hashCode();
+
+    //#region -------------------- Equals --------------------
+
+    @Contract(IF_1ST_NULL_THEN_FALSE_1)
+    @Override boolean equals(@Nullable Object other);
+
+    //#endregion -------------------- Equals --------------------
+    //#region -------------------- Reference equals --------------------
+
+    boolean referenceEquals(@Nullable Object other);
+
+    //#endregion -------------------- Reference equals --------------------
+
+    //#endregion -------------------- Comparison methods --------------------
+    //#region -------------------- Clone methods --------------------
 
     /// Clone the current instance in a shallow manner.
     ///
     /// @apiNote If the instance is [Empty], then it is the only instance that is reserved to give the same instance.
     ///          Otherwise, it should always call its super.[#clone] method.
     Tuple<T> clone();
+
+    //#endregion -------------------- Clone methods --------------------
 
 }
