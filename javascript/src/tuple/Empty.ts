@@ -19,6 +19,13 @@ import {CollectionConstants}     from "../CollectionConstants"
 import {EmptyCollectionHolder}   from "../EmptyCollectionHolder"
 import {EmptyCollectionIterator} from "../iterator/EmptyCollectionIterator"
 
+/**
+ * A {@link Tuple} with no values (as a singleton instance)
+ *
+ * @see Monuple
+ * @see Couple
+ * @singleton
+ */
 export class Empty
     implements Tuple<never> {
 

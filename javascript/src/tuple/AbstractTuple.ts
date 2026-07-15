@@ -16,6 +16,18 @@ import type {CollectionHolder} from "../CollectionHolder"
 import type {Tuple}            from "./Tuple"
 import type {TupleName}        from "../type/toStringTag"
 
+/**
+ * A definition of a {@link Tuple} to have a common ancestor.
+ * No state or reference is held in this instance.
+ * Only the aliases methods have implementation.
+ *
+ * @apiNote This class is used when not specifically requiring an optimization on the methods, just the non-aliased methods calls
+ * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @typeParam T The type (by default `unknown`)
+ * @see Empty
+ * @see Monuple
+ * @see Couple
+ */
 export abstract class AbstractTuple<const T, >
     implements Tuple<T> {
 

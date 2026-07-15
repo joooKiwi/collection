@@ -16,6 +16,11 @@ import type {CollectionHolder} from "../CollectionHolder"
 import type {TupleName}        from "../type/toStringTag"
 
 /**
+ * A definition of a class with specific amount of values depending on the name being used.
+ * Note that the fields are only defined in the instance directly.
+ *
+ * @see Empty
+ * @see Monuple
  * @see Couple
  */
 export interface Tuple<out T, > {

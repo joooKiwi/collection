@@ -15,6 +15,11 @@ import type {Set} from "@joookiwi/type"
 import {AbstractTuple}       from "./AbstractTuple"
 import {CollectionHolderOf1} from "../CollectionHolderOf1"
 
+/**
+ * An instance of [Tuple] with only a single value from its `constructor`
+ *
+ * @typeParam T The type (by default `unknown`)
+ */
 export class Monuple<const T = unknown, >
     extends AbstractTuple<T> {
 

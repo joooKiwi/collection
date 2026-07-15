@@ -15,6 +15,13 @@ import type {Set} from "@joookiwi/type"
 import {AbstractTuple}       from "./AbstractTuple"
 import {CollectionHolderOf2} from "../CollectionHolderOf2"
 
+/**
+ * An instance of [Tuple] with only 2 values from its `constructor`
+ *
+ * @typeParam T The type (by default `unknown`)
+ * @typeParam T1 The 1st type (by default `T`)
+ * @typeParam T2 The 2nd type (by default `T`)
+ */
 export class Couple<const T = unknown,
     const T1 extends T = T,
     const T2 extends T = T, >
