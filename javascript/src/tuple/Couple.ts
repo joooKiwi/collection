@@ -12,10 +12,8 @@
 
 import type {Set} from "@joookiwi/type"
 
-import type {CollectionHolderOf2} from "../CollectionHolderOf2"
-
-import {LateRetriever} from "../LateRetriever"
-import {AbstractTuple} from "./AbstractTuple"
+import {AbstractTuple}       from "./AbstractTuple"
+import {CollectionHolderOf2} from "../CollectionHolderOf2"
 
 export class Couple<const T = unknown,
     const T1 extends T = T,
@@ -81,7 +79,7 @@ export class Couple<const T = unknown,
 
     public override toSet(): Set<| T1 | T2> { return this.#set ??= Object.freeze(new Set([this.value1, this.value2,],),) }
 
-    public override toCollection(): CollectionHolderOf2<T, T1, T2> { return this.#collection ??= new LateRetriever.CollectionHolderOf2(this.value1, this.value2,) }
+    public override toCollection(): CollectionHolderOf2<T, T1, T2> { return this.#collection ??= new CollectionHolderOf2(this.value1, this.value2,) }
 
     public override toString(): string {
         const value1 = this.value1
