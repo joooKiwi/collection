@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tuple (conversion)" type="JavaScriptTestRunnerJest" folderName="Tuple tests">
+    <node-interpreter value="project" />
+    <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+    <working-dir value="$PROJECT_DIR$" />
+    <jest-options value="--collect-coverage=false" />
+    <envs />
+    <scope-kind value="SUITE" />
+    <test-file value="$PROJECT_DIR$/test/Tuple.01 - conversion.test.ts" />
+    <test-names>
+      <test-name value="Tuple (conversion)" />
+    </test-names>
+    <method v="2" />
+  </configuration>
+</component>

@@ -4,6 +4,10 @@
     <toRun name="CollectionIterator (loop)" type="JavaScriptTestRunnerJest" />
     <toRun name="CollectionIterator (normal)" type="JavaScriptTestRunnerJest" />
     <toRun name="CollectionIterator (size)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (conversion)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (has)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (javascript exclusive)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (size)" type="JavaScriptTestRunnerJest" />
     <toRun name="all / any / none" type="JavaScriptTestRunnerJest" />
     <toRun name="constructor" type="JavaScriptTestRunnerJest" />
     <toRun name="conversion" type="JavaScriptTestRunnerJest" />
