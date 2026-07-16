@@ -39,14 +39,13 @@ import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
 import joookiwi.collection.java.extended.iterator.CharSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyCharIterator;
-import joookiwi.collection.java.optional.OptionalChar;
+import joookiwi.collection.java.optional.EmptyOptionalChar;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CollectionConstants.emptyCharSpliterator;
-import static joookiwi.collection.java.CollectionCreator.emptyOptionalChar;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -355,9 +354,9 @@ public class EmptySequentialCharStream
     @Contract(ALWAYS_1ST_2)           public final char reduce(final char initial, final @Nullable CharSupplier       accumulator) { return initial; }
     @Contract(ALWAYS_1ST_2)           public final char reduce(final char initial, final @Nullable Object @Nullable ...   ignored) { return initial; }
 
-    @Override public OptionalChar reduce(final @Nullable CharBinaryOperator accumulator) { return emptyOptionalChar(); }
-              public OptionalChar reduce(final @Nullable CharSupplier       accumulator) { return emptyOptionalChar(); }
-              public OptionalChar reduce(final @Nullable Object @Nullable ...   ignored) { return emptyOptionalChar(); }
+    @Override public EmptyOptionalChar reduce(final @Nullable CharBinaryOperator accumulator) { return EmptyOptionalChar.getInstance(); }
+              public EmptyOptionalChar reduce(final @Nullable CharSupplier       accumulator) { return EmptyOptionalChar.getInstance(); }
+              public EmptyOptionalChar reduce(final @Nullable Object @Nullable ...   ignored) { return EmptyOptionalChar.getInstance(); }
 
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjCharFunction<U, U> accumulator, final @Nullable BinaryOperator<U>   combiner) { return initial; }
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjCharFunction<U, U> accumulator, final @Nullable Supplier<U>         combiner) { return initial; }
@@ -427,14 +426,14 @@ public class EmptySequentialCharStream
     //#endregion -------------------- None match --------------------
     //#region -------------------- Find first --------------------
 
-    @Override public OptionalChar findFirst(                                            ) { return emptyOptionalChar(); }
-              public OptionalChar findFirst(final @Nullable Object @Nullable ... ignored) { return emptyOptionalChar(); }
+    @Override public EmptyOptionalChar findFirst(                                            ) { return EmptyOptionalChar.getInstance(); }
+              public EmptyOptionalChar findFirst(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalChar.getInstance(); }
 
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find any --------------------
 
-    @Override public OptionalChar findAny(                                            ) { return emptyOptionalChar(); }
-              public OptionalChar findAny(final @Nullable Object @Nullable ... ignored) { return emptyOptionalChar(); }
+    @Override public EmptyOptionalChar findAny(                                            ) { return EmptyOptionalChar.getInstance(); }
+              public EmptyOptionalChar findAny(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalChar.getInstance(); }
 
     //#endregion -------------------- Find any --------------------
     //#region -------------------- As stream --------------------

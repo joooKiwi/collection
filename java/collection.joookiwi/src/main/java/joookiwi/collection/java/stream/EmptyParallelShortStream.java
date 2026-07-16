@@ -41,14 +41,13 @@ import joookiwi.collection.java.callback.additional.ShortToLongFunction;
 import joookiwi.collection.java.callback.additional.ShortUnaryOperator;
 import joookiwi.collection.java.extended.iterator.EmptyShortIterator;
 import joookiwi.collection.java.extended.iterator.ShortSpliterator;
-import joookiwi.collection.java.optional.OptionalShort;
+import joookiwi.collection.java.optional.EmptyOptionalShort;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CollectionConstants.emptyShortSpliterator;
-import static joookiwi.collection.java.CollectionCreator.emptyOptionalShort;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -357,9 +356,9 @@ public class EmptyParallelShortStream
     @Contract(ALWAYS_1ST_2)           public final short reduce(final short initial, final @Nullable ShortSupplier       accumulator) { return initial; }
     @Contract(ALWAYS_1ST_2)           public final short reduce(final short initial, final @Nullable Object @Nullable ...    ignored) { return initial; }
 
-    @Override public OptionalShort reduce(final @Nullable ShortBinaryOperator accumulator) { return emptyOptionalShort(); }
-              public OptionalShort reduce(final @Nullable ShortSupplier       accumulator) { return emptyOptionalShort(); }
-              public OptionalShort reduce(final @Nullable Object @Nullable ...    ignored) { return emptyOptionalShort(); }
+    @Override public EmptyOptionalShort reduce(final @Nullable ShortBinaryOperator accumulator) { return EmptyOptionalShort.getInstance(); }
+              public EmptyOptionalShort reduce(final @Nullable ShortSupplier       accumulator) { return EmptyOptionalShort.getInstance(); }
+              public EmptyOptionalShort reduce(final @Nullable Object @Nullable ...    ignored) { return EmptyOptionalShort.getInstance(); }
 
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjShortFunction<U, U> accumulator, final @Nullable BinaryOperator<U>   combiner) { return initial; }
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjShortFunction<U, U> accumulator, final @Nullable Supplier<U>         combiner) { return initial; }
@@ -400,14 +399,14 @@ public class EmptyParallelShortStream
     //#endregion -------------------- Sum --------------------
     //#region -------------------- Min --------------------
 
-    @Override public OptionalShort min(                                            ) { return emptyOptionalShort(); }
-              public OptionalShort min(final @Nullable Object @Nullable ... ignored) { return emptyOptionalShort(); }
+    @Override public EmptyOptionalShort min(                                            ) { return EmptyOptionalShort.getInstance(); }
+              public EmptyOptionalShort min(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalShort.getInstance(); }
 
     //#endregion -------------------- Min --------------------
     //#region -------------------- Max --------------------
 
-    @Override public OptionalShort max(                                            ) { return emptyOptionalShort(); }
-              public OptionalShort max(final @Nullable Object @Nullable ... ignored) { return emptyOptionalShort(); }
+    @Override public EmptyOptionalShort max(                                            ) { return EmptyOptionalShort.getInstance(); }
+              public EmptyOptionalShort max(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalShort.getInstance(); }
 
     //#endregion -------------------- Max --------------------
     //#region -------------------- Count --------------------
@@ -453,14 +452,14 @@ public class EmptyParallelShortStream
     //#endregion -------------------- None match --------------------
     //#region -------------------- Find first --------------------
 
-    @Override public OptionalShort findFirst(                                            ) { return emptyOptionalShort(); }
-              public OptionalShort findFirst(final @Nullable Object @Nullable ... ignored) { return emptyOptionalShort(); }
+    @Override public EmptyOptionalShort findFirst(                                            ) { return EmptyOptionalShort.getInstance(); }
+              public EmptyOptionalShort findFirst(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalShort.getInstance(); }
 
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find any --------------------
 
-    @Override public OptionalShort findAny(                                            ) { return emptyOptionalShort(); }
-              public OptionalShort findAny(final @Nullable Object @Nullable ... ignored) { return emptyOptionalShort(); }
+    @Override public EmptyOptionalShort findAny(                                            ) { return EmptyOptionalShort.getInstance(); }
+              public EmptyOptionalShort findAny(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalShort.getInstance(); }
 
     //#endregion -------------------- Find any --------------------
     //#region -------------------- As stream --------------------

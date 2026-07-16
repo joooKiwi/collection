@@ -34,13 +34,12 @@ import joookiwi.collection.java.callback.additional.ObjFloatFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.EmptyFloatIterator;
 import joookiwi.collection.java.extended.iterator.EmptyFloatSpliterator;
-import joookiwi.collection.java.optional.OptionalFloat;
+import joookiwi.collection.java.optional.EmptyOptionalFloat;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionCreator.emptyOptionalFloat;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -349,9 +348,9 @@ public class EmptyParallelFloatStream
     @Contract(ALWAYS_1ST_2)           public final float reduce(final float initial, final @Nullable FloatSupplier       accumulator) { return initial; }
     @Contract(ALWAYS_1ST_2)           public final float reduce(final float initial, final @Nullable Object @Nullable ...    ignored) { return initial; }
 
-    @Override public OptionalFloat reduce(final @Nullable FloatBinaryOperator accumulator) { return emptyOptionalFloat(); }
-              public OptionalFloat reduce(final @Nullable FloatSupplier       accumulator) { return emptyOptionalFloat(); }
-              public OptionalFloat reduce(final @Nullable Object @Nullable ...    ignored) { return emptyOptionalFloat(); }
+    @Override public EmptyOptionalFloat reduce(final @Nullable FloatBinaryOperator accumulator) { return EmptyOptionalFloat.getInstance(); }
+              public EmptyOptionalFloat reduce(final @Nullable FloatSupplier       accumulator) { return EmptyOptionalFloat.getInstance(); }
+              public EmptyOptionalFloat reduce(final @Nullable Object @Nullable ...    ignored) { return EmptyOptionalFloat.getInstance(); }
 
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjFloatFunction<U, U> accumulator, final @Nullable BinaryOperator<U>   combiner) { return initial; }
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjFloatFunction<U, U> accumulator, final @Nullable Supplier<U>         combiner) { return initial; }
@@ -392,14 +391,14 @@ public class EmptyParallelFloatStream
     //#endregion -------------------- Sum --------------------
     //#region -------------------- Min --------------------
 
-    @Override public OptionalFloat min(                                            ) { return emptyOptionalFloat(); }
-              public OptionalFloat min(final @Nullable Object @Nullable ... ignored) { return emptyOptionalFloat(); }
+    @Override public EmptyOptionalFloat min(                                            ) { return EmptyOptionalFloat.getInstance(); }
+              public EmptyOptionalFloat min(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalFloat.getInstance(); }
 
     //#endregion -------------------- Min --------------------
     //#region -------------------- Max --------------------
 
-    @Override public OptionalFloat max(                                            ) { return emptyOptionalFloat(); }
-              public OptionalFloat max(final @Nullable Object @Nullable ... ignored) { return emptyOptionalFloat(); }
+    @Override public EmptyOptionalFloat max(                                            ) { return EmptyOptionalFloat.getInstance(); }
+              public EmptyOptionalFloat max(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalFloat.getInstance(); }
 
     //#endregion -------------------- Max --------------------
     //#region -------------------- Count --------------------
@@ -410,8 +409,8 @@ public class EmptyParallelFloatStream
     //#endregion -------------------- Count --------------------
     //#region -------------------- Average --------------------
 
-    @Override public OptionalFloat average(                                            ) { return emptyOptionalFloat(); }
-              public OptionalFloat average(final @Nullable Object @Nullable ... ignored) { return emptyOptionalFloat(); }
+    @Override public EmptyOptionalFloat average(                                            ) { return EmptyOptionalFloat.getInstance(); }
+              public EmptyOptionalFloat average(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalFloat.getInstance(); }
 
     //#endregion -------------------- Average --------------------
     //#region -------------------- Summary statistics --------------------
@@ -445,14 +444,14 @@ public class EmptyParallelFloatStream
     //#endregion -------------------- None match --------------------
     //#region -------------------- Find first --------------------
 
-    @Override public OptionalFloat findFirst(                                            ) { return emptyOptionalFloat(); }
-              public OptionalFloat findFirst(final @Nullable Object @Nullable ... ignored) { return emptyOptionalFloat(); }
+    @Override public EmptyOptionalFloat findFirst(                                            ) { return EmptyOptionalFloat.getInstance(); }
+              public EmptyOptionalFloat findFirst(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalFloat.getInstance(); }
 
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find any --------------------
 
-    @Override public OptionalFloat findAny(                                            ) { return emptyOptionalFloat(); }
-              public OptionalFloat findAny(final @Nullable Object @Nullable ... ignored) { return emptyOptionalFloat(); }
+    @Override public EmptyOptionalFloat findAny(                                            ) { return EmptyOptionalFloat.getInstance(); }
+              public EmptyOptionalFloat findAny(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalFloat.getInstance(); }
 
     //#endregion -------------------- Find any --------------------
     //#region -------------------- As stream --------------------

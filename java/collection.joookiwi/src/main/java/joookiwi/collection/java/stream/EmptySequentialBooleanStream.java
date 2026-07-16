@@ -38,14 +38,13 @@ import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
 import joookiwi.collection.java.extended.iterator.BooleanSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyBooleanIterator;
-import joookiwi.collection.java.optional.OptionalBoolean;
+import joookiwi.collection.java.optional.EmptyOptionalBoolean;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CollectionConstants.emptyBooleanSpliterator;
-import static joookiwi.collection.java.CollectionCreator.emptyOptionalBoolean;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -354,9 +353,9 @@ public class EmptySequentialBooleanStream
     @Contract(ALWAYS_1ST_2)           public final boolean reduce(final boolean initial, final @Nullable BooleanSupplier       accumulator) { return initial; }
     @Contract(ALWAYS_1ST_2)           public final boolean reduce(final boolean initial, final @Nullable Object @Nullable ...      ignored) { return initial; }
 
-    @Override public OptionalBoolean reduce(final @Nullable BooleanBinaryOperator accumulator) { return emptyOptionalBoolean(); }
-              public OptionalBoolean reduce(final @Nullable BooleanSupplier       accumulator) { return emptyOptionalBoolean(); }
-              public OptionalBoolean reduce(final @Nullable Object @Nullable ...      ignored) { return emptyOptionalBoolean(); }
+    @Override public EmptyOptionalBoolean reduce(final @Nullable BooleanBinaryOperator accumulator) { return EmptyOptionalBoolean.getInstance(); }
+              public EmptyOptionalBoolean reduce(final @Nullable BooleanSupplier       accumulator) { return EmptyOptionalBoolean.getInstance(); }
+              public EmptyOptionalBoolean reduce(final @Nullable Object @Nullable ...      ignored) { return EmptyOptionalBoolean.getInstance(); }
 
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjBooleanFunction<U, U> accumulator, final @Nullable BinaryOperator<U>   combiner) { return initial; }
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjBooleanFunction<U, U> accumulator, final @Nullable Supplier<U>         combiner) { return initial; }
@@ -426,14 +425,14 @@ public class EmptySequentialBooleanStream
     //#endregion -------------------- None match --------------------
     //#region -------------------- Find first --------------------
 
-    @Override public OptionalBoolean findFirst(                                            ) { return emptyOptionalBoolean(); }
-              public OptionalBoolean findFirst(final @Nullable Object @Nullable ... ignored) { return emptyOptionalBoolean(); }
+    @Override public EmptyOptionalBoolean findFirst(                                            ) { return EmptyOptionalBoolean.getInstance(); }
+              public EmptyOptionalBoolean findFirst(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalBoolean.getInstance(); }
 
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find any --------------------
 
-    @Override public OptionalBoolean findAny(                                            ) { return emptyOptionalBoolean(); }
-              public OptionalBoolean findAny(final @Nullable Object @Nullable ... ignored) { return emptyOptionalBoolean(); }
+    @Override public EmptyOptionalBoolean findAny(                                            ) { return EmptyOptionalBoolean.getInstance(); }
+              public EmptyOptionalBoolean findAny(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalBoolean.getInstance(); }
 
     //#endregion -------------------- Find any --------------------
     //#region -------------------- As stream --------------------

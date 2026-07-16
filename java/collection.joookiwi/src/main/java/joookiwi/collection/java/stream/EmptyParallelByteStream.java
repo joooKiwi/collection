@@ -41,14 +41,13 @@ import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
 import joookiwi.collection.java.extended.iterator.ByteSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyByteIterator;
-import joookiwi.collection.java.optional.OptionalByte;
+import joookiwi.collection.java.optional.EmptyOptionalByte;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CollectionConstants.emptyByteSpliterator;
-import static joookiwi.collection.java.CollectionCreator.emptyOptionalByte;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -357,9 +356,9 @@ public class EmptyParallelByteStream
     @Contract(ALWAYS_1ST_2)           public final byte reduce(final byte initial, final @Nullable ByteSupplier       accumulator) { return initial; }
     @Contract(ALWAYS_1ST_2)           public final byte reduce(final byte initial, final @Nullable Object @Nullable ...   ignored) { return initial; }
 
-    @Override public OptionalByte reduce(final @Nullable ByteBinaryOperator accumulator) { return emptyOptionalByte(); }
-              public OptionalByte reduce(final @Nullable ByteSupplier       accumulator) { return emptyOptionalByte(); }
-              public OptionalByte reduce(final @Nullable Object @Nullable ...   ignored) { return emptyOptionalByte(); }
+    @Override public EmptyOptionalByte reduce(final @Nullable ByteBinaryOperator accumulator) { return EmptyOptionalByte.getInstance(); }
+              public EmptyOptionalByte reduce(final @Nullable ByteSupplier       accumulator) { return EmptyOptionalByte.getInstance(); }
+              public EmptyOptionalByte reduce(final @Nullable Object @Nullable ...   ignored) { return EmptyOptionalByte.getInstance(); }
 
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjByteFunction<U, U> accumulator, final @Nullable BinaryOperator<U>   combiner) { return initial; }
     @Contract(ALWAYS_1ST_3) public <U extends @Nullable Object> U reduce(final U initial, final @Nullable ObjByteFunction<U, U> accumulator, final @Nullable Supplier<U>         combiner) { return initial; }
@@ -400,14 +399,14 @@ public class EmptyParallelByteStream
     //#endregion -------------------- Sum --------------------
     //#region -------------------- Min --------------------
 
-    @Override public OptionalByte min(                                            ) { return emptyOptionalByte(); }
-              public OptionalByte min(final @Nullable Object @Nullable ... ignored) { return emptyOptionalByte(); }
+    @Override public EmptyOptionalByte min(                                            ) { return EmptyOptionalByte.getInstance(); }
+              public EmptyOptionalByte min(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalByte.getInstance(); }
 
     //#endregion -------------------- Min --------------------
     //#region -------------------- Max --------------------
 
-    @Override public OptionalByte max(                                            ) { return emptyOptionalByte(); }
-              public OptionalByte max(final @Nullable Object @Nullable ... ignored) { return emptyOptionalByte(); }
+    @Override public EmptyOptionalByte max(                                            ) { return EmptyOptionalByte.getInstance(); }
+              public EmptyOptionalByte max(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalByte.getInstance(); }
 
     //#endregion -------------------- Max --------------------
     //#region -------------------- Count --------------------
@@ -453,14 +452,14 @@ public class EmptyParallelByteStream
     //#endregion -------------------- None match --------------------
     //#region -------------------- Find first --------------------
 
-    @Override public OptionalByte findFirst(                                            ) { return emptyOptionalByte(); }
-              public OptionalByte findFirst(final @Nullable Object @Nullable ... ignored) { return emptyOptionalByte(); }
+    @Override public EmptyOptionalByte findFirst(                                            ) { return EmptyOptionalByte.getInstance(); }
+              public EmptyOptionalByte findFirst(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalByte.getInstance(); }
 
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find any --------------------
 
-    @Override public OptionalByte findAny(                                            ) { return emptyOptionalByte(); }
-              public OptionalByte findAny(final @Nullable Object @Nullable ... ignored) { return emptyOptionalByte(); }
+    @Override public EmptyOptionalByte findAny(                                            ) { return EmptyOptionalByte.getInstance(); }
+              public EmptyOptionalByte findAny(final @Nullable Object @Nullable ... ignored) { return EmptyOptionalByte.getInstance(); }
 
     //#endregion -------------------- Find any --------------------
     //#region -------------------- As stream --------------------
