@@ -33,8 +33,8 @@ public class LazyCollectionHolderOf2<T extends @Nullable Object,
 
     private static final Supplier<?> FAIL_CALLBACK = () -> { throw new RuntimeException("This callback is never supposed to be called normally."); };
 
-    private Supplier<? extends Couple<? extends T, ? extends T1, ? extends T2>> __lateValues;
-    private @Nullable Couple<? extends T, ? extends T1, ? extends T2> __values;
+    private Supplier<? extends Couple<T, ? extends T1, ? extends T2>> __lateValues;
+    private @Nullable Couple<T, ? extends T1, ? extends T2> __values;
     private @Nullable T1 __value1;
     private boolean __isValue1Initialized;
     private @Nullable T2 __value2;
@@ -48,7 +48,7 @@ public class LazyCollectionHolderOf2<T extends @Nullable Object,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public LazyCollectionHolderOf2(final Supplier<? extends Couple<? extends T, ? extends T1, ? extends T2>> lateValues) {
+    public LazyCollectionHolderOf2(final Supplier<? extends Couple<T, ? extends T1, ? extends T2>> lateValues) {
         super();
         __lateValues = lateValues;
         __isValue1Initialized = __isValue2Initialized = false;
@@ -78,7 +78,7 @@ public class LazyCollectionHolderOf2<T extends @Nullable Object,
             // We just initialize the "value2" and unset everything else.
             // And the "values" are expected to be initialized
             final var value = __value2 = __values.value2();
-            __lateValues = (Supplier<? extends Couple<? extends T, ? extends T1, ? extends T2>>) FAIL_CALLBACK; // We do not need the callback anymore once the value has been retrieved
+            __lateValues = (Supplier<? extends Couple<T, ? extends T1, ? extends T2>>) FAIL_CALLBACK; // We do not need the callback anymore once the value has been retrieved
             __values = null;
             __isValue2Initialized = true;
             return value;
@@ -89,7 +89,7 @@ public class LazyCollectionHolderOf2<T extends @Nullable Object,
         __value1 = values.value1();
         final var value = __value2 = values.value2();
         __isValue1Initialized = __isValue2Initialized = true;
-        __lateValues = (Supplier<? extends Couple<? extends T, ? extends T1, ? extends T2>>) FAIL_CALLBACK // We do not need the callback anymore once the value has been retrieved
+        __lateValues = (Supplier<? extends Couple<T, ? extends T1, ? extends T2>>) FAIL_CALLBACK; // We do not need the callback anymore once the value has been retrieved
         return value;
     }
 

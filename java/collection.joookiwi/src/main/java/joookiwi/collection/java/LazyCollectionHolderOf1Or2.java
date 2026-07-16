@@ -156,7 +156,7 @@ public class LazyCollectionHolderOf1Or2<T extends @Nullable Object>
 
     private static final Supplier<?> FAIL_CALLBACK = () -> { throw new RuntimeException("This callback is never supposed to be called normally."); };
 
-    private Supplier<? extends @Nullable Couple<? extends Object, ? extends T, ? extends Optional<? extends T>>> __latePossibleValue;
+    private Supplier<? extends @Nullable Couple<@Nullable Object, ? extends T, ? extends Optional<? extends T>>> __latePossibleValue;
     private @Nullable T __value1;
     private boolean __isValue1Initialized;
     private @Nullable T __value2;
@@ -166,7 +166,7 @@ public class LazyCollectionHolderOf1Or2<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
-    public LazyCollectionHolderOf1Or2(final Supplier<? extends java.util.@Nullable Optional<Couple<? extends Object, ? extends T, ? extends java.util.Optional<? extends T>>>> latePossibleValue) {
+    public LazyCollectionHolderOf1Or2(final Supplier<? extends java.util.@Nullable Optional<Couple<@Nullable Object, ? extends T, ? extends java.util.Optional<? extends T>>>> latePossibleValue) {
         super();
         // README: We just re-encapsulate into the framework "Couple" instead of the java.util.Optional
         __latePossibleValue = () -> {
@@ -186,7 +186,7 @@ public class LazyCollectionHolderOf1Or2<T extends @Nullable Object>
         __isValue1Initialized = __isValue2Initialized = false;
     }
 
-    public LazyCollectionHolderOf1Or2(final OptionalSupplier<? extends @Nullable Optional<Couple<?, ? extends T, ? extends Optional<? extends T>>>> latePossibleValue) {
+    public LazyCollectionHolderOf1Or2(final OptionalSupplier<? extends @Nullable Optional<Couple<@Nullable Object, ? extends T, ? extends Optional<? extends T>>>> latePossibleValue) {
         super();
         // README: We just de-encapsulate the Optional into a "Couple"
         __latePossibleValue = () -> {
@@ -200,7 +200,7 @@ public class LazyCollectionHolderOf1Or2<T extends @Nullable Object>
         __isValue1Initialized = __isValue2Initialized = false;
     }
 
-    public LazyCollectionHolderOf1Or2(final TupleSupplier<? extends @Nullable Couple<?, ? extends T, ? extends Optional<? extends T>>> latePossibleValue) {
+    public LazyCollectionHolderOf1Or2(final TupleSupplier<? extends @Nullable Couple<@Nullable Object, ? extends T, ? extends Optional<? extends T>>> latePossibleValue) {
         super();
         __latePossibleValue = latePossibleValue;
         __isValue1Initialized = __isValue2Initialized = false;
@@ -219,7 +219,7 @@ public class LazyCollectionHolderOf1Or2<T extends @Nullable Object>
             return value;
 
         final var couple = __latePossibleValue.get();
-        __latePossibleValue = (Supplier<? extends Couple<?, ? extends T, ? extends Optional<? extends T>>>) FAIL_CALLBACK; // We do not need the callback anymore once the value has been retrieved
+        __latePossibleValue = (Supplier<? extends Couple<@Nullable Object, ? extends T, ? extends Optional<? extends T>>>) FAIL_CALLBACK; // We do not need the callback anymore once the value has been retrieved
         final var value2 = couple.value2();
         if (value2.isEmpty())
             return __innerCollection = new CollectionHolderOf1<>(couple.value1());
