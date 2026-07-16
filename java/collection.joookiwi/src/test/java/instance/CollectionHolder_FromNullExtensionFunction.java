@@ -913,14 +913,14 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
 
     //#endregion -------------------- To iterator --------------------
 
-    //#region -------------------- To instance --------------------
+    //#region -------------------- To array --------------------
 
     @Override public                              T[] toArray(                                                      ) { return ToArray.toArray(instance); }
     @Override public <U extends @Nullable Object> U[] toArray(final ObjIntFunction<? super T, ? extends U> transform) { return ToArray.toArray(instance, transform); }
     @Override public <U extends @Nullable Object> U[] toArray(final Function<? super T, ? extends U>       transform) { return ToArray.toArray(instance, transform); }
     @Override public <U extends @Nullable Object> U[] toArray(final Supplier<? extends U>                  transform) { return ToArray.toArray(instance, transform); }
 
-    //#endregion -------------------- To instance --------------------
+    //#endregion -------------------- To array --------------------
 
     //#region -------------------- To collection --------------------
 
@@ -962,7 +962,7 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableList<U> toMutableList(final Supplier<? extends U>                  transform) { return ToMutableList.toMutableList(instance, transform); }
 
     //#endregion -------------------- To list --------------------
-    //#region -------------------- To instance list --------------------
+    //#region -------------------- To array list --------------------
 
     @Override public                              ImmutableArrayList<T> toArrayList(                                                      ) { return ToArrayList.toArrayList(instance); }
     @Override public <U extends @Nullable Object> ImmutableArrayList<U> toArrayList(final ObjIntFunction<? super T, ? extends U> transform) { return ToArrayList.toArrayList(instance, transform); }
@@ -982,8 +982,8 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_2) @Override public <U extends @Nullable Object> MutableArrayList<U> toMutableArrayList(final @Nullable Integer initialCapacity, final Function<? super T, ? extends U>       transform) { return ToMutableArrayList.toMutableArrayList(instance, initialCapacity, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U extends @Nullable Object> MutableArrayList<U> toMutableArrayList(final @Nullable Integer initialCapacity, final Supplier<? extends U>                  transform) { return ToMutableArrayList.toMutableArrayList(instance, initialCapacity, transform); }
 
-    //#endregion -------------------- To instance list --------------------
-    //#region -------------------- To copy on write instance list --------------------
+    //#endregion -------------------- To array list --------------------
+    //#region -------------------- To copy on write array list --------------------
 
     @Override public                              ImmutableCopyOnWriteArrayList<T> toCopyOnWriteArrayList(                                                      ) { return ToCopyOnWriteArrayList.toCopyOnWriteArrayList(instance); }
     @Override public <U extends @Nullable Object> ImmutableCopyOnWriteArrayList<U> toCopyOnWriteArrayList(final ObjIntFunction<? super T, ? extends U> transform) { return ToCopyOnWriteArrayList.toCopyOnWriteArrayList(instance, transform); }
@@ -995,7 +995,7 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableCopyOnWriteArrayList<U> toMutableCopyOnWriteArrayList(final Function<? super T, ? extends U>       transform) { return ToMutableCopyOnWriteArrayList.toMutableCopyOnWriteArrayList(instance, transform); }
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableCopyOnWriteArrayList<U> toMutableCopyOnWriteArrayList(final Supplier<? extends U>                  transform) { return ToMutableCopyOnWriteArrayList.toMutableCopyOnWriteArrayList(instance, transform); }
 
-    //#endregion -------------------- To copy on write instance list --------------------
+    //#endregion -------------------- To copy on write array list --------------------
     //#region -------------------- To linked list --------------------
 
     @Override public                              ImmutableLinkedList<T> toLinkedList(                                                      ) { return ToLinkedList.toLinkedList(instance); }
@@ -1100,7 +1100,7 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_2) @Override public <U>                               MutableConcurrentSkipListSet<U> toMutableConcurrentSkipListSet(final Comparator<? super U> comparator, final Supplier<? extends U>                  transform) { return ToMutableConcurrentSkipListSet.toMutableConcurrentSkipListSet(instance, comparator, transform); }
 
     //#endregion -------------------- To concurrent skip list set --------------------
-    //#region -------------------- To copy on write instance set --------------------
+    //#region -------------------- To copy on write array set --------------------
 
     @Override public <U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final ObjIntFunction<? super T, ? extends U> transform) { return ToCopyOnWriteArraySet.toCopyOnWriteArraySet(instance, transform); }
     @Override public <U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final Function<? super T, ? extends U>       transform) { return ToCopyOnWriteArraySet.toCopyOnWriteArraySet(instance, transform); }
@@ -1110,7 +1110,7 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_1) @Override public <U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final Function<? super T, ? extends U>       transform) { return ToMutableCopyOnWriteArraySet.toMutableCopyOnWriteArraySet(instance, transform); }
     @Contract(ALWAYS_NEW_1) @Override public <U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final Supplier<? extends U>                  transform) { return ToMutableCopyOnWriteArraySet.toMutableCopyOnWriteArraySet(instance, transform); }
 
-    //#endregion -------------------- To copy on write instance set --------------------
+    //#endregion -------------------- To copy on write array set --------------------
     //#region -------------------- To enum set --------------------
 
     @Contract(ALWAYS_NEW_1) @Override public <U extends Enum<U>> EnumSet<U> toMutableEnumSet(                      final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableEnumSet.toMutableEnumSet(instance, transform); }
@@ -1234,7 +1234,7 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_1) @Override public <U> MutableTransferQueue<U> toMutableTransferQueue(final Supplier<? extends U>                  transform) { return ToMutableTransferQueue.toMutableTransferQueue(instance, transform); }
 
     //#endregion -------------------- To transfer queue --------------------
-    //#region -------------------- To instance blocking queue --------------------
+    //#region -------------------- To array blocking queue --------------------
 
     @Override public <U> ImmutableArrayBlockingQueue<U> toArrayBlockingQueue(final ObjIntFunction<? super T, ? extends U> transform) { return ToArrayBlockingQueue.toArrayBlockingQueue(instance, transform); }
     @Override public <U> ImmutableArrayBlockingQueue<U> toArrayBlockingQueue(final Function<? super T, ? extends U>       transform) { return ToArrayBlockingQueue.toArrayBlockingQueue(instance, transform); }
@@ -1268,7 +1268,7 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                  final @Nullable Boolean isFair, final Function<? super T, ? extends U>       transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(instance, isFair, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(                                  final @Nullable Boolean isFair, final Supplier<? extends U>                  transform) { return ToMutableArrayBlockingQueue.toMutableArrayBlockingQueue(instance, isFair, transform); }
 
-    //#endregion -------------------- To instance blocking queue --------------------
+    //#endregion -------------------- To array blocking queue --------------------
     //#region -------------------- To concurrent linked queue --------------------
 
     @Override public <U> ImmutableConcurrentLinkedQueue<U> toConcurrentLinkedQueue(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentLinkedQueue.toConcurrentLinkedQueue(instance, transform); }
@@ -1420,7 +1420,7 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_1) @Override public <U> MutableBlockingDeque<U> toMutableBlockingDeque(final Supplier<? extends U>                  transform) { return ToMutableBlockingDeque.toMutableBlockingDeque(instance, transform); }
 
     //#endregion -------------------- To blocking deque --------------------
-    //#region -------------------- To instance deque --------------------
+    //#region -------------------- To array deque --------------------
 
     @Override public <U> ImmutableArrayDeque<U> toArrayDeque(final ObjIntFunction<? super T, ? extends U> transform) { return ToArrayDeque.toArrayDeque(instance, transform); }
     @Override public <U> ImmutableArrayDeque<U> toArrayDeque(final Function<? super T, ? extends U>       transform) { return ToArrayDeque.toArrayDeque(instance, transform); }
@@ -1436,7 +1436,7 @@ public final class CollectionHolder_FromNullExtensionFunction<T extends @Nullabl
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable Integer initialCapacity, final Function<? super T, ? extends U>       transform) { return ToMutableArrayDeque.toMutableArrayDeque(instance, initialCapacity, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable Integer initialCapacity, final Supplier<? extends U>                  transform) { return ToMutableArrayDeque.toMutableArrayDeque(instance, initialCapacity, transform); }
 
-    //#endregion -------------------- To instance deque --------------------
+    //#endregion -------------------- To array deque --------------------
     //#region -------------------- To concurrent linked deque --------------------
 
     @Override public <U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentLinkedDeque.toConcurrentLinkedDeque(instance, transform); }
