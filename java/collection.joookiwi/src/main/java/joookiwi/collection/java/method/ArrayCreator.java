@@ -25,7 +25,15 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_10;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_4;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_5;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_6;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_7;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_8;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_9;
 
 @NotNullByDefault
 public final class ArrayCreator
@@ -402,6 +410,238 @@ public final class ArrayCreator
     public static double @Unmodifiable [] Array(final double value1, final double value2) { return new double[]{value1, value2,}; }
 
     //#endregion -------------------- value1, value2 --------------------
+    //#region -------------------- value1, value2, value3 --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2, final T value3) { throw new RuntimeException("Not implemented yet."); }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2, final boolean value3) { return new boolean[]{value1, value2, value3,}; }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    public static char @Unmodifiable [] Array(final char value1, final char value2, final char value3) { return new char[]{value1, value2, value3,}; }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    public static byte @Unmodifiable [] Array(final byte value1, final byte value2, final byte value3) { return new byte[]{value1, value2, value3,}; }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    public static short @Unmodifiable [] Array(final short value1, final short value2, final short value3) { return new short[]{value1, value2, value3,}; }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    public static int @Unmodifiable [] Array(final int value1, final int value2, final int value3) { return new int[]{value1, value2, value3,}; }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    public static long @Unmodifiable [] Array(final long value1, final long value2, final long value3) { return new long[]{value1, value2, value3,}; }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    public static float @Unmodifiable [] Array(final float value1, final float value2, final float value3) { return new float[]{value1, value2, value3,}; }
+
+    @Contract(value = ALWAYS_NEW_3, pure = true)
+    public static double @Unmodifiable [] Array(final double value1, final double value2, final double value3) { return new double[]{value1, value2, value3,}; }
+
+    //#endregion -------------------- value1, value2, value3 --------------------
+    //#region -------------------- value1, value2, value3, value4 --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2, final T value3, final T value4) { throw new RuntimeException("Not implemented yet."); }
+
+    @Contract(value = ALWAYS_NEW_4, pure = true)
+    public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2, final boolean value3, final boolean value4) { return new boolean[]{value1, value2, value3, value4,}; }
+
+    @Contract(value = ALWAYS_NEW_4, pure = true)
+    public static char @Unmodifiable [] Array(final char value1, final char value2, final char value3, final char value4) { return new char[]{value1, value2, value3, value4,}; }
+
+    @Contract(value = ALWAYS_NEW_4, pure = true)
+    public static byte @Unmodifiable [] Array(final byte value1, final byte value2, final byte value3, final byte value4) { return new byte[]{value1, value2, value3, value4,}; }
+
+    @Contract(value = ALWAYS_NEW_4, pure = true)
+    public static short @Unmodifiable [] Array(final short value1, final short value2, final short value3, final short value4) { return new short[]{value1, value2, value3, value4,}; }
+
+    @Contract(value = ALWAYS_NEW_4, pure = true)
+    public static int @Unmodifiable [] Array(final int value1, final int value2, final int value3, final int value4) { return new int[]{value1, value2, value3, value4,}; }
+
+    @Contract(value = ALWAYS_NEW_4, pure = true)
+    public static long @Unmodifiable [] Array(final long value1, final long value2, final long value3, final long value4) { return new long[]{value1, value2, value3, value4,}; }
+
+    @Contract(value = ALWAYS_NEW_4, pure = true)
+    public static float @Unmodifiable [] Array(final float value1, final float value2, final float value3, final float value4) { return new float[]{value1, value2, value3, value4,}; }
+
+    @Contract(value = ALWAYS_NEW_4, pure = true)
+    public static double @Unmodifiable [] Array(final double value1, final double value2, final double value3, final double value4) { return new double[]{value1, value2, value3, value4,}; }
+
+    //#endregion -------------------- value1, value2, value3, value4 --------------------
+    //#region -------------------- value1, value2, value3, value4, value5 --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2, final T value3, final T value4, final T value5) { throw new RuntimeException("Not implemented yet."); }
+
+    @Contract(value = ALWAYS_NEW_5, pure = true)
+    public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2, final boolean value3, final boolean value4, final boolean value5) { return new boolean[]{value1, value2, value3, value4, value5,}; }
+
+    @Contract(value = ALWAYS_NEW_5, pure = true)
+    public static char @Unmodifiable [] Array(final char value1, final char value2, final char value3, final char value4, final char value5) { return new char[]{value1, value2, value3, value4, value5,}; }
+
+    @Contract(value = ALWAYS_NEW_5, pure = true)
+    public static byte @Unmodifiable [] Array(final byte value1, final byte value2, final byte value3, final byte value4, final byte value5) { return new byte[]{value1, value2, value3, value4, value5,}; }
+
+    @Contract(value = ALWAYS_NEW_5, pure = true)
+    public static short @Unmodifiable [] Array(final short value1, final short value2, final short value3, final short value4, final short value5) { return new short[]{value1, value2, value3, value4, value5,}; }
+
+    @Contract(value = ALWAYS_NEW_5, pure = true)
+    public static int @Unmodifiable [] Array(final int value1, final int value2, final int value3, final int value4, final int value5) { return new int[]{value1, value2, value3, value4, value5,}; }
+
+    @Contract(value = ALWAYS_NEW_5, pure = true)
+    public static long @Unmodifiable [] Array(final long value1, final long value2, final long value3, final long value4, final long value5) { return new long[]{value1, value2, value3, value4, value5,}; }
+
+    @Contract(value = ALWAYS_NEW_5, pure = true)
+    public static float @Unmodifiable [] Array(final float value1, final float value2, final float value3, final float value4, final float value5) { return new float[]{value1, value2, value3, value4, value5,}; }
+
+    @Contract(value = ALWAYS_NEW_5, pure = true)
+    public static double @Unmodifiable [] Array(final double value1, final double value2, final double value3, final double value4, final double value5) { return new double[]{value1, value2, value3, value4, value5,}; }
+
+    //#endregion -------------------- value1, value2, value3, value4, value5 --------------------
+    //#region -------------------- value1, value2, value3, value4, value5, value6 --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2, final T value3, final T value4, final T value5, final T value6) { throw new RuntimeException("Not implemented yet."); }
+
+    @Contract(value = ALWAYS_NEW_6, pure = true)
+    public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2, final boolean value3, final boolean value4, final boolean value5, final boolean value6) { return new boolean[]{value1, value2, value3, value4, value5, value6,}; }
+    
+    @Contract(value = ALWAYS_NEW_6, pure = true)
+    public static char @Unmodifiable [] Array(final char value1, final char value2, final char value3, final char value4, final char value5, final char value6) { return new char[]{value1, value2, value3, value4, value5, value6,}; }
+    
+    @Contract(value = ALWAYS_NEW_6, pure = true)
+    public static byte @Unmodifiable [] Array(final byte value1, final byte value2, final byte value3, final byte value4, final byte value5, final byte value6) { return new byte[]{value1, value2, value3, value4, value5, value6,}; }
+    
+    @Contract(value = ALWAYS_NEW_6, pure = true)
+    public static short @Unmodifiable [] Array(final short value1, final short value2, final short value3, final short value4, final short value5, final short value6) { return new short[]{value1, value2, value3, value4, value5, value6,}; }
+    
+    @Contract(value = ALWAYS_NEW_6, pure = true)
+    public static int @Unmodifiable [] Array(final int value1, final int value2, final int value3, final int value4, final int value5, final int value6) { return new int[]{value1, value2, value3, value4, value5, value6,}; }
+    
+    @Contract(value = ALWAYS_NEW_6, pure = true)
+    public static long @Unmodifiable [] Array(final long value1, final long value2, final long value3, final long value4, final long value5, final long value6) { return new long[]{value1, value2, value3, value4, value5, value6,}; }
+    
+    @Contract(value = ALWAYS_NEW_6, pure = true)
+    public static float @Unmodifiable [] Array(final float value1, final float value2, final float value3, final float value4, final float value5, final float value6) { return new float[]{value1, value2, value3, value4, value5, value6,}; }
+    
+    @Contract(value = ALWAYS_NEW_6, pure = true)
+    public static double @Unmodifiable [] Array(final double value1, final double value2, final double value3, final double value4, final double value5, final double value6) { return new double[]{value1, value2, value3, value4, value5, value6,}; }
+
+    //#endregion -------------------- value1, value2, value3, value4, value5, value6 --------------------
+    //#region -------------------- value1, value2, value3, value4, value5, value6, value7 --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2, final T value3, final T value4, final T value5, final T value6, final T value7) { throw new RuntimeException("Not implemented yet."); }
+
+    @Contract(value = ALWAYS_NEW_7, pure = true)
+    public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2, final boolean value3, final boolean value4, final boolean value5, final boolean value6, final boolean value7) { return new boolean[]{value1, value2, value3, value4, value5, value6, value7,}; }
+
+    @Contract(value = ALWAYS_NEW_7, pure = true)
+    public static char @Unmodifiable [] Array(final char value1, final char value2, final char value3, final char value4, final char value5, final char value6, final char value7) { return new char[]{value1, value2, value3, value4, value5, value6, value7,}; }
+
+    @Contract(value = ALWAYS_NEW_7, pure = true)
+    public static byte @Unmodifiable [] Array(final byte value1, final byte value2, final byte value3, final byte value4, final byte value5, final byte value6, final byte value7) { return new byte[]{value1, value2, value3, value4, value5, value6, value7,}; }
+
+    @Contract(value = ALWAYS_NEW_7, pure = true)
+    public static short @Unmodifiable [] Array(final short value1, final short value2, final short value3, final short value4, final short value5, final short value6, final short value7) { return new short[]{value1, value2, value3, value4, value5, value6, value7,}; }
+
+    @Contract(value = ALWAYS_NEW_7, pure = true)
+    public static int @Unmodifiable [] Array(final int value1, final int value2, final int value3, final int value4, final int value5, final int value6, final int value7) { return new int[]{value1, value2, value3, value4, value5, value6, value7,}; }
+
+    @Contract(value = ALWAYS_NEW_7, pure = true)
+    public static long @Unmodifiable [] Array(final long value1, final long value2, final long value3, final long value4, final long value5, final long value6, final long value7) { return new long[]{value1, value2, value3, value4, value5, value6, value7,}; }
+
+    @Contract(value = ALWAYS_NEW_7, pure = true)
+    public static float @Unmodifiable [] Array(final float value1, final float value2, final float value3, final float value4, final float value5, final float value6, final float value7) { return new float[]{value1, value2, value3, value4, value5, value6, value7,}; }
+
+    @Contract(value = ALWAYS_NEW_7, pure = true)
+    public static double @Unmodifiable [] Array(final double value1, final double value2, final double value3, final double value4, final double value5, final double value6, final double value7) { return new double[]{value1, value2, value3, value4, value5, value6, value7,}; }
+
+    //#endregion -------------------- value1, value2, value3, value4, value5, value6, value7 --------------------
+    //#region -------------------- value1, value2, value3, value4, value5, value6, value7, value8 --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2, final T value3, final T value4, final T value5, final T value6, final T value7, final T value8) { throw new RuntimeException("Not implemented yet."); }
+
+    @Contract(value = ALWAYS_NEW_8, pure = true)
+    public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2, final boolean value3, final boolean value4, final boolean value5, final boolean value6, final boolean value7, final boolean value8) { return new boolean[]{value1, value2, value3, value4, value5, value6, value7, value8,}; }
+
+    @Contract(value = ALWAYS_NEW_8, pure = true)
+    public static char @Unmodifiable [] Array(final char value1, final char value2, final char value3, final char value4, final char value5, final char value6, final char value7, final char value8) { return new char[]{value1, value2, value3, value4, value5, value6, value7, value8,}; }
+
+    @Contract(value = ALWAYS_NEW_8, pure = true)
+    public static byte @Unmodifiable [] Array(final byte value1, final byte value2, final byte value3, final byte value4, final byte value5, final byte value6, final byte value7, final byte value8) { return new byte[]{value1, value2, value3, value4, value5, value6, value7, value8,}; }
+
+    @Contract(value = ALWAYS_NEW_8, pure = true)
+    public static short @Unmodifiable [] Array(final short value1, final short value2, final short value3, final short value4, final short value5, final short value6, final short value7, final short value8) { return new short[]{value1, value2, value3, value4, value5, value6, value7, value8,}; }
+
+    @Contract(value = ALWAYS_NEW_8, pure = true)
+    public static int @Unmodifiable [] Array(final int value1, final int value2, final int value3, final int value4, final int value5, final int value6, final int value7, final int value8) { return new int[]{value1, value2, value3, value4, value5, value6, value7, value8,}; }
+
+    @Contract(value = ALWAYS_NEW_8, pure = true)
+    public static long @Unmodifiable [] Array(final long value1, final long value2, final long value3, final long value4, final long value5, final long value6, final long value7, final long value8) { return new long[]{value1, value2, value3, value4, value5, value6, value7, value8,}; }
+
+    @Contract(value = ALWAYS_NEW_8, pure = true)
+    public static float @Unmodifiable [] Array(final float value1, final float value2, final float value3, final float value4, final float value5, final float value6, final float value7, final float value8) { return new float[]{value1, value2, value3, value4, value5, value6, value7, value8,}; }
+
+    @Contract(value = ALWAYS_NEW_8, pure = true)
+    public static double @Unmodifiable [] Array(final double value1, final double value2, final double value3, final double value4, final double value5, final double value6, final double value7, final double value8) { return new double[]{value1, value2, value3, value4, value5, value6, value7, value8,}; }
+
+    //#endregion -------------------- value1, value2, value3, value4, value5, value6, value7, value8 --------------------
+    //#region -------------------- value1, value2, value3, value4, value5, value6, value7, value8, value9 --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2, final T value3, final T value4, final T value5, final T value6, final T value7, final T value8, final T value9) { throw new RuntimeException("Not implemented yet."); }
+
+    @Contract(value = ALWAYS_NEW_9, pure = true)
+    public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2, final boolean value3, final boolean value4, final boolean value5, final boolean value6, final boolean value7, final boolean value8, final boolean value9) { return new boolean[]{value1, value2, value3, value4, value5, value6, value7, value8, value9,}; }
+
+    @Contract(value = ALWAYS_NEW_9, pure = true)
+    public static char @Unmodifiable [] Array(final char value1, final char value2, final char value3, final char value4, final char value5, final char value6, final char value7, final char value8, final char value9) { return new char[]{value1, value2, value3, value4, value5, value6, value7, value8, value9,}; }
+
+    @Contract(value = ALWAYS_NEW_9, pure = true)
+    public static byte @Unmodifiable [] Array(final byte value1, final byte value2, final byte value3, final byte value4, final byte value5, final byte value6, final byte value7, final byte value8, final byte value9) { return new byte[]{value1, value2, value3, value4, value5, value6, value7, value8, value9,}; }
+
+    @Contract(value = ALWAYS_NEW_9, pure = true)
+    public static short @Unmodifiable [] Array(final short value1, final short value2, final short value3, final short value4, final short value5, final short value6, final short value7, final short value8, final short value9) { return new short[]{value1, value2, value3, value4, value5, value6, value7, value8, value9,}; }
+
+    @Contract(value = ALWAYS_NEW_9, pure = true)
+    public static int @Unmodifiable [] Array(final int value1, final int value2, final int value3, final int value4, final int value5, final int value6, final int value7, final int value8, final int value9) { return new int[]{value1, value2, value3, value4, value5, value6, value7, value8, value9,}; }
+
+    @Contract(value = ALWAYS_NEW_9, pure = true)
+    public static long @Unmodifiable [] Array(final long value1, final long value2, final long value3, final long value4, final long value5, final long value6, final long value7, final long value8, final long value9) { return new long[]{value1, value2, value3, value4, value5, value6, value7, value8, value9,}; }
+
+    @Contract(value = ALWAYS_NEW_9, pure = true)
+    public static float @Unmodifiable [] Array(final float value1, final float value2, final float value3, final float value4, final float value5, final float value6, final float value7, final float value8, final float value9) { return new float[]{value1, value2, value3, value4, value5, value6, value7, value8, value9,}; }
+
+    @Contract(value = ALWAYS_NEW_9, pure = true)
+    public static double @Unmodifiable [] Array(final double value1, final double value2, final double value3, final double value4, final double value5, final double value6, final double value7, final double value8, final double value9) { return new double[]{value1, value2, value3, value4, value5, value6, value7, value8, value9,}; }
+
+    //#endregion -------------------- value1, value2, value3, value4, value5, value6, value7, value8, value9 --------------------
+    //#region -------------------- value1, value2, value3, value4, value5, value6, value7, value8, value9, value10 --------------------
+
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value1, final T value2, final T value3, final T value4, final T value5, final T value6, final T value7, final T value8, final T value9, final T value10) { throw new RuntimeException("Not implemented yet."); }
+
+    @Contract(value = ALWAYS_NEW_10, pure = true)
+    public static boolean @Unmodifiable [] Array(final boolean value1, final boolean value2, final boolean value3, final boolean value4, final boolean value5, final boolean value6, final boolean value7, final boolean value8, final boolean value9, final boolean value10) { return new boolean[]{value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,}; }
+
+    @Contract(value = ALWAYS_NEW_10, pure = true)
+    public static char @Unmodifiable [] Array(final char value1, final char value2, final char value3, final char value4, final char value5, final char value6, final char value7, final char value8, final char value9, final char value10) { return new char[]{value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,}; }
+
+    @Contract(value = ALWAYS_NEW_10, pure = true)
+    public static byte @Unmodifiable [] Array(final byte value1, final byte value2, final byte value3, final byte value4, final byte value5, final byte value6, final byte value7, final byte value8, final byte value9, final byte value10) { return new byte[]{value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,}; }
+
+    @Contract(value = ALWAYS_NEW_10, pure = true)
+    public static short @Unmodifiable [] Array(final short value1, final short value2, final short value3, final short value4, final short value5, final short value6, final short value7, final short value8, final short value9, final short value10) { return new short[]{value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,}; }
+
+    @Contract(value = ALWAYS_NEW_10, pure = true)
+    public static int @Unmodifiable [] Array(final int value1, final int value2, final int value3, final int value4, final int value5, final int value6, final int value7, final int value8, final int value9, final int value10) { return new int[]{value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,}; }
+
+    @Contract(value = ALWAYS_NEW_10, pure = true)
+    public static long @Unmodifiable [] Array(final long value1, final long value2, final long value3, final long value4, final long value5, final long value6, final long value7, final long value8, final long value9, final long value10) { return new long[]{value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,}; }
+
+    @Contract(value = ALWAYS_NEW_10, pure = true)
+    public static float @Unmodifiable [] Array(final float value1, final float value2, final float value3, final float value4, final float value5, final float value6, final float value7, final float value8, final float value9, final float value10) { return new float[]{value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,}; }
+
+    @Contract(value = ALWAYS_NEW_10, pure = true)
+    public static double @Unmodifiable [] Array(final double value1, final double value2, final double value3, final double value4, final double value5, final double value6, final double value7, final double value8, final double value9, final double value10) { return new double[]{value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,}; }
+
+    //#endregion -------------------- value1, value2, value3, value4, value5, value6, value7, value8, value9, value10 --------------------
     //#region -------------------- values --------------------
 
     public static <T extends @Nullable Object> T @Unmodifiable [] Array(final @Nullable MinimalistCollectionHolder<? extends T> values) { return ToArray.toArray(values); }
