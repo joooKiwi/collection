@@ -1,17 +1,15 @@
 package joookiwi.collection.java;
 
+import java.util.function.Consumer;
+import java.util.function.IntConsumer;
+import java.util.function.ObjIntConsumer;
+import java.util.function.Supplier;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.tuple.Couple;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.IntConsumer;
-import java.util.function.ObjIntConsumer;
-import java.util.function.Supplier;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
