@@ -13,6 +13,7 @@
 import type {CollectionIteratorFollower} from "./CollectionIteratorFollower"
 
 import {CollectionIteratorOf1} from "../../src/iterator/CollectionIteratorOf1"
+import {NullOrZeroNumber}      from "@joookiwi/type"
 
 /**
  * An inherited instance of {@link CollectionIteratorOf1}
@@ -99,7 +100,7 @@ export class CollectionIterator_1Follower
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Current methods --------------------
 
-    public override get currentIndex(): 0 {
+    public override get currentIndex(): NullOrZeroNumber {
         this.currentIndex_amountOfCall++
         return super.currentIndex
     }

@@ -67,4 +67,28 @@ export interface CollectionIteratorForTest<out T, >
     /** Call {@link CollectionIterator#next} 2 times, then {@link CollectionIterator#previous} 2 times and then return the current {@link CollectionHolderForTest instance} */
     do2NextAnd2Previous(): this
 
+    readonly length: never
+    readonly count: never
+
+    readonly hasAtLeast1Element: never
+    readonly containsAtLeast1Element: never
+    readonly includesAtLeast1Element: never
+
+    readonly containsExactly1Element: never
+    readonly includesExactly1Element: never
+
+    readonly containsAtMost1Element: never
+    readonly includesAtMost1Element: never
+
+    readonly containsAtLeast2Elements: never
+    readonly includesAtLeast2Elements: never
+
+    readonly containsExactly2Elements: never
+    readonly includesExactly2Elements: never
+
+    readonly containsAtMost2Elements: never
+    readonly includesAtMost2Elements: never
+
+    readonly index: never
+
 }
