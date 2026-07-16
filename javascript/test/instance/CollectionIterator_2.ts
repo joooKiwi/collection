@@ -16,8 +16,8 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
 
-import {AbstractCollectionIteratorForTest} from "./AbstractCollectionIteratorForTest"
 import {CollectionIteratorOf2}             from "../../src/iterator/CollectionIteratorOf2"
+import {AbstractCollectionIteratorForTest} from "./AbstractCollectionIteratorForTest"
 
 /**
  * A class to test the functionality of a {@link CollectionIteratorOf2}

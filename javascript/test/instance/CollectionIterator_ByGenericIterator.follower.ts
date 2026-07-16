@@ -10,12 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {NullOrNumber} from "@joookiwi/type"
+
 import type {CollectionIteratorFollower} from "./CollectionIteratorFollower"
 
 import {GenericCollectionIterator} from "../../src/iterator/GenericCollectionIterator"
 import {CollectionHolderFromArray} from "./CollectionHolderFromArray"
 import {ABCD}                      from "../value/arrays"
-import type {NullOrNumber}         from "@joookiwi/type"
 
 /**
  * An inherited instance of {@link GenericCollectionIterator}

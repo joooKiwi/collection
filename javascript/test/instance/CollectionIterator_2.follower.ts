@@ -10,10 +10,11 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {NullOrNumber} from "@joookiwi/type"
+
 import type {CollectionIteratorFollower} from "./CollectionIteratorFollower"
 
 import {CollectionIteratorOf2} from "../../src/iterator/CollectionIteratorOf2"
-import type {NullOrNumber}     from "@joookiwi/type"
 
 /**
  * An inherited instance of {@link CollectionIteratorOf2}

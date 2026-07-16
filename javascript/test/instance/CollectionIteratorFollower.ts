@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionIterator} from "../../src/iterator/CollectionIterator"
+import type {CollectionIterator} from "../../src/iterator/CollectionIterator"
 
 /**
  * A {@link CollectionIterator} having the utility to follow every non-aliased methods that have an alias
