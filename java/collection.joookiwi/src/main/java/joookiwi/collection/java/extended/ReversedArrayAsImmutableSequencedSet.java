@@ -28,7 +28,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ArrayAsImmutableSequencedSet
 @NotNullByDefault
 public class ReversedArrayAsImmutableSequencedSet<T extends @Nullable Object,
-        SOURCE extends @NotNull ImmutableSequencedSet<T>,
+        SOURCE extends ImmutableSequencedSet<T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
         extends AbstractArrayAsImmutableSequencedSet<T> {
 

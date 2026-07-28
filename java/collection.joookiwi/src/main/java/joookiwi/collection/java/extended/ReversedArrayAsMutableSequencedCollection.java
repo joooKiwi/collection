@@ -2,7 +2,6 @@ package joookiwi.collection.java.extended;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -25,7 +24,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 /// @see ArrayAsMutableSequencedCollection
 @NotNullByDefault
 public class ReversedArrayAsMutableSequencedCollection<T extends @Nullable Object,
-        SOURCE extends @NotNull MutableSequencedCollection<T>,
+        SOURCE extends MutableSequencedCollection<T>,
         REVERSED_ARRAY extends ReversedMutableArray<T>>
         extends AbstractArrayAsMutableSequencedCollection<T> {
 

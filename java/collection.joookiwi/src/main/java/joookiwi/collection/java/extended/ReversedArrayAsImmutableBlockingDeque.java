@@ -3,7 +3,6 @@ package joookiwi.collection.java.extended;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -27,7 +26,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ArrayAsImmutableBlockingDeque
 @NotNullByDefault
 public class ReversedArrayAsImmutableBlockingDeque<T,
-        SOURCE extends @NotNull ImmutableBlockingDeque<T>,
+        SOURCE extends ImmutableBlockingDeque<T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
         extends AbstractArrayAsImmutableDeque<T> {
 
