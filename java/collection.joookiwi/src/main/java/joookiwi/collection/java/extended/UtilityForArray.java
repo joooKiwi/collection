@@ -516,48 +516,42 @@ public sealed class UtilityForArray
 
     public static <T extends @Nullable Object> ImmutableSequencedCollection<T> asReversed(final ImmutableSequencedCollection<T> source,
                                                                                           final T @Unmodifiable [] reference) {
-        final var size = reference.length;
-        if (size == 0)
+        if (reference.length == 0)
             return EmptySequencedCollection.getInstance();
         return new ReversedArrayAsImmutableSequencedCollection<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> ImmutableList<T> asReversed(final ImmutableList<T> source,
                                                                            final T @Unmodifiable [] reference) {
-        final var size = reference.length;
-        if (size == 0)
+        if (reference.length == 0)
             return EmptyList.getInstance();
         return new ReversedArrayAsImmutableList<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> ImmutableSequencedSet<T> asReversed(final ImmutableSequencedSet<T> source,
                                                                                    final T @Unmodifiable [] reference) {
-        final var size = reference.length;
-        if (size == 0)
+        if (reference.length == 0)
             return EmptySequencedSet.getInstance();
         return new ReversedArrayAsImmutableSequencedSet<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> ImmutableSortedSet<T> asReversed(final ImmutableSortedSet<T> source,
                                                                                 final T @Unmodifiable [] reference) {
-        final var size = reference.length;
-        if (size == 0)
+        if (reference.length == 0)
             return EmptySortedSet.getInstance();
         return new ReversedArrayAsImmutableSortedSet<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> asReversed(final ImmutableNavigableSet<T> source,
                                                                                    final T @Unmodifiable [] reference) {
-        final var size = reference.length;
-        if (size == 0)
+        if (reference.length == 0)
             return EmptyNavigableSet.getInstance();
         return new ReversedArrayAsImmutableNavigableSet<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> ImmutableDeque<T> asReversed(final ImmutableDeque<T> source,
                                                                             final T @Unmodifiable [] reference) {
-        final var size = reference.length;
-        if (size == 0)
+        if (reference.length == 0)
             return EmptyDeque.getInstance();
         return new ReversedArrayAsImmutableDeque<>(source, new ReversedArray<>(reference));
     }
