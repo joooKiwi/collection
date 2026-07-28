@@ -3,38 +3,23 @@ package instance;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Deque;
-import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.IdentityHashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.NavigableMap;
 import java.util.NavigableSet;
 import java.util.PrimitiveIterator;
 import java.util.Queue;
 import java.util.SequencedCollection;
-import java.util.SequencedMap;
 import java.util.SequencedSet;
 import java.util.Set;
-import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.Spliterator;
-import java.util.TreeMap;
-import java.util.WeakHashMap;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TransferQueue;
 import java.util.function.BooleanSupplier;
@@ -119,6 +104,36 @@ import joookiwi.collection.java.extended.MutableSynchronousQueue;
 import joookiwi.collection.java.extended.MutableTransferQueue;
 import joookiwi.collection.java.extended.MutableTreeSet;
 import joookiwi.collection.java.extended.MutableVector;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentHashMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentNavigableMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentSkipListMap;
+import joookiwi.collection.java.extended.map.ImmutableEnumMap;
+import joookiwi.collection.java.extended.map.ImmutableHashMap;
+import joookiwi.collection.java.extended.map.ImmutableHashtable;
+import joookiwi.collection.java.extended.map.ImmutableIdentityHashMap;
+import joookiwi.collection.java.extended.map.ImmutableLinkedHashMap;
+import joookiwi.collection.java.extended.map.ImmutableMap;
+import joookiwi.collection.java.extended.map.ImmutableNavigableMap;
+import joookiwi.collection.java.extended.map.ImmutableSequencedMap;
+import joookiwi.collection.java.extended.map.ImmutableSortedMap;
+import joookiwi.collection.java.extended.map.ImmutableTreeMap;
+import joookiwi.collection.java.extended.map.ImmutableWeakHashMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentHashMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentNavigableMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentSkipListMap;
+import joookiwi.collection.java.extended.map.MutableEnumMap;
+import joookiwi.collection.java.extended.map.MutableHashMap;
+import joookiwi.collection.java.extended.map.MutableHashtable;
+import joookiwi.collection.java.extended.map.MutableIdentityHashMap;
+import joookiwi.collection.java.extended.map.MutableLinkedHashMap;
+import joookiwi.collection.java.extended.map.MutableMap;
+import joookiwi.collection.java.extended.map.MutableNavigableMap;
+import joookiwi.collection.java.extended.map.MutableSequencedMap;
+import joookiwi.collection.java.extended.map.MutableSortedMap;
+import joookiwi.collection.java.extended.map.MutableTreeMap;
+import joookiwi.collection.java.extended.map.MutableWeakHashMap;
 import joookiwi.collection.java.iterator.CollectionIterator;
 import joookiwi.collection.java.method.All;
 import joookiwi.collection.java.method.Any;
@@ -204,6 +219,8 @@ import joookiwi.collection.java.method.ToBlockingQueue;
 import joookiwi.collection.java.method.ToCollection;
 import joookiwi.collection.java.method.ToConcurrentLinkedDeque;
 import joookiwi.collection.java.method.ToConcurrentLinkedQueue;
+import joookiwi.collection.java.method.ToConcurrentMap;
+import joookiwi.collection.java.method.ToConcurrentNavigableMap;
 import joookiwi.collection.java.method.ToConcurrentSkipListSet;
 import joookiwi.collection.java.method.ToCopyOnWriteArrayList;
 import joookiwi.collection.java.method.ToCopyOnWriteArraySet;
@@ -221,6 +238,7 @@ import joookiwi.collection.java.method.ToLocaleLowerCaseString;
 import joookiwi.collection.java.method.ToLocaleString;
 import joookiwi.collection.java.method.ToLocaleUpperCaseString;
 import joookiwi.collection.java.method.ToLowerCaseString;
+import joookiwi.collection.java.method.ToMap;
 import joookiwi.collection.java.method.ToMutableArrayBlockingQueue;
 import joookiwi.collection.java.method.ToMutableArrayDeque;
 import joookiwi.collection.java.method.ToMutableArrayList;
@@ -255,14 +273,17 @@ import joookiwi.collection.java.method.ToMutableSynchronousQueue;
 import joookiwi.collection.java.method.ToMutableTransferQueue;
 import joookiwi.collection.java.method.ToMutableTreeSet;
 import joookiwi.collection.java.method.ToMutableVector;
+import joookiwi.collection.java.method.ToNavigableMap;
 import joookiwi.collection.java.method.ToNavigableSet;
 import joookiwi.collection.java.method.ToPriorityBlockingQueue;
 import joookiwi.collection.java.method.ToPriorityQueue;
 import joookiwi.collection.java.method.ToQueue;
 import joookiwi.collection.java.method.ToReverse;
 import joookiwi.collection.java.method.ToSequencedCollection;
+import joookiwi.collection.java.method.ToSequencedMap;
 import joookiwi.collection.java.method.ToSequencedSet;
 import joookiwi.collection.java.method.ToSet;
+import joookiwi.collection.java.method.ToSortedMap;
 import joookiwi.collection.java.method.ToSortedSet;
 import joookiwi.collection.java.method.ToSpliterator;
 import joookiwi.collection.java.method.ToStack;
@@ -1444,115 +1465,121 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
 
     //#region -------------------- To map --------------------
 
-    public @Unmodifiable Map<Integer, T> toMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public Map<Integer, T> toMutableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    @Override public ImmutableMap<Integer, T> toMap() { return ToMap.toMap((MinimalistCollectionHolder<T>) this); }
+
+    @Override public MutableMap<Integer, T> toMutableMap() { throw new RuntimeException("TODO: Implements the toMutableMap method"); }
 
     //#endregion -------------------- To map --------------------
     //#region -------------------- To sequenced map --------------------
 
-    public @Unmodifiable SequencedMap<Integer, T> toSequencedMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public SequencedMap<Integer, T> toMutableSequencedMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    @Override public ImmutableSequencedMap<Integer, T> toSequencedMap() { return ToSequencedMap.toSequencedMap((MinimalistCollectionHolder<T>) this); }
+
+    @Override public MutableSequencedMap<Integer, T> toMutableSequencedMap() { throw new RuntimeException("TODO: Implements the toMutableSequencedMap method"); }
 
     //#endregion -------------------- To sequenced map --------------------
     //#region -------------------- To sorted map --------------------
 
-    public @Unmodifiable SortedMap<Integer, T> toSortedMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public SortedMap<Integer, T> toMutableSortedMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    @Override public ImmutableSortedMap<Integer, T> toSortedMap() { return ToSortedMap.toSortedMap((MinimalistCollectionHolder<T>) this); }
+
+    @Override public MutableSortedMap<Integer, T> toMutableSortedMap() { throw new RuntimeException("TODO: Implements the toMutableSortedMap method"); }
 
     //#endregion -------------------- To sorted map --------------------
     //#region -------------------- To navigable map --------------------
 
-    public @Unmodifiable NavigableMap<Integer, T> toNavigableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public NavigableMap<Integer, T> toMutableNavigableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    @Override public ImmutableNavigableMap<Integer, T> toNavigableMap() { return ToNavigableMap.toNavigableMap((MinimalistCollectionHolder<T>) this); }
+
+    @Override public MutableNavigableMap<Integer, T> toMutableNavigableMap() { throw new RuntimeException("TODO: Implements the toMutableNavigableMap method"); }
 
     //#endregion -------------------- To navigable map --------------------
     //#region -------------------- To concurrent map --------------------
 
-    public @Unmodifiable ConcurrentMap<Integer, T> toConcurrentMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public ConcurrentMap<Integer, T> toMutableConcurrentMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    @Override public ImmutableConcurrentMap<Integer, T> toConcurrentMap() { return ToConcurrentMap.toConcurrentMap((MinimalistCollectionHolder<T>) this); }
+
+    @Override public MutableConcurrentMap<Integer, T> toMutableConcurrentMap() { throw new RuntimeException("TODO: Implements the toMutableConcurrentMap method"); }
 
     //#endregion -------------------- To concurrent map --------------------
     //#region -------------------- To concurrent navigable map --------------------
 
-    public @Unmodifiable ConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public ConcurrentNavigableMap<Integer, T> toMutableConcurrentNavigableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    @Override public ImmutableConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() { return ToConcurrentNavigableMap.toConcurrentNavigableMap((MinimalistCollectionHolder<T>) this); }
+
+    @Override public MutableConcurrentNavigableMap<Integer, T> toMutableConcurrentNavigableMap() { throw new RuntimeException("TODO: Implements the toMutableConcurrentNavigableMap method"); }
 
     //#endregion -------------------- To concurrent navigable map --------------------
     //#region -------------------- To concurrent hash map --------------------
 
-    public @Unmodifiable ConcurrentHashMap<Integer, T> toConcurrentHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public ConcurrentHashMap<Integer, T> toMutableConcurrentHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableConcurrentHashMap<Integer, T> toConcurrentHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public MutableConcurrentHashMap<Integer, T> toMutableConcurrentHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To concurrent hash map --------------------
     //#region -------------------- To concurrent skip list map --------------------
 
-    public @Unmodifiable ConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public ConcurrentSkipListMap<Integer, T> toMutableConcurrentSkipListMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public MutableConcurrentSkipListMap<Integer, T> toMutableConcurrentSkipListMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To concurrent skip list map --------------------
     //#region -------------------- To enum map --------------------
 
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                                 transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>           keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>           keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>           keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, Entry<K, V>>                                                       transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>                 keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>                 keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>                 keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<Entry<K, V>>                                                                  transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                            keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                            keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                            keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                                 transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>           keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>           keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>           keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, Entry<K, V>>                                                       transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>                 keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>                 keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>                 keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<Entry<K, V>>                                                                  transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                            keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                            keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                            keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(ObjIntFunction<? super T, Entry<K, V>>                                                 transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(ObjIntFunction<? super T, K>           keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(ObjIntFunction<? super T, K>           keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(ObjIntFunction<? super T, K>           keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(Function<? super T, Entry<K, V>>                                                       transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(Function<? super T, K>                 keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(Function<? super T, K>                 keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(Function<? super T, K>                 keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(Supplier<Entry<K, V>>                                                                  transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(Supplier<K>                            keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(Supplier<K>                            keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(Supplier<K>                            keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(ObjIntFunction<? super T, Entry<K, V>>                                                 transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(ObjIntFunction<? super T, K>           keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(ObjIntFunction<? super T, K>           keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(ObjIntFunction<? super T, K>           keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(Function<? super T, Entry<K, V>>                                                       transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(Function<? super T, K>                 keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(Function<? super T, K>                 keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(Function<? super T, K>                 keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(Supplier<Entry<K, V>>                                                                  transform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(Supplier<K>                            keyTransform, ObjIntFunction<? super T, V> valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(Supplier<K>                            keyTransform, Function<? super T, V>       valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(Supplier<K>                            keyTransform, Supplier<V>                  valueTransform) { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To enum map --------------------
     //#region -------------------- To hash map --------------------
 
-    public @Unmodifiable HashMap<Integer, T> toHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public HashMap<Integer, T> toMutableHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableHashMap<Integer, T> toHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public MutableHashMap<Integer, T> toMutableHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To hash map --------------------
     //#region -------------------- To hashtable --------------------
 
-    public @Unmodifiable Hashtable<Integer, T> toHashtable() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public Hashtable<Integer, T> toMutableHashtable() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableHashtable<Integer, T> toHashtable() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public MutableHashtable<Integer, T> toMutableHashtable() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To hashtable --------------------
     //#region -------------------- To identity hash map --------------------
 
-    public @Unmodifiable IdentityHashMap<Integer, T> toIdentityHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public IdentityHashMap<Integer, T> toMutableIdentityHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableIdentityHashMap<Integer, T> toIdentityHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public MutableIdentityHashMap<Integer, T> toMutableIdentityHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To identity hash map --------------------
     //#region -------------------- To linked hash map --------------------
 
-    public @Unmodifiable LinkedHashMap<Integer, T> toLinkedHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public LinkedHashMap<Integer, T> toMutableLinkedHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableLinkedHashMap<Integer, T> toLinkedHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public MutableLinkedHashMap<Integer, T> toMutableLinkedHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To linked hash map --------------------
     //#region -------------------- To tree map --------------------
 
-    public @Unmodifiable TreeMap<Integer, T> toTreeMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public TreeMap<Integer, T> toMutableTreeMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableTreeMap<Integer, T> toTreeMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public MutableTreeMap<Integer, T> toMutableTreeMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To tree map --------------------
     //#region -------------------- To weak hash map --------------------
 
-    public @Unmodifiable WeakHashMap<Integer, T> toWeakHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
-    public WeakHashMap<Integer, T> toMutableWeakHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableWeakHashMap<Integer, T> toWeakHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public MutableWeakHashMap<Integer, T> toMutableWeakHashMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To weak hash map --------------------
 

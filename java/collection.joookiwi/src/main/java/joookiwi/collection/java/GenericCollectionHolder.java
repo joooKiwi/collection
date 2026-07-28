@@ -6,41 +6,27 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.EnumSet;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.IdentityHashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
-import java.util.Map;
-import java.util.NavigableMap;
 import java.util.NavigableSet;
 import java.util.PrimitiveIterator;
 import java.util.Queue;
 import java.util.RandomAccess;
 import java.util.SequencedCollection;
-import java.util.SequencedMap;
 import java.util.SequencedSet;
 import java.util.Set;
-import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.Spliterator;
 import java.util.Stack;
-import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Vector;
-import java.util.WeakHashMap;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TransferQueue;
@@ -124,7 +110,7 @@ import joookiwi.collection.java.extended.ImmutableSynchronousQueue;
 import joookiwi.collection.java.extended.ImmutableTransferQueue;
 import joookiwi.collection.java.extended.ImmutableTreeSet;
 import joookiwi.collection.java.extended.ImmutableVector;
-import joookiwi.collection.java.extended.JavaArray;
+import joookiwi.collection.java.extended.array.JavaArray;
 import joookiwi.collection.java.extended.MutableArrayBlockingQueue;
 import joookiwi.collection.java.extended.MutableArrayDeque;
 import joookiwi.collection.java.extended.MutableArrayList;
@@ -184,6 +170,20 @@ import joookiwi.collection.java.extended.SubdividedArrayAsMutableSortedSet;
 import joookiwi.collection.java.extended.SubdividedMutableArray;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentHashMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentNavigableMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentSkipListMap;
+import joookiwi.collection.java.extended.map.ImmutableHashMap;
+import joookiwi.collection.java.extended.map.ImmutableHashtable;
+import joookiwi.collection.java.extended.map.ImmutableIdentityHashMap;
+import joookiwi.collection.java.extended.map.ImmutableLinkedHashMap;
+import joookiwi.collection.java.extended.map.ImmutableMap;
+import joookiwi.collection.java.extended.map.ImmutableNavigableMap;
+import joookiwi.collection.java.extended.map.ImmutableSequencedMap;
+import joookiwi.collection.java.extended.map.ImmutableSortedMap;
+import joookiwi.collection.java.extended.map.ImmutableTreeMap;
+import joookiwi.collection.java.extended.map.ImmutableWeakHashMap;
 import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.helper.HashCodeCreator;
 import joookiwi.collection.java.iterator.CollectionIterator;
@@ -279,6 +279,8 @@ import joookiwi.collection.java.method.ToBlockingQueue;
 import joookiwi.collection.java.method.ToCollection;
 import joookiwi.collection.java.method.ToConcurrentLinkedDeque;
 import joookiwi.collection.java.method.ToConcurrentLinkedQueue;
+import joookiwi.collection.java.method.ToConcurrentMap;
+import joookiwi.collection.java.method.ToConcurrentNavigableMap;
 import joookiwi.collection.java.method.ToConcurrentSkipListSet;
 import joookiwi.collection.java.method.ToCopyOnWriteArrayList;
 import joookiwi.collection.java.method.ToCopyOnWriteArraySet;
@@ -330,14 +332,17 @@ import joookiwi.collection.java.method.ToMutableSynchronousQueue;
 import joookiwi.collection.java.method.ToMutableTransferQueue;
 import joookiwi.collection.java.method.ToMutableTreeSet;
 import joookiwi.collection.java.method.ToMutableVector;
+import joookiwi.collection.java.method.ToNavigableMap;
 import joookiwi.collection.java.method.ToNavigableSet;
 import joookiwi.collection.java.method.ToPriorityBlockingQueue;
 import joookiwi.collection.java.method.ToPriorityQueue;
 import joookiwi.collection.java.method.ToQueue;
 import joookiwi.collection.java.method.ToReverse;
 import joookiwi.collection.java.method.ToSequencedCollection;
+import joookiwi.collection.java.method.ToSequencedMap;
 import joookiwi.collection.java.method.ToSequencedSet;
 import joookiwi.collection.java.method.ToSet;
+import joookiwi.collection.java.method.ToSortedMap;
 import joookiwi.collection.java.method.ToSortedSet;
 import joookiwi.collection.java.method.ToStack;
 import joookiwi.collection.java.method.ToString;
@@ -447,21 +452,21 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- Fields (stack) --------------------
     //#region -------------------- Fields (map) --------------------
 
-    private @Nullable @Unmodifiable Map<Integer, T> __map;
-    private @Nullable @Unmodifiable SequencedMap<Integer, T> __sequencedMap;
-    private @Nullable @Unmodifiable SortedMap<Integer, T> __sortedMap;
-    private @Nullable @Unmodifiable NavigableMap<Integer, T> __navigableMap;
-    private @Nullable @Unmodifiable ConcurrentMap<Integer, T> __concurrentMap;
-    private @Nullable @Unmodifiable ConcurrentNavigableMap<Integer, T> __concurrentNavigableMap;
+    private @Nullable ImmutableMap<Integer, T> __map;
+    private @Nullable ImmutableSequencedMap<Integer, T> __sequencedMap;
+    private @Nullable ImmutableSortedMap<Integer, T> __sortedMap;
+    private @Nullable ImmutableNavigableMap<Integer, T> __navigableMap;
+    private @Nullable ImmutableConcurrentMap<Integer, T> __concurrentMap;
+    private @Nullable ImmutableConcurrentNavigableMap<Integer, T> __concurrentNavigableMap;
 
-    private @Nullable @Unmodifiable ConcurrentHashMap<Integer, T> __concurrentHashMap;
-    private @Nullable @Unmodifiable ConcurrentSkipListMap<Integer, T> __concurrentSkipListMap;
-    private @Nullable @Unmodifiable HashMap<Integer, T> __hashMap;
-    private @Nullable @Unmodifiable Hashtable<Integer, T> __hashtable;
-    private @Nullable @Unmodifiable IdentityHashMap<Integer, T> __identityHashMap;
-    private @Nullable @Unmodifiable LinkedHashMap<Integer, T> __linkedHashMap;
-    private @Nullable @Unmodifiable TreeMap<Integer, T> __treeMap;
-    private @Nullable @Unmodifiable WeakHashMap<Integer, T> __weakHashMap;
+    private @Nullable ImmutableConcurrentHashMap<Integer, T> __concurrentHashMap;
+    private @Nullable ImmutableConcurrentSkipListMap<Integer, T> __concurrentSkipListMap;
+    private @Nullable ImmutableHashMap<Integer, T> __hashMap;
+    private @Nullable ImmutableHashtable<Integer, T> __hashtable;
+    private @Nullable ImmutableIdentityHashMap<Integer, T> __identityHashMap;
+    private @Nullable ImmutableLinkedHashMap<Integer, T> __linkedHashMap;
+    private @Nullable ImmutableTreeMap<Integer, T> __treeMap;
+    private @Nullable ImmutableWeakHashMap<Integer, T> __weakHashMap;
 
     //#endregion -------------------- Fields (map) --------------------
 
@@ -3002,7 +3007,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- To map --------------------
 
-    @Override public @Unmodifiable Map<Integer, T> toMap() {
+    @Override public ImmutableMap<Integer, T> toMap() {
         final var value = __map;
         if (value != null)
             return value;
@@ -3010,60 +3015,59 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     }
 
     //#endregion -------------------- To map --------------------
-//    //#region -------------------- To sequenced map --------------------
-//
-//    @Override public @Unmodifiable SequencedMap<Integer, T> toSequencedMap() {
-//        final var value = __sequencedMap;
-//        if (value != null)
-//            return value;
-//        return __sequencedMap = ToSequencedMap.toSequencedMap(_array());
-//    }
-//
-//    //#endregion -------------------- To sequenced map --------------------
-//    //#region -------------------- To sorted map --------------------
-//
-//    @Override public @Unmodifiable SortedMap<Integer, T> toSortedMap() {
-//        final var value = __sortedMap;
-//        if (value != null)
-//            return value;
-//        return __sortedMap = ToSortedMap.toSortedMap(_array());
-//    }
-//
-//    //#endregion -------------------- To sorted map --------------------
-//    //#region -------------------- To navigable map --------------------
-//
-//    @Override public @Unmodifiable NavigableMap<Integer, T> toNavigableMap() {
-//        final var value = __navigableMap;
-//        if (value != null)
-//            return value;
-//        return __navigableMap = ToNavigableMap.toNavigableMap(_array());
-//    }
-//
-//    //#endregion -------------------- To navigable map --------------------
-//    //#region -------------------- To concurrent map --------------------
-//
-//    @Override public @Unmodifiable ConcurrentMap<Integer, T> toConcurrentMap() {
-//        final var value = __concurrentMap;
-//        if (value != null)
-//            return value;
-//        return __concurrentMap = ToConcurrentMap.toConcurrentMap(_array());
-//    }
-//
-//    //#endregion -------------------- To concurrent map --------------------
-//    //#region -------------------- To concurrent navigable map --------------------
-//
-//    @Override public @Unmodifiable ConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() {
-//        final var value = __concurrentNavigableMap;
-//        if (value != null)
-//            return value;
-//        return __concurrentNavigableMap = ToConcurrentNavigableMap.toConcurrentNavigableMap(_array());
-//    }
-//
-//    //#endregion -------------------- To concurrent navigable map --------------------
-//
+    //#region -------------------- To sequenced map --------------------
+
+    @Override public ImmutableSequencedMap<Integer, T> toSequencedMap() {
+        final var value = __sequencedMap;
+        if (value != null)
+            return value;
+        return __sequencedMap = ToSequencedMap.toSequencedMap(_array());
+    }
+
+    //#endregion -------------------- To sequenced map --------------------
+    //#region -------------------- To sorted map --------------------
+
+    @Override public ImmutableSortedMap<Integer, T> toSortedMap() {
+        final var value = __sortedMap;
+        if (value != null)
+            return value;
+        return __sortedMap = ToSortedMap.toSortedMap(_array());
+    }
+
+    //#endregion -------------------- To sorted map --------------------
+    //#region -------------------- To navigable map --------------------
+
+    @Override public ImmutableNavigableMap<Integer, T> toNavigableMap() {
+        final var value = __navigableMap;
+        if (value != null)
+            return value;
+        return __navigableMap = ToNavigableMap.toNavigableMap(_array());
+    }
+
+    //#endregion -------------------- To navigable map --------------------
+    //#region -------------------- To concurrent map --------------------
+
+    @Override public ImmutableConcurrentMap<Integer, T> toConcurrentMap() {
+        final var value = __concurrentMap;
+        if (value != null)
+            return value;
+        return __concurrentMap = ToConcurrentMap.toConcurrentMap(_array());
+    }
+
+    //#endregion -------------------- To concurrent map --------------------
+    //#region -------------------- To concurrent navigable map --------------------
+
+    @Override public ImmutableConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() {
+        final var value = __concurrentNavigableMap;
+        if (value != null)
+            return value;
+        return __concurrentNavigableMap = ToConcurrentNavigableMap.toConcurrentNavigableMap(_array());
+    }
+
+    //#endregion -------------------- To concurrent navigable map --------------------
 //    //#region -------------------- To concurrent hash map --------------------
 //
-//    @Override public @Unmodifiable ConcurrentHashMap<Integer, T> toConcurrentHashMap() {
+//    @Override public ImmutableConcurrentHashMap<Integer, T> toConcurrentHashMap() {
 //        final var value = __concurrentHashMap;
 //        if (value != null)
 //            return value;
@@ -3073,7 +3077,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 //    //#endregion -------------------- To concurrent hash map --------------------
 //    //#region -------------------- To concurrent skip list map --------------------
 //
-//    @Override public @Unmodifiable ConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap() {
+//    @Override public ImmutableConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap() {
 //        final var value = __concurrentSkipListMap;
 //        if (value != null)
 //            return value;
@@ -3086,7 +3090,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 //    //#endregion -------------------- To enum map --------------------
 //    //#region -------------------- To hash map --------------------
 //
-//    @Override public @Unmodifiable HashMap<Integer, T> toHashMap() {
+//    @Override public ImmutableHashMap<Integer, T> toHashMap() {
 //        final var value = __hashMap;
 //        if (value != null)
 //            return value;
@@ -3096,7 +3100,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 //    //#endregion -------------------- To hash map --------------------
 //    //#region -------------------- To hashtable --------------------
 //
-//    @Override public @Unmodifiable Hashtable<Integer, T> toHashtable() {
+//    @Override public ImmutableHashtable<Integer, T> toHashtable() {
 //        final var value = __hashtable;
 //        if (value != null)
 //            return value;
@@ -3106,7 +3110,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 //    //#endregion -------------------- To hashtable --------------------
 //    //#region -------------------- To identity hash map --------------------
 //
-//    @Override public @Unmodifiable IdentityHashMap<Integer, T> toIdentityHashMap() {
+//    @Override public ImmutableIdentityHashMap<Integer, T> toIdentityHashMap() {
 //        final var value = __identityHashMap;
 //        if (value != null)
 //            return value;
@@ -3116,7 +3120,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 //    //#endregion -------------------- To identity hash map --------------------
 //    //#region -------------------- To linked hash map --------------------
 //
-//    @Override public @Unmodifiable LinkedHashMap<Integer, T> toLinkedHashMap() {
+//    @Override public ImmutableLinkedHashMap<Integer, T> toLinkedHashMap() {
 //        final var value = __linkedHashMap;
 //        if (value != null)
 //            return value;
@@ -3126,7 +3130,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 //    //#endregion -------------------- To linked hash map --------------------
 //    //#region -------------------- To tree map --------------------
 //
-//    @Override public @Unmodifiable TreeMap<Integer, T> toTreeMap() {
+//    @Override public ImmutableTreeMap<Integer, T> toTreeMap() {
 //        final var value = __treeMap;
 //        if (value != null)
 //            return value;
@@ -3136,7 +3140,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 //    //#endregion -------------------- To tree map --------------------
 //    //#region -------------------- To weak hash map --------------------
 //
-//    @Override public @Unmodifiable WeakHashMap<Integer, T> toWeakHashMap() {
+//    @Override public ImmutableWeakHashMap<Integer, T> toWeakHashMap() {
 //        final var value = __weakHashMap;
 //        if (value != null)
 //            return value;

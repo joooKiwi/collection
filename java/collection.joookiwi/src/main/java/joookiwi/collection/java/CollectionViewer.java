@@ -3,38 +3,23 @@ package joookiwi.collection.java;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Deque;
-import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.IdentityHashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.NavigableMap;
 import java.util.NavigableSet;
 import java.util.PrimitiveIterator;
 import java.util.Queue;
 import java.util.SequencedCollection;
-import java.util.SequencedMap;
 import java.util.SequencedSet;
 import java.util.Set;
-import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.Spliterator;
-import java.util.TreeMap;
-import java.util.WeakHashMap;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TransferQueue;
 import java.util.function.BooleanSupplier;
@@ -117,6 +102,36 @@ import joookiwi.collection.java.extended.MutableSynchronousQueue;
 import joookiwi.collection.java.extended.MutableTransferQueue;
 import joookiwi.collection.java.extended.MutableTreeSet;
 import joookiwi.collection.java.extended.MutableVector;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentHashMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentNavigableMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentSkipListMap;
+import joookiwi.collection.java.extended.map.ImmutableEnumMap;
+import joookiwi.collection.java.extended.map.ImmutableHashMap;
+import joookiwi.collection.java.extended.map.ImmutableHashtable;
+import joookiwi.collection.java.extended.map.ImmutableIdentityHashMap;
+import joookiwi.collection.java.extended.map.ImmutableLinkedHashMap;
+import joookiwi.collection.java.extended.map.ImmutableMap;
+import joookiwi.collection.java.extended.map.ImmutableNavigableMap;
+import joookiwi.collection.java.extended.map.ImmutableSequencedMap;
+import joookiwi.collection.java.extended.map.ImmutableSortedMap;
+import joookiwi.collection.java.extended.map.ImmutableTreeMap;
+import joookiwi.collection.java.extended.map.ImmutableWeakHashMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentHashMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentNavigableMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentSkipListMap;
+import joookiwi.collection.java.extended.map.MutableEnumMap;
+import joookiwi.collection.java.extended.map.MutableHashMap;
+import joookiwi.collection.java.extended.map.MutableHashtable;
+import joookiwi.collection.java.extended.map.MutableIdentityHashMap;
+import joookiwi.collection.java.extended.map.MutableLinkedHashMap;
+import joookiwi.collection.java.extended.map.MutableMap;
+import joookiwi.collection.java.extended.map.MutableNavigableMap;
+import joookiwi.collection.java.extended.map.MutableSequencedMap;
+import joookiwi.collection.java.extended.map.MutableSortedMap;
+import joookiwi.collection.java.extended.map.MutableTreeMap;
+import joookiwi.collection.java.extended.map.MutableWeakHashMap;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNull;
@@ -1252,131 +1267,129 @@ public class CollectionViewer<T extends @Nullable Object,
 
     //#region -------------------- To map --------------------
 
-    @Override public @Unmodifiable Map<Integer, T> toMap() { return getReference().toMap(); }
+    @Override public ImmutableMap<Integer, T> toMap() { return getReference().toMap(); }
 
-    @Override public Map<Integer, T> toMutableMap() { return getReference().toMutableMap(); }
+    @Override public MutableMap<Integer, T> toMutableMap() { return getReference().toMutableMap(); }
 
     //#endregion -------------------- To map --------------------
     //#region -------------------- To sequenced map --------------------
 
-    @Override public @Unmodifiable SequencedMap<Integer, T> toSequencedMap() { return getReference().toSequencedMap(); }
+    @Override public ImmutableSequencedMap<Integer, T> toSequencedMap() { return getReference().toSequencedMap(); }
 
-    @Override public SequencedMap<Integer, T> toMutableSequencedMap() { return getReference().toMutableSequencedMap(); }
+    @Override public MutableSequencedMap<Integer, T> toMutableSequencedMap() { return getReference().toMutableSequencedMap(); }
 
     //#endregion -------------------- To sequenced map --------------------
     //#region -------------------- To sorted map --------------------
 
-    @Override public @Unmodifiable SortedMap<Integer, T> toSortedMap() { return getReference().toSortedMap(); }
+    @Override public ImmutableSortedMap<Integer, T> toSortedMap() { return getReference().toSortedMap(); }
 
-    @Override public SortedMap<Integer, T> toMutableSortedMap() { return getReference().toMutableSortedMap(); }
+    @Override public MutableSortedMap<Integer, T> toMutableSortedMap() { return getReference().toMutableSortedMap(); }
 
     //#endregion -------------------- To sorted map --------------------
     //#region -------------------- To navigable map --------------------
 
-    @Override public @Unmodifiable NavigableMap<Integer, T> toNavigableMap() { return getReference().toNavigableMap(); }
+    @Override public ImmutableNavigableMap<Integer, T> toNavigableMap() { return getReference().toNavigableMap(); }
 
-    @Override public NavigableMap<Integer, T> toMutableNavigableMap() { return getReference().toMutableNavigableMap(); }
+    @Override public MutableNavigableMap<Integer, T> toMutableNavigableMap() { return getReference().toMutableNavigableMap(); }
 
     //#endregion -------------------- To navigable map --------------------
     //#region -------------------- To concurrent map --------------------
 
-    @Override public @Unmodifiable ConcurrentMap<Integer, T> toConcurrentMap() { return getReference().toConcurrentMap(); }
+    @Override public ImmutableConcurrentMap<Integer, T> toConcurrentMap() { return getReference().toConcurrentMap(); }
 
-    @Override public ConcurrentMap<Integer, T> toMutableConcurrentMap() { return getReference().toMutableConcurrentMap(); }
+    @Override public MutableConcurrentMap<Integer, T> toMutableConcurrentMap() { return getReference().toMutableConcurrentMap(); }
 
     //#endregion -------------------- To concurrent map --------------------
     //#region -------------------- To concurrent navigable map --------------------
 
-    @Override public @Unmodifiable ConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() { return getReference().toConcurrentNavigableMap(); }
+    @Override public ImmutableConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() { return getReference().toConcurrentNavigableMap(); }
 
-    @Override public ConcurrentNavigableMap<Integer, T> toMutableConcurrentNavigableMap() { return getReference().toMutableConcurrentNavigableMap(); }
+    @Override public MutableConcurrentNavigableMap<Integer, T> toMutableConcurrentNavigableMap() { return getReference().toMutableConcurrentNavigableMap(); }
 
     //#endregion -------------------- To concurrent navigable map --------------------
     //#region -------------------- To concurrent hash map --------------------
 
-    @Override public @Unmodifiable ConcurrentHashMap<Integer, T> toConcurrentHashMap() { return getReference().toConcurrentHashMap(); }
+    @Override public ImmutableConcurrentHashMap<Integer, T> toConcurrentHashMap() { return getReference().toConcurrentHashMap(); }
 
-    @Override public ConcurrentHashMap<Integer, T> toMutableConcurrentHashMap() { return getReference().toMutableConcurrentHashMap(); }
+    @Override public MutableConcurrentHashMap<Integer, T> toMutableConcurrentHashMap() { return getReference().toMutableConcurrentHashMap(); }
 
     //#endregion -------------------- To concurrent hash map --------------------
     //#region -------------------- To concurrent skip list map --------------------
 
-    @Override public @Unmodifiable ConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap() { return getReference().toConcurrentSkipListMap(); }
+    @Override public ImmutableConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap() { return getReference().toConcurrentSkipListMap(); }
 
-    @Override public ConcurrentSkipListMap<Integer, T> toMutableConcurrentSkipListMap() { return getReference().toMutableConcurrentSkipListMap(); }
+    @Override public MutableConcurrentSkipListMap<Integer, T> toMutableConcurrentSkipListMap() { return getReference().toMutableConcurrentSkipListMap(); }
 
     //#endregion -------------------- To concurrent skip list map --------------------
     //#region -------------------- To enum map --------------------
 
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                                    transform) { return getReference().toEnumMap(transform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, Entry<K, V>>                                                          transform) { return getReference().toEnumMap(transform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<Entry<K, V>>                                                                     transform) { return getReference().toEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                                    transform) { return getReference().toEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, Entry<K, V>>                                                          transform) { return getReference().toEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<Entry<K, V>>                                                                     transform) { return getReference().toEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
 
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                             transform) { return getReference().toMutableEnumMap(transform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Function<? super T, Entry<K, V>>                                                   transform) { return getReference().toMutableEnumMap(transform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Supplier<Entry<K, V>>                                                              transform) { return getReference().toMutableEnumMap(transform); }
-
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                             transform) { return getReference().toMutableEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Function<? super T, Entry<K, V>>                                                   transform) { return getReference().toMutableEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Supplier<Entry<K, V>>                                                              transform) { return getReference().toMutableEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
 
     //#endregion -------------------- To enum map --------------------
     //#region -------------------- To hash map --------------------
 
-    @Override public @Unmodifiable HashMap<Integer, T> toHashMap() { return getReference().toHashMap(); }
+    @Override public ImmutableHashMap<Integer, T> toHashMap() { return getReference().toHashMap(); }
 
-    @Override public HashMap<Integer, T> toMutableHashMap() { return getReference().toMutableHashMap(); }
+    @Override public MutableHashMap<Integer, T> toMutableHashMap() { return getReference().toMutableHashMap(); }
 
     //#endregion -------------------- To hash map --------------------
     //#region -------------------- To hashtable --------------------
 
-    @Override public @Unmodifiable Hashtable<Integer, T> toHashtable() { return getReference().toHashtable(); }
+    @Override public ImmutableHashtable<Integer, T> toHashtable() { return getReference().toHashtable(); }
 
-    @Override public Hashtable<Integer, T> toMutableHashtable() { return getReference().toMutableHashtable(); }
+    @Override public MutableHashtable<Integer, T> toMutableHashtable() { return getReference().toMutableHashtable(); }
 
     //#endregion -------------------- To hashtable --------------------
     //#region -------------------- To identity hash map --------------------
 
-    @Override public @Unmodifiable IdentityHashMap<Integer, T> toIdentityHashMap() { return getReference().toIdentityHashMap(); }
+    @Override public ImmutableIdentityHashMap<Integer, T> toIdentityHashMap() { return getReference().toIdentityHashMap(); }
 
-    @Override public IdentityHashMap<Integer, T> toMutableIdentityHashMap() { return getReference().toMutableIdentityHashMap(); }
+    @Override public MutableIdentityHashMap<Integer, T> toMutableIdentityHashMap() { return getReference().toMutableIdentityHashMap(); }
 
     //#endregion -------------------- To identity hash map --------------------
     //#region -------------------- To linked hash map --------------------
 
-    @Override public @Unmodifiable LinkedHashMap<Integer, T> toLinkedHashMap() { return getReference().toLinkedHashMap(); }
+    @Override public ImmutableLinkedHashMap<Integer, T> toLinkedHashMap() { return getReference().toLinkedHashMap(); }
 
-    @Override public LinkedHashMap<Integer, T> toMutableLinkedHashMap() { return getReference().toMutableLinkedHashMap(); }
+    @Override public MutableLinkedHashMap<Integer, T> toMutableLinkedHashMap() { return getReference().toMutableLinkedHashMap(); }
 
     //#endregion -------------------- To linked hash map --------------------
     //#region -------------------- To tree map --------------------
 
-    @Override public @Unmodifiable TreeMap<Integer, T> toTreeMap() { return getReference().toTreeMap(); }
+    @Override public ImmutableTreeMap<Integer, T> toTreeMap() { return getReference().toTreeMap(); }
 
-    @Override public TreeMap<Integer, T> toMutableTreeMap() { return getReference().toMutableTreeMap(); }
+    @Override public MutableTreeMap<Integer, T> toMutableTreeMap() { return getReference().toMutableTreeMap(); }
 
     //#endregion -------------------- To tree map --------------------
     //#region -------------------- To weak hash map --------------------
 
-    @Override public @Unmodifiable WeakHashMap<Integer, T> toWeakHashMap() { return getReference().toWeakHashMap(); }
+    @Override public ImmutableWeakHashMap<Integer, T> toWeakHashMap() { return getReference().toWeakHashMap(); }
 
-    @Override public WeakHashMap<Integer, T> toMutableWeakHashMap() { return getReference().toMutableWeakHashMap(); }
+    @Override public MutableWeakHashMap<Integer, T> toMutableWeakHashMap() { return getReference().toMutableWeakHashMap(); }
 
     //#endregion -------------------- To weak hash map --------------------
 
