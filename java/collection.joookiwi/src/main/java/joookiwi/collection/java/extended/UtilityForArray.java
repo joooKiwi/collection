@@ -27,7 +27,7 @@ import static joookiwi.collection.java.method.LastIndexOfOrNull.lastIndexOfOrNul
 
 @Internal
 @NotNullByDefault
-sealed class UtilityForArray
+public sealed class UtilityForArray
         permits UtilityForMutableArray {
 
     //#region -------------------- Validation --------------------

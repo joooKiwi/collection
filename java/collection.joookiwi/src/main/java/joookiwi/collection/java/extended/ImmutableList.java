@@ -134,7 +134,7 @@ public interface ImmutableList<T extends @Nullable Object>
     //#region -------------------- Comparison methods --------------------
 
     @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
-    @Override boolean equals(final @Nullable Object other);
+    @Override boolean equals(@Nullable Object other);
 
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------

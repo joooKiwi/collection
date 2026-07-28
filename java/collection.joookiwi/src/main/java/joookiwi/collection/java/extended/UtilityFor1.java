@@ -35,7 +35,7 @@ import static joookiwi.collection.java.method.Has.has;
 
 @Internal
 @NotNullByDefault
-public class UtilityFor1 {
+public final class UtilityFor1 {
 
     @Contract(pure = true)
     public static <T extends @Nullable Object> T get(final ClassWith1Value<? extends T> source,
