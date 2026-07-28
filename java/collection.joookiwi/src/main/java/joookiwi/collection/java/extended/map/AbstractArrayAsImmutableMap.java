@@ -44,7 +44,7 @@ public abstract class AbstractArrayAsImmutableMap<K extends @Nullable Object,
     //#region -------------------- Getter methods --------------------
 
     /// The reference to do calculation and retrieval
-    protected abstract joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] _reference();
+    protected abstract joookiwi.collection.java.entry.Entry<K, V>[] _reference();
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
@@ -65,9 +65,9 @@ public abstract class AbstractArrayAsImmutableMap<K extends @Nullable Object,
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Has methods --------------------
 
-    @Override public boolean containsKey(final @Nullable Object key) { return UtilityForMap.containsKey(_reference(), key); }
+    @Override public boolean containsKey(final @Nullable Object key) { return UtilityForMap.hasKey(_reference(), key); }
 
-    @Override public boolean containsValue(final @Nullable Object value) { return UtilityForMap.containsValue(_reference(), value); }
+    @Override public boolean containsValue(final @Nullable Object value) { return UtilityForMap.hasValue(_reference(), value); }
 
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- For each methods --------------------
@@ -79,11 +79,11 @@ public abstract class AbstractArrayAsImmutableMap<K extends @Nullable Object,
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Values methods --------------------
 
-    @Override public ImmutableSet<Entry<K, V>> entrySet() { return UtilityForMap.entries(_reference()); }
+    @Override public ImmutableSet<Entry<K, V>> entrySet() { return UtilityForMap.entries1(_reference()); }
 
-    @Override public ImmutableSet<K> keySet() { return UtilityForMap.keys(_reference()); }
+    @Override public ImmutableSet<K> keySet() { return UtilityForMap.keys1(_reference()); }
 
-    @Override public ImmutableCollection<V> values() { return UtilityForMap.values(_reference()); }
+    @Override public ImmutableCollection<V> values() { return UtilityForMap.values1(_reference()); }
 
     //#endregion -------------------- Values methods --------------------
     //#region -------------------- Iterator methods --------------------

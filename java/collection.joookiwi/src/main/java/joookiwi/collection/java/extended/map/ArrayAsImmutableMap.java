@@ -14,7 +14,7 @@ public class ArrayAsImmutableMap<K extends @Nullable Object,
 
     //#region -------------------- Fields --------------------
 
-    private final joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] __reference;
+    private final joookiwi.collection.java.entry.Entry<K, V>[] __reference;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -22,7 +22,8 @@ public class ArrayAsImmutableMap<K extends @Nullable Object,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public ArrayAsImmutableMap(joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] reference) {
+    @SuppressWarnings("unchecked cast")
+    public ArrayAsImmutableMap(joookiwi.collection.java.entry.Entry<K, V>[] reference) {
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;
         _hashCode = 0;
@@ -33,7 +34,7 @@ public class ArrayAsImmutableMap<K extends @Nullable Object,
 
     /// The internal reference passed through the constructor
     @Contract(pure = true)
-    @Override protected joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] _reference() { return __reference; }
+    @Override protected joookiwi.collection.java.entry.Entry<K, V>[] _reference() { return __reference; }
 
     @Contract(pure = true)
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
