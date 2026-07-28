@@ -3,7 +3,6 @@ package joookiwi.collection.java.extended;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.util.NavigableSet;
 import java.util.RandomAccess;
 import java.util.function.IntFunction;
 import joookiwi.collection.java.ClassWith1Value;
@@ -21,17 +20,12 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_4;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_5;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_6;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_2ND_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_4;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_6;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
-import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAULT_MESSAGE;
 import static joookiwi.collection.java.method.AsString.asString;
-import static joookiwi.collection.java.method.Has.has;
 
 @Internal
 @NotNullByDefault
