@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended.iterator;
 
-import joookiwi.collection.java.callback.additional.FloatConsumer;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,7 +27,5 @@ public class EmptyFloatIterator
     }
 
     //#endregion -------------------- Singleton usage --------------------
-
-    @Override public void forEachRemaining(final @Nullable FloatConsumer action) {}
 
 }

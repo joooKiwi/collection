@@ -1,7 +1,14 @@
 package joookiwi.collection.java.extended.iterator;
 
 import java.util.function.Consumer;
+import java.util.function.DoubleConsumer;
+import java.util.function.IntConsumer;
+import java.util.function.LongConsumer;
 import java.util.function.ObjIntConsumer;
+import joookiwi.collection.java.callback.additional.BooleanConsumer;
+import joookiwi.collection.java.callback.additional.ByteConsumer;
+import joookiwi.collection.java.callback.additional.CharConsumer;
+import joookiwi.collection.java.callback.additional.FloatConsumer;
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -78,6 +85,13 @@ public class EmptyIterator<T extends @Nullable Object>
     @Contract(pure = true)           public void forEachRemaining(                                                             ) {}
     @Contract(pure = true)           public void forEachRemaining(final @Nullable ObjIntConsumer<? super @Nullable T> operation) {}
     @Contract(pure = true) @Override public void forEachRemaining(final @Nullable Consumer<? super @Nullable T>       operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable BooleanConsumer                     operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable CharConsumer                        operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable ByteConsumer                        operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable IntConsumer                         operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable LongConsumer                        operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable FloatConsumer                       operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable DoubleConsumer                      operation) {}
     @Contract(pure = true)           public void forEachRemaining(final @Nullable Runnable                            operation) {}
     @Contract(pure = true)           public void forEachRemaining(final @Nullable Object @Nullable ...                  ignored) {}
 

@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended.iterator;
 
-import java.util.function.LongConsumer;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,7 +27,5 @@ public class EmptyLongIterator
     }
 
     //#endregion -------------------- Singleton usage --------------------
-
-    @Override public void forEachRemaining(final @Nullable LongConsumer action) {}
 
 }

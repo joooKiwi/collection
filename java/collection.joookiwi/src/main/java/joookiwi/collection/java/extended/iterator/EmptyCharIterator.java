@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended.iterator;
 
-import joookiwi.collection.java.callback.additional.CharConsumer;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,7 +27,5 @@ public class EmptyCharIterator
     }
 
     //#endregion -------------------- Singleton usage --------------------
-
-    @Override public void forEachRemaining(final @Nullable CharConsumer action) {}
 
 }
