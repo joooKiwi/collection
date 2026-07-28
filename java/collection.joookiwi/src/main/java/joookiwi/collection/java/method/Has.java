@@ -32,7 +32,7 @@ public final class Has
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">JavaScript Array.includes(value)</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">JavaScript Set.has(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html">Kotlin Map.containsValue(element)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/contains-value.html">Kotlin Map.containsValue(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
@@ -81,7 +81,7 @@ public final class Has
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">JavaScript Array.includes(value)</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">JavaScript Set.has(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html">Kotlin Map.containsValue(element)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/contains-value.html">Kotlin Map.containsValue(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
