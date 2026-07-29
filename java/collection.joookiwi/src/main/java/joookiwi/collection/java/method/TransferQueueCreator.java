@@ -1,5 +1,6 @@
 package joookiwi.collection.java.method;
 
+import java.util.Collection;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
@@ -10,8 +11,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-
-import java.util.Collection;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 

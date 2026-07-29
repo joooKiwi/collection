@@ -12,6 +12,8 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 
 @NotNullByDefault
 public final class MutableBlockingDequeCreator
@@ -22,18 +24,23 @@ public final class MutableBlockingDequeCreator
 
     //#region -------------------- ∅ --------------------
 
+    @Contract(ALWAYS_NEW_0)
     public static <T> MutableBlockingDeque<T> MutableBlockingDeque() { return new ArrayAsMutableBlockingDeque<>(); }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------
 
+    @Contract(ALWAYS_NEW_1)
     public static <T> MutableBlockingDeque<T> MutableBlockingDeque(final @Nullable MinimalistCollectionHolder<? extends T> values) { return ToMutableBlockingDeque.toMutableBlockingDeque(values); }
 
+    @Contract(ALWAYS_NEW_1)
     public static <T> MutableBlockingDeque<T> MutableBlockingDeque(final @Nullable CollectionHolder<? extends T> values) { return ToMutableBlockingDeque.toMutableBlockingDeque(values); }
 
+    @Contract(ALWAYS_NEW_1)
     public static <T> MutableBlockingDeque<T> MutableBlockingDeque(final T @Nullable @Unmodifiable [] values) { return ToMutableBlockingDeque.toMutableBlockingDeque(values); }
 
     @SuppressWarnings("unchecked cast")
+    @Contract(ALWAYS_NEW_1)
     public static <T> MutableBlockingDeque<T> MutableBlockingDeque(final @Nullable @Unmodifiable Collection<? extends T> values) {
         if (values == null)
             return new ArrayAsMutableBlockingDeque<>();

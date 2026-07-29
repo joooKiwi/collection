@@ -12,6 +12,8 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 
 @NotNullByDefault
 public final class MutableTransferQueueCreator
@@ -22,18 +24,23 @@ public final class MutableTransferQueueCreator
 
     //#region -------------------- ∅ --------------------
 
+    @Contract(ALWAYS_NEW_0)
     public static <T> MutableTransferQueue<T> MutableTransferQueue() { return new ArrayAsMutableTransferQueue<>(); }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------
 
+    @Contract(ALWAYS_NEW_1)
     public static <T> MutableTransferQueue<T> MutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> values) { return ToMutableTransferQueue.toMutableTransferQueue(values); }
 
+    @Contract(ALWAYS_NEW_1)
     public static <T> MutableTransferQueue<T> MutableTransferQueue(final @Nullable CollectionHolder<? extends T> values) { return ToMutableTransferQueue.toMutableTransferQueue(values); }
 
+    @Contract(ALWAYS_NEW_1)
     public static <T> MutableTransferQueue<T> MutableTransferQueue(final T @Nullable @Unmodifiable [] values) { return ToMutableTransferQueue.toMutableTransferQueue(values); }
 
     @SuppressWarnings("unchecked cast")
+    @Contract(ALWAYS_NEW_1)
     public static <T> MutableTransferQueue<T> MutableTransferQueue(final @Nullable @Unmodifiable Collection<? extends T> values) {
         if (values == null)
             return new ArrayAsMutableTransferQueue<>();
