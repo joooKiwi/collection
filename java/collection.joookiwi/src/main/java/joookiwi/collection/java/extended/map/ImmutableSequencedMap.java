@@ -7,7 +7,7 @@ import java.util.function.Function;
 import joookiwi.collection.java.annotation.Alias;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
 import joookiwi.collection.java.extended.ImmutableSequencedCollection;
-import joookiwi.collection.java.extended.ImmutableSequencedSet;
+import joookiwi.collection.java.extended.set.ImmutableSequencedSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;

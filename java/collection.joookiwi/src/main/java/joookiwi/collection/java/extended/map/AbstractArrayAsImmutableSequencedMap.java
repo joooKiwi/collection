@@ -1,8 +1,8 @@
 package joookiwi.collection.java.extended.map;
 
 import joookiwi.collection.java.extended.ImmutableSequencedCollection;
-import joookiwi.collection.java.extended.ImmutableSequencedSet;
 import joookiwi.collection.java.extended.UtilityForMap;
+import joookiwi.collection.java.extended.set.ImmutableSequencedSet;
 import joookiwi.collection.java.method.GetFirstOrNull;
 import joookiwi.collection.java.method.GetLastOrNull;
 import org.jetbrains.annotations.Contract;

@@ -1,20 +1,14 @@
 package joookiwi.collection.java.method;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.DoubleAccumulator;
 import java.util.concurrent.atomic.DoubleAdder;
-import java.util.concurrent.atomic.LongAccumulator;
-import java.util.concurrent.atomic.LongAdder;
+
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.EmptyLinkedHashSet;
-import joookiwi.collection.java.extended.ImmutableLinkedHashSet;
-import joookiwi.collection.java.extended.MutableLinkedHashSet;
-import joookiwi.collection.java.helper.NumberComparator;
+import joookiwi.collection.java.extended.set.EmptyLinkedHashSet;
+import joookiwi.collection.java.extended.set.ImmutableLinkedHashSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -22,18 +16,11 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static java.lang.Double.isNaN;
 import static java.lang.Float.isNaN;
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_SMALL_LOAD_FACTOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 import static joookiwi.collection.java.NumericConstants.MAX_FLOAT_VALUE;
 import static joookiwi.collection.java.NumericConstants.MAX_FLOAT_VALUE_AS_DOUBLE;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE_AS_LONG;
 import static joookiwi.collection.java.helper.NumberComparator.max;
 
 @NotNullByDefault
