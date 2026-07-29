@@ -537,6 +537,13 @@ public sealed class UtilityForArray
         return new ReversedArrayAsImmutableSequencedCollection<>(source, new ReversedArray<>(reference));
     }
 
+    public static <T extends @Nullable Object> ImmutableSortedCollection<T> asReversed(final ImmutableSortedCollection<T> source,
+                                                                                       final T @Unmodifiable [] reference) {
+        if (reference.length == 0)
+            return EmptySortedCollection.getInstance();
+        return new ReversedArrayAsImmutableSortedCollection<>(source, new ReversedArray<>(reference));
+    }
+
     public static <T extends @Nullable Object> ImmutableList<T> asReversed(final ImmutableList<T> source,
                                                                            final T @Unmodifiable [] reference) {
         if (reference.length == 0)

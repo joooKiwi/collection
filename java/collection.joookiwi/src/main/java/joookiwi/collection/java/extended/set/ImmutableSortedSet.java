@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import joookiwi.collection.java.annotation.Alias;
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
-import joookiwi.collection.java.extended.OrderableCollection;
+import joookiwi.collection.java.extended.ImmutableSortedCollection;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -22,8 +22,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 @NotNullByDefault
 public interface ImmutableSortedSet<T extends @Nullable Object>
         extends ImmutableSequencedSet<T>,
-                SortedSet<T>,
-                OrderableCollection<T> {
+                ImmutableSortedCollection<T>,
+                SortedSet<T> {
 
     //#region -------------------- Supported methods --------------------
 
