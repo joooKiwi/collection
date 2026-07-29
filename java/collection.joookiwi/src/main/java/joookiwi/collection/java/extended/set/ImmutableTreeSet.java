@@ -43,7 +43,7 @@ public class ImmutableTreeSet<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 9069308514877672328L;
+    @Serial private static final long serialVersionUID = 4388768473099858000L;
 
     private boolean __isInitialized = false;
     private int __size = -1;
@@ -61,7 +61,7 @@ public class ImmutableTreeSet<T extends @Nullable Object>
 
         //#region -------------------- Fields --------------------
 
-        @Serial private static final long serialVersionUID = 9155762050974152209L;
+        @Serial private static final long serialVersionUID = 6324060269186932749L;
 
         private final NavigableSet<T> __reference;
 

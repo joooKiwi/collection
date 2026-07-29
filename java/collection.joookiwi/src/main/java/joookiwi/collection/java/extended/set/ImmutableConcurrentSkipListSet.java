@@ -43,7 +43,7 @@ public class ImmutableConcurrentSkipListSet<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -506954673937250728L;
+    @Serial private static final long serialVersionUID = -7125254441269598036L;
 
     private boolean __isInitialized = false;
     private int __size = -1;
@@ -61,7 +61,7 @@ public class ImmutableConcurrentSkipListSet<T>
 
         //#region -------------------- Fields --------------------
 
-        @Serial private static final long serialVersionUID = -7213842517054574540L;
+        @Serial private static final long serialVersionUID = -6210112264882779266L;
 
         private final NavigableSet<T> __reference;
 

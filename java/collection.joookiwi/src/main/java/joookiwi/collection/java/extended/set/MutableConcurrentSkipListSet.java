@@ -39,7 +39,7 @@ public class MutableConcurrentSkipListSet<T>
         extends ConcurrentSkipListSet<T>
         implements MutableNavigableSet<T> {
 
-    @Serial private static final long serialVersionUID = 6597916552151583184L;
+    @Serial private static final long serialVersionUID = -7639486904671189868L;
 
     //#region -------------------- Sub class --------------------
 
@@ -52,7 +52,7 @@ public class MutableConcurrentSkipListSet<T>
 
         //#region -------------------- Fields --------------------
 
-        @Serial private static final long serialVersionUID = -4327837445303352057L;
+        @Serial private static final long serialVersionUID = 9181528427506231621L;
 
         private final NavigableSet<T> __reference;
 

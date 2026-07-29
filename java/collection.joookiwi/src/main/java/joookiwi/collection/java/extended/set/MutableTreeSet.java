@@ -39,7 +39,7 @@ public class MutableTreeSet<T extends @Nullable Object>
         extends TreeSet<T>
         implements MutableNavigableSet<T> {
 
-    @Serial private static final long serialVersionUID = -9097323660582491226L;
+    @Serial private static final long serialVersionUID = 9100324621366755226L;
 
     //#region -------------------- Sub class --------------------
 
@@ -52,7 +52,7 @@ public class MutableTreeSet<T extends @Nullable Object>
 
         //#region -------------------- Fields --------------------
 
-        @Serial private static final long serialVersionUID = 2543764608729054512L;
+        @Serial private static final long serialVersionUID = -7862467466237496697L;
 
         private final NavigableSet<T> __reference;
 

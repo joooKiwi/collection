@@ -31,7 +31,7 @@ public class ImmutableTreeSetOf1<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -8729752349113354404L;
+    @Serial private static final long serialVersionUID = 185030899672669571L;
 
     private final T __value;
 
