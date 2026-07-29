@@ -136,7 +136,6 @@ import joookiwi.collection.java.extended.map.MutableNavigableMap;
 import joookiwi.collection.java.extended.map.MutableSequencedMap;
 import joookiwi.collection.java.extended.map.MutableSortedMap;
 import joookiwi.collection.java.extended.map.MutableWeakHashMap;
-import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;

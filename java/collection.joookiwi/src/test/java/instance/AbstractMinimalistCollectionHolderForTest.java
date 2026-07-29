@@ -297,7 +297,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
@@ -306,7 +305,6 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 @NotNullByDefault
 public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nullable Object,

@@ -32,7 +32,6 @@ import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
-import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.callback.IntObjFunction;
@@ -292,7 +291,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 import test.Types;
 
@@ -301,7 +299,6 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /// A class to exclusively test the extension methods for a `null`  [MinimalistCollectionHolder]

@@ -32,7 +32,6 @@ import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
-import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.callback.IntObjFunction;

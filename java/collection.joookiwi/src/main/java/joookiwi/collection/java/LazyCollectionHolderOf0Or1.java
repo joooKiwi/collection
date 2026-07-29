@@ -152,7 +152,6 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An instance of [CollectionHolder] with only 2 possible inner-collection.
 /// The first as [EmptyCollectionHolder] and the second as [CollectionHolderOf1].

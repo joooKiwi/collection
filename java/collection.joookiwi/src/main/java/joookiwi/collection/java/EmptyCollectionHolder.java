@@ -1,7 +1,5 @@
 package joookiwi.collection.java;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -183,11 +181,6 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_2ND_2;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_2ND_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
@@ -209,12 +202,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_1;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_TRUE_1;
-import static joookiwi.collection.java.CommonContracts.IF_ONLY_2ND_NULL_THEN_FAIL_2;
 import static joookiwi.collection.java.CommonContracts._1ST_IS_NOT_NULL_1;
 import static joookiwi.collection.java.annotation.AliasArgument.IGNORED;
-import static joookiwi.collection.java.annotation.AliasArgument.ONLY_1ST;
-import static joookiwi.collection.java.annotation.AliasArgument.ONLY_2ND;
-import static joookiwi.collection.java.annotation.AliasArgument.REVERSE_1_2;
 import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE;
 import static joookiwi.collection.java.method.ArrayCreator.Array;
 import static joookiwi.collection.java.method.JoinToString.prefixAndPostfixOnly;
