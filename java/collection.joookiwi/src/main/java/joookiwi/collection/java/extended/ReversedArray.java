@@ -8,12 +8,13 @@ import org.jetbrains.annotations.Nullable;
 /// A container to reverse an array lazily via [#reversedSource]
 ///
 /// @param <T> The type
-/// @see ReversedArrayAsImmutableSequencedCollection
-/// @see ReversedArrayAsImmutableList
-/// @see ReversedArrayAsImmutableSequencedSet
-/// @see ReversedArrayAsImmutableSortedSet
-/// @see ReversedArrayAsImmutableNavigableSet
-/// @see ReversedArrayAsImmutableDeque
+/// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedCollection
+/// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedCollection
+/// @see joookiwi.collection.java.extended.list.ReversedArrayAsImmutableList
+/// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSequencedSet
+/// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSortedSet
+/// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableNavigableSet
+/// @see joookiwi.collection.java.extended.stack.ReversedArrayAsImmutableDeque
 @NotNullByDefault
 public class ReversedArray<T extends @Nullable Object> {
 
