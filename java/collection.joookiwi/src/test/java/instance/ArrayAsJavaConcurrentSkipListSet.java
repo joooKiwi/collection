@@ -72,6 +72,7 @@ public final class ArrayAsJavaConcurrentSkipListSet<T>
     @Override public @Nullable T pollFirst() { return get().pollFirst(); }
     @Override public @Nullable T pollLast() { return get().pollLast(); }
 
+    @Override public NavigableSet<T> reversed() { return get().reversed(); }
     @Override public NavigableSet<T> descendingSet() { return get().descendingSet(); }
 
     @Override public NavigableSet<T> subSet(final T from, final T to) { return get().subSet(from, to); }
