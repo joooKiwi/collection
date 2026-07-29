@@ -23,19 +23,19 @@ public final class ConcurrentSkipListSetCreator
     @Contract(ALWAYS_FAIL_0)
     private ConcurrentSkipListSetCreator() { throw new ImpossibleConstructionException("The utility class “ConcurrentSkipListSetCreator” cannot be constructed.", ConcurrentSkipListSetCreator.class); }
 
-    //#region -------------------- Concurrent skip list set ∅ --------------------
+    //#region -------------------- ∅ --------------------
 
     /// An [EmptyConcurrentSkipListSet] instance
     public static <T extends Comparable<? super T>> EmptyConcurrentSkipListSet<T> ConcurrentSkipListSet() { return EmptyConcurrentSkipListSet.getInstance(); }
 
-    //#endregion -------------------- Concurrent skip list set ∅ --------------------
-    //#region -------------------- Concurrent skip list set (comparator) --------------------
+    //#endregion -------------------- ∅ --------------------
+    //#region -------------------- comparator --------------------
 
     @Contract(ALWAYS_NEW_1)
     public static <T> ImmutableConcurrentSkipListSet<T> ConcurrentSkipListSet(final Comparator<? super T> comparator) { return new ImmutableConcurrentSkipListSet<>(comparator); }
 
-    //#endregion -------------------- Concurrent skip list set (comparator) --------------------
-    //#region -------------------- Concurrent skip list set (values) --------------------
+    //#endregion -------------------- comparator --------------------
+    //#region -------------------- values --------------------
 
     public static <T extends Comparable<? super T>> ImmutableConcurrentSkipListSet<T> ConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> values) { return ToConcurrentSkipListSet.toConcurrentSkipListSet(values); }
 
@@ -51,8 +51,8 @@ public final class ConcurrentSkipListSetCreator
         return new ImmutableConcurrentSkipListSet<>(values);
     }
 
-    //#endregion -------------------- Concurrent skip list set (values) --------------------
-    //#region -------------------- Concurrent skip list set (values, comparator) --------------------
+    //#endregion -------------------- values --------------------
+    //#region -------------------- values, comparator --------------------
 
     @Contract(ALWAYS_NEW_2)
     public static <T> ImmutableConcurrentSkipListSet<T> ConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> values,
@@ -76,6 +76,6 @@ public final class ConcurrentSkipListSetCreator
         return new ImmutableConcurrentSkipListSet<>(values);
     }
 
-    //#endregion -------------------- Concurrent skip list set (values, comparator) --------------------
+    //#endregion -------------------- values, comparator --------------------
 
 }

@@ -20,13 +20,13 @@ public final class CopyOnWriteArrayListCreator
     @Contract(ALWAYS_FAIL_0)
     private CopyOnWriteArrayListCreator() { throw new ImpossibleConstructionException("The utility class “CopyOnWriteArrayListCreator” cannot be constructed.", CopyOnWriteArrayListCreator.class); }
 
-    //#region -------------------- Copy on write array list ∅ --------------------
+    //#region -------------------- ∅ --------------------
 
     /// An [EmptyCopyOnWriteArrayList] instance
     public static <T extends @Nullable Object> EmptyCopyOnWriteArrayList<T> CopyOnWriteArrayList() { return EmptyCopyOnWriteArrayList.getInstance(); }
 
-    //#endregion -------------------- Copy on write array list ∅ --------------------
-    //#region -------------------- Copy on write array list (values) --------------------
+    //#endregion -------------------- ∅ --------------------
+    //#region -------------------- values --------------------
 
     public static <T extends @Nullable Object> ImmutableCopyOnWriteArrayList<T> CopyOnWriteArrayList(final @Nullable MinimalistCollectionHolder<? extends T> values) { return ToCopyOnWriteArrayList.toCopyOnWriteArrayList(values); }
 
@@ -42,6 +42,6 @@ public final class CopyOnWriteArrayListCreator
         return new ImmutableCopyOnWriteArrayList<>(values);
     }
 
-    //#endregion -------------------- Copy on write array list (values) --------------------
+    //#endregion -------------------- values --------------------
 
 }
