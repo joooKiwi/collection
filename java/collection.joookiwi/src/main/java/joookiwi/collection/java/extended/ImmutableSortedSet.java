@@ -41,7 +41,7 @@ public interface ImmutableSortedSet<T extends @Nullable Object>
     @Override T getFirst();
 
     @Alias("getFirst")
-    @Override T first();
+    default @Override T first() { return getFirst(); }
 
 
     /// Get the last element in the current [instance][ImmutableSortedSet]
@@ -57,7 +57,7 @@ public interface ImmutableSortedSet<T extends @Nullable Object>
     @Override T getLast();
 
     @Alias("getLast")
-    @Override T last();
+    default @Override T last() { return getLast(); }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Iterator methods --------------------
