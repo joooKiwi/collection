@@ -2,14 +2,11 @@ package joookiwi.collection.java.extended.queue;
 
 import java.io.Serial;
 import java.util.Collection;
-import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import joookiwi.collection.java.ClassWith1Value;
-import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.UtilityFor1;
 import joookiwi.collection.java.method.ArrayCreator;
-import joookiwi.collection.java.stream.EmptyParallelStream;
-import joookiwi.collection.java.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
