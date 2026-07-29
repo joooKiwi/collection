@@ -1,7 +1,8 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.exception.EmptyCollectionException;
+import joookiwi.collection.java.extended.EmptySequencedCollection;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;

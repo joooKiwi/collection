@@ -1,6 +1,7 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
+import joookiwi.collection.java.extended.ReversedArray;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -10,7 +11,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a reversed-order [ImmutableBlockingDeque] similar to the [ArrayAsImmutableBlockingDeque] in its behaviour.
+/// An implementation of a reversed-order [ImmutableDeque] similar to the [ArrayAsImmutableDeque] in its behaviour.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
@@ -21,12 +22,12 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 ///
 /// @param <T>               The type
 /// @param <SOURCE>          The original source of the instance
-///                          (generally a [ArrayAsImmutableBlockingDeque] or [ReversedArrayAsImmutableBlockingDeque])
+///                          (generally a [ArrayAsImmutableDeque] or [ReversedArrayAsImmutableDeque])
 /// @param <REVERSED_ARRAY>> The array that should contain the new reference
-/// @see ArrayAsImmutableBlockingDeque
+/// @see ArrayAsImmutableDeque
 @NotNullByDefault
-public class ReversedArrayAsImmutableBlockingDeque<T,
-        SOURCE extends ImmutableBlockingDeque<T>,
+public class ReversedArrayAsImmutableDeque<T extends @Nullable Object,
+        SOURCE extends ImmutableDeque<T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
         extends AbstractArrayAsImmutableDeque<T> {
 
@@ -44,8 +45,8 @@ public class ReversedArrayAsImmutableBlockingDeque<T,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public ReversedArrayAsImmutableBlockingDeque(final SOURCE source,
-                                                 final REVERSED_ARRAY reversedArray) {
+    public ReversedArrayAsImmutableDeque(final SOURCE source,
+                                         final REVERSED_ARRAY reversedArray) {
         super();
         __source = source;
         __reversedArray = reversedArray;
@@ -97,7 +98,7 @@ public class ReversedArrayAsImmutableBlockingDeque<T,
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public ReversedArrayAsImmutableBlockingDeque<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableBlockingDeque<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
+    @Override public ReversedArrayAsImmutableDeque<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableDeque<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

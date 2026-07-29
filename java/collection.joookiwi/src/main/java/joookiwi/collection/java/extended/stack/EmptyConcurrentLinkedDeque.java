@@ -1,9 +1,10 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import java.io.Serial;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import java.util.Spliterator;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import joookiwi.collection.java.annotation.Singleton;
@@ -28,34 +29,34 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
-/// A [Singleton] implementation of the [java.util.ArrayDeque],
+/// A [Singleton] implementation of the [ConcurrentLinkedDeque],
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see joookiwi.collection.java.CollectionConstants#emptyArrayDeque
+/// @see joookiwi.collection.java.CollectionConstants#emptyConcurrentLinkedDeque
 @Singleton
 @NotNullByDefault
-public class EmptyArrayDeque<T>
-        extends ImmutableArrayDeque<T> {
+public class EmptyConcurrentLinkedDeque<T>
+        extends ImmutableConcurrentLinkedDeque<T> {
 
-    @Serial private static final long serialVersionUID = 4678223786740367982L;
+    @Serial private static final long serialVersionUID = 8035120289713893117L;
 
     //#region -------------------- Singleton usage --------------------
 
-    private static volatile @Nullable EmptyArrayDeque<?> __instance;
+    private static volatile @Nullable EmptyConcurrentLinkedDeque<?> __instance;
 
-    protected EmptyArrayDeque() { super(); }
+    protected EmptyConcurrentLinkedDeque() { super(); }
 
     @SuppressWarnings("unchecked cast")
-    public static <T> EmptyArrayDeque<T> getInstance() {
+    public static <T> EmptyConcurrentLinkedDeque<T> getInstance() {
         final var instance = __instance;
         if (instance != null)
-            return (EmptyArrayDeque<T>) instance;
-        synchronized (EmptyArrayDeque.class) {
+            return (EmptyConcurrentLinkedDeque<T>) instance;
+        synchronized (EmptyConcurrentLinkedDeque.class) {
             final var instance2 = __instance;
             if (instance2 != null)
-                return (EmptyArrayDeque<T>) instance2;
-            return (EmptyArrayDeque<T>) (__instance = new EmptyArrayDeque<>());
+                return (EmptyConcurrentLinkedDeque<T>) instance2;
+            return (EmptyConcurrentLinkedDeque<T>) (__instance = new EmptyConcurrentLinkedDeque<>());
         }
     }
 
@@ -81,7 +82,7 @@ public class EmptyArrayDeque<T>
     @Override public @Nullable T peekLast() { return null; }
 
     @Contract(value = ALWAYS_FAIL_0, pure = true)
-    @Override public T element() { throw new NoSuchElementException("No element could be found in an empty ArrayDeque."); }
+    @Override public T element() { throw new NoSuchElementException("No element could be found in an empty ConcurrentLinkedDeque."); }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Has methods --------------------
@@ -123,7 +124,7 @@ public class EmptyArrayDeque<T>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyArrayDeque<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyConcurrentLinkedDeque<T> reversed() { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Comparison methods --------------------
@@ -143,7 +144,7 @@ public class EmptyArrayDeque<T>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyArrayDeque<T> clone() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyConcurrentLinkedDeque<T> clone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- Serializable methods --------------------

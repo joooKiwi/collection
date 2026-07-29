@@ -1,29 +1,29 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// A bare-bone implementation of a [java BlockingDeque][java.util.concurrent.BlockingDeque]
+/// A bare-bone implementation of a [java Deque][java.util.Deque]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
-/// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
-/// Note that `null` is **not** permitted in this instance
-/// due to the [java.util.concurrent.BlockingDeque] declaration.
+/// Note that `null` is permitted in this instance.
+/// It is up to the implementor to specify it.
 ///
 /// The instance uses the [methods][joookiwi.collection.java.method]
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
 /// when possible.
 ///
 /// @param <T> The type
-/// @see ReversedArrayAsImmutableBlockingDeque
+/// @see ReversedArrayAsImmutableDeque
 @NotNullByDefault
-public class ArrayAsImmutableBlockingDeque<T>
-        extends AbstractArrayAsImmutableBlockingDeque<T> {
+public class ArrayAsImmutableDeque<T extends @Nullable Object>
+        extends AbstractArrayAsImmutableDeque<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -35,10 +35,10 @@ public class ArrayAsImmutableBlockingDeque<T>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [java.util.concurrent.BlockingDeque] from the `reference`
+    /// Create an instance of a [java.util.Deque] from the `reference`
     ///
     /// @param reference The array to be the internal structure
-    public ArrayAsImmutableBlockingDeque(final T[] reference) {
+    public ArrayAsImmutableDeque(final T[] reference) {
         super();
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;
@@ -61,12 +61,9 @@ public class ArrayAsImmutableBlockingDeque<T>
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(pure = true)
-    @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
-
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public ArrayAsImmutableBlockingDeque<T> clone() { return (ArrayAsImmutableBlockingDeque<T>) super.clone(); }
+    @Override public ArrayAsImmutableDeque<T> clone() { return (ArrayAsImmutableDeque<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

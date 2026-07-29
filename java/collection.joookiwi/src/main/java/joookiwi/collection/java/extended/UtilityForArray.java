@@ -22,6 +22,9 @@ import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSequencedSe
 import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSortedSet;
 import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.stack.EmptyDeque;
+import joookiwi.collection.java.extended.stack.ImmutableDeque;
+import joookiwi.collection.java.extended.stack.ReversedArrayAsImmutableDeque;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import joookiwi.collection.java.helper.EqualsHelper;
 import org.jetbrains.annotations.ApiStatus.Internal;

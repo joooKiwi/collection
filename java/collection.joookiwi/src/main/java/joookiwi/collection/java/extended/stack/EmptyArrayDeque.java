@@ -1,12 +1,9 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import java.io.Serial;
 import java.util.Collection;
-import java.util.Enumeration;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Spliterator;
-import java.util.Stack;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import joookiwi.collection.java.annotation.Singleton;
@@ -21,47 +18,44 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
-import static joookiwi.collection.java.CollectionConstants.emptyEnumeration;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
-/// A [Singleton] implementation of the [Stack],
+/// A [Singleton] implementation of the [java.util.ArrayDeque],
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see joookiwi.collection.java.CollectionConstants#emptyStack
+/// @see joookiwi.collection.java.CollectionConstants#emptyArrayDeque
 @Singleton
 @NotNullByDefault
-public class EmptyStack<T extends @Nullable Object>
-        extends ImmutableStack<T> {
+public class EmptyArrayDeque<T>
+        extends ImmutableArrayDeque<T> {
 
-    @Serial private static final long serialVersionUID = 656588834299068652L;
+    @Serial private static final long serialVersionUID = 4678223786740367982L;
 
     //#region -------------------- Singleton usage --------------------
 
-    private static volatile @Nullable EmptyStack<?> __instance;
+    private static volatile @Nullable EmptyArrayDeque<?> __instance;
 
-    protected EmptyStack() { super(); }
+    protected EmptyArrayDeque() { super(); }
 
     @SuppressWarnings("unchecked cast")
-    public static <T> EmptyStack<T> getInstance() {
+    public static <T> EmptyArrayDeque<T> getInstance() {
         final var instance = __instance;
         if (instance != null)
-            return (EmptyStack<T>) instance;
-        synchronized (EmptyStack.class) {
+            return (EmptyArrayDeque<T>) instance;
+        synchronized (EmptyArrayDeque.class) {
             final var instance2 = __instance;
             if (instance2 != null)
-                return (EmptyStack<T>) instance2;
-            return (EmptyStack<T>) (__instance = new EmptyStack<>());
+                return (EmptyArrayDeque<T>) instance2;
+            return (EmptyArrayDeque<T>) (__instance = new EmptyArrayDeque<>());
         }
     }
 
@@ -71,11 +65,8 @@ public class EmptyStack<T extends @Nullable Object>
     //#region -------------------- Size methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int size() { return 0; }
-    @Contract(pure = true) @Override public @Range(from = 0, to = 0) int capacity() { return 0; }
 
     @Contract(value = ALWAYS_TRUE_0, pure = true) @Override public boolean isEmpty() { return true; }
-    @Contract(value = ALWAYS_TRUE_0, pure = true) @Override public boolean empty() { return true; }
-
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Get methods --------------------
@@ -83,27 +74,16 @@ public class EmptyStack<T extends @Nullable Object>
     @Contract(value = ALWAYS_NULL_0, pure = true)
     @Override public @Nullable T peek() { return null; }
 
-    @Contract(value = ALWAYS_FAIL_1, pure = true) @Override public T get(final int index) { throw new NoSuchElementException("No element could be found in an empty Stack."); }
-    @Contract(value = ALWAYS_FAIL_1, pure = true) @Override public T elementAt(final int index) { throw new NoSuchElementException("No element could be found in an empty Stack."); }
+    @Contract(value = ALWAYS_NULL_0, pure = true)
+    @Override public @Nullable T peekFirst() { return null; }
 
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T getFirst() { throw new NoSuchElementException("No element could be found in an empty Stack."); }
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T firstElement() { throw new NoSuchElementException("No element could be found in an empty Stack."); }
+    @Contract(value = ALWAYS_NULL_0, pure = true)
+    @Override public @Nullable T peekLast() { return null; }
 
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T getLast() { throw new NoSuchElementException("No element could be found in an empty Stack."); }
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T lastElement() { throw new NoSuchElementException("No element could be found in an empty Stack."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)
+    @Override public T element() { throw new NoSuchElementException("No element could be found in an empty ArrayDeque."); }
 
     //#endregion -------------------- Get methods --------------------
-    //#region -------------------- Index methods --------------------
-
-    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int search(final @Nullable Object value) { return -1; }
-
-    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int indexOf(final @Nullable Object value) { return -1; }
-    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int indexOf(final @Nullable Object value, final int index) { return -1; }
-
-    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int lastIndexOf(final @Nullable Object value) { return -1; }
-    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int lastIndexOf(final @Nullable Object value, final int index) { return -1; }
-
-    //#endregion -------------------- Index methods --------------------
     //#region -------------------- Has methods --------------------
 
     @Contract(value = ALWAYS_FALSE_1, pure = true) @Override public boolean contains(final @Nullable Object value) { return false; }
@@ -122,11 +102,9 @@ public class EmptyStack<T extends @Nullable Object>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public EmptyIterator<T>     iterator(               ) { return EmptyIterator.getInstance(); }
-    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(               ) { return EmptyIterator.getInstance(); }
-    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(final int index) { return EmptyIterator.getInstance(); }
-    @Contract(pure = true) @Override public Spliterator<T>    spliterator(               ) { return emptySpliterator(); }
-    @Contract(pure = true) @Override public Enumeration<T>       elements(               ) { return emptyEnumeration(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> iterator(          ) { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> descendingIterator() { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public Spliterator<T>   spliterator(       ) { return emptySpliterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
@@ -143,14 +121,9 @@ public class EmptyStack<T extends @Nullable Object>
     @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return EmptyParallelStream.getInstance(); }
 
     //#endregion -------------------- Stream methods --------------------
-    //#region -------------------- Sublist methods --------------------
-
-    @Contract(value = ALWAYS_THIS_2, pure = true) @Override public EmptyStack<T> subList(final int from, final int to) { return this; }
-
-    //#endregion -------------------- Sublist methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyStack<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyArrayDeque<T> reversed() { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Comparison methods --------------------
@@ -162,7 +135,7 @@ public class EmptyStack<T extends @Nullable Object>
             return false;
         if (other == this)
             return true;
-        if (!(other instanceof List<?>))
+        if (!(other instanceof Collection<?>))
             return false;
         return ((Collection<?>) other).isEmpty();
     }
@@ -170,7 +143,7 @@ public class EmptyStack<T extends @Nullable Object>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyStack<T> clone() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyArrayDeque<T> clone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- Serializable methods --------------------
@@ -179,11 +152,6 @@ public class EmptyStack<T extends @Nullable Object>
     private Object readResolve() { return getInstance(); }
 
     //#endregion -------------------- Serializable methods --------------------
-    //#region -------------------- Copy into methods --------------------
-
-    @Override public void copyInto(final @Nullable Object @Nullable @Unmodifiable [] reference) {}
-
-    //#endregion -------------------- Copy into methods --------------------
     //#region -------------------- To string methods --------------------
 
     @Contract(pure = true) @Override public String toString() { return DEFAULT_EMPTY_COLLECTION; }

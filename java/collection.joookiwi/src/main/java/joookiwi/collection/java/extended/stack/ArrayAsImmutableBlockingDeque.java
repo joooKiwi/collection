@@ -1,14 +1,15 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java BlockingDeque][java.util.concurrent.BlockingDeque]
-/// with the mutability in place.
+/// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
 /// Note that `null` is **not** permitted in this instance
@@ -19,30 +20,29 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 /// when possible.
 ///
 /// @param <T> The type
-/// @see ReversedArrayAsMutableBlockingDeque
+/// @see ReversedArrayAsImmutableBlockingDeque
 @NotNullByDefault
-public class ArrayAsMutableBlockingDeque<T>
-        extends AbstractArrayAsMutableBlockingDeque<T> {
+public class ArrayAsImmutableBlockingDeque<T>
+        extends AbstractArrayAsImmutableBlockingDeque<T> {
 
     //#region -------------------- Fields --------------------
 
-    private T[] __reference;
+    private final T[] __reference;
+
+    private final int __size;
+    private final boolean __isEmpty;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [MutableBlockingDeque] from an [empty array][joookiwi.collection.java.CollectionConstants#emptyArray]
-    public ArrayAsMutableBlockingDeque() {
-        super();
-        __reference = emptyArray();
-    }
-
-    /// Create an instance of a [MutableBlockingDeque] from the `reference`
+    /// Create an instance of a [java.util.concurrent.BlockingDeque] from the `reference`
     ///
     /// @param reference The array to be the internal structure
-    public ArrayAsMutableBlockingDeque(final T[] reference) {
+    public ArrayAsImmutableBlockingDeque(final T[] reference) {
         super();
-        __reference = reference;
+        if (__isEmpty = (__size = (__reference = reference).length) == 0)
+            return;
+        _hashCode = 0;
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -52,15 +52,21 @@ public class ArrayAsMutableBlockingDeque<T>
     @Contract(pure = true)
     @Override protected T[] _reference() { return __reference; }
 
-    @Contract(mutates = "this")
-    @Override protected void _reference(final T[] value) { __reference = value; }
+    @Contract(pure = true)
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
+
+    @Contract(pure = true)
+    @Override public boolean isEmpty() { return __isEmpty; }
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
+    @Contract(pure = true)
+    @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
+
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public ArrayAsMutableBlockingDeque<T> clone() { return (ArrayAsMutableBlockingDeque<T>) super.clone(); }
+    @Override public ArrayAsImmutableBlockingDeque<T> clone() { return (ArrayAsImmutableBlockingDeque<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

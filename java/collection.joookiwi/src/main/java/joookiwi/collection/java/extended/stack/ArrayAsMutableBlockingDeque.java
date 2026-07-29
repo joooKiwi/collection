@@ -1,28 +1,28 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
-import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
-/// A bare-bone implementation of a [java Deque][java.util.Deque]
+/// A bare-bone implementation of a [java BlockingDeque][java.util.concurrent.BlockingDeque]
 /// with the mutability in place.
+/// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
-/// Note that `null` is permitted in this instance.
-/// It is up to the implementor to specify it.
+/// Note that `null` is **not** permitted in this instance
+/// due to the [java.util.concurrent.BlockingDeque] declaration.
 ///
 /// The instance uses the [methods][joookiwi.collection.java.method]
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
 /// when possible.
 ///
 /// @param <T> The type
-/// @see ReversedArrayAsMutableDeque
+/// @see ReversedArrayAsMutableBlockingDeque
 @NotNullByDefault
-public class ArrayAsMutableDeque<T extends @Nullable Object>
-        extends AbstractArrayAsMutableDeque<T> {
+public class ArrayAsMutableBlockingDeque<T>
+        extends AbstractArrayAsMutableBlockingDeque<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -31,36 +31,36 @@ public class ArrayAsMutableDeque<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [MutableDeque] from an [empty array][joookiwi.collection.java.CollectionConstants#emptyArray]
-    public ArrayAsMutableDeque() {
+    /// Create an instance of a [MutableBlockingDeque] from an [empty array][joookiwi.collection.java.CollectionConstants#emptyArray]
+    public ArrayAsMutableBlockingDeque() {
         super();
         __reference = emptyArray();
     }
 
-    /// Create an instance of a [MutableDeque] from the `reference`
+    /// Create an instance of a [MutableBlockingDeque] from the `reference`
     ///
     /// @param reference The array to be the internal structure
-    public ArrayAsMutableDeque(final T[] reference) {
+    public ArrayAsMutableBlockingDeque(final T[] reference) {
         super();
         __reference = reference;
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter / setter methods --------------------
+    //#region -------------------- Getter methods --------------------
 
-    /// The changeable internal reference passed through the constructor or mutated from its setter
+    /// The internal reference passed through the constructor
     @Contract(pure = true)
     @Override protected T[] _reference() { return __reference; }
 
     @Contract(mutates = "this")
     @Override protected void _reference(final T[] value) { __reference = value; }
 
-    //#endregion -------------------- Getter / setter methods --------------------
+    //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public ArrayAsMutableDeque<T> clone() { return (ArrayAsMutableDeque<T>) super.clone(); }
+    @Override public ArrayAsMutableBlockingDeque<T> clone() { return (ArrayAsMutableBlockingDeque<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

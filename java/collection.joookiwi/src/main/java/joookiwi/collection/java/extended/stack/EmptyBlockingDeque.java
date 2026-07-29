@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import joookiwi.collection.java.annotation.Singleton;
 import org.jetbrains.annotations.Contract;

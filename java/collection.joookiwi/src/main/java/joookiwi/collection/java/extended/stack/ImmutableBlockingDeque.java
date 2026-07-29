@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import java.util.Collection;
 import java.util.concurrent.BlockingDeque;

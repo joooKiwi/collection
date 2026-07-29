@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import java.io.Serial;
 import java.util.Collection;
@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.ClassWith1Value;
+import joookiwi.collection.java.extended.UtilityFor1;
 import joookiwi.collection.java.iterator.CollectionIteratorOf1;
 import joookiwi.collection.java.method.ArrayCreator;
 import org.jetbrains.annotations.Contract;
@@ -23,20 +24,20 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 
 @NotNullByDefault
-public class ImmutableArrayDequeOf1<T>
-        extends ImmutableArrayDeque<T>
+public class ImmutableLinkedBlockingDequeOf1<T>
+        extends ImmutableLinkedBlockingDeque<T>
         implements ClassWith1Value<T> {
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -2374887273819967207L;
+    @Serial private static final long serialVersionUID = 1449396026076019825L;
 
     private final T __value;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public ImmutableArrayDequeOf1(final T value) {
+    public ImmutableLinkedBlockingDequeOf1(final T value) {
         super();
         __value = value;
     }
@@ -96,7 +97,7 @@ public class ImmutableArrayDequeOf1<T>
     //#region -------------------- As reverse methods --------------------
 
     @Contract(ALWAYS_THIS_0)
-    @Override public ImmutableArrayDequeOf1<T> reversed() { return this; }
+    @Override public ImmutableLinkedBlockingDequeOf1<T> reversed() { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
@@ -133,8 +134,8 @@ public class ImmutableArrayDequeOf1<T>
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public ImmutableArrayDequeOf1<T> clone() {
-        return (ImmutableArrayDequeOf1<T>) super.clone();
+    @Override public ImmutableLinkedBlockingDequeOf1<T> clone() {
+        return (ImmutableLinkedBlockingDequeOf1<T>) super.clone();
     }
 
     //#endregion -------------------- Clone methods --------------------

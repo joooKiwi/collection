@@ -1,5 +1,8 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
+import joookiwi.collection.java.extended.AbstractArrayAsImmutableSequencedCollection;
+import joookiwi.collection.java.extended.ReversedArray;
+import joookiwi.collection.java.extended.UtilityForArray;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ReversedArrayAsImmutableIterator;
 import joookiwi.collection.java.method.GetFirstOrNull;

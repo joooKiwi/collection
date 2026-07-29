@@ -7,14 +7,12 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.exception.ImpossibleCapacityException;
-import joookiwi.collection.java.extended.MutableArrayBlockingQueue;
+import joookiwi.collection.java.extended.stack.MutableArrayBlockingQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;

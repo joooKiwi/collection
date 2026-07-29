@@ -1,9 +1,11 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import java.util.Collection;
 import java.util.Deque;
 import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
+import joookiwi.collection.java.extended.BasicStack;
+import joookiwi.collection.java.extended.ImmutableSequencedCollection;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.queue.ImmutableQueue;
 import org.jetbrains.annotations.Contract;

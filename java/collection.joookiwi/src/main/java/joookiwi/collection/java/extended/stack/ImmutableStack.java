@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.stack;
 
 import java.io.Serial;
 import java.util.Collection;
@@ -13,6 +13,7 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
+import joookiwi.collection.java.extended.BasicStack;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
 import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
