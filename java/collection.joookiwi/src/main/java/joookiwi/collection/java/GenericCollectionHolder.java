@@ -163,8 +163,14 @@ import joookiwi.collection.java.extended.SubdividedArrayAsImmutableSortedSet;
 import joookiwi.collection.java.extended.SubdividedArrayAsMutableNavigableSet;
 import joookiwi.collection.java.extended.SubdividedArrayAsMutableSortedSet;
 import joookiwi.collection.java.extended.SubdividedMutableArray;
+import joookiwi.collection.java.extended.iterator.ArrayAsImmutableIterator;
+import joookiwi.collection.java.extended.iterator.ArrayAsImmutableListIterator;
+import joookiwi.collection.java.extended.iterator.ArrayAsMutableIterator;
+import joookiwi.collection.java.extended.iterator.ArrayAsMutableListIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
+import joookiwi.collection.java.extended.iterator.MutableIterator;
+import joookiwi.collection.java.extended.iterator.MutableListIterator;
 import joookiwi.collection.java.extended.list.ArrayAsImmutableList;
 import joookiwi.collection.java.extended.list.ArrayAsMutableList;
 import joookiwi.collection.java.extended.list.EmptyArrayList;
@@ -877,8 +883,19 @@ public class GenericCollectionHolder<T extends @Nullable Object>
         __lastIndex = (__size = (__array = __initializeAsUnknownFromIterator(reference, value1, value2)).length) - 1;
     }
 
-    @Contract(pure = true)
+
+    @Contract(mutates = "param")
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+    @Contract(mutates = "param")
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+
+    @Contract(mutates = "param")
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+    @Contract(mutates = "param")
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsMutableIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (iterator) --------------------
     //#region -------------------- Constructor (list iterator) --------------------
@@ -886,8 +903,19 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     @Contract(mutates = "param")
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
 
-    @Contract(pure = true)
+
+    @Contract(mutates = "param")
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+    @Contract(mutates = "param")
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+
+    @Contract(mutates = "param")
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+    @Contract(mutates = "param")
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsMutableListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (list iterator) --------------------
     //#region -------------------- Constructor (enumeration) --------------------
@@ -1143,10 +1171,10 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     }
 
     @Contract(pure = true)
-    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableList<? extends T> reference) { this((List<? extends T>) reference); }
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableList<? extends T> reference) { this((List<? extends T>) reference); }
 
     @Contract(pure = true)
-    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableList<? extends T> reference) { this((List<? extends T>) reference); }
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableList<? extends T> reference) { this((List<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -1173,6 +1201,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayList<? extends T> reference) { this((List<? extends T>) reference); }
 
+
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableArrayList<? extends T> reference) { this((List<? extends T>) reference); }
 
@@ -1184,6 +1213,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable CopyOnWriteArrayList<? extends T> reference) { this((List<? extends T>) reference); }
+
 
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableCopyOnWriteArrayList<? extends T> reference) { this((List<? extends T>) reference); }
@@ -1197,6 +1227,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable LinkedList<? extends T> reference) { this((List<? extends T>) reference); }
 
+
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableLinkedList<? extends T> reference) { this((List<? extends T>) reference); }
 
@@ -1208,6 +1239,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Vector<? extends T> reference) { this((List<? extends T>) reference); }
+
 
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableVector<? extends T> reference) { this((List<? extends T>) reference); }
@@ -1388,6 +1420,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable HashSet<? extends T> reference) { this((Set<? extends T>) reference); }
 
+
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableHashSet<? extends T> reference) { this((Set<? extends T>) reference); }
 
@@ -1400,6 +1433,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable LinkedHashSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
+
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableLinkedHashSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
@@ -1411,6 +1445,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable TreeSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
 
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableTreeSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
@@ -1555,6 +1590,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Stack<? extends T> reference) { this((List<? extends T>) reference); }
+
 
     @Contract(pure = true)
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableStack<? extends T> reference) { this((List<? extends T>) reference); }
