@@ -2,9 +2,9 @@ package helper;
 
 import java.util.function.Function;
 
-import joookiwi.collection.java.extended.ArrayAsImmutableList;
-import joookiwi.collection.java.extended.EmptyList;
-import joookiwi.collection.java.extended.ImmutableList;
+import joookiwi.collection.java.extended.list.ArrayAsImmutableList;
+import joookiwi.collection.java.extended.list.EmptyList;
+import joookiwi.collection.java.extended.list.ImmutableList;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;

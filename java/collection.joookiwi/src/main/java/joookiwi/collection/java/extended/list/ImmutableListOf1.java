@@ -1,9 +1,11 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.util.List;
 import java.util.Objects;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
+import joookiwi.collection.java.extended.ImmutableSequencedCollectionOf1;
+import joookiwi.collection.java.extended.UtilityFor1;
 import joookiwi.collection.java.iterator.CollectionIteratorOf1;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;

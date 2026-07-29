@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.io.Serial;
 import java.util.Collection;
@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.ClassWith1Value;
+import joookiwi.collection.java.extended.UtilityFor1;
 import joookiwi.collection.java.iterator.CollectionIteratorOf1;
 import joookiwi.collection.java.method.ArrayCreator;
 import org.jetbrains.annotations.Contract;
@@ -22,23 +23,22 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 @NotNullByDefault
-public class ImmutableCopyOnWriteArrayListOf1<T extends @Nullable Object>
-        extends ImmutableCopyOnWriteArrayList<T>
+public class ImmutableArrayListOf1<T extends @Nullable Object>
+        extends ImmutableArrayList<T>
         implements ClassWith1Value<T> {
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 7397045316736969592L;
+    @Serial private static final long serialVersionUID = -894517398842700320L;
 
     private final T __value;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public ImmutableCopyOnWriteArrayListOf1(final T value) {
+    public ImmutableArrayListOf1(final T value) {
         super();
         __value = value;
     }
@@ -60,13 +60,13 @@ public class ImmutableCopyOnWriteArrayListOf1<T extends @Nullable Object>
     //#region -------------------- Get methods --------------------
 
     @Contract(pure = true)
-    @Override public T get(final int index) { return UtilityFor1.get(this, index, "CopyOnWriteArrayList"); }
+    @Override public T get(final int index) { return UtilityFor1.get(this, index, "ArrayList"); }
 
     @Contract(pure = true)
-    @Override public T getFirst() { return __value; }
+    @Override public T getFirst() { return value(); }
 
     @Contract(pure = true)
-    @Override public T getLast() { return __value; }
+    @Override public T getLast() { return value(); }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Has methods --------------------
@@ -81,12 +81,7 @@ public class ImmutableCopyOnWriteArrayListOf1<T extends @Nullable Object>
 
     @Override public @Range(from = -1, to = 0) int indexOf(final @Nullable Object element) { return UtilityFor1.indexOf(this, element); }
 
-    @Override public @Range(from = -1, to = 0) int indexOf(final T value, final @Range(from = 0, to = MAX_INT_VALUE) int index) { return UtilityFor1.indexOf(this, value, index); }
-
-
     @Override public @Range(from = -1, to = 0) int lastIndexOf(final @Nullable Object element) { return indexOf(element); }
-
-    @Override public @Range(from = -1, to = 0) int lastIndexOf(final T value, final @Range(from = 0, to = MAX_INT_VALUE) int index) { return indexOf(value, index); }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- For each methods --------------------
@@ -98,12 +93,12 @@ public class ImmutableCopyOnWriteArrayListOf1<T extends @Nullable Object>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- As subdivided methods --------------------
 
-    @Contract(ALWAYS_THIS_2) @Override public ImmutableCopyOnWriteArrayListOf1<T> subList(final int from, final int to) { return UtilityFor1.asSubdivided(this, from, to); }
+    @Contract(ALWAYS_THIS_2) @Override public ImmutableArrayListOf1<T> subList(final int from, final int to) { return UtilityFor1.asSubdivided(this, from, to); }
 
     //#endregion -------------------- As subdivided methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(ALWAYS_THIS_0) @Override public ImmutableCopyOnWriteArrayListOf1<T> reversed() { return this; }
+    @Contract(ALWAYS_THIS_0) @Override public ImmutableArrayListOf1<T> reversed() { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
@@ -112,13 +107,14 @@ public class ImmutableCopyOnWriteArrayListOf1<T extends @Nullable Object>
 
     @Override public CollectionIteratorOf1<T> listIterator() { return new CollectionIteratorOf1<>(value()); }
 
-    @Override public CollectionIteratorOf1<T> listIterator(final int index) { return UtilityFor1.toIterator(this, index, "CopyOnWriteArrayList"); }
+    @Override public CollectionIteratorOf1<T> listIterator(final int index) { return UtilityFor1.toIterator(this, index, "ArrayList"); }
 
     @Contract(ALWAYS_NEW_0) @Override public Spliterator<T> spliterator() { throw new RuntimeException(); /*TODO create a new SpliteratorOf1 instance*/ }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
+    @Contract(pure = true)
     public @Override T[] toArray() { return ArrayCreator.Array(value()); }
 
     @Contract(value = ALWAYS_1ST_1, mutates = "param1")
@@ -141,8 +137,8 @@ public class ImmutableCopyOnWriteArrayListOf1<T extends @Nullable Object>
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public ImmutableCopyOnWriteArrayListOf1<T> clone() {
-        return (ImmutableCopyOnWriteArrayListOf1<T>) super.clone();
+    @Override public ImmutableArrayListOf1<T> clone() {
+        return (ImmutableArrayListOf1<T>) super.clone();
     }
 
     //#endregion -------------------- Clone methods --------------------

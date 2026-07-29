@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.io.Serial;
 import java.util.Collection;

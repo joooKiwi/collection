@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.LongAdder;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.MutableArrayList;
+import joookiwi.collection.java.extended.list.MutableArrayList;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;

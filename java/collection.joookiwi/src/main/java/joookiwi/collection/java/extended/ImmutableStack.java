@@ -17,6 +17,7 @@ import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
 import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ListIteratorAsImmutableListIterator;
+import joookiwi.collection.java.extended.list.ImmutableList;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;

@@ -1,9 +1,12 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+import joookiwi.collection.java.extended.ReversedMutableArray;
+import joookiwi.collection.java.extended.UtilityForArray;
+import joookiwi.collection.java.extended.UtilityForMutableArray;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;

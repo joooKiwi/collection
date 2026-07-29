@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -11,6 +11,7 @@ import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
+import joookiwi.collection.java.extended.ImmutableSequencedCollection;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;

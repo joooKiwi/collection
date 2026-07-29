@@ -41,7 +41,7 @@ import joookiwi.collection.java.callback.additional.ToByteFunction;
 import joookiwi.collection.java.callback.additional.ToCharFunction;
 import joookiwi.collection.java.callback.additional.ToFloatFunction;
 import joookiwi.collection.java.callback.additional.ToShortFunction;
-import joookiwi.collection.java.extended.EmptyList;
+import joookiwi.collection.java.extended.list.EmptyList;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;

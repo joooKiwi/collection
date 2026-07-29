@@ -2,13 +2,15 @@ package joookiwi.collection.java.extended;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
 import java.util.NavigableSet;
-import java.util.SortedSet;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
+import joookiwi.collection.java.extended.list.EmptyList;
+import joookiwi.collection.java.extended.list.ImmutableList;
+import joookiwi.collection.java.extended.list.ReversedArrayAsImmutableList;
+import joookiwi.collection.java.extended.list.SubdividedArrayAsImmutableList;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import joookiwi.collection.java.helper.EqualsHelper;
 import org.jetbrains.annotations.ApiStatus.Internal;

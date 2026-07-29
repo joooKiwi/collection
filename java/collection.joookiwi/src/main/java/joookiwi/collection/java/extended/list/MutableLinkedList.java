@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.io.Serial;
 import java.util.Collection;
@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
+import joookiwi.collection.java.extended.MutableDeque;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.ListIteratorAsMutableListIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;

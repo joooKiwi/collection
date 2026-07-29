@@ -1,10 +1,13 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.RandomAccess;
 import java.util.function.UnaryOperator;
+import joookiwi.collection.java.extended.AbstractArrayAsMutableSequencedCollection;
+import joookiwi.collection.java.extended.UtilityForArray;
+import joookiwi.collection.java.extended.UtilityForMutableArray;
 import joookiwi.collection.java.extended.iterator.ArrayAsMutableListIterator;
 import joookiwi.collection.java.extended.iterator.MutableListIterator;
 import org.jetbrains.annotations.ApiStatus.Experimental;

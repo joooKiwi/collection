@@ -1,6 +1,7 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
+import joookiwi.collection.java.extended.ReversedArray;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;

@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.io.Serial;
 import java.util.Collection;
@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.ClassWith1Value;
+import joookiwi.collection.java.extended.UtilityFor1;
 import joookiwi.collection.java.iterator.CollectionIteratorOf1;
 import joookiwi.collection.java.method.ArrayCreator;
 import org.jetbrains.annotations.Contract;
@@ -24,20 +25,20 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
 
 @NotNullByDefault
-public class ImmutableArrayListOf1<T extends @Nullable Object>
-        extends ImmutableArrayList<T>
+public class ImmutableLinkedListOf1<T extends @Nullable Object>
+        extends ImmutableLinkedList<T>
         implements ClassWith1Value<T> {
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -894517398842700320L;
+    @Serial private static final long serialVersionUID = -2471084061458167658L;
 
     private final T __value;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public ImmutableArrayListOf1(final T value) {
+    public ImmutableLinkedListOf1(final T value) {
         super();
         __value = value;
     }
@@ -59,13 +60,26 @@ public class ImmutableArrayListOf1<T extends @Nullable Object>
     //#region -------------------- Get methods --------------------
 
     @Contract(pure = true)
-    @Override public T get(final int index) { return UtilityFor1.get(this, index, "ArrayList"); }
+    @Override public T get(final int index) { return UtilityFor1.get(this, index, "LinkedList"); }
 
     @Contract(pure = true)
     @Override public T getFirst() { return value(); }
 
     @Contract(pure = true)
     @Override public T getLast() { return value(); }
+
+
+    @Contract(pure = true)
+    @Override public T element() { return value(); }
+
+    @Contract(pure = true)
+    @Override public T peek() { return value(); }
+
+    @Contract(pure = true)
+    @Override public T peekFirst() { return value(); }
+
+    @Contract(pure = true)
+    @Override public T peekLast() { return value(); }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Has methods --------------------
@@ -92,21 +106,23 @@ public class ImmutableArrayListOf1<T extends @Nullable Object>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- As subdivided methods --------------------
 
-    @Contract(ALWAYS_THIS_2) @Override public ImmutableArrayListOf1<T> subList(final int from, final int to) { return UtilityFor1.asSubdivided(this, from, to); }
+    @Contract(ALWAYS_THIS_2) @Override public ImmutableLinkedListOf1<T> subList(final int from, final int to) { return UtilityFor1.asSubdivided(this, from, to); }
 
     //#endregion -------------------- As subdivided methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(ALWAYS_THIS_0) @Override public ImmutableArrayListOf1<T> reversed() { return this; }
+    @Contract(ALWAYS_THIS_0) @Override public ImmutableLinkedListOf1<T> reversed() { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
     @Override public CollectionIteratorOf1<T> iterator() { return new CollectionIteratorOf1<>(value()); }
 
+    @Override public CollectionIteratorOf1<T> descendingIterator() { return new CollectionIteratorOf1<>(value()); }
+
     @Override public CollectionIteratorOf1<T> listIterator() { return new CollectionIteratorOf1<>(value()); }
 
-    @Override public CollectionIteratorOf1<T> listIterator(final int index) { return UtilityFor1.toIterator(this, index, "ArrayList"); }
+    @Override public CollectionIteratorOf1<T> listIterator(final int index) { return UtilityFor1.toIterator(this, index, "LinkedList"); }
 
     @Contract(ALWAYS_NEW_0) @Override public Spliterator<T> spliterator() { throw new RuntimeException(); /*TODO create a new SpliteratorOf1 instance*/ }
 
@@ -136,8 +152,8 @@ public class ImmutableArrayListOf1<T extends @Nullable Object>
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public ImmutableArrayListOf1<T> clone() {
-        return (ImmutableArrayListOf1<T>) super.clone();
+    @Override public ImmutableLinkedListOf1<T> clone() {
+        return (ImmutableLinkedListOf1<T>) super.clone();
     }
 
     //#endregion -------------------- Clone methods --------------------

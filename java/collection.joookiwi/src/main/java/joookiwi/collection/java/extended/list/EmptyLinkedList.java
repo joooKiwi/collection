@@ -1,9 +1,10 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.io.Serial;
 import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.RandomAccess;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
@@ -25,40 +26,41 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
-/// A [Singleton] implementation of the [java.util.ArrayList],
+/// A [Singleton] implementation of the [java.util.LinkedList],
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see java.util.Collections#emptyList()
-/// @see joookiwi.collection.java.CollectionConstants#emptyArrayList
+/// @see joookiwi.collection.java.CollectionConstants#emptyLinkedList
 @Singleton
 @NotNullByDefault
-public class EmptyArrayList<T extends @Nullable Object>
-        extends ImmutableArrayList<T> {
+public class EmptyLinkedList<T extends @Nullable Object>
+        extends ImmutableLinkedList<T>
+        implements RandomAccess {
 
-    @Serial private static final long serialVersionUID = 8059999344689751738L;
+    @Serial private static final long serialVersionUID = -8149562270691772762L;
 
     //#region -------------------- Singleton usage --------------------
 
-    private static volatile @Nullable EmptyArrayList<?> __instance;
+    private static volatile @Nullable EmptyLinkedList<?> __instance;
 
-    protected EmptyArrayList() { super(); }
+    protected EmptyLinkedList() { super(); }
 
     @SuppressWarnings("unchecked cast")
-    public static <T> EmptyArrayList<T> getInstance() {
+    public static <T> EmptyLinkedList<T> getInstance() {
         final var instance = __instance;
         if (instance != null)
-            return (EmptyArrayList<T>) instance;
-        synchronized (EmptyArrayList.class) {
+            return (EmptyLinkedList<T>) instance;
+        synchronized (EmptyLinkedList.class) {
             final var instance2 = __instance;
             if (instance2 != null)
-                return (EmptyArrayList<T>) instance2;
-            return (EmptyArrayList<T>) (__instance = new EmptyArrayList<>());
+                return (EmptyLinkedList<T>) instance2;
+            return (EmptyLinkedList<T>) (__instance = new EmptyLinkedList<>());
         }
     }
 
@@ -74,11 +76,15 @@ public class EmptyArrayList<T extends @Nullable Object>
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Get methods --------------------
 
-    @Contract(value = ALWAYS_FAIL_1, pure = true) @Override public T get(final int index) { throw new NoSuchElementException("No element could be found in an empty ArrayList."); }
+    @Contract(value = ALWAYS_FAIL_1, pure = true) @Override public T get(int index) { throw new NoSuchElementException("No element could be found in an empty ArrayList."); }
 
     @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T getFirst() { throw new NoSuchElementException("No element could be found in an empty ArrayList."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T peek() { return getFirst(); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T element() { return getFirst(); }
+    @Contract(value = ALWAYS_NULL_0, pure = true) @Override public T peekFirst() { return null; }
 
     @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T getLast() { throw new NoSuchElementException("No element could be found in an empty ArrayList."); }
+    @Contract(value = ALWAYS_NULL_0, pure = true) @Override public T peekLast() { return null; }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Index methods --------------------
@@ -106,10 +112,11 @@ public class EmptyArrayList<T extends @Nullable Object>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public EmptyIterator<T>     iterator(               ) { return EmptyIterator.getInstance(); }
-    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(               ) { return EmptyIterator.getInstance(); }
-    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(final int index) { return EmptyIterator.getInstance(); }
-    @Contract(pure = true) @Override public Spliterator<T>    spliterator(               ) { return emptySpliterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T>           iterator(               ) { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> descendingIterator(               ) { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public EmptyIterator<T>       listIterator(               ) { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public EmptyIterator<T>       listIterator(final int index) { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public Spliterator<T  >        spliterator(               ) { return emptySpliterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
@@ -128,12 +135,12 @@ public class EmptyArrayList<T extends @Nullable Object>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Sublist methods --------------------
 
-    @Contract(value = ALWAYS_THIS_2, pure = true) @Override public EmptyArrayList<T> subList(final int from, final int to) { return this; }
+    @Contract(value = ALWAYS_THIS_2, pure = true) @Override public EmptyLinkedList<T> subList(final int from, final int to) { return this; }
 
     //#endregion -------------------- Sublist methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyArrayList<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyLinkedList<T> reversed() { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Comparison methods --------------------
@@ -153,7 +160,7 @@ public class EmptyArrayList<T extends @Nullable Object>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyArrayList<T> clone() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyLinkedList<T> clone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- Serializable methods --------------------

@@ -1,11 +1,12 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Spliterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Vector;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
@@ -24,39 +25,42 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_CAPACITY_INCREMENT;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
 
-/// A mutable behaviour of a [CopyOnWriteArrayList]
+/// A mutable behaviour of a [Vector]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
-        extends CopyOnWriteArrayList<T>
+public class MutableVector<T extends @Nullable Object>
+        extends Vector<T>
         implements MutableList<T> {
 
-    @Serial private static final long serialVersionUID = 6548810844245615952L;
+    @Serial private static final long serialVersionUID = 5479348700270430727L;
 
     //#region -------------------- Sub class --------------------
 
-    /// A view of a subdivided or reversed [MutableCopyOnWriteArrayList]
+    /// A view of a subdivided or reversed [MutableVector]
     ///
     /// @param <T> The type
-    private static final class MutableCopyOnWriteArrayListView<T extends @Nullable Object>
-            extends MutableCopyOnWriteArrayList<T> {
+    private static final class MutableVectorView<T extends @Nullable Object>
+            extends MutableVector<T> {
 
         //#region -------------------- Fields --------------------
 
-        @Serial private static final long serialVersionUID = -4303293806816374648L;
+        @Serial private static final long serialVersionUID = 8050396669889119948L;
 
         private final List<T> __reference;
 
         //#endregion -------------------- Fields --------------------
         //#region -------------------- Constructor --------------------
 
-        public MutableCopyOnWriteArrayListView(final List<T> reference) {
+        public MutableVectorView(final List<T> reference) {
             super();
             __reference = reference;
         }
@@ -174,13 +178,13 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
         //#region -------------------- As subdivided methods --------------------
 
         @Contract(ALWAYS_NEW_2)
-        @Override public MutableCopyOnWriteArrayListView<T> subList(final int from, final int to) { return new MutableCopyOnWriteArrayListView<>(__reference.subList(from, to)); }
+        @Override public MutableVectorView<T> subList(final int from, final int to) { return new MutableVectorView<>(__reference.subList(from, to)); }
 
         //#endregion -------------------- As subdivided methods --------------------
         //#region -------------------- As reverse methods --------------------
 
         @Contract(ALWAYS_NEW_0)
-        @Override public MutableCopyOnWriteArrayListView<T> reversed() { return new MutableCopyOnWriteArrayListView<>(__reference.reversed()); }
+        @Override public MutableVectorView<T> reversed() { return new MutableVectorView<>(__reference.reversed()); }
 
         //#endregion -------------------- As reverse methods --------------------
         //#region -------------------- Iterator methods --------------------
@@ -227,7 +231,7 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
         @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public MutableCopyOnWriteArrayListView<T> clone() { return (MutableCopyOnWriteArrayListView<T>) super.clone(); }
+        @Override public MutableVectorView<T> clone() { return (MutableVectorView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -245,19 +249,234 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     //#region -------------------- ∅ --------------------
 
-    /// Create a mutable instance of [CopyOnWriteArrayList] that starts empty
-    public MutableCopyOnWriteArrayList() { super(); }
+    /// Create a mutable instance of [Vector] that starts empty
+    /// with an initial capacity of [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY]
+    /// and the capacity increment of `0`
+    public MutableVector() { super(DEFAULT_INITIAL_CAPACITY, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     //#endregion -------------------- ∅ --------------------
+    //#region -------------------- initialCapacity --------------------
+
+    /// Create a mutable instance of [Vector]
+    /// with the `initialCapacity` received
+    public MutableVector(final byte initialCapacity) { super(max(initialCapacity, 0), DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+
+    /// Create a mutable instance of [Vector]
+    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    public MutableVector(final @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 0), DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+
+    /// Create a mutable instance of [Vector]
+    /// with the `initialCapacity` received
+    public MutableVector(final short initialCapacity) { super(max(initialCapacity, 0), DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+
+    /// Create a mutable instance of [Vector]
+    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    public MutableVector(final @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 0), DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+
+    /// Create a mutable instance of [Vector]
+    /// with the `initialCapacity` received
+    public MutableVector(final int initialCapacity) { super(max(initialCapacity, 0), DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+
+    /// Create a mutable instance of [Vector]
+    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    public MutableVector(final @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 0), DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+
+    //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- values --------------------
 
-    /// Create a mutable instance of [CopyOnWriteArrayList]
-    public MutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(values); }
+    /// Create a mutable instance of [Vector]
+    /// with the initial capacity as the `values.length`
+    /// and the capacity increment of `0`
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
+        final var size = values.length;
+        super(size, DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        elementCount = size;
+        if (size == 0)
+            return;
 
-    /// Create a mutable instance of [CopyOnWriteArrayList]
-    public MutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }
+        final var array = elementData;
+        var index = -1;
+        while (++index < size)
+            array[index] = values[index];
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the initial capacity as <code>values.[size][Collection#size()]</code>
+    /// and the capacity increment of `0`
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
+        super(values.size(), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
 
     //#endregion -------------------- values --------------------
+    //#region -------------------- values, initialCapacity --------------------
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                         final byte initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        elementCount = size;
+        if (size == 0)
+            return;
+
+        final var array = elementData;
+        var index = -1;
+        while (++index < size)
+            array[index] = values[index];
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// (if null provided, then it is the `values.length`)
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                         final @Nullable Byte initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        elementCount = size;
+        if (size == 0)
+            return;
+
+        final var array = elementData;
+        var index = -1;
+        while (++index < size)
+            array[index] = values[index];
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                         final short initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        elementCount = size;
+        if (size == 0)
+            return;
+
+        final var array = elementData;
+        var index = -1;
+        while (++index < size)
+            array[index] = values[index];
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// (if null provided, then it is the `values.length`)
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                         final @Nullable Short initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        elementCount = size;
+        if (size == 0)
+            return;
+
+        final var array = elementData;
+        var index = -1;
+        while (++index < size)
+            array[index] = values[index];
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                         final int initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        elementCount = size;
+        if (size == 0)
+            return;
+
+        final var array = elementData;
+        var index = -1;
+        while (++index < size)
+            array[index] = values[index];
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// (if null provided, then it is the `values.length`)
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                         final @Nullable Integer initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        elementCount = size;
+        if (size == 0)
+            return;
+
+        final var array = elementData;
+        var index = -1;
+        while (++index < size)
+            array[index] = values[index];
+    }
+
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                         final byte initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                         final @Nullable Byte initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                         final short initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                         final @Nullable Short initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                         final int initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [Vector]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                         final @Nullable Integer initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_EMPTY_CAPACITY_INCREMENT);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    //#endregion -------------------- values, initialCapacity --------------------
 
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
@@ -266,22 +485,45 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return super.size(); }
 
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int capacity() { return super.capacity(); }
+
     @Override public boolean isEmpty() { return super.isEmpty(); }
+
+
+    @Contract(mutates = "this")
+    @Override public void setSize(final int newSize) { super.setSize(newSize); }
+
+    @Contract(mutates = "this")
+    @Override public void trimToSize() { super.trimToSize(); }
+
+    @Contract(mutates = "this")
+    @Override public void ensureCapacity(final int minimum) { super.ensureCapacity(minimum); }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Get methods --------------------
 
     @Override public T get(final int index) { return super.get(index); }
 
+    @Override public T elementAt(final int index) { return super.elementAt(index); }
+
+
     @Override public T getFirst() { return super.getFirst(); }
 
+    @Override public T firstElement() { return super.firstElement(); }
+
+
     @Override public T getLast() { return super.getLast(); }
+
+    @Override public T lastElement() { return super.lastElement(); }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Set methods --------------------
 
     @Contract(mutates = "this")
     @Override public T set(final int index, final T value) { return super.set(index, value); }
+
+    @Contract(mutates = "this")
+    @Override public void setElementAt(final T value, final int index) { super.setElementAt(value, index); }
 
     //#endregion -------------------- Set methods --------------------
     //#region -------------------- Add methods --------------------
@@ -290,7 +532,7 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     @Override public boolean add(final T value) { return super.add(value); }
 
     @Contract(mutates = "this")
-    @Override public boolean addIfAbsent(final T value) { return super.addIfAbsent(value); }
+    @Override public void addElement(final T value) { super.addElement(value); }
 
     @Contract(mutates = "this")
     @Override public void addFirst(final T value) { super.addFirst(value); }
@@ -302,6 +544,9 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     @Contract(mutates = "this")
     @Override public void add(final int index, final T element) { super.add(index, element); }
 
+    @Contract(mutates = "this")
+    @Override public void insertElementAt(final T value, final int index) { super.insertElementAt(value, index); }
+
 
     @Contract(mutates = "this")
     @Override public boolean addAll(final @Unmodifiable Collection<? extends T> values) { return super.addAll(values); }
@@ -309,14 +554,14 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     @Contract(mutates = "this")
     @Override public boolean addAll(final int index, final @Unmodifiable Collection<? extends T> values) { return super.addAll(index, values); }
 
-    @Contract(mutates = "this")
-    @Override public int addAllAbsent(final @Unmodifiable Collection<? extends T> values) { return super.addAllAbsent(values); }
-
     //#endregion -------------------- Add methods --------------------
     //#region -------------------- Remove methods --------------------
 
     @Contract(mutates = "this")
     @Override public T remove(final int index) { return super.remove(index); }
+
+    @Contract(mutates = "this")
+    @Override public void removeElementAt(final int index) { super.removeElementAt(index); }
 
 
     @Contract(mutates = "this")
@@ -328,6 +573,9 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @Contract(mutates = "this")
     @Override public boolean remove(final @Nullable Object value) { return super.remove(value); }
+
+    @Contract(mutates = "this")
+    @Override public boolean removeElement(final @Nullable Object value) { return super.removeElement(value); }
 
 
     @Contract(mutates = "this")
@@ -355,6 +603,9 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     @Contract(mutates = "this")
     @Override public void clear() { super.clear(); }
 
+    @Contract(mutates = "this")
+    @Override public void removeAllElements() { super.removeAllElements(); }
+
     //#endregion -------------------- Clear methods --------------------
     //#region -------------------- Has methods --------------------
 
@@ -367,12 +618,11 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value) { return super.indexOf(value); }
 
-    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final T value, final int index) { return super.indexOf(value, index); }
-
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value, final int index) { return super.indexOf(value, index); }
 
     @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value); }
 
-    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final T value, final int index) { return super.lastIndexOf(value, index); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value, final int index) { return super.lastIndexOf(value, index); }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- For each methods --------------------
@@ -383,19 +633,22 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     //#region -------------------- As subdivided methods --------------------
 
     @Contract(ALWAYS_NEW_2)
-    @Override public MutableCopyOnWriteArrayList<T> subList(final int from, final int to) { return new MutableCopyOnWriteArrayListView<>(super.subList(from, to)); }
+    @Override public MutableVector<T> subList(final int from, final int to) { return new MutableVectorView<>(super.subList(from, to)); }
 
     //#endregion -------------------- As subdivided methods --------------------
     //#region -------------------- As reverse methods --------------------
 
     @Contract(ALWAYS_NEW_0)
-    @Override public MutableCopyOnWriteArrayList<T> reversed() { return new MutableCopyOnWriteArrayListView<>(super.reversed()); }
+    @Override public MutableVector<T> reversed() { return new MutableVectorView<>(super.reversed()); }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
     @Contract(ALWAYS_NEW_0)
     @Override public MutableIterator<T> iterator() { return new IteratorAsMutableIterator<>(super.iterator()); }
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public Enumeration<T> elements() { return super.elements(); }
 
     @Contract(ALWAYS_NEW_0)
     @Override public MutableListIterator<T> listIterator() { return new ListIteratorAsMutableListIterator<>(super.listIterator()); }
@@ -417,6 +670,12 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     @Override public <U extends @Nullable Object> U[] toArray(final IntFunction<U[]> generator) { return super.toArray(generator); }
 
     //#endregion -------------------- To array methods --------------------
+    //#region -------------------- Copy into methods --------------------
+
+    @Contract(mutates = "param1")
+    @Override public void copyInto(final @Nullable Object[] anArray) { super.copyInto(anArray); }
+
+    //#endregion -------------------- Copy into methods --------------------
     //#region -------------------- Stream methods --------------------
 
     @Contract(ALWAYS_NEW_0)
@@ -437,11 +696,11 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public MutableCopyOnWriteArrayList<T> clone() {
+    @Override public MutableVector<T> clone() {
         try {
-            return (MutableCopyOnWriteArrayList<T>) super.clone();
+            return (MutableVector<T>) super.clone();
         } catch (InternalError error) {
-            if (error.getCause() == null) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
+            if (error.getCause() instanceof CloneNotSupportedException) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
                 throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
             throw error;
         }

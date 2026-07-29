@@ -29,8 +29,7 @@ import joookiwi.collection.java.callback.additional.ToByteFunction;
 import joookiwi.collection.java.callback.additional.ToCharFunction;
 import joookiwi.collection.java.callback.additional.ToFloatFunction;
 import joookiwi.collection.java.callback.additional.ToShortFunction;
-import joookiwi.collection.java.extended.ImmutableList;
-import org.jetbrains.annotations.NotNull;
+import joookiwi.collection.java.extended.list.ImmutableList;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 

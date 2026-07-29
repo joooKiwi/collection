@@ -9,6 +9,8 @@ import java.util.function.UnaryOperator;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
+import joookiwi.collection.java.extended.list.MutableList;
+import joookiwi.collection.java.extended.list.SubdividedArrayAsMutableList;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.ApiStatus.Internal;

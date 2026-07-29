@@ -1,6 +1,8 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
 import java.util.List;
+import joookiwi.collection.java.extended.AbstractArrayAsImmutableSequencedCollection;
+import joookiwi.collection.java.extended.UtilityForArray;
 import joookiwi.collection.java.extended.iterator.ArrayAsImmutableListIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
 import org.jetbrains.annotations.Contract;

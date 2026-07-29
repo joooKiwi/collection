@@ -1,5 +1,7 @@
-package joookiwi.collection.java.extended;
+package joookiwi.collection.java.extended.list;
 
+import joookiwi.collection.java.extended.SubdividedArray;
+import joookiwi.collection.java.extended.SubdividedMutableArray;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.Contract;
