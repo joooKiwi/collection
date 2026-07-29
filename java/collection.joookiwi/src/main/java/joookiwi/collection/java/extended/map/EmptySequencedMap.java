@@ -1,42 +1,16 @@
 package joookiwi.collection.java.extended.map;
 
 import joookiwi.collection.java.annotation.Singleton;
-import joookiwi.collection.java.entry.Entry;
-import joookiwi.collection.java.extended.EmptyCollection;
 import joookiwi.collection.java.extended.EmptySequencedCollection;
-import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import joookiwi.collection.java.extended.set.EmptySequencedSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
 
-import java.util.Map;
-import java.util.Spliterator;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.DoubleAccumulator;
-import java.util.concurrent.atomic.DoubleAdder;
-import java.util.concurrent.atomic.LongAccumulator;
-import java.util.concurrent.atomic.LongAdder;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
-import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_2ND_2;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_2ND_3;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_1;
-import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
 @Singleton
 @NotNullByDefault
