@@ -96,7 +96,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
     @Contract(value = ALWAYS_TRUE_1, mutates = "this")
     @Override public boolean add(final T value) {
         final var reversedArray = _reversedArray();
-        reversedArray._source(UtilityForMutableArray.addToFirst(reversedArray.source(), value));
+        reversedArray.source(UtilityForMutableArray.addToFirst(reversedArray.source(), value));
         return true;
     }
 
@@ -104,20 +104,20 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
     @Override public void add(final int index, final T value) {
         final var reversedArray = _reversedArray();
         final var source = reversedArray.source();
-        reversedArray._source(UtilityForMutableArray.add(source, source.length - index, value));
+        reversedArray.source(UtilityForMutableArray.add(source, source.length - index, value));
         super.add(index, value);
     }
 
     @Contract(mutates = "this")
     @Override public void addFirst(final T value) {
         final var reversedArray = _reversedArray();
-        reversedArray._source(UtilityForMutableArray.addToLast(reversedArray.source(), value));
+        reversedArray.source(UtilityForMutableArray.addToLast(reversedArray.source(), value));
     }
 
     @Contract(mutates = "this")
     @Override public void addLast(final T value) {
         final var reversedArray = _reversedArray();
-        reversedArray._source(UtilityForMutableArray.addToFirst(reversedArray.source(), value));
+        reversedArray.source(UtilityForMutableArray.addToFirst(reversedArray.source(), value));
     }
 
 
@@ -128,7 +128,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var newArray = UtilityForMutableArray.join(source, values);
         if (source != newArray)
             return false;
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return true;
     }
 
@@ -139,7 +139,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var newArray = UtilityForMutableArray.addAll(source, source.length - index, UtilityForArray.toReversed(values));
         if (source != newArray)
             return false;
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return true;
     }
 
@@ -147,7 +147,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
     //#region -------------------- Clear methods --------------------
 
     @Contract(mutates = "this")
-    @Override public void clear() { _reversedArray()._source(emptyArray()); }
+    @Override public void clear() { _reversedArray().source(emptyArray()); }
 
     //#endregion -------------------- Clear methods --------------------
     //#region -------------------- Remove methods --------------------
@@ -159,7 +159,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var newArray = UtilityForMutableArray.remove(source, value);
         if (source != newArray)
             return false;
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return true;
     }
 
@@ -168,7 +168,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var reversedArray = _reversedArray();
         final var source = reversedArray.source();
         final var newArray = UtilityForMutableArray.removeAt(source, source.length - index);
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return source[index];
     }
 
@@ -177,7 +177,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var reversedArray = _reversedArray();
         final var source = reversedArray.source();
         final var newArray = UtilityForMutableArray.removeLast(source);
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return source[source.length - 1];
     }
 
@@ -186,7 +186,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var reversedArray = _reversedArray();
         final var source = reversedArray.source();
         final var newArray = UtilityForMutableArray.removeFirst(source);
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return source[0];
     }
 
@@ -198,7 +198,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var newArray = UtilityForMutableArray.removeAll(source, values);
         if (source != newArray)
             return false;
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return true;
     }
 
@@ -210,7 +210,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var newArray = UtilityForMutableArray.removeIf(source, filter);
         if (source != newArray)
             return false;
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return true;
     }
 
@@ -230,7 +230,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
         final var newArray = UtilityForMutableArray.retainAll(source, values);
         if (source != newArray)
             return false;
-        reversedArray._source(newArray);
+        reversedArray.source(newArray);
         return true;
     }
 
