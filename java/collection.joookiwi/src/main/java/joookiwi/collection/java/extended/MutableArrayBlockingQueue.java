@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
+import joookiwi.collection.java.extended.queue.MutableBlockingQueue;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;

@@ -5,6 +5,7 @@ import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
+import joookiwi.collection.java.extended.queue.ImmutableBlockingQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;

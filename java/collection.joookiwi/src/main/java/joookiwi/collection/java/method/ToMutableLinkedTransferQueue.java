@@ -7,7 +7,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.MutableLinkedTransferQueue;
+import joookiwi.collection.java.extended.queue.MutableLinkedTransferQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
