@@ -57,10 +57,16 @@ public interface MutableSequencedCollection<T extends @Nullable Object>
 
     /// Give a reversed-view of the current [instance][MutableSequencedCollection]
     ///
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
