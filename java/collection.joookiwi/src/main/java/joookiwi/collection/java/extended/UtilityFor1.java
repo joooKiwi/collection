@@ -46,7 +46,7 @@ public final class UtilityFor1 {
 
 
     public static <T extends @Nullable Object, SOURCE extends ClassWith1Value<? extends T> & OrderableCollection<T>> @Nullable T getFirstOrNullUnderOrEqual(final SOURCE source,
-                                                                                                                                                                    final T value) {
+                                                                                                                                                            final T value) {
         final var instanceValue = source.value();
         if (instanceValue == null)
             return null; // It is always equals to null with the "value" is null or not
