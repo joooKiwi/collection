@@ -38,9 +38,10 @@ import static joookiwi.collection.java.method.ToCollection.toCollection;
 @NotNullByDefault
 public class MutablePriorityBlockingQueue<T>
         extends PriorityBlockingQueue<T>
-        implements MutableBlockingQueue<T> {
+        implements MutableBlockingQueue<T>,
+                   OrderableCollection<T> {
 
-    @Serial private static final long serialVersionUID = 869292086233370937L;
+    @Serial private static final long serialVersionUID = -5962300524921635585L;
 
     //#region -------------------- Constructors --------------------
 
@@ -784,6 +785,11 @@ public class MutablePriorityBlockingQueue<T>
     @Override public Stream<T> parallelStream() { return super.parallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
+    //#region -------------------- Comparator methods --------------------
+
+    @Override public @Nullable Comparator<? super T> comparator() { return super.comparator(); }
+
+    //#endregion -------------------- Comparator methods --------------------
     //#region -------------------- Clone methods --------------------
 
     @SuppressWarnings("unchecked cast")
