@@ -76,11 +76,6 @@ public abstract class AbstractArrayAsImmutableSortedSet<T extends @Nullable Obje
     @Override public ImmutableSortedSet<T> reversed() { return UtilityForArray.asReversed(this, _reference()); }
 
     //#endregion -------------------- As reverse methods --------------------
-    //#region -------------------- Comparator methods --------------------
-
-    @Override public abstract @Nullable Comparator<? super T> comparator();
-
-    //#endregion -------------------- Comparator methods --------------------
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
