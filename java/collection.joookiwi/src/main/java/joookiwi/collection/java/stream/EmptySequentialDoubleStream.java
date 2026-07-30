@@ -493,7 +493,7 @@ public class EmptySequentialDoubleStream
     //#endregion -------------------- Boxed --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public EmptyDoubleIterator iterator() { return EmptyDoubleIterator.getInstance(); }
+    @Override public EmptyDoubleIterator    iterator(   ) { return EmptyDoubleIterator.getInstance(); }
     @Override public EmptyDoubleSpliterator spliterator() { return EmptyDoubleSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------

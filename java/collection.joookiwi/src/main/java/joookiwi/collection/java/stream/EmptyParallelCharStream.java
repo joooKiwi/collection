@@ -37,15 +37,14 @@ import joookiwi.collection.java.callback.additional.ObjCharConsumer;
 import joookiwi.collection.java.callback.additional.ObjCharFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
-import joookiwi.collection.java.extended.iterator.CharSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyCharIterator;
+import joookiwi.collection.java.extended.iterator.EmptyCharSpliterator;
 import joookiwi.collection.java.optional.EmptyOptionalChar;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyCharSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -474,8 +473,8 @@ public class EmptyParallelCharStream
     //#endregion -------------------- Boxed --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public EmptyCharIterator iterator() { return EmptyCharIterator.getInstance(); }
-    @Override public CharSpliterator spliterator() { return emptyCharSpliterator(); }
+    @Override public EmptyCharIterator    iterator(   ) { return EmptyCharIterator.getInstance(); }
+    @Override public EmptyCharSpliterator spliterator() { return EmptyCharSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

@@ -40,14 +40,13 @@ import joookiwi.collection.java.callback.additional.ShortToIntFunction;
 import joookiwi.collection.java.callback.additional.ShortToLongFunction;
 import joookiwi.collection.java.callback.additional.ShortUnaryOperator;
 import joookiwi.collection.java.extended.iterator.EmptyShortIterator;
-import joookiwi.collection.java.extended.iterator.ShortSpliterator;
+import joookiwi.collection.java.extended.iterator.EmptyShortSpliterator;
 import joookiwi.collection.java.optional.EmptyOptionalShort;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyShortSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -488,8 +487,8 @@ public class EmptySequentialShortStream
     //#endregion -------------------- Boxed --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public EmptyShortIterator iterator() { return EmptyShortIterator.getInstance(); }
-    @Override public ShortSpliterator spliterator() { return emptyShortSpliterator(); }
+    @Override public EmptyShortIterator    iterator(   ) { return EmptyShortIterator.getInstance(); }
+    @Override public EmptyShortSpliterator spliterator() { return EmptyShortSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

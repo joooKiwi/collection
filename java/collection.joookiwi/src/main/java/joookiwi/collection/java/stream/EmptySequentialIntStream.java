@@ -41,13 +41,12 @@ import joookiwi.collection.java.callback.additional.IntToShortFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
 import joookiwi.collection.java.extended.iterator.EmptyIntIterator;
-import joookiwi.collection.java.extended.iterator.IntSpliterator;
+import joookiwi.collection.java.extended.iterator.EmptyIntSpliterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyIntSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -500,8 +499,8 @@ public class EmptySequentialIntStream
     //#endregion -------------------- Boxed --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public EmptyIntIterator iterator() { return EmptyIntIterator.getInstance(); }
-    @Override public IntSpliterator spliterator() { return emptyIntSpliterator(); }
+    @Override public EmptyIntIterator    iterator(   ) { return EmptyIntIterator.getInstance(); }
+    @Override public EmptyIntSpliterator spliterator() { return EmptyIntSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

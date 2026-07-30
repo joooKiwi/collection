@@ -37,13 +37,12 @@ import joookiwi.collection.java.callback.additional.LongToShortFunction;
 import joookiwi.collection.java.callback.additional.ObjLongFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.EmptyLongIterator;
-import joookiwi.collection.java.extended.iterator.LongSpliterator;
+import joookiwi.collection.java.extended.iterator.EmptyLongSpliterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyLongSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -496,8 +495,8 @@ public class EmptyParallelLongStream
     //#endregion -------------------- Boxed --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public EmptyLongIterator iterator() { return EmptyLongIterator.getInstance(); }
-    @Override public LongSpliterator spliterator() { return emptyLongSpliterator(); }
+    @Override public EmptyLongIterator    iterator(   ) { return EmptyLongIterator.getInstance(); }
+    @Override public EmptyLongSpliterator spliterator() { return EmptyLongSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

@@ -36,15 +36,14 @@ import joookiwi.collection.java.callback.additional.ObjBooleanConsumer;
 import joookiwi.collection.java.callback.additional.ObjBooleanFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
-import joookiwi.collection.java.extended.iterator.BooleanSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyBooleanIterator;
+import joookiwi.collection.java.extended.iterator.EmptyBooleanSpliterator;
 import joookiwi.collection.java.optional.EmptyOptionalBoolean;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyBooleanSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -473,8 +472,8 @@ public class EmptySequentialBooleanStream
     //#endregion -------------------- Boxed --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public EmptyBooleanIterator iterator() { return EmptyBooleanIterator.getInstance(); }
-    @Override public BooleanSpliterator spliterator() { return emptyBooleanSpliterator(); }
+    @Override public EmptyBooleanIterator    iterator(   ) { return EmptyBooleanIterator.getInstance(); }
+    @Override public EmptyBooleanSpliterator spliterator() { return EmptyBooleanSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

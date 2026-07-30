@@ -39,15 +39,14 @@ import joookiwi.collection.java.callback.additional.ObjByteConsumer;
 import joookiwi.collection.java.callback.additional.ObjByteFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
-import joookiwi.collection.java.extended.iterator.ByteSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyByteIterator;
+import joookiwi.collection.java.extended.iterator.EmptyByteSpliterator;
 import joookiwi.collection.java.optional.EmptyOptionalByte;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyByteSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -500,8 +499,8 @@ public class EmptySequentialByteStream
     //#endregion -------------------- Boxed --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public EmptyByteIterator iterator() { return EmptyByteIterator.getInstance(); }
-    @Override public ByteSpliterator spliterator() { return emptyByteSpliterator(); }
+    @Override public EmptyByteIterator    iterator(   ) { return EmptyByteIterator.getInstance(); }
+    @Override public EmptyByteSpliterator spliterator() { return EmptyByteSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------
