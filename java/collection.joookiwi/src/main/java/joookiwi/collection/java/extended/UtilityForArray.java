@@ -313,9 +313,9 @@ public sealed class UtilityForArray
     }
 
     //#endregion -------------------- Get last --------------------
+    //#region -------------------- Get or <= --------------------
 
-
-    public static <T extends @Nullable Object> @Nullable T getFirstOrNullUnderOrEqual(final NavigableSet<? super T> source,
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNullUnderOrEqual(final ImmutableNavigableCollection<? super T> source,
                                                                                       final T @Unmodifiable [] reference,
                                                                                       final T value) {
         final var size = reference.length;
@@ -330,7 +330,10 @@ public sealed class UtilityForArray
         return reference[indexFound + 1];
     }
 
-    public static <T extends @Nullable Object> @Nullable T getFirstOrNullUnder(final NavigableSet<? super T> source,
+    //#endregion -------------------- Get or <= --------------------
+    //#region -------------------- Get or < --------------------
+
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNullUnder(final ImmutableNavigableCollection<? super T> source,
                                                                                final T @Unmodifiable [] reference,
                                                                                final T value) {
         final var size = reference.length;
@@ -345,7 +348,10 @@ public sealed class UtilityForArray
         return reference[indexFound + 1];
     }
 
-    public static <T extends @Nullable Object> @Nullable T getFirstOrNullOverOrEqual(final NavigableSet<? super T> source,
+    //#endregion -------------------- Get or < --------------------
+    //#region -------------------- Get or >= --------------------
+
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNullOverOrEqual(final ImmutableNavigableCollection<? super T> source,
                                                                                      final T @Unmodifiable [] reference,
                                                                                      final T value) {
         final var size = reference.length;
@@ -360,7 +366,10 @@ public sealed class UtilityForArray
         return reference[indexFound + 1];
     }
 
-    public static <T extends @Nullable Object> @Nullable T getFirstOrNullOver(final NavigableSet<? super T> source,
+    //#endregion -------------------- Get or >= --------------------
+    //#region -------------------- Get or > --------------------
+
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNullOver(final ImmutableNavigableCollection<? super T> source,
                                                                               final T @Unmodifiable [] reference,
                                                                               final T value) {
         final var size = reference.length;
@@ -374,6 +383,8 @@ public sealed class UtilityForArray
             return null;
         return reference[indexFound + 1];
     }
+
+    //#endregion -------------------- Get or > --------------------
 
     //#endregion -------------------- Research --------------------
     //#region -------------------- Index --------------------
@@ -544,12 +555,21 @@ public sealed class UtilityForArray
         return new ReversedArrayAsImmutableSortedCollection<>(source, new ReversedArray<>(reference));
     }
 
+    public static <T extends @Nullable Object> ImmutableNavigableCollection<T> asReversed(final ImmutableNavigableCollection<T> source,
+                                                                                          final T @Unmodifiable [] reference) {
+        if (reference.length == 0)
+            return EmptyNavigableCollection.getInstance();
+        return new ReversedArrayAsImmutableNavigableCollection<>(source, new ReversedArray<>(reference));
+    }
+
+
     public static <T extends @Nullable Object> ImmutableList<T> asReversed(final ImmutableList<T> source,
                                                                            final T @Unmodifiable [] reference) {
         if (reference.length == 0)
             return EmptyList.getInstance();
         return new ReversedArrayAsImmutableList<>(source, new ReversedArray<>(reference));
     }
+
 
     public static <T extends @Nullable Object> ImmutableSequencedSet<T> asReversed(final ImmutableSequencedSet<T> source,
                                                                                    final T @Unmodifiable [] reference) {
@@ -571,6 +591,7 @@ public sealed class UtilityForArray
             return EmptyNavigableSet.getInstance();
         return new ReversedArrayAsImmutableNavigableSet<>(source, new ReversedArray<>(reference));
     }
+
 
     public static <T extends @Nullable Object> ImmutableDeque<T> asReversed(final ImmutableDeque<T> source,
                                                                             final T @Unmodifiable [] reference) {

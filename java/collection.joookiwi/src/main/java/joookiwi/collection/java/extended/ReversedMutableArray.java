@@ -13,6 +13,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 /// @param <T> The type
 /// @see joookiwi.collection.java.extended.ReversedArrayAsMutableSequencedCollection
 /// @see joookiwi.collection.java.extended.ReversedArrayAsMutableSortedCollection
+/// @see joookiwi.collection.java.extended.ReversedArrayAsMutableNavigableCollection
 /// @see joookiwi.collection.java.extended.list.ReversedArrayAsMutableList
 /// @see joookiwi.collection.java.extended.set.ReversedArrayAsMutableSequencedSet
 /// @see joookiwi.collection.java.extended.set.ReversedArrayAsMutableSortedSet

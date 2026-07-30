@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 /// @param <T> The type
 /// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedCollection
 /// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedCollection
+/// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableNavigableCollection
 /// @see joookiwi.collection.java.extended.list.ReversedArrayAsImmutableList
 /// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSequencedSet
 /// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSortedSet

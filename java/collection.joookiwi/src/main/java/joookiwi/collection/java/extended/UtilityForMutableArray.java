@@ -48,6 +48,82 @@ public final class UtilityForMutableArray
     @Contract(ALWAYS_FAIL_0)
     private UtilityForMutableArray() { throw new AssertionError("The utility class “UtilityForMutableArray” cannot be constructed."); }
 
+    //#region -------------------- Get methods --------------------
+
+    //#region -------------------- Get or <= --------------------
+
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNullUnderOrEqual(final MutableNavigableCollection<? super T> source,
+                                                                                      final T @Unmodifiable [] reference,
+                                                                                      final T value) {
+        final var size = reference.length;
+        if (size == 0)
+            return null;
+        if (!has(reference, value))
+            return null;
+
+        final var indexFound = _indexFromHashCodeLowerOrEqual(value, reference, size, source.comparator(), ComparatorHelper.getInstance());
+        if (indexFound == size - 1)
+            return null;
+        return reference[indexFound + 1];
+    }
+
+    //#endregion -------------------- Get or <= --------------------
+    //#region -------------------- Get or < --------------------
+
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNullUnder(final MutableNavigableCollection<? super T> source,
+                                                                               final T @Unmodifiable [] reference,
+                                                                               final T value) {
+        final var size = reference.length;
+        if (size == 0)
+            return null;
+        if (!has(reference, value))
+            return null;
+
+        final var indexFound = _indexFromHashCodeLower(value, reference, size, source.comparator(), ComparatorHelper.getInstance());
+        if (indexFound == size - 1)
+            return null;
+        return reference[indexFound + 1];
+    }
+
+    //#endregion -------------------- Get or < --------------------
+    //#region -------------------- Get or >= --------------------
+
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNullOverOrEqual(final MutableNavigableCollection<? super T> source,
+                                                                                     final T @Unmodifiable [] reference,
+                                                                                     final T value) {
+        final var size = reference.length;
+        if (size == 0)
+            return null;
+        if (!has(reference, value))
+            return null;
+
+        final var indexFound = _indexFromHashCodeHigherOrEqual(value, reference, size, source.comparator(), ComparatorHelper.getInstance());
+        if (indexFound == size - 1)
+            return null;
+        return reference[indexFound + 1];
+    }
+
+    //#endregion -------------------- Get or >= --------------------
+    //#region -------------------- Get or > --------------------
+
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNullOver(final MutableNavigableCollection<? super T> source,
+                                                                              final T @Unmodifiable [] reference,
+                                                                              final T value) {
+        final var size = reference.length;
+        if (size == 0)
+            return null;
+        if (!has(reference, value))
+            return null;
+
+        final var indexFound = _indexFromHashCodeHigher(value, reference, size, source.comparator(), ComparatorHelper.getInstance());
+        if (indexFound == size - 1)
+            return null;
+        return reference[indexFound + 1];
+    }
+
+    //#endregion -------------------- Get or > --------------------
+
+    //#endregion -------------------- Get methods --------------------
     //#region -------------------- Get and remove methods --------------------
 
     public static <T extends @Nullable Object> T getFirstAndRemove(final T @Unmodifiable [] collection,
