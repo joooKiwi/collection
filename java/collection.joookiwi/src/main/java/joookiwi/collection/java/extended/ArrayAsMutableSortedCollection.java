@@ -5,10 +5,9 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [MutableSortedCollection].
 ///
@@ -23,18 +22,33 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ReversedArrayAsMutableSortedCollection
 @NotNullByDefault
 public class ArrayAsMutableSortedCollection<T extends @Nullable Object>
-        extends AbstractArrayAsImmutableSortedCollection<T> {
+        extends AbstractArrayAsMutableSortedCollection<T> {
 
     //#region -------------------- Fields --------------------
 
-    private final T[] __reference;
+    private T[] __reference;
     private final @Nullable Comparator<? super T> __comparator;
-
-    private final int __size;
-    private final boolean __isEmpty;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
+
+    /// Create an instance of a [MutableSortedCollection] from an [empty array][joookiwi.collection.java.CollectionConstants#emptyArray]
+    public ArrayAsMutableSortedCollection() {
+        super();
+        __reference = emptyArray();
+        __comparator = null;
+    }
+
+    /// Create an instance of a [MutableSortedCollection] from the `reference`
+    /// using a `comparator` to compare its values
+    ///
+    /// @param comparator The [Comparator] to use on its comparisons
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public ArrayAsMutableSortedCollection(final @Nullable Comparator<? super T> comparator) {
+        super();
+        __reference = emptyArray();
+        __comparator = comparator;
+    }
 
     /// Create an instance of an [MutableSortedCollection] from the `reference`
     /// using its natural ordering to compare its values
@@ -44,9 +58,7 @@ public class ArrayAsMutableSortedCollection<T extends @Nullable Object>
     public ArrayAsMutableSortedCollection(final T[] reference) {
         super();
         __comparator = null;
-        if (__isEmpty = (__size = (__reference = reference).length) == 0)
-            return;
-        _hashCode = 0;
+        __reference = reference;
     }
 
     /// Create an instance of an [MutableSortedCollection] from the `reference`
@@ -57,9 +69,7 @@ public class ArrayAsMutableSortedCollection<T extends @Nullable Object>
     public ArrayAsMutableSortedCollection(final T[] reference, final @Nullable Comparator<? super T> comparator) {
         super();
         __comparator = comparator;
-        if (__isEmpty = (__size = (__reference = reference).length) == 0)
-            return;
-        _hashCode = 0;
+        __reference = reference;
     }
 
     //#endregion -------------------- Constructors --------------------
@@ -69,11 +79,8 @@ public class ArrayAsMutableSortedCollection<T extends @Nullable Object>
     @Contract(pure = true)
     @Override protected T[] _reference() { return __reference; }
 
-    @Contract(pure = true)
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
-
-    @Contract(pure = true)
-    @Override public boolean isEmpty() { return __isEmpty; }
+    @Contract(mutates = "this")
+    @Override protected void _reference(final T[] value) { __reference = value; }
 
     @Contract(pure = true)
     @Override public @Nullable Comparator<? super T> comparator() { return __comparator; }

@@ -1,7 +1,5 @@
 package joookiwi.collection.java.extended;
 
-import java.util.Collection;
-import java.util.Comparator;
 import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -9,7 +7,8 @@ import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
-/// A [Collection] that can order its elements via a [Comparator] in addition to be a [SequencedCollection][java.util.SequencedCollection]
+/// A [Collection][java.util.Collection] that can order its elements via a [Comparator][java.util.Comparator]
+/// in addition to be a [SequencedCollection][java.util.SequencedCollection]
 ///
 /// @apiNote This is not part of the <a href="https://docs.oracle.com/en/java/javase/24/core/java-collections-framework.html">Java collection framework</a>,
 ///          but it is an extension of it
