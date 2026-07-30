@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended.map;
 
 import java.util.Map;
-import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
@@ -14,6 +13,7 @@ import java.util.function.Consumer;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.extended.EmptyCollection;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.iterator.EmptySpliterator;
 import joookiwi.collection.java.extended.set.EmptySet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -22,7 +22,6 @@ import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
-import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_2ND_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_2ND_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
@@ -138,8 +137,8 @@ public class EmptyMap<K extends @Nullable Object,
     //#endregion -------------------- Values methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public EmptyIterator<joookiwi.collection.java.entry.Entry<? extends K, ? extends V>> iterator( ) { return EmptyIterator.getInstance(); }
-    @Contract(pure = true) @Override public Spliterator<joookiwi.collection.java.entry.Entry<? extends K, ? extends V>> spliterator() { return emptySpliterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<joookiwi.collection.java.entry.Entry<? extends K, ? extends V>>    iterator(   ) { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public EmptySpliterator<joookiwi.collection.java.entry.Entry<? extends K, ? extends V>> spliterator() { return EmptySpliterator.getInstance(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Comparison methods --------------------

@@ -34,14 +34,13 @@ import joookiwi.collection.java.callback.additional.DoubleToShortFunction;
 import joookiwi.collection.java.callback.additional.FloatConsumer;
 import joookiwi.collection.java.callback.additional.ObjDoubleFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
-import joookiwi.collection.java.extended.iterator.DoubleSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyDoubleIterator;
+import joookiwi.collection.java.extended.iterator.EmptyDoubleSpliterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyDoubleSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -495,7 +494,7 @@ public class EmptySequentialDoubleStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyDoubleIterator iterator() { return EmptyDoubleIterator.getInstance(); }
-    @Override public DoubleSpliterator spliterator() { return emptyDoubleSpliterator(); }
+    @Override public EmptyDoubleSpliterator spliterator() { return EmptyDoubleSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

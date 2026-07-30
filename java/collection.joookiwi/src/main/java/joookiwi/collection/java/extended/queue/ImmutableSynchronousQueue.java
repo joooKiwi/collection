@@ -4,7 +4,6 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.Spliterator;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -12,6 +11,7 @@ import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.iterator.EmptySpliterator;
 import joookiwi.collection.java.stream.EmptyParallelStream;
 import joookiwi.collection.java.stream.EmptySequentialStream;
 import org.intellij.lang.annotations.Flow;
@@ -24,7 +24,6 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
-import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
@@ -43,7 +42,7 @@ public class ImmutableSynchronousQueue<T>
         extends SynchronousQueue<T>
         implements ImmutableBlockingQueue<T> {
 
-    @Serial private static final long serialVersionUID = -2742230365473199631L;
+    @Serial private static final long serialVersionUID = -8701502055002652667L;
 
     //#region -------------------- Constructors --------------------
 
@@ -126,7 +125,7 @@ public class ImmutableSynchronousQueue<T>
     @Override public EmptyIterator<T> iterator() { return EmptyIterator.getInstance(); }
 
     @Contract(pure = true)
-    @Override public Spliterator<T> spliterator() { return emptySpliterator(); }
+    @Override public EmptySpliterator<T> spliterator() { return EmptySpliterator.getInstance(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------

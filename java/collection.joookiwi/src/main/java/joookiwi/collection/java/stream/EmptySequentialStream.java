@@ -2,7 +2,6 @@ package joookiwi.collection.java.stream;
 
 import java.util.Comparator;
 import java.util.Optional;
-import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -41,6 +40,7 @@ import joookiwi.collection.java.callback.additional.ToByteFunction;
 import joookiwi.collection.java.callback.additional.ToCharFunction;
 import joookiwi.collection.java.callback.additional.ToFloatFunction;
 import joookiwi.collection.java.callback.additional.ToShortFunction;
+import joookiwi.collection.java.extended.iterator.EmptySpliterator;
 import joookiwi.collection.java.extended.list.EmptyList;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
@@ -48,7 +48,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -483,8 +482,8 @@ public class EmptySequentialStream<T>
     //#endregion -------------------- As stream --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public EmptyIterator<T> iterator() { return EmptyIterator.getInstance(); }
-    @Override public Spliterator<T> spliterator() { return emptySpliterator(); }
+    @Override public EmptyIterator<T>    iterator(   ) { return EmptyIterator.getInstance(); }
+    @Override public EmptySpliterator<T> spliterator() { return EmptySpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

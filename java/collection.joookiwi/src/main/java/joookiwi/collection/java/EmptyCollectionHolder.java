@@ -77,6 +77,7 @@ import joookiwi.collection.java.extended.EmptyCollection;
 import joookiwi.collection.java.extended.EmptySequencedCollection;
 import joookiwi.collection.java.extended.MutableCollection;
 import joookiwi.collection.java.extended.MutableSequencedCollection;
+import joookiwi.collection.java.extended.iterator.EmptySpliterator;
 import joookiwi.collection.java.extended.list.ArrayAsMutableList;
 import joookiwi.collection.java.extended.list.EmptyArrayList;
 import joookiwi.collection.java.extended.list.EmptyCopyOnWriteArrayList;
@@ -2505,8 +2506,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Java methods --------------------
 
-    @Override public final EmptyCollectionIterator<T> iterator() { return toIterator(); }
-    @Override public final Spliterator<T> spliterator() { return toSpliterator(); }
+    @Override public final EmptyCollectionIterator<T> iterator(   ) { return toIterator(); }
+    @Override public final EmptySpliterator<T>        spliterator() { return toSpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Conversion methods --------------------
@@ -2515,7 +2516,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     @Override public EmptyCollectionIterator<T> toIterator() { return EmptyCollectionIterator.getInstance(); }
 
-    @Override public Spliterator<T> toSpliterator() { return emptySpliterator(); }
+    @Override public EmptySpliterator<T> toSpliterator() { return EmptySpliterator.getInstance(); }
 
     //#endregion -------------------- To iterator --------------------
 

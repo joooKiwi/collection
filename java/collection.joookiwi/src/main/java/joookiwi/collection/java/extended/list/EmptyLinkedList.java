@@ -5,11 +5,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.RandomAccess;
-import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.iterator.EmptySpliterator;
 import joookiwi.collection.java.stream.EmptyParallelStream;
 import joookiwi.collection.java.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
@@ -20,7 +20,6 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
-import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
@@ -43,7 +42,7 @@ public class EmptyLinkedList<T extends @Nullable Object>
         extends ImmutableLinkedList<T>
         implements RandomAccess {
 
-    @Serial private static final long serialVersionUID = -8149562270691772762L;
+    @Serial private static final long serialVersionUID = 1170713644375391301L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -116,7 +115,7 @@ public class EmptyLinkedList<T extends @Nullable Object>
     @Contract(pure = true) @Override public EmptyIterator<T> descendingIterator(               ) { return EmptyIterator.getInstance(); }
     @Contract(pure = true) @Override public EmptyIterator<T>       listIterator(               ) { return EmptyIterator.getInstance(); }
     @Contract(pure = true) @Override public EmptyIterator<T>       listIterator(final int index) { return EmptyIterator.getInstance(); }
-    @Contract(pure = true) @Override public Spliterator<T  >        spliterator(               ) { return emptySpliterator(); }
+    @Contract(pure = true) @Override public EmptySpliterator<T>     spliterator(               ) { return EmptySpliterator.getInstance(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
