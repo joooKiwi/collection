@@ -14,7 +14,7 @@ public class ArrayAsImmutableSequencedMap<K extends @Nullable Object,
 
     //#region -------------------- Fields --------------------
 
-    private final joookiwi.collection.java.entry.Entry<K, V>[] __reference;
+    private final joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] __reference;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -22,8 +22,7 @@ public class ArrayAsImmutableSequencedMap<K extends @Nullable Object,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    @SuppressWarnings("unchecked cast")
-    public ArrayAsImmutableSequencedMap(joookiwi.collection.java.entry.Entry<K, V>[] reference) {
+    public ArrayAsImmutableSequencedMap(joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] reference) {
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;
         _hashCode = 0;
@@ -34,7 +33,7 @@ public class ArrayAsImmutableSequencedMap<K extends @Nullable Object,
 
     /// The internal reference passed through the constructor
     @Contract(pure = true)
-    @Override protected joookiwi.collection.java.entry.Entry<K, V>[] _reference() { return __reference; }
+    @Override protected joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] _reference() { return __reference; }
 
     @Contract(pure = true)
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }

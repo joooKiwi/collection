@@ -3,8 +3,6 @@ package joookiwi.collection.java.extended.map;
 import joookiwi.collection.java.extended.ImmutableSequencedCollection;
 import joookiwi.collection.java.extended.UtilityForMap;
 import joookiwi.collection.java.extended.set.ImmutableSequencedSet;
-import joookiwi.collection.java.method.GetFirstOrNull;
-import joookiwi.collection.java.method.GetLastOrNull;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -27,9 +25,9 @@ public abstract class AbstractArrayAsImmutableSequencedMap<K extends @Nullable O
 
     //#region -------------------- Get methods --------------------
 
-    @Override public joookiwi.collection.java.entry.@Nullable Entry<K, V> firstEntry() { return GetFirstOrNull.getFirstOrNull(_reference()); }
+    @Override public joookiwi.collection.java.entry.@Nullable Entry<K, V> firstEntry() { return UtilityForMap.getFirstOrNull(_reference()); }
 
-    @Override public joookiwi.collection.java.entry.@Nullable Entry<K, V> lastEntry() { return GetLastOrNull.getLastOrNull(_reference()); }
+    @Override public joookiwi.collection.java.entry.@Nullable Entry<K, V> lastEntry() { return UtilityForMap.getLastOrNull(_reference()); }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As reverse methods --------------------
@@ -41,17 +39,9 @@ public abstract class AbstractArrayAsImmutableSequencedMap<K extends @Nullable O
 
     @Override public ImmutableSequencedSet<Entry<K, V>> entrySet() { return UtilityForMap.entries2(_reference()); }
 
-    @Override public ImmutableSequencedSet<Entry<K, V>> sequencedEntrySet() { return entrySet(); }
-
-
     @Override public ImmutableSequencedSet<K> keySet() { return UtilityForMap.keys2(_reference()); }
 
-    @Override public ImmutableSequencedSet<K> sequencedKeySet() { return keySet(); }
-
-
     @Override public ImmutableSequencedCollection<V> values() { return UtilityForMap.values2(_reference()); }
-
-    @Override public ImmutableSequencedCollection<V> sequencedValues() { return values(); }
 
     //#endregion -------------------- Values methods --------------------
     //#region -------------------- Clone methods --------------------

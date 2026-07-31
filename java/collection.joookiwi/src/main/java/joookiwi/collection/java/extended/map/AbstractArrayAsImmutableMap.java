@@ -44,7 +44,7 @@ public abstract class AbstractArrayAsImmutableMap<K extends @Nullable Object,
     //#region -------------------- Getter methods --------------------
 
     /// The reference to do calculation and retrieval
-    protected abstract joookiwi.collection.java.entry.Entry<K, V>[] _reference();
+    protected abstract joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] _reference();
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------

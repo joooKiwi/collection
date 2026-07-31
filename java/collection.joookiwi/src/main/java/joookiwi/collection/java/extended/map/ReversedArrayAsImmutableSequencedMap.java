@@ -16,7 +16,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 public class ReversedArrayAsImmutableSequencedMap<K extends @Nullable Object,
         V extends @Nullable Object,
         SOURCE extends ImmutableSequencedMap<K, V>,
-        REVERSED_ARRAY extends ReversedArray<Entry<K, V>>>
+        REVERSED_ARRAY extends ReversedArray<? extends Entry<? extends K, ? extends V>>>
         extends AbstractArrayAsImmutableSequencedMap<K, V> {
 
     //#region -------------------- Fields --------------------
@@ -25,7 +25,7 @@ public class ReversedArrayAsImmutableSequencedMap<K extends @Nullable Object,
     private final REVERSED_ARRAY __reversedArray;
 
     private boolean __isInitialized = false;
-    private joookiwi.collection.java.entry.Entry<K, V> @Nullable [] __reference;
+    private joookiwi.collection.java.entry.Entry<? extends K, ? extends V> @Nullable [] __reference;
 
     private int __size = -1;
     private boolean __isEmpty;
@@ -52,7 +52,7 @@ public class ReversedArrayAsImmutableSequencedMap<K extends @Nullable Object,
 
     /// The internal referenced generated from the [reversed-array][#_reversedArray] [source][ReversedArray#reversedSource]
     @InitializedOnFirstCall
-    @Override protected joookiwi.collection.java.entry.Entry<K, V>[] _reference() {
+    @Override protected joookiwi.collection.java.entry.Entry<? extends K, ? extends V>[] _reference() {
         final var value = __reference;
         if (value != null)
             return value;
