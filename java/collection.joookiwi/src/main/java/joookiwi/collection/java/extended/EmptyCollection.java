@@ -9,6 +9,7 @@ import joookiwi.collection.java.extended.iterator.EmptySpliterator;
 import joookiwi.collection.java.stream.EmptyParallelStream;
 import joookiwi.collection.java.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -92,9 +93,9 @@ public class EmptyCollection<T extends @Nullable Object>
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return EmptySequentialStream.getInstance(); }
+    @Contract(pure = true) @Override public EmptySequentialStream<@NotNull T> stream() { return EmptySequentialStream.getInstance(); }
 
-    @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return EmptyParallelStream.getInstance(); }
+    @Contract(pure = true) @Override public EmptyParallelStream<@NotNull T> parallelStream() { return EmptyParallelStream.getInstance(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Comparison methods --------------------

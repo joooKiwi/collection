@@ -8,8 +8,10 @@ import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_4;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
 import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAULT_MESSAGE;
 
 /// An [ImmutableNavigableSet] with no values (as a [singleton][Singleton] instance)
@@ -47,13 +49,21 @@ public class EmptyNavigableSet<T extends @Nullable Object>
 
     //#region -------------------- Get methods --------------------
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T floor(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_0, pure = true)           public @Nullable T floor(                                            ) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T floor(final T                                value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true)           public @Nullable T floor(final @Nullable Object @Nullable ... ignored) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T lower(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_0, pure = true)           public @Nullable T lower(                                            ) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T lower(final T                                value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true)           public @Nullable T lower(final @Nullable Object @Nullable ... ignored) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T ceiling(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_0, pure = true)           public @Nullable T ceiling(                                            ) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T ceiling(final T                                value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true)           public @Nullable T ceiling(final @Nullable Object @Nullable ... ignored) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T higher(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_0, pure = true)           public @Nullable T higher(                                            ) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T higher(final T                                value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true)           public @Nullable T higher(final @Nullable Object @Nullable ... ignored) { return null; }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As subdivided methods --------------------
@@ -67,14 +77,17 @@ public class EmptyNavigableSet<T extends @Nullable Object>
     //#endregion -------------------- As subdivided methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyNavigableSet<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyNavigableSet<T> reversed(                                            ) { return this; }
+    @Contract(value = ALWAYS_THIS_1, pure = true) @Override public EmptyNavigableSet<T> reversed(final @Nullable Object @Nullable ... ignored) { return this; }
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyNavigableSet<T> descendingSet() { return reversed(); }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyNavigableSet<T> descendingSet(                                            ) { return reversed(); }
+    @Contract(value = ALWAYS_THIS_1, pure = true)           public EmptyNavigableSet<T> descendingSet(final @Nullable Object @Nullable ... ignored) { return reversed(); }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Override public EmptyIterator<T> descendingIterator() { return EmptyIterator.getInstance(); }
+    @Override public EmptyIterator<T> descendingIterator(                                            ) { return EmptyIterator.getInstance(); }
+              public EmptyIterator<T> descendingIterator(final @Nullable Object @Nullable ... ignored) { return EmptyIterator.getInstance(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Clone methods --------------------

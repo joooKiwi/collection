@@ -7,7 +7,9 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
 import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAULT_MESSAGE;
 
 /// An [ImmutableSequencedSet] with no values (as a [singleton][Singleton] instance)
@@ -44,14 +46,17 @@ public class EmptySequencedSet<T extends @Nullable Object>
 
     //#region -------------------- Get methods --------------------
 
-    @Contract(ALWAYS_FAIL_0) @Override public T getFirst() { throw new NoElementFoundInCollectionException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_0) @Override public T getFirst(                                            ) { throw new NoElementFoundInCollectionException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_1)           public T getFirst(final @Nullable Object @Nullable ... ignored) { throw new NoElementFoundInCollectionException(DEFAULT_MESSAGE); }
 
-    @Contract(ALWAYS_FAIL_0) @Override public T getLast() { throw new NoElementFoundInCollectionException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_0) @Override public T getLast(                                            ) { throw new NoElementFoundInCollectionException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_1)           public T getLast(final @Nullable Object @Nullable ... ignored) { throw new NoElementFoundInCollectionException(DEFAULT_MESSAGE); }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptySequencedSet<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptySequencedSet<T> reversed(                                            ) { return this; }
+    @Contract(value = ALWAYS_THIS_1, pure = true)           public EmptySequencedSet<T> reversed(final @Nullable Object @Nullable ... ignored) { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Clone methods --------------------
