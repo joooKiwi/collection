@@ -42,10 +42,13 @@ public abstract class AbstractArrayAsImmutableNavigableSet<T extends @Nullable O
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As subdivided methods --------------------
 
+    @Override public ImmutableNavigableSet<T> subSet(final T from, final T to) { return UtilityForArray.asSubdivided(this, _reference(), from, to); }
     @Override public ImmutableNavigableSet<T> subSet(final T from, final boolean fromIsInclusive, final T to, final boolean toIsInclusive) { return UtilityForArray.asSubdivided(this, _reference(), from, fromIsInclusive, to, toIsInclusive); }
 
+    @Override public ImmutableNavigableSet<T> headSet(final T to) { return UtilityForArray.asHeadSubdivided(this, _reference(), to); }
     @Override public ImmutableNavigableSet<T> headSet(final T to, final boolean isInclusive) { return UtilityForArray.asHeadSubdivided(this, _reference(), to, isInclusive); }
 
+    @Override public ImmutableNavigableSet<T> tailSet(final T from) { return UtilityForArray.asTailSubdivided(this, _reference(), from); }
     @Override public ImmutableNavigableSet<T> tailSet(final T from, final boolean isInclusive) { return UtilityForArray.asTailSubdivided(this, _reference(), from, isInclusive); }
 
     //#endregion -------------------- As subdivided methods --------------------

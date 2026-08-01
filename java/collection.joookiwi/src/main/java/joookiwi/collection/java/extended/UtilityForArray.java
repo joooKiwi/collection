@@ -452,6 +452,27 @@ public sealed class UtilityForArray
         return new SubdividedArrayAsImmutableSortedSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
     }
 
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asSubdivided(final ImmutableNavigableSet<? super T> source,
+                                                                                     final T @Unmodifiable [] reference,
+                                                                                     final T from,
+                                                                                     final T to) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, from))
+            if (!has(reference, to))
+                throw new IllegalArgumentException("Both starting and ending values (“from” and “to”) do not exist in the NavigableSet.");
+            else
+                throw new IllegalArgumentException("The starting value (“from”) does not exist in the NavigableSet.");
+        if (!has(reference, to))
+            throw new IllegalArgumentException("The ending value (“to”) does not exist in the NavigableSet.");
+
+        final var comparator = source.comparator();
+        final var comparatorHelper = ComparatorHelper.getInstance();
+        return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+    }
+
     @Contract(ALWAYS_NEW_6)
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> asSubdivided(final ImmutableNavigableSet<? super T> source,
                                                                                      final T @Unmodifiable [] reference,
@@ -496,6 +517,18 @@ public sealed class UtilityForArray
         return new SubdividedArrayAsImmutableSortedSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asHeadSubdivided(final ImmutableNavigableSet<? super T> source,
+                                                                                         final T @Unmodifiable [] reference,
+                                                                                         final T to) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, to))
+            throw new IllegalArgumentException("The ending value (“to”) does not exist in the NavigableSet.");
+        return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+    }
+
     @Contract(ALWAYS_NEW_4)
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> asHeadSubdivided(final ImmutableNavigableSet<? super T> source,
                                                                                          final T @Unmodifiable [] reference,
@@ -521,6 +554,18 @@ public sealed class UtilityForArray
         if (!has(reference, from))
             throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
         return new SubdividedArrayAsImmutableSortedSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+    }
+
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asTailSubdivided(final ImmutableNavigableSet<? super T> source,
+                                                                                         final T @Unmodifiable [] reference,
+                                                                                         final T from) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, from))
+            throw new IllegalArgumentException("The starting value (“from”) does not exist in the NavigableSet.");
+        return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
 
     @Contract(ALWAYS_NEW_4)

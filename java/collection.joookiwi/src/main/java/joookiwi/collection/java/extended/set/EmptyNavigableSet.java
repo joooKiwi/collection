@@ -6,6 +6,8 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_4;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
@@ -68,11 +70,20 @@ public class EmptyNavigableSet<T extends @Nullable Object>
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As subdivided methods --------------------
 
+    @Contract(ALWAYS_FAIL_0) @Override public ImmutableNavigableSet<T> subSet(                                                                                    ) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_2) @Override public ImmutableNavigableSet<T> subSet(final T from,                                final T to                             ) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
     @Contract(ALWAYS_FAIL_4) @Override public ImmutableNavigableSet<T> subSet(final T from, final boolean fromIsInclusive, final T to, final boolean toIsInclusive) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_1) @Override public ImmutableNavigableSet<T> subSet(final @Nullable Object @Nullable ...                                         ignored) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
 
-    @Contract(ALWAYS_FAIL_2) @Override public ImmutableNavigableSet<T> headSet(final T to, final boolean isInclusive) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_0) @Override public ImmutableNavigableSet<T> headSet(                                            ) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_1) @Override public ImmutableNavigableSet<T> headSet(final T to                                  ) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_2) @Override public ImmutableNavigableSet<T> headSet(final T to, final boolean isInclusive       ) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_1) @Override public ImmutableNavigableSet<T> headSet(final @Nullable Object @Nullable ... ignored) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
 
-    @Contract(ALWAYS_FAIL_2) @Override public ImmutableNavigableSet<T> tailSet(final T from, final boolean isInclusive) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_0) @Override public ImmutableNavigableSet<T> tailSet(                                            ) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_1) @Override public ImmutableNavigableSet<T> tailSet(final T from                                ) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_2) @Override public ImmutableNavigableSet<T> tailSet(final T from, final boolean isInclusive     ) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
+    @Contract(ALWAYS_FAIL_1) @Override public ImmutableNavigableSet<T> tailSet(final @Nullable Object @Nullable ... ignored) { throw new IllegalArgumentException(DEFAULT_MESSAGE); }
 
     //#endregion -------------------- As subdivided methods --------------------
     //#region -------------------- As reverse methods --------------------

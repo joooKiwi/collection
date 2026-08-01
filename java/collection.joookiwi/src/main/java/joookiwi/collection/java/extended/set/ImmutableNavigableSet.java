@@ -37,9 +37,19 @@ public interface ImmutableNavigableSet<T extends @Nullable Object>
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As subdivided methods --------------------
 
+    // README: By default, “from” is inclusive and “to” is exclusive
+
+    @Override ImmutableNavigableSet<T> subSet(final T from, final T to);
+
     @Override ImmutableNavigableSet<T> subSet(final T from, final boolean fromIsInclusive, final T to, final boolean toIsInclusive);
 
+
+    @Override ImmutableNavigableSet<T> headSet(final T to);
+
     @Override ImmutableNavigableSet<T> headSet(final T to, final boolean isInclusive);
+
+
+    @Override ImmutableNavigableSet<T> tailSet(final T from);
 
     @Override ImmutableNavigableSet<T> tailSet(final T from, final boolean isInclusive);
 
