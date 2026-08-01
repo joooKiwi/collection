@@ -68,7 +68,7 @@ public interface ImmutableSequencedMap<K extends @Nullable Object,
     /// @see java.util.SequencedMap#sequencedEntrySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/entries.html">Kotlin Map.entries</a>
     @Alias("entrySet")
-    default @Override ImmutableSequencedSet<Entry<K, V>> sequencedEntrySet() { return entrySet(); }
+    @Override default ImmutableSequencedSet<Entry<K, V>> sequencedEntrySet() { return entrySet(); }
 
 
     /// Gives all the keys associated to the current [instance][ImmutableSequencedMap]
@@ -82,7 +82,7 @@ public interface ImmutableSequencedMap<K extends @Nullable Object,
     /// @see java.util.SequencedMap#sequencedKeySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/keys.html">Kotlin Map.keys</a>
     @Alias("keySet")
-    default @Override ImmutableSequencedSet<K> sequencedKeySet() { return keySet(); }
+    @Override default ImmutableSequencedSet<K> sequencedKeySet() { return keySet(); }
 
 
     /// Gives all the values associated to the current [instance][ImmutableSequencedMap]
@@ -96,7 +96,7 @@ public interface ImmutableSequencedMap<K extends @Nullable Object,
     /// @see java.util.SequencedMap#sequencedValues
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/values.html">Kotlin Map.values</a>
     @Alias("values")
-    default @Override ImmutableSequencedCollection<V> sequencedValues() { return values(); }
+    @Override default ImmutableSequencedCollection<V> sequencedValues() { return values(); }
 
     //#endregion -------------------- Values methods --------------------
     //#region -------------------- Clone methods --------------------

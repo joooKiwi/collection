@@ -91,7 +91,7 @@ public interface ImmutableNavigableSet<T extends @Nullable Object>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @Alias("reversed")
-    default @Override ImmutableNavigableSet<T> descendingSet() { return reversed(); }
+    @Override default ImmutableNavigableSet<T> descendingSet() { return reversed(); }
 
     //#endregion -------------------- As reversed methods --------------------
     //#region -------------------- Iterator methods --------------------

@@ -88,7 +88,7 @@ public interface ImmutableSortedMap<K extends @Nullable Object,
     /// @see java.util.SortedMap#sequencedEntrySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/entries.html">Kotlin Map.entries</a>
     @Alias("entrySet")
-    default @Override ImmutableSortedSet<Entry<K, V>> sequencedEntrySet() { return entrySet(); }
+    @Override default ImmutableSortedSet<Entry<K, V>> sequencedEntrySet() { return entrySet(); }
 
 
     /// Gives all the keys associated to the current [instance][ImmutableSortedMap]
@@ -102,7 +102,7 @@ public interface ImmutableSortedMap<K extends @Nullable Object,
     /// @see java.util.SortedMap#sequencedKeySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/keys.html">Kotlin Map.keys</a>
     @Alias("keySet")
-    default @Override ImmutableSortedSet<K> sequencedKeySet() { return keySet(); }
+    @Override default ImmutableSortedSet<K> sequencedKeySet() { return keySet(); }
 
 
     /// Gives all the values associated to the current [instance][ImmutableSortedMap]
@@ -116,7 +116,7 @@ public interface ImmutableSortedMap<K extends @Nullable Object,
     /// @see java.util.SortedMap#sequencedValues
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/values.html">Kotlin Map.values</a>
     @Alias("values")
-    default @Override ImmutableSortedCollection<V> sequencedValues() { return values(); }
+    @Override default ImmutableSortedCollection<V> sequencedValues() { return values(); }
 
     //#endregion -------------------- Values methods --------------------
 
