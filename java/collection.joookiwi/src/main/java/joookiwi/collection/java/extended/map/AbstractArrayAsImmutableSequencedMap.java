@@ -37,11 +37,11 @@ public abstract class AbstractArrayAsImmutableSequencedMap<K extends @Nullable O
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Values methods --------------------
 
-    @Override public ImmutableSequencedSet<Entry<K, V>> entrySet() { return UtilityForMap.entries2(_reference()); }
+    @Override public ImmutableSequencedSet<Entry<K, V>> entrySet() { return UtilityForMap.entries(this, _reference()); }
 
-    @Override public ImmutableSequencedSet<K> keySet() { return UtilityForMap.keys2(_reference()); }
+    @Override public ImmutableSequencedSet<K> keySet() { return UtilityForMap.keys(this, _reference()); }
 
-    @Override public ImmutableSequencedCollection<V> values() { return UtilityForMap.values2(_reference()); }
+    @Override public ImmutableSequencedCollection<V> values() { return UtilityForMap.values(this, _reference()); }
 
     //#endregion -------------------- Values methods --------------------
     //#region -------------------- Clone methods --------------------

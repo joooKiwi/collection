@@ -46,11 +46,11 @@ public abstract class AbstractArrayAsImmutableSortedMap<K extends @Nullable Obje
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Values methods --------------------
 
-    @Override public ImmutableSortedSet<Entry<K, V>> entrySet() { return UtilityForMap.entries3(_reference()); }
+    @Override public ImmutableSortedSet<Entry<K, V>> entrySet() { return UtilityForMap.entries(this, _reference()); }
 
-    @Override public ImmutableSortedSet<K> keySet() { return UtilityForMap.keys3(_reference()); }
+    @Override public ImmutableSortedSet<K> keySet() { return UtilityForMap.keys(this, _reference()); }
 
-    @Override public ImmutableSortedCollection<V> values() { return UtilityForMap.values3(_reference()); }
+    @Override public ImmutableSortedCollection<V> values() { return UtilityForMap.values(this, _reference()); }
 
     //#endregion -------------------- Values methods --------------------
     //#region -------------------- Clone methods --------------------

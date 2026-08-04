@@ -79,11 +79,11 @@ public abstract class AbstractArrayAsImmutableMap<K extends @Nullable Object,
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Values methods --------------------
 
-    @Override public ImmutableSet<Entry<K, V>> entrySet() { return UtilityForMap.entries1(_reference()); }
+    @Override public ImmutableSet<Entry<K, V>> entrySet() { return UtilityForMap.entries(this, _reference()); }
 
-    @Override public ImmutableSet<K> keySet() { return UtilityForMap.keys1(_reference()); }
+    @Override public ImmutableSet<K> keySet() { return UtilityForMap.keys(this, _reference()); }
 
-    @Override public ImmutableCollection<V> values() { return UtilityForMap.values1(_reference()); }
+    @Override public ImmutableCollection<V> values() { return UtilityForMap.values(this, _reference()); }
 
     //#endregion -------------------- Values methods --------------------
     //#region -------------------- Iterator methods --------------------
