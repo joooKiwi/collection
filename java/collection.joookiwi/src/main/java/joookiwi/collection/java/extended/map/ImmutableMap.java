@@ -134,11 +134,13 @@ public interface ImmutableMap<K extends @Nullable Object,
 
     /// Gives all the keys associated to the current [instance][ImmutableMap]
     ///
+    /// @see java.util.Map#keySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/keys.html">Kotlin Map.keys</a>
     @Override ImmutableSet<K> keySet();
 
     /// Gives all the values associated to the current [instance][ImmutableMap]
     ///
+    /// @see java.util.Map#values
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/values.html">Kotlin Map.values</a>
     @Override ImmutableCollection<V> values();
 

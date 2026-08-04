@@ -59,12 +59,14 @@ public interface ImmutableSequencedMap<K extends @Nullable Object,
 
     /// Gives a representation of key/value pair held by the current [instance][ImmutableSequencedMap]
     ///
+    /// @see java.util.SequencedMap#entrySet
     /// @see java.util.SequencedMap#sequencedEntrySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/entries.html">Kotlin Map.entries</a>
     @Override ImmutableSequencedSet<Entry<K, V>> entrySet();
 
     /// Gives a representation of key/value pair held by the current [instance][ImmutableSequencedMap]
     ///
+    /// @see java.util.SequencedMap#entrySet
     /// @see java.util.SequencedMap#sequencedEntrySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/entries.html">Kotlin Map.entries</a>
     @Alias("entrySet")
@@ -73,12 +75,14 @@ public interface ImmutableSequencedMap<K extends @Nullable Object,
 
     /// Gives all the keys associated to the current [instance][ImmutableSequencedMap]
     ///
+    /// @see java.util.SequencedMap#keySet
     /// @see java.util.SequencedMap#sequencedKeySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/keys.html">Kotlin Map.keys</a>
     @Override ImmutableSequencedSet<K> keySet();
 
     /// Gives all the keys associated to the current [instance][ImmutableSequencedMap]
     ///
+    /// @see java.util.SequencedMap#keySet
     /// @see java.util.SequencedMap#sequencedKeySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/keys.html">Kotlin Map.keys</a>
     @Alias("keySet")
@@ -87,12 +91,14 @@ public interface ImmutableSequencedMap<K extends @Nullable Object,
 
     /// Gives all the values associated to the current [instance][ImmutableSequencedMap]
     ///
+    /// @see java.util.SequencedMap#values
     /// @see java.util.SequencedMap#sequencedValues
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/values.html">Kotlin Map.values</a>
     @Override ImmutableSequencedCollection<V> values();
 
     /// Gives all the values associated to the current [instance][ImmutableSequencedMap]
     ///
+    /// @see java.util.SequencedMap#values
     /// @see java.util.SequencedMap#sequencedValues
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/values.html">Kotlin Map.values</a>
     @Alias("values")

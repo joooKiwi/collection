@@ -79,12 +79,14 @@ public interface ImmutableSortedMap<K extends @Nullable Object,
 
     /// Gives a representation of key/value pair held by the current [instance][ImmutableSortedMap]
     ///
+    /// @see java.util.SequencedMap#entrySet
     /// @see java.util.SequencedMap#sequencedEntrySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/entries.html">Kotlin Map.entries</a>
     @Override ImmutableSortedSet<Entry<K, V>> entrySet();
 
     /// Gives a representation of key/value pair held by the current [instance][ImmutableSortedMap]
     ///
+    /// @see java.util.SortedMap#entrySet
     /// @see java.util.SortedMap#sequencedEntrySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/entries.html">Kotlin Map.entries</a>
     @Alias("entrySet")
@@ -93,12 +95,14 @@ public interface ImmutableSortedMap<K extends @Nullable Object,
 
     /// Gives all the keys associated to the current [instance][ImmutableSortedMap]
     ///
+    /// @see java.util.SortedMap#keySet
     /// @see java.util.SortedMap#sequencedKeySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/keys.html">Kotlin Map.keys</a>
     @Override ImmutableSortedSet<K> keySet();
 
     /// Gives all the keys associated to the current [instance][ImmutableSortedMap]
     ///
+    /// @see java.util.SortedMap#keySet
     /// @see java.util.SortedMap#sequencedKeySet
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/keys.html">Kotlin Map.keys</a>
     @Alias("keySet")
@@ -107,12 +111,14 @@ public interface ImmutableSortedMap<K extends @Nullable Object,
 
     /// Gives all the values associated to the current [instance][ImmutableSortedMap]
     ///
+    /// @see java.util.SortedMap#values
     /// @see java.util.SortedMap#sequencedValues
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/values.html">Kotlin Map.values</a>
     @Override ImmutableSortedCollection<V> values();
 
     /// Gives all the values associated to the current [instance][ImmutableSortedMap]
     ///
+    /// @see java.util.SortedMap#values
     /// @see java.util.SortedMap#sequencedValues
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/values.html">Kotlin Map.values</a>
     @Alias("values")
