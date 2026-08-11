@@ -10,7 +10,6 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A [Collection][java.util.Collection] that can order its elements via a [Comparator][java.util.Comparator]
 /// in addition to be a [SequencedCollection][java.util.SequencedCollection]
@@ -48,7 +47,6 @@ public interface ImmutableSortedCollection<T extends @Nullable Object>
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
     @Override ImmutableSortedCollection<T> clone();
 
     //#endregion -------------------- Clone methods --------------------

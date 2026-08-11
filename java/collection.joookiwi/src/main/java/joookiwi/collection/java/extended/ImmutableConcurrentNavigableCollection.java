@@ -1,17 +1,15 @@
 package joookiwi.collection.java.extended;
 
+import java.util.Collection;
+import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.Collection;
-import java.util.function.Predicate;
-
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 @NotNullByDefault
 public interface ImmutableConcurrentNavigableCollection<T extends @Nullable Object>
@@ -43,7 +41,6 @@ public interface ImmutableConcurrentNavigableCollection<T extends @Nullable Obje
         //#endregion -------------------- As reverse methods --------------------
         //#region -------------------- Clone methods --------------------
 
-        @Contract(ALWAYS_NEW_0)
         @Override ImmutableConcurrentNavigableCollection<T> clone();
 
         //#endregion -------------------- Clone methods --------------------

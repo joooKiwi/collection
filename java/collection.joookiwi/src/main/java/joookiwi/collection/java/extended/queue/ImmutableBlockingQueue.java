@@ -13,7 +13,6 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 @NotNullByDefault
 public interface ImmutableBlockingQueue<T>
@@ -29,7 +28,6 @@ public interface ImmutableBlockingQueue<T>
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
     @Override ImmutableBlockingQueue<T> clone();
 
     //#endregion -------------------- Clone methods --------------------

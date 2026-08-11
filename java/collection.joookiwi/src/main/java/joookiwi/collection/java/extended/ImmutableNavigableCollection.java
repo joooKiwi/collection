@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A [Collection] that can order its elements via a [Comparator][java.util.Comparator]
 /// in addition to be a [SequencedCollection][java.util.SequencedCollection]
@@ -66,7 +65,6 @@ public interface ImmutableNavigableCollection<T extends @Nullable Object>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
     @Override ImmutableNavigableCollection<T> clone();
 
     //#endregion -------------------- Clone methods --------------------
