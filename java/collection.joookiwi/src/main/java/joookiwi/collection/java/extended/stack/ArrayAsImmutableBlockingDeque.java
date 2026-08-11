@@ -12,7 +12,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
-/// Note that `null` is **not** permitted in this instance
+/// Note that `null` is **NOT** permitted in this instance
 /// due to the [java.util.concurrent.BlockingDeque] declaration.
 ///
 /// The instance uses the [methods][joookiwi.collection.java.method]

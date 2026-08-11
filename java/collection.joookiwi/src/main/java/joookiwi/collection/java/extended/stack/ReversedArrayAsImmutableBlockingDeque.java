@@ -13,8 +13,8 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a reversed-order [ImmutableBlockingDeque] similar to the [ArrayAsImmutableBlockingDeque] in its behaviour.
 ///
-/// Note that `null` is permitted in this instance.
-/// It is up to the implementor to specify it.
+/// Note that `null` is **NOT** permitted in this instance
+/// due to the [java.util.concurrent.BlockingDeque] declaration.
 ///
 /// The instance uses the [methods][joookiwi.collection.java.method]
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
