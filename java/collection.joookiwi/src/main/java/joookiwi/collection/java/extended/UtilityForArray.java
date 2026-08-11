@@ -11,15 +11,19 @@ import joookiwi.collection.java.extended.list.EmptyList;
 import joookiwi.collection.java.extended.list.ImmutableList;
 import joookiwi.collection.java.extended.list.ReversedArrayAsImmutableList;
 import joookiwi.collection.java.extended.list.SubdividedArrayAsImmutableList;
+import joookiwi.collection.java.extended.set.EmptyConcurrentNavigableSet;
 import joookiwi.collection.java.extended.set.EmptyNavigableSet;
 import joookiwi.collection.java.extended.set.EmptySequencedSet;
 import joookiwi.collection.java.extended.set.EmptySortedSet;
+import joookiwi.collection.java.extended.set.ImmutableConcurrentNavigableSet;
 import joookiwi.collection.java.extended.set.ImmutableNavigableSet;
 import joookiwi.collection.java.extended.set.ImmutableSequencedSet;
 import joookiwi.collection.java.extended.set.ImmutableSortedSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableConcurrentNavigableSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSequencedSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableConcurrentNavigableSet;
 import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableSortedSet;
 import joookiwi.collection.java.extended.stack.EmptyDeque;
@@ -408,6 +412,8 @@ public sealed class UtilityForArray
     //#endregion -------------------- Index --------------------
     //#region -------------------- As subdivided --------------------
 
+    //#region -------------------- As subdivided (from, to) --------------------
+
     public static <T extends @Nullable Object> ImmutableList<T> asSubdivided(final ImmutableList<? super T> source,
                                                                              final T @Unmodifiable [] reference,
                                                                              final int from,
@@ -473,6 +479,30 @@ public sealed class UtilityForArray
         return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
     }
 
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object> ImmutableConcurrentNavigableSet<T> asSubdivided(final ImmutableConcurrentNavigableSet<? super T> source,
+                                                                                               final T @Unmodifiable [] reference,
+                                                                                               final T from,
+                                                                                               final T to) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, from))
+            if (!has(reference, to))
+                throw new IllegalArgumentException("Both starting and ending values (“from” and “to”) do not exist in the ConcurrentNavigableSet.");
+            else
+                throw new IllegalArgumentException("The starting value (“from”) does not exist in the ConcurrentNavigableSet.");
+        if (!has(reference, to))
+            throw new IllegalArgumentException("The ending value (“to”) does not exist in the ConcurrentNavigableSet.");
+
+        final var comparator = source.comparator();
+        final var comparatorHelper = ComparatorHelper.getInstance();
+        return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+    }
+
+    //#endregion -------------------- As subdivided (from, to) --------------------
+    //#region -------------------- As subdivided (from, isFromInclusive, to, isToInclusive) --------------------
+
     @Contract(ALWAYS_NEW_6)
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> asSubdivided(final ImmutableNavigableSet<? super T> source,
                                                                                      final T @Unmodifiable [] reference,
@@ -504,6 +534,39 @@ public sealed class UtilityForArray
 
     }
 
+    @Contract(ALWAYS_NEW_6)
+    public static <T extends @Nullable Object> ImmutableConcurrentNavigableSet<T> asSubdivided(final ImmutableConcurrentNavigableSet<? super T> source,
+                                                                                               final T @Unmodifiable [] reference,
+                                                                                               final T from,
+                                                                                               final boolean fromIsInclusive,
+                                                                                               final T to,
+                                                                                               final boolean toIsInclusive) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, from))
+            if (!has(reference, to))
+                throw new IllegalArgumentException("Both starting and ending values (“from” and “to”) do not exist in the ConcurrentNavigableSet.");
+            else
+                throw new IllegalArgumentException("The starting value (“from”) does not exist in the ConcurrentNavigableSet.");
+        if (!has(reference, to))
+            throw new IllegalArgumentException("The ending value (“to”) does not exist in the ConcurrentNavigableSet.");
+
+        final var comparator = source.comparator();
+        final var comparatorHelper = ComparatorHelper.getInstance();
+        if (fromIsInclusive)
+            if (toIsInclusive)
+                return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
+            else
+                return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+        if (toIsInclusive)
+            return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
+        return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+
+    }
+
+    //#endregion -------------------- As subdivided (from, isFromInclusive, to, isToInclusive) --------------------
+    //#region -------------------- As subdivided (to) --------------------
 
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object> ImmutableSortedSet<T> asHeadSubdivided(final ImmutableSortedSet<? super T> source,
@@ -529,6 +592,21 @@ public sealed class UtilityForArray
         return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> ImmutableConcurrentNavigableSet<T> asHeadSubdivided(final ImmutableConcurrentNavigableSet<? super T> source,
+                                                                                                   final T @Unmodifiable [] reference,
+                                                                                                   final T to) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, to))
+            throw new IllegalArgumentException("The ending value (“to”) does not exist in the ConcurrentNavigableSet.");
+        return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+    }
+
+    //#endregion -------------------- As subdivided (to) --------------------
+    //#region -------------------- As subdivided (to, isInclusive) --------------------
+
     @Contract(ALWAYS_NEW_4)
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> asHeadSubdivided(final ImmutableNavigableSet<? super T> source,
                                                                                          final T @Unmodifiable [] reference,
@@ -543,6 +621,24 @@ public sealed class UtilityForArray
             return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
         return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
+
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object> ImmutableConcurrentNavigableSet<T> asHeadSubdivided(final ImmutableConcurrentNavigableSet<? super T> source,
+                                                                                                   final T @Unmodifiable [] reference,
+                                                                                                   final T to,
+                                                                                                   final boolean isInclusive) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, to))
+            throw new IllegalArgumentException("The ending value (“to”) does not exist in the ConcurrentNavigableSet.");
+        if (isInclusive)
+            return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+        return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+    }
+
+    //#endregion -------------------- As subdivided (to, isInclusive) --------------------
+    //#region -------------------- As subdivided (from) --------------------
 
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object> ImmutableSortedSet<T> asTailSubdivided(final ImmutableSortedSet<? super T> source,
@@ -568,6 +664,21 @@ public sealed class UtilityForArray
         return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
 
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> ImmutableConcurrentNavigableSet<T> asTailSubdivided(final ImmutableConcurrentNavigableSet<? super T> source,
+                                                                                                   final T @Unmodifiable [] reference,
+                                                                                                   final T from) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, from))
+            throw new IllegalArgumentException("The starting value (“from”) does not exist in the ConcurrentNavigableSet.");
+        return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+    }
+
+    //#endregion -------------------- As subdivided (from) --------------------
+    //#region -------------------- As subdivided (from, isInclusive) --------------------
+
     @Contract(ALWAYS_NEW_4)
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> asTailSubdivided(final ImmutableNavigableSet<? super T> source,
                                                                                          final T @Unmodifiable [] reference,
@@ -582,6 +693,23 @@ public sealed class UtilityForArray
             return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
         return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigher(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
+
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object> ImmutableConcurrentNavigableSet<T> asTailSubdivided(final ImmutableConcurrentNavigableSet<? super T> source,
+                                                                                                   final T @Unmodifiable [] reference,
+                                                                                                   final T from,
+                                                                                                   final boolean isInclusive) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
+        if (!has(reference, from))
+            throw new IllegalArgumentException("The starting value (“from”) does not exist in the ConcurrentNavigableSet.");
+        if (isInclusive)
+            return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+        return new SubdividedArrayAsImmutableConcurrentNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigher(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+    }
+
+    //#endregion -------------------- As subdivided (from, isInclusive) --------------------
 
     //#endregion -------------------- As subdivided --------------------
     //#region -------------------- As reversed --------------------
@@ -642,6 +770,13 @@ public sealed class UtilityForArray
         if (reference.length == 0)
             return EmptyNavigableSet.getInstance();
         return new ReversedArrayAsImmutableNavigableSet<>(source, new ReversedArray<>(reference));
+    }
+
+    public static <T extends @Nullable Object> ImmutableConcurrentNavigableSet<T> asReversed(final ImmutableConcurrentNavigableSet<T> source,
+                                                                                             final T @Unmodifiable [] reference) {
+        if (reference.length == 0)
+            return EmptyConcurrentNavigableSet.getInstance();
+        return new ReversedArrayAsImmutableConcurrentNavigableSet<>(source, new ReversedArray<>(reference));
     }
 
 
