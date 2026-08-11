@@ -17,6 +17,15 @@ public interface ImmutableConcurrentSet<T extends @Nullable Object>
         extends ImmutableSet<T>,
                 ImmutableConcurrentCollection<T> {
 
+    //#region -------------------- Supported methods --------------------
+
+    //#region -------------------- Clone methods --------------------
+
+    @Override ImmutableConcurrentSet<T> clone();
+
+    //#endregion -------------------- Clone methods --------------------
+
+    //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     /// Fail to add a `value` to the current [instance][ImmutableConcurrentSet]
