@@ -11,9 +11,13 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// A container to create a subdivided array lazily via [#subdividedSource]
 ///
 /// @param <T> The type
-/// @see joookiwi.collection.java.extended.list.SubdividedArrayAsImmutableList
-/// @see joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableSortedSet
-/// @see joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableNavigableSet
+/// @see joookiwi.collection.java.extended.list.SubdividedArrayAsImmutableList                  SubdividedArrayAsImmutableList
+/// @see joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableSortedSet              SubdividedArrayAsImmutableSortedSet
+/// @see joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableNavigableSet           SubdividedArrayAsImmutableNavigableSet
+/// @see joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableConcurrentNavigableSet SubdividedArrayAsImmutableConcurrentNavigableSet
+/// @see joookiwi.collection.java.extended.map.SubdividedArrayAsImmutableSortedMap              SubdividedArrayAsImmutableSortedMap
+/// @see joookiwi.collection.java.extended.map.SubdividedArrayAsImmutableNavigableMap           SubdividedArrayAsImmutableNavigableMap
+/// @see joookiwi.collection.java.extended.map.SubdividedArrayAsImmutableConcurrentNavigableMap SubdividedArrayAsImmutableConcurrentNavigableMap
 @NotNullByDefault
 public class SubdividedArray<T extends @Nullable Object> {
 
