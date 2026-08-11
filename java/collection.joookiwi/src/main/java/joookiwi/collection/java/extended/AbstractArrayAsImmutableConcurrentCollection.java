@@ -9,7 +9,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 @NotNullByDefault
 public abstract class AbstractArrayAsImmutableConcurrentCollection<T extends @Nullable Object>
-        extends AbstractArrayAsImmutableCollection<T> {
+        extends AbstractArrayAsImmutableCollection<T>
+        implements ImmutableConcurrentCollection<T> {
 
     protected AbstractArrayAsImmutableConcurrentCollection() { super(); }
 

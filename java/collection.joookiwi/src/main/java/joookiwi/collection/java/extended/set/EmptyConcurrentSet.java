@@ -14,7 +14,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 /// @see joookiwi.collection.java.CollectionConstants#emptyConcurrentSet
 @NotNullByDefault
 public class EmptyConcurrentSet<T extends @Nullable Object>
-        extends EmptySet<T> {
+        extends EmptySet<T>
+        implements ImmutableConcurrentSet<T> {
 
     //#region -------------------- Singleton usage --------------------
 
