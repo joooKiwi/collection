@@ -607,6 +607,13 @@ public sealed class UtilityForArray
         return new ReversedArrayAsImmutableNavigableCollection<>(source, new ReversedArray<>(reference));
     }
 
+    public static <T extends @Nullable Object> ImmutableConcurrentNavigableCollection<T> asReversed(final ImmutableConcurrentNavigableCollection<T> source,
+                                                                                                    final T @Unmodifiable [] reference) {
+        if (reference.length == 0)
+            return EmptyConcurrentNavigableCollection.getInstance();
+        return new ReversedArrayAsImmutableConcurrentNavigableCollection<>(source, new ReversedArray<>(reference));
+    }
+
 
     public static <T extends @Nullable Object> ImmutableList<T> asReversed(final ImmutableList<T> source,
                                                                            final T @Unmodifiable [] reference) {
