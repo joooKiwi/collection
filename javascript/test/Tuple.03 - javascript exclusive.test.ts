@@ -15,7 +15,7 @@ import {Couple}              from "../src/tuple/Couple"
 import {Empty}               from "../src/tuple/Empty"
 import {Monuple}             from "../src/tuple/Monuple"
 
-describe("Tuple (javascript exclusive)", () => {
+describe("TupleTest (javascript exclusive)", () => {
 
     describe("Empty", () => {
         const instance = Empty.get
