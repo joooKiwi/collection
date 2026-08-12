@@ -1013,7 +1013,7 @@ public class CollectionViewer<T extends @Nullable Object,
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final Function<? super T, ? extends U>       transform) { return getReference().toMutableConcurrentSet(transform); }
 
     //#endregion -------------------- To concurrent set --------------------
-    //#region -------------------- To concurrentNavigable set --------------------
+    //#region -------------------- To concurrent navigable set --------------------
 
     @Contract(pure = true) @Override public                              ImmutableConcurrentNavigableSet<T> toConcurrentNavigableSet(                                                      ) { return getReference().toConcurrentNavigableSet(); }
     @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toConcurrentNavigableSet(transform); }
@@ -1025,7 +1025,7 @@ public class CollectionViewer<T extends @Nullable Object,
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Supplier<? extends U>                  transform) { return getReference().toMutableConcurrentNavigableSet(transform); }
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Function<? super T, ? extends U>       transform) { return getReference().toMutableConcurrentNavigableSet(transform); }
 
-    //#endregion -------------------- To concurrentNavigable set --------------------
+    //#endregion -------------------- To concurrent navigable set --------------------
     //#region -------------------- To concurrent skip list set --------------------
 
     @Contract(pure = true) @Override public <U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toConcurrentSkipListSet(transform); }
@@ -1333,12 +1333,12 @@ public class CollectionViewer<T extends @Nullable Object,
     @Contract(pure = true) @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Function<? super T, ? extends U>       transform) { return getReference().toLinkedBlockingDeque(transform); }
     @Contract(pure = true) @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Supplier<? extends U>                  transform) { return getReference().toLinkedBlockingDeque(transform); }
 
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
 
     //#endregion -------------------- To linked blocking deque --------------------
     //#region -------------------- To stack --------------------

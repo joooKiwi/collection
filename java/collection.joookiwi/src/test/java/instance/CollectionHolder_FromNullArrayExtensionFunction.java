@@ -1023,7 +1023,7 @@ public final class CollectionHolder_FromNullArrayExtensionFunction<T extends @Nu
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final Supplier<? extends U>                  transform) { return ToMutableConcurrentCollection.toMutableConcurrentCollection(instance, transform); }
 
     //#endregion -------------------- To concurrent collection --------------------
-    //#region -------------------- To concurrentNavigable collection --------------------
+    //#region -------------------- To concurrent navigable collection --------------------
 
     @Override public ImmutableConcurrentNavigableCollection<T> toConcurrentNavigableCollection(                                                      ) { return ToConcurrentNavigableCollection.toConcurrentNavigableCollection(instance); }
     @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentNavigableCollection.toConcurrentNavigableCollection(instance, transform); }
@@ -1035,7 +1035,7 @@ public final class CollectionHolder_FromNullArrayExtensionFunction<T extends @Nu
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Function<? super T, ? extends U>       transform) { return ToMutableConcurrentNavigableCollection.toMutableConcurrentNavigableCollection(instance, transform); }
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Supplier<? extends U>                  transform) { return ToMutableConcurrentNavigableCollection.toMutableConcurrentNavigableCollection(instance, transform); }
 
-    //#endregion -------------------- To concurrentNavigable collection --------------------
+    //#endregion -------------------- To concurrent navigable collection --------------------
 
     //#region -------------------- To list --------------------
 
@@ -1184,7 +1184,7 @@ public final class CollectionHolder_FromNullArrayExtensionFunction<T extends @Nu
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final Supplier<? extends U>                  transform) { return ToMutableConcurrentSet.toMutableConcurrentSet(instance, transform); }
 
     //#endregion -------------------- To concurrent set --------------------
-    //#region -------------------- To concurrentNavigable set --------------------
+    //#region -------------------- To concurrent navigable set --------------------
 
     @Override public ImmutableConcurrentNavigableSet<T> toConcurrentNavigableSet(                                                      ) { return ToConcurrentNavigableSet.toConcurrentNavigableSet(instance); }
     @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentNavigableSet.toConcurrentNavigableSet(instance, transform); }
@@ -1196,7 +1196,7 @@ public final class CollectionHolder_FromNullArrayExtensionFunction<T extends @Nu
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Function<? super T, ? extends U>       transform) { return ToMutableConcurrentNavigableSet.toMutableConcurrentNavigableSet(instance, transform); }
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Supplier<? extends U>                  transform) { return ToMutableConcurrentNavigableSet.toMutableConcurrentNavigableSet(instance, transform); }
 
-    //#endregion -------------------- To concurrentNavigable set --------------------
+    //#endregion -------------------- To concurrent navigable set --------------------
     //#region -------------------- To concurrent skip list set --------------------
 
                             @Override public <U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(                                        final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentSkipListSet.toConcurrentSkipListSet(instance, transform); }
@@ -1568,9 +1568,9 @@ public final class CollectionHolder_FromNullArrayExtensionFunction<T extends @Nu
     @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Function<? super T, ? extends U>       transform) { return ToLinkedBlockingDeque.toLinkedBlockingDeque(instance, transform); }
     @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Supplier<? extends U>                  transform) { return ToLinkedBlockingDeque.toLinkedBlockingDeque(instance, transform); }
 
-    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                                       final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, transform); }
-    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                                       final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, transform); }
-    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                                       final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, transform); }
+    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                  final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, transform); }
+    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                  final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, transform); }
+    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                  final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int               capacity, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, capacity, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int               capacity, final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, capacity, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int               capacity, final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque(instance, capacity, transform); }

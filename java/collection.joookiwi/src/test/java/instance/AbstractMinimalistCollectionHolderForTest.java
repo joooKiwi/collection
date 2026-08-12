@@ -993,7 +993,7 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final Supplier<? extends U>                  transform) { return ToMutableConcurrentCollection.toMutableConcurrentCollection((MinimalistCollectionHolder<T>) this, transform); }
 
     //#endregion -------------------- To concurrent collection --------------------
-    //#region -------------------- To concurrentNavigable collection --------------------
+    //#region -------------------- To concurrent navigable collection --------------------
 
     @Override public                              ImmutableConcurrentNavigableCollection<T> toConcurrentNavigableCollection(                                                      ) { return ToConcurrentNavigableCollection.toConcurrentNavigableCollection((MinimalistCollectionHolder<T>) this); }
     @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentNavigableCollection.toConcurrentNavigableCollection((MinimalistCollectionHolder<T>) this, transform); }
@@ -1005,7 +1005,7 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Function<? super T, ? extends U>       transform) { return ToMutableConcurrentNavigableCollection.toMutableConcurrentNavigableCollection((MinimalistCollectionHolder<T>) this, transform); }
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Supplier<? extends U>                  transform) { return ToMutableConcurrentNavigableCollection.toMutableConcurrentNavigableCollection((MinimalistCollectionHolder<T>) this, transform); }
 
-    //#endregion -------------------- To concurrentNavigable collection --------------------
+    //#endregion -------------------- To concurrent navigable collection --------------------
 
     //#region -------------------- To list --------------------
 
@@ -1154,7 +1154,7 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final Supplier<? extends U>                  transform) { return ToMutableConcurrentSet.toMutableConcurrentSet((MinimalistCollectionHolder<T>) this, transform); }
 
     //#endregion -------------------- To concurrent set --------------------
-    //#region -------------------- To concurrentNavigable set --------------------
+    //#region -------------------- To concurrent navigable set --------------------
 
     @Override public                              ImmutableConcurrentNavigableSet<T> toConcurrentNavigableSet(                                                      ) { return ToConcurrentNavigableSet.toConcurrentNavigableSet((MinimalistCollectionHolder<T>) this); }
     @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentNavigableSet.toConcurrentNavigableSet((MinimalistCollectionHolder<T>) this, transform); }
@@ -1166,7 +1166,7 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Function<? super T, ? extends U>       transform) { return ToMutableConcurrentNavigableSet.toMutableConcurrentNavigableSet((MinimalistCollectionHolder<T>) this, transform); }
     @Contract(ALWAYS_NEW_1) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Supplier<? extends U>                  transform) { return ToMutableConcurrentNavigableSet.toMutableConcurrentNavigableSet((MinimalistCollectionHolder<T>) this, transform); }
 
-    //#endregion -------------------- To concurrentNavigable set --------------------
+    //#endregion -------------------- To concurrent navigable set --------------------
     //#region -------------------- To concurrent skip list set --------------------
 
                             @Override public <U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(                                        final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentSkipListSet.toConcurrentSkipListSet((MinimalistCollectionHolder<T>) this, transform); }
@@ -1538,9 +1538,9 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Function<? super T, ? extends U>       transform) { return ToLinkedBlockingDeque.toLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, transform); }
     @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Supplier<? extends U>                  transform) { return ToLinkedBlockingDeque.toLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, transform); }
 
-    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                                       final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, transform); }
-    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                                       final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, transform); }
-    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                                       final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, transform); }
+    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                  final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, transform); }
+    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                  final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, transform); }
+    @Contract(ALWAYS_NEW_1) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                  final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int               capacity, final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, capacity, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int               capacity, final Function<? super T, ? extends U>       transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, capacity, transform); }
     @Contract(ALWAYS_NEW_2) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int               capacity, final Supplier<? extends U>                  transform) { return ToMutableLinkedBlockingDeque.toMutableLinkedBlockingDeque((MinimalistCollectionHolder<T>) this, capacity, transform); }

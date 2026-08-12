@@ -1016,7 +1016,7 @@ public class LazyCollectionHolderOf0Or1Or2<T extends @Nullable Object>
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final Supplier<? extends U>                  transform) { return _innerCollection().toMutableConcurrentCollection(transform); }
 
     //#endregion -------------------- To concurrent collection --------------------
-    //#region -------------------- To concurrentNavigable collection --------------------
+    //#region -------------------- To concurrent navigable collection --------------------
 
     @Override public ImmutableConcurrentNavigableCollection<T> toConcurrentNavigableCollection(                                                      ) { return _innerCollection().toConcurrentNavigableCollection(); }
     @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return _innerCollection().toConcurrentNavigableCollection(transform); }
@@ -1028,7 +1028,7 @@ public class LazyCollectionHolderOf0Or1Or2<T extends @Nullable Object>
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Function<? super T, ? extends U>       transform) { return _innerCollection().toMutableConcurrentNavigableCollection(transform); }
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Supplier<? extends U>                  transform) { return _innerCollection().toMutableConcurrentNavigableCollection(transform); }
 
-    //#endregion -------------------- To concurrentNavigable collection --------------------
+    //#endregion -------------------- To concurrent navigable collection --------------------
 
     //#region -------------------- To list --------------------
 
