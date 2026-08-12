@@ -318,6 +318,62 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, size), initialCapacity);
     }
 
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                               final @Nullable Integer initialCapacity) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                               final @Nullable Integer initialCapacity) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+        if (collection.isEmpty())
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, collection.size()), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    ///
+    /// @param collection      The [nullable][Nullable] collection
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                               final @Nullable Integer initialCapacity) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size), initialCapacity);
+    }
+
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- initialCapacity, (T, int) → U --------------------
 
@@ -378,6 +434,74 @@ public final class ToMutableArrayDeque
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
                                                                                            final int initialCapacity,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final @Nullable Integer initialCapacity,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final @Nullable Integer initialCapacity,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+        if (collection.isEmpty())
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, collection.size(), transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final @Nullable Integer initialCapacity,
                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
@@ -458,6 +582,73 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
     }
 
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final @Nullable Integer initialCapacity,
+                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final @Nullable Integer initialCapacity,
+                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+        if (collection.isEmpty())
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, collection.size(), transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final @Nullable Integer initialCapacity,
+                                                                                           final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
+    }
+
     //#endregion -------------------- initialCapacity, (T) → U --------------------
     //#region -------------------- initialCapacity, () → U --------------------
 
@@ -518,6 +709,74 @@ public final class ToMutableArrayDeque
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
                                                                                            final int initialCapacity,
+                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(size, transform), initialCapacity);
+    }
+
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final @Nullable Integer initialCapacity,
+                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(size, transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final @Nullable Integer initialCapacity,
+                                                                                           final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableArrayDeque<>(initialCapacity);
+        if (collection.isEmpty())
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection.size(), transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableArrayDeque]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection
+    /// @param initialCapacity The [ArrayDeque] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size or `null`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final @Nullable Integer initialCapacity,
                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
