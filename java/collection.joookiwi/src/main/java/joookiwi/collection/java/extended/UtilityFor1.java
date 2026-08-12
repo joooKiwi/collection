@@ -143,7 +143,7 @@ public final class UtilityFor1 {
     @Contract(ALWAYS_1ST_4) public static <T extends @Nullable Object, SOURCE extends ClassWith1Value<? extends T>> SOURCE asSubdivided(final SOURCE source,
                                                                                                                                         final T from,
                                                                                                                                         final T to,
-                                                                                                                                        final @MagicConstant(stringValues = {"SortedSet", "NavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
+                                                                                                                                        final @MagicConstant(stringValues = {"SortedSet", "NavigableSet", "ConcurrentNavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
         final var value = source.value();
         if (value == null)
             if (from == null)
@@ -171,7 +171,7 @@ public final class UtilityFor1 {
                                                                                                                 final boolean fromIsInclusive,
                                                                                                                 final T to,
                                                                                                                 final boolean toIsInclusive,
-                                                                                                                final @MagicConstant(stringValues = {"NavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
+                                                                                                                final @MagicConstant(stringValues = {"NavigableSet", "ConcurrentNavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
         final var value = source.value();
         if (value == null)
             if (from == null)
@@ -196,7 +196,7 @@ public final class UtilityFor1 {
 
     @Contract(ALWAYS_1ST_3) public static <T extends @Nullable Object, SOURCE extends ClassWith1Value<? extends T>> SOURCE asHeadSubdivided(final SOURCE source,
                                                                                                                                             final T to,
-                                                                                                                                            final @MagicConstant(stringValues = {"SortedSet", "NavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
+                                                                                                                                            final @MagicConstant(stringValues = {"SortedSet", "NavigableSet", "ConcurrentNavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
         final var value = source.value();
         if (value == null)
             if (to == null)
@@ -212,7 +212,7 @@ public final class UtilityFor1 {
     public static <T extends @Nullable Object, SOURCE extends ClassWith1Value<? extends T> & OrderableCollection<T>> SOURCE asHeadSubdivided(final SOURCE source,
                                                                                                                     final T to,
                                                                                                                     final boolean isInclusive,
-                                                                                                                    final @MagicConstant(stringValues = {"NavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
+                                                                                                                    final @MagicConstant(stringValues = {"NavigableSet", "ConcurrentNavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
         final var value = source.value();
         if (value == null)
             if (to == null)
@@ -226,7 +226,7 @@ public final class UtilityFor1 {
 
     @Contract(ALWAYS_1ST_3) public static <T extends @Nullable Object, SOURCE extends ClassWith1Value<? extends T>> SOURCE asTailSubdivided(final SOURCE source,
                                                                                                                                             final T from,
-                                                                                                                                            final @MagicConstant(stringValues = {"SortedSet", "NavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
+                                                                                                                                            final @MagicConstant(stringValues = {"SortedSet", "NavigableSet", "ConcurrentNavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
         final var value = source.value();
         if (value == null)
             if (from == null)
@@ -242,7 +242,7 @@ public final class UtilityFor1 {
     public static <T extends @Nullable Object, SOURCE extends ClassWith1Value<? extends T> & OrderableCollection<T>> SOURCE asTailSubdivided(final SOURCE source,
                                                                                                                     final T from,
                                                                                                                     final boolean isInclusive,
-                                                                                                                    final @MagicConstant(stringValues = {"NavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
+                                                                                                                    final @MagicConstant(stringValues = {"NavigableSet", "ConcurrentNavigableSet", "ConcurrentSkipListSet", "TreeSet",}) String instanceName) {
         final var value = source.value();
         if (value == null)
             if (from == null)
