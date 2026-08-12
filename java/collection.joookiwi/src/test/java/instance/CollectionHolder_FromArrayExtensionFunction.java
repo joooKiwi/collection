@@ -232,7 +232,9 @@ import joookiwi.collection.java.method.ToCollection;
 import joookiwi.collection.java.method.ToConcurrentCollection;
 import joookiwi.collection.java.method.ToConcurrentLinkedDeque;
 import joookiwi.collection.java.method.ToConcurrentLinkedQueue;
+import joookiwi.collection.java.method.ToConcurrentMap;
 import joookiwi.collection.java.method.ToConcurrentNavigableCollection;
+import joookiwi.collection.java.method.ToConcurrentNavigableMap;
 import joookiwi.collection.java.method.ToConcurrentNavigableSet;
 import joookiwi.collection.java.method.ToConcurrentSet;
 import joookiwi.collection.java.method.ToConcurrentSkipListSet;
@@ -252,6 +254,7 @@ import joookiwi.collection.java.method.ToLocaleLowerCaseString;
 import joookiwi.collection.java.method.ToLocaleString;
 import joookiwi.collection.java.method.ToLocaleUpperCaseString;
 import joookiwi.collection.java.method.ToLowerCaseString;
+import joookiwi.collection.java.method.ToMap;
 import joookiwi.collection.java.method.ToMutableArrayBlockingQueue;
 import joookiwi.collection.java.method.ToMutableArrayDeque;
 import joookiwi.collection.java.method.ToMutableArrayList;
@@ -293,15 +296,18 @@ import joookiwi.collection.java.method.ToMutableTransferQueue;
 import joookiwi.collection.java.method.ToMutableTreeSet;
 import joookiwi.collection.java.method.ToMutableVector;
 import joookiwi.collection.java.method.ToNavigableCollection;
+import joookiwi.collection.java.method.ToNavigableMap;
 import joookiwi.collection.java.method.ToNavigableSet;
 import joookiwi.collection.java.method.ToPriorityBlockingQueue;
 import joookiwi.collection.java.method.ToPriorityQueue;
 import joookiwi.collection.java.method.ToQueue;
 import joookiwi.collection.java.method.ToReverse;
 import joookiwi.collection.java.method.ToSequencedCollection;
+import joookiwi.collection.java.method.ToSequencedMap;
 import joookiwi.collection.java.method.ToSequencedSet;
 import joookiwi.collection.java.method.ToSet;
 import joookiwi.collection.java.method.ToSortedCollection;
+import joookiwi.collection.java.method.ToSortedMap;
 import joookiwi.collection.java.method.ToSortedSet;
 import joookiwi.collection.java.method.ToSpliterator;
 import joookiwi.collection.java.method.ToStack;
@@ -1615,37 +1621,37 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
 
     //#region -------------------- To map --------------------
 
-    public ImmutableMap<Integer, T> toMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableMap<Integer, T> toMap() { return ToMap.toMap(array); }
     public MutableMap<Integer, T> toMutableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To map --------------------
     //#region -------------------- To sequenced map --------------------
 
-    public ImmutableSequencedMap<Integer, T> toSequencedMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableSequencedMap<Integer, T> toSequencedMap() { return ToSequencedMap.toSequencedMap(array); }
     public MutableSequencedMap<Integer, T> toMutableSequencedMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To sequenced map --------------------
     //#region -------------------- To sorted map --------------------
 
-    public ImmutableSortedMap<Integer, T> toSortedMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableSortedMap<Integer, T> toSortedMap() { return ToSortedMap.toSortedMap(array); }
     public MutableSortedMap<Integer, T> toMutableSortedMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To sorted map --------------------
     //#region -------------------- To navigable map --------------------
 
-    public ImmutableNavigableMap<Integer, T> toNavigableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableNavigableMap<Integer, T> toNavigableMap() { return ToNavigableMap.toNavigableMap(array); }
     public MutableNavigableMap<Integer, T> toMutableNavigableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To navigable map --------------------
     //#region -------------------- To concurrent map --------------------
 
-    public ImmutableConcurrentMap<Integer, T> toConcurrentMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableConcurrentMap<Integer, T> toConcurrentMap() { return ToConcurrentMap.toConcurrentMap(array); }
     public MutableConcurrentMap<Integer, T> toMutableConcurrentMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To concurrent map --------------------
     //#region -------------------- To concurrent navigable map --------------------
 
-    public ImmutableConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
+    public ImmutableConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() { return ToConcurrentNavigableMap.toConcurrentNavigableMap(array); }
     public MutableConcurrentNavigableMap<Integer, T> toMutableConcurrentNavigableMap() { throw new RuntimeException(); /*TODO: implement the map methods*/ }
 
     //#endregion -------------------- To concurrent navigable map --------------------
