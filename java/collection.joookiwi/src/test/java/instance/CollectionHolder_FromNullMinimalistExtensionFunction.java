@@ -1146,7 +1146,7 @@ public final class CollectionHolder_FromNullMinimalistExtensionFunction<T extend
     //#endregion -------------------- To sequenced set --------------------
     //#region -------------------- To sorted set --------------------
 
-    @Override public ImmutableSortedSet<T> toSortedSet(                                                      ) { return ToSortedSet.toSortedSet(instance); }
+    @Override public                              ImmutableSortedSet<T> toSortedSet(                                                      ) { return ToSortedSet.toSortedSet(instance); }
     @Override public <U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final ObjIntFunction<? super T, ? extends U> transform) { return ToSortedSet.toSortedSet(instance, transform); }
     @Override public <U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final Function<? super T, ? extends U>       transform) { return ToSortedSet.toSortedSet(instance, transform); }
     @Override public <U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final Supplier<? extends U>                  transform) { return ToSortedSet.toSortedSet(instance, transform); }
