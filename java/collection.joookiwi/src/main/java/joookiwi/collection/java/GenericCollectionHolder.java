@@ -60,13 +60,39 @@ import joookiwi.collection.java.callback.SetSupplier;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableCollection;
+import joookiwi.collection.java.extended.ArrayAsImmutableConcurrentCollection;
+import joookiwi.collection.java.extended.ArrayAsImmutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ArrayAsImmutableNavigableCollection;
 import joookiwi.collection.java.extended.ArrayAsImmutableSequencedCollection;
+import joookiwi.collection.java.extended.ArrayAsImmutableSortedCollection;
 import joookiwi.collection.java.extended.ArrayAsMutableCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableConcurrentCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableNavigableCollection;
 import joookiwi.collection.java.extended.ArrayAsMutableSequencedCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableSortedCollection;
 import joookiwi.collection.java.extended.EmptyCollection;
+import joookiwi.collection.java.extended.EmptyConcurrentCollection;
+import joookiwi.collection.java.extended.EmptyConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.EmptyNavigableCollection;
 import joookiwi.collection.java.extended.EmptySequencedCollection;
+import joookiwi.collection.java.extended.EmptySortedCollection;
 import joookiwi.collection.java.extended.ImmutableCollection;
+import joookiwi.collection.java.extended.ImmutableConcurrentCollection;
+import joookiwi.collection.java.extended.ImmutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ImmutableNavigableCollection;
 import joookiwi.collection.java.extended.ImmutableSequencedCollection;
+import joookiwi.collection.java.extended.ImmutableSortedCollection;
+import joookiwi.collection.java.extended.MutableConcurrentCollection;
+import joookiwi.collection.java.extended.MutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.MutableNavigableCollection;
+import joookiwi.collection.java.extended.MutableSortedCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableNavigableCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsMutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsMutableNavigableCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsMutableSortedCollection;
 import joookiwi.collection.java.extended.array.JavaArray;
 import joookiwi.collection.java.extended.MutableCollection;
 import joookiwi.collection.java.extended.MutableSequencedCollection;
@@ -107,6 +133,12 @@ import joookiwi.collection.java.extended.list.ReversedArrayAsImmutableList;
 import joookiwi.collection.java.extended.list.ReversedArrayAsMutableList;
 import joookiwi.collection.java.extended.list.SubdividedArrayAsImmutableList;
 import joookiwi.collection.java.extended.list.SubdividedArrayAsMutableList;
+import joookiwi.collection.java.extended.map.EmptyConcurrentMap;
+import joookiwi.collection.java.extended.map.EmptyConcurrentNavigableMap;
+import joookiwi.collection.java.extended.map.EmptyMap;
+import joookiwi.collection.java.extended.map.EmptyNavigableMap;
+import joookiwi.collection.java.extended.map.EmptySequencedMap;
+import joookiwi.collection.java.extended.map.EmptySortedMap;
 import joookiwi.collection.java.extended.map.ImmutableConcurrentHashMap;
 import joookiwi.collection.java.extended.map.ImmutableConcurrentMap;
 import joookiwi.collection.java.extended.map.ImmutableConcurrentNavigableMap;
@@ -145,19 +177,28 @@ import joookiwi.collection.java.extended.queue.MutablePriorityQueue;
 import joookiwi.collection.java.extended.queue.MutableQueue;
 import joookiwi.collection.java.extended.queue.MutableSynchronousQueue;
 import joookiwi.collection.java.extended.queue.MutableTransferQueue;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableConcurrentSet;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.set.ArrayAsImmutableSequencedSet;
 import joookiwi.collection.java.extended.set.ArrayAsImmutableSet;
 import joookiwi.collection.java.extended.set.ArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.set.ArrayAsMutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ArrayAsMutableConcurrentSet;
 import joookiwi.collection.java.extended.set.ArrayAsMutableNavigableSet;
 import joookiwi.collection.java.extended.set.ArrayAsMutableSequencedSet;
 import joookiwi.collection.java.extended.set.ArrayAsMutableSet;
 import joookiwi.collection.java.extended.set.ArrayAsMutableSortedSet;
+import joookiwi.collection.java.extended.set.EmptyConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.EmptyConcurrentSet;
 import joookiwi.collection.java.extended.set.EmptyHashSet;
 import joookiwi.collection.java.extended.set.EmptyLinkedHashSet;
 import joookiwi.collection.java.extended.set.EmptyNavigableSet;
 import joookiwi.collection.java.extended.set.EmptySequencedSet;
 import joookiwi.collection.java.extended.set.EmptySet;
 import joookiwi.collection.java.extended.set.EmptySortedSet;
+import joookiwi.collection.java.extended.set.ImmutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ImmutableConcurrentSet;
 import joookiwi.collection.java.extended.set.ImmutableConcurrentSkipListSet;
 import joookiwi.collection.java.extended.set.ImmutableCopyOnWriteArraySet;
 import joookiwi.collection.java.extended.set.ImmutableHashSet;
@@ -167,6 +208,8 @@ import joookiwi.collection.java.extended.set.ImmutableSequencedSet;
 import joookiwi.collection.java.extended.set.ImmutableSet;
 import joookiwi.collection.java.extended.set.ImmutableSortedSet;
 import joookiwi.collection.java.extended.set.ImmutableTreeSet;
+import joookiwi.collection.java.extended.set.MutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.MutableConcurrentSet;
 import joookiwi.collection.java.extended.set.MutableConcurrentSkipListSet;
 import joookiwi.collection.java.extended.set.MutableCopyOnWriteArraySet;
 import joookiwi.collection.java.extended.set.MutableHashSet;
@@ -176,14 +219,18 @@ import joookiwi.collection.java.extended.set.MutableSequencedSet;
 import joookiwi.collection.java.extended.set.MutableSet;
 import joookiwi.collection.java.extended.set.MutableSortedSet;
 import joookiwi.collection.java.extended.set.MutableTreeSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableConcurrentNavigableSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSequencedSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsMutableConcurrentNavigableSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsMutableNavigableSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsMutableSequencedSet;
 import joookiwi.collection.java.extended.set.ReversedArrayAsMutableSortedSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableConcurrentNavigableSet;
 import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsMutableConcurrentNavigableSet;
 import joookiwi.collection.java.extended.set.SubdividedArrayAsMutableNavigableSet;
 import joookiwi.collection.java.extended.set.SubdividedArrayAsMutableSortedSet;
 import joookiwi.collection.java.extended.stack.ArrayAsImmutableDeque;
@@ -283,10 +330,14 @@ import joookiwi.collection.java.method.ToArrayList;
 import joookiwi.collection.java.method.ToBlockingDeque;
 import joookiwi.collection.java.method.ToBlockingQueue;
 import joookiwi.collection.java.method.ToCollection;
+import joookiwi.collection.java.method.ToConcurrentCollection;
 import joookiwi.collection.java.method.ToConcurrentLinkedDeque;
 import joookiwi.collection.java.method.ToConcurrentLinkedQueue;
 import joookiwi.collection.java.method.ToConcurrentMap;
+import joookiwi.collection.java.method.ToConcurrentNavigableCollection;
 import joookiwi.collection.java.method.ToConcurrentNavigableMap;
+import joookiwi.collection.java.method.ToConcurrentNavigableSet;
+import joookiwi.collection.java.method.ToConcurrentSet;
 import joookiwi.collection.java.method.ToConcurrentSkipListSet;
 import joookiwi.collection.java.method.ToCopyOnWriteArrayList;
 import joookiwi.collection.java.method.ToCopyOnWriteArraySet;
@@ -310,8 +361,12 @@ import joookiwi.collection.java.method.ToMutableArrayList;
 import joookiwi.collection.java.method.ToMutableBlockingDeque;
 import joookiwi.collection.java.method.ToMutableBlockingQueue;
 import joookiwi.collection.java.method.ToMutableCollection;
+import joookiwi.collection.java.method.ToMutableConcurrentCollection;
 import joookiwi.collection.java.method.ToMutableConcurrentLinkedDeque;
 import joookiwi.collection.java.method.ToMutableConcurrentLinkedQueue;
+import joookiwi.collection.java.method.ToMutableConcurrentNavigableCollection;
+import joookiwi.collection.java.method.ToMutableConcurrentNavigableSet;
+import joookiwi.collection.java.method.ToMutableConcurrentSet;
 import joookiwi.collection.java.method.ToMutableConcurrentSkipListSet;
 import joookiwi.collection.java.method.ToMutableCopyOnWriteArrayList;
 import joookiwi.collection.java.method.ToMutableCopyOnWriteArraySet;
@@ -325,6 +380,7 @@ import joookiwi.collection.java.method.ToMutableLinkedHashSet;
 import joookiwi.collection.java.method.ToMutableLinkedList;
 import joookiwi.collection.java.method.ToMutableLinkedTransferQueue;
 import joookiwi.collection.java.method.ToMutableList;
+import joookiwi.collection.java.method.ToMutableNavigableCollection;
 import joookiwi.collection.java.method.ToMutableNavigableSet;
 import joookiwi.collection.java.method.ToMutablePriorityBlockingQueue;
 import joookiwi.collection.java.method.ToMutablePriorityQueue;
@@ -332,12 +388,14 @@ import joookiwi.collection.java.method.ToMutableQueue;
 import joookiwi.collection.java.method.ToMutableSequencedCollection;
 import joookiwi.collection.java.method.ToMutableSequencedSet;
 import joookiwi.collection.java.method.ToMutableSet;
+import joookiwi.collection.java.method.ToMutableSortedCollection;
 import joookiwi.collection.java.method.ToMutableSortedSet;
 import joookiwi.collection.java.method.ToMutableStack;
 import joookiwi.collection.java.method.ToMutableSynchronousQueue;
 import joookiwi.collection.java.method.ToMutableTransferQueue;
 import joookiwi.collection.java.method.ToMutableTreeSet;
 import joookiwi.collection.java.method.ToMutableVector;
+import joookiwi.collection.java.method.ToNavigableCollection;
 import joookiwi.collection.java.method.ToNavigableMap;
 import joookiwi.collection.java.method.ToNavigableSet;
 import joookiwi.collection.java.method.ToPriorityBlockingQueue;
@@ -348,6 +406,7 @@ import joookiwi.collection.java.method.ToSequencedCollection;
 import joookiwi.collection.java.method.ToSequencedMap;
 import joookiwi.collection.java.method.ToSequencedSet;
 import joookiwi.collection.java.method.ToSet;
+import joookiwi.collection.java.method.ToSortedCollection;
 import joookiwi.collection.java.method.ToSortedMap;
 import joookiwi.collection.java.method.ToSortedSet;
 import joookiwi.collection.java.method.ToStack;
@@ -420,6 +479,10 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     private @Nullable ImmutableCollection<T> __collection;
     private @Nullable ImmutableSequencedCollection<T> __sequencedCollection;
+    private @Nullable ImmutableSortedCollection<T> __sortedCollection;
+    private @Nullable ImmutableNavigableCollection<T> __navigableCollection;
+    private @Nullable ImmutableConcurrentCollection<T> __concurrentCollection;
+    private @Nullable ImmutableConcurrentNavigableCollection<T> __concurrentNavigableCollection;
 
     //#endregion -------------------- Fields (collection) --------------------
     //#region -------------------- Fields (list) --------------------
@@ -438,6 +501,8 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     private @Nullable ImmutableSequencedSet<T> __sequencedSet;
     private @Nullable ImmutableSortedSet<T> __sortedSet;
     private @Nullable ImmutableNavigableSet<T> __navigableSet;
+    private @Nullable ImmutableConcurrentSet<T> __concurrentSet;
+    private @Nullable ImmutableConcurrentNavigableSet<T> __concurrentNavigableSet;
 
     private @Nullable ImmutableHashSet<T> __hashSet;
     private @Nullable ImmutableLinkedHashSet<T> __linkedHashSet;
@@ -489,6 +554,10 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
         __collection = EmptyCollection.getInstance();
         __sequencedCollection = EmptySequencedCollection.getInstance();
+        __sortedCollection = EmptySortedCollection.getInstance();
+        __navigableCollection = EmptyNavigableCollection.getInstance();
+        __concurrentCollection = EmptyConcurrentCollection.getInstance();
+        __concurrentNavigableCollection = EmptyConcurrentNavigableCollection.getInstance();
 
         __list = EmptyList.getInstance();
         __arrayList = EmptyArrayList.getInstance();
@@ -500,6 +569,8 @@ public class GenericCollectionHolder<T extends @Nullable Object>
         __sequencedSet = EmptySequencedSet.getInstance();
         __sortedSet = EmptySortedSet.getInstance();
         __navigableSet = EmptyNavigableSet.getInstance();
+        __concurrentSet = EmptyConcurrentSet.getInstance();
+        __concurrentNavigableSet = EmptyConcurrentNavigableSet.getInstance();
         __hashSet = EmptyHashSet.getInstance();
         __linkedHashSet = EmptyLinkedHashSet.getInstance();
 
@@ -508,14 +579,15 @@ public class GenericCollectionHolder<T extends @Nullable Object>
         __deque = EmptyDeque.getInstance();
         __stack = EmptyStack.getInstance();
 
+        __map = EmptyMap.getInstance();
+        __sequencedMap = EmptySequencedMap.getInstance();
+        __sortedMap = EmptySortedMap.getInstance();
+        __navigableMap = EmptyNavigableMap.getInstance();
+        __concurrentMap = EmptyConcurrentMap.getInstance();
+        __concurrentNavigableMap = EmptyConcurrentNavigableMap.getInstance();
+
 //        final var creator = joookiwi.collection.java.CollectionCreator.getInstance();
 //
-//        __map = creator.Map();
-//        __sequencedMap = creator.SequencedMap();
-//        __sortedMap = creator.SortedMap();
-//        __navigableMap = creator.NavigableMap();
-//        __concurrentMap = creator.ConcurrentMap();
-//        __concurrentNavigableMap = creator.ConcurrentNavigableMap();
 //        __concurrentHashMap = creator.ConcurrentHashMap();
 //        __concurrentSkipListMap = creator.ConcurrentSkipListMap();
 //        __hashMap = creator.HashMap();
@@ -1133,6 +1205,88 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableSequencedCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (sequenced collection) --------------------
+    //#region -------------------- Constructor (sorted collection) --------------------
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSortedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableSortedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSortedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableSortedCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableSortedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableSortedCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (sorted collection) --------------------
+    //#region -------------------- Constructor (navigable collection) --------------------
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableNavigableCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableNavigableCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (navigable collection) --------------------
+    //#region -------------------- Constructor (concurrent collection) --------------------
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableConcurrentCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableConcurrentCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableConcurrentCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableConcurrentCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (concurrent collection) --------------------
+    //#region -------------------- Constructor (concurrent navigable collection) --------------------
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableConcurrentNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableConcurrentNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableConcurrentNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableConcurrentNavigableCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableConcurrentNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableConcurrentNavigableCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (concurrent navigable collection) --------------------
 
     //#region -------------------- Constructor (list) --------------------
 
@@ -1414,6 +1568,50 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (navigable set) --------------------
+    //#region -------------------- Constructor (concurrent set) --------------------
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableConcurrentSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableConcurrentSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableConcurrentSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableConcurrentSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (concurrent set) --------------------
+    //#region -------------------- Constructor (concurrent navigable set) --------------------
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableConcurrentNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableConcurrentNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableConcurrentNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubdividedArrayAsImmutableConcurrentNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableConcurrentNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableConcurrentNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SubdividedArrayAsMutableConcurrentNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableConcurrentNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (concurrent navigable set) --------------------
     //#region -------------------- Constructor (hash set) --------------------
 
     @Contract(pure = true)
@@ -2470,7 +2668,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
         final var value = __collection;
         if (value != null)
             return value;
-        return __collection = super.toCollection();
+        return __collection = ToCollection.toCollection(_array());
     }
 
     @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableCollection<U> toCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToCollection.toCollection(_array(), transform); }
@@ -2489,7 +2687,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
         final var value = __sequencedCollection;
         if (value != null)
             return value;
-        return __sequencedCollection = super.toSequencedCollection();
+        return __sequencedCollection = ToSequencedCollection.toSequencedCollection(_array());
     }
 
     @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToSequencedCollection.toSequencedCollection(_array(), transform); }
@@ -2502,6 +2700,82 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableSequencedCollection<U> toMutableSequencedCollection(final Supplier<? extends U>                  transform) { return ToMutableSequencedCollection.toMutableSequencedCollection(_array(), transform); }
 
     //#endregion -------------------- To sequenced collection --------------------
+    //#region -------------------- To sorted collection --------------------
+
+    @Override public ImmutableSortedCollection<T> toSortedCollection() {
+        final var value = __sortedCollection;
+        if (value != null)
+            return value;
+        return __sortedCollection = ToSortedCollection.toSortedCollection(_array());
+    }
+
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableSortedCollection<U> toSortedCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToSortedCollection.toSortedCollection(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableSortedCollection<U> toSortedCollection(final Function<? super T, ? extends U>       transform) { return ToSortedCollection.toSortedCollection(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableSortedCollection<U> toSortedCollection(final Supplier<? extends U>                  transform) { return ToSortedCollection.toSortedCollection(_array(), transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableSortedCollection<T> toMutableSortedCollection(                                                      ) { return ToMutableSortedCollection.toMutableSortedCollection(_array()); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableSortedCollection<U> toMutableSortedCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableSortedCollection.toMutableSortedCollection(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableSortedCollection<U> toMutableSortedCollection(final Function<? super T, ? extends U>       transform) { return ToMutableSortedCollection.toMutableSortedCollection(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableSortedCollection<U> toMutableSortedCollection(final Supplier<? extends U>                  transform) { return ToMutableSortedCollection.toMutableSortedCollection(_array(), transform); }
+
+    //#endregion -------------------- To sorted collection --------------------
+    //#region -------------------- To navigable collection --------------------
+
+    @Override public ImmutableNavigableCollection<T> toNavigableCollection() {
+        final var value = __navigableCollection;
+        if (value != null)
+            return value;
+        return __navigableCollection = ToNavigableCollection.toNavigableCollection(_array());
+    }
+
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableNavigableCollection<U> toNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToNavigableCollection.toNavigableCollection(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableNavigableCollection<U> toNavigableCollection(final Function<? super T, ? extends U>       transform) { return ToNavigableCollection.toNavigableCollection(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableNavigableCollection<U> toNavigableCollection(final Supplier<? extends U>                  transform) { return ToNavigableCollection.toNavigableCollection(_array(), transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableNavigableCollection<T> toMutableNavigableCollection(                                                      ) { return ToMutableNavigableCollection.toMutableNavigableCollection(_array()); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableCollection<U> toMutableNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableNavigableCollection.toMutableNavigableCollection(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableCollection<U> toMutableNavigableCollection(final Function<? super T, ? extends U>       transform) { return ToMutableNavigableCollection.toMutableNavigableCollection(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableCollection<U> toMutableNavigableCollection(final Supplier<? extends U>                  transform) { return ToMutableNavigableCollection.toMutableNavigableCollection(_array(), transform); }
+
+    //#endregion -------------------- To navigable collection --------------------
+    //#region -------------------- To concurrent collection --------------------
+
+    @Override public ImmutableConcurrentCollection<T> toConcurrentCollection() {
+        final var value = __concurrentCollection;
+        if (value != null)
+            return value;
+        return __concurrentCollection = ToConcurrentCollection.toConcurrentCollection(_array());
+    }
+
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentCollection<U> toConcurrentCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentCollection.toConcurrentCollection(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentCollection<U> toConcurrentCollection(final Function<? super T, ? extends U>       transform) { return ToConcurrentCollection.toConcurrentCollection(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentCollection<U> toConcurrentCollection(final Supplier<? extends U>                  transform) { return ToConcurrentCollection.toConcurrentCollection(_array(), transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableConcurrentCollection<T> toMutableConcurrentCollection(                                                      ) { return ToMutableConcurrentCollection.toMutableConcurrentCollection(_array()); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableConcurrentCollection.toMutableConcurrentCollection(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final Function<? super T, ? extends U>       transform) { return ToMutableConcurrentCollection.toMutableConcurrentCollection(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final Supplier<? extends U>                  transform) { return ToMutableConcurrentCollection.toMutableConcurrentCollection(_array(), transform); }
+
+    //#endregion -------------------- To concurrent collection --------------------
+    //#region -------------------- To concurrent navigable collection --------------------
+
+    @Override public ImmutableConcurrentNavigableCollection<T> toConcurrentNavigableCollection() {
+        final var value = __concurrentNavigableCollection;
+        if (value != null)
+            return value;
+        return __concurrentNavigableCollection = ToConcurrentNavigableCollection.toConcurrentNavigableCollection(_array());
+    }
+
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentNavigableCollection.toConcurrentNavigableCollection(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final Function<? super T, ? extends U>       transform) { return ToConcurrentNavigableCollection.toConcurrentNavigableCollection(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final Supplier<? extends U>                  transform) { return ToConcurrentNavigableCollection.toConcurrentNavigableCollection(_array(), transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableConcurrentNavigableCollection<T> toMutableConcurrentNavigableCollection(                                                      ) { return ToMutableConcurrentNavigableCollection.toMutableConcurrentNavigableCollection(_array()); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableConcurrentNavigableCollection.toMutableConcurrentNavigableCollection(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Function<? super T, ? extends U>       transform) { return ToMutableConcurrentNavigableCollection.toMutableConcurrentNavigableCollection(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Supplier<? extends U>                  transform) { return ToMutableConcurrentNavigableCollection.toMutableConcurrentNavigableCollection(_array(), transform); }
+
+    //#endregion -------------------- To concurrent navigable collection --------------------
 
     //#region -------------------- To list --------------------
 
@@ -2683,6 +2957,44 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableSet<U> toMutableNavigableSet(final Function<? super T, ? extends U>       transform) { return ToMutableNavigableSet.toMutableNavigableSet(_array(), transform); }
 
     //#endregion -------------------- To navigable set --------------------
+    //#region -------------------- To concurrent set --------------------
+
+    @Override public ImmutableConcurrentSet<T> toConcurrentSet() {
+        final var value = __concurrentSet;
+        if (value != null)
+            return value;
+        return __concurrentSet = ToConcurrentSet.toConcurrentSet(_array());
+    }
+
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentSet<U> toConcurrentSet(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentSet.toConcurrentSet(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentSet<U> toConcurrentSet(final Supplier<? extends U>                  transform) { return ToConcurrentSet.toConcurrentSet(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentSet<U> toConcurrentSet(final Function<? super T, ? extends U>       transform) { return ToConcurrentSet.toConcurrentSet(_array(), transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableConcurrentSet<T> toMutableConcurrentSet(                                                      ) { return ToMutableConcurrentSet.toMutableConcurrentSet(_array()); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableConcurrentSet.toMutableConcurrentSet(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final Supplier<? extends U>                  transform) { return ToMutableConcurrentSet.toMutableConcurrentSet(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final Function<? super T, ? extends U>       transform) { return ToMutableConcurrentSet.toMutableConcurrentSet(_array(), transform); }
+
+    //#endregion -------------------- To concurrent set --------------------
+    //#region -------------------- To concurrent navigable set --------------------
+
+    @Override public ImmutableConcurrentNavigableSet<T> toConcurrentNavigableSet() {
+        final var value = __concurrentNavigableSet;
+        if (value != null)
+            return value;
+        return __concurrentNavigableSet = ToConcurrentNavigableSet.toConcurrentNavigableSet(_array());
+    }
+
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentNavigableSet.toConcurrentNavigableSet(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final Supplier<? extends U>                  transform) { return ToConcurrentNavigableSet.toConcurrentNavigableSet(_array(), transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final Function<? super T, ? extends U>       transform) { return ToConcurrentNavigableSet.toConcurrentNavigableSet(_array(), transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableConcurrentNavigableSet<T> toMutableConcurrentNavigableSet(                                                      ) { return ToMutableConcurrentNavigableSet.toMutableConcurrentNavigableSet(_array()); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableConcurrentNavigableSet.toMutableConcurrentNavigableSet(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Supplier<? extends U>                  transform) { return ToMutableConcurrentNavigableSet.toMutableConcurrentNavigableSet(_array(), transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Function<? super T, ? extends U>       transform) { return ToMutableConcurrentNavigableSet.toMutableConcurrentNavigableSet(_array(), transform); }
+
+    //#endregion -------------------- To concurrent navigable set --------------------
     //#region -------------------- To concurrent skip list set --------------------
 
     @Contract(pure = true)                       @Override public <U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(                                        final ObjIntFunction<? super T, ? extends U> transform) { return ToConcurrentSkipListSet.toConcurrentSkipListSet(_array(), transform); }
