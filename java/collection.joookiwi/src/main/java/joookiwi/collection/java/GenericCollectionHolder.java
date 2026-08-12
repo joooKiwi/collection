@@ -793,21 +793,23 @@ public class GenericCollectionHolder<T extends @Nullable Object>
             return;
         }
 
-        final var size = this.__size = reference.size();
         __isNotEmpty = false;
         __firstIndex = 0;
-        if (size == 1) {
+        if (reference.hasExactly1Element()) {
+            __size = 1;
+            __lastIndex = 0;
+            __array = __initializeAs1(reference.getFirst());
+            return;
+        }
+
+        if (reference.hasExactly2Elements()) {
+            __size = 2;
             __lastIndex = 1;
-            __array = __initializeAs1(reference.first());
+            __array = __initializeAs2(reference.getFirst(), reference.getLast());
             return;
         }
 
-        if (size == 2) {
-            __lastIndex = 2;
-            __array = __initializeAs2(reference.first(), reference.last());
-            return;
-        }
-
+        final var size = this.__size = reference.size();
         __lastIndex = size - 1;
         __array = __initializeAsUnknown(reference, size);
     }
@@ -866,21 +868,23 @@ public class GenericCollectionHolder<T extends @Nullable Object>
             return;
         }
 
-        final var size = __size = reference.size();
         __isNotEmpty = false;
         __firstIndex = 0;
-        if (size == 1) {
+        if (reference.hasExactly1Element()) {
+            __size = 1;
             __lastIndex = 0;
             __array = __initializeAs1(reference.nextValue());
             return;
         }
 
-        if (size == 2) {
+        if (reference.hasExactly2Elements()) {
+            __size = 2;
             __lastIndex = 1;
             __array = __initializeAs2(reference.nextValue(), reference.nextValue());
             return;
         }
 
+        final var size = __size = reference.size();
         __lastIndex = size - 1;
         __array = __initializeAsUnknown(reference, size);
     }

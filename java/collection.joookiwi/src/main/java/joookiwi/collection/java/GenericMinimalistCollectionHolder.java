@@ -30,6 +30,7 @@ import joookiwi.collection.java.callback.DequeSupplier;
 import joookiwi.collection.java.callback.IterableSupplier;
 import joookiwi.collection.java.callback.ListSupplier;
 import joookiwi.collection.java.callback.MinimalistCollectionHolderSupplier;
+import joookiwi.collection.java.callback.MinimalistCollectionIteratorSupplier;
 import joookiwi.collection.java.callback.QueueSupplier;
 import joookiwi.collection.java.callback.SetSupplier;
 import joookiwi.collection.java.exception.EmptyCollectionException;
@@ -154,6 +155,7 @@ import joookiwi.collection.java.extended.stack.ReversedArrayAsImmutableDeque;
 import joookiwi.collection.java.extended.stack.ReversedArrayAsMutableDeque;
 import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.iterator.CollectionIterator;
+import joookiwi.collection.java.iterator.MinimalistCollectionIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -199,13 +201,20 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             return;
         }
 
-        final var size = this.__size = reference.size();
-        if (size == 1)
+        if (reference.hasExactly1Element()) {
+            __size = 1;
             __array = Array(reference.getFirst());
-        else if (size == 2)
+            return;
+        }
+
+        if (reference.hasExactly2Elements()) {
+            __size = 2;
             __array = Array(reference.getFirst(), reference.getLast());
-        else
-            __array = Array(reference, size);
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        __array = Array(reference, size);
     }
 
     //#endregion -------------------- Constructor (collection holder) --------------------
@@ -244,16 +253,55 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             return;
         }
 
-        final var size = __size = reference.size();
-        if (size == 1)
+        if (reference.hasExactly1Element()) {
+            __size = 1;
             __array = Array(reference.nextValue());
-        else if (size == 2)
+            return;
+        }
+
+        if (reference.hasExactly2Elements()) {
+            __size = 2;
             __array = Array(reference.nextValue(), reference.nextValue());
-        else
-            __array = Array(reference, size);
+            return;
+        }
+
+        final var size = __size = reference.size();
+        __array = Array(reference, size);
     }
 
     //#endregion -------------------- Constructor (collection iterator) --------------------
+    //#region -------------------- Constructor (minimalist collection iterator) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final MinimalistCollectionIteratorSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MinimalistCollectionIterator<? extends T> reference) {
+        if (!(reference.hasNext())) {
+            __size = 0;
+            __array = Array();
+            return;
+        }
+
+        final var value1 = reference.nextValue();
+        if (!reference.hasNext()) {
+            __size = 1;
+            __array = Array(value1);
+            return;
+        }
+
+        final var value2 = reference.nextValue();
+        if (!reference.hasNext()) {
+            __size = 2;
+            __array = Array(value1, value2);
+            return;
+        }
+
+        __size = (__array = ArrayCreator.getInstance().newArray(reference, value1, value2)).length;
+    }
+
+    //#endregion -------------------- Constructor (minimalist collection iterator) --------------------
 
     //#region -------------------- Constructor (iterator) --------------------
 
