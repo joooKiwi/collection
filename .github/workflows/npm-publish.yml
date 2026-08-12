@@ -33,16 +33,16 @@ jobs:
         run: npm --prefix ${{matrix.path}} ci
 
       - name: Running the Collection tests
-        run: npm --prefix ${{matrix.path}} test-collection
+        run: npm --prefix ${{matrix.path}} run test-collection
 
       - name: Running the Iterator tests
-        run: npm --prefix ${{matrix.path}} test-iterator
+        run: npm --prefix ${{matrix.path}} run test-iterator
 
       - name: Running the Tuple tests
-        run: npm --prefix ${{matrix.path}} test-tuple
+        run: npm --prefix ${{matrix.path}} run test-tuple
 
       - name: Running the methods tests
-        run: npm --prefix ${{matrix.path}} test-is
+        run: npm --prefix ${{matrix.path}} run test-is
 
   publish-npm:
     needs: build
