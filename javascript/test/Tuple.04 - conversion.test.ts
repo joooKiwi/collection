@@ -17,7 +17,7 @@ import {Empty}               from "../src/tuple/Empty"
 import {Tuple_1}             from "./instance/Tuple_1"
 import {Tuple_2}             from "./instance/Tuple_2"
 
-describe("Tuple (conversion)", () => {
+describe("TupleTest (conversion)", () => {
 
     describe("Empty", () => {
         const instance = Empty.get

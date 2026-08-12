@@ -3571,7 +3571,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return EmptyCollectionHolder.get
         if (n === -1)
             return new CollectionHolderOf1(this.value1,)
-        return EmptyCollectionHolder.get
+        return this
     }
 
     //#endregion -------------------- Drop last --------------------
@@ -3987,14 +3987,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         if (transform == null)
             if (limit == null)
-                return this._joinToString_core(prefix ?? '[', separator ?? ", ", postfix ?? ']',)
+                return this._joinToString_core(separator ?? ", ", prefix ?? '[', postfix ?? ']',)
             else {
                 const lastIndex = __getLastIndex(limit,)
                 if (lastIndex === 0)
                     return this._joinToString_truncated0(prefix ?? '[', postfix ?? ']', truncated ?? '…',)
                 if (lastIndex === 1)
                     return this._joinToString_truncated1(separator ?? ", ", prefix ?? '[', postfix ?? ']', truncated ?? '…',)
-                return this._joinToString_core(prefix ?? '[', separator ?? ", ", postfix ?? ']',)
+                return this._joinToString_core(separator ?? ", ", prefix ?? '[', postfix ?? ']',)
             }
         if (limit == null)
             return this._joinToString_transform(separator ?? ", ", prefix ?? '[', postfix ?? ']', transform,)

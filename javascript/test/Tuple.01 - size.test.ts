@@ -16,7 +16,7 @@ import {Tuple_1Follower} from "./instance/Tuple_1.follower"
 import {Tuple_2}         from "./instance/Tuple_2"
 import {Tuple_2Follower} from "./instance/Tuple_2.follower"
 
-describe("Tuple (size)", () => {
+describe("TupleTest (size)", () => {
 
     describe("Empty", () => {
         const instance = Empty.get

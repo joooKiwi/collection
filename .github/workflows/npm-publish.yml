@@ -32,8 +32,17 @@ jobs:
       - name: Installation of the dependencies (for NPM)
         run: npm --prefix ${{matrix.path}} ci
 
-      - name: Running the tests
-        run: npm --prefix ${{matrix.path}} test
+      - name: Running the Collection tests
+        run: npm --prefix ${{matrix.path}} run test-collection
+
+      - name: Running the Iterator tests
+        run: npm --prefix ${{matrix.path}} run test-iterator
+
+      - name: Running the Tuple tests
+        run: npm --prefix ${{matrix.path}} run test-tuple
+
+      - name: Running the methods tests
+        run: npm --prefix ${{matrix.path}} run test-is
 
   publish-npm:
     needs: build

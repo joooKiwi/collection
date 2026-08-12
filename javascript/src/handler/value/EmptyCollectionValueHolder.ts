@@ -12,11 +12,11 @@
 
 import type {ValueHolder} from "./ValueHolder"
 
-import {EmptyCollectionException} from "../../exception/EmptyCollectionException"
+import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsException"
 
 /**
  * A {@link ValueHolder} meant to not hold a {@link value},
- * throw a {@link EmptyCollectionException}
+ * throw a {@link IndexOutOfBoundsException} (with {@link EmptyCollectionException.DEFAULT_MESSAGE})
  * and give if it {@link isForbidden is forbidden}
  *
  * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
@@ -46,8 +46,8 @@ export class EmptyCollectionValueHolder
         return this.#isForbidden = false
     }
 
-    public get cause(): EmptyCollectionException<number> {
-        return new EmptyCollectionException(null, this.#index,)
+    public get cause(): IndexOutOfBoundsException<number> {
+        return new IndexOutOfBoundsException("Empty collection. No element at any index could be found since it it empty.", this.#index,)
     }
 
 }
