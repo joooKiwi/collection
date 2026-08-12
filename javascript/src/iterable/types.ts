@@ -22,7 +22,7 @@ import type {IterableWithSize}         from "./IterableWithSize"
  *
  * @see PossibleIterableWithSize
  */
-export type PossibleIterableWithPossibleSize<T, > = | Iterable<T>
+export type PossibleIterableWithPossibleSize<T, > = | Iterable<T, unknown, unknown>
                                                     | PossibleIterableWithSize<T>
 
 /**

@@ -12,7 +12,7 @@
 
 import type {BooleanCallback, ReverseBooleanCallback} from "../../src/type/callback"
 
-export const callbackIsEven: ReverseBooleanCallback<unknown> = it => it % 2 === 0
+export const callbackIsEven: ReverseBooleanCallback<unknown> = i => i % 2 === 0
 export const callbackIsOdd: ReverseBooleanCallback<unknown> = i => i % 2 !== 0
 
 export const callbackIsEvenAlt: BooleanCallback<unknown> = (_, i,) => i % 2 === 0

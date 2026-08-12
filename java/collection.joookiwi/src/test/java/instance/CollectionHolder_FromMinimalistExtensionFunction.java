@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
+import test.Types;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
@@ -27,7 +28,7 @@ public final class CollectionHolder_FromMinimalistExtensionFunction<T extends @N
     /// Tell that the instance is a **not** viewer instance
     public static final boolean IS_VIEWER = false;
     /// The simplified named to be used in the test “ParameterizedTest” or “ParameterizedClass”
-    public static final String SIMPLIFIED_NAME = "minimalist extension";
+    public static final String SIMPLIFIED_NAME = Types.MINIMALIST_EXTENSION;
 
     public CollectionHolder_FromMinimalistExtensionFunction(final T @Unmodifiable [] array) { super(array); }
 

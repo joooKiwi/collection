@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionHolder}           from "../CollectionHolder"
@@ -33,11 +33,11 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
-export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, value: T,): boolean {
+export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, value: T,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -65,8 +65,8 @@ export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: T,): boolean {
@@ -74,7 +74,7 @@ export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     return __validate(collection, value, size,)
 }
@@ -89,8 +89,8 @@ export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function hasByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: T,): boolean {
@@ -111,16 +111,16 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
-export function hasByArray<const T, >(collection: Nullable<readonly T[]>, value: T,): boolean {
+export function hasByArray<const T, >(collection: Nullable<Array<T>>, value: T,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     return __validateByArray(collection, value, size,)
 }
@@ -136,7 +136,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, value:
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], value: T, size: number,) {
+function __validateByArray<const T, >(collection: Array<T>, value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] === value)

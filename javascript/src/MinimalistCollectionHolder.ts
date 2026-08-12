@@ -13,7 +13,7 @@
 /**
  * A minimalistic declaration of the {@link CollectionHolder}
  *
- * @param T The type (by default <em>unknown</em>)
+ * @param T The type (by default `unknown`)
  */
 export interface MinimalistCollectionHolder<out T = unknown, > {
 
@@ -25,11 +25,11 @@ export interface MinimalistCollectionHolder<out T = unknown, > {
      * @see ReadonlyMap.size
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/size.html Kotlin Collection.size()
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/size.html Kotlin Map.size()
-     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#size() Java Collection.size()
-     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#size() Java Map.size()
+     * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#size() Java Collection.size()
+     * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Map.html#size() Java Map.size()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      */
-    get size(): number
+    readonly size: number
 
     /**
      * Get the element at the specified index in the {@link MinimalistCollectionHolder collection}
@@ -40,7 +40,7 @@ export interface MinimalistCollectionHolder<out T = unknown, > {
      * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.at
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html Kotlin get(index)
-     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#get(int) Java get(index)
+     * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/List.html#get(int) Java get(index)
      * @canReceiveNegativeValue
      */
     get(index: number,): T

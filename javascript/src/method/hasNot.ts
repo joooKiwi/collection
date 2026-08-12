@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionHolder}           from "../CollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
  */
-export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, value: T,): boolean {
+export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, value: T,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -60,7 +60,7 @@ export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullab
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
     return __validate(collection, value, size,)
 }
@@ -87,12 +87,12 @@ export function hasNotByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
  */
-export function hasNotByArray<const T, >(collection: Nullable<readonly T[]>, value: T,): boolean {
+export function hasNotByArray<const T, >(collection: Nullable<Array<T>>, value: T,): boolean {
     if (collection == null)
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
     return __validateByArray(collection, value, size,)
 }
@@ -108,7 +108,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, value:
     return true
 }
 
-function __validateByArray<const T, >(collection: readonly T[], value: T, size: number,) {
+function __validateByArray<const T, >(collection: Array<T>, value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] === value)

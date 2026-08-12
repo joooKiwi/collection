@@ -33,6 +33,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @see CollectionHandlerByIterable
  * @see CollectionHandlerByIterableWithSizeOf1
  * @see CollectionHandlerByIterableWithSizeOf2
+ * @deprecated Replace with {@link JsIterableAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByIterableWithSize<const T = unknown,
     const REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>,
@@ -53,7 +54,7 @@ export class CollectionHandlerByIterableWithSize<const T = unknown,
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {
         super(collection, reference,)
         this.#size = size
-        if (size == 0) {
+        if (size === 0) {
             this.#hasFinished = this.#isEmpty = true
             this.#hasNull = this.#hasDuplicate = false
             return
@@ -127,9 +128,9 @@ export class CollectionHandlerByIterableWithSize<const T = unknown,
 
         if (Number.isNaN(index,))
             return new NaNIndexValueHolder(index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             return new NegativeInfinityIndexValueHolder(index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             return new PositiveInfinityIndexValueHolder(index,)
 
         const collection = this._collection
@@ -137,7 +138,7 @@ export class CollectionHandlerByIterableWithSize<const T = unknown,
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
-        if (index == size)
+        if (index === size)
             return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
@@ -148,7 +149,7 @@ export class CollectionHandlerByIterableWithSize<const T = unknown,
 
             const lastIndexRetrieved = this._lastIndexRetrieved
             const iterator = this._iterator
-            let iteratorIndex = lastIndexRetrieved == -1 ? -1 : lastIndexRetrieved
+            let iteratorIndex = lastIndexRetrieved === -1 ? -1 : lastIndexRetrieved
             let iteratorValue: IteratorResult<T, unknown>
             while (!(iteratorValue = iterator.next()).done) {
                 const value = collection[++iteratorIndex] = iteratorValue.value
@@ -176,7 +177,7 @@ export class CollectionHandlerByIterableWithSize<const T = unknown,
 
         const lastIndexRetrieved = this._lastIndexRetrieved
         const iterator = this._iterator
-        let iteratorIndex = lastIndexRetrieved == -1 ? -1 : lastIndexRetrieved
+        let iteratorIndex = lastIndexRetrieved === -1 ? -1 : lastIndexRetrieved
         let iteratorValue: IteratorResult<T, unknown>
         while (!(iteratorValue = iterator.next()).done) {
             const value = collection[++iteratorIndex] = iteratorValue.value

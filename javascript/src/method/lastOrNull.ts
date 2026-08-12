@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {findLastOrNull, findLastOrNullByArray, findLastOrNullByCollectionHolder,
  * @extensionFunction
  * @facadeFunction
  */
-export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): NullOr<T>
+export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): NullOr<T>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -46,7 +46,7 @@ export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectio
  * @extensionFunction
  * @facadeFunction
  */
-export function lastOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function lastOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -60,8 +60,8 @@ export function lastOrNull<const T, const S extends T, >(collection: Nullable<| 
  * @extensionFunction
  * @facadeFunction
  */
-export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getLastOrNull(collection,)
     return findLastOrNull(collection, predicate,)
@@ -170,7 +170,7 @@ export function lastOrNullByCollectionHolder<const T, >(collection: Nullable<Col
  * @extensionFunction
  * @facadeFunction
  */
-export function lastOrNullByArray<const T, >(collection: Nullable<readonly T[]>,): NullOr<T>
+export function lastOrNullByArray<const T, >(collection: Nullable<Array<T>>,): NullOr<T>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -185,7 +185,7 @@ export function lastOrNullByArray<const T, >(collection: Nullable<readonly T[]>,
  * @extensionFunction
  * @facadeFunction
  */
-export function lastOrNullByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function lastOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -199,8 +199,8 @@ export function lastOrNullByArray<const T, const S extends T, >(collection: Null
  * @extensionFunction
  * @facadeFunction
  */
-export function lastOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function lastOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function lastOrNullByArray<const T, >(collection: Nullable<Array<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+export function lastOrNullByArray<const T, >(collection: Nullable<Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getLastOrNullByArray(collection,)
     return findLastOrNullByArray(collection, predicate,)

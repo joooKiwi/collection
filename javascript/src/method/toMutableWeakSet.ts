@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, MutableWeakSet, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}                    from "./isMinimalistCol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): WeakSet<T> {
+export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): MutableWeakSet<T> {
     if (collection == null)
         return new WeakSet()
     if (isCollectionHolder(collection,))
@@ -54,12 +54,12 @@ export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >(collection: Nullable<MinimalistCollectionHolder<T>>,): WeakSet<T> {
+export function toMutableWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >(collection: Nullable<MinimalistCollectionHolder<T>>,): MutableWeakSet<T> {
     if (collection == null)
         return new WeakSet()
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return new WeakSet()
     return __withDuplicate(collection, size,)
 }
@@ -70,7 +70,7 @@ export function toMutableWeakSetByMinimalistCollectionHolder<const T extends Wea
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableWeakSetByCollectionHolder<const T extends WeakKey, >(collection: Nullable<CollectionHolder<T>>,): WeakSet<T> {
+export function toMutableWeakSetByCollectionHolder<const T extends WeakKey, >(collection: Nullable<CollectionHolder<T>>,): MutableWeakSet<T> {
     if (collection == null)
         return new WeakSet()
     if (collection.isEmpty)
@@ -86,12 +86,12 @@ export function toMutableWeakSetByCollectionHolder<const T extends WeakKey, >(co
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableWeakSetByArray<const T extends WeakKey, >(collection: Nullable<readonly T[]>,): WeakSet<T> {
+export function toMutableWeakSetByArray<const T extends WeakKey, >(collection: Nullable<Array<T>>,): MutableWeakSet<T> {
     if (collection == null)
         return new WeakSet()
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return new WeakSet()
     return __withDuplicateByArray(collection, size,)
 }
@@ -99,16 +99,16 @@ export function toMutableWeakSetByArray<const T extends WeakKey, >(collection: N
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Core method --------------------
 
-function __withDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): WeakSet<T> {
+function __withDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return new WeakSet(__uniqueValues(collection, size,),)
 }
 
-function __withDuplicateByArray<const T extends WeakKey, >(collection: readonly T[], size: number,): WeakSet<T> {
+function __withDuplicateByArray<const T extends WeakKey, >(collection: Array<T>, size: number,) {
     return new WeakSet(__uniqueValuesByArray(collection, size,),)
 }
 
 
-function __withoutDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): WeakSet<T> {
+function __withoutDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return new WeakSet(__values(collection, size,),)
 }
 

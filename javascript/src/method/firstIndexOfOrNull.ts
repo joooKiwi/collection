@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullOrNumber} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber, NullOrNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -38,7 +38,7 @@ import {isMinimalistCollectionHolder}               from "./isMinimalistCollecti
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
+export function firstIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (to == null)
@@ -120,7 +120,7 @@ export function firstIndexOfOrNullByCollectionHolder<const T, >(collection: Null
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfOrNullByArray<const T, >(collection: Nullable<readonly T[]>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
+export function firstIndexOfOrNullByArray<const T, >(collection: Nullable<Array<T>>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (to == null)
@@ -138,7 +138,7 @@ export function firstIndexOfOrNullByArray<const T, >(collection: Nullable<readon
 
 //#region -------------------- element --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T,) {
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, element,)
     if (isArray(collection,))
@@ -166,7 +166,7 @@ function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, e
     return __findInRange(collection, element, 0, collection.size - 1,)
 }
 
-function __core0ByArray<const T, >(collection: readonly T[], element: T,): NullOrNumber {
+function __core0ByArray<const T, >(collection: Array<T>, element: T,): NullOrNumber {
     const size = collection.length
     if (size === 0)
         return null
@@ -176,7 +176,7 @@ function __core0ByArray<const T, >(collection: readonly T[], element: T,): NullO
 //#endregion -------------------- element --------------------
 //#region -------------------- element, from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, from: number,) {
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, element, from,)
     if (isArray(collection,))
@@ -213,7 +213,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, e
     return __findInRange(collection, element, startingIndex, size - 1,)
 }
 
-function __core1ByArray<const T, >(collection: readonly T[], element: T, from: number,) {
+function __core1ByArray<const T, >(collection: Array<T>, element: T, from: number,) {
     const size = collection.length
     if (size === 0)
         return null
@@ -227,7 +227,7 @@ function __core1ByArray<const T, >(collection: readonly T[], element: T, from: n
 //#endregion -------------------- element, from --------------------
 //#region -------------------- element, from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, from: number, to: number,) {
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, element, from, to,)
     if (isArray(collection,))
@@ -276,7 +276,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, e
     return __findInRange(collection, element, startingIndex, endingIndex,)
 }
 
-function __core2ByArray<const T, >(collection: readonly T[], element: T, from: number, to: number,) {
+function __core2ByArray<const T, >(collection: Array<T>, element: T, from: number, to: number,) {
     const size = collection.length
     if (size === 0)
         return null
@@ -296,7 +296,7 @@ function __core2ByArray<const T, >(collection: readonly T[], element: T, from: n
 //#endregion -------------------- element, from, to --------------------
 //#region -------------------- element, to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, to: number,) {
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, element, to,)
     if (isArray(collection,))
@@ -332,7 +332,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
     return __findInRange(collection, element, 0, endingIndex,)
 }
 
-function __coreWithNoFromByArray<const T, >(collection: readonly T[], element: T, to: number,) {
+function __coreWithNoFromByArray<const T, >(collection: Array<T>, element: T, to: number,) {
     const size = collection.length
     if (size === 0)
         return null
@@ -356,7 +356,7 @@ function __findInRange<const T, >(collection: MinimalistCollectionHolder<T>, ele
     return null
 }
 
-function __findInRangeByArray<const T, >(collection: readonly T[], element: T, startingIndex: number, endingIndex: number,) {
+function __findInRangeByArray<const T, >(collection: Array<T>, element: T, startingIndex: number, endingIndex: number,) {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (collection[index] === element)

@@ -1,3 +1,4 @@
+import condition.DisableIfArrayCondition;
 import condition.DisableIfNormalCondition;
 import condition.DisableIfNormalViewerCondition;
 import instance.CollectionHolderForTest;
@@ -119,8 +120,8 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("() → boolean")       @Test void test0Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some(callback0AsTrue)).amountOfCall); }
             }
 
-            @Test void any() { assertEquals(1, new GenericCollectionHolder_IsEmptyAlias().execute(CollectionHolder::any).getAmountOfCall()); }
-            @Test void none() { assertEquals(1, new GenericCollectionHolder_IsNotEmptyAlias().execute(CollectionHolder::none).getAmountOfCall()); }
+            @Test void any() { assertEquals(1, new GenericCollectionHolder_IsNotEmptyAlias().execute(CollectionHolder::any).getAmountOfCall()); }
+            @Test void none() { assertEquals(1, new GenericCollectionHolder_IsEmptyAlias().execute(CollectionHolder::none).getAmountOfCall()); }
         }
 
 //        @Nested class every {
@@ -186,7 +187,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         //#endregion -------------------- Required test configuration --------------------
 
-        @ExtendWith({DisableIfNormalCondition.class, DisableIfNormalViewerCondition.class,})
+        @ExtendWith({DisableIfNormalCondition.class, DisableIfArrayCondition.class, DisableIfNormalViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
             public final instances rootInstance = instances.this;
 

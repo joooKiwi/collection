@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOr, NullOrUndefined, UndefinedOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr, NullOrUndefined, UndefinedOr} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -131,7 +131,7 @@ export function requireNoNulls<const T, >(collection: Nullable<MinimalistCollect
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNulls<const T, >(collection: readonly T[],): readonly NonNullable<T>[]
+export function requireNoNulls<const T, >(collection: Array<T>,): Array<NonNullable<T>>
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
@@ -142,7 +142,7 @@ export function requireNoNulls<const T, >(collection: readonly T[],): readonly N
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNulls<const T, >(collection: NullOr<readonly T[]>,): NullOr<readonly NonNullable<T>[]>
+export function requireNoNulls<const T, >(collection: NullOr<Array<T>>,): NullOr<Array<NonNullable<T>>>
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
@@ -153,7 +153,7 @@ export function requireNoNulls<const T, >(collection: NullOr<readonly T[]>,): Nu
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNulls<const T, >(collection: UndefinedOr<readonly T[]>,): UndefinedOr<readonly NonNullable<T>[]>
+export function requireNoNulls<const T, >(collection: UndefinedOr<Array<T>>,): UndefinedOr<Array<NonNullable<T>>>
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
@@ -164,8 +164,8 @@ export function requireNoNulls<const T, >(collection: UndefinedOr<readonly T[]>,
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNulls<const T, >(collection: Nullable<readonly T[]>,): Nullable<readonly NonNullable<T>[]>
-export function requireNoNulls<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,) {
+export function requireNoNulls<const T, >(collection: Nullable<Array<T>>,): Nullable<Array<NonNullable<T>>>
+export function requireNoNulls<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,) {
     if (collection == null)
         return collection
 
@@ -287,7 +287,7 @@ export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection
         return collection
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return collection
 
     let index = -1
@@ -381,7 +381,7 @@ export function requireNoNullsByArray<const INSTANCE extends NullOrUndefined = N
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNullsByArray<const T, >(collection: readonly Nullable<T>[],): readonly NonNullable<T>[]
+export function requireNoNullsByArray<const T, >(collection: readonly Nullable<T>[],): Array<NonNullable<T>>
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
@@ -392,7 +392,7 @@ export function requireNoNullsByArray<const T, >(collection: readonly Nullable<T
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNullsByArray<const T, >(collection: NullOr<readonly Nullable<T>[]>,): NullOr<readonly NonNullable<T>[]>
+export function requireNoNullsByArray<const T, >(collection: NullOr<readonly Nullable<T>[]>,): NullOr<Array<NonNullable<T>>>
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
@@ -403,7 +403,7 @@ export function requireNoNullsByArray<const T, >(collection: NullOr<readonly Nul
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNullsByArray<const T, >(collection: UndefinedOr<readonly Nullable<T>[]>,): UndefinedOr<readonly NonNullable<T>[]>
+export function requireNoNullsByArray<const T, >(collection: UndefinedOr<readonly Nullable<T>[]>,): UndefinedOr<Array<NonNullable<T>>>
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
@@ -414,13 +414,13 @@ export function requireNoNullsByArray<const T, >(collection: UndefinedOr<readonl
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNullsByArray<const T, >(collection: Nullable<readonly Nullable<T>[]>,): Nullable<readonly NonNullable<T>[]>
+export function requireNoNullsByArray<const T, >(collection: Nullable<readonly Nullable<T>[]>,): Nullable<Array<NonNullable<T>>>
 export function requireNoNullsByArray<const T, >(collection: Nullable<readonly Nullable<T>[]>,) {
     if (collection == null)
         return collection
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return collection
 
     let index = -1

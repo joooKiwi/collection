@@ -81,7 +81,12 @@ Another note: _Some parts may be incomplete due to some research that has to be 
 The methods directly associated to a size
  - `size`|`length`|`count`()
  - `isEmpty`()
- - `isNotEmpty`()
+ - `isNotEmpty`|`hasAtLeast1Element`|`containsAtLeast1Element`|`includesAtLeast1Element`()
+ - `hasExactly1Element`|`containsExactly1Element`|`includesExactly1Element`()
+ - `hasAtMost1Element`|`containsAtMost1Element`|`includesAtMost1Element`()
+ - `hasAtLeast2Elements`|`containsAtLeast2Elements`|`includesAtLeast2Elements`()
+ - `hasExactly2Elements`|`containsExactly2Elements`|`includesExactly2Elements`()
+ - `hasAtMost2Elements`|`containsAtMost2Elements`|`includesAtMost2Elements`()
 
 <details><summary>get size()<br/>get length()<br/>get count()</summary>
 
@@ -117,6 +122,63 @@ The methods directly associated to a size
 | **C#**         | `!iEnumerable.Any()`                                                  |
 
 </details>
+<br/>
+<details><summary>get hasExactly1Element()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length === 1`<br/>`set.size === 1`                 |
+| **Java**       | `array.length == 1`<br/>`collection.size() == 1`          |
+| **Kotlin**     | `array.size === 1`<br/>`collection.size === 1`            |
+| **PHP**        | `sizeof($array) == 1`                                     |
+| **C#**         | `iEnumerable.Count() == 1`<br/>`iCollection.Count() == 1` |
+
+</details>
+<details><summary>get hasAtMost1Element()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length <= 1`<br/>`set.size <= 1`                   |
+| **Java**       | `array.length <= 1`<br/>`collection.size() <= 1`          |
+| **Kotlin**     | `array.size <= 1`<br/>`collection.size <= 1`              |
+| **PHP**        | `sizeof($array) <= 1`                                     |
+| **C#**         | `iEnumerable.Count() <= 1`<br/>`iCollection.Count() <= 1` |
+
+</details>
+<br/>
+<details><summary>get hasAtLeast2Elements()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length >= 2`<br/>`set.size >= 2`                   |
+| **Java**       | `array.length >= 2`<br/>`collection.size() >= 2`          |
+| **Kotlin**     | `array.size >= 2`<br/>`collection.size >= 2`              |
+| **PHP**        | `sizeof($array) >= 2`                                     |
+| **C#**         | `iEnumerable.Count() >= 2`<br/>`iCollection.Count() >= 2` |
+
+</details>
+<details><summary>get hasExactly2Elements()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length === 2`<br/>`set.size === 2`                 |
+| **Java**       | `array.length == 2`<br/>`collection.size() == 2`          |
+| **Kotlin**     | `array.size === 2`<br/>`collection.size === 2`            |
+| **PHP**        | `sizeof($array) == 2`                                     |
+| **C#**         | `iEnumerable.Count() == 2`<br/>`iCollection.Count() == 2` |
+
+</details>
+<details><summary>get hasAtMost2Elements()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length <= 2`<br/>`set.size <= 2`                   |
+| **Java**       | `array.length <= 2`<br/>`collection.size() <= 2`          |
+| **Kotlin**     | `array.size <= 2`<br/>`collection.size <= 2`              |
+| **PHP**        | `sizeof($array) <= 2`                                     |
+| **C#**         | `iEnumerable.Count() <= 2`<br/>`iCollection.Count() <= 2` |
+
+</details>
 
 ### Research methods
 
@@ -125,6 +187,8 @@ The methods are made to find an element or giving a value
  - `getFirst`|`first`()
  - `getLast`|`last`()
  - `getOrElse`|`atOrElse`|`elementAtOrElse`(index, defaultValue)
+ - `getFirstOrElse`(defaultValue)
+ - `getLastOrElse`(defaultValue)
  - `getOrDefault`|`atOrDefault`|`elementAtOrDefault`(index)
  - `getOrNull`|`atOrNull`|`elementAtOrNull`(index)
  - `getFirstOrDefault`|`firstOrDefault`()
@@ -184,6 +248,28 @@ The methods are made to find an element or giving a value
 | **Kotlin**     | <ul><li>[Array.elementAtOrElse(index, defaultValue)<br/>Iterable.elementAtOrElse(index, defaultValue)<br/>List.elementAtOrElse(index, defaultValue)][kotlin-get-or-else-2]<li>[Array.getOrElse(index, defaultValue)<br/>List.getOrElse(index, defaultValue)][kotlin-get-or-else-1] |
 | **PHP**        | `array_key_exists($index, $array) ? $array[$index] : defaultValue()`                                                                                                                                                                                                               |
 | **C#**         | `enumerable.ElementAtOrDefault(index) ?? defaultValue()`                                                                                                                                                                                                                           |
+
+</details>
+<details><summary>getFirstOrElse(defaultValue)</summary>
+
+| Language       | Equivalent                                                 |
+|:---------------|:-----------------------------------------------------------|
+| **Javascript** | `0 in array ? array[0] : defaultValue()`                   |
+| **Java**       | `size >= 1 ? array[0] : defaultValue()`                    |
+| **Kotlin**     | `array.getOrElse(0, defaultValue)`                         |
+| **PHP**        | `array_key_exists(0, $array) ? $array[0] : defaultValue()` |
+| **C#**         | `enumerable.ElementAtOrDefault(0) ?? defaultValue()`       |
+
+</details>
+<details><summary>getLastOrElse(defaultValue)</summary>
+
+| Language       | Equivalent                                                               |
+|:---------------|:-------------------------------------------------------------------------|
+| **Javascript** | `size - 1 in array[size - 1] : throw `                                   |
+| **Java**       | `collection.stream().reduce((_, it) -> it).orElse(defaultValue)`         |
+| **Kotlin**     | `array.getOrElse(size - 1, defaultValue)`                                |
+| **PHP**        | `array_key_exists(size - 1, $array) ? $array[size - 1] : defaultValue()` |
+| **C#**         | `enumerable.ElementAtOrDefault(size - 1) ?? defaultValue()`              |
 
 </details>
 <br/>
@@ -1263,15 +1349,19 @@ return null;
 ### Validation methods
 
 The methods are made to do validation on type, value or comparison
- - `all`|`every`()
+ - `all`|`every`(predicate)
  - `any`|`some`(predicate?)
  - `none`(predicate?)
  - `hasNull`|`containsNull`|`includesNull`()
+ - `hasNoNulls`|`containsNoNulls`|`includesNoNulls`()
  - `hasDuplicate`|`containsDuplicate`|`includesDuplicate`()
+ - `hasNoDuplicates`|`containsNoDuplicates`|`includesNoDuplicates`()
  - `has`|`contains`|`includes`(value)
  - `hasNot`|`containsNot`|`includesNot`(value)
  - `hasOne`|`containsOne`|`includesOne`(values)
+ - `hasNotOne`|`containsNotOne`|`includesNotOne`(values)
  - `hasAll`|`containsAll`|`includesAll`(values)
+ - `hasNotAll`|`containsNotAll`|`includesNotAll`(values)
  - `requireNoNulls`()
 
 <details><summary>all(predicate)</summary>
@@ -1339,6 +1429,16 @@ The methods are made to do validation on type, value or comparison
 | **Kotlin**     | _N/A_                                                                          |
 | **PHP**        | `in_array(null, $array, true)`                                                 |
 | **C#**         | `enumerable.Contains(null)`<br/>`list.Contains(null)`<br/>`set.Contains(null)` |
+</details>
+<details><summary>hasNoNull()</summary>
+
+| Language       | Equivalent                                                                        |
+|:---------------|:----------------------------------------------------------------------------------|
+| **Javascript** | `!array.includes(null,)`                                                          |
+| **Java**       | `!collection.contains(null)`                                                      |
+| **Kotlin**     | _N/A_                                                                             |
+| **PHP**        | `!in_array(null, $array, true)`                                                   |
+| **C#**         | `!enumerable.Contains(null)`<br/>`!list.Contains(null)`<br/>`!set.Contains(null)` |
 </details>
 <details><summary>hasDuplicate()</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
@@ -1416,6 +1516,82 @@ return false
 ```
 </td></tr>
 </table></details>
+<details><summary>hasNoDuplicates()</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+const temporaryArray = new Array(size,)
+temporaryArray[0] = array[0]
+let amountOfItemAdded = 1
+let index = 0
+while (++index < size) {
+    const value = array[index]
+    let index2 = -1
+    while (++index2 < amountOfItemAdded)
+        if (temporaryArray[index2] === value)
+            return false
+  temporaryArray[amountOfItemAdded++] = value
+}
+return true
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+final var temporaryArray = (T[]) new Object[size]
+temporaryArray[0] = array[0]
+var amountOfItemAdded = 1
+var index = 0
+while (++index < size) {
+    final var value = array[index]
+    var index2 = -1
+    while (++index2 < amountOfItemAdded)
+        if (temporaryArray[index2] == value)
+            return false
+  temporaryArray[amountOfItemAdded++] = value
+}
+return true
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+val temporaryArray = arrayOfNulls<T>(size,)
+temporaryArray[0] = array[0]
+var amountOfItemAdded = 1
+var index = 0
+while (++index < size) {
+    val value = array[index]
+    var index2 = -1
+    while (++index2 < amountOfItemAdded)
+        if (temporaryArray[index2] == value)
+            return false
+  temporaryArray[amountOfItemAdded++] = value
+}
+return true
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+var temporaryArray = new T[size]
+temporaryArray[0] = array[0]
+var amountOfItemAdded = 1
+var index = 0
+while (++index < size) {
+    var value = array[index]
+    var index2 = -1
+    while (++index2 < amountOfItemAdded)
+        if (temporaryArray[index2] == value)
+            return false
+  temporaryArray[amountOfItemAdded++] = value
+}
+return true
+```
+</td></tr>
+</table></details>
 <br/>
 
 <details><summary>has(value)</summary>
@@ -1451,6 +1627,17 @@ return false
 | **C#**         | `enumerable.Any(it => values.Contains(it))` |
 
 </details>
+<details><summary>hasNotOne(values)</summary>
+
+| Language       | Equivalent                                   |
+|:---------------|:---------------------------------------------|
+| **Javascript** | `!array.some(it => values.includes(it,),)`   |
+| **Java**       | `!list.stream().anyMatch(values::contains)`  |
+| **Kotlin**     | `!array.any { it in values }`                |
+| **PHP**        |                                              |
+| **C#**         | `!enumerable.Any(it => values.Contains(it))` |
+
+</details>
 <details><summary>hasAll(values)</summary>
 
 | Language       | Equivalent                                               |
@@ -1460,6 +1647,17 @@ return false
 | **Kotlin**     | <ul><li>[Collection.containsAll(values)][kotlin-has-all] |
 | **PHP**        |                                                          |
 | **C#**         | `enumerable.All(it => values.Contains(it))`              |
+
+</details>
+<details><summary>hasNotAll(values)</summary>
+
+| Language       | Equivalent                                   |
+|:---------------|:---------------------------------------------|
+| **Javascript** | `!array.every(it => values.includes(it,),)`  |
+| **Java**       | `!collection.containsAll(it)`                |
+| **Kotlin**     | `!collection.containsAll(it)`                |
+| **PHP**        |                                              |
+| **C#**         | `!enumerable.All(it => values.Contains(it))` |
 
 </details>
 <br/>
@@ -2407,35 +2605,36 @@ This is the most bare-bones structure
 
 ## Version history
 
-| JS/TS              | Date                 | Quick note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|--------------------|----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [1.14.0][js-v1.14] | Febuary 24th, 2026   | 2026 update,<br/>Handling of `Nullable` for `hasOne`, `hasNotOne`, `hasAll`, `hasNotAll`<br/>Removal of `get collection` in `CollectionIterator`<br/>[lazy][lazy] (~~1.7.1~~ → 1.7.2), [type][type] (~~1.2.1~~ → 1.2.2)                                                                                                                                                                                                                                                                                  |
-| [1.13.0][js-v1.13] | August 12th, 2025    | Shortening of the arguments `fromIndex` → `from` & `toIndex` → `to`<br/>New method `getFirstOrElse`, `getLastOrElse`, `hasNot`, `hasNotAll`, `hasNotOne`, `hasNoNulls`, `hasNoDuplicates`,<br/>Handling of `Iterator` in the process of the framework<br/>[lazy][lazy] (~~1.7.0~~ → 1.7.1), [type][type] (~~1.2.0~~ → 1.2.1)                                                                                                                                                                             |
-| [1.12.0][js-v1.12] | January 8th, 2025    | 2025 update,<br/>New methods for the `Map` and `WeakMap`,<br/>[lazy][lazy] (~~1.6.0~~ → [1.7.0][js-lazy-v1.7]), [type][type] (~~1.1.0~~ → [1.2.0][ts-type-v1.2])                                                                                                                                                                                                                                                                                                                                         |
-| 1.11.3             | December 12th, 2024  | Fix on the `indexOfFirst` having `NullOrNumber` instead of `number` in its return type                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| 1.11.2             | November 19th, 2024  | Fix on the `indexOfFirst` and `indexOfLast` having `NullOrNumber` instead of `number` in its return type                                                                                                                                                                                                                                                                                                                                                                                                 |
-| 1.11.1             | November 7th, 2024   | Fix on the `EMPTY_MAP`, `EMPTY_WEAK_MAP` and `EMPTY_WEAK_SET` in `CollectionConstants` to be applicable to anything                                                                                                                                                                                                                                                                                                                                                                                      |
-| [1.11.0][js-v1.11] | November 7th, 2024   | New methods `firstIndexOfOrNull`, `lastIndexOfOrNull`, `indexOfFirstOrNull`, `indexOfLastOrNull`, `isTypedArray` (_plus the specific type_),<br/>Separation of `first`, `last` into `findFirst`, `findLast`,<br/>Addition of aliases `limit`, `skip`,<br/>Re-addition of the methods (_now as alias_) `findIndex`, `findLastIndex`,<br/>New methods for the aliased methods in `CollectionHolder`<br/>[lazy][lazy] (~~1.5.0~~ → [1.6.0][js-lazy-v1.6]), [type][type] (~~1.0.0~~ → [1.1.0][ts-type-v1.1]) |
-| [1.10.0][js-v1.10] | October 8th, 2024    | New methods `take`, `takeWhile`, `takeLast`, `takeLastWhile`, `drop`, `dropWhile`, `dropLast` and `dropLastWhile`,<br/>New aliases `some` and `every`,<br/>Deprecation of the argument `limit` where there is a `fromIndex` and `toIndex`,<br/>Addition of `Array` to be handled in the `methods`                                                                                                                                                                                                        |
-| 1.9.3              | August 15th, 2024    | Fix on the missing export for `filterNotIndexed`                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| 1.9.2              | July 23rd, 2024      | Fix on an array of 2 on `MinimalistCollectionHolder`,<br/>Fix on the `CollectionIterator` to handle properly when it has 2 values                                                                                                                                                                                                                                                                                                                                                                        |
-| 1.9.1              | July 21st, 2024      | Spread of the deprecation across the inheritor of `CollectionHolder`                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| [1.9.0][js-v1.9]   | July 21st, 2024      | Addition of `hasDuplicate`, `joinToString` for the `CollectionHolder`,<br/>Change on the `CollectionIterator` to use `NullableNumber` instead of `number` for the indexes,<br/>Addition of implementation for the `ValueHolder`,<br/>Deprecation of variadic parameters for `has`, `hasAll` & `hasOne`,<br/>The abstract implementations no longer have fields held,<br/>[lazy][lazy] (~~1.4.0~~ → [1.5.0][js-lazy-v1.5])                                                                                |
-| [1.8.0][js-v1.8]   | March 31st, 2024     | Addition of [type][type] to the dependency                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| 1.7.1              | February 19th, 2024  | Change from `==` to `===` on the `GenericCollectionIterator`                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| [1.7.0][js-v1.7]   | February 19th, 2024  | 2024 update,<br/>New implementation of [MinimalistCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/MinimalistCollectionHolder.ts),<br/>New method `has`,<br/>New aliases `contains`, `includes`, `reversed`, `toReversed`,<br/>New names to the `CollectionHandler`s,<br/>[lazy][lazy] (~~1.2.1~~ → [1.3.0][js-lazy-v1.3])                                                                                                                                              |
-| 1.6.1              | December 23rd, 2023  | Addition of the missing amd (asynchronous module definition) package                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| [1.6.0][js-v1.6]   | December 4th, 2023   | New implementation based on the amount of arguments received in a callback,<br/>New method variant of `toString`,<br/>Deprecation (for removal) of the `newInstance`                                                                                                                                                                                                                                                                                                                                     |
-| [1.5.0][js-v1.5]   | September 28th, 2023 | The `RangeError` and `ReferenceError` has been changed to custom exceptions,<br/>[lazy][lazy] (~~1.1.0~~ → [1.2.0][js-lazy-v1.2])                                                                                                                                                                                                                                                                                                                                                                        |
-| [1.4.0][js-v1.4]   | September 8th, 2023  | Addition of a `limit` on every methods where it has `fromIndex` and `toIndex`,<br/>Change on the `toIndex` to be inclusive instead of exclusive,<br/>New methods `mapNotNull`, `mapNotNullIndexed` and `slice`,<br/>New aliases `elementAt`, `elementAtOrNull` and `elementAtOrElse`                                                                                                                                                                                                                     |
-| [1.3.0][js-v1.3]   | August 14th, 2023    | Small changes on some utility methods,<br/>Addition of `nextValue` and `previousValue` to the `CollectionIterator`                                                                                                                                                                                                                                                                                                                                                                                       |
-| [1.2.0][js-v1.2]   | July 27th, 2023      | Fix on a "for‥of" not working properly                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| [1.1.0][js-v1.1]   | July 23rd, 2023      | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                                                                                                                                                                                                                                                   |
-| 1.0.4              | July 2nd, 2023       | There were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts)                                                                                                                                                                                                                             |
-| 1.0.3              | July 1st, 2023       | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                                                                                                                                                                                                                                              |
-| 1.0.2              | July 1st, 2023       | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                                                                                                                                                                                                                                                |
-| 1.0.1              | July 1st, 2023       | An update based on the new [lazy version][lazy]                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [1.0.0][js-v1]     | July 1st, 2023       | The first version,<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                                                                                                                                                                                                                                                           |
+| JS/TS              | Date                 | Quick note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|--------------------|----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [2.0.0][js-v2.0]   | August 12th, 2026    | Big update to add new instances `CollectionHolderOf`1\|2, `LazyCollectionHolderOf`0Or1\|0Or1Or2\|1\|1Or2\|2, Array\|ArrayOf1\|ArrayOf2\|Set\|SetOf1\|SetOf2\|Minimalist\|Iterator\|JsIterator\|JsIterable`AsCollectionHolder`, `CollectionViewer` & `MinimalistCollectionViewer`,<br/>New iterators `CollectionIteratorOf1` & `CollectionIteratorOf2`,<br/>New methods `hasExactly1Element`, `hasAtMost1Element`, `hasAtLeast2Elements`, `hasExactly2Elements` & `hasAtMost2Elements`,<br/>New tuples `Tuple`, `Couple`, `Monuple` & `Empty`,<br/>New optionals `Optional` and `EmptyOptional`,<br/>[lazy][lazy] (~~1.7.2~~ → 1.7.3) |
+| [1.14.0][js-v1.14] | Febuary 24th, 2026   | 2026 update,<br/>Handling of `Nullable` for `hasOne`, `hasNotOne`, `hasAll`, `hasNotAll`,<br/>Removal of `get collection` in `CollectionIterator`,<br/>[lazy][lazy] (~~1.7.1~~ → 1.7.2), [type][type] (~~1.2.1~~ → 1.2.2)                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [1.13.0][js-v1.13] | August 12th, 2025    | Shortening of the arguments `fromIndex` → `from` & `toIndex` → `to`,<br/>New method `getFirstOrElse`, `getLastOrElse`, `hasNot`, `hasNotAll`, `hasNotOne`, `hasNoNulls`, `hasNoDuplicates`,<br/>Handling of `Iterator` in the process of the framework,<br/>[lazy][lazy] (~~1.7.0~~ → 1.7.1), [type][type] (~~1.2.0~~ → 1.2.1)                                                                                                                                                                                                                                                                                                       |
+| [1.12.0][js-v1.12] | January 8th, 2025    | 2025 update,<br/>New methods for the `Map` and `WeakMap`,<br/>[lazy][lazy] (~~1.6.0~~ → [1.7.0][js-lazy-v1.7]), [type][type] (~~1.1.0~~ → [1.2.0][ts-type-v1.2])                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 1.11.3             | December 12th, 2024  | Fix on the `indexOfFirst` having `NullOrNumber` instead of `number` in its return type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| 1.11.2             | November 19th, 2024  | Fix on the `indexOfFirst` and `indexOfLast` having `NullOrNumber` instead of `number` in its return type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 1.11.1             | November 7th, 2024   | Fix on the `EMPTY_MAP`, `EMPTY_WEAK_MAP` and `EMPTY_WEAK_SET` in `CollectionConstants` to be applicable to anything                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [1.11.0][js-v1.11] | November 7th, 2024   | New methods `firstIndexOfOrNull`, `lastIndexOfOrNull`, `indexOfFirstOrNull`, `indexOfLastOrNull`, `isTypedArray` (_plus the specific type_),<br/>Separation of `first`, `last` into `findFirst`, `findLast`,<br/>Addition of aliases `limit`, `skip`,<br/>Re-addition of the methods (_now as alias_) `findIndex`, `findLastIndex`,<br/>New methods for the aliased methods in `CollectionHolder`<br/>[lazy][lazy] (~~1.5.0~~ → [1.6.0][js-lazy-v1.6]), [type][type] (~~1.0.0~~ → [1.1.0][ts-type-v1.1])                                                                                                                             |
+| [1.10.0][js-v1.10] | October 8th, 2024    | New methods `take`, `takeWhile`, `takeLast`, `takeLastWhile`, `drop`, `dropWhile`, `dropLast` and `dropLastWhile`,<br/>New aliases `some` and `every`,<br/>Deprecation of the argument `limit` where there is a `fromIndex` and `toIndex`,<br/>Addition of `Array` to be handled in the `methods`                                                                                                                                                                                                                                                                                                                                    |
+| 1.9.3              | August 15th, 2024    | Fix on the missing export for `filterNotIndexed`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 1.9.2              | July 23rd, 2024      | Fix on an array of 2 on `MinimalistCollectionHolder`,<br/>Fix on the `CollectionIterator` to handle properly when it has 2 values                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 1.9.1              | July 21st, 2024      | Spread of the deprecation across the inheritor of `CollectionHolder`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [1.9.0][js-v1.9]   | July 21st, 2024      | Addition of `hasDuplicate`, `joinToString` for the `CollectionHolder`,<br/>Change on the `CollectionIterator` to use `NullableNumber` instead of `number` for the indexes,<br/>Addition of implementation for the `ValueHolder`,<br/>Deprecation of variadic parameters for `has`, `hasAll` & `hasOne`,<br/>The abstract implementations no longer have fields held,<br/>[lazy][lazy] (~~1.4.0~~ → [1.5.0][js-lazy-v1.5])                                                                                                                                                                                                            |
+| [1.8.0][js-v1.8]   | March 31st, 2024     | Addition of [type][type] to the dependency                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 1.7.1              | February 19th, 2024  | Change from `==` to `===` on the `GenericCollectionIterator`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [1.7.0][js-v1.7]   | February 19th, 2024  | 2024 update,<br/>New implementation of [MinimalistCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/MinimalistCollectionHolder.ts),<br/>New method `has`,<br/>New aliases `contains`, `includes`, `reversed`, `toReversed`,<br/>New names to the `CollectionHandler`s,<br/>[lazy][lazy] (~~1.2.1~~ → [1.3.0][js-lazy-v1.3])                                                                                                                                                                                                                                                                          |
+| 1.6.1              | December 23rd, 2023  | Addition of the missing amd (asynchronous module definition) package                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [1.6.0][js-v1.6]   | December 4th, 2023   | New implementation based on the amount of arguments received in a callback,<br/>New method variant of `toString`,<br/>Deprecation (for removal) of the `newInstance`                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [1.5.0][js-v1.5]   | September 28th, 2023 | The `RangeError` and `ReferenceError` has been changed to custom exceptions,<br/>[lazy][lazy] (~~1.1.0~~ → [1.2.0][js-lazy-v1.2])                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| [1.4.0][js-v1.4]   | September 8th, 2023  | Addition of a `limit` on every methods where it has `fromIndex` and `toIndex`,<br/>Change on the `toIndex` to be inclusive instead of exclusive,<br/>New methods `mapNotNull`, `mapNotNullIndexed` and `slice`,<br/>New aliases `elementAt`, `elementAtOrNull` and `elementAtOrElse`                                                                                                                                                                                                                                                                                                                                                 |
+| [1.3.0][js-v1.3]   | August 14th, 2023    | Small changes on some utility methods,<br/>Addition of `nextValue` and `previousValue` to the `CollectionIterator`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [1.2.0][js-v1.2]   | July 27th, 2023      | Fix on a "for‥of" not working properly                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| [1.1.0][js-v1.1]   | July 23rd, 2023      | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| 1.0.4              | July 2nd, 2023       | There were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts)                                                                                                                                                                                                                                                                                                                                                         |
+| 1.0.3              | July 1st, 2023       | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 1.0.2              | July 1st, 2023       | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| 1.0.1              | July 1st, 2023       | An update based on the new [lazy version][lazy]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [1.0.0][js-v1]     | July 1st, 2023       | The first version,<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 <!-- Version references -->
 
@@ -2460,7 +2659,7 @@ This is the most bare-bones structure
 [js-lazy-v1.3]: https://github.com/joooKiwi/lazy/releases/tag/v1.3.0-js
 [js-lazy-v1.5]: https://github.com/joooKiwi/lazy/releases/tag/v1.5.0-js
 [js-lazy-v1.6]: https://github.com/joooKiwi/lazy/releases/tag/v1.6.0-js
-[js-lazy-v1.7]: https://github.com/joooKiwi/lazy/releases/tag/v1.7.2-js
+[js-lazy-v1.7]: https://github.com/joooKiwi/lazy/releases/tag/v1.7.3-js
 
 [type]: https://github.com/joooKiwi/type
 [ts-type-v1.1]: https://github.com/joooKiwi/type/releases/tag/v1.1.0-ts

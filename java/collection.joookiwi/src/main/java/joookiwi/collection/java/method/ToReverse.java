@@ -3,6 +3,7 @@ package joookiwi.collection.java.method;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
+import joookiwi.collection.java.LazyCollectionHolderOf1;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -30,10 +31,16 @@ public final class ToReverse
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -49,10 +56,16 @@ public final class ToReverse
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -68,10 +81,16 @@ public final class ToReverse
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -94,10 +113,16 @@ public final class ToReverse
     /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` is not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -121,10 +146,16 @@ public final class ToReverse
     /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` is not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -148,10 +179,16 @@ public final class ToReverse
     /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` is not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -176,10 +213,16 @@ public final class ToReverse
     /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` is not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -201,10 +244,16 @@ public final class ToReverse
     /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` is not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -226,10 +275,16 @@ public final class ToReverse
     /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` is not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -255,10 +310,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -282,10 +343,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -309,10 +376,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -337,10 +410,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -366,10 +445,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -395,10 +480,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -425,10 +516,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -454,10 +551,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -483,10 +586,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -513,10 +622,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -547,10 +662,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -581,10 +702,16 @@ public final class ToReverse
     /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     /// @throws IndexOutOfBoundsException The `from` or `to` are not within a valid range
-    /// @see java.util.SequencedCollection#reversed()
-    /// @see java.util.List#reversed()
-    /// @see java.util.SequencedSet#reversed()
-    /// @see java.util.Deque#reversed()
+    /// @see java.util.SequencedCollection#reversed
+    /// @see java.util.List#reversed
+    /// @see java.util.SequencedSet#reversed
+    /// @see java.util.SortedSet#reversed
+    /// @see java.util.NavigableSet#reversed
+    /// @see java.util.Deque#reversed
+    /// @see java.util.SequencedMap#reversed
+    /// @see java.util.SortedMap#reversed
+    /// @see java.util.NavigableMap#reversed
+    /// @see java.util.concurrent.ConcurrentNavigableMap#reversed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
@@ -618,18 +745,17 @@ public final class ToReverse
         if (size == 0)
             return EmptyCollectionHolder.getInstance();
         if (size == 1)
-            return new GenericCollectionHolder<>(collection);
+            return new LazyCollectionHolderOf1<>(() -> collection.get(0));
         return new GenericCollectionHolder<>(__all(collection, size));
     }
 
-    @SuppressWarnings("unchecked cast")
     private static <T extends @Nullable Object> CollectionHolder<T> __core0(final CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
             return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 1)
-            return (CollectionHolder<T>) collection;
+            return new LazyCollectionHolderOf1<>(collection::getFirst);
         return new GenericCollectionHolder<>(__all(collection, size));
     }
 
@@ -638,7 +764,7 @@ public final class ToReverse
         if (size == 0)
             return EmptyCollectionHolder.getInstance();
         if (size == 1)
-            return new GenericCollectionHolder<>(collection);
+            return new LazyCollectionHolderOf1<>(() -> collection[0]);
         return new GenericCollectionHolder<>(__all(collection, size));
     }
 
@@ -652,6 +778,9 @@ public final class ToReverse
             return EmptyCollectionHolder.getInstance();
 
         final var startingIndex = _startingIndex(from, size);
+        final var sizeMinus1 = size - 1;
+        if (startingIndex == sizeMinus1)
+            return new LazyCollectionHolderOf1<>(() -> collection.get(sizeMinus1));
         return new GenericCollectionHolder<>(__fromStart(collection, size, startingIndex));
     }
 
@@ -662,6 +791,8 @@ public final class ToReverse
 
         final var size = collection.size();
         final var startingIndex = _startingIndex(from, size);
+        if (startingIndex == size - 1)
+            return new LazyCollectionHolderOf1<>(collection::getLast);
         return new GenericCollectionHolder<>(__fromStart(collection, size, startingIndex));
     }
 
@@ -672,6 +803,9 @@ public final class ToReverse
             return EmptyCollectionHolder.getInstance();
 
         final var startingIndex = _startingIndex(from, size);
+        final var sizeMinus1 = size - 1;
+        if (startingIndex == sizeMinus1)
+            return new LazyCollectionHolderOf1<>(() -> collection[sizeMinus1]);
         return new GenericCollectionHolder<>(__fromStart(collection, size, startingIndex));
     }
 
@@ -689,7 +823,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         _validateInRange(from, startingIndex, to, endingIndex);
         if (startingIndex == endingIndex)
-            return new GenericCollectionHolder<>(__single(collection, startingIndex));
+            return new LazyCollectionHolderOf1<>(() -> collection.get(startingIndex));
         return new GenericCollectionHolder<>(__fromStartToEnd(collection, startingIndex, endingIndex));
     }
 
@@ -704,7 +838,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         _validateInRange(from, startingIndex, to, endingIndex);
         if (startingIndex == endingIndex)
-            return new GenericCollectionHolder<>(__single(collection, startingIndex));
+            return new LazyCollectionHolderOf1<>(() -> collection.get(startingIndex));
         return new GenericCollectionHolder<>(__fromStartToEnd(collection, startingIndex, endingIndex));
     }
 
@@ -719,7 +853,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         _validateInRange(from, startingIndex, to, endingIndex);
         if (startingIndex == endingIndex)
-            return new GenericCollectionHolder<>(__single(collection, startingIndex));
+            return new LazyCollectionHolderOf1<>(() -> collection[startingIndex]);
         return new GenericCollectionHolder<>(__fromStartToEnd(collection, startingIndex, endingIndex));
     }
 
@@ -734,7 +868,7 @@ public final class ToReverse
 
         final var endingIndex = _endingIndex(to, size);
         if (endingIndex == 0)
-            return new GenericCollectionHolder<>(__single(collection, 0));
+            return new LazyCollectionHolderOf1<>(() -> collection.get( 0));
         return new GenericCollectionHolder<>(__toEnd(collection, endingIndex));
     }
 
@@ -745,7 +879,7 @@ public final class ToReverse
 
         final var endingIndex = _endingIndex(to, collection.size());
         if (endingIndex == 0)
-            return new GenericCollectionHolder<>(__single(collection, 0));
+            return new LazyCollectionHolderOf1<>(collection::getFirst);
         return new GenericCollectionHolder<>(__toEnd(collection, endingIndex));
     }
 
@@ -757,7 +891,7 @@ public final class ToReverse
 
         final var endingIndex = _endingIndex(to, size);
         if (endingIndex == 0)
-            return new GenericCollectionHolder<>(__single(collection, 0));
+            return new LazyCollectionHolderOf1<>(() -> collection[0]);
         return new GenericCollectionHolder<>(__toEnd(collection, endingIndex));
     }
 
@@ -765,14 +899,6 @@ public final class ToReverse
 
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
-
-    @SuppressWarnings("unchecked cast")
-    private static <T extends @Nullable Object> T @Unmodifiable [] __single(final MinimalistCollectionHolder<? extends T> collection,
-                                                                            final int index) { return (T[]) new Object[]{collection.get(index),}; }
-
-    @SuppressWarnings("unchecked cast")
-    private static <T extends @Nullable Object> T @Unmodifiable [] __single(final T @Unmodifiable [] collection,
-                                                                            final int index) { return (T[]) new Object[]{collection[index],}; }
 
 
     private static <T extends @Nullable Object> T @Unmodifiable [] __all(final MinimalistCollectionHolder<? extends T> collection,

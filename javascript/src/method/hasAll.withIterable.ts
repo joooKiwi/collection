@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -29,10 +29,10 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasAllWithIterableByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -54,7 +54,7 @@ export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistC
  * @param collection The nullable collection
  * @param values     The values to compare
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
@@ -69,7 +69,7 @@ export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collec
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     return __validate(collection, iterator, iteratorResult.value, size,)
 }
@@ -80,7 +80,7 @@ export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collec
  * @param collection The nullable collection
  * @param values     The values to compare
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
@@ -104,10 +104,10 @@ export function hasAllWithIterableByCollectionHolder<const T, >(collection: Null
  * @param collection The nullable collection
  * @param values     The values to compare
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+export function hasAllWithIterableByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (values == null)
         return true
 
@@ -119,7 +119,7 @@ export function hasAllWithIterableByArray<const T, >(collection: Nullable<readon
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     return __validateByArray(collection, iterator, iteratorResult.value, size,)
 }
@@ -128,41 +128,71 @@ export function hasAllWithIterableByArray<const T, >(collection: Nullable<readon
 //#region -------------------- Loop methods --------------------
 
 function __validate<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
-    firstValueLoop: {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    firstValueValidation: {
         let index1 = -1
         while (++index1 < size)
-            if (collection.get(index1,) === firstValue)
-                break firstValueLoop
+            if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
+                break firstValueValidation
         return false
     }
 
+    const sizeMinus1 = size - 1
     let iteratorResult: IteratorResult<T, unknown>
     valueLoop: while (!(iteratorResult = iterator.next()).done) {
         const value = iteratorResult.value
         let index2 = -1
+        if (tempArrayIndex !== sizeMinus1) {
+            // We retrieve in tempArray until tempArrayIndex and then continue assigning to tempArray
+            while (++index2 <= tempArrayIndex)
+                if (tempArray[index2] === value)
+                    continue valueLoop
+            index2--
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection.get(index2,)) === value)
+                    continue valueLoop
+            return false
+        }
+        // We just loop through the tempArray since we have already reached all the elements for validation
         while (++index2 < size)
-            if (collection.get(index2,) === value)
+            if (tempArray[index2] === value)
                 continue valueLoop
         return false
     }
     return true
 }
 
-function __validateByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
-    firstValueLoop: {
+function __validateByArray<const T, >(collection: Array<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    firstValueValidation: {
         let index1 = -1
         while (++index1 < size)
-            if (collection[index1] === firstValue)
-                break firstValueLoop
+            if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
+                break firstValueValidation
         return false
     }
 
+    const sizeMinus1 = size - 1
     let iteratorResult: IteratorResult<T, unknown>
     valueLoop: while (!(iteratorResult = iterator.next()).done) {
         const value = iteratorResult.value
         let index2 = -1
+        if (tempArrayIndex !== sizeMinus1) {
+            // We retrieve in tempArray until tempArrayIndex and then continue assigning to tempArray
+            while (++index2 <= tempArrayIndex)
+                if (tempArray[index2] === value)
+                    continue valueLoop
+            index2--
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection[index2] as T) === value)
+                    continue valueLoop
+            return false
+        }
+        // We just loop through the tempArray since we have already reached all the elements for validation
         while (++index2 < size)
-            if (collection[index2] === value)
+            if (tempArray[index2] === value)
                 continue valueLoop
         return false
     }

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
@@ -60,7 +60,12 @@ import {hasAllWithIterableByCollectionHolder}                      from "../../s
 import {hasAllWithIteratorByCollectionHolder}                      from "../../src/method/hasAll.withIterator"
 import {hasAllWithMinimalistCollectionHolderByCollectionHolder}    from "../../src/method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSetByCollectionHolder}                           from "../../src/method/hasAll.withSet"
+import {hasAtLeast2ElementsByCollectionHolder}                     from "../../src/method/hasAtLeast2Elements"
+import {hasAtMost1ElementByCollectionHolder}                       from "../../src/method/hasAtMost1Element"
+import {hasAtMost2ElementsByCollectionHolder}                      from "../../src/method/hasAtMost2Elements"
 import {hasDuplicateByCollectionHolder}                            from "../../src/method/hasDuplicate"
+import {hasExactly1ElementByCollectionHolder}                      from "../../src/method/hasExactly1Element"
+import {hasExactly2ElementsByCollectionHolder}                     from "../../src/method/hasExactly2Elements"
 import {hasNoDuplicatesByCollectionHolder}                         from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByCollectionHolder}                              from "../../src/method/hasNoNulls"
 import {hasNotByCollectionHolder}                                  from "../../src/method/hasNot"
@@ -141,7 +146,12 @@ import {toStringByCollectionHolder}                                from "../../s
 import {toUpperCaseStringByCollectionHolder}                       from "../../src/method/toUpperCaseString"
 import {AbstractNullCollectionHolderForTest}                       from "./AbstractNullCollectionHolderForTest"
 
-/** A test instance to exclusively test the extension methods for a `null` {@link CollectionHolder} */
+/**
+ * A test instance to exclusively test the extension methods for
+ * a `null` {@link CollectionHolder}
+ *
+ * @typeParam T The type
+ */
 export class CollectionHolder_FromNullExtensionFunction<const T, >
     extends AbstractNullCollectionHolderForTest<T> {
 
@@ -153,6 +163,28 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
 
     public get isNotEmpty(): false {
         return isNotEmptyByCollectionHolder(null,)
+    }
+
+
+    public override get hasExactly1Element(): false {
+        return hasExactly1ElementByCollectionHolder(null,)
+    }
+
+    public override get hasAtMost1Element(): true {
+        return hasAtMost1ElementByCollectionHolder(null,)
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean {
+        return hasAtLeast2ElementsByCollectionHolder(null,)
+    }
+
+    public override get hasExactly2Elements(): false {
+        return hasExactly2ElementsByCollectionHolder(null,)
+    }
+
+    public override get hasAtMost2Elements(): true {
+        return hasAtMost2ElementsByCollectionHolder(null,)
     }
 
     //#endregion -------------------- Size methods --------------------
@@ -168,6 +200,7 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
         return getLastByCollectionHolder(null,)
     }
 
+
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
@@ -181,6 +214,7 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
     public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return getLastOrElseByCollectionHolder(null, defaultValue,) }
+
 
     public override getOrNull(index: number,): NullOr<T> {
         return getOrNullByCollectionHolder(null, index,)
@@ -351,10 +385,10 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
         return hasNotByCollectionHolder(null, value,)
     }
 
-    public override hasOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public override hasOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasOneWithArrayByCollectionHolder(null, values,)
     }
-    public override hasOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public override hasOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasOneWithSetByCollectionHolder(null, values,)
     }
     public override hasOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -376,10 +410,10 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
         return hasOneByCollectionHolder(null, values,)
     }
 
-    public override hasNotOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public override hasNotOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotOneWithArrayByCollectionHolder(null, values,)
     }
-    public override hasNotOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public override hasNotOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotOneWithSetByCollectionHolder(null, values,)
     }
     public override hasNotOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -401,10 +435,10 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
         return hasNotOneByCollectionHolder(null, values,)
     }
 
-    public override hasAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public override hasAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasAllWithArrayByCollectionHolder(null, values,)
     }
-    public override hasAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public override hasAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasAllWithSetByCollectionHolder(null, values,)
     }
     public override hasAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -426,10 +460,10 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
         return hasAllByCollectionHolder(null, values,)
     }
 
-    public override hasNotAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public override hasNotAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotAllWithArrayByCollectionHolder(null, values,)
     }
-    public override hasNotAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public override hasNotAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotAllWithSetByCollectionHolder(null, values,)
     }
     public override hasNotAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -499,10 +533,10 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
     public override sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return sliceWithARangeByCollectionHolder(null, from, to,)
     }
-    public override sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+    public override sliceWithArray(indices: NumberArray,): CollectionHolder<T> {
         return sliceWithArrayByCollectionHolder(null, indices,)
     }
-    public override sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+    public override sliceWithSet(indices: NumberSet,): CollectionHolder<T> {
         return sliceWithSetByCollectionHolder(null, indices,)
     }
     public override sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
@@ -649,54 +683,64 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
     }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
+    //#region -------------------- Conversion methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public override toIterator(): CollectionIterator<T> {
         return toIteratorByCollectionHolder(null,)
     }
 
-    //#endregion -------------------- JavaScript methods --------------------
-    //#region -------------------- Conversion methods --------------------
 
-    public override toArray(): readonly T[] {
+    public override toArray(): Array<T> {
         return toArrayByCollectionHolder(null,)
     }
-    public override toMutableArray(): T[] {
+
+    public override toMutableArray(): MutableArray<T> {
         return toMutableArrayByCollectionHolder(null,)
     }
 
-    public override toSet(): ReadonlySet<T> {
+
+    public override toSet(): Set<T> {
         return toSetByCollectionHolder(null,)
     }
-    public override toMutableSet(): Set<T> {
+
+    public override toMutableSet(): MutableSet<T> {
         return toMutableSetByCollectionHolder(null,)
     }
 
-    public override toMap(): ReadonlyMap<number, T> {
+
+    public override toMap(): NumberKeyMap<T> {
         return toMapByCollectionHolder(null,)
     }
-    public override toMutableMap(): Map<number, T> {
+
+    public override toMutableMap(): MutableNumberKeyMap<T> {
         return toMutableMapByCollectionHolder(null,)
     }
+
 
     public override toString(): string {
         return toStringByCollectionHolder(null,)
     }
+
     public override toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByCollectionHolder(null, locale,)
     }
+
     public override toLowerCaseString(): string {
         return toLowerCaseStringByCollectionHolder(null,)
     }
+
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByCollectionHolder(null, locale,)
     }
+
     public override toUpperCaseString(): string {
         return toUpperCaseStringByCollectionHolder(null,)
     }
+
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByCollectionHolder(null, locale,)
     }
+
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToStringByCollectionHolder(null, separator, prefix, postfix, limit, truncated, transform,)

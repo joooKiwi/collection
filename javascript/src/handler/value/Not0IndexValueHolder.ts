@@ -18,8 +18,8 @@ import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsExcepti
  * A {@link ValueHolder} meant to give a {@link IndexOutOfBoundsException} {@link cause}
  * because of an index that was not 0 or -1
  *
- * @beta
  * @see Not0IndexAfterCalculationValueHolder
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export class Not0IndexValueHolder
     implements ValueHolder<never> {

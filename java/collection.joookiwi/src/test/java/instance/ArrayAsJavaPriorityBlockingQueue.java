@@ -49,7 +49,7 @@ public final class ArrayAsJavaPriorityBlockingQueue<T>
     @Override public int remainingCapacity() { return get().remainingCapacity(); }
     @Override public boolean isEmpty() { return get().isEmpty(); }
 
-    @Override public T peek() { return get().peek(); }
+    @Override public @Nullable T peek() { return get().peek(); }
     @Override public T element() { return get().element(); }
 
     @Override public boolean offer(final T value) { return get().offer(value); }
@@ -70,7 +70,7 @@ public final class ArrayAsJavaPriorityBlockingQueue<T>
 
     @Override public T take() throws InterruptedException { return get().take(); }
 
-    @Override public T poll() { return get().poll(); }
+    @Override public @Nullable T poll() { return get().poll(); }
     @Override public @Nullable T poll(final long timeout, final TimeUnit unit) throws InterruptedException { return get().poll(timeout, unit); }
 
     @Override public boolean retainAll(final Collection<?> values) { return get().retainAll(values); }

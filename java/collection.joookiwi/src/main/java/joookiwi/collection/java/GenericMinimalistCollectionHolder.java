@@ -22,7 +22,6 @@ import java.util.TreeSet;
 import java.util.Vector;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicReference;
-import joookiwi.collection.java.annotation.OnlyGivePositiveValue;
 import joookiwi.collection.java.callback.ArraySupplier;
 import joookiwi.collection.java.callback.CollectionHolderSupplier;
 import joookiwi.collection.java.callback.CollectionIteratorSupplier;
@@ -31,57 +30,49 @@ import joookiwi.collection.java.callback.DequeSupplier;
 import joookiwi.collection.java.callback.IterableSupplier;
 import joookiwi.collection.java.callback.ListSupplier;
 import joookiwi.collection.java.callback.MinimalistCollectionHolderSupplier;
+import joookiwi.collection.java.callback.MinimalistCollectionIteratorSupplier;
 import joookiwi.collection.java.callback.QueueSupplier;
 import joookiwi.collection.java.callback.SetSupplier;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.extended.ArrayAsImmutableCollection;
-import joookiwi.collection.java.extended.ArrayAsImmutableDeque;
-import joookiwi.collection.java.extended.ArrayAsImmutableList;
-import joookiwi.collection.java.extended.ArrayAsImmutableNavigableSet;
-import joookiwi.collection.java.extended.ArrayAsImmutableQueue;
+import joookiwi.collection.java.extended.ArrayAsImmutableConcurrentCollection;
+import joookiwi.collection.java.extended.ArrayAsImmutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ArrayAsImmutableNavigableCollection;
 import joookiwi.collection.java.extended.ArrayAsImmutableSequencedCollection;
-import joookiwi.collection.java.extended.ArrayAsImmutableSequencedSet;
-import joookiwi.collection.java.extended.ArrayAsImmutableSet;
-import joookiwi.collection.java.extended.ArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableSortedCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableConcurrentCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableNavigableCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableSequencedCollection;
+import joookiwi.collection.java.extended.ArrayAsMutableSortedCollection;
 import joookiwi.collection.java.extended.BasicStack;
-import joookiwi.collection.java.extended.ImmutableArrayList;
 import joookiwi.collection.java.extended.ImmutableCollection;
-import joookiwi.collection.java.extended.ImmutableCopyOnWriteArrayList;
-import joookiwi.collection.java.extended.ImmutableDeque;
-import joookiwi.collection.java.extended.ImmutableHashSet;
-import joookiwi.collection.java.extended.ImmutableLinkedHashSet;
-import joookiwi.collection.java.extended.ImmutableLinkedList;
-import joookiwi.collection.java.extended.ImmutableList;
-import joookiwi.collection.java.extended.ImmutableNavigableSet;
-import joookiwi.collection.java.extended.ImmutableQueue;
+import joookiwi.collection.java.extended.ImmutableConcurrentCollection;
+import joookiwi.collection.java.extended.ImmutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ImmutableNavigableCollection;
 import joookiwi.collection.java.extended.ImmutableSequencedCollection;
-import joookiwi.collection.java.extended.ImmutableSequencedSet;
-import joookiwi.collection.java.extended.ImmutableSet;
-import joookiwi.collection.java.extended.ImmutableSortedSet;
-import joookiwi.collection.java.extended.ImmutableStack;
-import joookiwi.collection.java.extended.ImmutableTreeSet;
-import joookiwi.collection.java.extended.ImmutableVector;
-import joookiwi.collection.java.extended.MutableArrayList;
-import joookiwi.collection.java.extended.MutableCopyOnWriteArrayList;
-import joookiwi.collection.java.extended.MutableHashSet;
-import joookiwi.collection.java.extended.MutableLinkedHashSet;
-import joookiwi.collection.java.extended.MutableLinkedList;
-import joookiwi.collection.java.extended.MutableStack;
-import joookiwi.collection.java.extended.MutableTreeSet;
-import joookiwi.collection.java.extended.MutableVector;
+import joookiwi.collection.java.extended.ImmutableSortedCollection;
+import joookiwi.collection.java.extended.MutableCollection;
+import joookiwi.collection.java.extended.MutableConcurrentCollection;
+import joookiwi.collection.java.extended.MutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.MutableNavigableCollection;
+import joookiwi.collection.java.extended.MutableSequencedCollection;
+import joookiwi.collection.java.extended.MutableSortedCollection;
 import joookiwi.collection.java.extended.OrderableCollection;
 import joookiwi.collection.java.extended.ReversedArray;
-import joookiwi.collection.java.extended.ReversedArrayAsImmutableDeque;
-import joookiwi.collection.java.extended.ReversedArrayAsImmutableList;
-import joookiwi.collection.java.extended.ReversedArrayAsImmutableNavigableSet;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableNavigableCollection;
 import joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedCollection;
-import joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedSet;
-import joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsMutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsMutableNavigableCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsMutableSequencedCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsMutableSortedCollection;
+import joookiwi.collection.java.extended.ReversedMutableArray;
 import joookiwi.collection.java.extended.SubdividedArray;
-import joookiwi.collection.java.extended.SubdividedArrayAsImmutableList;
-import joookiwi.collection.java.extended.SubdividedArrayAsImmutableNavigableSet;
-import joookiwi.collection.java.extended.SubdividedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.SubdividedMutableArray;
 import joookiwi.collection.java.extended.iterator.ArrayAsImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ArrayAsImmutableListIterator;
 import joookiwi.collection.java.extended.iterator.ArrayAsMutableIterator;
@@ -90,8 +81,81 @@ import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableListIterator;
+import joookiwi.collection.java.extended.list.ArrayAsImmutableList;
+import joookiwi.collection.java.extended.list.ArrayAsMutableList;
+import joookiwi.collection.java.extended.list.ImmutableArrayList;
+import joookiwi.collection.java.extended.list.ImmutableCopyOnWriteArrayList;
+import joookiwi.collection.java.extended.list.ImmutableLinkedList;
+import joookiwi.collection.java.extended.list.ImmutableList;
+import joookiwi.collection.java.extended.list.ImmutableVector;
+import joookiwi.collection.java.extended.list.MutableArrayList;
+import joookiwi.collection.java.extended.list.MutableCopyOnWriteArrayList;
+import joookiwi.collection.java.extended.list.MutableLinkedList;
+import joookiwi.collection.java.extended.list.MutableList;
+import joookiwi.collection.java.extended.list.MutableVector;
+import joookiwi.collection.java.extended.list.ReversedArrayAsImmutableList;
+import joookiwi.collection.java.extended.list.ReversedArrayAsMutableList;
+import joookiwi.collection.java.extended.list.SubdividedArrayAsImmutableList;
+import joookiwi.collection.java.extended.list.SubdividedArrayAsMutableList;
+import joookiwi.collection.java.extended.queue.ArrayAsImmutableQueue;
+import joookiwi.collection.java.extended.queue.ArrayAsMutableQueue;
+import joookiwi.collection.java.extended.queue.ImmutableQueue;
+import joookiwi.collection.java.extended.queue.MutableQueue;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableConcurrentSet;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableNavigableSet;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableSequencedSet;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableSet;
+import joookiwi.collection.java.extended.set.ArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.set.ArrayAsMutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ArrayAsMutableConcurrentSet;
+import joookiwi.collection.java.extended.set.ArrayAsMutableNavigableSet;
+import joookiwi.collection.java.extended.set.ArrayAsMutableSequencedSet;
+import joookiwi.collection.java.extended.set.ArrayAsMutableSet;
+import joookiwi.collection.java.extended.set.ArrayAsMutableSortedSet;
+import joookiwi.collection.java.extended.set.ImmutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ImmutableConcurrentSet;
+import joookiwi.collection.java.extended.set.ImmutableHashSet;
+import joookiwi.collection.java.extended.set.ImmutableLinkedHashSet;
+import joookiwi.collection.java.extended.set.ImmutableNavigableSet;
+import joookiwi.collection.java.extended.set.ImmutableSequencedSet;
+import joookiwi.collection.java.extended.set.ImmutableSet;
+import joookiwi.collection.java.extended.set.ImmutableSortedSet;
+import joookiwi.collection.java.extended.set.ImmutableTreeSet;
+import joookiwi.collection.java.extended.set.MutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.MutableConcurrentSet;
+import joookiwi.collection.java.extended.set.MutableHashSet;
+import joookiwi.collection.java.extended.set.MutableLinkedHashSet;
+import joookiwi.collection.java.extended.set.MutableNavigableSet;
+import joookiwi.collection.java.extended.set.MutableSequencedSet;
+import joookiwi.collection.java.extended.set.MutableSet;
+import joookiwi.collection.java.extended.set.MutableSortedSet;
+import joookiwi.collection.java.extended.set.MutableTreeSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableNavigableSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSequencedSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsMutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsMutableNavigableSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsMutableSequencedSet;
+import joookiwi.collection.java.extended.set.ReversedArrayAsMutableSortedSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableNavigableSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsMutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsMutableNavigableSet;
+import joookiwi.collection.java.extended.set.SubdividedArrayAsMutableSortedSet;
+import joookiwi.collection.java.extended.stack.ArrayAsImmutableDeque;
+import joookiwi.collection.java.extended.stack.ArrayAsMutableDeque;
+import joookiwi.collection.java.extended.stack.ImmutableDeque;
+import joookiwi.collection.java.extended.stack.ImmutableStack;
+import joookiwi.collection.java.extended.stack.MutableDeque;
+import joookiwi.collection.java.extended.stack.MutableStack;
+import joookiwi.collection.java.extended.stack.ReversedArrayAsImmutableDeque;
+import joookiwi.collection.java.extended.stack.ReversedArrayAsMutableDeque;
 import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.iterator.CollectionIterator;
+import joookiwi.collection.java.iterator.MinimalistCollectionIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -137,13 +201,20 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             return;
         }
 
-        final var size = this.__size = reference.size();
-        if (size == 1)
+        if (reference.hasExactly1Element()) {
+            __size = 1;
             __array = Array(reference.getFirst());
-        else if (size == 2)
+            return;
+        }
+
+        if (reference.hasExactly2Elements()) {
+            __size = 2;
             __array = Array(reference.getFirst(), reference.getLast());
-        else
-            __array = Array(reference, size);
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        __array = Array(reference, size);
     }
 
     //#endregion -------------------- Constructor (collection holder) --------------------
@@ -182,16 +253,55 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             return;
         }
 
-        final var size = __size = reference.size();
-        if (size == 1)
+        if (reference.hasExactly1Element()) {
+            __size = 1;
             __array = Array(reference.nextValue());
-        else if (size == 2)
+            return;
+        }
+
+        if (reference.hasExactly2Elements()) {
+            __size = 2;
             __array = Array(reference.nextValue(), reference.nextValue());
-        else
-            __array = Array(reference, size);
+            return;
+        }
+
+        final var size = __size = reference.size();
+        __array = Array(reference, size);
     }
 
     //#endregion -------------------- Constructor (collection iterator) --------------------
+    //#region -------------------- Constructor (minimalist collection iterator) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final MinimalistCollectionIteratorSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MinimalistCollectionIterator<? extends T> reference) {
+        if (!(reference.hasNext())) {
+            __size = 0;
+            __array = Array();
+            return;
+        }
+
+        final var value1 = reference.nextValue();
+        if (!reference.hasNext()) {
+            __size = 1;
+            __array = Array(value1);
+            return;
+        }
+
+        final var value2 = reference.nextValue();
+        if (!reference.hasNext()) {
+            __size = 2;
+            __array = Array(value1, value2);
+            return;
+        }
+
+        __size = (__array = ArrayCreator.getInstance().newArray(reference, value1, value2)).length;
+    }
+
+    //#endregion -------------------- Constructor (minimalist collection iterator) --------------------
 
     //#region -------------------- Constructor (iterator) --------------------
 
@@ -375,13 +485,18 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = Array(reference, size);
     }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
 
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (collection) --------------------
     //#region -------------------- Constructor (orderable collection) --------------------
@@ -410,9 +525,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = Array(reference, size);
     }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSequencedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableSequencedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -421,7 +538,95 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableSequencedCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
 
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableSequencedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableSequencedCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
     //#endregion -------------------- Constructor (sequenced collection) --------------------
+    //#region -------------------- Constructor (sorted collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSortedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableSortedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSortedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableSortedCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableSortedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableSortedCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (sorted collection) --------------------
+    //#region -------------------- Constructor (navigable collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableNavigableCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableNavigableCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (navigable collection) --------------------
+    //#region -------------------- Constructor (concurrent collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableConcurrentCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableConcurrentCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableConcurrentCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableConcurrentCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (concurrent collection) --------------------
+    //#region -------------------- Constructor (concurrent navigable collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableConcurrentNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableConcurrentNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableConcurrentNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableConcurrentNavigableCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableConcurrentNavigableCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableConcurrentNavigableCollection<? extends T, ?, ?> reference) { this((SequencedCollection<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (concurrent navigable collection) --------------------
 
     //#region -------------------- Constructor (list) --------------------
 
@@ -447,9 +652,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = Array(reference, size);
     }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableList<? extends T> reference) { this((List<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableList<? extends T> reference) { this((List<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -460,6 +667,15 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableList<? extends T, ?, ?> reference) { this((List<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableList<? extends T> reference) { this((List<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SubdividedArrayAsMutableList<? extends T, ?, ?> reference) { this((List<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableList<? extends T, ?, ?> reference) { this((List<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (list) --------------------
     //#region -------------------- Constructor (array list) --------------------
@@ -472,7 +688,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableArrayList<? extends T> reference) { this((List<? extends T>) reference); }
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableArrayList<? extends T> reference) { this((List<? extends T>) reference); }
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableArrayList<? extends T> reference) { this((List<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (array list) --------------------
     //#region -------------------- Constructor (copy on white array list) --------------------
@@ -485,7 +701,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableCopyOnWriteArrayList<? extends T> reference) { this((List<? extends T>) reference); }
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableCopyOnWriteArrayList<? extends T> reference) { this((List<? extends T>) reference); }
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableCopyOnWriteArrayList<? extends T> reference) { this((List<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (copy on write array list) --------------------
     //#region -------------------- Constructor (linked list) --------------------
@@ -498,7 +714,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableLinkedList<? extends T> reference) { this((List<? extends T>) reference); }
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableLinkedList<? extends T> reference) { this((List<? extends T>) reference); }
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableLinkedList<? extends T> reference) { this((List<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (linked list) --------------------
     //#region -------------------- Constructor (vector) --------------------
@@ -511,7 +727,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableVector<? extends T> reference) { this((List<? extends T>) reference); }
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableVector<? extends T> reference) { this((List<? extends T>) reference); }
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableVector<? extends T> reference) { this((List<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (vector) --------------------
 
@@ -540,13 +756,18 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = Array(reference, size);
     }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableSet<? extends T> reference) { this((Set<? extends T>) reference); }
 
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableSet<? extends T> reference) { this((Set<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (set) --------------------
     //#region -------------------- Constructor (sequenced set) --------------------
@@ -569,9 +790,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = Array(reference, size);
     }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSequencedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableSequencedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -580,15 +803,23 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableSequencedSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
 
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableSequencedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableSequencedSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
     //#endregion -------------------- Constructor (sequenced set) --------------------
     //#region -------------------- Constructor (sorted set) --------------------
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSortedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableSortedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -600,15 +831,26 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableSortedSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
 
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableSortedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SubdividedArrayAsMutableSortedSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableSortedSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
     //#endregion -------------------- Constructor (sorted set) --------------------
     //#region -------------------- Constructor (navigable set) --------------------
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable NavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -620,7 +862,60 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
 
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SubdividedArrayAsMutableNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
     //#endregion -------------------- Constructor (navigable set) --------------------
+    //#region -------------------- Constructor (concurrent set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableConcurrentSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableConcurrentSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableConcurrentSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableConcurrentSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (concurrent set) --------------------
+    //#region -------------------- Constructor (concurrent navigable set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableConcurrentNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableConcurrentNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableConcurrentNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubdividedArrayAsImmutableConcurrentNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableConcurrentNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableConcurrentNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SubdividedArrayAsMutableConcurrentNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableConcurrentNavigableSet<? extends T, ?, ?> reference) { this((SequencedSet<? extends T>) reference); }
+
+    //#endregion -------------------- Constructor (concurrent navigable set) --------------------
     //#region -------------------- Constructor (hash set) --------------------
 
     @Contract(pure = true)
@@ -683,13 +978,18 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = Array(reference, size);
     }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableQueue<? extends T> reference) { this((Queue<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableQueue<? extends T> reference) { this((Queue<? extends T>) reference); }
 
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableQueue<? extends T> reference) { this((Queue<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableQueue<? extends T> reference) { this((Queue<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (queue) --------------------
 
@@ -717,9 +1017,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = Array(reference, size);
     }
 
-
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableDeque<? extends T> reference) { this((Deque<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableDeque<? extends T> reference) { this((Deque<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -727,6 +1029,12 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableDeque<? extends T, ?, ?> reference) { this((Deque<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayAsMutableDeque<? extends T> reference) { this((Deque<? extends T>) reference); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ReversedArrayAsMutableDeque<? extends T, ?, ?> reference) { this((Deque<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (deque) --------------------
     //#region -------------------- Constructor (basic stack) --------------------
@@ -760,7 +1068,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableStack<? extends T> reference) { this((List<? extends T>) reference); }
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableStack<? extends T> reference) { this((List<? extends T>) reference); }
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable MutableStack<? extends T> reference) { this((List<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (stack) --------------------
 
@@ -786,10 +1094,17 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, source="param1.subdividedSource", targetIsContainer = true) @Unmodifiable SubdividedArray<? extends T> reference) { this(reference.subdividedSource()); }
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, source="param1.subdividedSource", targetIsContainer = true) SubdividedArray<? extends T> reference) { this(reference.subdividedSource()); }
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, source="param1.reversedSource", targetIsContainer = true) @Unmodifiable ReversedArray<? extends T> reference) { this(reference.reversedSource()); }
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, source="param1.subdividedSource", targetIsContainer = true) @Unmodifiable SubdividedMutableArray<? extends T> reference) { this(reference.subdividedSource()); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, source="param1.reversedSource", targetIsContainer = true) ReversedArray<? extends T> reference) { this(reference.reversedSource()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, source="param1.reversedSource", targetIsContainer = true) @Unmodifiable ReversedMutableArray<? extends T> reference) { this(reference.reversedSource()); }
 
     //#endregion -------------------- Constructors (array) --------------------
 

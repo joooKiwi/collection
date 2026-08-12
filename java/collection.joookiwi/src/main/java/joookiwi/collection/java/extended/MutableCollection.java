@@ -63,7 +63,7 @@ public interface MutableCollection<T extends @Nullable Object>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript ReadonlyArray.includes(value)</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript ReadonlySet.has(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html">Kotlin contains(element)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html">Kotlin Map.containsValue(element)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/contains-value.html">Kotlin Map.containsValue(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @Override boolean contains(@Nullable Object value);
 
@@ -171,7 +171,7 @@ public interface MutableCollection<T extends @Nullable Object>
     @Override int hashCode();
 
     @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
-    @Override boolean equals(final @Nullable Object other);
+    @Override boolean equals(@Nullable Object other);
 
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------

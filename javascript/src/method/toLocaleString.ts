@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableString} from "@joookiwi/type"
+import type {Array, Nullable, NullableString} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -37,7 +37,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see BigInt.toLocaleString
  * @extensionFunction
  */
-export function toLocaleString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
+export function toLocaleString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
     if (isCollectionHolder(collection,))
@@ -73,7 +73,7 @@ export function toLocaleStringByMinimalistCollectionHolder<const T, >(collection
         return "[]"
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return "[]"
     if (locale == null)
         return __withNoLocale(collection, size,)
@@ -116,12 +116,12 @@ export function toLocaleStringByCollectionHolder<const T, >(collection: Nullable
  * @see BigInt.toLocaleString
  * @extensionFunction
  */
-export function toLocaleStringByArray<const T, >(collection: Nullable<readonly T[]>, locale?: NullableString,): string {
+export function toLocaleStringByArray<const T, >(collection: Nullable<Array<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return "[]"
     if (locale == null)
         return __withNoLocaleByArray(collection, size,)
@@ -140,7 +140,7 @@ function __withNoLocale(collection: MinimalistCollectionHolder, size: number,) {
     return `[${string}${asLocaleString(collection.get(index,),)}]`
 }
 
-function __withNoLocaleByArray(collection: readonly unknown[], size: number,) {
+function __withNoLocaleByArray(collection: Array<unknown>, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1
@@ -159,7 +159,7 @@ function __withLocale(collection: MinimalistCollectionHolder, locale: string, si
     return `[${string}${asLocaleString(collection.get(index,), locale,)}]`
 }
 
-function __withLocaleByArray(collection: readonly unknown[], locale: string, size: number,) {
+function __withLocaleByArray(collection: Array<unknown>, locale: string, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1

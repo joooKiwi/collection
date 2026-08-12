@@ -4,7 +4,7 @@ import java.util.Collection;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.MutableCopyOnWriteArrayList;
+import joookiwi.collection.java.extended.list.MutableCopyOnWriteArrayList;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;

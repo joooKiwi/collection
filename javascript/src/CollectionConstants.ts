@@ -10,9 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy}                                                       from "@joookiwi/lazy"
-import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
-import {lazyOf}                                                          from "@joookiwi/lazy"
+import type {Lazy}                                                              from "@joookiwi/lazy"
+import type {Array, EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
+import {lazyOf}                                                                 from "@joookiwi/lazy"
 
 import type {CollectionHolder}                                                                                                                                                                              from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                    from "./MinimalistCollectionHolder"
@@ -22,7 +22,8 @@ import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfIt
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
 import type {GenericMinimalistCollectionHolder} from "./GenericMinimalistCollectionHolder"
-import type {LazyGenericCollectionHolder}       from "./LazyGenericCollectionHolder"
+import {LateRetriever}                          from "./LateRetriever"
+import type {LazyCollectionHolder}              from "./LazyCollectionHolder"
 import {EmptyCollectionIterator}                from "./iterator/EmptyCollectionIterator"
 import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionHandler"
 
@@ -31,6 +32,14 @@ import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionH
  *
  * Note that attempting to create it will result in a {@link EvalError}
  * due to being a utility class and not a namespace.
+ *
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array Array
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray TypedArray
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set Set
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet WeakSet
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map Map
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap WeakMap
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator Iterator
  */
 export class CollectionConstants {
 
@@ -44,11 +53,9 @@ export class CollectionConstants {
     //#endregion -------------------- Thrown constructor --------------------
     //#region -------------------- Fields held --------------------
 
-    static #EMPTY_COLLECTION_HOLDER?: EmptyCollectionHolder
     static #LAZY_EMPTY_COLLECTION_HOLDER?: Lazy<EmptyCollectionHolder>
     static #EMPTY_COLLECTION_HANDLER?: EmptyCollectionHandler
     static #LAZY_EMPTY_COLLECTION_HANDLER?: Lazy<EmptyCollectionHandler>
-    static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
     static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
 
     static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<KeyOfMinimalistCollectionHolder>
@@ -70,7 +77,7 @@ export class CollectionConstants {
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
     static #GenericMinimalistCollectionHolder?: typeof GenericMinimalistCollectionHolder
-    static #LazyGenericCollectionHolder?: typeof LazyGenericCollectionHolder
+    static #LazyCollectionHolder?: typeof LazyCollectionHolder
 
     //#endregion -------------------- Fields held --------------------
 
@@ -78,21 +85,33 @@ export class CollectionConstants {
 
     /** An {@link EmptyCollectionHolder} instance */
     public static get EMPTY_COLLECTION_HOLDER(): EmptyCollectionHolder {
-        return CollectionConstants.#EMPTY_COLLECTION_HOLDER ??= Object.freeze(EmptyCollectionHolder.get,)
+        return EmptyCollectionHolder.get
     }
 
-    /** An {@link EmptyCollectionHolder} instance in a {@link Lazy} */
+    /**
+     * An {@link EmptyCollectionHolder} instance in a {@link Lazy}
+     *
+     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
+     */
     public static get LAZY_EMPTY_COLLECTION_HOLDER(): Lazy<EmptyCollectionHolder> {
-        return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HOLDER,)
+        return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(EmptyCollectionHolder.get,)
     }
 
 
-    /** An {@link EmptyCollectionHandler} instance */
+    /**
+     * An {@link EmptyCollectionHandler} instance
+     *
+     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
+     */
     public static get EMPTY_COLLECTION_HANDLER(): EmptyCollectionHandler {
         return CollectionConstants.#EMPTY_COLLECTION_HANDLER ??= Object.freeze(EmptyCollectionHandler.get,)
     }
 
-    /** An {@link EmptyCollectionHandler} instance in a {@link Lazy} */
+    /**
+     * An {@link EmptyCollectionHandler} instance in a {@link Lazy}
+     *
+     * @deprecated Replace with {@link CollectionConstants.LAZY_EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
+     */
     public static get LAZY_EMPTY_COLLECTION_HANDLER(): Lazy<EmptyCollectionHandler> {
         return this.#LAZY_EMPTY_COLLECTION_HANDLER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HANDLER,)
     }
@@ -100,12 +119,16 @@ export class CollectionConstants {
 
     /** An {@link EmptyCollectionIterator} instance */
     public static get EMPTY_COLLECTION_ITERATOR(): EmptyCollectionIterator {
-        return CollectionConstants.#EMPTY_COLLECTION_ITERATOR ??= Object.freeze(EmptyCollectionIterator.get,)
+        return EmptyCollectionIterator.get
     }
 
-    /** An {@link EmptyCollectionIterator} instance in a {@link Lazy} */
+    /**
+     * An {@link EmptyCollectionIterator} instance in a {@link Lazy}
+     *
+     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_ITERATOR}. This will be removed in version 2.1
+     */
     public static get LAZY_EMPTY_COLLECTION_ITERATOR(): Lazy<EmptyCollectionIterator> {
-        return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_ITERATOR,)
+        return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(EmptyCollectionIterator.get,)
     }
 
     //#endregion -------------------- Empty references --------------------
@@ -115,7 +138,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link MinimalistCollectionHolder} */
     public static get MINIMALIST_COLLECTION_MEMBERS(): CollectionHolder<KeyOfMinimalistCollectionHolder> {
-        return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
+        return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new LateRetriever.CollectionHolderOf2<KeyOfMinimalistCollectionHolder>("size", "get",),)
     }
 
     //#endregion -------------------- Members references (minimalist collection holder) --------------------
@@ -123,61 +146,102 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link CollectionHolder} */
     public static get COLLECTION_MEMBERS(): CollectionHolder<KeyOfCollectionHolder> {
-        return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfCollectionHolder>([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
-            "get", "getFirst", "getLast", "at", "elementAt",
+            "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
+            "hasExactly1Element", "includesExactly1Element", "containsExactly1Element",
+            "hasAtMost1Element", "includesAtMost1Element", "containsAtMost1Element",
+            "hasAtLeast2Elements", "includesAtLeast2Elements", "containsAtLeast2Elements",
+            "hasExactly2Elements", "includesExactly2Elements", "containsExactly2Elements",
+            "hasAtMost2Elements", "includesAtMost2Elements", "containsAtMost2Elements",
+            "get", "at", "elementAt",
+            "getFirst",
+            "getLast",
             "getOrElse", "atOrElse", "elementAtOrElse",
-            "getOrNull", "getFirstOrNull", "getLastOrNull", "atOrNull", "elementAtOrNull",
-            "first", "firstIndexed", "firstOrNull", "firstIndexedOrNull",
-            "last", "lastIndexed", "lastOrNull", "lastIndexedOrNull",
-            "find", "findOrNull", "findIndexed", "findIndexedOrNull",
-            "findFirst", "findFirstOrNull", "findFirstIndexed", "findFirstIndexedOrNull",
-            "findLast", "findLastOrNull", "findLastIndexed", "findLastIndexedOrNull",
-            "indexOf", "indexOfOrNull",
-            "firstIndexOf", "firstIndexOfOrNull",
-            "lastIndexOf", "lastIndexOfOrNull",
-            "indexOfFirst", "indexOfFirstOrNull", "indexOfFirstIndexed", "indexOfFirstIndexedOrNull",
-            "findIndex", "findIndexOrNull", "findIndexIndexed", "findIndexIndexedOrNull",
-            "findFirstIndex", "findFirstIndexOrNull", "findFirstIndexIndexed", "findFirstIndexIndexedOrNull",
-            "findFirstIndex", "findFirstIndexIndexed",
-            "indexOfLast", "indexOfLastOrNull", "indexOfLastIndexed", "indexOfLastIndexedOrNull",
-            "findLastIndex", "findLastIndexOrNull", "findLastIndexIndexed", "findLastIndexIndexedOrNull",
+            "getFirstOrElse",
+            "getLastOrElse",
+            "getOrNull", "atOrNull", "elementAtOrNull",
+            "getFirstOrNull",
+            "getLastOrNull",
+            "first", "firstOrNull", "firstIndexed", "firstIndexedOrNull",
+            "last", "lastOrNull", "lastIndexed", "lastIndexedOrNull",
+            "findFirst", "find",
+            "findOrNull", "findFirstOrNull",
+            "findIndexed", "findFirstIndexed",
+            "findIndexedOrNull", "findFirstIndexedOrNull",
+            "findLast",
+            "findLastOrNull",
+            "findLastIndexed",
+            "findLastIndexedOrNull",
+            "firstIndexOf", "indexOf",
+            "firstIndexOfOrNull", "indexOfOrNull",
+            "lastIndexOf",
+            "lastIndexOfOrNull",
+            "indexOfFirst", "findIndex", "findFirstIndex",
+            "indexOfFirstOrNull", "findIndexOrNull", "findFirstIndexOrNull",
+            "indexOfFirstIndexed", "findIndexIndexed", "findFirstIndexIndexed",
+            "indexOfFirstIndexedOrNull", "findIndexIndexedOrNull", "findFirstIndexIndexedOrNull",
+            "indexOfLast", "findLastIndex",
+            "indexOfLastOrNull", "findLastIndexOrNull",
+            "indexOfLastIndexed", "findLastIndexIndexed",
+            "indexOfLastIndexedOrNull", "findLastIndexIndexedOrNull",
             "all", "every",
             "any", "some",
             "none",
-            "hasNull", "includesNull", "containsNull",
-            "hasDuplicate", "includesDuplicate", "containsDuplicate",
             "has", "includes", "contains",
             "hasNot", "includesNot", "containsNot",
             "hasOne", "includesOne", "containsOne",
             "hasNotOne", "includesNotOne", "containsNotOne",
             "hasAll", "includesAll", "containsAll",
             "hasNotAll", "includesNotAll", "containsNotAll",
+            "hasNull", "includesNull", "containsNull",
+            "hasNoNulls", "includesNoNulls", "containsNoNulls",
+            "hasDuplicate", "includesDuplicate", "containsDuplicate",
+            "hasNoDuplicates", "includesNoDuplicates", "containsNoDuplicates",
             "requireNoNulls",
-            "filter", "filterIndexed", "filterNot", "filterNotIndexed", "filterNotNull",
+            "filter",
+            "filterIndexed",
+            "filterNot",
+            "filterNotIndexed",
+            "filterNotNull",
             "slice",
-            "take", "takeWhile", "takeWhileIndexed",
-            "limit", "limitWhile", "limitWhileIndexed",
-            "takeLast", "takeLastWhile", "takeLastWhileIndexed",
-            "limitLast", "limitLastWhile", "limitLastWhileIndexed",
-            "drop", "dropWhile", "dropWhileIndexed",
-            "skip", "skipWhile", "skipWhileIndexed",
-            "dropLast", "dropLastWhile", "dropLastWhileIndexed",
-            "skipLast", "skipLastWhile", "skipLastWhileIndexed",
-            "map", "mapIndexed",
-            "mapNotNull", "mapNotNullIndexed",
-            "forEach", "forEachIndexed",
-            "onEach", "onEachIndexed",
+            "take", "limit",
+            "takeWhile", "limitWhile",
+            "takeWhileIndexed", "limitWhileIndexed",
+            "takeLast", "limitLast",
+            "takeLastWhile", "limitLastWhile",
+            "takeLastWhileIndexed", "limitLastWhileIndexed",
+            "drop", "skip",
+            "dropWhile", "skipWhile",
+            "dropWhileIndexed", "skipWhileIndexed",
+            "dropLast", "skipLast",
+            "dropLastWhile", "skipLastWhile",
+            "dropLastWhileIndexed", "skipLastWhileIndexed",
+            "map",
+            "mapIndexed",
+            "mapNotNull",
+            "mapNotNullIndexed",
+            "forEach",
+            "forEachIndexed",
+            "onEach",
+            "onEachIndexed",
             "toReverse", "toReversed", "reversed",
-            Symbol.iterator, Symbol.toStringTag,
+            Symbol.iterator,
+            Symbol.toStringTag,
             "toIterator",
-            "toArray", "toMutableArray",
-            "toSet", "toMutableSet",
-            "toMap", "toMutableMap",
-            "toString", "toLocaleString",
-            "toLowerCaseString", "toLocaleLowerCaseString",
-            "toUpperCaseString", "toLocaleUpperCaseString",
+            "toArray",
+            "toMutableArray",
+            "toSet",
+            "toMutableSet",
+            "toMap",
+            "toMutableMap",
+            "toString",
+            "toLocaleString",
+            "toLowerCaseString",
+            "toLocaleLowerCaseString",
+            "toUpperCaseString",
+            "toLocaleUpperCaseString",
             "joinToString", 'join',
         ] as const,),)
     }
@@ -185,9 +249,13 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (collection holder) --------------------
     //#region -------------------- Members references (array) --------------------
 
-    /** Every method applicable to an {@link ReadonlyArray Array} */
+    /**
+     * Every method applicable to an {@link ReadonlyArray Array}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+     */
     public static get ARRAY_MEMBERS(): CollectionHolder<KeyOfArray> {
-        return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfArray>([
             "length",
             "at",
             "indexOf", "lastIndexOf",
@@ -212,10 +280,13 @@ export class CollectionConstants {
         ] as const,),)
     }
 
-
-    /** Every method applicable to an {@link Array MutableArray} */
+    /**
+     * Every method applicable to an {@link Array MutableArray}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+     */
     public static get MUTABLE_ARRAY_MEMBERS(): CollectionHolder<KeyOfMutableArray> {
-        return CollectionConstants.#MUTABLE_ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableArray>([
             "length",
             "at", "push", "pop",
             "shift", "unshift",
@@ -246,9 +317,13 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (array) --------------------
     //#region -------------------- Members references (typed array) --------------------
 
-    /** Every method applicable to a {@link TypedArray} */
+    /**
+     * Every method applicable to a {@link TypedArray}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+     */
     public static get TYPED_ARRAY_MEMBERS(): CollectionHolder<KeyOfTypedArray> {
-        return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfTypedArray>([
             "length",
             "at", "set",
             "buffer",
@@ -279,9 +354,13 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (typed array) --------------------
     //#region -------------------- Members references (set) --------------------
 
-    /** Every method applicable to an {@link ReadonlySet Set} */
+    /**
+     * Every method applicable to an {@link ReadonlySet Set}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
+     */
     public static get SET_MEMBERS(): CollectionHolder<KeyOfSet> {
-        return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfSet>([
             "size",
             "has",
             "forEach",
@@ -295,9 +374,13 @@ export class CollectionConstants {
         ] as const,),)
     }
 
-    /** Every method applicable to an {@link Set MutableSet} */
+    /**
+     * Every method applicable to an {@link Set MutableSet}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
+     */
     public static get MUTABLE_SET_MEMBERS(): CollectionHolder<KeyOfMutableSet> {
-        return CollectionConstants.#MUTABLE_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableSet>([
             "size",
             "clear",
             "add", "delete",
@@ -316,17 +399,25 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (set) --------------------
     //#region -------------------- Members references (weak set) --------------------
 
-    /** Every method applicable to an immutable {@link WeakSet} */
+    /**
+     * Every method applicable to an immutable {@link WeakSet}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+     */
     public static get WEAK_SET_MEMBERS(): CollectionHolder<KeyOfWeakSet> {
-        return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new LateRetriever.CollectionHolderOf2<KeyOfWeakSet>(
             "has",
             Symbol.toStringTag,
-        ] as const,),)
+        ),)
     }
 
-    /** Every method applicable to a mutable {@link WeakSet} */
+    /**
+     * Every method applicable to a mutable {@link WeakSet}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+     */
     public static get MUTABLE_WEAK_SET_MEMBERS(): CollectionHolder<KeyOfMutableWeakSet> {
-        return CollectionConstants.#MUTABLE_WEAK_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_WEAK_SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableWeakSet>([
             "add", "delete",
             "has",
             Symbol.toStringTag,
@@ -336,9 +427,13 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (weak set) --------------------
     //#region -------------------- Members references (map) --------------------
 
-    /** Every method applicable to an {@link ReadonlyMap Map} */
+    /**
+     * Every method applicable to an {@link ReadonlyMap Map}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+     */
     public static get MAP_MEMBERS(): CollectionHolder<KeyOfMap> {
-        return CollectionConstants.#MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMap>([
             "size",
             "get",
             "has",
@@ -349,9 +444,13 @@ export class CollectionConstants {
         ] as const,),)
     }
 
-    /** Every method applicable to an {@link Map MutableMap} */
+    /**
+     * Every method applicable to an {@link Map MutableMap}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+     */
     public static get MUTABLE_MAP_MEMBERS(): CollectionHolder<KeyOfMutableMap> {
-        return CollectionConstants.#MUTABLE_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableMap>([
             "size",
             "get",
             "set", "delete",
@@ -367,18 +466,26 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (map) --------------------
     //#region -------------------- Members references (weak map) --------------------
 
-    /** Every method applicable to an immutable {@link WeakMap} */
+    /**
+     * Every method applicable to an immutable {@link WeakMap}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+     */
     public static get WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfWeakMap> {
-        return CollectionConstants.#WEAK_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#WEAK_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfWeakMap>([
             "get",
             "has",
             Symbol.toStringTag,
         ] as const,),)
     }
 
-    /** Every method applicable to a mutable {@link WeakMap} */
+    /**
+     * Every method applicable to a mutable {@link WeakMap}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+     */
     public static get MUTABLE_WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfMutableWeakMap> {
-        return CollectionConstants.#MUTABLE_WEAK_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_WEAK_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableWeakMap>([
             "get",
             "set", "delete",
             "has",
@@ -392,51 +499,50 @@ export class CollectionConstants {
     /**
      * Every method applicable to an {@link Iterator}
      *
-     * @note Currently, it only have "next", but it will eventually add the upcoming supported methods
-     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator
      */
     public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
-        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfIterator>([
             "next",
-        ] as const,),)
+            "every", "some",
+            "find", "filter", "reduce",
+            "take", "drop",
+            "forEach",
+            "map", "flatMap",
+            "toArray",
+            Symbol.iterator, Symbol.toStringTag,
+        ],),)
     }
-
-    // /**
-    //  * Every method applicable to an {@link IteratorObject}
-    //  *
-    //  * @note This currently have unsupported methods on iOS, WebView, Deno and Node according to Mdn
-    //  * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
-    //  */
-    // public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
-    //     return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
-    //         "next",
-    //         "every", "some",
-    //         "find", "filter", "reduce",
-    //         "take", "drop",
-    //         "forEach",
-    //         "map", "flatMap",
-    //         "toArray",
-    //         Symbol.iterator, Symbol.toStringTag,
-    //     ] as const,),)
-    // }
 
     //#endregion -------------------- Members references (iterator) --------------------
     //#region -------------------- Members references (collection iterator) --------------------
 
     /** Every method applicable to a {@link CollectionIterator} */
     public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<KeyOfCollectionIterator> {
-        return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfCollectionIterator>([
             "size", "length", "count",
-            "isEmpty", "isNotEmpty",
+            "isEmpty",
+            "isNotEmpty", "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
+            "hasExactly1Element", "includesExactly1Element", "containsExactly1Element",
+            "hasAtMost1Element", "includesAtMost1Element", "containsAtMost1Element",
+            "hasAtLeast2Elements", "includesAtLeast2Elements", "containsAtLeast2Elements",
+            "hasExactly2Elements", "includesExactly2Elements", "containsExactly2Elements",
+            "hasAtMost2Elements", "includesAtMost2Elements", "containsAtMost2Elements",
             "currentIndex", "index",
-            "nextIndex", "previousIndex",
-            "hasNext", "hasPrevious",
-            "next", "previous",
-            "nextValue", "previousValue",
+            "hasNext",
+            "nextIndex",
+            "nextValue",
+            "next",
+            "hasPrevious",
+            "previousIndex",
+            "previousValue",
+            "previous",
             "reset",
-            "forEach", "forEachIndexed",
-            Symbol.iterator, Symbol.toStringTag,
-        ] as const,),)
+            "forEach",
+            "forEachIndexed",
+            Symbol.iterator,
+            Symbol.toStringTag,
+        ],),)
     }
 
     //#endregion -------------------- Members references (collection iterator) --------------------
@@ -444,24 +550,40 @@ export class CollectionConstants {
     //#endregion -------------------- Members references --------------------
     //#region -------------------- Constructor references --------------------
 
-    /** The {@link Object.constructor constructor} reference of an {@link EmptyCollectionHolder} */
+    /**
+     * The {@link Object.constructor constructor} reference of an {@link EmptyCollectionHolder}
+     *
+     * @deprecated Use the {@link EmptyCollectionHolder} instance directly. This will be removed in version 2.1
+     */
     public static get EmptyCollectionHolder(): typeof EmptyCollectionHolder {
         return CollectionConstants.#EmptyCollectionHolder ??= EmptyCollectionHolder
     }
 
-    /** The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder} */
+    /**
+     * The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder}
+     *
+     * @deprecated Use the {@link GenericCollectionHolder} instance directly. This will be removed in version 2.1
+     */
     public static get GenericCollectionHolder(): typeof GenericCollectionHolder {
         return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder",).GenericCollectionHolder
     }
 
-    /** The {@link Object.constructor constructor} reference of a {@link GenericMinimalistCollectionHolder} */
+    /**
+     * The {@link Object.constructor constructor} reference of a {@link GenericMinimalistCollectionHolder}
+     *
+     * @deprecated Use the {@link GenericMinimalistCollectionHolder} instance directly. This will be removed in version 2.1
+     */
     public static get GenericMinimalistCollectionHolder(): typeof GenericMinimalistCollectionHolder {
         return CollectionConstants.#GenericMinimalistCollectionHolder ??= require("./GenericMinimalistCollectionHolder",).GenericMinimalistCollectionHolder
     }
 
-    /** The {@link Object.constructor constructor} reference of a {@link LazyGenericCollectionHolder} */
-    public static get LazyGenericCollectionHolder(): typeof LazyGenericCollectionHolder {
-        return CollectionConstants.#LazyGenericCollectionHolder ??= require("./LazyGenericCollectionHolder",).LazyGenericCollectionHolder
+    /**
+     * The {@link Object.constructor constructor} reference of a {@link LazyCollectionHolder}
+     *
+     * @deprecated Use the {@link LazyCollectionHolder} instance directly. This will be removed in version 2.1
+     */
+    public static get LazyGenericCollectionHolder(): typeof LazyCollectionHolder {
+        return CollectionConstants.#LazyCollectionHolder ??= require("./LazyCollectionHolder",).LazyCollectionHolder
     }
 
     //#endregion -------------------- Constructor references --------------------
@@ -477,11 +599,11 @@ export namespace CollectionConstants {
     /** An empty {@link ReadonlySet set} */
     export const EMPTY_SET = Object.freeze(new Set<never>(),) as EmptySet
     /** An empty {@link WeakSet weak set} */
-    export const EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet<never>
+    export const EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet
     /** An empty {@link ReadonlyMap map} */
-    export const EMPTY_MAP = Object.freeze(new Map<never, never>(),) as EmptyMap<never>
+    export const EMPTY_MAP = Object.freeze(new Map<never, never>(),) as EmptyMap
     /** An empty {@link WeakSet weak set} */
-    export const EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap<never>
+    export const EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap
 
     //#endregion -------------------- Empty references --------------------
     //#region -------------------- Default references --------------------
@@ -520,13 +642,25 @@ export namespace CollectionConstants {
      *
      * @see NoElementFoundInCollectionException.AT_THE_START_MESSAGE
      */
-    export const ITERATOR_IS_AT_THE_START_MESSAGE = "No element found. The collection iterator is at or before the start of the line."
+    export const ITERATOR_IS_AT_THE_START_MESSAGE = "No element found. The collection iterator is at the start of the line."
+    /**
+     * The message when {@link CollectionIterator.previousValue} is not present
+     *
+     * @see NoElementFoundInCollectionException.AT_OR_BEFORE_THE_START_MESSAGE
+     */
+    export const ITERATOR_IS_AT_OR_BEFORE_THE_START_MESSAGE = "No element found. The collection iterator is at or before the start of the line."
     /**
      * The message when {@link CollectionIterator.nextValue} is not present
      *
      * @see NoElementFoundInCollectionException.AT_THE_END_MESSAGE
      */
-    export const ITERATOR_IS_AT_THE_END_MESSAGE = "No element found. The collection iterator is at or after the end of the line."
+    export const ITERATOR_IS_AT_THE_END_MESSAGE = "No element found. The collection iterator is at the end of the line."
+    /**
+     * The message when {@link CollectionIterator.nextValue} is not present
+     *
+     * @see NoElementFoundInCollectionException.AT_OR_AFTER_THE_END_MESSAGE
+     */
+    export const ITERATOR_IS_AT_OR_AFTER_THE_END_MESSAGE = "No element found. The collection iterator is at or after the end of the line."
 
     //#endregion -------------------- Messages --------------------
     //#region -------------------- Symbol.toString references --------------------
@@ -543,6 +677,19 @@ export namespace CollectionConstants {
      * @uniqueJavascriptVariable
      */
     export const COLLECTION_ITERATOR_TO_STRING_TAG = "CollectionIterator"
+
+    /**
+     * The {@link Symbol.toStringTag} of a {@link Tuple}
+     *
+     * @uniqueJavascriptVariable
+     */
+    export const TUPLE_TO_STRING_TAG = "Tuple"
+    /**
+     * The {@link Symbol.toStringTag} of a {@link Optional}
+     *
+     * @uniqueJavascriptVariable
+     */
+    export const OPTIONAL_TO_STRING_TAG = "Optional"
 
     //#endregion -------------------- Symbol.toString references --------------------
     //#region -------------------- Symbol references --------------------
@@ -562,6 +709,6 @@ export interface CollectionConstants {
      * @param args Any possible arguments sent
      * @throws {EvalError} The class cannot be created
      */
-    new(...args: readonly unknown[]): never
+    new(...args: Array<unknown>): never
 
 }

@@ -16,23 +16,23 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 ///
 /// @see GenericCollectionIteratorValue
 public interface CollectionIteratorValue<T extends @Nullable Object>
-        extends IteratorValue<T> {
+        extends InsideIteratorValue<T> {
 
     /// The [collection][MinimalistCollectionHolder] to use in the [get value][#value]
     MinimalistCollectionHolder<? extends T> collection();
 
 
     /// The index to retrieve in the [#collection] by the [get value][#value]
-    @Range(from = 0, to = MAX_INT_VALUE) int index();
+    @Range(from = 0, to = MAX_INT_VALUE) @Override int index();
 
 
     /// Tell that the [iterator value][CollectionIteratorValue] is able to progress (_at the moment of its creation_)
-    @Contract(ALWAYS_FALSE_0) boolean isDone();
+    @Contract(ALWAYS_FALSE_0) @Override boolean isDone();
 
     /// Tell that the [iterator value][CollectionIteratorValue] is able to progress (_at the moment of its creation_)
-    @Alias("isDone") @Contract(ALWAYS_FALSE_0) boolean done();
+    @Alias("isDone") @Contract(ALWAYS_FALSE_0) @Override default boolean done() { return isDone(); }
 
     /// Tell that the [iterator value][CollectionIteratorValue] is **not** able to progress (_at the moment of its creation_)
-    @Contract(ALWAYS_TRUE_0) boolean isNotDone();
+    @Contract(ALWAYS_TRUE_0) @Override boolean isNotDone();
 
 }

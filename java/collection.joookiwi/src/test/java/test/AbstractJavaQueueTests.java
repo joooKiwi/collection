@@ -34,8 +34,4 @@ public abstract class AbstractJavaQueueTests {
         }
     }
 
-    /// Give `null to a typed [Queue]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable Queue<T> nullInstance() { return null; }
-
 }

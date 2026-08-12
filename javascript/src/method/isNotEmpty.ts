@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                             from "../CollectionHolder"
 import type {IsNotEmptyOn, IsNotEmptyOnArray, IsNotEmptyOnCollectionHolder, IsNotEmptyOnMinimalistCollectionHolder, IsNotEmptyOnNullable, IsNotEmptyOnNullableArray, IsNotEmptyOnNullableCollectionHolder, IsNotEmptyOnNullableMinimalistCollectionHolder} from "../type/isNotEmpty"
@@ -23,70 +23,70 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The {@link MinimalistCollectionHolder}, {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
 export function isNotEmpty<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): IsNotEmptyOnCollectionHolder<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
 export function isNotEmpty<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): IsNotEmptyOnMinimalistCollectionHolder<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
-export function isNotEmpty<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: COLLECTION,): IsNotEmptyOnArray<COLLECTION>
+export function isNotEmpty<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): IsNotEmptyOnArray<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
-export function isNotEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[] = | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], >(collection: COLLECTION,): IsNotEmptyOn<COLLECTION>
+export function isNotEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T> = | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, >(collection: COLLECTION,): IsNotEmptyOn<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
 export function isNotEmpty<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): IsNotEmptyOnNullableCollectionHolder<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
 export function isNotEmpty<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): IsNotEmptyOnNullableMinimalistCollectionHolder<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
-export function isNotEmpty<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION,): IsNotEmptyOnNullableArray<COLLECTION>
+export function isNotEmpty<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): IsNotEmptyOnNullableArray<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to compare its `size`
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
-export function isNotEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, >(collection: COLLECTION,): IsNotEmptyOnNullable<COLLECTION>
-export function isNotEmpty<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,) {
+export function isNotEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, >(collection: COLLECTION,): IsNotEmptyOnNullable<COLLECTION>
+export function isNotEmpty<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,) {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -105,33 +105,33 @@ export function isNotEmpty<const T, >(collection: Nullable<| MinimalistCollectio
 
 
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
 export function isNotEmptyByMinimalistCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): IsNotEmptyOnCollectionHolder<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
 export function isNotEmptyByMinimalistCollectionHolder<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): IsNotEmptyOnMinimalistCollectionHolder<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
 export function isNotEmptyByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): IsNotEmptyOnNullableCollectionHolder<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to compare its {@link MinimalistCollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
@@ -143,17 +143,17 @@ export function isNotEmptyByMinimalistCollectionHolder<const T, >(collection: Nu
 }
 
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
 export function isNotEmptyByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): IsNotEmptyOnCollectionHolder<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to compare its {@link CollectionHolder.size size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
@@ -165,22 +165,22 @@ export function isNotEmptyByCollectionHolder<const T, >(collection: Nullable<Col
 }
 
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The {@link ReadonlyArray collection}
+ * @param collection The {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
-export function isNotEmptyByArray<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: COLLECTION,): IsNotEmptyOnArray<COLLECTION>
+export function isNotEmptyByArray<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): IsNotEmptyOnArray<COLLECTION>
 /**
- * The {@link collection} has at least one value
+ * The {@link collection} has a minimum of 1 value
  *
- * @param collection The nullable collection
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to compare its {@link ReadonlyArray.length size}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
-export function isNotEmptyByArray<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION,): IsNotEmptyOnNullableArray<COLLECTION>
-export function isNotEmptyByArray<const T, >(collection: Nullable<readonly T[]>,) {
+export function isNotEmptyByArray<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): IsNotEmptyOnNullableArray<COLLECTION>
+export function isNotEmptyByArray<const T, >(collection: Nullable<Array<T>>,) {
     if (collection == null)
         return false
     return collection.length != 0

@@ -1,9 +1,42 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Every test" type="CompoundRunConfigurationType">
-    <toRun name="CollectionHandler (every tests)" type="CompoundRunConfigurationType" />
-    <toRun name="CollectionHolder (every tests)" type="CompoundRunConfigurationType" />
-    <toRun name="CollectionIterator (every tests)" type="CompoundRunConfigurationType" />
-    <toRun name="LazyCollectionHolder (every tests)" type="CompoundRunConfigurationType" />
+    <toRun name="CollectionIterator (javascript exclusive)" type="JavaScriptTestRunnerJest" />
+    <toRun name="CollectionIterator (loop)" type="JavaScriptTestRunnerJest" />
+    <toRun name="CollectionIterator (normal)" type="JavaScriptTestRunnerJest" />
+    <toRun name="CollectionIterator (size)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (conversion)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (has)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (javascript exclusive)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (size)" type="JavaScriptTestRunnerJest" />
+    <toRun name="all / any / none" type="JavaScriptTestRunnerJest" />
+    <toRun name="constructor" type="JavaScriptTestRunnerJest" />
+    <toRun name="conversion" type="JavaScriptTestRunnerJest" />
+    <toRun name="drop" type="JavaScriptTestRunnerJest" />
+    <toRun name="filter" type="JavaScriptTestRunnerJest" />
+    <toRun name="find" type="JavaScriptTestRunnerJest" />
+    <toRun name="has" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ EmptyCollectionHolder" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ aliases" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ get() being called" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ instances ~ 1 field" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ instances ~ 2 fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ instances ~ empty" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ methods" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfFirst ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfLast ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="inner-collection" type="JavaScriptTestRunnerJest" />
+    <toRun name="is" type="JavaScriptTestRunnerJest" />
+    <toRun name="javascript exclusive" type="JavaScriptTestRunnerJest" />
+    <toRun name="joinToString" type="JavaScriptTestRunnerJest" />
+    <toRun name="loop" type="JavaScriptTestRunnerJest" />
+    <toRun name="map" type="JavaScriptTestRunnerJest" />
+    <toRun name="reverse" type="JavaScriptTestRunnerJest" />
+    <toRun name="size" type="JavaScriptTestRunnerJest" />
+    <toRun name="slice" type="JavaScriptTestRunnerJest" />
+    <toRun name="take" type="JavaScriptTestRunnerJest" />
+    <toRun name="value" type="JavaScriptTestRunnerJest" />
+    <toRun name="∞" type="JavaScriptTestRunnerJest" />
     <method v="2" />
   </configuration>
 </component>

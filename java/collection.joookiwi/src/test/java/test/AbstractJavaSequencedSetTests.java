@@ -34,8 +34,4 @@ public abstract class AbstractJavaSequencedSetTests {
         }
     }
 
-    /// Give `null` to a typed [SequencedSet]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable SequencedSet<T> nullInstance() { return null; }
-
 }

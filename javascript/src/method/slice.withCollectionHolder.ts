@@ -10,14 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__get}                         from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -36,12 +36,12 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: CollectionHolder<number>,): CollectionHolder<T> {
+export function sliceWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, indices: CollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return sliceWithCollectionHolderByCollectionHolder(collection, indices,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return sliceWithCollectionHolderByArray(collection, indices,)
     if (isMinimalistCollectionHolder(collection,))
         return sliceWithCollectionHolderByMinimalistCollectionHolder(collection, indices,)
@@ -67,12 +67,12 @@ export function sliceWithCollectionHolder<const T, >(collection: Nullable<| Mini
  */
 export function sliceWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: CollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (collection.size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
+    if (collection.size === 0)
+        return EmptyCollectionHolder.get
     if (indices.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indices.size,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArray(collection, indices, indices.size,),)
 }
 
 /**
@@ -88,12 +88,12 @@ export function sliceWithCollectionHolderByMinimalistCollectionHolder<const T, >
  */
 export function sliceWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: CollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (indices.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indices.size,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArray(collection, indices, indices.size,),)
 }
 
 /**
@@ -107,14 +107,14 @@ export function sliceWithCollectionHolderByCollectionHolder<const T, >(collectio
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, indices: CollectionHolder<number>,): CollectionHolder<T> {
+export function sliceWithCollectionHolderByArray<const T, >(collection: Nullable<Array<T>>, indices: CollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (collection.length == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
+    if (collection.length === 0)
+        return EmptyCollectionHolder.get
     if (indices.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, indices, indices.size,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArrayByArray(collection, indices, indices.size,),)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -128,7 +128,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indice
     return Object.freeze(newArray,)
 }
 
-function __newArrayByArray<const T, >(collection: readonly T[], indices: MinimalistCollectionHolder<number>, indicesSize: number,) {
+function __newArrayByArray<const T, >(collection: Array<T>, indices: MinimalistCollectionHolder<number>, indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     let index = indicesSize
     while (index-- > 0)

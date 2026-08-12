@@ -2,20 +2,18 @@ package joookiwi.collection.java.method;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.TreeSet;
+
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.EmptyTreeSet;
-import joookiwi.collection.java.extended.ImmutableTreeSet;
-import joookiwi.collection.java.extended.MutableTreeSet;
+import joookiwi.collection.java.extended.set.EmptyTreeSet;
+import joookiwi.collection.java.extended.set.ImmutableTreeSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
 

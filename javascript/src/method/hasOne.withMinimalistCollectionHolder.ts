@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+export function hasOneWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -60,13 +60,13 @@ export function hasOneWithMinimalistCollectionHolderByMinimalistCollectionHolder
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuesSize === 0)
         return true
     return __validate(collection, values, size, valuesSize,)
 }
@@ -87,7 +87,7 @@ export function hasOneWithMinimalistCollectionHolderByCollectionHolder<const T, 
         return true
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuesSize === 0)
         return true
     return __validate(collection, values, collection.size, valuesSize,)
 }
@@ -99,18 +99,18 @@ export function hasOneWithMinimalistCollectionHolderByCollectionHolder<const T, 
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+export function hasOneWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
 
     const valuesSize = values.size
-    if (valuesSize == 0)
+    if (valuesSize === 0)
         return true
     return __validateByArray(collection, values, size, valuesSize,)
 }
@@ -119,25 +119,57 @@ export function hasOneWithMinimalistCollectionHolderByArray<const T, >(collectio
 //#region -------------------- Loop methods --------------------
 
 function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
-    let valueIndex = -1
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    const firstValue = values.get(0,)
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
+            return true
+
+    const sizeMinus1 = size - 1
+    let valueIndex = 0
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
-        let index = -1
-        while (++index < size)
-            if (collection.get(index,) === value)
-                return true
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return true
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection.get(index2,)) === value)
+                    return true
     }
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
-    let valueIndex = -1
+function __validateByArray<const T, >(collection: Array<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    const firstValue = values.get(0,)
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
+            return true
+
+    const sizeMinus1 = size - 1
+    let valueIndex = 0
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
-        let index = -1
-        while (++index < size)
-            if (collection[index] === value)
-                return true
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return true
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection[index2] as T) === value)
+                    return true
     }
     return false
 }

@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {CollectionIterator}      from "../../src/iterator/CollectionIterator"
 import type {CollectionIteratorValue} from "../../src/iterator/value/CollectionIteratorValue"
 
@@ -21,6 +23,8 @@ import {CollectionHolderFromArray}      from "./CollectionHolderFromArray"
  * A {@link CollectionIterator} having the functionality from an {@link ReadonlyArray array}.
  *
  * Internally, it is using {@link CollectionHolderFromArray} as the {@link CollectionIterator.collection}
+ *
+ * @typeParam T The type
  */
 export class CollectionIteratorFromArray<const T, >
     extends AbstractCollectionIterator<T> {
@@ -28,7 +32,7 @@ export class CollectionIteratorFromArray<const T, >
     public readonly array
     public readonly collection
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: Array<T>,) {
         super()
         this.array = array
         this.collection = new CollectionHolderFromArray(array,)
@@ -46,7 +50,7 @@ export class CollectionIteratorFromArray<const T, >
         return this.collection.get(index,)
     }
 
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public override [Symbol.iterator](): CollectionIteratorFromArray<T> {
         return new CollectionIteratorFromArray(this.array,)
     }
 

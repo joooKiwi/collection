@@ -17,3 +17,9 @@ export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER
 
 /** A type-alias of {@link CollectionIterator}[{@link Symbol.toStringTag}] */
 export type CollectionIteratorName = typeof CollectionConstants["COLLECTION_ITERATOR_TO_STRING_TAG"]
+
+/** A type-alias of {@link Tuple}[{@link Symbol.toStringTag}] */
+export type TupleName = typeof CollectionConstants["TUPLE_TO_STRING_TAG"]
+
+/** A type-alias of {@link Optional}[{@link Symbol.toStringTag}] */
+export type OptionalName = typeof CollectionConstants["OPTIONAL_TO_STRING_TAG"]

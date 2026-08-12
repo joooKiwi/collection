@@ -21,9 +21,9 @@ public final class IsNotEmpty
 
     //#region -------------------- Facade methods --------------------
 
-    /// The [collection][MinimalistCollectionHolder] has at least one value
+    /// The [collection][MinimalistCollectionHolder] has a minimum of 1 value
     ///
-    /// @param collection The collection to retrieve its [size][MinimalistCollectionHolder#size]
+    /// @param collection The [collection][MinimalistCollectionHolder] to compare its [size][MinimalistCollectionHolder#size]
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
     @ExtensionFunction
@@ -34,9 +34,9 @@ public final class IsNotEmpty
         return collection.size() != 0;
     }
 
-    /// The [collection][CollectionHolder] has at least one value
+    /// The [collection][CollectionHolder] has a minimum of 1 value
     ///
-    /// @param collection The collection to retrieve its [size][CollectionHolder#size]
+    /// @param collection The [collection][CollectionHolder] to compare its [size][CollectionHolder#size]
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
     @ExtensionFunction
@@ -47,9 +47,9 @@ public final class IsNotEmpty
         return !collection.isEmpty();
     }
 
-    /// The `collection` has at least one value
+    /// The `collection` has a minimum of 1 value
     ///
-    /// @param collection The collection to retrieve its `size`
+    /// @param collection The collection to compare its `size`
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
     @ExtensionFunction

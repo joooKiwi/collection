@@ -19,9 +19,9 @@ import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsExcepti
  * because the <b>index</b> was under 0
  * after it was calculated
  *
- * @beta
  * @see OverSizeIndexValueHolder
  * @see OverSizeIndexAfterCalculationValueHolder
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export class UnderZeroIndexAfterCalculationValueHolder
     implements ValueHolder<never> {

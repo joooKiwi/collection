@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableString} from "@joookiwi/type"
+import type {Array, Nullable, NullableString} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see String.toLocaleUpperCase
  * @extensionFunction
  */
-export function toLocaleUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
+export function toLocaleUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
     if (isCollectionHolder(collection,))
@@ -65,7 +65,7 @@ export function toLocaleUpperCaseStringByMinimalistCollectionHolder<const T, >(c
         return "[]"
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return "[]"
     if (locale == null)
         return __withNoLocale(collection, size,)
@@ -100,12 +100,12 @@ export function toLocaleUpperCaseStringByCollectionHolder<const T, >(collection:
  * @see String.toLocaleUpperCase
  * @extensionFunction
  */
-export function toLocaleUpperCaseStringByArray<const T, >(collection: Nullable<readonly T[]>, locale?: NullableString,): string {
+export function toLocaleUpperCaseStringByArray<const T, >(collection: Nullable<Array<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return "[]"
     if (locale == null)
         return __withNoLocaleByArray(collection, size,)
@@ -124,7 +124,7 @@ function __withNoLocale(collection: MinimalistCollectionHolder, size: number,) {
     return `[${string}${asLocaleUpperCaseString(collection.get(index,),)}]`
 }
 
-function __withNoLocaleByArray(collection: readonly unknown[], size: number,) {
+function __withNoLocaleByArray(collection: Array<unknown>, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1
@@ -143,7 +143,7 @@ function __withLocale(collection: MinimalistCollectionHolder, locale: string, si
     return `[${string}${asLocaleUpperCaseString(collection.get(index,), locale,)}]`
 }
 
-function __withLocaleByArray(collection: readonly unknown[], locale: string, size: number,) {
+function __withLocaleByArray(collection: Array<unknown>, locale: string, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1

@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHolder"
 
 import {GenericMinimalistCollectionHolder}                from "../../src/GenericMinimalistCollectionHolder"
@@ -21,14 +23,16 @@ import {AbstractMinimalistCollectionHolderForTest}        from "./AbstractMinima
  * and {@link GenericMinimalistCollectionHolder.get get}.
  *
  * The remaining methods are from the extension methods for a {@link MinimalistCollectionHolder}
+ *
+ * @typeParam T The type
  */
 export class CollectionHolder_ByMinimalistCollection<const T, >
-    extends AbstractMinimalistCollectionHolderForTest<T, readonly T[]> {
+    extends AbstractMinimalistCollectionHolderForTest<T, Array<T>> {
 
     /** The internal instance that is tested */
     public readonly instance: GenericMinimalistCollectionHolder<T>
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: Array<T>,) {
         super(array,)
         this.instance = new GenericMinimalistCollectionHolder(array,)
     }

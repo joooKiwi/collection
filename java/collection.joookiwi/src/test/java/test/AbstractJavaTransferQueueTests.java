@@ -34,8 +34,4 @@ public abstract class AbstractJavaTransferQueueTests {
         }
     }
 
-    /// Give the`null` to a typed [TransferQueue]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable TransferQueue<T> nullInstance() { return null; }
-
 }

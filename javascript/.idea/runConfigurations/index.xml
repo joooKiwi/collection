@@ -1,15 +1,15 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="index" type="JavaScriptTestRunnerJest" folderName="CollectionHolder tests">
-    <node-interpreter value="project" />
-    <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-    <working-dir value="$PROJECT_DIR$" />
-    <jest-options value="--collect-coverage=false" />
-    <envs />
-    <scope-kind value="SUITE" />
-    <test-file value="$PROJECT_DIR$/test/CollectionHolder.04 - index.test.ts" />
-    <test-names>
-      <test-name value="CollectionHolderTest (index)" />
-    </test-names>
+  <configuration default="false" name="index" type="CompoundRunConfigurationType">
+    <toRun name="index ~ EmptyCollectionHolder" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ aliases" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ get() being called" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ instances ~ 1 field" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ instances ~ 2 fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ instances ~ empty" type="JavaScriptTestRunnerJest" />
+    <toRun name="index ~ methods" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfFirst ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
+    <toRun name="indexOfLast ~ instances ~ N fields" type="JavaScriptTestRunnerJest" />
     <method v="2" />
   </configuration>
 </component>

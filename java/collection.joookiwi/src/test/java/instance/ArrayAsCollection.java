@@ -45,7 +45,7 @@ public final class ArrayAsCollection<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1) @Override public boolean equals(final @Nullable Object other) { throw new RuntimeException("The method “equals” was not expected to be called in a test."); }
 
     @Contract(ALWAYS_FAIL_0) @Override public ArrayAsCollection<T> clone() { throw new RuntimeException("The method “clone” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_0) @Override public ArrayAsCollection<T> shallowClone() { throw new RuntimeException("The method “shallowClone” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_0) @Override public ArrayAsCollection<T> deepClone() { throw new RuntimeException("The method “deepClone” was not expected to be called in a test."); }
+//    @Contract(ALWAYS_FAIL_0) @Override public ArrayAsCollection<T> shallowClone() { throw new RuntimeException("The method “shallowClone” was not expected to be called in a test."); }
+//    @Contract(ALWAYS_FAIL_0) @Override public ArrayAsCollection<T> deepClone() { throw new RuntimeException("The method “deepClone” was not expected to be called in a test."); }
 
 }

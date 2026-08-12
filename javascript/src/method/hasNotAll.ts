@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                   from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                         from "../MinimalistCollectionHolder"
@@ -47,7 +47,7 @@ import {isSetByStructure}                                                       
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<readonly T[]>,): boolean
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Array<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -56,7 +56,7 @@ export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollection
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Set<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -65,7 +65,7 @@ export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollection
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionHolder<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -74,7 +74,7 @@ export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollection
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -83,7 +83,7 @@ export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollection
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -92,7 +92,7 @@ export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollection
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -101,7 +101,7 @@ export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollection
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -111,8 +111,8 @@ export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollection
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
     if (values == null)
         return false
 
@@ -154,7 +154,7 @@ export function hasNotAll<const T, >(collection: Nullable<| MinimalistCollection
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean
+export function hasNotAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Array<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -163,7 +163,7 @@ export function hasNotAllByMinimalistCollectionHolder<const T, >(collection: Nul
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean
+export function hasNotAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Set<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -258,11 +258,11 @@ export function hasNotAllByMinimalistCollectionHolder<const T, >(collection: Nul
  * @param collection The nullable collection
  * @param values     The values to compare
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean
+export function hasNotAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Array<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -271,7 +271,7 @@ export function hasNotAllByCollectionHolder<const T, >(collection: Nullable<Coll
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean
+export function hasNotAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Set<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -368,7 +368,7 @@ export function hasNotAllByCollectionHolder<const T, >(collection: Nullable<Coll
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<readonly T[]>,): boolean
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Array<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -377,7 +377,7 @@ export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Set<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -386,7 +386,7 @@ export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<CollectionHolder<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -395,7 +395,7 @@ export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -404,7 +404,7 @@ export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -413,7 +413,7 @@ export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -422,7 +422,7 @@ export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 /**
  * Tell that not a single item in the {@link values} exist in the {@link collection}
  *
@@ -432,8 +432,8 @@ export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @extensionFunction
  * @facadeFunction
  */
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-export function hasNotAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+export function hasNotAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
     if (values == null)
         return false
 

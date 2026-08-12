@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.LongAdder;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.MutableArrayList;
+import joookiwi.collection.java.extended.list.MutableArrayList;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -60,37 +60,25 @@ public final class MutableArrayListCreator
     //#region -------------------- initialCapacity --------------------
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final byte initialCapacity) { return __newInstance(initialCapacity); }
+    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final byte initialCapacity) { return new MutableArrayList<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final short initialCapacity) { return __newInstance(initialCapacity); }
+    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final short initialCapacity) { return new MutableArrayList<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final int initialCapacity) { return __newInstance(initialCapacity); }
+    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final int initialCapacity) { return new MutableArrayList<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
     public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final long initialCapacity) { return __newInstance(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final @Nullable Byte initialCapacity) {
-        if (initialCapacity == null)
-            return new MutableArrayList<>();
-        return __newInstance(initialCapacity);
-    }
+    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final @Nullable Byte initialCapacity) { return new MutableArrayList<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final @Nullable Short initialCapacity) {
-        if (initialCapacity == null)
-            return new MutableArrayList<>();
-        return __newInstance(initialCapacity);
-    }
+    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final @Nullable Short initialCapacity) { return new MutableArrayList<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final @Nullable Integer initialCapacity) {
-        if (initialCapacity == null)
-            return new MutableArrayList<>();
-        return __newInstance(initialCapacity);
-    }
+    public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final @Nullable Integer initialCapacity) { return new MutableArrayList<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
     public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final @Nullable Long initialCapacity) {
@@ -103,7 +91,7 @@ public final class MutableArrayListCreator
     public static <T extends @Nullable Object> MutableArrayList<T> MutableArrayList(final @Nullable AtomicInteger initialCapacity) {
         if (initialCapacity == null)
             return new MutableArrayList<>();
-        return __newInstance(initialCapacity.get());
+        return new MutableArrayList<>(initialCapacity.get());
     }
 
     @Contract(ALWAYS_NEW_1)
@@ -131,24 +119,6 @@ public final class MutableArrayListCreator
 
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Core methods --------------------
-
-    private static <T extends @Nullable Object> MutableArrayList<T> __newInstance(final byte initialCapacity) {
-        if (initialCapacity < 0)
-            return new MutableArrayList<>(0);
-        return new MutableArrayList<>(initialCapacity);
-    }
-
-    private static <T extends @Nullable Object> MutableArrayList<T> __newInstance(final short initialCapacity) {
-        if (initialCapacity < 0)
-            return new MutableArrayList<>(0);
-        return new MutableArrayList<>(initialCapacity);
-    }
-
-    private static <T extends @Nullable Object> MutableArrayList<T> __newInstance(final int initialCapacity) {
-        if (initialCapacity < 0)
-            return new MutableArrayList<>(0);
-        return new MutableArrayList<>(initialCapacity);
-    }
 
     private static <T extends @Nullable Object> MutableArrayList<T> __newInstance(final long initialCapacity) {
         if (initialCapacity < 0)

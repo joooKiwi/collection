@@ -22,7 +22,7 @@ import {Not0IndexAfterCalculationValueHolder} from "./value/Not0IndexAfterCalcul
 import {PositiveInfinityIndexValueHolder}     from "./value/PositiveInfinityIndexValueHolder"
 import {ValidValueHolder}                     from "./value/ValidValueHolder"
 
-/** @deprecated Replace with {@link AbstractCollectionHolderBy1}. This will be removed in v2.0 */
+/** @deprecated Replace with {@link AbstractCollectionHolderOf1}. This will be removed in v2.1 */
 export abstract class AbstractCollectionHandlerBy1Value<const T = unknown,
     const REFERENCE extends PossibleIterableIteratorArraySetOrCollectionHolder<T> = PossibleIterableIteratorArraySetOrCollectionHolder<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -99,9 +99,9 @@ export abstract class AbstractCollectionHandlerBy1Value<const T = unknown,
     public override get(index: number,): ValueHolder<T> {
         if (Number.isNaN(index,))
             return new NaNIndexValueHolder(index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             return new NegativeInfinityIndexValueHolder(index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             return new PositiveInfinityIndexValueHolder(index,)
 
         if (index > 0)

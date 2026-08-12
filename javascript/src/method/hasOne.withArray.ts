@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<readonly T[]>,): boolean {
+export function hasOneWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -55,18 +55,18 @@ export function hasOneWithArray<const T, >(collection: Nullable<| MinimalistColl
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean {
+export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
 
     const valuesSize = values.length
-    if (valuesSize == 0)
+    if (valuesSize === 0)
         return true
     return __validate(collection, values, size, valuesSize,)
 }
@@ -78,7 +78,7 @@ export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collectio
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean {
+export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)
@@ -87,7 +87,7 @@ export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullabl
         return true
 
     const valuesSize = values.length
-    if (valuesSize == 0)
+    if (valuesSize === 0)
         return true
     return __validate(collection, values, collection.size, valuesSize,)
 }
@@ -99,18 +99,18 @@ export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullabl
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithArrayByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<readonly T[]>,): boolean {
+export function hasOneWithArrayByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
 
     const valuesSize = values.length
-    if (valuesSize == 0)
+    if (valuesSize === 0)
         return true
     return __validateByArray(collection, values, size, valuesSize,)
 }
@@ -118,26 +118,58 @@ export function hasOneWithArrayByArray<const T, >(collection: Nullable<readonly 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: readonly T[], size: number, valuesSize: number,) {
-    let valueIndex = -1
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: Array<T>, size: number, valuesSize: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    const firstValue = values[0]
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
+            return true
+
+    const sizeMinus1 = size - 1
+    let valueIndex = 0
     while (++valueIndex < valuesSize) {
         const value = values[valueIndex]
-        let index = -1
-        while (++index < size)
-            if (collection.get(index,) === value)
-                return true
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return true
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection.get(index2,)) === value)
+                    return true
     }
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: readonly T[], size: number, valuesSize: number,) {
-    let valueIndex = -1
+function __validateByArray<const T, >(collection: Array<T>, values: Array<T>, size: number, valuesSize: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    const firstValue = values[0]
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
+            return true
+
+    const sizeMinus1 = size - 1
+    let valueIndex = 0
     while (++valueIndex < valuesSize) {
         const value = values[valueIndex]
-        let index = -1
-        while (++index < size)
-            if (collection[index] === value)
-                return true
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return true
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection[index2] as T) === value)
+                    return true
     }
     return false
 }

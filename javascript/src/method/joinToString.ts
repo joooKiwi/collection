@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber, NullableString} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -24,7 +24,6 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
-//FIXME: Give […] instead of [] when the limit is 0 on a non-empty collection
 
 /**
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
@@ -42,16 +41,16 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString(separator?, prefix?, postfix?, limit?, truncated?, transform?)
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
  */
-export function joinToString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
+export function joinToString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
     if (collection == null)
         return prefixAndPostfixOnly(prefix, postfix,)
     if (isCollectionHolder(collection,))
@@ -85,11 +84,11 @@ export function joinToString<const T, >(collection: Nullable<| MinimalistCollect
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString(separator?, prefix?, postfix?, limit?, truncated?, transform?)
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
@@ -123,11 +122,11 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString(separator?, prefix?, postfix?, limit?, truncated?, transform?)
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
@@ -161,16 +160,16 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString(separator?, prefix?, postfix?, limit?, truncated?, transform?)
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
  */
-export function joinToStringByArray<const T, >(collection: Nullable<readonly T[]>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
+export function joinToStringByArray<const T, >(collection: Nullable<Array<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
     if (collection == null)
         return prefixAndPostfixOnly(prefix, postfix,)
     if (transform == null)
@@ -212,14 +211,14 @@ function __coreByCollectionHolder(collection: CollectionHolder, separator: strin
 
 function __coreByMinimalistCollectionHolder(collection: MinimalistCollectionHolder, separator: string, prefix: string, postfix: string,) {
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
     return __withNothing(collection, separator, prefix, postfix, size,)
 }
 
-function __coreByArray(collection: readonly unknown[], separator: string, prefix: string, postfix: string,) {
+function __coreByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string,) {
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
     return __withNothingByArray(collection, separator, prefix, postfix, size,)
 }
@@ -233,35 +232,35 @@ function __coreWithLimitByCollectionHolder(collection: CollectionHolder, separat
 
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
-        return prefix + postfix
-    if (lastIndex == size)
+    if (lastIndex === 0)
+        return prefix + truncated + postfix
+    if (lastIndex === size)
         return __withNothing(collection, separator, prefix, postfix, size,)
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
 }
 
 function __coreWithLimitByMinimalistCollectionHolder(collection: MinimalistCollectionHolder, separator: string, prefix: string, postfix: string, limit: number, truncated: string,) {
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
-        return prefix + postfix
-    if (lastIndex == size)
+    if (lastIndex === 0)
+        return prefix + truncated + postfix
+    if (lastIndex === size)
         return __withNothing(collection, separator, prefix, postfix, size,)
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
 }
 
-function __coreWithLimitByArray(collection: readonly unknown[], separator: string, prefix: string, postfix: string, limit: number, truncated: string,) {
+function __coreWithLimitByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string, limit: number, truncated: string,) {
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
-        return prefix + postfix
-    if (lastIndex == size)
+    if (lastIndex === 0)
+        return prefix + truncated + postfix
+    if (lastIndex === size)
         return __withNothingByArray(collection, separator, prefix, postfix, size,)
     return __withTruncatedByArray(collection, separator, prefix, postfix, lastIndex, truncated,)
 }
@@ -275,16 +274,16 @@ function __coreWithLimitAndTransformByCollectionHolder<const T, >(collection: Co
 
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
-        return prefix + postfix
-    if (lastIndex == size)
-        if (transform.length == 1)
+    if (lastIndex === 0)
+        return prefix + truncated + postfix
+    if (lastIndex === size)
+        if (transform.length === 1)
             return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
         else if (transform.length >= 2)
             return __with2Argument(collection, separator, prefix, postfix, size, transform,)
         else
             return __with0Argument(separator, prefix, postfix, size, transform as () => string,)
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __withTruncatedAnd1Argument(collection, separator, prefix, postfix, lastIndex, truncated, transform as (value: T,) => string,)
     else if (transform.length >= 2)
         return __withTruncatedAnd2Argument(collection, separator, prefix, postfix, lastIndex, truncated, transform,)
@@ -293,42 +292,42 @@ function __coreWithLimitAndTransformByCollectionHolder<const T, >(collection: Co
 
 function __coreWithLimitAndTransformByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, separator: string, prefix: string, postfix: string, limit: number, truncated: string, transform: StringCallback<T>,) {
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
-        return prefix + postfix
-    if (lastIndex == size)
-        if (transform.length == 1)
+    if (lastIndex === 0)
+        return prefix + truncated  + postfix
+    if (lastIndex === size)
+        if (transform.length === 1)
             return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
         else if (transform.length >= 2)
             return __with2Argument(collection, separator, prefix, postfix, size, transform,)
         else
             return __with0Argument(separator, prefix, postfix, size, transform as () => string,)
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __withTruncatedAnd1Argument(collection, separator, prefix, postfix, lastIndex, truncated, transform as (value: T,) => string,)
     else if (transform.length >= 2)
         return __withTruncatedAnd2Argument(collection, separator, prefix, postfix, lastIndex, truncated, transform,)
     return __withTruncatedAnd0Argument(separator, prefix, postfix, lastIndex, truncated, transform as () => string,)
 }
 
-function __coreWithLimitAndTransformByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, limit: number, truncated: string, transform: StringCallback<T>,) {
+function __coreWithLimitAndTransformByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, limit: number, truncated: string, transform: StringCallback<T>,) {
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
-    if (lastIndex == 0)
-        return prefix + postfix
-    if (lastIndex == size)
-        if (transform.length == 1)
+    if (lastIndex === 0)
+        return prefix + truncated + postfix
+    if (lastIndex === size)
+        if (transform.length === 1)
             return __with1ArgumentByArray(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
         else if (transform.length >= 2)
             return __with2ArgumentByArray(collection, separator, prefix, postfix, size, transform,)
         else
             return __with0Argument(separator, prefix, postfix, size, transform as () => string,)
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __withTruncatedAnd1ArgumentByArray(collection, separator, prefix, postfix, lastIndex, truncated, transform as (value: T,) => string,)
     else if (transform.length >= 2)
         return __withTruncatedAnd2ArgumentByArray(collection, separator, prefix, postfix, lastIndex, truncated, transform,)
@@ -341,7 +340,7 @@ function __coreWithLimitAndTransformByArray<const T, >(collection: readonly T[],
 function __coreWithTransformByCollectionHolder<const T, >(collection: CollectionHolder<T>, separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
     if (collection.isEmpty)
         return prefix + postfix
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __with1Argument(collection, separator, prefix, postfix, collection.size, transform as (value: T,) => string,)
     if (transform.length >= 2)
         return __with2Argument(collection, separator, prefix, postfix, collection.size, transform,)
@@ -350,20 +349,20 @@ function __coreWithTransformByCollectionHolder<const T, >(collection: Collection
 
 function __coreWithTransformByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
     if (transform.length >= 2)
         return __with2Argument(collection, separator, prefix, postfix, size, transform,)
     return __with0Argument(separator, prefix, postfix, size, transform as () => string,)
 }
 
-function __coreWithTransformByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
+function __coreWithTransformByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return prefix + postfix
-    if (transform.length == 1)
+    if (transform.length === 1)
         return __with1ArgumentByArray(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
     if (transform.length >= 2)
         return __with2ArgumentByArray(collection, separator, prefix, postfix, size, transform,)
@@ -384,7 +383,7 @@ function __withNothing(collection: MinimalistCollectionHolder, separator: string
     return `${prefix}${string}${collection.get(index,)}${postfix}`
 }
 
-function __withNothingByArray(collection: readonly unknown[], separator: string, prefix: string, postfix: string, lastIndex: number,) {
+function __withNothingByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string, lastIndex: number,) {
     let string = ""
     const sizeMinus1 = lastIndex - 1
     let index = -1
@@ -413,7 +412,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return `${prefix}${string}${transform(collection.get(index,),)}${postfix}`
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, lastIndex: number, transform: (value: T,) => string,) {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, lastIndex: number, transform: (value: T,) => string,) {
     let string = ""
     const sizeMinus1 = lastIndex - 1
     let index = -1
@@ -432,7 +431,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return `${prefix}${string}${transform(collection.get(index,), index,)}${postfix}`
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, lastIndex: number, transform: (value: T, index: number,) => string,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, lastIndex: number, transform: (value: T, index: number,) => string,) {
     let string = ""
     const sizeMinus1 = lastIndex - 1
     let index = -1
@@ -450,7 +449,7 @@ function __withTruncated(collection: MinimalistCollectionHolder, separator: stri
     return `${prefix}${string}${truncated}${postfix}`
 }
 
-function __withTruncatedByArray(collection: readonly unknown[], separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string,) {
+function __withTruncatedByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string,) {
     let string = ""
     let index = -1
     while (++index < lastIndex)
@@ -476,7 +475,7 @@ function __withTruncatedAnd1Argument<const T, >(collection: MinimalistCollection
     return `${prefix}${string}${truncated}${postfix}`
 }
 
-function __withTruncatedAnd1ArgumentByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T,) => string,) {
+function __withTruncatedAnd1ArgumentByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T,) => string,) {
     let string = ""
     let index = -1
     while (++index < lastIndex)
@@ -493,7 +492,7 @@ function __withTruncatedAnd2Argument<const T, >(collection: MinimalistCollection
     return `${prefix}${string}${truncated}${postfix}`
 }
 
-function __withTruncatedAnd2ArgumentByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T, index: number,) => string,) {
+function __withTruncatedAnd2ArgumentByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T, index: number,) => string,) {
     let string = ""
     let index = -1
     while (++index < lastIndex)

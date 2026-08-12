@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
@@ -28,13 +28,13 @@ import {findFirst, findFirstByArray, findFirstByCollectionHolder, findFirstByMin
  * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
  * @alias CollectionHolder.getFirst
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -51,7 +51,7 @@ export function first<const T, >(collection: Nullable<| MinimalistCollectionHold
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function first<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -67,8 +67,8 @@ export function first<const T, const S extends T, >(collection: Nullable<| Minim
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): T
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<BooleanCallback<T>>,): T
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getFirst(collection,)
     return findFirst(collection, predicate,)
@@ -82,7 +82,7 @@ export function first<const T, >(collection: Nullable<| MinimalistCollectionHold
  * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
  * @alias CollectionHolder.getFirst
  * @extensionFunction
@@ -135,7 +135,7 @@ export function firstByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
  * @alias CollectionHolder.getFirst
  * @extensionFunction
@@ -188,13 +188,13 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
  * @alias CollectionHolder.getFirst
  * @extensionFunction
  * @facadeFunction
  */
-export function firstByArray<const T, >(collection: Nullable<readonly T[]>,): T
+export function firstByArray<const T, >(collection: Nullable<Array<T>>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -211,7 +211,7 @@ export function firstByArray<const T, >(collection: Nullable<readonly T[]>,): T
  * @extensionFunction
  * @facadeFunction
  */
-export function firstByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function firstByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -227,8 +227,8 @@ export function firstByArray<const T, const S extends T, >(collection: Nullable<
  * @extensionFunction
  * @facadeFunction
  */
-export function firstByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): T
-export function firstByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function firstByArray<const T, >(collection: Nullable<Array<T>>, predicate: Nullable<BooleanCallback<T>>,): T
+export function firstByArray<const T, >(collection: Nullable<Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getFirstByArray(collection,)
     return findFirstByArray(collection, predicate,)

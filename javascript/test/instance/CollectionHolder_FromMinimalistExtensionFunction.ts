@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber, NumberArray, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}               from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}     from "../../src/MinimalistCollectionHolder"
@@ -55,9 +55,12 @@ import {sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder}     fro
 import {sliceWithSetByMinimalistCollectionHolder}                            from "../../src/method/slice.withSet"
 import {AbstractMinimalistCollectionHolderForTest}                           from "./AbstractMinimalistCollectionHolderForTest"
 
-/** A test instance to exclusively test the extension methods for a {@link MinimalistCollectionHolder} */
+/**
+ * A test instance to exclusively test the extension methods for
+ * a {@link MinimalistCollectionHolder}
+ */
 export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
-    extends AbstractMinimalistCollectionHolderForTest<T, readonly T[]>
+    extends AbstractMinimalistCollectionHolderForTest<T, Array<T>>
     implements CollectionHolder_FromExtension<T> {
 
     public override get amountOfCall(): never {
@@ -82,10 +85,10 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
         return array[index] as T
     }
 
-    public hasOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasOneWithArrayByMinimalistCollectionHolder(this, values,)
     }
-    public hasOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasOneWithSetByMinimalistCollectionHolder(this, values,)
     }
     public hasOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -104,10 +107,10 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
         return hasOneWithIterableByMinimalistCollectionHolder(this, values,)
     }
 
-    public hasNotOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasNotOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotOneWithArrayByMinimalistCollectionHolder(this, values,)
     }
-    public hasNotOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasNotOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotOneWithSetByMinimalistCollectionHolder(this, values,)
     }
     public hasNotOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -126,10 +129,10 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
         return hasNotOneWithIterableByMinimalistCollectionHolder(this, values,)
     }
 
-    public hasAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasAllWithArrayByMinimalistCollectionHolder(this, values,)
     }
-    public hasAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasAllWithSetByMinimalistCollectionHolder(this, values,)
     }
     public hasAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -148,10 +151,10 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
         return hasAllWithIterableByMinimalistCollectionHolder(this, values,)
     }
 
-    public hasNotAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasNotAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotAllWithArrayByMinimalistCollectionHolder(this, values,)
     }
-    public hasNotAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasNotAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotAllWithSetByMinimalistCollectionHolder(this, values,)
     }
     public hasNotAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -173,10 +176,10 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
     public sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return sliceWithARangeByMinimalistCollectionHolder(this, from, to,)
     }
-    public sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+    public sliceWithArray(indices: NumberArray): CollectionHolder<T> {
         return sliceWithArrayByMinimalistCollectionHolder(this, indices,)
     }
-    public sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+    public sliceWithSet(indices: NumberSet,): CollectionHolder<T> {
         return sliceWithSetByMinimalistCollectionHolder(this, indices,)
     }
     public sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {

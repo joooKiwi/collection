@@ -6,9 +6,8 @@ import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
-import joookiwi.collection.java.exception.ImpossibleCapacityException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.MutableLinkedBlockingQueue;
+import joookiwi.collection.java.extended.queue.MutableLinkedBlockingQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -269,22 +268,16 @@ public final class ToMutableLinkedBlockingQueue
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity
     /// @param <T>        The `collection` type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
     public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                  final int capacity) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
         final var size = collection.size();
         if (size == 0)
             return new MutableLinkedBlockingQueue<>(capacity);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableLinkedBlockingQueue<>(_values(collection, size), capacity);
     }
 
@@ -294,23 +287,15 @@ public final class ToMutableLinkedBlockingQueue
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity
     /// @param <T>        The `collection` type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
     public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                  final int capacity) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
         if (collection.isEmpty())
             return new MutableLinkedBlockingQueue<>(capacity);
-
-        final var size = collection.size();
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
-        return new MutableLinkedBlockingQueue<>(_values(collection, size), capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, collection.size()), capacity);
     }
 
     /// Convert the `collection` to a [MutableLinkedBlockingQueue]
@@ -319,22 +304,72 @@ public final class ToMutableLinkedBlockingQueue
     /// @param collection The [nullable][Nullable] collection
     /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity
     /// @param <T>        The `collection` type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
     public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                  final int capacity) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
         final var size = collection.length;
         if (size == 0)
             return new MutableLinkedBlockingQueue<>(capacity);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, size), capacity);
+    }
+
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                 final @Nullable Integer capacity) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableLinkedBlockingQueue<>(capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, size), capacity);
+    }
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                 final @Nullable Integer capacity) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+        if (collection.isEmpty())
+            return new MutableLinkedBlockingQueue<>(capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, collection.size()), capacity);
+    }
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                 final @Nullable Integer capacity) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableLinkedBlockingQueue<>(capacity);
         return new MutableLinkedBlockingQueue<>(_values(collection, size), capacity);
     }
 
@@ -350,23 +385,17 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                              final int capacity,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
         final var size = collection.size();
         if (size == 0)
             return new MutableLinkedBlockingQueue<>(capacity);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -379,24 +408,16 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                              final int capacity,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
         if (collection.isEmpty())
             return new MutableLinkedBlockingQueue<>(capacity);
-
-        final var size = collection.size();
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
-        return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, collection.size(), transform), capacity);
     }
 
     /// Convert the `collection` to a [MutableLinkedBlockingQueue]
@@ -408,23 +429,85 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                              final int capacity,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
         final var size = collection.length;
         if (size == 0)
             return new MutableLinkedBlockingQueue<>(capacity);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
+    }
+
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableLinkedBlockingQueue<>(capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
+    }
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+        if (collection.isEmpty())
+            return new MutableLinkedBlockingQueue<>(capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, collection.size(), transform), capacity);
+    }
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableLinkedBlockingQueue<>(capacity);
         return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -440,23 +523,17 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                              final int capacity,
                                                                                                              final Function<? super T, ? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
         final var size = collection.size();
         if (size == 0)
             return new MutableLinkedBlockingQueue<>(capacity);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -469,24 +546,16 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                              final int capacity,
                                                                                                              final Function<? super T, ? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
         if (collection.isEmpty())
             return new MutableLinkedBlockingQueue<>(capacity);
-
-        final var size = collection.size();
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
-        return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, collection.size(), transform), capacity);
     }
 
     /// Convert the `collection` to a [MutableLinkedBlockingQueue]
@@ -498,23 +567,85 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                              final int capacity,
                                                                                                              final Function<? super T, ? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
         final var size = collection.length;
         if (size == 0)
             return new MutableLinkedBlockingQueue<>(capacity);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
+    }
+
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableLinkedBlockingQueue<>(capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
+    }
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+        if (collection.isEmpty())
+            return new MutableLinkedBlockingQueue<>(capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection, collection.size(), transform), capacity);
+    }
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableLinkedBlockingQueue<>(capacity);
         return new MutableLinkedBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -530,23 +661,17 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                              final int capacity,
                                                                                                              final Supplier<? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
         final var size = collection.size();
         if (size == 0)
             return new MutableLinkedBlockingQueue<>(capacity);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableLinkedBlockingQueue<>(_values(size, transform), capacity);
     }
 
@@ -559,24 +684,16 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                              final int capacity,
                                                                                                              final Supplier<? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
         if (collection.isEmpty())
             return new MutableLinkedBlockingQueue<>(capacity);
-
-        final var size = collection.size();
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
-        return new MutableLinkedBlockingQueue<>(_values(size, transform), capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection.size(), transform), capacity);
     }
 
     /// Convert the `collection` to a [MutableLinkedBlockingQueue]
@@ -588,23 +705,85 @@ public final class ToMutableLinkedBlockingQueue
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    /// @throws ImpossibleCapacityException The `capacity` was under `1`
-    /// @throws ImpossibleCapacityException The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                              final int capacity,
                                                                                                              final Supplier<? extends U> transform) {
-        if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
         final var size = collection.length;
         if (size == 0)
             return new MutableLinkedBlockingQueue<>(capacity);
-        if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+        return new MutableLinkedBlockingQueue<>(_values(size, transform), capacity);
+    }
+
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableLinkedBlockingQueue<>(capacity);
+        return new MutableLinkedBlockingQueue<>(_values(size, transform), capacity);
+    }
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+        if (collection.isEmpty())
+            return new MutableLinkedBlockingQueue<>(capacity);
+        return new MutableLinkedBlockingQueue<>(_values(collection.size(), transform), capacity);
+    }
+
+    /// Convert the `collection` to a [MutableLinkedBlockingQueue]
+    /// applying a transformation
+    /// with the `capacity` specified
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.LinkedBlockingQueue] capacity (or [Integer#MAX_VALUE] if it is `null`)
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> MutableLinkedBlockingQueue<U> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final @Nullable Integer capacity,
+                                                                                                             final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableLinkedBlockingQueue<>(capacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableLinkedBlockingQueue<>(capacity);
         return new MutableLinkedBlockingQueue<>(_values(size, transform), capacity);
     }
 

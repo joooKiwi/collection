@@ -31,8 +31,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * An implementation of a {@link CollectionHandler} for a {@link MinimalistCollectionHolder}
  *
  * @beta
- * @see CollectionHandlerByCollectionHolder
- * @deprecated Replace with {@link MinimalistCollectionViewer} or {@link CollectionViewer} depending on the needs. This will be removed in v2.0
+ * @deprecated Replace with {@link MinimalistAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
     const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,
@@ -115,7 +114,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
         }
 
         const size = this.size
-        if (size == 1)
+        if (size === 1)
             return this.#hasDuplicate = false
 
         //TODO add logic to compare if it exist and _lastIndex++ logic
@@ -194,9 +193,9 @@ export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
 
         if (Number.isNaN(index,))
             return new NaNIndexValueHolder(index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             return new NegativeInfinityIndexValueHolder(index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             return new PositiveInfinityIndexValueHolder(index,)
 
         const collection = this._collection
@@ -204,7 +203,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
-        if (index == size)
+        if (index === size)
             return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
@@ -213,7 +212,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
             if (this.hasFinished)
                 return new ValidValueHolder(collection[index] as T,)
 
-            if (size - 1 == this._amountOfElementRetrieved++)
+            if (size - 1 === this._amountOfElementRetrieved++)
                 this._hasFinished = true
             return new ValidValueHolder(collection[index] = this._reference.get(index,),)
         }
@@ -229,7 +228,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
         if (indexToRetrieve in collection)
             return new ValidValueHolder(collection[indexToRetrieve] as T,)
 
-        if (size - 1 == this._amountOfElementRetrieved++)
+        if (size - 1 === this._amountOfElementRetrieved++)
             this._hasFinished = true
         return new ValidValueHolder(collection[indexToRetrieve] = this._reference.get(indexToRetrieve,),)
     }

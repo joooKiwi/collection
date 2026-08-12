@@ -10,17 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {MinimalistCollectionHolder}             from "../MinimalistCollectionHolder"
-import type {CollectionIterator}                     from "./CollectionIterator"
-import type {CollectionIteratorValue}                from "./value/CollectionIteratorValue"
-import type {IsEmptyOnMinimalistCollectionHolder}    from "../type/isEmpty"
-import type {IsNotEmptyOnMinimalistCollectionHolder} from "../type/isNotEmpty"
+import type {CollectionHolder}        from "../CollectionHolder"
+import type {CollectionIteratorValue} from "./value/CollectionIteratorValue"
 
 import {GenericCollectionIteratorValue} from "./value/GenericCollectionIteratorValue"
 import {AbstractCollectionIterator}     from "./AbstractCollectionIterator"
 
 export class GenericCollectionIterator<const T = unknown,
-    const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
+    const REFERENCE extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionIterator<T> {
 
     //#region -------------------- Fields --------------------
@@ -29,10 +26,13 @@ export class GenericCollectionIterator<const T = unknown,
     #size?: REFERENCE["size"]
     #sizeMinus1?: number
     #sizeMinus2?: number
-    #isEmpty?: IsEmptyOnMinimalistCollectionHolder<REFERENCE>
-    #isNotEmpty?: IsNotEmptyOnMinimalistCollectionHolder<REFERENCE>
-    #hasOnly1Element?: boolean
-    #hasOnly2Elements?: boolean
+    #isEmpty?: REFERENCE["isEmpty"]
+    #isNotEmpty?: REFERENCE["isNotEmpty"]
+    #hasExactly1Element?: REFERENCE["hasExactly1Element"]
+    #hasAtMost1Element?: REFERENCE["hasAtMost1Element"]
+    #hasAtLeast2Elements?: REFERENCE["hasAtLeast2Elements"]
+    #hasExactly2Elements?: REFERENCE["hasExactly2Elements"]
+    #hasAtMost2Elements?: REFERENCE["hasAtMost2Elements"]
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -61,14 +61,20 @@ export class GenericCollectionIterator<const T = unknown,
     protected override get _sizeMinus2(): number { return this.#sizeMinus2 ??= super._sizeMinus2 }
 
     /** @initializedOnFirstCall */
-    public override get isEmpty(): IsEmptyOnMinimalistCollectionHolder<REFERENCE> { return this.#isEmpty ??= super.isEmpty as IsEmptyOnMinimalistCollectionHolder<REFERENCE> }
+    public override get isEmpty(): REFERENCE["isEmpty"] { return this.#isEmpty ??= this._reference.isEmpty }
     /** @initializedOnFirstCall */
-    public override get isNotEmpty(): IsNotEmptyOnMinimalistCollectionHolder<REFERENCE> { return this.#isNotEmpty ??= super.isNotEmpty as IsNotEmptyOnMinimalistCollectionHolder<REFERENCE> }
+    public override get isNotEmpty(): REFERENCE["isNotEmpty"] { return this.#isNotEmpty ??= this._reference.isNotEmpty }
 
     /** @initializedOnFirstCall */
-    protected override get _hasOnly1Element(): boolean { return this.#hasOnly1Element ??= super._hasOnly1Element }
+    public override get hasExactly1Element(): REFERENCE["hasExactly1Element"] { return this.#hasExactly1Element ??= this._reference.hasExactly1Element }
     /** @initializedOnFirstCall */
-    protected override get _hasOnly2Elements(): boolean { return this.#hasOnly2Elements ??= super._hasOnly2Elements }
+    public override get hasAtMost1Element(): REFERENCE["hasAtMost1Element"] { return this.#hasAtMost1Element ??= this._reference.hasAtMost1Element }
+    /** @initializedOnFirstCall */
+    public override get hasAtLeast2Elements(): REFERENCE["hasAtLeast2Elements"] { return this.#hasAtLeast2Elements ??= this._reference.hasAtLeast2Elements }
+    /** @initializedOnFirstCall */
+    public override get hasExactly2Elements(): REFERENCE["hasExactly2Elements"] { return this.#hasExactly2Elements ??= this._reference.hasExactly2Elements }
+    /** @initializedOnFirstCall */
+    public override get hasAtMost2Elements(): REFERENCE["hasAtMost2Elements"] { return this.#hasAtMost2Elements ??= this._reference.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
 
@@ -81,7 +87,7 @@ export class GenericCollectionIterator<const T = unknown,
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> { return new GenericCollectionIterator(this._reference,) }
+    public override [Symbol.iterator](): GenericCollectionIterator<T, REFERENCE> { return new GenericCollectionIterator(this._reference,) }
 
     //#endregion -------------------- JavaScript methods --------------------
 

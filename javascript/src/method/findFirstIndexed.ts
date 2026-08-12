@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                                         from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
@@ -40,7 +40,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findFirstIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+export function findFirstIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): S
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  *
@@ -53,8 +53,8 @@ export function findFirstIndexed<const T, const S extends T, >(collection: Nulla
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
  */
-export function findFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): T
-export function findFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
+export function findFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseBooleanCallback<T>,): T
+export function findFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         throw new NullCollectionException()
     if (isCollectionHolder(collection,))
@@ -104,9 +104,9 @@ export function findFirstIndexedByMinimalistCollectionHolder<const T, >(collecti
         throw new NullCollectionException()
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, size,)
@@ -145,7 +145,7 @@ export function findFirstIndexedByCollectionHolder<const T, >(collection: Nullab
         throw new NullCollectionException()
     if (collection.isEmpty)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,)
     if (predicate.length >= 2)
         return __with2Argument(collection, predicate, collection.size,)
@@ -165,7 +165,7 @@ export function findFirstIndexedByCollectionHolder<const T, >(collection: Nullab
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findFirstIndexedByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+export function findFirstIndexedByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): S
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  *
@@ -178,15 +178,15 @@ export function findFirstIndexedByArray<const T, const S extends T, >(collection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
  */
-export function findFirstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>,): T
-export function findFirstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
+export function findFirstIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: ReverseBooleanCallback<T>,): T
+export function findFirstIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         throw new NullCollectionException()
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         throw new EmptyCollectionException()
-    if (predicate.length == 1)
+    if (predicate.length === 1)
         return __with1ArgumentByArray(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, size,)
@@ -201,15 +201,15 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (++index < size)
         if (predicate())
             return collection.get(index,)
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", size,)
 }
 
-function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: () => boolean, size: number,) {
+function __with0ArgumentByArray<const T, >(collection: Array<T>, predicate: () => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (predicate())
             return collection[index] as T
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", size,)
 }
 
 
@@ -218,15 +218,15 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (++index < size)
         if (predicate(index,))
             return collection.get(index,)
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", size,)
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: (index: number,) => boolean, size: number,) {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, predicate: (index: number,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (predicate(index,))
             return collection[index] as T
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", size,)
 }
 
 
@@ -237,17 +237,17 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
         if (predicate(index, value,))
             return value
     }
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", size,)
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (index: number, value: T,) => boolean, size: number,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (index: number, value: T,) => boolean, size: number,) {
     let index = -1
     while (++index < size) {
         const value = collection[index] as T
         if (predicate(index, value,))
             return value
     }
-    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", size,)
 }
 
 //#endregion -------------------- Loop methods --------------------

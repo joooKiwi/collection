@@ -3,38 +3,23 @@ package joookiwi.collection.java;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Deque;
-import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.IdentityHashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.NavigableMap;
 import java.util.NavigableSet;
 import java.util.PrimitiveIterator;
 import java.util.Queue;
 import java.util.SequencedCollection;
-import java.util.SequencedMap;
 import java.util.SequencedSet;
 import java.util.Set;
-import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.Spliterator;
-import java.util.TreeMap;
-import java.util.WeakHashMap;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TransferQueue;
 import java.util.function.BooleanSupplier;
@@ -51,72 +36,114 @@ import joookiwi.collection.java.callback.IntObjFunction;
 import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
-import joookiwi.collection.java.extended.ImmutableArrayBlockingQueue;
-import joookiwi.collection.java.extended.ImmutableArrayDeque;
-import joookiwi.collection.java.extended.ImmutableArrayList;
-import joookiwi.collection.java.extended.ImmutableBlockingDeque;
-import joookiwi.collection.java.extended.ImmutableBlockingQueue;
 import joookiwi.collection.java.extended.ImmutableCollection;
-import joookiwi.collection.java.extended.ImmutableConcurrentLinkedDeque;
-import joookiwi.collection.java.extended.ImmutableConcurrentLinkedQueue;
-import joookiwi.collection.java.extended.ImmutableConcurrentSkipListSet;
-import joookiwi.collection.java.extended.ImmutableCopyOnWriteArrayList;
-import joookiwi.collection.java.extended.ImmutableCopyOnWriteArraySet;
-import joookiwi.collection.java.extended.ImmutableDelayQueue;
-import joookiwi.collection.java.extended.ImmutableDeque;
-import joookiwi.collection.java.extended.ImmutableHashSet;
-import joookiwi.collection.java.extended.ImmutableLinkedBlockingDeque;
-import joookiwi.collection.java.extended.ImmutableLinkedBlockingQueue;
-import joookiwi.collection.java.extended.ImmutableLinkedHashSet;
-import joookiwi.collection.java.extended.ImmutableLinkedList;
-import joookiwi.collection.java.extended.ImmutableLinkedTransferQueue;
-import joookiwi.collection.java.extended.ImmutableList;
-import joookiwi.collection.java.extended.ImmutableNavigableSet;
-import joookiwi.collection.java.extended.ImmutablePriorityBlockingQueue;
-import joookiwi.collection.java.extended.ImmutablePriorityQueue;
-import joookiwi.collection.java.extended.ImmutableQueue;
+import joookiwi.collection.java.extended.ImmutableConcurrentCollection;
+import joookiwi.collection.java.extended.ImmutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.ImmutableNavigableCollection;
 import joookiwi.collection.java.extended.ImmutableSequencedCollection;
-import joookiwi.collection.java.extended.ImmutableSequencedSet;
-import joookiwi.collection.java.extended.ImmutableSet;
-import joookiwi.collection.java.extended.ImmutableSortedSet;
-import joookiwi.collection.java.extended.ImmutableStack;
-import joookiwi.collection.java.extended.ImmutableSynchronousQueue;
-import joookiwi.collection.java.extended.ImmutableTransferQueue;
-import joookiwi.collection.java.extended.ImmutableTreeSet;
-import joookiwi.collection.java.extended.ImmutableVector;
-import joookiwi.collection.java.extended.MutableArrayBlockingQueue;
-import joookiwi.collection.java.extended.MutableArrayDeque;
-import joookiwi.collection.java.extended.MutableArrayList;
-import joookiwi.collection.java.extended.MutableBlockingDeque;
-import joookiwi.collection.java.extended.MutableBlockingQueue;
+import joookiwi.collection.java.extended.ImmutableSortedCollection;
 import joookiwi.collection.java.extended.MutableCollection;
-import joookiwi.collection.java.extended.MutableConcurrentLinkedDeque;
-import joookiwi.collection.java.extended.MutableConcurrentLinkedQueue;
-import joookiwi.collection.java.extended.MutableConcurrentSkipListSet;
-import joookiwi.collection.java.extended.MutableCopyOnWriteArrayList;
-import joookiwi.collection.java.extended.MutableCopyOnWriteArraySet;
-import joookiwi.collection.java.extended.MutableDelayQueue;
-import joookiwi.collection.java.extended.MutableDeque;
-import joookiwi.collection.java.extended.MutableHashSet;
-import joookiwi.collection.java.extended.MutableLinkedBlockingDeque;
-import joookiwi.collection.java.extended.MutableLinkedBlockingQueue;
-import joookiwi.collection.java.extended.MutableLinkedHashSet;
-import joookiwi.collection.java.extended.MutableLinkedList;
-import joookiwi.collection.java.extended.MutableLinkedTransferQueue;
-import joookiwi.collection.java.extended.MutableList;
-import joookiwi.collection.java.extended.MutableNavigableSet;
-import joookiwi.collection.java.extended.MutablePriorityBlockingQueue;
-import joookiwi.collection.java.extended.MutablePriorityQueue;
-import joookiwi.collection.java.extended.MutableQueue;
+import joookiwi.collection.java.extended.MutableConcurrentCollection;
+import joookiwi.collection.java.extended.MutableConcurrentNavigableCollection;
+import joookiwi.collection.java.extended.MutableNavigableCollection;
 import joookiwi.collection.java.extended.MutableSequencedCollection;
-import joookiwi.collection.java.extended.MutableSequencedSet;
-import joookiwi.collection.java.extended.MutableSet;
-import joookiwi.collection.java.extended.MutableSortedSet;
-import joookiwi.collection.java.extended.MutableStack;
-import joookiwi.collection.java.extended.MutableSynchronousQueue;
-import joookiwi.collection.java.extended.MutableTransferQueue;
-import joookiwi.collection.java.extended.MutableTreeSet;
-import joookiwi.collection.java.extended.MutableVector;
+import joookiwi.collection.java.extended.MutableSortedCollection;
+import joookiwi.collection.java.extended.list.ImmutableArrayList;
+import joookiwi.collection.java.extended.list.ImmutableCopyOnWriteArrayList;
+import joookiwi.collection.java.extended.list.ImmutableLinkedList;
+import joookiwi.collection.java.extended.list.ImmutableList;
+import joookiwi.collection.java.extended.list.ImmutableVector;
+import joookiwi.collection.java.extended.list.MutableArrayList;
+import joookiwi.collection.java.extended.list.MutableCopyOnWriteArrayList;
+import joookiwi.collection.java.extended.list.MutableLinkedList;
+import joookiwi.collection.java.extended.list.MutableList;
+import joookiwi.collection.java.extended.list.MutableVector;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentHashMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentNavigableMap;
+import joookiwi.collection.java.extended.map.ImmutableConcurrentSkipListMap;
+import joookiwi.collection.java.extended.map.ImmutableEnumMap;
+import joookiwi.collection.java.extended.map.ImmutableHashMap;
+import joookiwi.collection.java.extended.map.ImmutableHashtable;
+import joookiwi.collection.java.extended.map.ImmutableIdentityHashMap;
+import joookiwi.collection.java.extended.map.ImmutableLinkedHashMap;
+import joookiwi.collection.java.extended.map.ImmutableMap;
+import joookiwi.collection.java.extended.map.ImmutableNavigableMap;
+import joookiwi.collection.java.extended.map.ImmutableSequencedMap;
+import joookiwi.collection.java.extended.map.ImmutableSortedMap;
+import joookiwi.collection.java.extended.map.ImmutableTreeMap;
+import joookiwi.collection.java.extended.map.ImmutableWeakHashMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentHashMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentNavigableMap;
+import joookiwi.collection.java.extended.map.MutableConcurrentSkipListMap;
+import joookiwi.collection.java.extended.map.MutableEnumMap;
+import joookiwi.collection.java.extended.map.MutableHashMap;
+import joookiwi.collection.java.extended.map.MutableHashtable;
+import joookiwi.collection.java.extended.map.MutableIdentityHashMap;
+import joookiwi.collection.java.extended.map.MutableLinkedHashMap;
+import joookiwi.collection.java.extended.map.MutableMap;
+import joookiwi.collection.java.extended.map.MutableNavigableMap;
+import joookiwi.collection.java.extended.map.MutableSequencedMap;
+import joookiwi.collection.java.extended.map.MutableSortedMap;
+import joookiwi.collection.java.extended.map.MutableTreeMap;
+import joookiwi.collection.java.extended.map.MutableWeakHashMap;
+import joookiwi.collection.java.extended.queue.ImmutableArrayBlockingQueue;
+import joookiwi.collection.java.extended.queue.ImmutableBlockingQueue;
+import joookiwi.collection.java.extended.queue.ImmutableConcurrentLinkedQueue;
+import joookiwi.collection.java.extended.queue.ImmutableDelayQueue;
+import joookiwi.collection.java.extended.queue.ImmutableLinkedBlockingQueue;
+import joookiwi.collection.java.extended.queue.ImmutableLinkedTransferQueue;
+import joookiwi.collection.java.extended.queue.ImmutablePriorityBlockingQueue;
+import joookiwi.collection.java.extended.queue.ImmutablePriorityQueue;
+import joookiwi.collection.java.extended.queue.ImmutableQueue;
+import joookiwi.collection.java.extended.queue.ImmutableSynchronousQueue;
+import joookiwi.collection.java.extended.queue.ImmutableTransferQueue;
+import joookiwi.collection.java.extended.queue.MutableBlockingQueue;
+import joookiwi.collection.java.extended.queue.MutableConcurrentLinkedQueue;
+import joookiwi.collection.java.extended.queue.MutableDelayQueue;
+import joookiwi.collection.java.extended.queue.MutableLinkedBlockingQueue;
+import joookiwi.collection.java.extended.queue.MutableLinkedTransferQueue;
+import joookiwi.collection.java.extended.queue.MutablePriorityBlockingQueue;
+import joookiwi.collection.java.extended.queue.MutablePriorityQueue;
+import joookiwi.collection.java.extended.queue.MutableQueue;
+import joookiwi.collection.java.extended.queue.MutableSynchronousQueue;
+import joookiwi.collection.java.extended.queue.MutableTransferQueue;
+import joookiwi.collection.java.extended.set.ImmutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.ImmutableConcurrentSet;
+import joookiwi.collection.java.extended.set.ImmutableConcurrentSkipListSet;
+import joookiwi.collection.java.extended.set.ImmutableCopyOnWriteArraySet;
+import joookiwi.collection.java.extended.set.ImmutableHashSet;
+import joookiwi.collection.java.extended.set.ImmutableLinkedHashSet;
+import joookiwi.collection.java.extended.set.ImmutableNavigableSet;
+import joookiwi.collection.java.extended.set.ImmutableSequencedSet;
+import joookiwi.collection.java.extended.set.ImmutableSet;
+import joookiwi.collection.java.extended.set.ImmutableSortedSet;
+import joookiwi.collection.java.extended.set.ImmutableTreeSet;
+import joookiwi.collection.java.extended.set.MutableConcurrentNavigableSet;
+import joookiwi.collection.java.extended.set.MutableConcurrentSet;
+import joookiwi.collection.java.extended.set.MutableConcurrentSkipListSet;
+import joookiwi.collection.java.extended.set.MutableCopyOnWriteArraySet;
+import joookiwi.collection.java.extended.set.MutableHashSet;
+import joookiwi.collection.java.extended.set.MutableLinkedHashSet;
+import joookiwi.collection.java.extended.set.MutableNavigableSet;
+import joookiwi.collection.java.extended.set.MutableSequencedSet;
+import joookiwi.collection.java.extended.set.MutableSet;
+import joookiwi.collection.java.extended.set.MutableSortedSet;
+import joookiwi.collection.java.extended.set.MutableTreeSet;
+import joookiwi.collection.java.extended.stack.ImmutableArrayDeque;
+import joookiwi.collection.java.extended.stack.ImmutableBlockingDeque;
+import joookiwi.collection.java.extended.stack.ImmutableConcurrentLinkedDeque;
+import joookiwi.collection.java.extended.stack.ImmutableDeque;
+import joookiwi.collection.java.extended.stack.ImmutableLinkedBlockingDeque;
+import joookiwi.collection.java.extended.stack.ImmutableStack;
+import joookiwi.collection.java.extended.stack.MutableArrayBlockingQueue;
+import joookiwi.collection.java.extended.stack.MutableArrayDeque;
+import joookiwi.collection.java.extended.stack.MutableBlockingDeque;
+import joookiwi.collection.java.extended.stack.MutableConcurrentLinkedDeque;
+import joookiwi.collection.java.extended.stack.MutableDeque;
+import joookiwi.collection.java.extended.stack.MutableLinkedBlockingDeque;
+import joookiwi.collection.java.extended.stack.MutableStack;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNull;
@@ -167,8 +194,22 @@ public class CollectionViewer<T extends @Nullable Object,
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return getReference().size(); }
 
+
     @Override public boolean isEmpty() { return getReference().isEmpty(); }
+
     @Override public boolean isNotEmpty() { return getReference().isNotEmpty(); }
+
+
+    @Override public boolean hasExactly1Element() { return getReference().hasExactly1Element(); }
+
+    @Override public boolean hasAtMost1Element() { return getReference().hasAtMost1Element(); }
+
+
+    @Override public boolean hasAtLeast2Elements() { return getReference().hasAtLeast2Elements(); }
+
+    @Override public boolean hasExactly2Elements() { return getReference().hasExactly2Elements(); }
+
+    @Override public boolean hasAtMost2Elements() { return getReference().hasAtMost2Elements(); }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
@@ -586,8 +627,8 @@ public class CollectionViewer<T extends @Nullable Object,
     @Override public CollectionHolder<T> slice(final Iterable<? extends Integer>                                          indices) { return getReference().slice(indices); }
     @Override public CollectionHolder<T> slice(final MinimalistCollectionHolder<? extends Integer>                        indices) { return getReference().slice(indices); }
     @Override public CollectionHolder<T> slice(final CollectionHolder<? extends Integer>                                  indices) { return getReference().slice(indices); }
-    @Override public CollectionHolder<T> slice(final Collection<? extends Integer>                                        indices) { return getReference().slice(indices); }
-    @Override public CollectionHolder<T> slice(final SequencedCollection<? extends Integer>                               indices) { return getReference().slice(indices); }
+    @Override public CollectionHolder<T> slice(final @Unmodifiable Collection<? extends Integer>                          indices) { return getReference().slice(indices); }
+    @Override public CollectionHolder<T> slice(final @Unmodifiable SequencedCollection<? extends Integer>                 indices) { return getReference().slice(indices); }
     @Override public CollectionHolder<T> slice(final @Unmodifiable List<? extends Integer>                                indices) { return getReference().slice(indices); }
     @Override public CollectionHolder<T> slice(final @Unmodifiable Set<? extends Integer>                                 indices) { return getReference().slice(indices); }
     @Override public CollectionHolder<T> slice(final @Unmodifiable SequencedSet<? extends Integer>                        indices) { return getReference().slice(indices); }
@@ -780,6 +821,58 @@ public class CollectionViewer<T extends @Nullable Object,
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableSequencedCollection<U> toMutableSequencedCollection(final Supplier<? extends U>                  transform) { return getReference().toMutableSequencedCollection(transform); }
 
     //#endregion -------------------- To sequenced collection --------------------
+    //#region -------------------- To sorted collection --------------------
+
+                           @Override public                              ImmutableSortedCollection<T> toSortedCollection(                                                      ) { return getReference().toSortedCollection(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableSortedCollection<U> toSortedCollection(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toSortedCollection(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableSortedCollection<U> toSortedCollection(final Function<? super T, ? extends U>       transform) { return getReference().toSortedCollection(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableSortedCollection<U> toSortedCollection(final Supplier<? extends U>                  transform) { return getReference().toSortedCollection(transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableSortedCollection<T> toMutableSortedCollection(                                                      ) { return getReference().toMutableSortedCollection(); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableSortedCollection<U> toMutableSortedCollection(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableSortedCollection(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableSortedCollection<U> toMutableSortedCollection(final Function<? super T, ? extends U>       transform) { return getReference().toMutableSortedCollection(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableSortedCollection<U> toMutableSortedCollection(final Supplier<? extends U>                  transform) { return getReference().toMutableSortedCollection(transform); }
+
+    //#endregion -------------------- To sorted collection --------------------
+    //#region -------------------- To navigable collection --------------------
+
+                           @Override public                              ImmutableNavigableCollection<T> toNavigableCollection(                                                      ) { return getReference().toNavigableCollection(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableNavigableCollection<U> toNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toNavigableCollection(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableNavigableCollection<U> toNavigableCollection(final Function<? super T, ? extends U>       transform) { return getReference().toNavigableCollection(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableNavigableCollection<U> toNavigableCollection(final Supplier<? extends U>                  transform) { return getReference().toNavigableCollection(transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableNavigableCollection<T> toMutableNavigableCollection(                                                      ) { return getReference().toMutableNavigableCollection(); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableCollection<U> toMutableNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableNavigableCollection(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableCollection<U> toMutableNavigableCollection(final Function<? super T, ? extends U>       transform) { return getReference().toMutableNavigableCollection(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableCollection<U> toMutableNavigableCollection(final Supplier<? extends U>                  transform) { return getReference().toMutableNavigableCollection(transform); }
+
+    //#endregion -------------------- To navigable collection --------------------
+    //#region -------------------- To concurrent collection --------------------
+
+                           @Override public                              ImmutableConcurrentCollection<T> toConcurrentCollection(                                                      ) { return getReference().toConcurrentCollection(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentCollection<U> toConcurrentCollection(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toConcurrentCollection(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentCollection<U> toConcurrentCollection(final Function<? super T, ? extends U>       transform) { return getReference().toConcurrentCollection(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentCollection<U> toConcurrentCollection(final Supplier<? extends U>                  transform) { return getReference().toConcurrentCollection(transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableConcurrentCollection<T> toMutableConcurrentCollection(                                                      ) { return getReference().toMutableConcurrentCollection(); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableConcurrentCollection(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final Function<? super T, ? extends U>       transform) { return getReference().toMutableConcurrentCollection(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentCollection<U> toMutableConcurrentCollection(final Supplier<? extends U>                  transform) { return getReference().toMutableConcurrentCollection(transform); }
+
+    //#endregion -------------------- To concurrent collection --------------------
+    //#region -------------------- To concurrent navigable collection --------------------
+
+                           @Override public                              ImmutableConcurrentNavigableCollection<T> toConcurrentNavigableCollection(                                                      ) { return getReference().toConcurrentNavigableCollection(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toConcurrentNavigableCollection(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final Function<? super T, ? extends U>       transform) { return getReference().toConcurrentNavigableCollection(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableCollection<U> toConcurrentNavigableCollection(final Supplier<? extends U>                  transform) { return getReference().toConcurrentNavigableCollection(transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableConcurrentNavigableCollection<T> toMutableConcurrentNavigableCollection(                                                      ) { return getReference().toMutableConcurrentNavigableCollection(); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableConcurrentNavigableCollection(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Function<? super T, ? extends U>       transform) { return getReference().toMutableConcurrentNavigableCollection(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableCollection<U> toMutableConcurrentNavigableCollection(final Supplier<? extends U>                  transform) { return getReference().toMutableConcurrentNavigableCollection(transform); }
+
+    //#endregion -------------------- To concurrent navigable collection --------------------
 
     //#region -------------------- To list --------------------
 
@@ -907,6 +1000,32 @@ public class CollectionViewer<T extends @Nullable Object,
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableSet<U> toMutableNavigableSet(final Function<? super T, ? extends U>       transform) { return getReference().toMutableNavigableSet(transform); }
 
     //#endregion -------------------- To navigable set --------------------
+    //#region -------------------- To concurrent set --------------------
+
+    @Contract(pure = true) @Override public                              ImmutableConcurrentSet<T> toConcurrentSet(                                                      ) { return getReference().toConcurrentSet(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentSet<U> toConcurrentSet(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toConcurrentSet(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentSet<U> toConcurrentSet(final Supplier<? extends U>                  transform) { return getReference().toConcurrentSet(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentSet<U> toConcurrentSet(final Function<? super T, ? extends U>       transform) { return getReference().toConcurrentSet(transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableConcurrentSet<T> toMutableConcurrentSet(                                                      ) { return getReference().toMutableConcurrentSet(); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableConcurrentSet(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final Supplier<? extends U>                  transform) { return getReference().toMutableConcurrentSet(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentSet<U> toMutableConcurrentSet(final Function<? super T, ? extends U>       transform) { return getReference().toMutableConcurrentSet(transform); }
+
+    //#endregion -------------------- To concurrent set --------------------
+    //#region -------------------- To concurrent navigable set --------------------
+
+    @Contract(pure = true) @Override public                              ImmutableConcurrentNavigableSet<T> toConcurrentNavigableSet(                                                      ) { return getReference().toConcurrentNavigableSet(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toConcurrentNavigableSet(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final Supplier<? extends U>                  transform) { return getReference().toConcurrentNavigableSet(transform); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> ImmutableConcurrentNavigableSet<U> toConcurrentNavigableSet(final Function<? super T, ? extends U>       transform) { return getReference().toConcurrentNavigableSet(transform); }
+
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableConcurrentNavigableSet<T> toMutableConcurrentNavigableSet(                                                      ) { return getReference().toMutableConcurrentNavigableSet(); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableConcurrentNavigableSet(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Supplier<? extends U>                  transform) { return getReference().toMutableConcurrentNavigableSet(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableConcurrentNavigableSet<U> toMutableConcurrentNavigableSet(final Function<? super T, ? extends U>       transform) { return getReference().toMutableConcurrentNavigableSet(transform); }
+
+    //#endregion -------------------- To concurrent navigable set --------------------
     //#region -------------------- To concurrent skip list set --------------------
 
     @Contract(pure = true) @Override public <U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toConcurrentSkipListSet(transform); }
@@ -975,8 +1094,8 @@ public class CollectionViewer<T extends @Nullable Object,
 
     @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableLinkedHashSet<T> toMutableLinkedHashSet(                                                      ) { return getReference().toMutableLinkedHashSet(); }
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableLinkedHashSet<U> toMutableLinkedHashSet(final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedHashSet(transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableLinkedHashSet<U> toMutableLinkedHashSet(final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedHashSet(transform); }
     @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableLinkedHashSet<U> toMutableLinkedHashSet(final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedHashSet(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableLinkedHashSet<U> toMutableLinkedHashSet(final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedHashSet(transform); }
 
     //#endregion -------------------- To linked hash set --------------------
     //#region -------------------- To tree set --------------------
@@ -1214,12 +1333,12 @@ public class CollectionViewer<T extends @Nullable Object,
     @Contract(pure = true) @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Function<? super T, ? extends U>       transform) { return getReference().toLinkedBlockingDeque(transform); }
     @Contract(pure = true) @Override public <U> ImmutableLinkedBlockingDeque<U> toLinkedBlockingDeque(final Supplier<? extends U>                  transform) { return getReference().toLinkedBlockingDeque(transform); }
 
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                                                         final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
-    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final @Range(from = 1, to = MAX_INT_VALUE) int capacity, final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(                    final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedBlockingDeque(transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final ObjIntFunction<? super T, ? extends U> transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final Function<? super T, ? extends U>       transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
+    @Contract(value = ALWAYS_NEW_2, pure = true) @Override public <U> MutableLinkedBlockingDeque<U> toMutableLinkedBlockingDeque(final int capacity, final Supplier<? extends U>                  transform) { return getReference().toMutableLinkedBlockingDeque(capacity, transform); }
 
     //#endregion -------------------- To linked blocking deque --------------------
     //#region -------------------- To stack --------------------
@@ -1238,131 +1357,129 @@ public class CollectionViewer<T extends @Nullable Object,
 
     //#region -------------------- To map --------------------
 
-    @Override public @Unmodifiable Map<Integer, T> toMap() { return getReference().toMap(); }
+    @Override public ImmutableMap<Integer, T> toMap() { return getReference().toMap(); }
 
-    @Override public Map<Integer, T> toMutableMap() { return getReference().toMutableMap(); }
+    @Override public MutableMap<Integer, T> toMutableMap() { return getReference().toMutableMap(); }
 
     //#endregion -------------------- To map --------------------
     //#region -------------------- To sequenced map --------------------
 
-    @Override public @Unmodifiable SequencedMap<Integer, T> toSequencedMap() { return getReference().toSequencedMap(); }
+    @Override public ImmutableSequencedMap<Integer, T> toSequencedMap() { return getReference().toSequencedMap(); }
 
-    @Override public SequencedMap<Integer, T> toMutableSequencedMap() { return getReference().toMutableSequencedMap(); }
+    @Override public MutableSequencedMap<Integer, T> toMutableSequencedMap() { return getReference().toMutableSequencedMap(); }
 
     //#endregion -------------------- To sequenced map --------------------
     //#region -------------------- To sorted map --------------------
 
-    @Override public @Unmodifiable SortedMap<Integer, T> toSortedMap() { return getReference().toSortedMap(); }
+    @Override public ImmutableSortedMap<Integer, T> toSortedMap() { return getReference().toSortedMap(); }
 
-    @Override public SortedMap<Integer, T> toMutableSortedMap() { return getReference().toMutableSortedMap(); }
+    @Override public MutableSortedMap<Integer, T> toMutableSortedMap() { return getReference().toMutableSortedMap(); }
 
     //#endregion -------------------- To sorted map --------------------
     //#region -------------------- To navigable map --------------------
 
-    @Override public @Unmodifiable NavigableMap<Integer, T> toNavigableMap() { return getReference().toNavigableMap(); }
+    @Override public ImmutableNavigableMap<Integer, T> toNavigableMap() { return getReference().toNavigableMap(); }
 
-    @Override public NavigableMap<Integer, T> toMutableNavigableMap() { return getReference().toMutableNavigableMap(); }
+    @Override public MutableNavigableMap<Integer, T> toMutableNavigableMap() { return getReference().toMutableNavigableMap(); }
 
     //#endregion -------------------- To navigable map --------------------
     //#region -------------------- To concurrent map --------------------
 
-    @Override public @Unmodifiable ConcurrentMap<Integer, T> toConcurrentMap() { return getReference().toConcurrentMap(); }
+    @Override public ImmutableConcurrentMap<Integer, T> toConcurrentMap() { return getReference().toConcurrentMap(); }
 
-    @Override public ConcurrentMap<Integer, T> toMutableConcurrentMap() { return getReference().toMutableConcurrentMap(); }
+    @Override public MutableConcurrentMap<Integer, T> toMutableConcurrentMap() { return getReference().toMutableConcurrentMap(); }
 
     //#endregion -------------------- To concurrent map --------------------
     //#region -------------------- To concurrent navigable map --------------------
 
-    @Override public @Unmodifiable ConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() { return getReference().toConcurrentNavigableMap(); }
+    @Override public ImmutableConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap() { return getReference().toConcurrentNavigableMap(); }
 
-    @Override public ConcurrentNavigableMap<Integer, T> toMutableConcurrentNavigableMap() { return getReference().toMutableConcurrentNavigableMap(); }
+    @Override public MutableConcurrentNavigableMap<Integer, T> toMutableConcurrentNavigableMap() { return getReference().toMutableConcurrentNavigableMap(); }
 
     //#endregion -------------------- To concurrent navigable map --------------------
     //#region -------------------- To concurrent hash map --------------------
 
-    @Override public @Unmodifiable ConcurrentHashMap<Integer, T> toConcurrentHashMap() { return getReference().toConcurrentHashMap(); }
+    @Override public ImmutableConcurrentHashMap<Integer, T> toConcurrentHashMap() { return getReference().toConcurrentHashMap(); }
 
-    @Override public ConcurrentHashMap<Integer, T> toMutableConcurrentHashMap() { return getReference().toMutableConcurrentHashMap(); }
+    @Override public MutableConcurrentHashMap<Integer, T> toMutableConcurrentHashMap() { return getReference().toMutableConcurrentHashMap(); }
 
     //#endregion -------------------- To concurrent hash map --------------------
     //#region -------------------- To concurrent skip list map --------------------
 
-    @Override public @Unmodifiable ConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap() { return getReference().toConcurrentSkipListMap(); }
+    @Override public ImmutableConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap() { return getReference().toConcurrentSkipListMap(); }
 
-    @Override public ConcurrentSkipListMap<Integer, T> toMutableConcurrentSkipListMap() { return getReference().toMutableConcurrentSkipListMap(); }
+    @Override public MutableConcurrentSkipListMap<Integer, T> toMutableConcurrentSkipListMap() { return getReference().toMutableConcurrentSkipListMap(); }
 
     //#endregion -------------------- To concurrent skip list map --------------------
     //#region -------------------- To enum map --------------------
 
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                                    transform) { return getReference().toEnumMap(transform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, Entry<K, V>>                                                          transform) { return getReference().toEnumMap(transform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<Entry<K, V>>                                                                     transform) { return getReference().toEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                                    transform) { return getReference().toEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, Entry<K, V>>                                                          transform) { return getReference().toEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<Entry<K, V>>                                                                     transform) { return getReference().toEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> ImmutableEnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
 
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final ObjIntFunction<? super T, K>        keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Function<? super T, K>              keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final Supplier<K>                         keyTransform, final Supplier<V>                  valueTransform) { return getReference().toEnumMap(keyTransform, valueTransform); }
-
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                             transform) { return getReference().toMutableEnumMap(transform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Function<? super T, Entry<K, V>>                                                   transform) { return getReference().toMutableEnumMap(transform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Supplier<Entry<K, V>>                                                              transform) { return getReference().toMutableEnumMap(transform); }
-
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, Entry<K, V>>                                             transform) { return getReference().toMutableEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Function<? super T, Entry<K, V>>                                                   transform) { return getReference().toMutableEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Supplier<Entry<K, V>>                                                              transform) { return getReference().toMutableEnumMap(transform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final ObjIntFunction<? super T, K> keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Function<? super T, K>       keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final ObjIntFunction<? super T, V> valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final Function<? super T, V>       valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
+    @Override public <K extends Enum<K>, V extends @Nullable Object> MutableEnumMap<K, V> toMutableEnumMap(final Supplier<K>                  keyTransform, final Supplier<V>                  valueTransform) { return getReference().toMutableEnumMap(keyTransform, valueTransform); }
 
     //#endregion -------------------- To enum map --------------------
     //#region -------------------- To hash map --------------------
 
-    @Override public @Unmodifiable HashMap<Integer, T> toHashMap() { return getReference().toHashMap(); }
+    @Override public ImmutableHashMap<Integer, T> toHashMap() { return getReference().toHashMap(); }
 
-    @Override public HashMap<Integer, T> toMutableHashMap() { return getReference().toMutableHashMap(); }
+    @Override public MutableHashMap<Integer, T> toMutableHashMap() { return getReference().toMutableHashMap(); }
 
     //#endregion -------------------- To hash map --------------------
     //#region -------------------- To hashtable --------------------
 
-    @Override public @Unmodifiable Hashtable<Integer, T> toHashtable() { return getReference().toHashtable(); }
+    @Override public ImmutableHashtable<Integer, T> toHashtable() { return getReference().toHashtable(); }
 
-    @Override public Hashtable<Integer, T> toMutableHashtable() { return getReference().toMutableHashtable(); }
+    @Override public MutableHashtable<Integer, T> toMutableHashtable() { return getReference().toMutableHashtable(); }
 
     //#endregion -------------------- To hashtable --------------------
     //#region -------------------- To identity hash map --------------------
 
-    @Override public @Unmodifiable IdentityHashMap<Integer, T> toIdentityHashMap() { return getReference().toIdentityHashMap(); }
+    @Override public ImmutableIdentityHashMap<Integer, T> toIdentityHashMap() { return getReference().toIdentityHashMap(); }
 
-    @Override public IdentityHashMap<Integer, T> toMutableIdentityHashMap() { return getReference().toMutableIdentityHashMap(); }
+    @Override public MutableIdentityHashMap<Integer, T> toMutableIdentityHashMap() { return getReference().toMutableIdentityHashMap(); }
 
     //#endregion -------------------- To identity hash map --------------------
     //#region -------------------- To linked hash map --------------------
 
-    @Override public @Unmodifiable LinkedHashMap<Integer, T> toLinkedHashMap() { return getReference().toLinkedHashMap(); }
+    @Override public ImmutableLinkedHashMap<Integer, T> toLinkedHashMap() { return getReference().toLinkedHashMap(); }
 
-    @Override public LinkedHashMap<Integer, T> toMutableLinkedHashMap() { return getReference().toMutableLinkedHashMap(); }
+    @Override public MutableLinkedHashMap<Integer, T> toMutableLinkedHashMap() { return getReference().toMutableLinkedHashMap(); }
 
     //#endregion -------------------- To linked hash map --------------------
     //#region -------------------- To tree map --------------------
 
-    @Override public @Unmodifiable TreeMap<Integer, T> toTreeMap() { return getReference().toTreeMap(); }
+    @Override public ImmutableTreeMap<Integer, T> toTreeMap() { return getReference().toTreeMap(); }
 
-    @Override public TreeMap<Integer, T> toMutableTreeMap() { return getReference().toMutableTreeMap(); }
+    @Override public MutableTreeMap<Integer, T> toMutableTreeMap() { return getReference().toMutableTreeMap(); }
 
     //#endregion -------------------- To tree map --------------------
     //#region -------------------- To weak hash map --------------------
 
-    @Override public @Unmodifiable WeakHashMap<Integer, T> toWeakHashMap() { return getReference().toWeakHashMap(); }
+    @Override public ImmutableWeakHashMap<Integer, T> toWeakHashMap() { return getReference().toWeakHashMap(); }
 
-    @Override public WeakHashMap<Integer, T> toMutableWeakHashMap() { return getReference().toMutableWeakHashMap(); }
+    @Override public MutableWeakHashMap<Integer, T> toMutableWeakHashMap() { return getReference().toMutableWeakHashMap(); }
 
     //#endregion -------------------- To weak hash map --------------------
 
@@ -1406,15 +1523,16 @@ public class CollectionViewer<T extends @Nullable Object,
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public CollectionViewer<T, REFERENCE> clone() { return (CollectionViewer<T, REFERENCE>) super.clone(); }
 
-    @MustBeInvokedByOverriders
-    @Override public CollectionViewer<T, REFERENCE> shallowClone() { return clone(); }
-//    @Override public CollectionViewer<T, REFERENCE> shallowClone() { return new CollectionViewer<>(getReference()); }
-
-    @MustBeInvokedByOverriders
-    @Override public CollectionViewer<T, CollectionHolder<T>> deepClone() { return (CollectionViewer<T, CollectionHolder<T>>) clone(); }
-//    @Override public CollectionViewer<T, CollectionHolder<? extends T>> deepClone() { return new CollectionViewer<>(getReference().deepClone()); }
+//    @MustBeInvokedByOverriders
+//    @Contract(ALWAYS_NEW_0)
+//    @Override public CollectionViewer<T, REFERENCE> shallowClone() { return clone(); }
+//
+//    @MustBeInvokedByOverriders
+//    @Contract(ALWAYS_NEW_0)
+//    @Override public CollectionViewer<T, CollectionHolder<T>> deepClone() { return new CollectionViewer<>(getReference().deepClone()); }
 
     //#endregion -------------------- Clone methods --------------------
 

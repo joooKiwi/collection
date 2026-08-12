@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.LongAdder;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.MutableVector;
+import joookiwi.collection.java.extended.list.MutableVector;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -59,37 +59,25 @@ public final class MutableVectorCreator
     //#region -------------------- initialCapacity --------------------
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final byte initialCapacity) { return __newMutableInstance(initialCapacity); }
+    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final byte initialCapacity) { return new MutableVector<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final short initialCapacity) { return __newMutableInstance(initialCapacity); }
+    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final short initialCapacity) { return new MutableVector<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final int initialCapacity) { return __newMutableInstance(initialCapacity); }
+    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final int initialCapacity) { return new MutableVector<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
     public static <T extends @Nullable Object> MutableVector<T> MutableVector(final long initialCapacity) { return __newMutableInstance(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final @Nullable Byte initialCapacity) {
-        if (initialCapacity == null)
-            return new MutableVector<>();
-        return __newMutableInstance(initialCapacity);
-    }
+    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final @Nullable Byte initialCapacity) { return new MutableVector<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final @Nullable Short initialCapacity) {
-        if (initialCapacity == null)
-            return new MutableVector<>();
-        return __newMutableInstance(initialCapacity);
-    }
+    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final @Nullable Short initialCapacity) { return new MutableVector<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final @Nullable Integer initialCapacity) {
-        if (initialCapacity == null)
-            return new MutableVector<>();
-        return __newMutableInstance(initialCapacity);
-    }
+    public static <T extends @Nullable Object> MutableVector<T> MutableVector(final @Nullable Integer initialCapacity) { return new MutableVector<>(initialCapacity); }
 
     @Contract(ALWAYS_NEW_1)
     public static <T extends @Nullable Object> MutableVector<T> MutableVector(final @Nullable Long initialCapacity) {
@@ -102,7 +90,7 @@ public final class MutableVectorCreator
     public static <T extends @Nullable Object> MutableVector<T> MutableVector(final @Nullable AtomicInteger initialCapacity) {
         if (initialCapacity == null)
             return new MutableVector<>();
-        return __newMutableInstance(initialCapacity.get());
+        return new MutableVector<>(initialCapacity.get());
     }
 
     @Contract(ALWAYS_NEW_1)
@@ -131,21 +119,6 @@ public final class MutableVectorCreator
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Core methods --------------------
 
-    private static <T extends @Nullable Object> MutableVector<T> __newMutableInstance(final byte initialCapacity) {
-        if (initialCapacity < 0)
-            return new MutableVector<>(0);
-        return new MutableVector<>(initialCapacity);
-    }
-    private static <T extends @Nullable Object> MutableVector<T> __newMutableInstance(final short initialCapacity) {
-        if (initialCapacity < 0)
-            return new MutableVector<>(0);
-        return new MutableVector<>(initialCapacity);
-    }
-    private static <T extends @Nullable Object> MutableVector<T> __newMutableInstance(final int initialCapacity) {
-        if (initialCapacity < 0)
-            return new MutableVector<>(0);
-        return new MutableVector<>(initialCapacity);
-    }
     private static <T extends @Nullable Object> MutableVector<T> __newMutableInstance(final long initialCapacity) {
         if (initialCapacity < 0)
             return new MutableVector<>(0);

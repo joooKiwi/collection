@@ -17,7 +17,7 @@ public interface IteratorValue<T extends @Nullable Object> {
     boolean isDone();
 
     /// Tell that the [iterator value][IteratorValue] could be able to progress
-    @Alias("isDone") boolean done();
+    @Alias("isDone") default boolean done() { return isDone(); }
 
     /// Tell that the [iterator value][IteratorValue] could not be able to progress
     boolean isNotDone();

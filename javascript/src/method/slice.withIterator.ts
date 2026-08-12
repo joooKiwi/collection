@@ -10,14 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__get}                         from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -36,12 +36,12 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: Iterator<number>,): CollectionHolder<T> {
+export function sliceWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return sliceWithIteratorByCollectionHolder(collection, indices,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return sliceWithIteratorByArray(collection, indices,)
     if (isMinimalistCollectionHolder(collection,))
         return sliceWithIteratorByMinimalistCollectionHolder(collection, indices,)
@@ -65,16 +65,16 @@ export function sliceWithIterator<const T, >(collection: Nullable<| MinimalistCo
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: Iterator<number>,): CollectionHolder<T> {
+export function sliceWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (collection.size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
+    if (collection.size === 0)
+        return EmptyCollectionHolder.get
 
     const iteratorResult = indices.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
 }
 
 /**
@@ -88,16 +88,16 @@ export function sliceWithIteratorByMinimalistCollectionHolder<const T, >(collect
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: Iterator<number>,): CollectionHolder<T> {
+export function sliceWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const iteratorResult = indices.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
 }
 
 /**
@@ -111,16 +111,16 @@ export function sliceWithIteratorByCollectionHolder<const T, >(collection: Nulla
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, indices: Iterator<number>,): CollectionHolder<T> {
+export function sliceWithIteratorByArray<const T, >(collection: Nullable<Array<T>>, indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (collection.length == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
+    if (collection.length === 0)
+        return EmptyCollectionHolder.get
 
     const iteratorResult = indices.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, indices, iteratorResult.value,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArrayByArray(collection, indices, iteratorResult.value,),)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -134,7 +134,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, values
     return newArray
 }
 
-function __newArrayByArray<const T, >(collection: readonly T[], values: Iterator<number, unknown, unknown>, firstValue: number,) {
+function __newArrayByArray<const T, >(collection: Array<T>, values: Iterator<number, unknown, unknown>, firstValue: number,) {
     const newArray = [__get(collection, firstValue,),]
     let iteratorResult: IteratorResult<number, unknown>
     while (!(iteratorResult = values.next()).done)

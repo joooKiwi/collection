@@ -16,9 +16,20 @@ import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderFo
 /**
  * A {@link StraightCollectionHolderForTest} that has more utility methods
  * and is watching the amount of time {@link get} is being called for the tests
+ *
+ * @typeParam T The type
  */
 export interface CollectionHolderForTest<out T, >
     extends StraightCollectionHolderForTest<T> {
+
+    /**
+     * Do an action on the curent {@link CollectionHolderForTest instance}
+     * while expecting a {@link IndexNotFoundException} to be thrown
+     * and return itself afterward
+     *
+     * @param action The action to do
+     */
+    executeWhileExpectingIndexNotFound(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}

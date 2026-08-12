@@ -33,7 +33,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @beta
  * @see CollectionHandlerByCollectionIteratorOf1
  * @see CollectionHandlerByCollectionIteratorOf2
- * @deprecated Replace with {@link GenericCollectionIterator}. This will be removed in v2.0
+ * @deprecated Replace with {@link IteratorAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByCollectionIterator<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,
@@ -60,7 +60,7 @@ export class CollectionHandlerByCollectionIterator<const T = unknown,
 
     public override get size(): REFERENCE["size"] { return this.#size ??= this._reference.size }
 
-    public override get isEmpty(): boolean { return this.#isEmpty ??= this.size == 0 }
+    public override get isEmpty(): boolean { return this.#isEmpty ??= this.size === 0 }
 
     public override get hasNull(): boolean {
         const value = this.#hasNull
@@ -114,7 +114,7 @@ export class CollectionHandlerByCollectionIterator<const T = unknown,
         }
 
         const size = this.size
-        if (size == 1)
+        if (size === 1)
             return this.#hasDuplicate = false
 
         //TODO add logic to compare if it exist and _lastIndex++ logic
@@ -186,9 +186,9 @@ export class CollectionHandlerByCollectionIterator<const T = unknown,
 
         if (Number.isNaN(index,))
             return new NaNIndexValueHolder(index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             return new NegativeInfinityIndexValueHolder(index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             return new PositiveInfinityIndexValueHolder(index,)
 
         const collection = this._collection
@@ -196,7 +196,7 @@ export class CollectionHandlerByCollectionIterator<const T = unknown,
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
-        if (index == size)
+        if (index === size)
             return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
@@ -211,7 +211,7 @@ export class CollectionHandlerByCollectionIterator<const T = unknown,
             while(++indexToFind < indexPlus1)
                 collection[indexToFind] = reference.nextValue
 
-            if (indexToFind == size)
+            if (indexToFind === size)
                 this._hasFinished = true
 
             return new ValidValueHolder(collection[(this._lastIndex = indexToFind) - 1] as T,)
@@ -234,7 +234,7 @@ export class CollectionHandlerByCollectionIterator<const T = unknown,
         while(++indexToFind < indexToRetrievePlus1)
             collection[indexToFind] = reference.nextValue
 
-        if (indexToFind == size)
+        if (indexToFind === size)
             this._hasFinished = true
 
         return new ValidValueHolder(collection[(this._lastIndex = indexToFind) - 1] as T,)

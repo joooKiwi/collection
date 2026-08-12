@@ -16,15 +16,16 @@ import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
  * A definition of a {@link MinimalistCollectionHolder} to have a common ancestor.
  *
  * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @typeParam T The type (by default `unknown`)
  * @see EmptyCollectionHolder
  * @see GenericMinimalistCollectionHolder
  */
-export abstract class AbstractMinimalistCollectionHolder<const out T = unknown, >
+export abstract class AbstractMinimalistCollectionHolder<const T = unknown, >
     implements MinimalistCollectionHolder<T> {
 
     protected constructor() {}
 
-    public abstract get size(): number
+    public abstract readonly size: number
 
     public abstract get(index: number,): T
 

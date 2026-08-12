@@ -14,8 +14,7 @@ import type {ValueHolder} from "./ValueHolder"
 
 /**
  * A {@link ValueHolder} meant to only hold a valid {@link value}
- *
- * @beta
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export class ValidValueHolder<const T = unknown, >
     implements ValueHolder<T> {

@@ -13,7 +13,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
-import org.jetbrains.annotations.UnknownNullability;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
@@ -33,7 +32,7 @@ public interface ImmutableCollection<T extends @Nullable Object>
 
     //#region -------------------- Size methods --------------------
 
-    /// Get the size of the current [instance][Collection]
+    /// Get the size of the current [instance][ImmutableCollection]
     ///
     /// @see Collection#size()
     /// @see Map#size()
@@ -45,7 +44,7 @@ public interface ImmutableCollection<T extends @Nullable Object>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count">C# Count()</a>
     @Override @Range(from = 0, to = MAX_INT_VALUE) int size();
 
-    /// Tell if the current [instance][Collection] has no values
+    /// Tell if the current [instance][ImmutableCollection] has no values
     ///
     /// @see Collection#isEmpty()
     /// @see Map#isEmpty()
@@ -57,7 +56,7 @@ public interface ImmutableCollection<T extends @Nullable Object>
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Has methods --------------------
 
-    /// Tell whenever the `value` exist in the current [instance][Collection]
+    /// Tell whenever the `value` exist in the current [instance][ImmutableCollection]
     ///
     /// @param value The value to compare
     /// @see Collection#contains(Object)
@@ -65,11 +64,11 @@ public interface ImmutableCollection<T extends @Nullable Object>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript ReadonlyArray.includes(value)</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript ReadonlySet.has(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html">Kotlin contains(element)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html">Kotlin Map.containsValue(element)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/contains-value.html">Kotlin Map.containsValue(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @Override boolean contains(@Nullable Object value);
 
-    /// Tell that all the `values` are in the current [instance][Collection]
+    /// Tell that all the `values` are in the current [instance][ImmutableCollection]
     ///
     /// @param values The values to compare
     /// @see Collection#containsAll(Collection)
@@ -99,7 +98,7 @@ public interface ImmutableCollection<T extends @Nullable Object>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    /// Convert the current [instance][Collection] to an `array`
+    /// Convert the current [instance][ImmutableCollection] to an `array`
     @Contract(pure = true)
     @Override @Nullable Object[] toArray();
 
@@ -132,18 +131,17 @@ public interface ImmutableCollection<T extends @Nullable Object>
     @Override int hashCode();
 
     @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
-    @Override boolean equals(final @Nullable Object other);
+    @Override boolean equals(@Nullable Object other);
 
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
     ImmutableCollection<T> clone();
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------
 
-    /// Convert the current [instance][Collection] to a [String] on every value
+    /// Convert the current [instance][ImmutableCollection] to a [String] on every value
     /// by calling its "_[toString\(\)][Object#toString()]_" method
     ///
     /// @see Object#toString()
@@ -154,14 +152,14 @@ public interface ImmutableCollection<T extends @Nullable Object>
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
-    /// Fail to add a `value` to the current [instance][Collection]
+    /// Fail to add a `value` to the current [instance][ImmutableCollection]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override default boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable Collection."); }
 
-    /// Fail to add the `values` in the current [instance][Collection]
+    /// Fail to add the `values` in the current [instance][ImmutableCollection]
     ///
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedMethodException The method is not supported
@@ -169,35 +167,35 @@ public interface ImmutableCollection<T extends @Nullable Object>
     @Override default boolean addAll(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable Collection."); }
 
 
-    /// Fail to clear the current [instance][Collection]
+    /// Fail to clear the current [instance][ImmutableCollection]
     ///
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
     @Override default void clear() { throw new UnsupportedMethodException("The method “clear” is not supported in an immutable Collection."); }
 
 
-    /// Fail to remove a `value` in the current [instance][Collection]
+    /// Fail to remove a `value` in the current [instance][ImmutableCollection]
     ///
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override default boolean remove(final @Nullable Object value) { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable Collection."); }
 
-    /// Fail to remove the `values` in the current [instance][Collection]
+    /// Fail to remove the `values` in the current [instance][ImmutableCollection]
     ///
     /// @param values The (_never used_) elements to remove
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override default boolean removeAll(final @Nullable @Unmodifiable Collection<? extends @Nullable Object> values) { throw new UnsupportedMethodException("The method “removeAll” is not supported in an immutable Collection."); }
 
-    /// Fail to remove anything to the current [instance][Collection]
+    /// Fail to remove anything to the current [instance][ImmutableCollection]
     ///
     /// @param filter The (_never used_) predicate
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override default boolean removeIf(final @Nullable Predicate<? super @Nullable T> filter) { throw new UnsupportedMethodException("The method “removeIf” is not supported in an immutable Collection."); }
 
-    /// Fail to keep the `values` in the current [instance][Collection]
+    /// Fail to keep the `values` in the current [instance][ImmutableCollection]
     ///
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedMethodException The method is not supported

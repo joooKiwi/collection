@@ -13,7 +13,7 @@
 import type {Array, MutableArray, UndefinedOr} from "@joookiwi/type"
 
 import type {BooleanCallback, RestrainedBooleanCallback}                                                                                                              from "../../src/type/callback"
-import type {FlatMapCallback, MutableReduceCallback, MutableRestrainedReduceCallback, MutableValueIndexCallback, MutableValueIndexWithReturnCallback, SortedCallback} from "../array.types"
+import type {FlatMapCallback, MutableReduceCallback, MutableRestrainedReduceCallback, MutableValueIndexCallback, MutableValueIndexWithReturnCallback, SortedCallback} from "../type/array"
 
 /**
  * A {@link globalThis.Array MutableArray} made for the tests

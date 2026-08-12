@@ -34,8 +34,4 @@ public abstract class AbstractJavaListTests {
         }
     }
 
-    /// Give `null` to a typed [List]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable List<T> nullInstance() { return null; }
-
 }

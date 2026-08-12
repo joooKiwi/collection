@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHolder"
 
 import {MinimalistCollectionHolderFromArray} from "./MinimalistCollectionHolderFromArray"
@@ -25,7 +27,7 @@ export class MinimalistCollectionHolder_ByStructure<const out T, >
 
     public readonly reference
 
-    public constructor(array: readonly T[],) { this.reference = new MinimalistCollectionHolderFromArray(array,) }
+    public constructor(array: Array<T>,) { this.reference = new MinimalistCollectionHolderFromArray(array,) }
 
     public get size(): number { return this.reference.size }
 

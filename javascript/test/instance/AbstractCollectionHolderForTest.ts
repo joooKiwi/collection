@@ -10,10 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, Set, TemplateOrNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {CollectionHolderForTest}                                                                                                                                                                                                                                           from "./CollectionHolderForTest"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
@@ -22,6 +21,7 @@ import type {CollectionHolderName}                                              
 
 import {EmptyCollectionException}   from "../../src/exception/EmptyCollectionException"
 import {ForbiddenIndexException}    from "../../src/exception/ForbiddenIndexException"
+import {IndexNotFoundException}     from "../../src/exception/IndexNotFoundException"
 import {IndexOutOfBoundsException}  from "../../src/exception/IndexOutOfBoundsException"
 import {InvalidIndexRangeException} from "../../src/exception/InvalidIndexRangeException"
 
@@ -52,6 +52,17 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public execute(action: (instance: this,) => void,): this {
         action(this,)
         return this
+    }
+
+    public executeWhileExpectingIndexNotFound(action: (instance: this,) => void,): this {
+        try {
+            action(this,)
+        } catch (exception) {
+            if (exception instanceof IndexNotFoundException)
+                return this
+            throw exception
+        }
+        throw new Error("The exception “IndexNotFoundException” was expected to be thrown.",)
     }
 
     public executeWhileExpectingIndexOutOfBound(action: (instance: this,) => void,): this {
@@ -110,7 +121,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Test utility methods --------------------
     //#region -------------------- Size methods --------------------
 
-    public abstract get size(): number
+    public abstract readonly size: number
 
     public get length(): never {
         throw new Error("The getter method “length” was not expected to be called.",)
@@ -120,8 +131,78 @@ export abstract class AbstractCollectionHolderForTest<const T, >
         throw new Error("The getter method “count” was not expected to be called.",)
     }
 
-    public abstract get isEmpty(): boolean
-    public abstract get isNotEmpty(): boolean
+
+    public abstract readonly isEmpty: boolean
+
+    public abstract readonly isNotEmpty: boolean
+
+
+    public get hasAtLeast1Element(): never {
+        throw new Error("The getter method “hasAtLeast1Element” was not expected to be called.",)
+    }
+
+    public get containsAtLeast1Element(): never {
+        throw new Error("The getter method “containsAtLeast1Element” was not expected to be called.",)
+    }
+
+    public get includesAtLeast1Element(): never {
+        throw new Error("The getter method “includesAtLeast1Element” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasExactly1Element: boolean
+
+    public get containsExactly1Element(): never {
+        throw new Error("The getter method “containsExactly1Element” was not expected to be called.",)
+    }
+
+    public get includesExactly1Element(): never {
+        throw new Error("The getter method “includesExactly1Element” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasAtMost1Element: boolean
+
+    public get containsAtMost1Element(): never {
+        throw new Error("The getter method “containsAtMost1Element” was not expected to be called.",)
+    }
+
+    public get includesAtMost1Element(): never {
+        throw new Error("The getter method “includesAtMost1Element” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasAtLeast2Elements: boolean
+
+    public get containsAtLeast2Elements(): never {
+        throw new Error("The getter method “containsAtLeast2Elements” was not expected to be called.",)
+    }
+
+    public get includesAtLeast2Elements(): never {
+        throw new Error("The getter method “includesAtLeast2Elements” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasExactly2Elements: boolean
+
+    public get containsExactly2Elements(): never {
+        throw new Error("The getter method “containsExactly2Elements” was not expected to be called.",)
+    }
+
+    public get includesExactly2Elements(): never {
+        throw new Error("The getter method “includesExactly2Elements” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasAtMost2Elements: boolean
+
+    public get containsAtMost2Elements(): never {
+        throw new Error("The getter method “containsAtMost2Elements” was not expected to be called.",)
+    }
+
+    public get includesAtMost2Elements(): never {
+        throw new Error("The getter method “includesAtMost2Elements” was not expected to be called.",)
+    }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
@@ -134,12 +215,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract getLast(): T
 
-    public at(..._: readonly unknown[]): never
+    public at(..._: Array<unknown>): never
     public at() {
         throw new Error("The method “at” was not expected to be called in a test.",)
     }
 
-    public elementAt(..._: readonly unknown[]): never
+    public elementAt(..._: Array<unknown>): never
     public elementAt() {
         throw new Error("The method “elementAt” was not expected to be called in a test.",)
     }
@@ -154,12 +235,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public abstract getLastOrElse(defaultValue: ReturnCallback<T>,): T
 
-    public atOrElse(..._: readonly unknown[]): never
+    public atOrElse(..._: Array<unknown>): never
     public atOrElse() {
         throw new Error("The method “atOrElse” was not expected to be called in a test.",)
     }
 
-    public elementAtOrElse(..._: readonly unknown[]): never
+    public elementAtOrElse(..._: Array<unknown>): never
     public elementAtOrElse() {
         throw new Error("The method “elementAtOrElse” was not expected to be called in a test.",)
     }
@@ -171,12 +252,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract getLastOrNull(): NullOr<T>
 
-    public atOrNull(..._: readonly unknown[]): never
+    public atOrNull(..._: Array<unknown>): never
     public atOrNull() {
         throw new Error("The method “atOrNull” was not expected to be called in a test.",)
     }
 
-    public elementAtOrNull(..._: readonly unknown[]): never
+    public elementAtOrNull(..._: Array<unknown>): never
     public elementAtOrNull() {
         throw new Error("The method “elementAtOrNull” was not expected to be called in a test.",)
     }
@@ -184,22 +265,22 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Get --------------------
     //#region -------------------- First --------------------
 
-    public first(..._: readonly unknown[]): never
+    public first(..._: Array<unknown>): never
     public first() {
         throw new Error("The method “first” was not expected to be called in a test.",)
     }
 
-    public firstOrNull(..._: readonly unknown[]): never
+    public firstOrNull(..._: Array<unknown>): never
     public firstOrNull() {
         throw new Error("The method “firstOrNull” was not expected to be called in a test.",)
     }
 
-    public firstIndexed(..._: readonly unknown[]): never
+    public firstIndexed(..._: Array<unknown>): never
     public firstIndexed() {
         throw new Error("The method “firstIndexed” was not expected to be called in a test.",)
     }
 
-    public firstIndexedOrNull(..._: readonly unknown[]): never
+    public firstIndexedOrNull(..._: Array<unknown>): never
     public firstIndexedOrNull() {
         throw new Error("The method “firstIndexedOrNull” was not expected to be called in a test.",)
     }
@@ -207,22 +288,22 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- First --------------------
     //#region -------------------- Last --------------------
 
-    public last(..._: readonly unknown[]): never
+    public last(..._: Array<unknown>): never
     public last() {
         throw new Error("The method “last” was not expected to be called in a test.",)
     }
 
-    public lastOrNull(..._: readonly unknown[]): never
+    public lastOrNull(..._: Array<unknown>): never
     public lastOrNull() {
         throw new Error("The method “lastOrNull” was not expected to be called in a test.",)
     }
 
-    public lastIndexed(..._: readonly unknown[]): never
+    public lastIndexed(..._: Array<unknown>): never
     public lastIndexed() {
         throw new Error("The method “lastIndexed” was not expected to be called in a test.",)
     }
 
-    public lastIndexedOrNull(..._: readonly unknown[]): never
+    public lastIndexedOrNull(..._: Array<unknown>): never
     public lastIndexedOrNull() {
         throw new Error("The method “lastIndexedOrNull” was not expected to be called in a test.",)
     }
@@ -233,7 +314,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public abstract findFirst(predicate: BooleanCallback<T>,): T
 
-    public find(..._: readonly unknown[]): never
+    public find(..._: Array<unknown>): never
     public find() {
         throw new Error("The method “find” was not expected to be called in a test.",)
     }
@@ -242,7 +323,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public abstract findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
 
-    public findOrNull(..._: readonly unknown[]): never
+    public findOrNull(..._: Array<unknown>): never
     public findOrNull() {
         throw new Error("The method “findOrNull” was not expected to be called in a test.",)
     }
@@ -251,7 +332,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract findFirstIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
     public abstract findFirstIndexed(predicate: ReverseBooleanCallback<T>,): T
 
-    public findIndexed(..._: readonly unknown[]): never
+    public findIndexed(..._: Array<unknown>): never
     public findIndexed() {
         throw new Error("The method “findIndexed” was not expected to be called in a test.",)
     }
@@ -290,7 +371,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number
 
-    public indexOf(..._: readonly unknown[]): never
+    public indexOf(..._: Array<unknown>): never
     public indexOf() {
         throw new Error("The method “indexOf” was not expected to be called.",)
     }
@@ -298,7 +379,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
-    public indexOfOrNull(..._: readonly unknown[]): never
+    public indexOfOrNull(..._: Array<unknown>): never
     public indexOfOrNull(): never{
         throw new Error("The method “indexOf” was not expected to be called.",)
 
@@ -317,12 +398,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
-    public findFirstIndex(..._: readonly unknown[]): never
+    public findFirstIndex(..._: Array<unknown>): never
     public findFirstIndex() {
         throw new Error("The method “findFirstIndex” was not expected to be called.",)
     }
 
-    public findIndex(..._: readonly unknown[]): never
+    public findIndex(..._: Array<unknown>): never
     public findIndex() {
         throw new Error("The method “findIndex” was not expected to be called.",)
     }
@@ -330,12 +411,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
-    public findFirstIndexOrNull(..._: readonly unknown[]): never
+    public findFirstIndexOrNull(..._: Array<unknown>): never
     public findFirstIndexOrNull() {
         throw new Error("The method “findFirstIndexOrNull” was not expected to be called.",)
     }
 
-    public findIndexOrNull(..._: readonly unknown[]): never
+    public findIndexOrNull(..._: Array<unknown>): never
     public findIndexOrNull() {
         throw new Error("The method “findIndexOrNull” was not expected to be called.",)
     }
@@ -343,12 +424,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
-    public findFirstIndexIndexed(..._: readonly unknown[]): never
+    public findFirstIndexIndexed(..._: Array<unknown>): never
     public findFirstIndexIndexed() {
         throw new Error("The method “findFirstIndexIndexed” was not expected to be called.",)
     }
 
-    public findIndexIndexed(..._: readonly unknown[]): never
+    public findIndexIndexed(..._: Array<unknown>): never
     public findIndexIndexed() {
         throw new Error("The method “findIndexIndexed” was not expected to be called.",)
     }
@@ -356,12 +437,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
-    public findFirstIndexIndexedOrNull(..._: readonly unknown[]): never
+    public findFirstIndexIndexedOrNull(..._: Array<unknown>): never
     public findFirstIndexIndexedOrNull() {
         throw new Error("The method “findFirstIndexIndexedOrNull” was not expected to be called.",)
     }
 
-    public findIndexIndexedOrNull(..._: readonly unknown[]): never
+    public findIndexIndexedOrNull(..._: Array<unknown>): never
     public findIndexIndexedOrNull() {
         throw new Error("The method “findIndexIndexedOrNull” was not expected to be called.",)
     }
@@ -371,7 +452,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
-    public findLastIndex(..._: readonly unknown[]): never
+    public findLastIndex(..._: Array<unknown>): never
     public findLastIndex() {
         throw new Error("The method “findLastIndex” was not expected to be called.",)
     }
@@ -379,7 +460,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
-    public findLastIndexOrNull(..._: readonly unknown[]): never
+    public findLastIndexOrNull(..._: Array<unknown>): never
     public findLastIndexOrNull() {
         throw new Error("The method “findLastIndexOrNull” was not expected to be called.",)
     }
@@ -387,7 +468,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
-    public findLastIndexIndexed(..._: readonly unknown[]): never
+    public findLastIndexIndexed(..._: Array<unknown>): never
     public findLastIndexIndexed() {
         throw new Error("The method “findLastIndexIndexed” was not expected to be called.",)
     }
@@ -395,7 +476,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
-    public findLastIndexIndexedOrNull(..._: readonly unknown[]): never
+    public findLastIndexIndexedOrNull(..._: Array<unknown>): never
     public findLastIndexIndexedOrNull() {
         throw new Error("The method “findLastIndexIndexedOrNull” was not expected to be called.",)
     }
@@ -410,8 +491,8 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public abstract all(predicate: BooleanCallback<T>,): boolean
 
-    public every<const S extends T, >(..._: readonly unknown[]): this is CollectionHolder<S>
-    public every(..._: readonly unknown[]): never
+    public every<const S extends T, >(..._: Array<unknown>): this is CollectionHolder<S>
+    public every(..._: Array<unknown>): never
     public every(): never {
         throw new Error("The method “every” was not expected to be called.",)
     }
@@ -422,7 +503,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract any(): this["isNotEmpty"]
     public abstract any(predicate: Nullable<BooleanCallback<T>>,): boolean
 
-    public some(..._: readonly unknown[]): never
+    public some(..._: Array<unknown>): never
     public some() {
         throw new Error("The method “some” was not expected to be called.",)
     }
@@ -437,7 +518,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     //#region -------------------- Has null --------------------
 
-    public abstract get hasNull(): boolean
+    public abstract readonly hasNull: boolean
 
     public get includesNull(): never {
         throw new Error("The getter method “includesNull” was not expected to be called.",)
@@ -450,7 +531,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has null --------------------
     //#region -------------------- Has no nulls --------------------
 
-    public abstract get hasNoNulls(): boolean
+    public abstract readonly hasNoNulls: boolean
 
     public get includesNoNulls(): never {
         throw new Error("The getter method “includesNoNulls” was not expected to be called.",)
@@ -463,7 +544,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
 
-    public abstract get hasDuplicate(): boolean
+    public abstract readonly hasDuplicate: boolean
 
     public get includesDuplicate(): never {
         throw new Error("The getter method “includesDuplicate” was not expected to be called.",)
@@ -476,7 +557,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has duplicate --------------------
     //#region -------------------- Has no duplicates --------------------
 
-    public abstract get hasNoDuplicates(): boolean
+    public abstract readonly hasNoDuplicates: boolean
 
     public get includesNoDuplicates(): never {
         throw new Error("The getter method “includesNoDuplicates” was not expected to be called.",)
@@ -492,12 +573,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract has(value: T,): boolean
 
-    public includes(..._: readonly unknown[]): never
+    public includes(..._: Array<unknown>): never
     public includes() {
         throw new Error("The method “includes” was not expected to be called.",)
     }
 
-    public contains(..._: readonly unknown[]): never
+    public contains(..._: Array<unknown>): never
     public contains() {
         throw new Error("The method “contains” was not expected to be called.",)
     }
@@ -507,12 +588,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract hasNot(value: T,): boolean
 
-    public includesNot(..._: readonly unknown[]): never
+    public includesNot(..._: Array<unknown>): never
     public includesNot() {
         throw new Error("The method “includesNot” was not expected to be called.",)
     }
 
-    public containsNot(..._: readonly unknown[]): never
+    public containsNot(..._: Array<unknown>): never
     public containsNot() {
         throw new Error("The method “containsNot” was not expected to be called.",)
     }
@@ -520,21 +601,14 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
-    public abstract hasOne(values: readonly T[],): boolean
-    public abstract hasOne(values: ReadonlySet<T>,): boolean
-    public abstract hasOne(values: CollectionHolder<T>,): boolean
-    public abstract hasOne(values: MinimalistCollectionHolder<T>,): boolean
-    public abstract hasOne(values: CollectionIterator<T>,): boolean
-    public abstract hasOne(values: Iterator<T, unknown, unknown>,): boolean
-    public abstract hasOne(values: Iterable<T, unknown, unknown>,): boolean
-    public abstract hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public abstract hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    public includesOne(..._: readonly unknown[]): never
+    public includesOne(..._: Array<unknown>): never
     public includesOne() {
         throw new Error("The method “includesOne” was not expected to be called.",)
     }
 
-    public containsOne(..._: readonly unknown[]): never
+    public containsOne(..._: Array<unknown>): never
     public containsOne() {
         throw new Error("The method “containsOne” was not expected to be called.",)
     }
@@ -542,21 +616,14 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public abstract hasNotOne(values: readonly T[],): boolean
-    public abstract hasNotOne(values: ReadonlySet<T>,): boolean
-    public abstract hasNotOne(values: CollectionHolder<T>,): boolean
-    public abstract hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
-    public abstract hasNotOne(values: CollectionIterator<T>,): boolean
-    public abstract hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
-    public abstract hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
-    public abstract hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public abstract hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    public includesNotOne(..._: readonly unknown[]): never
+    public includesNotOne(..._: Array<unknown>): never
     public includesNotOne() {
         throw new Error("The method “includesNotOne” was not expected to be called.",)
     }
 
-    public containsNotOne(..._: readonly unknown[]): never
+    public containsNotOne(..._: Array<unknown>): never
     public containsNotOne() {
         throw new Error("The method “containsNotOne” was not expected to be called.",)
     }
@@ -564,21 +631,14 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public abstract hasAll(values: readonly T[],): boolean
-    public abstract hasAll(values: ReadonlySet<T>,): boolean
-    public abstract hasAll(values: CollectionHolder<T>,): boolean
-    public abstract hasAll(values: MinimalistCollectionHolder<T>,): boolean
-    public abstract hasAll(values: CollectionIterator<T>,): boolean
-    public abstract hasAll(values: Iterator<T, unknown, unknown>,): boolean
-    public abstract hasAll(values: Iterable<T, unknown, unknown>,): boolean
-    public abstract hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public abstract hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    public includesAll(..._: readonly unknown[]): never
+    public includesAll(..._: Array<unknown>): never
     public includesAll() {
         throw new Error("The method “includesAll” was not expected to be called.",)
     }
 
-    public containsAll(..._: readonly unknown[]): never
+    public containsAll(..._: Array<unknown>): never
     public containsAll() {
         throw new Error("The “containsAll” was not expected to be called.",)
     }
@@ -586,21 +646,14 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public abstract hasNotAll(values: readonly T[],): boolean
-    public abstract hasNotAll(values: ReadonlySet<T>,): boolean
-    public abstract hasNotAll(values: CollectionHolder<T>,): boolean
-    public abstract hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
-    public abstract hasNotAll(values: CollectionIterator<T>,): boolean
-    public abstract hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
-    public abstract hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
-    public abstract hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public abstract hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    public includesNotAll(..._: readonly unknown[]): never
+    public includesNotAll(..._: Array<unknown>): never
     public includesNotAll() {
         throw new Error("The method “includesNotAll” was not expected to be called.",)
     }
 
-    public containsNotAll(..._: readonly unknown[]): never
+    public containsNotAll(..._: Array<unknown>): never
     public containsNotAll() {
         throw new Error("The “containsNotAll” was not expected to be called.",)
     }
@@ -636,15 +689,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#region -------------------- Slice --------------------
 
     public abstract slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public abstract slice(indices: readonly number[],): CollectionHolder<T>
-    public abstract slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public abstract slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public abstract slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public abstract slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public abstract slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
-    public abstract slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
     public abstract slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public abstract slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------
 
@@ -652,7 +697,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract take(n: number,): CollectionHolder<T>
 
-    public limit(..._: readonly unknown[]): never
+    public limit(..._: Array<unknown>): never
     public limit() {
         throw new Error("The method “limit” was not expected to be called.",)
     }
@@ -661,7 +706,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
-    public limitWhile(..._: readonly unknown[]): never
+    public limitWhile(..._: Array<unknown>): never
     public limitWhile() {
         throw new Error("The method “limitWhile” was not expected to be called.",)
     }
@@ -670,7 +715,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    public limitWhileIndexed(..._: readonly unknown[]): never
+    public limitWhileIndexed(..._: Array<unknown>): never
     public limitWhileIndexed() {
         throw new Error("The method “limitWhileIndexed” was not expected to be called.",)
     }
@@ -680,7 +725,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract takeLast(n: number,): CollectionHolder<T>
 
-    public limitLast(..._: readonly unknown[]): never
+    public limitLast(..._: Array<unknown>): never
     public limitLast() {
         throw new Error("The method “limitLast” was not expected to be called.",)
     }
@@ -689,7 +734,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract takeLastWhile<const S extends T, >(predicate?: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract takeLastWhile(predicate?: BooleanCallback<T>,): CollectionHolder<T>
 
-    public limitLastWhile(..._: readonly unknown[]): never
+    public limitLastWhile(..._: Array<unknown>): never
     public limitLastWhile() {
         throw new Error("The method “limitLastWhile” was not expected to be called.",)
     }
@@ -698,7 +743,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract takeLastWhileIndexed<const S extends T, >(predicate?: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract takeLastWhileIndexed(predicate?: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    public limitLastWhileIndexed(..._: readonly unknown[]): never
+    public limitLastWhileIndexed(..._: Array<unknown>): never
     public limitLastWhileIndexed() {
         throw new Error("The method “limitLastWhileIndexed” was not expected to be called.",)
     }
@@ -708,7 +753,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract drop(n: number,): CollectionHolder<T>
 
-    public skip(..._: readonly unknown[]): never
+    public skip(..._: Array<unknown>): never
     public skip() {
         throw new Error("The method “skip” was not expected to be called.",)
     }
@@ -717,7 +762,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
-    public skipWhile(..._: readonly unknown[]): never
+    public skipWhile(..._: Array<unknown>): never
     public skipWhile() {
         throw new Error("The method “skipWhile” was not expected to be called.",)
     }
@@ -726,7 +771,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    public skipWhileIndexed(..._: readonly unknown[]): never
+    public skipWhileIndexed(..._: Array<unknown>): never
     public skipWhileIndexed() {
         throw new Error("The method “skipWhileIndexed” was not expected to be called.",)
     }
@@ -736,7 +781,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract dropLast(n: number,): CollectionHolder<T>
 
-    public skipLast(..._: readonly unknown[]): never
+    public skipLast(..._: Array<unknown>): never
     public skipLast() {
         throw new Error("The method “skipLast” was not expected to be called.",)
     }
@@ -745,7 +790,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
-    public skipLastWhile(..._: readonly unknown[]): never
+    public skipLastWhile(..._: Array<unknown>): never
     public skipLastWhile() {
         throw new Error("The method “skipLastWhile” was not expected to be called.",)
     }
@@ -754,7 +799,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    public skipLastWhileIndexed(..._: readonly unknown[]): never
+    public skipLastWhileIndexed(..._: Array<unknown>): never
     public skipLastWhileIndexed() {
         throw new Error("The method “skipLastWhileIndexed” was not expected to be called.",)
     }
@@ -799,12 +844,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
 
-    public toReversed(..._: readonly unknown[]): never
+    public toReversed(..._: Array<unknown>): never
     public toReversed() {
         throw new Error("The method “toReversed” was not expected to be called.",)
     }
 
-    public reversed(..._: readonly unknown[]): never
+    public reversed(..._: Array<unknown>): never
     public reversed() {
         throw new Error("The method “reversed” was not expected to be called.",)
     }
@@ -814,7 +859,9 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public abstract [Symbol.iterator](): CollectionIterator<T>
+    public [Symbol.iterator](): never {
+        throw new Error("The method “Symbol.iterator” was not expected to be called.",)
+    }
 
     public get [Symbol.toStringTag](): CollectionHolderName {
         return "CollectionHolder"
@@ -825,20 +872,17 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     //#region -------------------- To other structure --------------------
 
-    public toIterator(): CollectionIterator<T> {
-        return this[Symbol.iterator]()
-    }
+    public abstract toIterator(): CollectionIterator<T>
+
+    public abstract toArray(): Array<T>
+    public abstract toMutableArray(): MutableArray<T>
+
+    public abstract toSet(): Set<T>
+    public abstract toMutableSet(): MutableSet<T>
 
 
-    public abstract toArray(): readonly T[]
-    public abstract toMutableArray(): T[]
-
-    public abstract toSet(): ReadonlySet<T>
-    public abstract toMutableSet(): Set<T>
-
-
-    public abstract toMap(): ReadonlyMap<number, T>
-    public abstract toMutableMap(): Map<number, T>
+    public abstract toMap(): NumberKeyMap<T>
+    public abstract toMutableMap(): MutableNumberKeyMap<T>
 
     //#endregion -------------------- To other structure --------------------
     //#region -------------------- To string --------------------
@@ -860,7 +904,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
 
-    public join(..._: readonly unknown[]): never
+    public join(..._: Array<unknown>): never
     public join() {
         throw new Error("The method “join” was not expected to be called.",)
     }

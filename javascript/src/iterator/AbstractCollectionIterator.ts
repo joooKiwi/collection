@@ -12,29 +12,27 @@
 
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
-import type {MinimalistCollectionHolder}                                                           from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                   from "./CollectionIterator"
 import type {CollectionIteratorValue}                                                              from "./value/CollectionIteratorValue"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
+import type {PossibleIteratorValue}                                                                from "../type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
-import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
-import {NoElementFoundInCollectionException} from "../exception/NoElementFoundInCollectionException"
-import {GenericAfterLastIteratorValue}       from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIteratorValue"
+import {AbstractUnimplementedCollectionIterator} from "./AbstractUnimplementedCollectionIterator"
+import {NoElementFoundInCollectionException}     from "../exception/NoElementFoundInCollectionException"
+import {GenericAfterLastIteratorValue}           from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirstIteratorValue"
 
 /**
  * A definition of a {@link CollectionIterator} to have a common ancestor.
  * Only the indexes are stored and updated (if needed).
  *
- * @note This class should be inherited if new classes are being made to be more usable by the tools
- * @typeParam T          The element type
- * @typeParam COLLECTION (deprecated, it will be removed in version 2.0) The reference of the iterator
+ * @typeParam T The element type
  * @see EmptyCollectionIterator
+ * @see GenericCollectionIterator
  */
-export abstract class AbstractCollectionIterator<const T,
-    const _COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
-    implements CollectionIterator<T> {
+export abstract class AbstractCollectionIterator<const T, >
+    extends AbstractUnimplementedCollectionIterator<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -49,6 +47,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#region -------------------- Constructor --------------------
 
     protected constructor() {
+        super()
         this.#currentIndex = null
     }
 
@@ -57,33 +56,17 @@ export abstract class AbstractCollectionIterator<const T,
 
     //#region -------------------- Size methods --------------------
 
-    public abstract get size(): number
-    public get length(): this["size"] { return this.size }
-    public get count(): this["size"] { return this.size }
-
-
     /** The {@link size} minus 1 */
     protected get _sizeMinus1(): number { return this.size - 1 }
 
     /** The {@link size} minus 2 */
     protected get _sizeMinus2(): number { return this.size - 2 }
 
-
-    public get isEmpty(): boolean { return this.size == 0 }
-    public get isNotEmpty(): boolean { return this.size != 0 }
-
-
-    /** Tell that the {@link size} is only of <b>1</b> */
-    protected get _hasOnly1Element(): boolean { return this.size == 1 }
-
-    /** Tell that the {@link size} is only of <b>2</b> */
-    protected get _hasOnly2Elements(): boolean { return this.size == 2 }
-
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------
 
     /** @initializedOnFirstCall */
-    public get firstIndex(): NullOrZeroNumber {
+    public override get firstIndex(): NullOrZeroNumber {
         const value = this.#firstIndex
         if (value !== undefined)
             return value
@@ -98,7 +81,7 @@ export abstract class AbstractCollectionIterator<const T,
 
 
     /** @initializedOnFirstCall */
-    public get lastIndex(): NullOrNumber {
+    public override get lastIndex(): NullOrNumber {
         const value = this.#lastIndex
         if (value !== undefined)
             return value
@@ -115,7 +98,7 @@ export abstract class AbstractCollectionIterator<const T,
 
     //#region -------------------- Current methods --------------------
 
-    public get currentIndex(): NullOrNumber { return this._currentIndex }
+    public override get currentIndex(): NullOrNumber { return this._currentIndex }
 
     /**
      * Get the index that the {@link AbstractCollectionIterator instance} is at
@@ -131,13 +114,10 @@ export abstract class AbstractCollectionIterator<const T,
      */
     protected set _currentIndex(value: NullOrNumber,) { this.#currentIndex = value }
 
-
-    public get index(): NullOrNumber { return this.currentIndex }
-
     //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------
 
-    public get hasNext(): boolean {
+    public override get hasNext(): boolean {
         if (this.isEmpty)
             return false
         if (this._isNextIndexInitialized)
@@ -150,7 +130,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public get nextIndex(): NullOrNumber { return this._nextIndex }
+    public override get nextIndex(): NullOrNumber { return this._nextIndex }
 
     /**
      * Get the next index that the {@link AbstractCollectionIterator instance} should be at
@@ -176,14 +156,14 @@ export abstract class AbstractCollectionIterator<const T,
     protected get _isNextIndexInitialized(): boolean { return this.#nextIndex !== undefined }
 
 
-    public get nextValue(): T {
+    public override get nextValue(): T {
         if (this.isEmpty)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or after the end of the line.",)
 
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
-            if (this._hasOnly1Element) {
+            if (this.hasExactly1Element) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = null
@@ -196,13 +176,13 @@ export abstract class AbstractCollectionIterator<const T,
             return this._getValue(0,)
         }
 
-        if (this._hasOnly1Element)
+        if (this.hasExactly1Element)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or after the end of the line.",)
         if (this._nextIndex == null) // At the end of the line
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or after the end of the line.",)
 
         if (this._previousIndex == null) { // At the start of the line
-            if (this._hasOnly2Elements) {
+            if (this.hasExactly2Elements) {
                 this._previousIndex = 0
                 this._currentIndex = 1
                 this._nextIndex = null
@@ -215,7 +195,7 @@ export abstract class AbstractCollectionIterator<const T,
             return this._getValue(1,)
         }
 
-        if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
+        if (currentIndex === this._sizeMinus2) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
             const nextCurrentIndex = this._currentIndex = currentIndex + 1
             this._nextIndex = null
@@ -230,14 +210,14 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> {
+    public override next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> {
         if (this.isEmpty)
             return GenericAfterLastIteratorValue.get
 
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
-            if (this._hasOnly1Element) {
+            if (this.hasExactly1Element) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = null
@@ -250,13 +230,13 @@ export abstract class AbstractCollectionIterator<const T,
             return this._getIteratorValue(0,)
         }
 
-        if (this._hasOnly1Element)
+        if (this.hasExactly1Element)
             return GenericAfterLastIteratorValue.get
         if (this._nextIndex == null) // At the end of the line
             return GenericAfterLastIteratorValue.get
 
         if (this._previousIndex == null) { // At the start of the line
-            if (this._hasOnly2Elements) {
+            if (this.hasExactly2Elements) {
                 this._previousIndex = 0
                 this._nextIndex = null
                 return this._getIteratorValue(this._currentIndex = 1,)
@@ -267,7 +247,7 @@ export abstract class AbstractCollectionIterator<const T,
             return this._getIteratorValue(this._currentIndex = 1,)
         }
 
-        if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
+        if (currentIndex === this._sizeMinus2) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
             this._nextIndex = null
             const nextCurrentIndex = this._currentIndex = currentIndex + 1
@@ -284,7 +264,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
 
-    public get hasPrevious(): boolean {
+    public override get hasPrevious(): boolean {
         if (this.isEmpty)
             return false
         if (this._isPreviousIndexInitialized)
@@ -297,7 +277,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public get previousIndex(): NullOrNumber { return this._previousIndex }
+    public override get previousIndex(): NullOrNumber { return this._previousIndex }
 
     /**
      * Get the previous index that the {@link AbstractCollectionIterator instance} should be at
@@ -323,14 +303,14 @@ export abstract class AbstractCollectionIterator<const T,
     protected get _isPreviousIndexInitialized(): boolean { return this.#previousIndex !== undefined }
 
 
-    public get previousValue(): T {
+    public override get previousValue(): T {
         if (this.isEmpty)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or before the start of the line.",)
 
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
-            if (this._hasOnly1Element) {
+            if (this.hasExactly1Element) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = null
@@ -343,13 +323,13 @@ export abstract class AbstractCollectionIterator<const T,
             return this._getValue(previousCurrentIndex,)
         }
 
-        if (this._hasOnly1Element)
+        if (this.hasExactly1Element)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or before the start of the line.",)
         if (this._previousIndex == null) // At the start of the line
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or before the start of the line.",)
 
         if (this._nextIndex == null) { // At the end of the line
-            if (this._hasOnly2Elements) {
+            if (this.hasExactly2Elements) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = 1
@@ -362,7 +342,7 @@ export abstract class AbstractCollectionIterator<const T,
             return this._getValue(previousCurrentIndex,)
         }
 
-        if (currentIndex == 1) { // At the 2nd index
+        if (currentIndex === 1) { // At the 2nd index
             this._previousIndex = null
             this._currentIndex = 0
             this._nextIndex = 1
@@ -377,14 +357,14 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
+    public override previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> {
         if (this.isEmpty)
             return GenericBeforeFirstIteratorValue.get
 
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
-            if (this._hasOnly1Element) {
+            if (this.hasExactly1Element) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = null
@@ -397,13 +377,13 @@ export abstract class AbstractCollectionIterator<const T,
             return this._getIteratorValue(previousCurrentIndex,)
         }
 
-        if (this._hasOnly1Element)
+        if (this.hasExactly1Element)
             return GenericBeforeFirstIteratorValue.get
         if (this._previousIndex == null) // At the start of the line
             return GenericBeforeFirstIteratorValue.get
 
         if (this._nextIndex == null) { // At the end of the line
-            if (this._hasOnly2Elements) {
+            if (this.hasExactly2Elements) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = 1
@@ -416,7 +396,7 @@ export abstract class AbstractCollectionIterator<const T,
             return this._getIteratorValue(previousCurrentIndex,)
         }
 
-        if (currentIndex == 1) { // At the 2nd index
+        if (currentIndex === 1) { // At the 2nd index
             this._previousIndex = null
             this._currentIndex = 0
             this._nextIndex = 1
@@ -450,7 +430,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- Reset methods --------------------
 
-    public reset(): void {
+    public override reset(): void {
         this._previousIndex = null
         this._currentIndex = null
         this._nextIndex = null
@@ -460,11 +440,11 @@ export abstract class AbstractCollectionIterator<const T,
 
     //#region -------------------- Loop methods --------------------
 
-    public forEach(operation: ValueIndexCallback<T>,): this {
+    public override forEach(operation: ValueIndexCallback<T>,): this {
         if (this.isEmpty)
             return this
 
-        if (this._hasOnly1Element) {
+        if (this.hasExactly1Element) {
             const currentIndex = this._currentIndex
             if (currentIndex != null)
                 return this
@@ -476,7 +456,7 @@ export abstract class AbstractCollectionIterator<const T,
             return this
         }
 
-        if (this._hasOnly2Elements) {
+        if (this.hasExactly2Elements) {
             const currentIndex = this._currentIndex
             if (currentIndex != null)
                 return this
@@ -501,11 +481,11 @@ export abstract class AbstractCollectionIterator<const T,
         return this
     }
 
-    public forEachIndexed(operation: IndexValueCallback<T>,): this {
+    public override forEachIndexed(operation: IndexValueCallback<T>,): this {
         if (this.isEmpty)
             return this
 
-        if (this._hasOnly1Element) {
+        if (this.hasExactly1Element) {
             const currentIndex = this._currentIndex
             if (currentIndex != null)
                 return this
@@ -517,7 +497,7 @@ export abstract class AbstractCollectionIterator<const T,
             return this
         }
 
-        if (this._hasOnly2Elements) {
+        if (this.hasExactly2Elements) {
             const currentIndex = this._currentIndex
             if (currentIndex != null)
                 return this
@@ -545,9 +525,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public abstract [Symbol.iterator](): CollectionIterator<T>
-
-    public get [Symbol.toStringTag](): CollectionIteratorName { return "CollectionIterator" }
+    public abstract override [Symbol.iterator](): AbstractCollectionIterator<T>
 
     //#endregion -------------------- JavaScript methods --------------------
 

@@ -41,13 +41,13 @@ public abstract class AbstractArrayAsMutableSequencedCollection<T extends @Nulla
             __instance = instance;
         }
 
-        @Override protected void _source(final T[] value) { setReference(value); }
+        @Override public void source(final T[] value) { setReference(value); }
 
         protected INSTANCE _instance() { return __instance; }
 
         @Override public void setReference(final T[] value) {
             _instance()._synchronizeAndSetReference(value);
-            super._source(value);
+            super.source(value);
         }
 
     }

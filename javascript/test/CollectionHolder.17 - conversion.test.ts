@@ -10,11 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {A, A_A, AA, AB, AB_AB, ABAB, ABCD, EMPTY}      from "./value/arrays"
-import {everyExtensionMethodInstances, everyInstances} from "./value/instances"
+import {A, AA, AB, AB_AB, ABAB, ABCD}                                                                                               from "./value/arrays"
+import {emptyCollectionIterator, every0Instances, every1Instances, every2Instances, everyExtensionMethodInstances, everyNInstances} from "./value/instances"
 
 import {CollectionConstants}       from "../src/CollectionConstants"
 import {EmptyCollectionHolder}     from "../src/EmptyCollectionHolder"
+import {CollectionIteratorOf1}     from "../src/iterator/CollectionIteratorOf1"
+import {CollectionIteratorOf2}     from "../src/iterator/CollectionIteratorOf2"
 import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionHolderTest (conversion)", () => {
@@ -22,7 +24,7 @@ describe("CollectionHolderTest (conversion)", () => {
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
 
-        test("toIterator",               () => expect(instance.toIterator(),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
+        test("toIterator",               () => expect(instance.toIterator(),).toBe(emptyCollectionIterator,),)
         test("toArray",                  () => expect(instance.toArray(),).toBe(CollectionConstants.EMPTY_ARRAY,),)
         test("toArray: frozen",          () => expect(instance.toArray(),).toBeFrozen(),)
         test("toMutableArray",           () => expect(instance.toMutableArray(),).toEqual([],),)
@@ -53,7 +55,7 @@ describe("CollectionHolderTest (conversion)", () => {
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance: instance,},},) => {
-        describe("toIterator",              () => expect(instance.toIterator(),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
+        describe("toIterator",              () => expect(instance.toIterator(),).toBe(emptyCollectionIterator,),)
         describe("toArray",                 () => expect(instance.toArray(),).toBe(CollectionConstants.EMPTY_ARRAY,),)
         describe("toMutableArray",          () => expect(instance.toMutableArray(),).toEqual(CollectionConstants.EMPTY_ARRAY,),)
         describe("toSet",                   () => expect(instance.toSet(),).toBe(CollectionConstants.EMPTY_SET,),)
@@ -72,81 +74,111 @@ describe("CollectionHolderTest (conversion)", () => {
     },)},)
 
     describe("instances", () => {
-    describe.each(everyInstances,)("%s", ({value: {instance,},},) => {
-        test("toIterator: empty",                    () => expect(new instance(EMPTY,).toIterator(),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-        test("toIterator: 1 field",                  () => expect(new instance(A,)    .toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)
-        test("toIterator: 2 fields",                 () => expect(new instance(AB,)   .toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)
-        test("toIterator: 4 fields",                 () => expect(new instance(ABCD,) .toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)
+        describe("empty", () => {
+        describe.each(every0Instances,)("%s", ({value: {newInstance,},},) => {
+            test("toIterator",              () => expect(newInstance().toIterator(),)             .toBe(emptyCollectionIterator,),)
+            test("toArray",                 () => expect(newInstance().toArray(),)                .toBe(CollectionConstants.EMPTY_ARRAY,),)
+            test("toMutableArray",          () => expect(newInstance().toMutableArray(),)         .toStrictEqual(CollectionConstants.EMPTY_ARRAY,),)
+            test("toMutableArray: frozen",  () => expect(newInstance().toMutableArray(),)         .not.toBeFrozen(),)
+            test("toSet",                   () => expect(newInstance().toSet(),)                  .toBe(CollectionConstants.EMPTY_SET,),)
+            test("toMutableSet",            () => expect(newInstance().toMutableSet(),)           .toEqual(new Set(),),)
+            test("toMutableSet: frozen",    () => expect(newInstance().toMutableSet(),)           .not.toBeFrozen(),)
+            test("toMap",                   () => expect(newInstance().toMap(),)                  .toBe(CollectionConstants.EMPTY_MAP,),)
+            test("toMutableMap",            () => expect(newInstance().toMutableMap(),)           .toEqual(new Map(),),)
+            test("toMutableMap: frozen",    () => expect(newInstance().toMutableMap(),)           .not.toBeFrozen(),)
+            test("toString",                () => expect(newInstance().toString(),)               .toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("toLocaleString",          () => expect(newInstance().toLocaleString(),)         .toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("toLowerCaseString",       () => expect(newInstance().toLowerCaseString(),)      .toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("toLocaleLowerCaseString", () => expect(newInstance().toLocaleLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("toUpperCaseString",       () => expect(newInstance().toUpperCaseString(),)      .toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("toLocaleUpperCaseString", () => expect(newInstance().toLocaleUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        },)},)
+        describe("1 field", () => {
+        describe.each(every1Instances,)("%s", ({value: {newInstance, isLazy, isOf1,},},) => {
+            test("toIterator",              () => expect(newInstance('a',).toIterator(),)             .toBeInstanceOf(isLazy || isOf1 ? CollectionIteratorOf1 : GenericCollectionIterator,),)
+            test("toArray",                 () => expect(newInstance('a',).toArray(),)                .toStrictEqual(A,),)
+            test("toArray: frozen",         () => expect(newInstance('a',).toArray(),)                .toBeFrozen(),)
+            test("toMutableArray",          () => expect(newInstance('a',).toMutableArray(),)         .toStrictEqual(A,),)
+            test("toMutableArray: frozen",  () => expect(newInstance('a',).toMutableArray(),)         .not.toBeFrozen(),)
+            test("toSet",                   () => expect(newInstance('a',).toSet(),)                  .toEqual(new Set(A,),),)
+            test("toSet: frozen",           () => expect(newInstance('a',).toSet(),)                  .toBeFrozen(),)
+            test("toMutableSet",            () => expect(newInstance('a',).toMutableSet(),)           .toEqual(new Set(A,),),)
+            test("toMutableSet: frozen",    () => expect(newInstance('a',).toMutableSet(),)           .not.toBeFrozen(),)
+            test("toMap",                   () => expect(newInstance('a',).toMap(),)                  .toEqual(new Map([[0, 'a',],],),),)
+            test("toMap: frozen",           () => expect(newInstance('a',).toMap(),)                  .toBeFrozen(),)
+            test("toMutableMap",            () => expect(newInstance('a',).toMutableMap(),)           .toEqual(new Map([[0, 'a',],],),),)
+            test("toMutableMap: frozen",    () => expect(newInstance('a',).toMutableMap(),)           .not.toBeFrozen(),)
+            test("toString",                () => expect(newInstance('a',).toString(),)               .toBe("[a]",),)
+            test("toLocaleString",          () => expect(newInstance('a',).toLocaleString(),)         .toBe("[a]",),)
+            test("toLowerCaseString",       () => expect(newInstance('a',).toLowerCaseString(),)      .toBe("[a]",),)
+            test("toLocaleLowerCaseString", () => expect(newInstance('a',).toLocaleLowerCaseString(),).toBe("[a]",),)
+            test("toUpperCaseString",       () => expect(newInstance('a',).toUpperCaseString(),)      .toBe("[A]",),)
+            test("toLocaleUpperCaseString", () => expect(newInstance('a',).toLocaleUpperCaseString(),).toBe("[A]",),)
+        },)},)
+        describe("2 fields", () => {
+        describe.each(every2Instances,)("%s", ({value: {newInstance, isLazy, isOf2, type,},},) => {
+            /** The instance is a {@link SetAsCollectionHolder} of a {@link SetOf2AsCollectionHolder} */
+            const isSet = type === "set adaptor" || type === "set of 2"
+            const testIfNotSet = isSet ? test.skip : test
 
-        test("toArray: empty",                       () => expect(new instance(EMPTY,).toArray(),).toBe(CollectionConstants.EMPTY_ARRAY,),)
-        test("toArray: 1 field",                     () => expect(new instance(A,)    .toArray(),).toStrictEqual(A,),)
-        test("toArray: 2 unique fields",             () => expect(new instance(AB,)   .toArray(),).toStrictEqual(AB,),)
-        test("toArray: 2 duplicated fields",         () => expect(new instance(AA,)   .toArray(),).toStrictEqual(AA,),)
-        test("toArray: 4 unique fields",             () => expect(new instance(ABCD,) .toArray(),).toStrictEqual(ABCD,),)
-        test("toArray: 4 duplicating fields",        () => expect(new instance(ABAB,) .toArray(),).toStrictEqual(ABAB,),)
-        test("toArray: frozen",                      () => expect(new instance(ABAB,) .toArray(),).toBeFrozen(),)
-        test("toMutableArray: empty",                () => expect(new instance(EMPTY,).toMutableArray(),).toStrictEqual(CollectionConstants.EMPTY_ARRAY,),)
-        test("toMutableArray: 1 field",              () => expect(new instance(A,)    .toMutableArray(),).toStrictEqual(A,),)
-        test("toMutableArray: 2 unique fields",      () => expect(new instance(AB,)   .toMutableArray(),).toStrictEqual(AB,),)
-        test("toMutableArray: 2 duplicated fields",  () => expect(new instance(AA,)   .toMutableArray(),).toStrictEqual(AA,),)
-        test("toMutableArray: 4 unique fields",      () => expect(new instance(ABCD,) .toMutableArray(),).toStrictEqual(ABCD,),)
-        test("toMutableArray: 4 duplicating fields", () => expect(new instance(ABAB,) .toMutableArray(),).toStrictEqual(ABAB,),)
-        test("toMutableArray: frozen",               () => expect(new instance(ABAB,) .toMutableArray(),).not.toBeFrozen(),)
+            test("toIterator",                          () => expect(newInstance('a', 'b',).toIterator(),)             .toBeInstanceOf(isLazy || isOf2 ? CollectionIteratorOf2 : GenericCollectionIterator,),)
+            test("toArray ~ unique",                    () => expect(newInstance('a', 'b',).toArray(),)                .toStrictEqual(AB,),)
+            testIfNotSet("toArray ~ duplicated",        () => expect(newInstance('a', 'a',).toArray(),)                .toStrictEqual(AA,),)
+            test("toArray: frozen",                     () => expect(newInstance('a', 'b',).toArray(),)                .toBeFrozen(),)
+            test("toMutableArray ~ unique",             () => expect(newInstance('a', 'b',).toMutableArray(),)         .toStrictEqual(AB,),)
+            testIfNotSet("toMutableArray ~ duplicated", () => expect(newInstance('a', 'a',).toMutableArray(),)         .toStrictEqual(AA,),)
+            test("toMutableArray: frozen",              () => expect(newInstance('a', 'b',).toMutableArray(),)         .not.toBeFrozen(),)
+            test("toSet ~ unique",                      () => expect(newInstance('a', 'b',).toSet(),)                  .toEqual(new Set(AB,),),)
+            testIfNotSet("toSet ~ duplicated",          () => expect(newInstance('a', 'a',).toSet(),)                  .toEqual(new Set(A,),),)
+            test("toSet: frozen",                       () => expect(newInstance('a', 'b',).toSet(),)                  .toBeFrozen(),)
+            test("toMutableSet ~ unique",               () => expect(newInstance('a', 'b',).toMutableSet(),)           .toEqual(new Set(AB,),),)
+            testIfNotSet("toMutableSet ~ duplicated",   () => expect(newInstance('a', 'a',).toMutableSet(),)           .toEqual(new Set(A,),),)
+            test("toMutableSet: frozen",                () => expect(newInstance('a', 'b',).toMutableSet(),)           .not.toBeFrozen(),)
+            test("toMap ~ unique",                      () => expect(newInstance('a', 'b',).toMap(),)                  .toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
+            testIfNotSet("toMap ~ duplicated",          () => expect(newInstance('a', 'a',).toMap(),)                  .toEqual(new Map([[0, 'a',], [1, 'a',],],),),)
+            test("toMap: frozen",                       () => expect(newInstance('a', 'b',).toMap(),)                  .toBeFrozen(),)
+            test("toMutableMap ~ unique",               () => expect(newInstance('a', 'b',).toMutableMap(),)           .toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
+            testIfNotSet("toMutableMap ~ duplicated",   () => expect(newInstance('a', 'a',).toMutableMap(),)           .toEqual(new Map([[0, 'a',], [1, 'a',],],),),)
+            test("toMutableMap: frozen",                () => expect(newInstance('a', 'b',).toMutableMap(),)           .not.toBeFrozen(),)
+            test("toString",                            () => expect(newInstance('a', 'A',).toString(),)               .toBe("[a, A]",),)
+            test("toLocaleString",                      () => expect(newInstance('a', 'A',).toLocaleString(),)         .toBe("[a, A]",),)
+            test("toLowerCaseString",                   () => expect(newInstance('a', 'A',).toLowerCaseString(),)      .toBe("[a, a]",),)
+            test("toLocaleLowerCaseString",             () => expect(newInstance('a', 'A',).toLocaleLowerCaseString(),).toBe("[a, a]",),)
+            test("toUpperCaseString",                   () => expect(newInstance('a', 'A',).toUpperCaseString(),)      .toBe("[A, A]",),)
+            test("toLocaleUpperCaseString",             () => expect(newInstance('a', 'A',).toLocaleUpperCaseString(),).toBe("[A, A]",),)
+        },)},)
+        describe("N fields", () => {
+        describe.each(everyNInstances,)("%s", ({value: {instance, type,},},) => {
+            /** The instance is a {@link SetAsCollectionHolder} */
+            const isSet = type === "set adaptor"
+            const testIfNotSet = isSet ? test.skip : test
 
-        test("toSet: empty",                         () => expect(new instance(EMPTY,).toSet(),).toBe(CollectionConstants.EMPTY_SET,),)
-        test("toSet: 1 field",                       () => expect(new instance(A,)    .toSet(),).toEqual(new Set(A,),),)
-        test("toSet: 2 unique fields",               () => expect(new instance(AB,)   .toSet(),).toEqual(new Set(AB,),),)
-        test("toSet: 2 duplicated fields",           () => expect(new instance(AA,)   .toSet(),).toEqual(new Set(A,),),)
-        test("toSet: 4 unique fields",               () => expect(new instance(ABCD,) .toSet(),).toEqual(new Set(ABCD,),),)
-        test("toSet: 4 duplicating fields",          () => expect(new instance(ABAB,) .toSet(),).toEqual(new Set(AB,),),)
-        test("toSet: frozen",                        () => expect(new instance(ABAB,) .toSet(),).toBeFrozen(),)
-        test("toMutableSet: empty",                  () => expect(new instance(EMPTY,).toMutableSet(),).toEqual(new Set(),),)
-        test("toMutableSet: 1 field",                () => expect(new instance(A,)    .toMutableSet(),).toEqual(new Set(A,),),)
-        test("toMutableSet: 2 unique fields",        () => expect(new instance(AB,)   .toMutableSet(),).toEqual(new Set(AB,),),)
-        test("toMutableSet: 2 duplicated fields",    () => expect(new instance(AA,)   .toMutableSet(),).toEqual(new Set(A,),),)
-        test("toMutableSet: 4 unique fields",        () => expect(new instance(ABCD,) .toMutableSet(),).toEqual(new Set(ABCD,),),)
-        test("toMutableSet: 4 duplicating fields",   () => expect(new instance(ABAB,) .toMutableSet(),).toEqual(new Set(AB,),),)
-        test("toMutableSet: frozen",                 () => expect(new instance(ABAB,) .toMutableSet(),).not.toBeFrozen(),)
-
-        test("toMap: empty",                         () => expect(new instance(EMPTY,).toMap(),).toBe(CollectionConstants.EMPTY_MAP,),)
-        test("toMap: 1 field",                       () => expect(new instance(A,)    .toMap(),).toEqual(new Map([[0, 'a',],],),),)
-        test("toMap: 2 unique fields",               () => expect(new instance(AB,)   .toMap(),).toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
-        test("toMap: 2 duplicated fields",           () => expect(new instance(AA,)   .toMap(),).toEqual(new Map([[0, 'a',], [1, 'a',],],),),)
-        test("toMap: 4 unique fields",               () => expect(new instance(ABCD,) .toMap(),).toEqual(new Map([[0, 'a',], [1, 'b',], [2, 'c',], [3, 'd',],],),),)
-        test("toMap: 4 duplicating fields",          () => expect(new instance(ABAB,) .toMap(),).toEqual(new Map([[0, 'a',], [1, 'b',], [2, 'a',], [3, 'b',],],),),)
-        test("toMap: frozen",                        () => expect(new instance(ABAB,) .toMap(),).toBeFrozen(),)
-        test("toMutableMap: empty",                  () => expect(new instance(EMPTY,).toMutableMap(),).toEqual(new Map(),),)
-        test("toMutableMap: 1 field",                () => expect(new instance(A,)    .toMutableMap(),).toEqual(new Map([[0, 'a',],],),),)
-        test("toMutableMap: 2 unique fields",        () => expect(new instance(AB,)   .toMutableMap(),).toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
-        test("toMutableMap: 2 duplicated fields",    () => expect(new instance(AA,)   .toMutableMap(),).toEqual(new Map([[0, 'a',], [1, 'a',],],),),)
-        test("toMutableMap: 4 unique fields",        () => expect(new instance(ABCD,) .toMutableMap(),).toEqual(new Map([[0, 'a',], [1, 'b',], [2, 'c',], [3, 'd',],],),),)
-        test("toMutableMap: 4 duplicating fields",   () => expect(new instance(ABAB,) .toMutableMap(),).toEqual(new Map([[0, 'a',], [1, 'b',], [2, 'a',], [3, 'b',],],),),)
-        test("toMutableMap: frozen",                 () => expect(new instance(ABAB,) .toMutableMap(),).not.toBeFrozen(),)
-
-        test("toString: empty",                      () => expect(new instance(EMPTY,).toString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toString: 1 field",                    () => expect(new instance(A,)    .toString(),).toBe("[a]",),)
-        test("toString: 2 fields",                   () => expect(new instance(A_A,)  .toString(),).toBe("[a, A]",),)
-        test("toString: 4 fields",                   () => expect(new instance(AB_AB,).toString(),).toBe("[a, b, A, B]",),)
-        test("toLocaleString: empty",                () => expect(new instance(EMPTY,).toLocaleString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toLocaleString: 1 field",              () => expect(new instance(A,)    .toLocaleString(),).toBe("[a]",),)
-        test("toLocaleString: 2 fields",             () => expect(new instance(A_A,)  .toLocaleString(),).toBe("[a, A]",),)
-        test("toLocaleString: 4 fields",             () => expect(new instance(AB_AB,).toLocaleString(),).toBe("[a, b, A, B]",),)
-        test("toLowerCaseString: empty",             () => expect(new instance(EMPTY,).toLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toLowerCaseString: 1 field",           () => expect(new instance(A,)    .toLowerCaseString(),).toBe("[a]",),)
-        test("toLowerCaseString: 2 fields",          () => expect(new instance(A_A,)  .toLowerCaseString(),).toBe("[a, a]",),)
-        test("toLowerCaseString: 4 fields",          () => expect(new instance(AB_AB,).toLowerCaseString(),).toBe("[a, b, a, b]",),)
-        test("toLocaleLowerCaseString: empty",       () => expect(new instance(EMPTY,).toLocaleLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toLocaleLowerCaseString: 1 field",     () => expect(new instance(A,)    .toLocaleLowerCaseString(),).toBe("[a]",),)
-        test("toLocaleLowerCaseString: 2 fields",    () => expect(new instance(A_A,)  .toLocaleLowerCaseString(),).toBe("[a, a]",),)
-        test("toLocaleLowerCaseString: 4 fields",    () => expect(new instance(AB_AB,).toLocaleLowerCaseString(),).toBe("[a, b, a, b]",),)
-        test("toUpperCaseString: empty",             () => expect(new instance(EMPTY,).toUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toUpperCaseString: 1 field",           () => expect(new instance(A,)    .toUpperCaseString(),).toBe("[A]",),)
-        test("toUpperCaseString: 2 fields",          () => expect(new instance(A_A,)  .toUpperCaseString(),).toBe("[A, A]",),)
-        test("toUpperCaseString: 4 fields",          () => expect(new instance(AB_AB,).toUpperCaseString(),).toBe("[A, B, A, B]",),)
-        test("toLocaleUpperCaseString: empty",       () => expect(new instance(EMPTY,).toLocaleUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toLocaleUpperCaseString: 1 field",     () => expect(new instance(A,)    .toLocaleUpperCaseString(),).toBe("[A]",),)
-        test("toLocaleUpperCaseString: 2 fields",    () => expect(new instance(A_A,)  .toLocaleUpperCaseString(),).toBe("[A, A]",),)
-        test("toLocaleUpperCaseString: 4 fields",    () => expect(new instance(AB_AB,).toLocaleUpperCaseString(),).toBe("[A, B, A, B]",),)
-    },)},)
+            test("toIterator",                           () => expect(new instance(ABCD,) .toIterator(),)             .toBeInstanceOf(GenericCollectionIterator,),)
+            test("toArray ~ unique",                     () => expect(new instance(ABCD,) .toArray(),)                .toStrictEqual(ABCD,),)
+            testIfNotSet("toArray ~ duplicating",        () => expect(new instance(ABAB,) .toArray(),)                .toStrictEqual(ABAB,),)
+            test("toArray: frozen",                      () => expect(new instance(ABCD,) .toArray(),)                .toBeFrozen(),)
+            test("toMutableArray ~ unique",              () => expect(new instance(ABCD,) .toMutableArray(),)         .toStrictEqual(ABCD,),)
+            testIfNotSet("toMutableArray ~ duplicating", () => expect(new instance(ABAB,) .toMutableArray(),)         .toStrictEqual(ABAB,),)
+            test("toMutableArray: frozen",               () => expect(new instance(ABCD,) .toMutableArray(),)         .not.toBeFrozen(),)
+            test("toSet ~ unique",                       () => expect(new instance(ABCD,) .toSet(),)                  .toEqual(new Set(ABCD,),),)
+            testIfNotSet("toSet ~ duplicating",          () => expect(new instance(ABAB,) .toSet(),)                  .toEqual(new Set(AB,),),)
+            test("toSet: frozen",                        () => expect(new instance(ABCD,) .toSet(),)                  .toBeFrozen(),)
+            test("toMutableSet ~ unique",                () => expect(new instance(ABCD,) .toMutableSet(),)           .toEqual(new Set(ABCD,),),)
+            testIfNotSet("toMutableSet ~ duplicating",   () => expect(new instance(ABAB,) .toMutableSet(),)           .toEqual(new Set(AB,),),)
+            test("toMutableSet: frozen",                 () => expect(new instance(ABCD,) .toMutableSet(),)           .not.toBeFrozen(),)
+            test("toMap ~ unique",                       () => expect(new instance(ABCD,) .toMap(),)                  .toEqual(new Map([[0, 'a',], [1, 'b',], [2, 'c',], [3, 'd',],],),),)
+            testIfNotSet("toMap ~ duplicating",          () => expect(new instance(ABAB,) .toMap(),)                  .toEqual(new Map([[0, 'a',], [1, 'b',], [2, 'a',], [3, 'b',],],),),)
+            test("toMap: frozen",                        () => expect(new instance(ABCD,) .toMap(),)                  .toBeFrozen(),)
+            test("toMutableMap ~ unique",                () => expect(new instance(ABCD,) .toMutableMap(),)           .toEqual(new Map([[0, 'a',], [1, 'b',], [2, 'c',], [3, 'd',],],),),)
+            testIfNotSet("toMutableMap ~ duplicating",   () => expect(new instance(ABAB,) .toMutableMap(),)           .toEqual(new Map([[0, 'a',], [1, 'b',], [2, 'a',], [3, 'b',],],),),)
+            test("toMutableMap: frozen",                 () => expect(new instance(ABCD,) .toMutableMap(),)           .not.toBeFrozen(),)
+            test("toString",                             () => expect(new instance(AB_AB,).toString(),)               .toBe("[a, b, A, B]",),)
+            test("toLocaleString",                       () => expect(new instance(AB_AB,).toLocaleString(),)         .toBe("[a, b, A, B]",),)
+            test("toLowerCaseString",                    () => expect(new instance(AB_AB,).toLowerCaseString(),)      .toBe("[a, b, a, b]",),)
+            test("toLocaleLowerCaseString",              () => expect(new instance(AB_AB,).toLocaleLowerCaseString(),).toBe("[a, b, a, b]",),)
+            test("toUpperCaseString",                    () => expect(new instance(AB_AB,).toUpperCaseString(),)      .toBe("[A, B, A, B]",),)
+            test("toLocaleUpperCaseString",              () => expect(new instance(AB_AB,).toLocaleUpperCaseString(),).toBe("[A, B, A, B]",),)
+        },)},)
+    },)
 
 },)

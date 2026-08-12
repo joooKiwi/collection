@@ -18,9 +18,9 @@ import {ForbiddenIndexException} from "../../exception/ForbiddenIndexException"
  * A {@link ValueHolder} meant to give a {@link ForbiddenIndexException} {@link cause}
  * because of an index {@link Number.NEGATIVE_INFINITY -∞} while it {@link isForbidden is forbidden}
  *
- * @beta
  * @see NaNIndexValueHolder
  * @see PositiveInfinityIndexValueHolder
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export class NegativeInfinityIndexValueHolder
     implements ValueHolder<never> {

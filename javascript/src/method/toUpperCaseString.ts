@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see String.toUpperCase
  * @extensionFunction
  */
-export function toUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): string {
+export function toUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): string {
     if (collection == null)
         return "[]"
     if (isCollectionHolder(collection,))
@@ -63,7 +63,7 @@ export function toUpperCaseStringByMinimalistCollectionHolder<const T, >(collect
         return "[]"
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return "[]"
     return __toString(collection, size,)
 }
@@ -92,12 +92,12 @@ export function toUpperCaseStringByCollectionHolder<const T, >(collection: Nulla
  * @see String.toUpperCase
  * @extensionFunction
  */
-export function toUpperCaseStringByArray<const T, >(collection: Nullable<readonly T[]>,): string {
+export function toUpperCaseStringByArray<const T, >(collection: Nullable<Array<T>>,): string {
     if (collection == null)
         return "[]"
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return "[]"
     return __toStringByArray(collection, size,)
 }
@@ -114,7 +114,7 @@ function __toString(collection: MinimalistCollectionHolder, size: number,) {
     return `[${string}${asUpperCaseString(collection.get(index,),)}]`
 }
 
-function __toStringByArray(collection: readonly unknown[], size: number,) {
+function __toStringByArray(collection: Array<unknown>, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1

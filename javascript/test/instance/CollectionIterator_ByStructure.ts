@@ -10,10 +10,11 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
+import type {Array, NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
 import type {CollectionIterator}                                                                   from "../../src/iterator/CollectionIterator"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../../src/type/callback"
+import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
 import type {CollectionIteratorName}                                                               from "../../src/type/toStringTag"
 
@@ -30,7 +31,7 @@ export class CollectionIterator_ByStructure<const T, >
 
     public readonly reference
 
-    public constructor(array: readonly T[],) { this.reference = new CollectionIteratorFromArray(array,) }
+    public constructor(array: Array<T>,) { this.reference = new CollectionIteratorFromArray(array,) }
 
     //#region -------------------- Size methods --------------------
 
@@ -40,6 +41,30 @@ export class CollectionIterator_ByStructure<const T, >
 
     public get isEmpty(): boolean { return this.reference.isEmpty }
     public get isNotEmpty(): boolean { return this.reference.isNotEmpty }
+
+    public get hasAtLeast1Element(): this["isNotEmpty"] { return this.reference.hasAtLeast1Element }
+    public get containsAtLeast1Element(): this["isNotEmpty"] { return this.reference.containsAtLeast1Element }
+    public get includesAtLeast1Element(): this["isNotEmpty"] { return this.reference.includesAtLeast1Element }
+
+    public get hasExactly1Element(): boolean { return this.reference.hasExactly1Element }
+    public get containsExactly1Element(): this["hasExactly1Element"] { return this.reference.containsExactly1Element }
+    public get includesExactly1Element(): this["hasExactly1Element"] { return this.reference.includesExactly1Element }
+
+    public get hasAtMost1Element(): boolean { return this.reference.hasAtMost1Element }
+    public get containsAtMost1Element(): this["hasAtMost1Element"] { return this.reference.containsAtMost1Element }
+    public get includesAtMost1Element(): this["hasAtMost1Element"] { return this.reference.includesAtMost1Element }
+
+    public get hasAtLeast2Elements(): boolean { return this.reference.hasAtLeast2Elements }
+    public get containsAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.reference.containsAtLeast2Elements }
+    public get includesAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.reference.includesAtLeast2Elements }
+
+    public get hasExactly2Elements(): boolean { return this.reference.hasExactly2Elements }
+    public get containsExactly2Elements(): this["hasExactly2Elements"] { return this.reference.containsExactly2Elements }
+    public get includesExactly2Elements(): this["hasExactly2Elements"] { return this.reference.includesExactly2Elements }
+
+    public get hasAtMost2Elements(): boolean { return this.reference.hasAtMost2Elements }
+    public get containsAtMost2Elements(): this["hasAtMost2Elements"] { return this.reference.containsAtMost2Elements }
+    public get includesAtMost2Elements(): this["hasAtMost2Elements"] { return this.reference.includesAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------
@@ -52,7 +77,7 @@ export class CollectionIterator_ByStructure<const T, >
     //#region -------------------- Current methods --------------------
 
     public get currentIndex(): NullOrNumber { return this.reference.currentIndex }
-    public get index(): NullOrNumber { return this.reference.index }
+    public get index(): this["currentIndex"] { return this.reference.index }
 
     //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------
@@ -61,7 +86,7 @@ export class CollectionIterator_ByStructure<const T, >
     public get nextIndex(): NullOrNumber { return this.reference.nextIndex }
     public get nextValue(): T { return this.reference.nextValue }
 
-    public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> { return this.reference.next() }
+    public next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> { return this.reference.next() }
 
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
@@ -70,7 +95,7 @@ export class CollectionIterator_ByStructure<const T, >
     public get previousValue(): T { return this.reference.previousValue }
     public get previousIndex(): NullOrNumber { return this.reference.previousIndex }
 
-    public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> { return this.reference.previous() }
+    public previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> { return this.reference.previous() }
 
     //#endregion -------------------- Previous methods --------------------
     //#region -------------------- Reset methods --------------------

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean {
+export function hasNotOneWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -61,7 +61,7 @@ export function hasNotOneWithCollectionIteratorByMinimalistCollectionHolder<cons
         return true
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return true
     if (values == null)
         return false
@@ -96,12 +96,12 @@ export function hasNotOneWithCollectionIteratorByCollectionHolder<const T, >(col
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithCollectionIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean {
+export function hasNotOneWithCollectionIteratorByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return true
     if (values == null)
         return false
@@ -114,25 +114,57 @@ export function hasNotOneWithCollectionIteratorByArray<const T, >(collection: Nu
 //#region -------------------- Loop methods --------------------
 
 function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: CollectionIterator<T>, size: number, valuesSize: number,) {
-    let valueIndex = valuesSize
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    const firstValue = values.nextValue
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
+            return false
+
+    const sizeMinus1 = size - 1
+    let valueIndex = valuesSize - 1
     while (valueIndex-- > 0) {
         const value = values.nextValue
-        let index = -1
-        while (++index < size)
-            if (collection.get(index,) === value)
-                return false
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return false
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection.get(index2,)) === value)
+                    return false
     }
     return true
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: CollectionIterator<T>, size: number, valuesSize: number,) {
-    let valueIndex = valuesSize
+function __validateByArray<const T, >(collection: Array<T>, values: CollectionIterator<T>, size: number, valuesSize: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    const firstValue = values.nextValue
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
+            return false
+
+    const sizeMinus1 = size - 1
+    let valueIndex = valuesSize - 1
     while (valueIndex-- > 0) {
         const value = values.nextValue
-        let index = -1
-        while (++index < size)
-            if (collection[index] === value)
-                return false
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return false
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection[index2] as T) === value)
+                    return false
     }
     return true
 }

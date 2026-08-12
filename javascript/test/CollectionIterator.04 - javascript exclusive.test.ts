@@ -10,24 +10,43 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {newEmptyIterator}          from "./helper/newEmptyIterator"
 import {CollectionHolderFromArray} from "./instance/CollectionHolderFromArray"
 import {ABCD}                      from "./value/arrays"
 
 import {CollectionConstants}       from "../src/CollectionConstants"
+import {CollectionIteratorOf1}     from "../src/iterator/CollectionIteratorOf1"
+import {CollectionIteratorOf2}     from "../src/iterator/CollectionIteratorOf2"
+import {EmptyCollectionIterator}   from "../src/iterator/EmptyCollectionIterator"
 import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionIteratorTest (javascript exclusive)", () => {
 
     describe("EmptyCollectionIterator", () => {
-        test("Symbol.toStringTag", () => expect(newEmptyIterator()[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG,),)
-        test("Symbol.iterator", () => {
-            const instance = newEmptyIterator()
-            expect(instance[Symbol.iterator](),).toBe(instance,)
-        },)
+        const instance = EmptyCollectionIterator.get
+
+        test("Symbol.toStringTag", () => expect(instance[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG,),)
+        test("Symbol.iterator", () => expect(instance[Symbol.iterator](),).toBe(instance,),)
     },)
     describe("GenericCollectionIterator", () => {
         const newInstance = () => new GenericCollectionIterator(new CollectionHolderFromArray(ABCD,),)
+
+        test("Symbol.toStringTag", () => expect(newInstance()[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG,),)
+        test("Symbol.iterator", () => {
+            const instance = newInstance()
+            expect(instance[Symbol.iterator](),).not.toBe(instance,)
+        },)
+    },)
+    describe("CollectionIteratorOf1", () => {
+        const newInstance = () => new CollectionIteratorOf1('a',)
+
+        test("Symbol.toStringTag", () => expect(newInstance()[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG,),)
+        test("Symbol.iterator", () => {
+            const instance = newInstance()
+            expect(instance[Symbol.iterator](),).not.toBe(instance,)
+        },)
+    },)
+    describe("CollectionIteratorOf2", () => {
+        const newInstance = () => new CollectionIteratorOf2('a', 'b',)
 
         test("Symbol.toStringTag", () => expect(newInstance()[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG,),)
         test("Symbol.iterator", () => {

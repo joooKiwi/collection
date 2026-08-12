@@ -23,14 +23,18 @@ public interface ImmutableIterator<T extends @Nullable Object>
     @Contract(mutates = "this")
     @Override T next();
 
+    /// Do a certain operation for the rest of the elements in the current [iterator][ImmutableIterator]
+    @Contract(mutates = "this")
+    @Override void forEachRemaining(Consumer<? super T> operation);
+
+    //#region -------------------- Unsupported methods --------------------
+
     /// Fail to remove the current value in the [instance][ImmutableIterator]
     ///
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
     @Override default void remove() { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable Iterator."); }
 
-    /// Do a certain operation for the rest of the elements in the current [iterator][ImmutableIterator]
-    @Contract(mutates = "this")
-    @Override void forEachRemaining(Consumer<? super T> operation);
+    //#endregion -------------------- Unsupported methods --------------------
 
 }

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOrUndefined} from "@joookiwi/type"
+import type {Array, Map, Nullable, NullOrUndefined, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -40,23 +40,24 @@ import type {TypedArray}                 from "./TypedArray"
  * @see IsNotEmptyOnMap
  * @see IsNotEmptyOnNullable
  */
-export type IsNotEmptyOn<T extends | MinimalistCollectionHolder | readonly unknown[] | TypedArray | ReadonlySet<unknown> | ReadonlyMap<unknown, unknown>, >
-    = T extends MinimalistCollectionHolder    ? IsNotEmptyOnMinimalistCollectionHolder<T>
-    : T extends CollectionHolder              ? IsNotEmptyOnCollectionHolder<T>
-    : T extends readonly unknown[]            ? IsNotEmptyOnArray<T>
-    : T extends Int8Array                     ? IsNotEmptyOnInt8Array<T>
-    : T extends Uint8Array                    ? IsNotEmptyOnUint8Array<T>
-    : T extends Uint8ClampedArray             ? IsNotEmptyOnUint8ClampedArray<T>
-    : T extends Int16Array                    ? IsNotEmptyOnInt16Array<T>
-    : T extends Uint16Array                   ? IsNotEmptyOnUint16Array<T>
-    : T extends Int32Array                    ? IsNotEmptyOnInt32Array<T>
-    : T extends Uint32Array                   ? IsNotEmptyOnUint32Array<T>
-    : T extends BigInt64Array                 ? IsNotEmptyOnBigInt64Array<T>
-    : T extends BigUint64Array                ? IsNotEmptyOnBigUint64Array<T>
-    : T extends Float32Array                  ? IsNotEmptyOnFloat32Array<T>
-    : T extends Float64Array                  ? IsNotEmptyOnFloat64Array<T>
-    : T extends ReadonlySet<unknown>          ? IsNotEmptyOnSet<T>
-    : T extends ReadonlyMap<unknown, unknown> ? IsNotEmptyOnMap<T> : never
+export type IsNotEmptyOn<T extends | MinimalistCollectionHolder | Array<unknown> | TypedArray | Set<unknown> | Map<unknown, unknown>, >
+    = T extends MinimalistCollectionHolder ? IsNotEmptyOnMinimalistCollectionHolder<T>
+    : T extends CollectionHolder           ? IsNotEmptyOnCollectionHolder<T>
+    : T extends Array<unknown>             ? IsNotEmptyOnArray<T>
+    : T extends Int8Array                  ? IsNotEmptyOnInt8Array<T>
+    : T extends Uint8Array                 ? IsNotEmptyOnUint8Array<T>
+    : T extends Uint8ClampedArray          ? IsNotEmptyOnUint8ClampedArray<T>
+    : T extends Int16Array                 ? IsNotEmptyOnInt16Array<T>
+    : T extends Uint16Array                ? IsNotEmptyOnUint16Array<T>
+    : T extends Int32Array                 ? IsNotEmptyOnInt32Array<T>
+    : T extends Uint32Array                ? IsNotEmptyOnUint32Array<T>
+    : T extends BigInt64Array              ? IsNotEmptyOnBigInt64Array<T>
+    : T extends BigUint64Array             ? IsNotEmptyOnBigUint64Array<T>
+    : T extends Float16Array               ? IsNotEmptyOnFloat16Array<T>
+    : T extends Float32Array               ? IsNotEmptyOnFloat32Array<T>
+    : T extends Float64Array               ? IsNotEmptyOnFloat64Array<T>
+    : T extends Set<unknown>               ? IsNotEmptyOnSet<T>
+    : T extends Map<unknown, unknown>      ? IsNotEmptyOnMap<T> : never
 
 /**
  * Tell that the {@link Nullable nullable} collection
@@ -81,24 +82,25 @@ export type IsNotEmptyOn<T extends | MinimalistCollectionHolder | readonly unkno
  * @see IsNotEmptyOnNullableMap
  * @see IsNotEmptyOn
  */
-export type IsNotEmptyOnNullable<T extends Nullable<| MinimalistCollectionHolder | readonly unknown[] | TypedArray | ReadonlySet<unknown> | ReadonlyMap<unknown, unknown>>, >
-    = T extends NullOrUndefined               ? false
-    : T extends MinimalistCollectionHolder    ? IsNotEmptyOnMinimalistCollectionHolder<T>
-    : T extends CollectionHolder              ? IsNotEmptyOnCollectionHolder<T>
-    : T extends readonly unknown[]            ? IsNotEmptyOnArray<T>
-    : T extends Int8Array                     ? IsNotEmptyOnInt8Array<T>
-    : T extends Uint8Array                    ? IsNotEmptyOnUint8Array<T>
-    : T extends Uint8ClampedArray             ? IsNotEmptyOnUint8ClampedArray<T>
-    : T extends Int16Array                    ? IsNotEmptyOnInt16Array<T>
-    : T extends Uint16Array                   ? IsNotEmptyOnUint16Array<T>
-    : T extends Int32Array                    ? IsNotEmptyOnInt32Array<T>
-    : T extends Uint32Array                   ? IsNotEmptyOnUint32Array<T>
-    : T extends BigInt64Array                 ? IsNotEmptyOnBigInt64Array<T>
-    : T extends BigUint64Array                ? IsNotEmptyOnBigUint64Array<T>
-    : T extends Float32Array                  ? IsNotEmptyOnFloat32Array<T>
-    : T extends Float64Array                  ? IsNotEmptyOnFloat64Array<T>
-    : T extends ReadonlySet<unknown>          ? IsNotEmptyOnSet<T>
-    : T extends ReadonlyMap<unknown, unknown> ? IsNotEmptyOnMap<T> : never
+export type IsNotEmptyOnNullable<T extends Nullable<| MinimalistCollectionHolder | Array<unknown> | TypedArray | Set<unknown> | Map<unknown, unknown>>, >
+    = T extends NullOrUndefined            ? false
+    : T extends MinimalistCollectionHolder ? IsNotEmptyOnMinimalistCollectionHolder<T>
+    : T extends CollectionHolder           ? IsNotEmptyOnCollectionHolder<T>
+    : T extends Array<unknown>             ? IsNotEmptyOnArray<T>
+    : T extends Int8Array                  ? IsNotEmptyOnInt8Array<T>
+    : T extends Uint8Array                 ? IsNotEmptyOnUint8Array<T>
+    : T extends Uint8ClampedArray          ? IsNotEmptyOnUint8ClampedArray<T>
+    : T extends Int16Array                 ? IsNotEmptyOnInt16Array<T>
+    : T extends Uint16Array                ? IsNotEmptyOnUint16Array<T>
+    : T extends Int32Array                 ? IsNotEmptyOnInt32Array<T>
+    : T extends Uint32Array                ? IsNotEmptyOnUint32Array<T>
+    : T extends BigInt64Array              ? IsNotEmptyOnBigInt64Array<T>
+    : T extends BigUint64Array             ? IsNotEmptyOnBigUint64Array<T>
+    : T extends Float16Array               ? IsNotEmptyOnFloat16Array<T>
+    : T extends Float32Array               ? IsNotEmptyOnFloat32Array<T>
+    : T extends Float64Array               ? IsNotEmptyOnFloat64Array<T>
+    : T extends Set<unknown>               ? IsNotEmptyOnSet<T>
+    : T extends Map<unknown, unknown>      ? IsNotEmptyOnMap<T> : never
 
 //#region -------------------- Minimalist collection holder --------------------
 
@@ -160,7 +162,7 @@ export type IsNotEmptyOnCollectionIterator<T extends CollectionIterator, >
  * @see IsNotEmptyOnCollectionIterator
  */
 export type IsNotEmptyOnNullableCollectionIterator<T extends Nullable<CollectionIterator>, >
-    = T extends NullOrUndefined  ? false
+    = T extends NullOrUndefined    ? false
     : T extends CollectionIterator ? IsNotEmptyOnCollectionIterator<T> : never
 
 //#endregion -------------------- Collection iterator --------------------
@@ -172,7 +174,7 @@ export type IsNotEmptyOnNullableCollectionIterator<T extends Nullable<Collection
  * @see IsNotEmptyOnNullableArray
  * @see IsNotEmptyOn
  */
-export type IsNotEmptyOnArray<T extends readonly unknown[], >
+export type IsNotEmptyOnArray<T extends Array<unknown>, >
     = T["length"] extends 0 ? false : T["length"] extends number ? boolean : true
 
 /**
@@ -181,9 +183,9 @@ export type IsNotEmptyOnArray<T extends readonly unknown[], >
  * @see IsNotEmptyOnArray
  * @see IsNotEmptyOnNullable
  */
-export type IsNotEmptyOnNullableArray<T extends Nullable<readonly unknown[]>, >
-    = T extends NullOrUndefined    ? false
-    : T extends readonly unknown[] ? IsNotEmptyOnArray<T> : never
+export type IsNotEmptyOnNullableArray<T extends Nullable<Array<unknown>>, >
+    = T extends NullOrUndefined ? false
+    : T extends Array<unknown>  ? IsNotEmptyOnArray<T> : never
 
 //#endregion -------------------- Array --------------------
 //#region -------------------- Int8 array --------------------
@@ -384,6 +386,28 @@ export type IsNotEmptyOnNullableBigUint64Array<T extends Nullable<BigUint64Array
     : T extends BigUint64Array  ? IsNotEmptyOnBigUint64Array<T> : never
 
 //#endregion -------------------- BigUint64 array --------------------
+//#region -------------------- Float16 array --------------------
+
+/**
+ * Tell that the {@link Float16Array collection} is not empty
+ *
+ * @see IsNotEmptyOnNullableFloat16Array
+ * @see IsNotEmptyOn
+ */
+export type IsNotEmptyOnFloat16Array<T extends Float16Array, >
+    = T["length"] extends 0 ? false : T["length"] extends number ? boolean : true
+
+/**
+ * Tell that the {@link Nullable nullable} {@link Float16Array collection} is not empty
+ *
+ * @see IsNotEmptyOnFloat16Array
+ * @see IsNotEmptyOnNullable
+ */
+export type IsNotEmptyOnNullableFloat16Array<T extends Nullable<Float16Array>, >
+    = T extends NullOrUndefined ? false
+    : T extends Float16Array    ? IsNotEmptyOnFloat16Array<T> : never
+
+//#endregion -------------------- Float16 array --------------------
 //#region -------------------- Float32 array --------------------
 
 /**
@@ -436,7 +460,7 @@ export type IsNotEmptyOnNullableFloat64Array<T extends Nullable<Float64Array>, >
  * @see IsNotEmptyOnNullableSet
  * @see IsNotEmptyOn
  */
-export type IsNotEmptyOnSet<T extends ReadonlySet<unknown>, >
+export type IsNotEmptyOnSet<T extends Set<unknown>, >
     = T["size"] extends 0 ? false : T["size"] extends number ? boolean : true
 
 /**
@@ -445,9 +469,9 @@ export type IsNotEmptyOnSet<T extends ReadonlySet<unknown>, >
  * @see IsNotEmptyOnSet
  * @see IsNotEmptyOnNullable
  */
-export type IsNotEmptyOnNullableSet<T extends Nullable<ReadonlySet<unknown>>, >
-    = T extends NullOrUndefined      ? false
-    : T extends ReadonlySet<unknown> ? IsNotEmptyOnSet<T> : never
+export type IsNotEmptyOnNullableSet<T extends Nullable<Set<unknown>>, >
+    = T extends NullOrUndefined ? false
+    : T extends Set<unknown>    ? IsNotEmptyOnSet<T> : never
 
 //#endregion -------------------- Set --------------------
 //#region -------------------- Map --------------------
@@ -458,7 +482,7 @@ export type IsNotEmptyOnNullableSet<T extends Nullable<ReadonlySet<unknown>>, >
  * @see IsNotEmptyOnNullableMap
  * @see IsNotEmptyOn
  */
-export type IsNotEmptyOnMap<T extends ReadonlyMap<unknown, unknown>, >
+export type IsNotEmptyOnMap<T extends Map<unknown, unknown>, >
     = T["size"] extends 0 ? false : T["size"] extends number ? boolean : true
 
 /**
@@ -467,8 +491,8 @@ export type IsNotEmptyOnMap<T extends ReadonlyMap<unknown, unknown>, >
  * @see IsNotEmptyOnMap
  * @see IsNotEmptyOnNullable
  */
-export type IsNotEmptyOnNullableMap<T extends Nullable<ReadonlyMap<unknown, unknown>>, >
-    = T extends NullOrUndefined               ? false
-    : T extends ReadonlyMap<unknown, unknown> ? IsNotEmptyOnMap<T> : never
+export type IsNotEmptyOnNullableMap<T extends Nullable<Map<unknown, unknown>>, >
+    = T extends NullOrUndefined       ? false
+    : T extends Map<unknown, unknown> ? IsNotEmptyOnMap<T> : never
 
 //#endregion -------------------- Set --------------------

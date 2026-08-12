@@ -12,7 +12,7 @@
 
 import type {Array, MutableSet, Set} from "@joookiwi/type"
 
-import type {ValueCallback} from "../set.types"
+import type {ValueCallback} from "../type/set"
 
 /**
  * An {@link globalThis.ReadonlySet Set} made for the tests
@@ -21,7 +21,7 @@ import type {ValueCallback} from "../set.types"
  * @see SetForTest
  */
 export class SetByStructureForTest<const T, >
-    implements ReadonlySet<T> {
+    implements Set<T> {
 
     //#region -------------------- Fields --------------------
 

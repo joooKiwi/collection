@@ -116,7 +116,7 @@ public final class ArrayAsJavaVector<T extends @Nullable Object>
 
     @Override public void sort(final @Nullable Comparator<? super T> comparator) { get().sort(comparator); }
 
-    @Override public void copyInto(final Object[] otherArray) { get().copyInto(otherArray); }
+    @Override public void copyInto(final @Nullable Object[] otherArray) { get().copyInto(otherArray); }
 
     @Override public Object[] toArray() { return get().toArray(); }
     @Override public <U> U[] toArray(final U[] newArray) { return get().toArray(newArray); }

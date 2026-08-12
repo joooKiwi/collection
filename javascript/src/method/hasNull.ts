@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
-export function hasNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): boolean {
+export function hasNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -60,7 +60,7 @@ export function hasNullByMinimalistCollectionHolder<const T, >(collection: Nulla
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     return __validate(collection, size,)
 }
@@ -87,12 +87,12 @@ export function hasNullByCollectionHolder<const T, >(collection: Nullable<Collec
  * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
-export function hasNullByArray<const T, >(collection: Nullable<readonly T[]>,): boolean {
+export function hasNullByArray<const T, >(collection: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     return __validateByArray(collection, size,)
 }
@@ -108,7 +108,7 @@ function __validate(collection: MinimalistCollectionHolder, size: number,) {
     return false
 }
 
-function __validateByArray(collection: readonly unknown[], size: number,) {
+function __validateByArray(collection: Array<unknown>, size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] == null)

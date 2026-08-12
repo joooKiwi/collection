@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -37,7 +37,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function getOrElse<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+export function getOrElse<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 /**
  * Get the element at the specified index in the {@link collection}
  * or calling the {@link defaultValue} function
@@ -51,8 +51,8 @@ export function getOrElse<const T, const U, >(collection: Nullable<| MinimalistC
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function getOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, index: number, defaultValue: IndexWithReturnCallback<T>,): T
-export function getOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
+export function getOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, index: number, defaultValue: IndexWithReturnCallback<T>,): T
+export function getOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
     if (collection == null)
         return defaultValue(index,)
     if (isCollectionHolder(collection,))
@@ -103,13 +103,13 @@ export function getOrElseByMinimalistCollectionHolder<const T, >(collection: Nul
         return defaultValue(index,)
     if (Number.isNaN(index,))
         return defaultValue(index,)
-    if (index == Number.NEGATIVE_INFINITY)
+    if (index === Number.NEGATIVE_INFINITY)
         return defaultValue(index,)
-    if (index == Number.POSITIVE_INFINITY)
+    if (index === Number.POSITIVE_INFINITY)
         return defaultValue(index,)
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return defaultValue(index,)
     if (index >= size)
         return defaultValue(index,)
@@ -155,9 +155,9 @@ export function getOrElseByCollectionHolder<const T, >(collection: Nullable<Coll
         return defaultValue(index,)
     if (Number.isNaN(index,))
         return defaultValue(index,)
-    if (index == Number.NEGATIVE_INFINITY)
+    if (index === Number.NEGATIVE_INFINITY)
         return defaultValue(index,)
-    if (index == Number.POSITIVE_INFINITY)
+    if (index === Number.POSITIVE_INFINITY)
         return defaultValue(index,)
     if (collection.isEmpty)
         return defaultValue(index,)
@@ -188,7 +188,7 @@ export function getOrElseByCollectionHolder<const T, >(collection: Nullable<Coll
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function getOrElseByArray<const T, const U, >(collection: Nullable<readonly T[]>, index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+export function getOrElseByArray<const T, const U, >(collection: Nullable<Array<T>>, index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 /**
  * Get the element at the specified index in the {@link collection}
  * or calling the {@link defaultValue} function
@@ -202,19 +202,19 @@ export function getOrElseByArray<const T, const U, >(collection: Nullable<readon
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function getOrElseByArray<const T, >(collection: Nullable<readonly T[]>, index: number, defaultValue: IndexWithReturnCallback<T>,): T
-export function getOrElseByArray<const T, >(collection: Nullable<readonly T[]>, index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
+export function getOrElseByArray<const T, >(collection: Nullable<Array<T>>, index: number, defaultValue: IndexWithReturnCallback<T>,): T
+export function getOrElseByArray<const T, >(collection: Nullable<Array<T>>, index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
     if (collection == null)
         return defaultValue(index,)
     if (Number.isNaN(index,))
         return defaultValue(index,)
-    if (index == Number.NEGATIVE_INFINITY)
+    if (index === Number.NEGATIVE_INFINITY)
         return defaultValue(index,)
-    if (index == Number.POSITIVE_INFINITY)
+    if (index === Number.POSITIVE_INFINITY)
         return defaultValue(index,)
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return defaultValue(index,)
     if (index >= size)
         return defaultValue(index,)

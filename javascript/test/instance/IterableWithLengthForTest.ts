@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {IterableWithLength} from "../../src/iterable/IterableWithLength"
 
 /** An {@link IterableWithLength} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
@@ -19,7 +21,7 @@ export class IterableWithLengthForTest<const T, >
     public readonly array
     public readonly length
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: Array<T>,) {
         this.array = array
         this.length = array.length
     }

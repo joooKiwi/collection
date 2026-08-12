@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Set} from "@joookiwi/type"
+
 import type {KeyOfSet} from "../type/keyOf"
 
 import {CollectionConstants} from "../CollectionConstants"
@@ -32,7 +34,7 @@ export function isSetByStructure(value: unknown,): value is (& object & Record<K
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isSetByStructure<const T, const INSTANCE extends ReadonlySet<T> = ReadonlySet<T>, >(value: unknown,): value is INSTANCE
+export function isSetByStructure<const T, const INSTANCE extends Set<T> = Set<T>, >(value: unknown,): value is INSTANCE
 export function isSetByStructure(value: unknown,) {
     if (value == null)
         return false

@@ -17,7 +17,7 @@ export class Holder<const T, const MESSAGE extends string, > {
         /** The value to send to any {@link CollectionHolder} implementation */
         public readonly value: T,
         /** The message that will be sent to the {@link toString} method */
-        public readonly message: MESSAGE,
+        public readonly           message: MESSAGE,
     ) {}
 
     public toString(): MESSAGE {

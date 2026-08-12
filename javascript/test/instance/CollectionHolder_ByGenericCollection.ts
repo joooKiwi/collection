@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, StringOrSymbol} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, Set, StringOrSymbol} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
@@ -23,23 +23,27 @@ import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest
 
 const NUMBER_REGEX = /\d+/
 
-/** A class to test the functionality of a {@link GenericCollectionHolder} */
+/**
+ * A class to test the functionality of a {@link GenericCollectionHolder}
+ *
+ * @typeParam T The type
+ */
 export class CollectionHolder_ByGenericCollection<const T, >
     extends AbstractCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: GenericCollectionHolder<T>
 
-    /** The {@link CollectionHolder_FromExtensionFunction.array array} encapsulated in a {@link Proxy} */
-    public readonly proxiedArray: readonly T[]
+    /** The {@link CollectionHolder_ByGenericCollection.array array} encapsulated in a {@link Proxy} */
+    public readonly proxiedArray: Array<T>
     /** The handler associated to the {@link proxiedArray} */
-    public readonly proxyHandler: ProxyHandler<readonly T[]>
+    public readonly proxyHandler: ProxyHandler<Array<T>>
 
-    public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) {
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
         const $this = this
         const handler = this.proxyHandler = {
-            get(target: readonly T[], property: StringOrSymbol, receiver: unknown,) {
+            get(target: Array<T>, property: StringOrSymbol, receiver: unknown,) {
                 if (typeof property == "string")
                     if (NUMBER_REGEX.test(property,))
                         $this.amountOfCall++
@@ -49,7 +53,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
         this.instance = new class CollectionHolder_CountingGetByGenericCollection
             extends GenericCollectionHolder<T> {
 
-            protected override get _array(): readonly T[] { return $this.proxiedArray }
+            protected override get _array(): Array<T> { return $this.proxiedArray }
 
         }(array,)
         this.proxiedArray = new Proxy(array, handler,)
@@ -58,8 +62,16 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#region -------------------- Size methods --------------------
 
     public override get size(): number { return this.instance.size }
+
     public override get isEmpty(): boolean { return this.instance.isEmpty }
     public override get isNotEmpty(): boolean { return this.instance.isNotEmpty }
+
+    public override get hasExactly1Element(): boolean { return this.instance.hasExactly1Element }
+    public override get hasAtMost1Element(): boolean { return this.instance.hasAtMost1Element }
+
+    public override get hasAtLeast2Elements(): boolean { return this.instance.hasAtLeast2Elements }
+    public override get hasExactly2Elements(): boolean { return this.instance.hasExactly2Elements }
+    public override get hasAtMost2Elements(): boolean { return this.instance.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
@@ -186,41 +198,45 @@ export class CollectionHolder_ByGenericCollection<const T, >
 
     public override hasNot(value: T,): boolean { return this.instance.hasNot(value,) }
 
-    public override hasOne(values: Nullable<readonly T[]>,): boolean
-    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
     public override hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public override hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasOne(values,) }
 
-    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
     public override hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public override hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasNotOne(values,) }
 
-    public override hasAll(values: Nullable<readonly T[]>,): boolean
-    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
     public override hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public override hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasAll(values,) }
 
-    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
     public override hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public override hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
@@ -266,15 +282,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#region -------------------- Slice --------------------
 
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         if (arguments.length === 0)
             return this.instance.slice()
@@ -374,14 +382,16 @@ export class CollectionHolder_ByGenericCollection<const T, >
 
 
     public override onEach(action: ValueIndexCallback<T>,): this {
-        if (this.instance.onEach(action,) !== this.instance)
+        const instance = this.instance
+        if (instance.onEach(action,) !== instance)
             throw new Error("The expected return type for the method “onEach” was supposed to be the same instance",)
         return this
     }
 
     public override onEachIndexed(action: IndexValueCallback<T>,): this {
-        if (this.instance.onEachIndexed(action,) !== this.instance)
-            throw new Error("The expected return type for the method “onEach” was supposed to be the same instance",)
+        const instance = this.instance
+        if (instance.onEachIndexed(action,) !== instance)
+            throw new Error("The expected return type for the method “onEachIndexed” was supposed to be the same instance",)
         return this
     }
 
@@ -391,19 +401,16 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this.instance.toReverse(from, to,) }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
-
-    public override [Symbol.iterator](): CollectionIterator<T> { return this.instance[Symbol.iterator]() }
-
-    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toArray(): readonly T[] { return this.instance.toArray() }
-    public override toMutableArray(): T[] { return this.instance.toMutableArray() }
-    public override toSet(): ReadonlySet<T> { return this.instance.toSet() }
-    public override toMutableSet(): Set<T> { return this.instance.toMutableSet() }
-    public override toMap(): ReadonlyMap<number, T> { return this.instance.toMap() }
-    public override toMutableMap(): Map<number, T> { return this.instance.toMutableMap() }
+    public override toIterator(): CollectionIterator<T> { return this.instance.toIterator() }
+
+    public override toArray(): Array<T> { return this.instance.toArray() }
+    public override toMutableArray(): MutableArray<T> { return this.instance.toMutableArray() }
+    public override toSet(): Set<T> { return this.instance.toSet() }
+    public override toMutableSet(): MutableSet<T> { return this.instance.toMutableSet() }
+    public override toMap(): NumberKeyMap<T> { return this.instance.toMap() }
+    public override toMutableMap(): MutableNumberKeyMap<T> { return this.instance.toMutableMap() }
 
 
     public override toString(): string { return this.instance.toString() }

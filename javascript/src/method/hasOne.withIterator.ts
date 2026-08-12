@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterator<T>>,): boolean {
+export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -55,12 +55,12 @@ export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistC
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterator<T>>,): boolean {
+export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
@@ -79,7 +79,7 @@ export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collec
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterator<T>>,): boolean {
+export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)
@@ -101,12 +101,12 @@ export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Null
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterator<T>>,): boolean {
+export function hasOneWithIteratorByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
     if (values == null)
         return true
@@ -122,35 +122,55 @@ export function hasOneWithIteratorByArray<const T, >(collection: Nullable<readon
 //#region -------------------- Loop methods --------------------
 
 function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
     let index1 = -1
     while (++index1 < size)
-        if (collection.get(index1,) === firstValue)
+        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
             return true
 
+    const sizeMinus1 = size - 1
     let iteratorResult: IteratorResult<T, unknown>
     while (!(iteratorResult = values.next()).done) {
         const value = iteratorResult.value
         let index2 = -1
-        while (++index2 < size)
-            if (collection.get(index2,) === value)
-                return true
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return true
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection.get(index2,)) === value)
+                    return true
     }
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validateByArray<const T, >(collection: Array<T>, values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
     let index1 = -1
     while (++index1 < size)
-        if (collection[index1] === firstValue)
+        if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
             return true
 
+    const sizeMinus1 = size - 1
     let iteratorResult: IteratorResult<T, unknown>
     while (!(iteratorResult = values.next()).done) {
         const value = iteratorResult.value
         let index2 = -1
-        while (++index2 < size)
-            if (collection[index2] === value)
-                return true
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return true
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection[index2] as T) === value)
+                    return true
     }
     return false
 }

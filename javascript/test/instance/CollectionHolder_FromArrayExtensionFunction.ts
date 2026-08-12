@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
@@ -61,7 +61,12 @@ import {hasAllWithMinimalistCollectionHolderByArray}    from "../../src/method/h
 import {hasAllWithCollectionIteratorByArray}            from "../../src/method/hasAll.withCollectionIterator"
 import {hasAllWithIteratorByArray}                      from "../../src/method/hasAll.withIterator"
 import {hasAllWithIterableByArray}                      from "../../src/method/hasAll.withIterable"
+import {hasAtLeast2ElementsByArray}                     from "../../src/method/hasAtLeast2Elements"
+import {hasAtMost1ElementByArray}                       from "../../src/method/hasAtMost1Element"
+import {hasAtMost2ElementsByArray}                      from "../../src/method/hasAtMost2Elements"
 import {hasDuplicateByArray}                            from "../../src/method/hasDuplicate"
+import {hasExactly1ElementByArray}                      from "../../src/method/hasExactly1Element"
+import {hasExactly2ElementsByArray}                     from "../../src/method/hasExactly2Elements"
 import {hasNoDuplicatesByArray}                         from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByArray}                              from "../../src/method/hasNoNulls"
 import {hasNotByArray}                                  from "../../src/method/hasNot"
@@ -142,12 +147,17 @@ import {toStringByArray}                                from "../../src/method/t
 import {toUpperCaseStringByArray}                       from "../../src/method/toUpperCaseString"
 import {AbstractCollectionHolderForTest}                from "./AbstractCollectionHolderForTest"
 
-/** A test instance to exclusively test the extension methods for an {@link ReadonlyArray Array} */
-export class CollectionHolder_FromArrayExtensionFunction<const T, >
+/**
+ * A test instance to exclusively test the extension methods for
+ * an {@link ReadonlyArray Array}
+ *
+ * @typeParam T The type
+ */
+export class CollectionHolder_FromArrayExtensionFunction<const T , >
     extends AbstractCollectionHolderForTest<T>
     implements CollectionHolder_FromExtension<T> {
 
-    public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) { super() }
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) { super() }
 
     //#region -------------------- Test utility methods --------------------
 
@@ -166,12 +176,35 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return this.array.length
     }
 
+
     public override get isEmpty(): boolean {
         return isEmptyByArray(this.array,)
     }
 
     public override get isNotEmpty(): boolean {
         return isNotEmptyByArray(this.array,)
+    }
+
+
+    public override get hasExactly1Element(): boolean {
+        return hasExactly1ElementByArray(this.array,)
+    }
+
+    public override get hasAtMost1Element(): boolean {
+        return hasAtMost1ElementByArray(this.array,)
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean {
+        return hasAtLeast2ElementsByArray(this.array,)
+    }
+
+    public override get hasExactly2Elements(): boolean {
+        return hasExactly2ElementsByArray(this.array,)
+    }
+
+    public override get hasAtMost2Elements(): boolean {
+        return hasAtMost2ElementsByArray(this.array,)
     }
 
     //#endregion -------------------- Size methods --------------------
@@ -376,10 +409,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return hasNotByArray(this.array, value,)
     }
 
-    public hasOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasOneWithArrayByArray(this.array, values,)
     }
-    public hasOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasOneWithSetByArray(this.array, values,)
     }
     public hasOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -401,10 +434,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return hasOneByArray(this.array, values,)
     }
 
-    public hasNotOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasNotOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotOneWithArrayByArray(this.array, values,)
     }
-    public hasNotOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasNotOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotOneWithSetByArray(this.array, values,)
     }
     public hasNotOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -426,10 +459,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return hasNotOneByArray(this.array, values,)
     }
 
-    public hasAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasAllWithArrayByArray(this.array, values,)
     }
-    public hasAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasAllWithSetByArray(this.array, values,)
     }
     public hasAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -451,10 +484,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return hasAllByArray(this.array, values,)
     }
 
-    public hasNotAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasNotAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotAllWithArrayByArray(this.array, values,)
     }
-    public hasNotAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasNotAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotAllWithSetByArray(this.array, values,)
     }
     public hasNotAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -525,10 +558,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
     public sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return sliceWithARangeByArray(this.array, from, to,)
     }
-    public sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+    public sliceWithArray(indices: NumberArray,): CollectionHolder<T> {
         return sliceWithArrayByArray(this.array, indices,)
     }
-    public sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+    public sliceWithSet(indices: NumberSet,): CollectionHolder<T> {
         return sliceWithSetByArray(this.array, indices,)
     }
     public sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
@@ -659,12 +692,16 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
 
 
     public override onEach(action: ValueIndexCallback<T>,): this {
-        onEachByArray(this.array, action,)
+        const array = this.array
+        if (onEachByArray(array, action,) !== array)
+            throw new Error("The expected return type for the method “onEach” was supposed to be the same instance",)
         return this
     }
 
     public override onEachIndexed(action: IndexValueCallback<T>,): this {
-        onEachIndexedByArray(this.array, action,)
+        const array = this.array
+        if (onEachIndexedByArray(array, action,) !== array)
+            throw new Error("The expected return type for the method “onEachIndexed” was supposed to be the same instance",)
         return this
     }
 
@@ -676,54 +713,64 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
     }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
+    //#region -------------------- Conversion methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public override toIterator(): CollectionIterator<T> {
         return toIteratorByArray(this.array,)
     }
 
-    //#endregion -------------------- JavaScript methods --------------------
-    //#region -------------------- Conversion methods --------------------
 
-    public override toArray(): readonly T[] {
+    public override toArray(): Array<T> {
         return toArrayByArray(this.array,)
     }
-    public override toMutableArray(): T[] {
+
+    public override toMutableArray(): MutableArray<T> {
         return toMutableArrayByArray(this.array,)
     }
 
-    public override toSet(): ReadonlySet<T> {
+
+    public override toSet(): Set<T> {
         return toSetByArray(this.array,)
     }
-    public override toMutableSet(): Set<T> {
+
+    public override toMutableSet(): MutableSet<T> {
         return toMutableSetByArray(this.array,)
     }
 
-    public override toMap(): ReadonlyMap<number, T> {
+
+    public override toMap(): NumberKeyMap<T> {
         return toMapByArray(this.array,)
     }
-    public override toMutableMap(): Map<number, T> {
+
+    public override toMutableMap(): MutableNumberKeyMap<T> {
         return toMutableMapByArray(this.array,)
     }
+
 
     public override toString(): string {
         return toStringByArray(this.array,)
     }
+
     public override toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByArray(this.array, locale,)
     }
+
     public override toLowerCaseString(): string {
         return toLowerCaseStringByArray(this.array,)
     }
+
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByArray(this.array, locale,)
     }
+
     public override toUpperCaseString(): string {
         return toUpperCaseStringByArray(this.array,)
     }
+
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByArray(this.array, locale,)
     }
+
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToStringByArray(this.array, separator, prefix, postfix, limit, truncated, transform,)

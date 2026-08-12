@@ -20,9 +20,6 @@ import type {CollectionIterator} from "../../src/iterator/CollectionIterator"
 export interface CollectionIteratorForTest<out T, >
     extends CollectionIterator<T> {
 
-    /** The amount of time a specific method (non-aliased method) has been called */
-    readonly amountOfCall: number
-
     /**
      * Do an action on the curent {@link CollectionIteratorForTest instance}
      * and return itself afterward
@@ -30,5 +27,68 @@ export interface CollectionIteratorForTest<out T, >
      * @param action The action to do
      */
     execute(action: (instance: this,) => void,): this
+
+
+    /** Call {@link CollectionIterator#next} 1 time and then return the current {@link CollectionHolderForTest instance} */
+    do1Next(): this
+
+    /** Call {@link CollectionIterator#next} 2 times and then return the current {@link CollectionHolderForTest instance} */
+    do2Next(): this
+
+    /** Call {@link CollectionIterator#previous} 1 time and then return the current {@link CollectionHolderForTest instance} */
+    do1Previous(): this
+
+    /** Call {@link CollectionIterator#previous} 2 times and then return the current {@link CollectionHolderForTest instance} */
+    do2Previous(): this
+
+
+    /** Call {@link CollectionIterator#previous} 1 time, then {@link CollectionIterator#next} 1 time and then return the current {@link CollectionHolderForTest instance} */
+    do1PreviousAnd1Next(): this
+
+    /** Call {@link CollectionIterator#previous} 1 time, then {@link CollectionIterator#next} 2 times and then return the current {@link CollectionHolderForTest instance} */
+    do1PreviousAnd2Next(): this
+
+    /** Call {@link CollectionIterator#previous} 2 times, then {@link CollectionIterator#next} 1 time and then return the current {@link CollectionHolderForTest instance} */
+    do2PreviousAnd1Next(): this
+
+    /** Call {@link CollectionIterator#previous} 2 times, then {@link CollectionIterator#next} 2 times and then return the current {@link CollectionHolderForTest instance} */
+    do2PreviousAnd2Next(): this
+
+
+    /** Call {@link CollectionIterator#next} 1 time, then {@link CollectionIterator#previous} 1 time and then return the current {@link CollectionHolderForTest instance} */
+    do1NextAnd1Previous(): this
+
+    /** Call {@link CollectionIterator#next} 1 time, then {@link CollectionIterator#previous} 2 times and then return the current {@link CollectionHolderForTest instance} */
+    do1NextAnd2Previous(): this
+
+    /** Call {@link CollectionIterator#next} 2 times, then {@link CollectionIterator#previous} 1 time and then return the current {@link CollectionHolderForTest instance} */
+    do2NextAnd1Previous(): this
+
+    /** Call {@link CollectionIterator#next} 2 times, then {@link CollectionIterator#previous} 2 times and then return the current {@link CollectionHolderForTest instance} */
+    do2NextAnd2Previous(): this
+
+    readonly length: never
+    readonly count: never
+
+    readonly hasAtLeast1Element: never
+    readonly containsAtLeast1Element: never
+    readonly includesAtLeast1Element: never
+
+    readonly containsExactly1Element: never
+    readonly includesExactly1Element: never
+
+    readonly containsAtMost1Element: never
+    readonly includesAtMost1Element: never
+
+    readonly containsAtLeast2Elements: never
+    readonly includesAtLeast2Elements: never
+
+    readonly containsExactly2Elements: never
+    readonly includesExactly2Elements: never
+
+    readonly containsAtMost2Elements: never
+    readonly includesAtMost2Elements: never
+
+    readonly index: never
 
 }

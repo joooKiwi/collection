@@ -10,12 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LateRetriever}                 from "../LateRetriever"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -33,9 +35,9 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @apiNote The current instance (only {@link CollectionHolder}) can be returned if no nulls are known to be absent
  * @extensionFunction
  */
-export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionHolder<NonNullable<T>> {
+export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterNotNullByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -60,18 +62,18 @@ export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollec
  */
 export function filterNotNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
-    if (size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (size === 0)
+        return EmptyCollectionHolder.get
 
     const temporaryArray = new Array<T>(size,)
     let index = -1
     while (++index < size)
         if ((temporaryArray[index] = collection.get(index,) as T) == null)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(collection as MinimalistCollectionHolder<NonNullable<T>>,)
+            return new LazyCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
+    return new LateRetriever.MinimalistAsCollectionHolder<NonNullable<T>>(collection as MinimalistCollectionHolder<NonNullable<T>>,)
 }
 
 /**
@@ -84,11 +86,11 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
  */
 export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.hasNull)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __filterNotNull(collection,),)
+        return new LazyCollectionHolder(() => __filterNotNull(collection,),)
     return collection as CollectionHolder<NonNullable<T>>
 }
 
@@ -99,26 +101,26 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @extensionFunction
  */
-export function filterNotNullByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionHolder<NonNullable<T>> {
+export function filterNotNullByArray<const T, >(collection: Nullable<Array<T>>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.length
-    if (size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (size === 0)
+        return EmptyCollectionHolder.get
 
     const temporaryArray = new Array<T>(size,)
     let index = -1
     while (++index < size)
         if ((temporaryArray[index] = collection[index] as T) == null)
-                return new CollectionConstants.LazyGenericCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(collection as readonly NonNullable<T>[],)
+            return new LazyCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
+    return new LateRetriever.ArrayAsCollectionHolder<NonNullable<T>>(collection as readonly NonNullable<T>[],)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __filterNotNull<const T, >(collection: MinimalistCollectionHolder<T>,): readonly NonNullable<T>[] {
+function __filterNotNull<const T, >(collection: MinimalistCollectionHolder<T>,) {
     const size = collection.size
     const tempArray = new Array<NonNullable<T>>(size,)
     let amountOfItemsAdded = -1
@@ -131,7 +133,7 @@ function __filterNotNull<const T, >(collection: MinimalistCollectionHolder<T>,):
     return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
-function __filterNotNullByMinimalist<const T, >(collection: MinimalistCollectionHolder<T>, size: number, index: number, temporaryArray: readonly T[],): readonly NonNullable<T>[] {
+function __filterNotNullByMinimalist<const T, >(collection: MinimalistCollectionHolder<T>, size: number, index: number, temporaryArray: Array<T>,) {
     const tempArray = new Array<NonNullable<T>>(size,)
     let index2 = -1
     while (++index2 < index) // We add the non-null items from 0 to the index (they cannot be null)
@@ -146,7 +148,7 @@ function __filterNotNullByMinimalist<const T, >(collection: MinimalistCollection
     return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
-function __filterNotNullByArray<const T, >(collection: readonly T[], size: number, index: number, temporaryArray: readonly T[],): readonly NonNullable<T>[] {
+function __filterNotNullByArray<const T, >(collection: Array<T>, size: number, index: number, temporaryArray: Array<T>,) {
     const tempArray = new Array<NonNullable<T>>(size,)
     let index2 = -1
     while (++index2 < index) // We add the non-null items from 0 to the index (they cannot be null)

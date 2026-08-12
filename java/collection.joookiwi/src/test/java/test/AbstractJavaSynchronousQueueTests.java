@@ -34,8 +34,4 @@ public abstract class AbstractJavaSynchronousQueueTests {
         }
     }
 
-    /// Give `null` to a typed [SynchronousQueue]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable SynchronousQueue<T> nullInstance() { return null; }
-
 }

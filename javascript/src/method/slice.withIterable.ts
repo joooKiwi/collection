@@ -10,14 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__get}                         from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -36,12 +36,12 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: Iterable<number>,): CollectionHolder<T> {
+export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return sliceWithIterableByCollectionHolder(collection, indices,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return sliceWithIterableByArray(collection, indices,)
     if (isMinimalistCollectionHolder(collection,))
         return sliceWithIterableByMinimalistCollectionHolder(collection, indices,)
@@ -67,15 +67,15 @@ export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCo
  */
 export function sliceWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (collection.size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
+    if (collection.size === 0)
+        return EmptyCollectionHolder.get
 
     const iterator: Iterator<number, unknown, unknown> = indices[Symbol.iterator]()
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
 }
 
 /**
@@ -91,15 +91,15 @@ export function sliceWithIterableByMinimalistCollectionHolder<const T, >(collect
  */
 export function sliceWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const iterator: Iterator<number, unknown, unknown> = indices[Symbol.iterator]()
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
 }
 
 /**
@@ -113,17 +113,17 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, indices: Iterable<number>,): CollectionHolder<T> {
+export function sliceWithIterableByArray<const T, >(collection: Nullable<Array<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (collection.length == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
+    if (collection.length === 0)
+        return EmptyCollectionHolder.get
 
     const iterator: Iterator<number, unknown, unknown> = indices[Symbol.iterator]()
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, iterator, iteratorResult.value,),)
+        return EmptyCollectionHolder.get
+    return new LazyCollectionHolder(() => __newArrayByArray(collection, iterator, iteratorResult.value,),)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -137,7 +137,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, iterat
     return newArray
 }
 
-function __newArrayByArray<const T, >(collection: readonly T[], iterator: Iterator<number, unknown, unknown>, firstValue: number,) {
+function __newArrayByArray<const T, >(collection: Array<T>, iterator: Iterator<number, unknown, unknown>, firstValue: number,) {
     const newArray = [__get(collection, firstValue,),]
     let iteratorResult: IteratorResult<number, unknown>
     while (!(iteratorResult = iterator.next()).done)

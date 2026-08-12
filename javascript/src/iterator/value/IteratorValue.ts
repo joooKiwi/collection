@@ -11,9 +11,10 @@
 //··························································
 
 /**
- * An {@link IteratorResult iterator value} declaration to have
+ * An {@link IteratorResult} declaration to have
  * the core functionalities on a collection and an outside {@link IteratorValue}
  *
+ * @typeParam T The element type (`unknown` by default)
  * @see CollectionIteratorValue
  * @see OutsideIteratorValue
  */
@@ -27,13 +28,13 @@ export interface IteratorValue<out T = unknown, > {
      *
      * @alias IteratorValue.isDone
      */
-    get done(): boolean
+    readonly done: boolean
 
     /** Tell that the {@link IteratorValue iterator value} could <b>not</b> be able to progress */
     isNotDone(): boolean
 
 
     /** The value to retrieve by the iterator */
-    get value(): T
+    readonly value: T
 
 }

@@ -10,8 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-export {AbstractCollectionIterator} from "./AbstractCollectionIterator"
-export type {CollectionIterator}    from "./CollectionIterator"
-export {EmptyCollectionIterator}    from "./EmptyCollectionIterator"
-export {GenericCollectionIterator}  from "./GenericCollectionIterator"
-export *                            from "./value/index"
+export {AbstractCollectionIterator}              from "./AbstractCollectionIterator"
+export {AbstractUnimplementedCollectionIterator} from "./AbstractUnimplementedCollectionIterator"
+export {AbstractCollectionIteratorOf1}           from "./AbstractCollectionIteratorOf1"
+export {AbstractCollectionIteratorOf2}           from "./AbstractCollectionIteratorOf2"
+export type {CollectionIterator}                 from "./CollectionIterator"
+export {CollectionIteratorOf1}                   from "./CollectionIteratorOf1"
+export {CollectionIteratorOf2}                   from "./CollectionIteratorOf2"
+export {EmptyCollectionIterator}                 from "./EmptyCollectionIterator"
+export {GenericCollectionIterator}               from "./GenericCollectionIterator"
+export *                                         from "./value/index"

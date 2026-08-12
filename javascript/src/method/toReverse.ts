@@ -10,12 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                               from "../CollectionConstants"
+import {EmptyCollectionHolder}                             from "../EmptyCollectionHolder"
+import {LateRetriever}                                     from "../LateRetriever"
+import {LazyCollectionHolder}                              from "../LazyCollectionHolder"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
 import {isArray}                                           from "./isArray"
 import {isArrayByStructure}                                from "./isArrayByStructure"
@@ -32,11 +34,11 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the end of the {@link collection}
@@ -49,11 +51,11 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from an {@link to ending} to a {@link from starting} index
@@ -68,14 +70,14 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (to == null)
         if (from == null)
             return __core0(collection,)
@@ -94,7 +96,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
@@ -112,7 +114,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
@@ -131,14 +133,14 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
 export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
 export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (to == null)
         if (from == null)
             return __core0ByMinimalistCollectionHolder(collection,)
@@ -156,7 +158,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
@@ -174,7 +176,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
@@ -193,14 +195,14 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
 export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
 export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (to == null)
         if (from == null)
             return __core0ByMinimalistCollectionHolder(collection,)
@@ -218,11 +220,11 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionHolder<T>
+export function toReverseByArray<const T, >(collection: Nullable<Array<T>>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the end of the {@link collection}
@@ -236,11 +238,11 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>,)
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber,): CollectionHolder<T>
+export function toReverseByArray<const T, >(collection: Nullable<Array<T>>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from an {@link to ending} to a {@link from starting} index
@@ -255,14 +257,14 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
-export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
+export function toReverseByArray<const T, >(collection: Nullable<Array<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function toReverseByArray<const T, >(collection: Nullable<Array<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (to == null)
         if (from == null)
             return __core0ByArray(collection,)
@@ -278,7 +280,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
 
 //#region -------------------- ∅ --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[],) {
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -296,27 +298,35 @@ function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
 function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __all(collection, size,),)
+        return EmptyCollectionHolder.get
+    if (size === 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0),)
+    return new LazyCollectionHolder(() => __all(collection, size,),)
 }
 
 function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __all(collection, collection.size,),)
+        return EmptyCollectionHolder.get
+
+    const size = collection.size
+    if (size === 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+    return new LazyCollectionHolder(() => __all(collection, size,),)
 }
 
-function __core0ByArray<const T, >(collection: readonly T[],) {
+function __core0ByArray<const T, >(collection: Array<T>,) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __allByArray(collection, size,),)
+        return EmptyCollectionHolder.get
+    if (size === 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+    return new LazyCollectionHolder(() => __allByArray(collection, size,),)
 }
 
 //#endregion -------------------- ∅ --------------------
 //#region -------------------- from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number,) {
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, from,)
     if (isArray(collection,))
@@ -334,34 +344,42 @@ function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
 function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
+    const sizeMinus1 = size - 1
+    if (startingIndex === sizeMinus1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(sizeMinus1,),)
+    return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
 function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
+    if (startingIndex === size - 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getLast(),)
+    return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
-function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
+function __core1ByArray<const T, >(collection: Array<T>, from: number,) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
+    const sizeMinus1 = size - 1
+    if (startingIndex === sizeMinus1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[sizeMinus1] as T,)
+    return new LazyCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
 }
 
 //#endregion -------------------- from --------------------
 //#region -------------------- from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number, to: number,) {
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, from, to,)
     if (isArray(collection,))
@@ -379,46 +397,46 @@ function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
 function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number, to: number,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, startingIndex,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
+    return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, startingIndex,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
+    return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
-function __core2ByArray<const T, >(collection: readonly T[], from: number, to: number,) {
+function __core2ByArray<const T, >(collection: Array<T>, from: number, to: number,) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __singleByArray(collection, startingIndex,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEndByArray(collection, startingIndex, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[startingIndex] as T,)
+    return new LazyCollectionHolder(() => __fromStartToEndByArray(collection, startingIndex, endingIndex,),)
 }
 
 //#endregion -------------------- from, to --------------------
 //#region -------------------- to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], to: number,) {
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, to,)
     if (isArray(collection,))
@@ -436,48 +454,39 @@ function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T>
 function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, to: number,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, 0,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEnd(collection, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+    return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
 function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, collection.size,)
     if (endingIndex === 0)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, 0,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEnd(collection, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+    return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
-function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,) {
+function __coreWithNoFromByArray<const T, >(collection: Array<T>, to: number,) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __singleByArray(collection, 0,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEndByArray(collection, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+    return new LazyCollectionHolder(() => __toEndByArray(collection, endingIndex,),)
 }
 
 //#endregion -------------------- to --------------------
 
 //#endregion -------------------- Core method --------------------
 //#region -------------------- Loop method --------------------
-
-function __single<const T, >(collection: MinimalistCollectionHolder<T>, index: number,) {
-    return [collection.get(index,),] as const
-}
-
-function __singleByArray<const T, >(collection: readonly T[], index: number,) {
-    return [collection[index] as T,] as const
-}
-
 
 function __all<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     const newArray = new Array<T>(size,)
@@ -488,7 +497,7 @@ function __all<const T, >(collection: MinimalistCollectionHolder<T>, size: numbe
     return newArray
 }
 
-function __allByArray<const T, >(collection: readonly T[], size: number,) {
+function __allByArray<const T, >(collection: Array<T>, size: number,) {
     const newArray = new Array<T>(size,)
     let indexAdded = -1
     let index = size
@@ -507,7 +516,7 @@ function __fromStart<const T, >(collection: MinimalistCollectionHolder<T>, size:
     return newArray
 }
 
-function __fromStartByArray<const T, >(collection: readonly T[], size: number, startingIndex: number,) {
+function __fromStartByArray<const T, >(collection: Array<T>, size: number, startingIndex: number,) {
     const newArray = new Array<T>(size - startingIndex,)
     let indexAdded = -1
     let index = size
@@ -526,7 +535,7 @@ function __fromStartToEnd<const T, >(collection: MinimalistCollectionHolder<T>, 
     return newArray
 }
 
-function __fromStartToEndByArray<const T, >(collection: readonly T[], startingIndex: number, endingIndex: number,) {
+function __fromStartToEndByArray<const T, >(collection: Array<T>, startingIndex: number, endingIndex: number,) {
     const newArray = new Array<T>(endingIndex - startingIndex + 1,)
     let indexAdded = -1
     let index = endingIndex + 1
@@ -545,7 +554,7 @@ function __toEnd<const T, >(collection: MinimalistCollectionHolder<T>, endingInd
     return newArray
 }
 
-function __toEndByArray<const T, >(collection: readonly T[], endingIndex: number,) {
+function __toEndByArray<const T, >(collection: Array<T>, endingIndex: number,) {
     const newArray = new Array<T>(endingIndex + 1,)
     let indexAdded = -1
     let index = endingIndex + 1

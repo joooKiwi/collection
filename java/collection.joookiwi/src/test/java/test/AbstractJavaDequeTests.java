@@ -34,8 +34,4 @@ public abstract class AbstractJavaDequeTests {
         }
     }
 
-    /// Give `null` to a typed [Deque]
-    @Contract(ALWAYS_NULL_0)
-    public <T extends @Nullable Object> @Nullable @Unmodifiable Deque<T> nullInstance() { return null; }
-
 }

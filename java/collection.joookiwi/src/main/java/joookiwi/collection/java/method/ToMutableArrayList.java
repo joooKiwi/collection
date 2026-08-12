@@ -7,7 +7,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.MutableArrayList;
+import joookiwi.collection.java.extended.list.MutableArrayList;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -21,6 +21,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 @NotNullByDefault
 public final class ToMutableArrayList
         extends UtilityWithTable {
+    //TODO: Add initialCapacity of type "Integer?"
 
     @Contract(ALWAYS_FAIL_0)
     private ToMutableArrayList() { throw new ImpossibleConstructionException("The utility class “ToMutableArrayList” cannot be constructed.", ToMutableArrayList.class); }

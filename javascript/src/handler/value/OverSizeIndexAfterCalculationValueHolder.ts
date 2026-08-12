@@ -19,9 +19,9 @@ import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsExcepti
  * because the <b>index</b> was over the {@link CollectionHolder collection} {@link CollectionHolder.size size}
  * after it was calculated
  *
- * @beta
  * @see UnderZeroIndexAfterCalculationValueHolder
  * @see OverSizeIndexValueHolder
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export class OverSizeIndexAfterCalculationValueHolder
     implements ValueHolder<never> {

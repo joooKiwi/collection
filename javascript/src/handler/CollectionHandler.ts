@@ -13,9 +13,9 @@
 import type {ValueHolder} from "./value/ValueHolder"
 
 /**
- * A definition of a handler for the {@link LazyGenericCollectionHolder}
+ * A definition of a handler for the {@link LazyCollectionHolder}
  *
- * @beta
+ * @deprecated Replace with a {@link CollectionHolder} instance. This will be removed in version 2.1
  */
 export interface CollectionHandler<out T = unknown, > {
 

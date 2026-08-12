@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.14.0",
+  "version": "2.0.0",
   "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin) and List (from Java/Kotlin/C#)",
 
   "scripts": {
@@ -11,12 +11,10 @@
     "build-umd":         "tsc --project tsconfig.umd.json",
     "build-types":       "tsc --project tsconfig.types.json",
 
-    "test":                 "jest",
-    "test-with-coverage":   "jest --coverage",
-    "test-collection":      "jest --testNamePattern=CollectionHolderTest",
-    "test-lazy-collection": "jest --testNamePattern=LazyCollectionHolderTest",
-    "test-iterator":        "jest --testNamePattern=CollectionIteratorTest",
-    "test-handler":         "jest --testNamePattern=CollectionHandlerTest",
+    "test":               "jest",
+    "test-with-coverage": "jest --coverage",
+    "test-collection":    "jest --testNamePattern=CollectionHolderTest",
+    "test-iterator":      "jest --testNamePattern=CollectionIteratorTest",
 
     "test-pack":    "npm pack --dry-run",
     "test-publish": "npm publish --@access=public --dry-run",
@@ -46,16 +44,6 @@
       "import":  "./dist/ecmascript module/exception/index.js",
       "require": "./dist/common javascript/exception/index.js"
     },
-    "./handler": {
-      "types":   "./dist/types/handler/index.d.ts",
-      "import":  "./dist/ecmascript module/handler/index.js",
-      "require": "./dist/common javascript/handler/index.js"
-    },
-    "./handler/value": {
-      "types":   "./dist/types/handler/value/index.d.ts",
-      "import":  "./dist/ecmascript module/handler/value/index.js",
-      "require": "./dist/common javascript/handler/value/index.js"
-    },
     "./iterable": {
       "types":   "./dist/types/iterable/index.d.ts",
       "import":  "./dist/ecmascript module/iterable/index.js",
@@ -76,6 +64,16 @@
       "import":  "./dist/ecmascript module/method/index.js",
       "require": "./dist/common javascript/method/index.js"
     },
+    "./optional": {
+      "types":   "./dist/types/optional/index.d.ts",
+      "import":  "./dist/ecmascript module/optional/index.js",
+      "require": "./dist/common javascript/optional/index.js"
+    },
+    "./tuple": {
+      "types":   "./dist/types/tuple/index.d.ts",
+      "import":  "./dist/ecmascript module/tuple/index.js",
+      "require": "./dist/common javascript/tuple/index.js"
+    },
     "./type": { "types": "./dist/types/method/index.d.ts" },
 
     "./*": {
@@ -87,16 +85,6 @@
       "types":   "./dist/types/exception/*.d.ts",
       "import":  "./dist/ecmascript module/exception/*.js",
       "require": "./dist/common javascript/exception/*.js"
-    },
-    "./handler/*": {
-      "types":   "./dist/types/handler/*.d.ts",
-      "import":  "./dist/ecmascript module/handler/*.js",
-      "require": "./dist/common javascript/handler/*.js"
-    },
-    "./handler/value/*": {
-      "types":   "./dist/types/handler/value/*.d.ts",
-      "import":  "./dist/ecmascript module/handler/value/*.js",
-      "require": "./dist/common javascript/handler/value/*.js"
     },
     "./iterable/*": {
       "types":   "./dist/types/iterable/*.d.ts",
@@ -117,6 +105,16 @@
       "types":   "./dist/types/method/*.d.ts",
       "import":  "./dist/ecmascript module/method/*.js",
       "require": "./dist/common javascript/method/*.js"
+    },
+    "./optional/*": {
+      "types":   "./dist/types/optional/*.d.ts",
+      "import":  "./dist/ecmascript module/optional/*.js",
+      "require": "./dist/common javascript/optional/*.js"
+    },
+    "./tuple/*": {
+      "types":   "./dist/tuple/method/*.d.ts",
+      "import":  "./dist/ecmascript module/tuple/*.js",
+      "require": "./dist/common javascript/tuple/*.js"
     },
     "./type/*": { "types": "./dist/types/method/*.d.ts" }
   },
@@ -156,11 +154,11 @@
   },
   "devDependencies": {
     "@types/jest":            "^30.0.0",
-    "@types/node":            "^25.3.0",
+    "@types/node":            "^26.2.0",
     "del-cli":                "^7.0.0",
-    "jest-environment-jsdom": "^30.2.0",
+    "jest-environment-jsdom": "^30.4.1",
     "jest-extended":          "^7.0.0",
-    "ts-jest":                "^29.4.6",
+    "ts-jest":                "^29.4.12",
     "ts-node":                "^10.9.2",
     "typescript":             "^5.9.3"
   }

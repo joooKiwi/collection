@@ -10,18 +10,20 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LateRetriever}                 from "../LateRetriever"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {ForbiddenIndexException}       from "../exception/ForbiddenIndexException"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
+import {Couple}                        from "../tuple/Couple"
 
 //#region -------------------- Facade method --------------------
 
@@ -32,18 +34,18 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java Stream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#limit(long) Java IntStream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#limit(long) Java LongStream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#limit(long) Java DoubleStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java Stream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/IntStream.html#limit(long) Java IntStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/LongStream.html#limit(long) Java LongStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/DoubleStream.html#limit(long) Java DoubleStream.limit(n)
  * @canReceiveNegativeValue
  */
-export function take<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
+export function take<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return __coreByCollectionHolder(collection, n,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __coreByArray(collection, n,)
     if (isMinimalistCollectionHolder(collection,))
         return __coreByMinimalistCollectionHolder(collection, n,)
@@ -51,8 +53,8 @@ export function take<const T, >(collection: Nullable<| MinimalistCollectionHolde
     if (isCollectionHolderByStructure<T>(collection,))
         return __coreByCollectionHolder(collection, n,)
     if (isArrayByStructure<T>(collection,))
-        return __coreByArray(collection, n,)
-    return __coreByMinimalistCollectionHolder(collection, n,)
+        return __coreByArray<T>(collection, n,)
+    return __coreByMinimalistCollectionHolder<T>(collection, n,)
 }
 
 
@@ -63,15 +65,15 @@ export function take<const T, >(collection: Nullable<| MinimalistCollectionHolde
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java Stream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#limit(long) Java IntStream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#limit(long) Java LongStream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#limit(long) Java DoubleStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java Stream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/IntStream.html#limit(long) Java IntStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/LongStream.html#limit(long) Java LongStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/DoubleStream.html#limit(long) Java DoubleStream.limit(n)
  * @canReceiveNegativeValue
  */
 export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return __coreByMinimalistCollectionHolder(collection, n,)
 }
 
@@ -82,15 +84,15 @@ export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java Stream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#limit(long) Java IntStream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#limit(long) Java LongStream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#limit(long) Java DoubleStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java Stream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/IntStream.html#limit(long) Java IntStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/LongStream.html#limit(long) Java LongStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/DoubleStream.html#limit(long) Java DoubleStream.limit(n)
  * @canReceiveNegativeValue
  */
 export function takeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return __coreByCollectionHolder(collection, n,)
 }
 
@@ -101,110 +103,152 @@ export function takeByCollectionHolder<const T, >(collection: Nullable<Collectio
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java Stream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#limit(long) Java IntStream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#limit(long) Java LongStream.limit(n)
- * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#limit(long) Java DoubleStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java Stream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/IntStream.html#limit(long) Java IntStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/LongStream.html#limit(long) Java LongStream.limit(n)
+ * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/DoubleStream.html#limit(long) Java DoubleStream.limit(n)
  * @canReceiveNegativeValue
  */
-export function takeByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
+export function takeByArray<const T, >(collection: Nullable<Array<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return __coreByArray(collection, n,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Core method --------------------
 
-function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistCollectionHolder<T>, n: number,): CollectionHolder<T> {
+function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, n: number,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (Number.isNaN(n,))
         throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
     if (n === Number.NEGATIVE_INFINITY)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+        if (size === 1)
+            return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+        else if (size === 2)
+            return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.get(0,), collection.get(1,),),)
+        else
+            return new LateRetriever.MinimalistAsCollectionHolder<T>(collection,)
     if (n === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.get(0,),],)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
     if (n > 0)
         if (n >= size)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+            if (size === 1)
+                return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+            else if (size === 2)
+                return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.get(0,), collection.get(1,),),)
+            else
+                return new LateRetriever.MinimalistAsCollectionHolder<T>(collection,)
         else
-            return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n,),)
+            return new LazyCollectionHolder(() => __getAll(collection, n,),)
     if (n <= -size)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const n2 = n + size
     if (n2 === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.get(0,),],)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n2,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+    if (size === 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+    if (size === 2)
+        return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.get(0,), collection.get(1,),),)
+    return new LazyCollectionHolder(() => __getAll(collection, n2,),)
 }
 
-function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
+function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n: number,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (Number.isNaN(n,))
         throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
     if (n === Number.NEGATIVE_INFINITY)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+        if (collection.hasExactly1Element)
+            return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+        else if (collection.hasExactly2Elements)
+            return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.getFirst(), collection.getLast(),),)
+        else
+            return collection
     if (n === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getFirst(),],)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
     if (n > 0)
         if (n >= collection.size)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+            if (collection.hasExactly1Element)
+                return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+            else if (collection.hasExactly2Elements)
+                return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.getFirst(), collection.getLast(),),)
+            else
+                return collection
         else
-            return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n,),)
+            return new LazyCollectionHolder(() => __getAll(collection, n,),)
 
     const size = collection.size
     if (n <= -size)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const n2 = n + size
     if (n2 === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getFirst(),],)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n + size,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+    if (collection.hasExactly1Element)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+    else if (collection.hasExactly2Elements)
+        return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.getFirst(), collection.getLast(),),)
+    return new LazyCollectionHolder(() => __getAll(collection, n + size,),)
 }
 
-function __coreByArray<const T,>(collection: readonly T[], n: number,): CollectionHolder<T> {
+function __coreByArray<const T, >(collection: Array<T>, n: number,) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (Number.isNaN(n,))
         throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
     if (n === Number.NEGATIVE_INFINITY)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+        if (size === 1)
+            return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+        else if (size === 2)
+            return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection[0] as T, collection[1] as T,),)
+        else
+            return new LateRetriever.ArrayAsCollectionHolder<T>(collection,)
     if (n === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection[0] as T,],)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
     if (n > 0)
         if (n >= size)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+            if (size === 1)
+                return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+            else if (size === 2)
+                return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection[0] as T, collection[1] as T,),)
+            else
+                return new LateRetriever.ArrayAsCollectionHolder<T>(collection,)
         else
-            return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, n,),)
+            return new LazyCollectionHolder(() => __getAllByArray(collection, n,),)
     if (n <= -size)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const n2 = n + size
     if (n2 === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection[0] as T,],)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, n + size,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+    if (size === 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+    if (size === 2)
+        return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection[0] as T, collection[1] as T,),)
+    return new LazyCollectionHolder(() => __getAllByArray(collection, n + size,),)
 }
 
 //#endregion -------------------- Core method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, amount: number,): readonly T[] {
+function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, amount: number,) {
     const newArray = new Array<T>(amount,)
     let index = -1
     while (++index < amount)
@@ -213,7 +257,7 @@ function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, amount: 
 
 }
 
-function __getAllByArray<const T, >(collection: readonly T[], amount: number,): readonly T[] {
+function __getAllByArray<const T, >(collection: Array<T>, amount: number,) {
     const newArray = new Array<T>(amount,)
     let index = -1
     while (++index < amount)

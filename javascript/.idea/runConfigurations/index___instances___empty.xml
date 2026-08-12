@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="index ~ instances ~ empty" type="JavaScriptTestRunnerJest" folderName="CollectionHolder tests">
+    <node-interpreter value="project" />
+    <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+    <working-dir value="$PROJECT_DIR$" />
+    <jest-options value="--collect-coverage=false" />
+    <envs />
+    <scope-kind value="SUITE" />
+    <test-file value="$PROJECT_DIR$/test/CollectionHolder.04 - index ~ instances (empty).test.ts" />
+    <test-names>
+      <test-name value="CollectionHolderTest (index) ~ instances (empty)" />
+    </test-names>
+    <method v="2" />
+  </configuration>
+</component>

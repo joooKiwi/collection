@@ -13,15 +13,35 @@
 import type {CollectionHolder}               from "../../src/CollectionHolder"
 import type {CollectionHolder_FromExtension} from "../instance/CollectionHolder_FromExtension"
 
+import {EmptyCollectionHolder}                                     from "../../src/EmptyCollectionHolder"
 import {EmptyCollectionException}                                  from "../../src/exception/EmptyCollectionException"
 import {NullCollectionException}                                   from "../../src/exception/NullCollectionException"
+import {EmptyCollectionIterator}                                   from "../../src/iterator/EmptyCollectionIterator"
+import {GenericAfterLastIteratorValue}                             from "../../src/iterator/value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}                           from "../../src/iterator/value/GenericBeforeFirstIteratorValue"
+import {GenericCollectionIteratorValue}                            from "../../src/iterator/value/GenericCollectionIteratorValue"
+import {IteratorValueOf1}                                          from "../../src/iterator/value/IteratorValueOf1"
+import {IteratorValueOf1On2}                                       from "../../src/iterator/value/IteratorValueOf1On2"
+import {IteratorValueOf2On2}                                       from "../../src/iterator/value/IteratorValueOf2On2"
 import {Holder}                                                    from "../Holder"
-import {ArrayByStructureForTest}                                   from "../instance/ArrayByStructureForTest"
-import {ArrayForTest}                                              from "../instance/ArrayForTest"
-import {CollectionHolder_ByMinimalistCollection}                   from "../instance/CollectionHolder_ByMinimalistCollection"
+import {arrayOf1}                                                  from "../helper/arrayOf1"
+import {arrayOf2}                                                  from "../helper/arrayOf2"
+import {CollectionHolder_1}                                        from "../instance/CollectionHolder_1"
+import {CollectionHolder_2}                                        from "../instance/CollectionHolder_2"
+import {CollectionHolder_AdaptorOfArray}                           from "../instance/CollectionHolder_AdaptorOfArray"
+import {CollectionHolder_AdaptorOfIterator}                        from "../instance/CollectionHolder_AdaptorOfIterator"
+import {CollectionHolder_AdaptorOfJsIterator}                      from "../instance/CollectionHolder_AdaptorOfJsIterator"
+import {CollectionHolder_AdaptorOfJsIterable}                      from "../instance/CollectionHolder_AdaptorOfJsIterable"
+import {CollectionHolder_AdaptorOfMinimalist}                      from "../instance/CollectionHolder_AdaptorOfMinimalist"
+import {CollectionHolder_AdaptorOfSet}                             from "../instance/CollectionHolder_AdaptorOfSet"
+import {CollectionHolder_AdaptorOfSizedJsIterator}                 from "../instance/CollectionHolder_AdaptorOfSizedJsIterator"
+import {CollectionHolder_AdaptorOfSizedJsIterable}                 from "../instance/CollectionHolder_AdaptorOfSizedJsIterable"
+import {CollectionHolder_ArrayOf1}                                 from "../instance/CollectionHolder_ArrayOf1"
+import {CollectionHolder_ArrayOf2}                                 from "../instance/CollectionHolder_ArrayOf2"
 import {CollectionHolder_ByGenericCollection}                      from "../instance/CollectionHolder_ByGenericCollection"
-import {CollectionHolder_ByLazyCollection}                         from "../instance/CollectionHolder_ByLazyCollection"
-import {CollectionHolder_ByStructure}                              from "../instance/CollectionHolder_ByStructure"
+import {CollectionHolder_ByMinimalistCollection}                   from "../instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByMinimalistViewer}                       from "../instance/CollectionHolder_ByMinimalistViewer"
+import {CollectionHolder_ByViewer}                                 from "../instance/CollectionHolder_ByViewer"
 import {CollectionHolder_FromArrayExtensionFunction}               from "../instance/CollectionHolder_FromArrayExtensionFunction"
 import {CollectionHolder_FromExtensionFunction}                    from "../instance/CollectionHolder_FromExtensionFunction"
 import {CollectionHolder_FromMinimalistExtensionFunction}          from "../instance/CollectionHolder_FromMinimalistExtensionFunction"
@@ -33,97 +53,230 @@ import {CollectionHolder_FromUndefinedArrayExtensionFunction}      from "../inst
 import {CollectionHolder_FromUndefinedExtensionFunction}           from "../instance/CollectionHolder_FromUndefinedExtensionFunction"
 import {CollectionHolder_FromUndefinedMinimalistExtensionFunction} from "../instance/CollectionHolder_FromUndefinedMinimalistExtensionFunction"
 import {CollectionHolder_FromUndefinedPublicExtensionFunction}     from "../instance/CollectionHolder_FromUndefinedPublicExtensionFunction"
-import {CollectionHolderFromArray}                                 from "../instance/CollectionHolderFromArray"
-import {CollectionIterator_ByStructure}                            from "../instance/CollectionIterator_ByStructure"
-import {CollectionIteratorFromArray}                               from "../instance/CollectionIteratorFromArray"
-import {IterableForTest}                                           from "../instance/IterableForTest"
-import {IterableWithCountForTest}                                  from "../instance/IterableWithCountForTest"
-import {IterableWithLengthForTest}                                 from "../instance/IterableWithLengthForTest"
-import {IterableWithLengthThatFailOnCount}                         from "../instance/IterableWithLengthThatFailOnCount"
-import {IterableWithNullPossibleSize}                              from "../instance/IterableWithNullPossibleSize"
-import {IterableWithSizeForTest}                                   from "../instance/IterableWithSizeForTest"
-import {IterableWithSizeThatFailOnLength}                          from "../instance/IterableWithSizeThatFailOnLength"
-import {IteratorForTest}                                           from "../instance/IteratorForTest"
-import {MinimalistCollectionHolder_ByStructure}                    from "../instance/MinimalistCollectionHolder_ByStructure"
-import {MinimalistCollectionHolderFromArray}                       from "../instance/MinimalistCollectionHolderFromArray"
-import {SetByStructureForTest}                                     from "../instance/SetByStructureForTest"
-import {SetForTest}                                                from "../instance/SetForTest"
+import {CollectionHolder_Lazy}                                     from "../instance/CollectionHolder_Lazy"
+import {CollectionHolder_LazyOf0Or1}                               from "../instance/CollectionHolder_LazyOf0Or1"
+import {CollectionHolder_LazyOf0Or1Or2}                            from "../instance/CollectionHolder_LazyOf0Or1Or2"
+import {CollectionHolder_LazyOf1}                                  from "../instance/CollectionHolder_LazyOf1"
+import {CollectionHolder_LazyOf1Or2}                               from "../instance/CollectionHolder_LazyOf1Or2"
+import {CollectionHolder_LazyOf2}                                  from "../instance/CollectionHolder_LazyOf2"
+import {CollectionHolder_SetOf1}                                   from "../instance/CollectionHolder_SetOf1"
+import {CollectionHolder_SetOf2}                                   from "../instance/CollectionHolder_SetOf2"
+import {CollectionIterator_1}                                      from "../instance/CollectionIterator_1"
+import {CollectionIterator_2}                                      from "../instance/CollectionIterator_2"
+import {CollectionIterator_ByGenericIterator}                      from "../instance/CollectionIterator_ByGenericIterator"
+import {InfiniteCollectionHolder_FromJsIterable}                   from "../instance/InfiniteCollectionHolder_FromJsIterable"
+import {InfiniteCollectionHolder_FromJsIterator}                   from "../instance/InfiniteCollectionHolder_FromJsIterator"
 import {EMPTY}                                                     from "./arrays"
+
+/** A constant to give the {@link EmptyCollectionHolder} instance directly */
+export const emptyCollectionHolder = EmptyCollectionHolder.get
+/** A constant to give the {@link EmptyCollectionIterator} instance directly */
+export const emptyCollectionIterator = EmptyCollectionIterator.get
+
+/** A constant to give the {@link GenericAfterLastIteratorValue} instance directly */
+export const afterLastIteratorValue = GenericAfterLastIteratorValue.get
+/** A constant to give the {@link GenericBeforeFirstIteratorValue} instance directly */
+export const beforeFirstIteratorValue = GenericBeforeFirstIteratorValue.get
 
 /**
  * The possible instances and extension function currently exported to the public as a mocked {@link CollectionHolder}
  * to apply on tests
+ *
+ * @implNote This constant is not made to be used by the tests directly
+ *           It is there to help see bugs and potential ways to distinguish
+ *           between all the instances before the tests are executed
  */
 export const everyCollectionInstances = [
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "minimalist",                     instance: CollectionHolder_ByMinimalistCollection, },                            "collection (by minimalist)",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "normal",                         instance: CollectionHolder_ByGenericCollection, },                               "collection (by normal)",),
-    // new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "array",                          instance: CollectionHolder_ByArrayCollection, },                                 "collection (by array)",),
-    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "lazy",                           instance: CollectionHolder_ByLazyCollection, },                                  "collection (by lazy)",),
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: false, emptyException: EmptyCollectionException, type: "minimalist extension",           instance: CollectionHolder_FromMinimalistExtensionFunction,},                    "minimalist extension",),
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null minimalist extension",      instance: CollectionHolder_FromNullMinimalistExtensionFunction,},           "null minimalist extension",),
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined minimalist extension", instance: CollectionHolder_FromUndefinedMinimalistExtensionFunction,}, "undefined minimalist extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: false, emptyException: EmptyCollectionException, type: "normal extension",               instance: CollectionHolder_FromExtensionFunction,},                                  "normal extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null normal extension",          instance: CollectionHolder_FromNullExtensionFunction,},                         "null normal extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined normal extension",     instance: CollectionHolder_FromUndefinedExtensionFunction,},               "undefined normal extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: false, emptyException: EmptyCollectionException, type: "array extension",                instance: CollectionHolder_FromArrayExtensionFunction,},                              "array extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null array extension",           instance: CollectionHolder_FromNullArrayExtensionFunction,},                     "null array extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined array extension",      instance: CollectionHolder_FromUndefinedArrayExtensionFunction,},           "undefined array extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null extension",                 instance: CollectionHolder_FromNullPublicExtensionFunction,},                          "null extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined extension",            instance: CollectionHolder_FromUndefinedPublicExtensionFunction,},                "undefined extension",),
+    new Holder({isNull: false, isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist",                      instance: CollectionHolder_ByMinimalistCollection, },                  "collection (by minimalist)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "normal",                          instance: CollectionHolder_ByGenericCollection, },                     "collection (by normal)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "of 1",                            instance: CollectionHolder_1, },                                       "collection (1)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "of 2",                            instance: CollectionHolder_2, },                                       "collection (2)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array adaptor",                   instance: CollectionHolder_AdaptorOfArray, },                          "collection (array adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array of 1",                      instance: CollectionHolder_ArrayOf1, },                                "collection (array of 1)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array of 2",                      instance: CollectionHolder_ArrayOf2, },                                "collection (array of 2)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set adaptor",                     instance: CollectionHolder_AdaptorOfSet, },                            "collection (set adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set of 1",                        instance: CollectionHolder_SetOf1, },                                  "collection (set of 1)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set of 2",                        instance: CollectionHolder_SetOf2, },                                  "collection (set of 2)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist adaptor",              instance: CollectionHolder_AdaptorOfMinimalist, },                     "collection (minimalist adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "iterator adaptor",                instance: CollectionHolder_AdaptorOfIterator, },                       "collection (iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator adaptor",             instance: CollectionHolder_AdaptorOfJsIterator, },                     "collection (js iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator (with size) adaptor", instance: CollectionHolder_AdaptorOfSizedJsIterator, },                "collection (js iterator with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable adaptor",             instance: CollectionHolder_AdaptorOfJsIterable, },                     "collection (js iterable adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable (with size) adaptor", instance: CollectionHolder_AdaptorOfSizedJsIterable, },                "collection (js iterable with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy",                            instance: CollectionHolder_Lazy, },                                    "collection (lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: true,  isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 0|1",                     instance: CollectionHolder_LazyOf0Or1, },                              "collection (0|1 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: true,  isOf1: true,  isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 0|1|2",                   instance: CollectionHolder_LazyOf0Or1Or2, },                           "collection (0|1|2 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 1",                       instance: CollectionHolder_LazyOf1, },                                 "collection (1 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: true,  isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 1|2",                     instance: CollectionHolder_LazyOf1Or2, },                              "collection (1|2 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 2",                       instance: CollectionHolder_LazyOf2, },                                 "collection (2 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "minimalist viewer",               instance: CollectionHolder_ByMinimalistViewer, },                      "collection (by minimalist viewer)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "viewer",                          instance: CollectionHolder_ByViewer, },                                "collection (by viewer)",),
+    new Holder({isNull: false, isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: EmptyCollectionException, type: "minimalist extension",            instance: CollectionHolder_FromMinimalistExtensionFunction,},          "minimalist extension",),
+    new Holder({isNull: true,  isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: NullCollectionException,  type: "null minimalist extension",       instance: CollectionHolder_FromNullMinimalistExtensionFunction,},      "null minimalist extension",),
+    new Holder({isNull: true,  isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: NullCollectionException,  type: "undefined minimalist extension",  instance: CollectionHolder_FromUndefinedMinimalistExtensionFunction,}, "undefined minimalist extension",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: EmptyCollectionException, type: "normal extension",                instance: CollectionHolder_FromExtensionFunction,},                    "normal extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: NullCollectionException,  type: "null normal extension",           instance: CollectionHolder_FromNullExtensionFunction,},                "null normal extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: NullCollectionException,  type: "undefined normal extension",      instance: CollectionHolder_FromUndefinedExtensionFunction,},           "undefined normal extension",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: EmptyCollectionException, type: "array extension",                 instance: CollectionHolder_FromArrayExtensionFunction,},               "array extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: NullCollectionException,  type: "null array extension",            instance: CollectionHolder_FromNullArrayExtensionFunction,},           "null array extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: NullCollectionException,  type: "undefined array extension",       instance: CollectionHolder_FromUndefinedArrayExtensionFunction,},      "undefined array extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: NullCollectionException,  type: "null extension",                  instance: CollectionHolder_FromNullPublicExtensionFunction,},          "null extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true,  emptyException: NullCollectionException,  type: "undefined extension",             instance: CollectionHolder_FromUndefinedPublicExtensionFunction,},     "undefined extension",),
 ] as const
 
 /**
- * The possible instances currently exported to the public as a mocked {@link CollectionHolder}
+ * The possible instances and extension function (that should be used as an empty container)
+ * currently exported to the public as a mocked {@link CollectionHolder}
+ * to apply on tests
+ *
+ * @implNote No values should be sent to the `newInstance` method
+ */
+export const every0Instances = [
+    new Holder({isNull: false, isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist",                      newInstance: () => new CollectionHolder_ByMinimalistCollection<unknown>(EMPTY,), },   "collection (by minimalist)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "normal",                          newInstance: () => new CollectionHolder_ByGenericCollection<unknown>(EMPTY,), },      "collection (by normal)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array adaptor",                   newInstance: () => new CollectionHolder_AdaptorOfArray<unknown>(EMPTY,), },           "collection (array adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set adaptor",                     newInstance: () => new CollectionHolder_AdaptorOfSet<unknown>(EMPTY,), },             "collection (set adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist adaptor",              newInstance: () => new CollectionHolder_AdaptorOfMinimalist<unknown>(EMPTY,), },      "collection (minimalist adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "iterator adaptor",                newInstance: () => new CollectionHolder_AdaptorOfIterator<unknown>(EMPTY,), },        "collection (iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator adaptor",             newInstance: () => new CollectionHolder_AdaptorOfJsIterator<unknown>(EMPTY,), },      "collection (js iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator (with size) adaptor", newInstance: () => new CollectionHolder_AdaptorOfSizedJsIterator<unknown>(EMPTY,), }, "collection (js iterator with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable adaptor",             newInstance: () => new CollectionHolder_AdaptorOfJsIterable<unknown>(EMPTY,), },      "collection (js iterable adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable (with size) adaptor", newInstance: () => new CollectionHolder_AdaptorOfSizedJsIterable<unknown>(EMPTY,), }, "collection (js iterable with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy",                            newInstance: () => new CollectionHolder_Lazy<unknown>(EMPTY,), },                     "collection (lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: true,  isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 0|1",                     newInstance: () => new CollectionHolder_LazyOf0Or1<unknown>(), },                     "collection (0|1 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: true,  isOf1: true,  isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 0|1|2",                   newInstance: () => new CollectionHolder_LazyOf0Or1Or2<unknown>(), },                  "collection (0|1|2 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "minimalist viewer",               newInstance: () => new CollectionHolder_ByMinimalistViewer<unknown>(EMPTY,), },       "collection (by minimalist viewer)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "viewer",                          newInstance: () => new CollectionHolder_ByViewer<unknown>(EMPTY,), },                 "collection (by viewer)",),
+] as const
+
+/**
+ * The possible instances (that should be used as a single value container)
+ * currently exported to the public as a mocked {@link CollectionHolder}
+ * to apply on tests
+ *
+ * @implNote Only a single value should be sent to the `newInstance` method
+ */
+export const every1Instances = [
+    new Holder({isNull: false, isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist",                      newInstance: <const T, >(value: T,) => new CollectionHolder_ByMinimalistCollection(arrayOf1(value,),), },   "collection (by minimalist)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "normal",                          newInstance: <const T, >(value: T,) => new CollectionHolder_ByGenericCollection(arrayOf1(value,),), },      "collection (by normal)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "of 1",                            newInstance: <const T, >(value: T,) => new CollectionHolder_1(value,), },                                   "collection (1)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array adaptor",                   newInstance: <const T, >(value: T,) => new CollectionHolder_AdaptorOfArray(arrayOf1(value,),), },           "collection (array adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array of 1",                      newInstance: <const T, >(value: T,) => new CollectionHolder_ArrayOf1(value,), },                            "collection (array of 1)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set adaptor",                     newInstance: <const T, >(value: T,) => new CollectionHolder_AdaptorOfSet(arrayOf1(value,),), },             "collection (set adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set of 1",                        newInstance: <const T, >(value: T,) => new CollectionHolder_SetOf1(value,), },                              "collection (set of 1)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist adaptor",              newInstance: <const T, >(value: T,) => new CollectionHolder_AdaptorOfMinimalist(arrayOf1(value,),), },      "collection (minimalist adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "iterator adaptor",                newInstance: <const T, >(value: T,) => new CollectionHolder_AdaptorOfIterator(arrayOf1(value,),), },        "collection (iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator adaptor",             newInstance: <const T, >(value: T,) => new CollectionHolder_AdaptorOfJsIterator(arrayOf1(value,),), },      "collection (js iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator (with size) adaptor", newInstance: <const T, >(value: T,) => new CollectionHolder_AdaptorOfSizedJsIterator(arrayOf1(value,),), }, "collection (js iterator with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable adaptor",             newInstance: <const T, >(value: T,) => new CollectionHolder_AdaptorOfJsIterable(arrayOf1(value,),), },      "collection (js iterable adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable (with size) adaptor", newInstance: <const T, >(value: T,) => new CollectionHolder_AdaptorOfSizedJsIterable(arrayOf1(value,),), }, "collection (js iterable with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy",                            newInstance: <const T, >(value: T,) => new CollectionHolder_Lazy(arrayOf1(value,),), },                     "collection (lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: true,  isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 0|1",                     newInstance: <const T, >(value: T,) => new CollectionHolder_LazyOf0Or1(value,), },                          "collection (0|1 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: true,  isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 1",                       newInstance: <const T, >(value: T,) => new CollectionHolder_LazyOf1(value,), },                             "collection (1 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: true,  isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 1|2",                     newInstance: <const T, >(value: T,) => new CollectionHolder_LazyOf1Or2<T>(value,), },                       "collection (1|2 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "minimalist viewer",               newInstance: <const T, >(value: T,) => new CollectionHolder_ByMinimalistViewer(arrayOf1(value,),), },       "collection (by minimalist viewer)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "viewer",                          newInstance: <const T, >(value: T,) => new CollectionHolder_ByViewer(arrayOf1(value,),), },                 "collection (by viewer)",),
+] as const
+
+/**
+ * The possible instances (that should be used as a single value container)
+ * currently exported to the public as a mocked {@link CollectionIterator}
+ * to apply on tests
+ *
+ * @implNote Only a single value should be sent to the `newInstance` method
+ */
+export const every1Iterators = [
+    new Holder({iteratorValue: GenericCollectionIteratorValue, newInstance: <const T, >(value: T,) => new CollectionIterator_ByGenericIterator(arrayOf1(value,),),}, "GenericCollectionIterator",),
+    new Holder({iteratorValue: IteratorValueOf1,               newInstance: <const T, >(value: T,) => new CollectionIterator_1(value,),},                            "CollectionIteratorOf1",),
+] as const
+
+/**
+ * The possible instances (that should be used as a double value container)
+ * currently exported to the public as a mocked {@link CollectionHolder}
+ * to apply on tests
+ *
+ * @implNote Only a double value should be sent to the `newInstance` method
+ */
+export const every2Instances = [
+    new Holder({isNull: false, isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist",                      newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_ByMinimalistCollection<| T1 | T2>(arrayOf2(value1, value2,),), },   "collection (by minimalist)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "normal",                          newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_ByGenericCollection<| T1 | T2>(arrayOf2(value1, value2,),), },      "collection (by normal)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "of 2",                            newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_2<| T1 | T2, T1, T2>(value1, value2,), },                           "collection (2)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array adaptor",                   newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_AdaptorOfArray<| T1 | T2>(arrayOf2(value1, value2,),), },           "collection (array adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array of 2",                      newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_ArrayOf2<| T1 | T2, T1, T2>(value1, value2,), },                    "collection (array of 2)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set adaptor",                     newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_AdaptorOfSet<| T1 | T2>(arrayOf2(value1, value2,),), },             "collection (set adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set of 2",                        newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_SetOf2<| T1 | T2, T1, T2>(value1, value2,), },                      "collection (set of 2)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist adaptor",              newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_AdaptorOfMinimalist<| T1 | T2>(arrayOf2(value1, value2,),), },      "collection (minimalist adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "iterator adaptor",                newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_AdaptorOfIterator<| T1 | T2>(arrayOf2(value1, value2,),), },        "collection (iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator adaptor",             newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_AdaptorOfJsIterator<| T1 | T2>(arrayOf2(value1, value2,),), },      "collection (js iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator (with size) adaptor", newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_AdaptorOfSizedJsIterator<| T1 | T2>(arrayOf2(value1, value2,),), }, "collection (js iterator with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable adaptor",             newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_AdaptorOfJsIterable<| T1 | T2>(arrayOf2(value1, value2,),), },      "collection (js iterable adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable (with size) adaptor", newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_AdaptorOfSizedJsIterable<| T1 | T2>(arrayOf2(value1, value2,),), }, "collection (js iterable with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy",                            newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_Lazy<| T1 | T2>(arrayOf2(value1, value2,),), },                     "collection (lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: true,  isOf1: true,  isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 0|1|2",                   newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_LazyOf0Or1Or2<| T1 | T2, T1, T2>(value1, value2,), },               "collection (0|1|2 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: true,  isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 1|2",                     newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_LazyOf1Or2<| T1 | T2, T1, T2>(value1, value2,), },                  "collection (1|2 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: true,  isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy of 2",                       newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_LazyOf2<| T1 | T2, T1, T2>(value1, value2,), },                     "collection (2 lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "minimalist viewer",               newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_ByMinimalistViewer<| T1 | T2>(arrayOf2(value1, value2,),), },       "collection (by minimalist viewer)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "viewer",                          newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionHolder_ByViewer<| T1 | T2>(arrayOf2(value1, value2,),), },                 "collection (by viewer)",),
+] as const
+
+/**
+ * The possible instances (that should be used as a double value container)
+ * currently exported to the public as a mocked {@link CollectionIterator}
+ * to apply on tests
+ *
+ * @implNote Only a double value should be sent to the `newInstance` method
+ */
+export const every2Iterators = [
+    new Holder({iteratorValue1: GenericCollectionIteratorValue, iteratorValue2: GenericCollectionIteratorValue, newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionIterator_ByGenericIterator(arrayOf2(value1, value2,),),}, "GenericCollectionIterator",),
+    new Holder({iteratorValue1: IteratorValueOf1On2,            iteratorValue2: IteratorValueOf2On2,            newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionIterator_2(value1, value2,),},                            "CollectionIteratorOf2",),
+] as const
+
+/**
+ * The possible instances and extension function currently exported to the public as a mocked {@link CollectionHolder}
+ * to apply on tests
+ *
+ * @implNote Only an {@link ReadonlyArray Array} should be sent to the `instance` constructor
+ */
+export const everyNInstances = [
+    new Holder({isNull: false, isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist",                      instance: CollectionHolder_ByMinimalistCollection, },   "collection (by minimalist)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "normal",                          instance: CollectionHolder_ByGenericCollection, },      "collection (by normal)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array adaptor",                   instance: CollectionHolder_AdaptorOfArray, },           "collection (array adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set adaptor",                     instance: CollectionHolder_AdaptorOfSet, },             "collection (set adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist adaptor",              instance: CollectionHolder_AdaptorOfMinimalist, },      "collection (minimalist adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "iterator adaptor",                instance: CollectionHolder_AdaptorOfIterator, },        "collection (iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator adaptor",             instance: CollectionHolder_AdaptorOfJsIterator, },      "collection (js iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator (with size) adaptor", instance: CollectionHolder_AdaptorOfSizedJsIterator, }, "collection (js iterator with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable adaptor",             instance: CollectionHolder_AdaptorOfJsIterable, },      "collection (js iterable adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable (with size) adaptor", instance: CollectionHolder_AdaptorOfSizedJsIterable, }, "collection (js iterable with size adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy",                            instance: CollectionHolder_Lazy, },                     "collection (lazy)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "minimalist viewer",               instance: CollectionHolder_ByMinimalistViewer, },       "collection (by minimalist viewer)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: true,  isExtension: false, emptyException: EmptyCollectionException, type: "viewer",                          instance: CollectionHolder_ByViewer, },                 "collection (by viewer)",),
+] as const
+
+/**
+ * The possible instances and extension function (that should be used as an ∞ container)
+ * currently exported to the public as a mocked {@link CollectionHolder}
  * to apply on tests
  */
-export const everyInstances = [
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "minimalist", instance: CollectionHolder_ByMinimalistCollection, }, "collection (by minimalist)",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "normal",     instance: CollectionHolder_ByGenericCollection, },    "collection (by normal)",),
-    // new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, type: "array",     instance: CollectionHolder_ByArrayCollection, },      "collection (by array)",),
-    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "lazy",       instance: CollectionHolder_ByLazyCollection, },       "collection (by lazy)",),
-] as const satisfies readonly Holder<{readonly isExtension: false, isNull: false, emptyException: typeof EmptyCollectionException, }, string>[]
+export const everyInfiniteInstances = [
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterator adaptor", instance: InfiniteCollectionHolder_FromJsIterator, }, "collection (js iterator adaptor)",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "js iterable adaptor", instance: InfiniteCollectionHolder_FromJsIterable, }, "collection (js iterable adaptor)",),
+] as const
 
 /**
  * The possible instances as extension function currently exported to the public as a mocked {@link CollectionHolder}
  * to apply on tests
  */
 export const everyExtensionMethodInstances = [
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: true, isNull: false, emptyException: EmptyCollectionException, type: "minimalist extension",           instance: new CollectionHolder_FromMinimalistExtensionFunction<unknown>(EMPTY,),},              "minimalist extension",),
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: true, isNull: true,  emptyException: NullCollectionException,  type: "null minimalist extension",      instance: new CollectionHolder_FromNullMinimalistExtensionFunction<unknown>(),},           "null minimalist extension",),
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: true, isNull: true,  emptyException: NullCollectionException,  type: "undefined minimalist extension", instance: new CollectionHolder_FromUndefinedMinimalistExtensionFunction<unknown>(),}, "undefined minimalist extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, isNull: false, emptyException: EmptyCollectionException, type: "normal extension",               instance: new CollectionHolder_FromExtensionFunction<unknown>(EMPTY,),},                            "normal extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, isNull: true,  emptyException: NullCollectionException,  type: "null normal extension",          instance: new CollectionHolder_FromNullExtensionFunction<unknown>(),},                         "null normal extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, isNull: true,  emptyException: NullCollectionException,  type: "undefined normal extension",     instance: new CollectionHolder_FromUndefinedExtensionFunction<unknown>(),},               "undefined normal extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, isNull: false, emptyException: EmptyCollectionException, type: "array extension",                instance: new CollectionHolder_FromArrayExtensionFunction<unknown>(EMPTY,),},                        "array extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, isNull: true,  emptyException: NullCollectionException,  type: "null array extension",           instance: new CollectionHolder_FromNullArrayExtensionFunction<unknown>(),},                     "null array extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, isNull: true,  emptyException: NullCollectionException,  type: "undefined array extension",      instance: new CollectionHolder_FromUndefinedArrayExtensionFunction<unknown>(),},           "undefined array extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, isNull: true,  emptyException: NullCollectionException,  type: "null extension",                 instance: new CollectionHolder_FromNullPublicExtensionFunction<unknown>(),},                          "null extension",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, isNull: true,  emptyException: NullCollectionException,  type: "undefined extension",            instance: new CollectionHolder_FromUndefinedPublicExtensionFunction<unknown>(),},                "undefined extension",),
-] as const satisfies readonly Holder<{readonly isLazy: false, readonly isExtension: true, readonly instance: CollectionHolder_FromExtension<unknown>,}, string>[]
-
-
-/**
- * The possible instances applicable to the type-alias {@link PossibleIterableIteratorArraySetOrCollectionHolder}
- * to apply on tests
- */
-export const everyIterableInstances = [
-    new Holder(ArrayForTest,                           "array",),
-    new Holder(ArrayByStructureForTest,                "array (by structure)",),
-    new Holder(SetForTest,                             "set",),
-    new Holder(SetByStructureForTest,                  "set (by structure)",),
-    new Holder(IterableForTest,                        "iterable",),
-    new Holder(IterableWithSizeForTest,                "iterable with size",),
-    new Holder(IterableWithLengthForTest,              "iterable with length",),
-    new Holder(IterableWithCountForTest,               "iterable with count",),
-    new Holder(IterableWithNullPossibleSize,           "iterable with possible size (all null)",),
-    new Holder(IterableWithSizeThatFailOnLength,       "iterable with possible size (with size & fail on length)",),
-    new Holder(IterableWithLengthThatFailOnCount,      "iterable with possible size (with length & fail on count)",),
-    new Holder(IteratorForTest,                        "iterator",),
-    //TODO add iterator by structure
-    new Holder(CollectionIteratorFromArray,            "collection iterator",),
-    new Holder(CollectionIterator_ByStructure,         "collection iterator (by structure)",),
-    new Holder(CollectionHolderFromArray,              "collection holder",),
-    new Holder(CollectionHolder_ByStructure,           "collection holder (by structure)",),
-    new Holder(MinimalistCollectionHolderFromArray,    "minimalist collection holder",),
-    new Holder(MinimalistCollectionHolder_ByStructure, "minimalist collection holder (by structure)",),
-] as const
+    new Holder({isNull: false, isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: EmptyCollectionException, type: "minimalist extension",           instance: new CollectionHolder_FromMinimalistExtensionFunction<unknown>(EMPTY,),},     "minimalist extension",),
+    new Holder({isNull: true,  isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "null minimalist extension",      instance: new CollectionHolder_FromNullMinimalistExtensionFunction(),},           "null minimalist extension",),
+    new Holder({isNull: true,  isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "undefined minimalist extension", instance: new CollectionHolder_FromUndefinedMinimalistExtensionFunction(),}, "undefined minimalist extension",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: EmptyCollectionException, type: "normal extension",               instance: new CollectionHolder_FromExtensionFunction<unknown>(EMPTY,),},                   "normal extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "null normal extension",          instance: new CollectionHolder_FromNullExtensionFunction(),},                         "null normal extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "undefined normal extension",     instance: new CollectionHolder_FromUndefinedExtensionFunction(),},               "undefined normal extension",),
+    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: EmptyCollectionException, type: "array extension",                instance: new CollectionHolder_FromArrayExtensionFunction<unknown>(EMPTY,),},               "array extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "null array extension",           instance: new CollectionHolder_FromNullArrayExtensionFunction(),},                     "null array extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "undefined array extension",      instance: new CollectionHolder_FromUndefinedArrayExtensionFunction(),},           "undefined array extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "null extension",                 instance: new CollectionHolder_FromNullPublicExtensionFunction(),},                          "null extension",),
+    new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "undefined extension",            instance: new CollectionHolder_FromUndefinedPublicExtensionFunction(),},                "undefined extension",),
+] as const satisfies readonly Holder<{readonly isLazy: false, readonly isAdaptor: false, isOf1: false, isOf2: false, readonly isViewer: false, readonly isExtension: true, readonly instance: CollectionHolder_FromExtension<unknown>,}, string>[]

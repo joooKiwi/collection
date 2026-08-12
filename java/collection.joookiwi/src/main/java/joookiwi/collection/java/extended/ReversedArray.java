@@ -8,12 +8,20 @@ import org.jetbrains.annotations.Nullable;
 /// A container to reverse an array lazily via [#reversedSource]
 ///
 /// @param <T> The type
-/// @see ReversedArrayAsImmutableSequencedCollection
-/// @see ReversedArrayAsImmutableList
-/// @see ReversedArrayAsImmutableSequencedSet
-/// @see ReversedArrayAsImmutableSortedSet
-/// @see ReversedArrayAsImmutableNavigableSet
-/// @see ReversedArrayAsImmutableDeque
+/// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedCollection           ReversedArrayAsImmutableSequencedCollection
+/// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedCollection              ReversedArrayAsImmutableSortedCollection
+/// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableNavigableCollection           ReversedArrayAsImmutableNavigableCollection
+/// @see joookiwi.collection.java.extended.ReversedArrayAsImmutableConcurrentNavigableCollection ReversedArrayAsImmutableConcurrentNavigableCollection
+/// @see joookiwi.collection.java.extended.list.ReversedArrayAsImmutableList                     ReversedArrayAsImmutableList
+/// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSequencedSet              ReversedArrayAsImmutableSequencedSet
+/// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableSortedSet                 ReversedArrayAsImmutableSortedSet
+/// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableNavigableSet              ReversedArrayAsImmutableNavigableSet
+/// @see joookiwi.collection.java.extended.set.ReversedArrayAsImmutableConcurrentNavigableSet    ReversedArrayAsImmutableConcurrentNavigableSet
+/// @see joookiwi.collection.java.extended.stack.ReversedArrayAsImmutableDeque                   ReversedArrayAsImmutableDeque
+/// @see joookiwi.collection.java.extended.map.ReversedArrayAsImmutableSequencedMap              ReversedArrayAsImmutableSequencedMap
+/// @see joookiwi.collection.java.extended.map.ReversedArrayAsImmutableSortedMap                 ReversedArrayAsImmutableSortedMap
+/// @see joookiwi.collection.java.extended.map.ReversedArrayAsImmutableNavigableMap              ReversedArrayAsImmutableNavigableMap
+/// @see joookiwi.collection.java.extended.map.ReversedArrayAsImmutableConcurrentNavigableMap    ReversedArrayAsImmutableConcurrentNavigableMap
 @NotNullByDefault
 public class ReversedArray<T extends @Nullable Object> {
 

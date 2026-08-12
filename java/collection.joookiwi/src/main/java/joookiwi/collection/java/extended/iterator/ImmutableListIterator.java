@@ -48,6 +48,12 @@ public interface ImmutableListIterator<T extends @Nullable Object>
     @Override T previous();
 
 
+    /// Do a certain operation for the rest of the elements in the current [iterator][ImmutableListIterator]
+    @Contract(mutates = "this")
+    @Override void forEachRemaining(Consumer<? super T> operation);
+
+    //#region -------------------- Unsupported methods --------------------
+
     /// Fail to remove the current value in the [instance][ImmutableIterator]
     ///
     /// @throws UnsupportedMethodException The method is not supported
@@ -68,9 +74,6 @@ public interface ImmutableListIterator<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override default void set(final @Nullable T value) { throw new UnsupportedMethodException("The method “set” is not supported in an immutable ListIterator."); }
 
-
-    /// Do a certain operation for the rest of the elements in the current [iterator][ImmutableListIterator]
-    @Contract(mutates = "this")
-    @Override void forEachRemaining(Consumer<? super T> operation);
+    //#endregion -------------------- Unsupported methods --------------------
 
 }

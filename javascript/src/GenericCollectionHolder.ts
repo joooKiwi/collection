@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined, Set, NumberKeyMap, NumberArray, NumberSet, MutableArray, MutableSet, MutableNumberKeyMap} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -24,6 +24,8 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 
 import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
 import {CollectionConstants}                            from "./CollectionConstants"
+import {EmptyCollectionHolder}                          from "./EmptyCollectionHolder"
+import {LazyCollectionHolder}                           from "./LazyCollectionHolder"
 import {EmptyCollectionException}                       from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                        from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                      from "./exception/IndexOutOfBoundsException"
@@ -102,17 +104,14 @@ import {indexOfLastByArray}                             from "./method/indexOfLa
 import {indexOfLastIndexedByArray}                      from "./method/indexOfLastIndexed"
 import {indexOfLastIndexedOrNullByArray}                from "./method/indexOfLastIndexedOrNull"
 import {indexOfLastOrNullByArray}                       from "./method/indexOfLastOrNull"
-import {isArray}                                        from "./method/isArray"
 import {isArrayByStructure}                             from "./method/isArrayByStructure"
 import {isCollectionIterator}                           from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}                from "./method/isCollectionIteratorByStructure"
 import {isCollectionHolder}                             from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}                  from "./method/isCollectionHolderByStructure"
-import {isIterator}                                     from "./method/isIterator"
 import {isIteratorByStructure}                          from "./method/isIteratorByStructure"
 import {isMinimalistCollectionHolder}                   from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}        from "./method/isMinimalistCollectionHolderByStructure"
-import {isSet}                                          from "./method/isSet"
 import {isSetByStructure}                               from "./method/isSetByStructure"
 import {joinToStringByArray}                            from "./method/joinToString"
 import {lastIndexOfByArray}                             from "./method/lastIndexOf"
@@ -161,9 +160,9 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * But it is not {@link Object.isFrozen frozen} to ensure
  * the children can do their initialization.
  *
- * @typeParam T The element type
+ * @typeParam T The type (by default `unknown`)
  * @see GenericMinimalistCollectionHolder
- * @see LazyGenericCollectionHolder
+ * @see LazyCollectionHolder
  * @see EmptyCollectionHolder
  */
 export class GenericCollectionHolder<const T = unknown, >
@@ -173,11 +172,17 @@ export class GenericCollectionHolder<const T = unknown, >
 
     readonly #size: number
     readonly #isEmpty: boolean
+    readonly #isNotEmpty: boolean
+    readonly #hasExactly1Element: boolean
+    readonly #hasAtMost1Element: boolean
+    readonly #hasAtLeast2Elements: boolean
+    readonly #hasExactly2Elements: boolean
+    readonly #hasAtMost2Elements: boolean
 
     readonly #reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>
-    readonly #array: readonly T[]
-    #set?: ReadonlySet<T>
-    #map?: ReadonlyMap<number, T>
+    readonly #array: Array<T>
+    #set?: Set<T>
+    #map?: NumberKeyMap<T>
 
     #hasNull?: boolean
     #hasDuplicate?: boolean
@@ -185,10 +190,10 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(array:                                readonly T[],)
-    public constructor(lateArray:                      () => readonly T[],)
-    public constructor(set:                                  ReadonlySet<T>,)
-    public constructor(lateSet:                        () => ReadonlySet<T>,)
+    public constructor(array:                                Array<T>,)
+    public constructor(lateArray:                      () => Array<T>,)
+    public constructor(set:                                  Set<T>,)
+    public constructor(lateSet:                        () => Set<T>,)
     public constructor(collectionHolder:                     CollectionHolder<T>,)
     public constructor(lateCollectionHolder:           () => CollectionHolder<T>,)
     public constructor(minimalistCollectionHolder:           MinimalistCollectionHolder<T>,)
@@ -203,10 +208,10 @@ export class GenericCollectionHolder<const T = unknown, >
     public constructor(lateIterableWithLength:         () => IterableWithLength<T>,)
     public constructor(iterableWithCount:                    IterableWithCount<T>,)
     public constructor(lateIterableWithCount:          () => IterableWithCount<T>,)
-    public constructor(iterableWithPossibleSize:             IterableWithPossibleSize<T>,)
-    public constructor(lateIterableWithPossibleSize:   () => IterableWithPossibleSize<T>,)
     public constructor(iterable:                             Iterable<T, unknown, unknown>,)
     public constructor(lateIterable:                   () => Iterable<T, unknown, unknown>,)
+    public constructor(iterableWithPossibleSize:             IterableWithPossibleSize<T>,)
+    public constructor(lateIterableWithPossibleSize:   () => IterableWithPossibleSize<T>,)
     public constructor(reference:                            PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
     public constructor(lateReference:                  () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
     public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
@@ -221,12 +226,14 @@ export class GenericCollectionHolder<const T = unknown, >
 
         //#region -------------------- Initialization from Array --------------------
 
-        if (isArray(reference,)) {
+        if (reference instanceof Array) {
             const size = this.#size = reference.length
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -236,8 +243,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[0] as T
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -247,9 +257,12 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
                 const firstValue = this[0] = reference[0] as T
                 const secondValue = this[1] = reference[1] as T
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -259,6 +272,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
@@ -272,14 +286,16 @@ export class GenericCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from Array --------------------
         //#region -------------------- Initialization from Set --------------------
 
-        if (isSet(reference,)) {
+        if (reference instanceof Set) {
             this.#hasDuplicate = false
             const size = this.#size = reference.size
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
-                this.#hasNull = false
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
+                this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 return
@@ -288,8 +304,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value as T
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#array = Object.freeze([value,],)
                 return
@@ -298,10 +317,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
                 const iterator = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#array = Object.freeze([firstValue, secondValue,],)
                 return
@@ -310,6 +332,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
             const iterator = reference[Symbol.iterator]()
             let index = -1
@@ -329,6 +352,8 @@ export class GenericCollectionHolder<const T = unknown, >
 
             if (this.#isEmpty = reference.isEmpty) {
                 this.#size = 0
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -338,9 +363,12 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            const size = this.#size = reference.size
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = reference.hasExactly1Element) {
                 const value = this[0] = reference.getFirst()
+                this.#size = 1
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -350,9 +378,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = reference.hasExactly2Elements) {
+                this.#size = 2
                 const firstValue = this[0] = reference.getFirst()
                 const secondValue = this[1] = reference.getLast()
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -362,6 +394,8 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
+            const size = this.#size = reference.size
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
@@ -380,7 +414,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -390,8 +426,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference.get(0,)
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -401,9 +440,12 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
                 const firstValue = this[0] = reference.get(0,)
                 const secondValue = this[1] = reference.get(1,)
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -413,6 +455,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
@@ -431,6 +474,8 @@ export class GenericCollectionHolder<const T = unknown, >
 
             if (this.#isEmpty = reference.isEmpty) {
                 this.#size = 0
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -440,9 +485,12 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            const size = this.#size = reference.size
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = reference.hasExactly1Element) {
                 const value = this[0] = reference.nextValue
+                this.#size = 1
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -452,9 +500,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = reference.hasExactly2Elements) {
                 const firstValue = this[0] = reference.nextValue
                 const secondValue = this[1] = reference.nextValue
+                this.#size = 2
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -464,6 +516,8 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
+            const size = this.#size = reference.size
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
@@ -477,13 +531,15 @@ export class GenericCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from CollectionIterator --------------------
         //#region -------------------- Initialization from Iterator --------------------
 
-        if (isIterator(reference,)) {
+        if (reference instanceof Iterator) {
             let iteratorResult = reference.next()
 
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (this.#isEmpty = iteratorResult.done === true) {
                 this.#size = 0
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -493,12 +549,18 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = over 0) --------------------
 
+            this.#isNotEmpty = true
             const array: T[] = []
             this[0] = array[0] = iteratorResult.value
             let size = 0
             while (++size, !(iteratorResult = reference.next()).done)
                 this[size] = array[size] = iteratorResult.value
             this.#size = size
+            this.#hasExactly1Element = size === 1
+            this.#hasAtMost1Element = size <= 1
+            this.#hasAtLeast2Elements = size >= 2
+            this.#hasExactly2Elements = size === 2
+            this.#hasAtMost2Elements = size <= 2
             this.#array = Object.freeze(array,)
 
             //#endregion -------------------- Initialization (size = over 0) --------------------
@@ -515,7 +577,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -525,8 +589,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[0] as T
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -536,9 +603,12 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
                 const firstValue = this[0] = reference[0] as T
                 const secondValue = this[1] = reference[1] as T
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -548,6 +618,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
@@ -567,8 +638,10 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
-                this.#hasNull = false
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
+                this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 return
@@ -577,8 +650,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value as T
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#array = Object.freeze([value,],)
                 return
@@ -587,10 +663,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
                 const iterator = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#array = Object.freeze([firstValue, secondValue,],)
                 return
@@ -599,6 +678,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
             const iterator = reference[Symbol.iterator]()
             let index = -1
@@ -618,6 +698,8 @@ export class GenericCollectionHolder<const T = unknown, >
 
             if (this.#isEmpty = reference.isEmpty) {
                 this.#size = 0
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -627,9 +709,12 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            const size = this.#size = reference.size
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = reference.hasExactly1Element) {
                 const value = this[0] = reference.getFirst()
+                this.#size = 1
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -639,9 +724,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = reference.hasExactly2Elements) {
+                this.#size = 2
                 const firstValue = this[0] = reference.getFirst()
                 const secondValue = this[1] = reference.getLast()
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -651,6 +740,8 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
+            const size = this.#size = reference.size
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
@@ -669,7 +760,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -679,8 +772,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference.get(0,)
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -690,9 +786,12 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
                 const firstValue = this[0] = reference.get(0,)
                 const secondValue = this[1] = reference.get(1,)
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -702,6 +801,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
@@ -720,6 +820,8 @@ export class GenericCollectionHolder<const T = unknown, >
 
             if (this.#isEmpty = reference.isEmpty) {
                 this.#size = 0
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -729,9 +831,12 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            const size = this.#size = reference.size
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = reference.hasExactly1Element) {
                 const value = this[0] = reference.nextValue
+                this.#size = 1
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -741,9 +846,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = reference.hasExactly2Elements) {
                 const firstValue = this[0] = reference.nextValue
                 const secondValue = this[1] = reference.nextValue
+                this.#size = 2
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -753,6 +862,8 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
+            const size = this.#size = reference.size
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
@@ -773,6 +884,8 @@ export class GenericCollectionHolder<const T = unknown, >
 
             if (this.#isEmpty = iteratorResult.done === true) {
                 this.#size = 0
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -782,12 +895,18 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = over 0) --------------------
 
+            this.#isNotEmpty = true
             const array: T[] = []
             this[0] = array[0] = iteratorResult.value
             let size = 0
             while (++size, !(iteratorResult = reference.next()).done)
                 this[size] = array[size] = iteratorResult.value
             this.#size = size
+            this.#hasExactly1Element = size === 1
+            this.#hasAtMost1Element = size <= 1
+            this.#hasAtLeast2Elements = size >= 2
+            this.#hasExactly2Elements = size === 2
+            this.#hasAtMost2Elements = size <= 2
             this.#array = Object.freeze(array,)
 
             //#endregion -------------------- Initialization (size = over 0) --------------------
@@ -807,7 +926,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -817,8 +938,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value as T
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -828,10 +952,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
                 const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -841,6 +968,7 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
             const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
@@ -863,7 +991,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -873,8 +1003,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
-                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, unknown, unknown>).next().value as T
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
+                const value = this[0] = reference[Symbol.iterator]().next().value as T
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -884,10 +1017,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as Iterator<T, unknown, unknown>
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
+                const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -897,8 +1033,9 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
-            const iterator = reference[Symbol.iterator]() as Iterator<T, unknown, unknown>
+            const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
             while (++index < size)
                 this[index] = array[index] = iterator.next().value as T
@@ -919,7 +1056,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (this.#isEmpty = size === 0) {
+                this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -929,8 +1068,11 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1) {
-                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, unknown, unknown>).next().value as T
+            this.#isNotEmpty = true
+            if (this.#hasExactly1Element = size === 1) {
+                const value = this[0] = reference[Symbol.iterator]().next().value as T
+                this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+                this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -940,10 +1082,13 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as Iterator<T, unknown, unknown>
+            this.#hasAtMost1Element = false
+            this.#hasAtLeast2Elements = true
+            if (this.#hasExactly2Elements = size === 2) {
+                const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
+                this.#hasAtMost2Elements = true
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -953,8 +1098,9 @@ export class GenericCollectionHolder<const T = unknown, >
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
+            this.#hasAtMost2Elements = false
             const array = new Array<T>(size,)
-            const iterator = reference[Symbol.iterator]() as Iterator<T, unknown, unknown>
+            const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
             while (++index < size)
                 this[index] = array[index] = iterator.next().value as T
@@ -974,6 +1120,8 @@ export class GenericCollectionHolder<const T = unknown, >
 
         if (this.#isEmpty = iteratorResult.done === true) {
             this.#size = 0
+            this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
+            this.#hasAtMost1Element = this.#hasAtMost2Elements = true
             this.#hasNull = this.#hasDuplicate = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
@@ -983,12 +1131,18 @@ export class GenericCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization (size = 0) --------------------
         //#region -------------------- Initialization (size = over 0) --------------------
 
+        this.#isNotEmpty = true
         const array: T[] = []
         this[0] = array[0] = iteratorResult.value
         let size = 0
         while (++size, !(iteratorResult = iterator.next()).done)
             this[size] = array[size] = iteratorResult.value
         this.#size = size
+        this.#hasExactly1Element = size === 1
+        this.#hasAtMost1Element = size <= 1
+        this.#hasAtLeast2Elements = size >= 2
+        this.#hasExactly2Elements = size === 2
+        this.#hasAtMost2Elements = size <= 2
         this.#array = Object.freeze(array,)
 
         //#endregion -------------------- Initialization (size = over 0) --------------------
@@ -1006,15 +1160,23 @@ export class GenericCollectionHolder<const T = unknown, >
     protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> { return this.#reference }
 
     /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder instance} */
-    protected get _array(): readonly T[] { return this.#array }
+    protected get _array(): Array<T> { return this.#array }
 
     //#endregion -------------------- Reference methods --------------------
 
     //#region -------------------- Size methods --------------------
 
     public override get size(): number { return this.#size }
+
     public override get isEmpty(): boolean { return this.#isEmpty }
-    public override get isNotEmpty(): boolean { return !this.isEmpty }
+    public override get isNotEmpty(): boolean { return this.#isNotEmpty }
+
+    public override get hasExactly1Element(): boolean { return this.#hasExactly1Element }
+    public override get hasAtMost1Element(): boolean { return this.#hasAtMost1Element }
+
+    public override get hasAtLeast2Elements(): boolean { return this.#hasAtLeast2Elements }
+    public override get hasExactly2Elements(): boolean { return this.#hasExactly2Elements }
+    public override get hasAtMost2Elements(): boolean { return this.#hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
@@ -1027,9 +1189,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
 
         const array = this._array
@@ -1039,7 +1201,7 @@ export class GenericCollectionHolder<const T = unknown, >
         const size = this.size
         if (index > size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
-        if (index == size)
+        if (index === size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return array[index] as T
@@ -1065,13 +1227,11 @@ export class GenericCollectionHolder<const T = unknown, >
         return getOrElseByArray(this._array, index, defaultValue,)
     }
 
-
     public override getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public override getFirstOrElse(defaultValue: ReturnCallback<T>,): T
     public override getFirstOrElse(defaultValue: ReturnCallback<unknown>,) {
         return getFirstOrElseByArray(this._array, defaultValue,)
     }
-
 
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
@@ -1229,21 +1389,18 @@ export class GenericCollectionHolder<const T = unknown, >
 
     //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has null --------------------
+    //#region -------------------- Has ‥ --------------------
 
     public override get hasNull(): boolean { return this.#hasNull ??= hasNullByArray(this._array,) }
 
     public override get hasNoNulls(): boolean { return !(this.#hasNull ??= !hasNoNullsByArray(this._array,)) }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean { return this.#hasDuplicate ??= hasDuplicateByArray(this._array,) }
 
     public override get hasNoDuplicates(): boolean { return !(this.#hasDuplicate ??= !hasNoDuplicatesByArray(this._array,)) }
 
-    //#endregion -------------------- Has duplicate --------------------
-
+    //#endregion -------------------- Has ‥ --------------------
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {
@@ -1257,11 +1414,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    protected override _hasOneByArray(values: readonly T[],): boolean {
+    protected override _hasOneByArray(values: Array<T>,): boolean {
         return hasOneWithArrayByArray(this._array, values,)
     }
 
-    protected override _hasOneBySet(values: ReadonlySet<T>,): boolean {
+    protected override _hasOneBySet(values: Set<T>,): boolean {
         return hasOneWithSetByArray(this._array, values,)
     }
 
@@ -1288,11 +1445,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    protected override _hasNotOneByArray(values: readonly T[],): boolean {
+    protected override _hasNotOneByArray(values: Array<T>,): boolean {
         return hasNotOneWithArrayByArray(this._array, values,)
     }
 
-    protected override _hasNotOneBySet(values: ReadonlySet<T>,): boolean {
+    protected override _hasNotOneBySet(values: Set<T>,): boolean {
         return hasNotOneWithSetByArray(this._array, values,)
     }
 
@@ -1319,11 +1476,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    protected override _hasAllByArray(values: readonly T[],): boolean {
+    protected override _hasAllByArray(values: Array<T>,): boolean {
         return hasAllWithArrayByArray(this._array, values,)
     }
 
-    protected override _hasAllBySet(values: ReadonlySet<T>,): boolean {
+    protected override _hasAllBySet(values: Set<T>,): boolean {
         return hasAllWithSetByArray(this._array, values,)
     }
 
@@ -1350,11 +1507,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    protected override _hasNotAllByArray(values: readonly T[],): boolean {
+    protected override _hasNotAllByArray(values: Array<T>,): boolean {
         return hasNotAllWithArrayByArray(this._array, values,)
     }
 
-    protected override _hasNotAllBySet(values: ReadonlySet<T>,): boolean {
+    protected override _hasNotAllBySet(values: Set<T>,): boolean {
         return hasNotAllWithSetByArray(this._array, values,)
     }
 
@@ -1425,9 +1582,9 @@ export class GenericCollectionHolder<const T = unknown, >
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
         if (this.isEmpty)
-            return CollectionConstants.EMPTY_COLLECTION_HOLDER
+            return EmptyCollectionHolder.get
         if (this.hasNull)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => {
+            return new LazyCollectionHolder(() => {
                 const array = this._array
                 const size = array.length
                 const tempArray = new Array<NonNullable<T>>(size,)
@@ -1462,11 +1619,11 @@ export class GenericCollectionHolder<const T = unknown, >
         return sliceWithARangeByArray(this._array, from, to,)
     }
 
-    protected override _sliceByArray(indices: readonly number[],): CollectionHolder<T> {
+    protected override _sliceByArray(indices: NumberArray,): CollectionHolder<T> {
         return sliceWithArrayByArray(this._array, indices,)
     }
 
-    protected override _sliceBySet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+    protected override _sliceBySet(indices: NumberSet,): CollectionHolder<T> {
         return sliceWithSetByArray(this._array, indices,)
     }
 
@@ -1624,23 +1781,20 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
-
-    public override [Symbol.iterator](): CollectionIterator<T> { return toIteratorByArray(this._array,) }
-
-    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------
 
-    public override toArray(): readonly T[] { return this.#array }
-    public override toMutableArray(): T[] { return toMutableArrayByArray(this._array,) }
+    public override toIterator(): CollectionIterator<T> { return toIteratorByArray(this._array,) }
 
-    public override toSet(): ReadonlySet<T> { return this.#set ??= toSetByArray(this._array,) }
-    public override toMutableSet(): Set<T> { return toMutableSetByArray(this._array,) }
+    public override toArray(): Array<T> { return this.#array }
+    public override toMutableArray(): MutableArray<T> { return toMutableArrayByArray(this._array,) }
 
-    public override toMap(): ReadonlyMap<number, T> { return this.#map ??= toMapByArray(this._array,) }
-    public override toMutableMap(): Map<number, T> { return toMutableMapByArray(this._array,) }
+    public override toSet(): Set<T> { return this.#set ??= toSetByArray(this._array,) }
+    public override toMutableSet(): MutableSet<T> { return toMutableSetByArray(this._array,) }
+
+    public override toMap(): NumberKeyMap<T> { return this.#map ??= toMapByArray(this._array,) }
+    public override toMutableMap(): MutableNumberKeyMap<T> { return toMutableMapByArray(this._array,) }
 
     //#endregion -------------------- To other structure --------------------
     //#region -------------------- To string --------------------

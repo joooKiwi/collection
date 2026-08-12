@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
-export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): boolean {
+export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -60,9 +60,9 @@ export function hasDuplicateByMinimalistCollectionHolder<const T, >(collection: 
         return false
 
     const size = collection.size
-    if (size == 0)
+    if (size === 0)
         return false
-    if (size == 1)
+    if (size === 1)
         return false
     return __validate(collection, size,)
 }
@@ -79,11 +79,9 @@ export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<C
         return false
     if (collection.isEmpty)
         return false
-
-    const size = collection.size
-    if (size == 1)
+    if (collection.hasExactly1Element)
         return false
-    return __validate(collection, size,)
+    return __validate(collection, collection.size,)
 }
 
 /**
@@ -93,14 +91,14 @@ export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<C
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
-export function hasDuplicateByArray<const T, >(collection: Nullable<readonly T[]>,): boolean {
+export function hasDuplicateByArray<const T, >(collection: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
-    if (size == 0)
+    if (size === 0)
         return false
-    if (size == 1)
+    if (size === 1)
         return false
     return __validateByArray(collection, size,)
 }
@@ -125,7 +123,7 @@ function __validate(collection: MinimalistCollectionHolder, size: number,) {
     return false
 }
 
-function __validateByArray(collection: readonly unknown[], size: number,) {
+function __validateByArray(collection: Array<unknown>, size: number,) {
     const temporaryArray = new Array(size,)
     temporaryArray[0] = collection[0]
     let amountOfItemAdded = 1

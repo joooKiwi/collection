@@ -26,7 +26,7 @@ import {SizeIndexValueHolder}                      from "./value/SizeIndexValueH
 import {ValidValueHolder}                          from "./value/ValidValueHolder"
 import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexAfterCalculationValueHolder"
 
-/** @deprecated Replace with {@link AbstractCollectionHolder}. This will be removed once a proper instance can be made */
+/** @deprecated Replace with {@link AbstractCollectionHolder}. This will be removed in version 2.1 */
 export abstract class AbstractCollectionHandlerWithIterableOrIterator<const T = unknown,
     const REFERENCE extends | Iterable<T, unknown, unknown> | Iterator<T, unknown, unknown> = | Iterable<T, unknown, unknown> | Iterator<T, unknown, unknown>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -74,7 +74,7 @@ export abstract class AbstractCollectionHandlerWithIterableOrIterator<const T = 
 
         this._hasFinished = true
         const size = this.#size = (this._lastIndexRetrieved = index) + 1
-        this.#isEmpty = size == 0
+        this.#isEmpty = size === 0
         return size
     }
 
@@ -244,7 +244,7 @@ export abstract class AbstractCollectionHandlerWithIterableOrIterator<const T = 
     protected abstract get _iterator(): Iterator<T, unknown, unknown>
 
     /** Tell that the {@link _lastIndexRetrieved} is equal to -1 */
-    protected get _isTheFirstElementRetrieved(): boolean { return this._lastIndexRetrieved == -1 }
+    protected get _isTheFirstElementRetrieved(): boolean { return this._lastIndexRetrieved === -1 }
 
     /** The last index retrieved (<b>-1</b> by default) */
     protected get _lastIndexRetrieved(): number { return this.#lastIndexRetrieved ?? -1 }
@@ -261,9 +261,9 @@ export abstract class AbstractCollectionHandlerWithIterableOrIterator<const T = 
 
         if (Number.isNaN(index,))
             return new NaNIndexValueHolder(index,)
-        if (index == Number.NEGATIVE_INFINITY)
+        if (index === Number.NEGATIVE_INFINITY)
             return new NegativeInfinityIndexValueHolder(index,)
-        if (index == Number.POSITIVE_INFINITY)
+        if (index === Number.POSITIVE_INFINITY)
             return new PositiveInfinityIndexValueHolder(index,)
 
         const collection = this._collection
@@ -310,7 +310,7 @@ export abstract class AbstractCollectionHandlerWithIterableOrIterator<const T = 
         this._lastIndexRetrieved = iteratorIndex
         this._hasFinished = true
 
-        if (index == iteratorIndex)
+        if (index === iteratorIndex)
             return new SizeIndexValueHolder(index, iteratorIndex,)
         if (index > iteratorIndex)
             return new OverSizeIndexValueHolder(index, iteratorIndex,)
@@ -330,7 +330,7 @@ export abstract class AbstractCollectionHandlerWithIterableOrIterator<const T = 
     #getInCollectionIfZeroOrPositiveIndexAndHasFinished(index: number, collection: COLLECTION,) : ValueHolder<T> {
         const lastIndex = this._lastIndexRetrieved
         const lastIndexMinus1 = lastIndex - 1
-        if (index == lastIndex)
+        if (index === lastIndex)
             return new SizeIndexValueHolder(index, lastIndex,)
         if (index > lastIndexMinus1)
             return new OverSizeIndexValueHolder(index, lastIndex,)
