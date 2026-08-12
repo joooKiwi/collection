@@ -13,8 +13,10 @@
 
     "test":               "jest",
     "test-with-coverage": "jest --coverage",
-    "test-collection":    "jest --testNamePattern=CollectionHolderTest",
-    "test-iterator":      "jest --testNamePattern=CollectionIteratorTest",
+    "test-collection":    "jest CollectionHolder",
+    "test-iterator":      "jest CollectionIterator",
+    "test-tuple":         "jest Tuple",
+    "test-is":            "jest is",
 
     "test-pack":    "npm pack --dry-run",
     "test-publish": "npm publish --@access=public --dry-run",
