@@ -3571,7 +3571,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
             return EmptyCollectionHolder.get
         if (n === -1)
             return new CollectionHolderOf1(this.value1,)
-        return EmptyCollectionHolder.get
+        return this
     }
 
     //#endregion -------------------- Drop last --------------------
