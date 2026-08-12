@@ -17,10 +17,12 @@ import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 
 @NotNullByDefault
 public class EmptyIterator<T extends @Nullable Object>
-        implements ImmutableListIterator<T> {
+        implements ImmutableListIterator<T>,
+                   ImmutableEnumeration<T> {
 
     //#region -------------------- Singleton usage --------------------
 
@@ -47,10 +49,12 @@ public class EmptyIterator<T extends @Nullable Object>
 
     //#region -------------------- Next methods --------------------
 
+    @Contract(value = ALWAYS_FALSE_0, pure = true) @Override public boolean hasMoreElements() { return false; }
     @Contract(value = ALWAYS_FALSE_0, pure = true) @Override public boolean hasNext() { return false; }
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int nextIndex() { return 0; }
 
+    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T       nextElement() { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
     @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T       next()        { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
     @Contract(value = ALWAYS_FAIL_0, pure = true)           public boolean nextBoolean() { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
     @Contract(value = ALWAYS_FAIL_0, pure = true)           public char    nextChar()    { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
@@ -79,7 +83,6 @@ public class EmptyIterator<T extends @Nullable Object>
     @Contract(value = ALWAYS_FAIL_0, pure = true)           public double  previousDouble()  { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
 
     //#endregion -------------------- Previous methods --------------------
-
     //#region -------------------- Loop methods --------------------
 
     @Contract(pure = true)           public void forEachRemaining(                                                             ) {}
@@ -96,6 +99,11 @@ public class EmptyIterator<T extends @Nullable Object>
     @Contract(pure = true)           public void forEachRemaining(final @Nullable Object @Nullable ...                  ignored) {}
 
     //#endregion -------------------- Loop methods --------------------
+    //#region -------------------- As iterator --------------------
+
+    @Contract(ALWAYS_THIS_0) @Override public EmptyIterator<T> asIterator() { return this; }
+
+    //#endregion -------------------- As iterator --------------------
 
     //#endregion -------------------- Methods --------------------
 
