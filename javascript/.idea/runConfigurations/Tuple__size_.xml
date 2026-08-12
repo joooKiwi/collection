@@ -8,7 +8,7 @@
     <scope-kind value="SUITE" />
     <test-file value="$PROJECT_DIR$/test/Tuple.01 - size.test.ts" />
     <test-names>
-      <test-name value="Tuple (size)" />
+      <test-name value="TupleTest (size)" />
     </test-names>
     <method v="2" />
   </configuration>
