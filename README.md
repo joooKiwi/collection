@@ -2654,6 +2654,7 @@ This is the most bare-bones structure
 [js-v1.12]: https://github.com/joooKiwi/collection/releases/tag/v1.12.0-js
 [js-v1.13]: https://github.com/joooKiwi/collection/releases/tag/v1.13.0-js
 [js-v1.14]: https://github.com/joooKiwi/collection/releases/tag/v1.14.0-js
+[js-v2.0]:  https://github.com/joooKiwi/collection/releases/tag/v2.0.1-js
 
 [lazy]: https://github.com/joookiwi/lazy
 [js-lazy-v1.2]: https://github.com/joooKiwi/lazy/releases/tag/v1.2.0-js
