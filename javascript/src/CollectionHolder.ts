@@ -421,7 +421,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the element at the specified index in the {@link CollectionHolder collection}
-     * or <b>null</b> if it is over the {@link size}
+     * or `null` if it is over the {@link size}
      *
      * @param index The index to retrieve a value
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-null.html Kotlin getOrNull(index)
@@ -432,7 +432,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the element at the specified index in the {@link CollectionHolder collection}
-     * or <b>null</b> if it is over the {@link size}
+     * or `null` if it is over the {@link size}
      *
      * @param index The index to retrieve a value
      * @alias CollectionHolder.getOrNull
@@ -441,7 +441,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the element at the specified index in the {@link CollectionHolder collection}
-     * or <b>null</b> if it is over the {@link size}
+     * or `null` if it is over the {@link size}
      *
      * @param index The index to retrieve a value
      * @alias CollectionHolder.getOrNull
@@ -453,7 +453,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first element in the current {@link CollectionHolder instance}
-     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     * or `null` if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
@@ -465,7 +465,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last element in the current {@link CollectionHolder instance}
-     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     * or `null` if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
@@ -517,7 +517,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first element in the current {@link CollectionHolder instance}
-     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     * or `null` if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
@@ -527,7 +527,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the {@link collection}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The matching predicate
      * @see ReadonlyArray.find
@@ -541,7 +541,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the {@link collection}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The matching predicate
      * @see ReadonlyArray.find
@@ -596,7 +596,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first element in the current {@link CollectionHolder instance}
-     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     * or `null` if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
@@ -606,7 +606,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the {@link collection}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The matching predicate
      * @see ReadonlyArray.find
@@ -620,7 +620,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the {@link collection}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The matching predicate
      * @see ReadonlyArray.find
@@ -676,7 +676,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last element in the current {@link CollectionHolder instance}
-     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     * or `null` if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
@@ -686,7 +686,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The matching predicate
      * @see ReadonlyArray.findLast
@@ -700,7 +700,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The matching predicate
      * @see ReadonlyArray.findLast
@@ -755,7 +755,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last element in the current {@link CollectionHolder instance}
-     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     * or `null` if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
@@ -765,7 +765,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The matching predicate
      * @see ReadonlyArray.findLast
@@ -779,7 +779,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The matching predicate
      * @see ReadonlyArray.findLast
@@ -848,7 +848,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
@@ -861,7 +861,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
@@ -874,7 +874,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
@@ -888,7 +888,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
@@ -904,7 +904,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param callback The given predicate
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -915,7 +915,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -926,7 +926,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param callback The given predicate
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -938,7 +938,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -952,7 +952,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
@@ -965,7 +965,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
@@ -978,7 +978,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
@@ -992,7 +992,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
@@ -1021,7 +1021,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
@@ -1036,7 +1036,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
@@ -1049,7 +1049,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
@@ -1090,7 +1090,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
@@ -1103,7 +1103,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
-     * or <b>null</b> otherwise
+     * or `null` otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
@@ -1245,13 +1245,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or `null`
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -1259,13 +1259,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or `null`
      * @alias CollectionHolder.firstIndexOfOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -1339,13 +1339,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element The element to find
      * @param from    The inclusive starting index (<code>0</code> by default)
      * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -1524,13 +1524,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -1538,13 +1538,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @alias CollectionHolder.indexOfFirstOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -1553,13 +1553,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @alias CollectionHolder.indexOfFirstOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -1738,13 +1738,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -1752,13 +1752,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @alias CollectionHolder.indexOfFirstIndexed
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -1767,13 +1767,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @alias CollectionHolder.indexOfFirstIndexed
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -1897,13 +1897,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -1911,13 +1911,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @alias CollectionHolder.indexOfLastOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -2040,13 +2040,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -2054,13 +2054,13 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
+     * or `null` if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+     * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or `null`
      * @alias CollectionHolder.indexOfLastIndexedOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -2079,7 +2079,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
+     * @return {boolean} `true` only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
      * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -2096,7 +2096,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
+     * @return {boolean} `true` only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
      * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -2113,7 +2113,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
+     * @return {boolean} `true` only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
      * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -2131,7 +2131,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
+     * @return {boolean} `true` only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
      * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -2165,7 +2165,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The condition to check on each value
-     * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder instance}
+     * @return {boolean} `true` if at least one {@link predicate} is `true` on a value of the current {@link CollectionHolder instance}
      * @see ReadonlyArray.some
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java Stream.anyMatch(predicate)
@@ -2196,7 +2196,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The condition to check on each value
-     * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder instance}
+     * @return {boolean} `true` if at least one {@link predicate} is `true` on a value of the current {@link CollectionHolder instance}
      * @see ReadonlyArray.some
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java Stream.anyMatch(predicate)
@@ -2225,7 +2225,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The condition to check on each value
-     * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder instance}
+     * @return {boolean} `false` if at least one {@link predicate} is `true` on a value of the current {@link CollectionHolder instance}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#noneMatch(java.util.function.Predicate) Java Stream.noneMatch(predicate)
      * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/IntStream.html#noneMatch(java.util.function.IntPredicate) Java IntStream.noneMatch(predicate)
@@ -2239,25 +2239,25 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has null --------------------
 
     /**
-     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
+     * The {@link CollectionHolder} has at least one `null` or `undefined`
      *
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if one element is `null` or `undefined`
      */
     readonly hasNull: boolean
 
     /**
-     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
+     * The {@link CollectionHolder} has at least one `null` or `undefined`
      *
      * @alias CollectionHolder.hasNull
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if one element is `null` or `undefined`
      */
     readonly includesNull: this["hasNull"]
 
     /**
-     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
+     * The {@link CollectionHolder} has at least one `null` or `undefined`
      *
      * @alias CollectionHolder.hasNull
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if one element is `null` or `undefined`
      */
     readonly containsNull: this["hasNull"]
 
@@ -2265,25 +2265,25 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has no nulls --------------------
 
     /**
-     * The {@link CollectionHolder} has no <b>null</b> or <b>undefined</b>
+     * The {@link CollectionHolder} has no `null` or `undefined`
      *
-     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if no element is `null` or `undefined`
      */
     readonly hasNoNulls: boolean
 
     /**
-     * The {@link CollectionHolder} has no <b>null</b> or <b>undefined</b>
+     * The {@link CollectionHolder} has no `null` or `undefined`
      *
      * @alias CollectionHolder.hasNoNulls
-     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if no element is `null` or `undefined`
      */
     readonly includesNoNulls: this["hasNoNulls"]
 
     /**
-     * The {@link CollectionHolder} has no <b>null</b> or <b>undefined</b>
+     * The {@link CollectionHolder} has no `null` or `undefined`
      *
      * @alias CollectionHolder.hasNoNulls
-     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if no element is `null` or `undefined`
      */
     readonly containsNoNulls: this["hasNoNulls"]
 
@@ -2293,7 +2293,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * The {@link CollectionHolder} has at least one duplicate value
      *
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     * @return {boolean} `true` only if one element is equal (===) to another one
      */
     readonly hasDuplicate: boolean
 
@@ -2301,7 +2301,7 @@ export interface CollectionHolder<out T = unknown, >
      * The {@link CollectionHolder} has at least one duplicate value
      *
      * @alias CollectionHolder.hasDuplicate
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     * @return {boolean} `true` only if one element is equal (===) to another one
      */
     readonly includesDuplicate: this["hasDuplicate"]
 
@@ -2309,7 +2309,7 @@ export interface CollectionHolder<out T = unknown, >
      * The {@link CollectionHolder} has at least one duplicate value
      *
      * @alias CollectionHolder.hasDuplicate
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     * @return {boolean} `true` only if one element is equal (===) to another one
      */
     readonly containsDuplicate: this["hasDuplicate"]
 
@@ -2319,7 +2319,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * The {@link CollectionHolder} has no duplicated value
      *
-     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     * @return {boolean} `true` only if no element is equal (===) to another one
      */
     readonly hasNoDuplicates: boolean
 
@@ -2327,7 +2327,7 @@ export interface CollectionHolder<out T = unknown, >
      * The {@link CollectionHolder} has no duplicated value
      *
      * @alias CollectionHolder.hasNoDuplicates
-     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     * @return {boolean} `true` only if no element is equal (===) to another one
      */
     readonly includesNoDuplicates: this["hasNoDuplicates"]
 
@@ -2335,7 +2335,7 @@ export interface CollectionHolder<out T = unknown, >
      * The {@link CollectionHolder} has no duplicated value
      *
      * @alias CollectionHolder.hasNoDuplicates
-     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     * @return {boolean} `true` only if no element is equal (===) to another one
      */
     readonly containsNoDuplicates: this["hasNoDuplicates"]
 
@@ -2347,7 +2347,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder instance}
+     * @return {boolean} `true` if the {@link value} is present in the current {@link CollectionHolder instance}
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -2362,7 +2362,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder instance}
+     * @return {boolean} `true` if the {@link value} is present in the current {@link CollectionHolder instance}
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -2378,7 +2378,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder instance}
+     * @return {boolean} `true` if the {@link value} is present in the current {@link CollectionHolder instance}
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -2397,7 +2397,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is not present in the current {@link CollectionHolder instance}
+     * @return {boolean} `true` if the {@link value} is not present in the current {@link CollectionHolder instance}
      */
     hasNot(value: T,): boolean
 
@@ -2405,7 +2405,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>false</b> if the {@link value} is not present in the current {@link CollectionHolder instance}
+     * @return {boolean} `false` if the {@link value} is not present in the current {@link CollectionHolder instance}
      * @alias CollectionHolder.hasNot
      */
     includesNot(value: T,): boolean
@@ -2414,7 +2414,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>false</b> if the {@link value} is not present in the current {@link CollectionHolder instance}
+     * @return {boolean} `false` if the {@link value} is not present in the current {@link CollectionHolder instance}
      * @alias CollectionHolder.hasNot
      */
     containsNot(value: T,): boolean
@@ -3326,9 +3326,9 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Require no nulls --------------------
 
     /**
-     * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder instance}
+     * Require that no items are `null` or `undefined` in the current {@link CollectionHolder instance}
      *
-     * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the current collection
+     * @throws TypeError There is `null` or `undefined` value in the current collection
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
      * @see CollectionHolder.filterNotNull
      * @return {this} The current {@link SortableCollectionHolder collection}
@@ -3481,7 +3481,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Filter not null --------------------
 
     /**
-     * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+     * Get a new {@link CollectionHolder} without `null` or `undefined`
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
      * @apiNote The current instance can be returned if no nulls are known to be absent
@@ -4609,7 +4609,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param separator The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
      * @param prefix    The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
      * @param postfix   The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
-     * @param limit     The maximum number of items to loop (to the end by default if <b>null</b>)
+     * @param limit     The maximum number of items to loop (to the end by default if `null`)
      * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
      * @param transform A callback to transform into a {@link String}
      * @throws ForbiddenIndexException The {@link limit} is a forbidden {@link Number} ({@link Number.NaN NaN})
@@ -4635,7 +4635,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param separator The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
      * @param prefix    The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
      * @param postfix   The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
-     * @param limit     The maximum number of items to loop (to the end by default if <b>null</b>)
+     * @param limit     The maximum number of items to loop (to the end by default if `null`)
      * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
      * @param transform A callback to transform into a {@link String}
      * @throws ForbiddenIndexException The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
