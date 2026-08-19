@@ -26,7 +26,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -40,7 +40,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 export function findFirstOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -71,7 +71,7 @@ export function findFirstOrNull<const T, >(collection: Nullable<| MinimalistColl
 
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -85,7 +85,7 @@ export function findFirstOrNull<const T, >(collection: Nullable<| MinimalistColl
 export function findFirstOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -112,7 +112,7 @@ export function findFirstOrNullByMinimalistCollectionHolder<const T, >(collectio
 
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -126,7 +126,7 @@ export function findFirstOrNullByMinimalistCollectionHolder<const T, >(collectio
 export function findFirstOrNullByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -151,7 +151,7 @@ export function findFirstOrNullByCollectionHolder<const T, >(collection: Nullabl
 
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -165,7 +165,7 @@ export function findFirstOrNullByCollectionHolder<const T, >(collection: Nullabl
 export function findFirstOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate

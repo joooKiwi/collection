@@ -23,7 +23,7 @@ import {findLastOrNull, findLastOrNullByArray, findLastOrNullByCollectionHolder,
 
 /**
  * Get the last element in the {@link collection}
- * or <b>null</b> if the {@link collection} <b>is empty</b>
+ * or `null` if the {@link collection} <b>is empty</b>
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -34,7 +34,7 @@ import {findLastOrNull, findLastOrNullByArray, findLastOrNullByCollectionHolder,
 export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): NullOr<T>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
@@ -49,7 +49,7 @@ export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectio
 export function lastOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
@@ -70,7 +70,7 @@ export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectio
 
 /**
  * Get the last element in the {@link collection}
- * or <b>null</b> if the {@link collection} <b>is empty</b>
+ * or `null` if the {@link collection} <b>is empty</b>
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -81,7 +81,7 @@ export function lastOrNull<const T, >(collection: Nullable<| MinimalistCollectio
 export function lastOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): NullOr<T>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -96,7 +96,7 @@ export function lastOrNullByMinimalistCollectionHolder<const T, >(collection: Nu
 export function lastOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -116,7 +116,7 @@ export function lastOrNullByMinimalistCollectionHolder<const T, >(collection: Nu
 
 /**
  * Get the last element in the {@link collection}
- * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * or `null` if the {@link collection} {@link CollectionHolder.isEmpty is empty}
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -127,7 +127,7 @@ export function lastOrNullByMinimalistCollectionHolder<const T, >(collection: Nu
 export function lastOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): NullOr<T>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -142,7 +142,7 @@ export function lastOrNullByCollectionHolder<const T, >(collection: Nullable<Col
 export function lastOrNullByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -162,7 +162,7 @@ export function lastOrNullByCollectionHolder<const T, >(collection: Nullable<Col
 
 /**
  * Get the last element in the {@link collection}
- * or <b>null</b> if the {@link collection} <b>is empty</b>
+ * or `null` if the {@link collection} <b>is empty</b>
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -173,7 +173,7 @@ export function lastOrNullByCollectionHolder<const T, >(collection: Nullable<Col
 export function lastOrNullByArray<const T, >(collection: Nullable<Array<T>>,): NullOr<T>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -188,7 +188,7 @@ export function lastOrNullByArray<const T, >(collection: Nullable<Array<T>>,): N
 export function lastOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate

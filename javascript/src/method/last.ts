@@ -25,7 +25,7 @@ import {findLast, findLastByArray, findLastByCollectionHolder, findLastByMinimal
  * Get the last element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b</b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
@@ -39,7 +39,7 @@ export function last<const T, >(collection: Nullable<| MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -54,7 +54,7 @@ export function last<const T, const S extends T, >(collection: Nullable<| Minima
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -74,7 +74,7 @@ export function last<const T, >(collection: Nullable<| MinimalistCollectionHolde
  * Get the last element in the {@link collection}
  *
  * @param collection The nullable collection
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
@@ -88,7 +88,7 @@ export function lastByMinimalistCollectionHolder<const T, >(collection: Nullable
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -103,7 +103,7 @@ export function lastByMinimalistCollectionHolder<const T, const S extends T, >(c
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -122,7 +122,7 @@ export function lastByMinimalistCollectionHolder<const T, >(collection: Nullable
  * Get the last element in the {@link collection}
  *
  * @param collection The nullable collection
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
@@ -136,7 +136,7 @@ export function lastByCollectionHolder<const T, >(collection: Nullable<Collectio
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -151,7 +151,7 @@ export function lastByCollectionHolder<const T, const S extends T, >(collection:
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -170,7 +170,7 @@ export function lastByCollectionHolder<const T, >(collection: Nullable<Collectio
  * Get the last element in the {@link collection}
  *
  * @param collection The nullable collection
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
@@ -184,7 +184,7 @@ export function lastByArray<const T, >(collection: Nullable<Array<T>>,): T
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -199,7 +199,7 @@ export function lastByArray<const T, const S extends T, >(collection: Nullable<A
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)

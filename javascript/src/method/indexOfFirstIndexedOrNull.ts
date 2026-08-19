@@ -27,14 +27,14 @@ import {isMinimalistCollectionHolder}               from "./isMinimalistCollecti
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
- * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -55,14 +55,14 @@ export function indexOfFirstIndexedOrNull<const T, >(collection: Nullable<| Mini
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -82,14 +82,14 @@ export function indexOfFirstIndexedOrNullByMinimalistCollectionHolder<const T, >
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -109,14 +109,14 @@ export function indexOfFirstIndexedOrNullByCollectionHolder<const T, >(collectio
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
- * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction

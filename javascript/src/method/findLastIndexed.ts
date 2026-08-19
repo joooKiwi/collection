@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -46,7 +46,7 @@ export function findLastIndexed<const T, const S extends T, >(collection: Nullab
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -77,7 +77,7 @@ export function findLastIndexed<const T, >(collection: Nullable<| MinimalistColl
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -91,7 +91,7 @@ export function findLastIndexedByMinimalistCollectionHolder<const T, const S ext
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -118,7 +118,7 @@ export function findLastIndexedByMinimalistCollectionHolder<const T, >(collectio
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -132,7 +132,7 @@ export function findLastIndexedByCollectionHolder<const T, const S extends T, >(
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -157,7 +157,7 @@ export function findLastIndexedByCollectionHolder<const T, >(collection: Nullabl
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
@@ -171,7 +171,7 @@ export function findLastIndexedByArray<const T, const S extends T, >(collection:
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} is `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)

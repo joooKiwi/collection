@@ -48,7 +48,7 @@ export function __startingIndex(value: number, size: number,): number {
 
 /**
  * Get the starting index between 0 and the <code>{@link size} - 1</code>
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param value The value to calculate
  * @param size  The size (either in a {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
@@ -108,7 +108,7 @@ export function __endingIndex(value: number, size: number,) {
 
 /**
  * Get the ending index between 0 and the <code>{@link size} - 1</code>
- * or <b>null</b>
+ * or `null`
  *
  * @param value The value to calculate
  * @param size  The size (either in an {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})

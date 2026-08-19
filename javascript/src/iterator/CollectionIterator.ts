@@ -220,13 +220,13 @@ export interface CollectionIterator<out T = unknown, >
 
     /**
      * Get the first index of the {@link CollectionIterator iterator}.
-     * If it is <b>null</b>, then it is empty, otherwise, it should be <b>0</b>.
+     * If it is `null`, then it is empty, otherwise, it should be <b>0</b>.
      */
     get firstIndex(): NullOrZeroNumber
 
     /**
      * Get the last index of the {@link CollectionIterator iterator}.
-     * If it is <b>null</b>, then it is empty, otherwise, it should be <code>{@link CollectionIterator.size} - 1</code>.
+     * If it is `null`, then it is empty, otherwise, it should be <code>{@link CollectionIterator.size} - 1</code>.
      */
     get lastIndex(): NullOrNumber
 

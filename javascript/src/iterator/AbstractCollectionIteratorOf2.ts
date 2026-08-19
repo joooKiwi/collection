@@ -142,7 +142,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
      */
     protected set _nextIndex(value: NullOrNumber<| 0 | 1>,) { this.#nextIndex = value }
 
-    /** Tell that the next index has been initialized to either <b>null</b> or a {@link Number} */
+    /** Tell that the next index has been initialized to either `null` or a {@link Number} */
     protected get _isNextIndexInitialized(): boolean { return this.#nextIndex !== undefined }
 
 
@@ -241,7 +241,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
      */
     protected set _previousIndex(value: NullOrNumber<| 0 | 1>,) { this.#previousIndex = value }
 
-    /** Tell that the previous index has been initialized to either <b>null</b> or a {@link Number} */
+    /** Tell that the previous index has been initialized to either `null` or a {@link Number} */
     protected get _isPreviousIndexInitialized(): boolean { return this.#previousIndex !== undefined }
 
 

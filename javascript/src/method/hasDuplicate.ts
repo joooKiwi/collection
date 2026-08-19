@@ -27,7 +27,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * The {@link collection} has at least one duplicate value
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+ * @return {boolean} `true` only if one element is equal (===) to another one
  * @extensionFunction
  */
 export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
@@ -52,7 +52,7 @@ export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollect
  * The {@link collection} has at least one duplicate value
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+ * @return {boolean} `true` only if one element is equal (===) to another one
  * @extensionFunction
  */
 export function hasDuplicateByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
@@ -71,7 +71,7 @@ export function hasDuplicateByMinimalistCollectionHolder<const T, >(collection: 
  * The {@link collection} has at least one duplicate value
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+ * @return {boolean} `true` only if one element is equal (===) to another one
  * @extensionFunction
  */
 export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): boolean {
@@ -88,7 +88,7 @@ export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<C
  * The {@link collection} has at least one duplicate value
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+ * @return {boolean} `true` only if one element is equal (===) to another one
  * @extensionFunction
  */
 export function hasDuplicateByArray<const T, >(collection: Nullable<Array<T>>,): boolean {

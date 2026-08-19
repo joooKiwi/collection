@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -47,7 +47,7 @@ export function all<const T, const S extends T, >(collection: Nullable<Minimalis
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder})
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -64,7 +64,7 @@ export function all<const T, const S extends T, >(collection: Nullable<Collectio
  *
  * @param collection The {@link Nullable nullable} collection ({@link ReadonlyArray Array})
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -81,7 +81,7 @@ export function all<const T, const S extends T, >(collection: Nullable<Array<T>>
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -116,7 +116,7 @@ export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -133,7 +133,7 @@ export function allByMinimalistCollectionHolder<const T, const S extends T, >(co
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -164,7 +164,7 @@ export function allByMinimalistCollectionHolder<const T, >(collection: Nullable<
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -181,7 +181,7 @@ export function allByCollectionHolder<const T, const S extends T, >(collection: 
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -210,7 +210,7 @@ export function allByCollectionHolder<const T, >(collection: Nullable<Collection
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -227,7 +227,7 @@ export function allByArray<const T, const S extends T, >(collection: Nullable<Ar
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} `true` only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)

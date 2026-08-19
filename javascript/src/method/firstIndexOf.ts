@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
  * @return {number} The first index associated to the {@link element} found
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.indexOf
@@ -53,7 +53,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @param element    The element to find
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The first index associated to the {@link element} found after {@link from}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
  * @throws IndexNotFoundException    No index could be found
@@ -76,7 +76,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
- * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexNotFoundException     No index could be found
@@ -111,7 +111,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @param collection The nullable collection
  * @param element    The element to find
  * @return {number} The first index associated to the {@link element} found
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.indexOf
@@ -131,7 +131,7 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @param element    The element to find
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The first index associated to the {@link element} found after {@link from}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
  * @throws IndexNotFoundException    No index could be found
@@ -154,7 +154,7 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
- * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexNotFoundException     No index could be found
@@ -188,7 +188,7 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @param collection The nullable collection
  * @param element    The element to find
  * @return {number} The first index associated to the {@link element} found
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.indexOf
@@ -208,7 +208,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @param element    The element to find
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The first index associated to the {@link element} found after {@link from}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
  * @throws IndexNotFoundException    No index could be found
@@ -231,7 +231,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
- * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexNotFoundException     No index could be found
@@ -265,7 +265,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @param collection The nullable collection
  * @param element    The element to find
  * @return {number} The first index associated to the {@link element} found
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.indexOf
@@ -285,7 +285,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<Array<T>>, e
  * @param element    The element to find
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The first index associated to the {@link element} found after {@link from}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
  * @throws IndexNotFoundException    No index could be found
@@ -308,7 +308,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<Array<T>>, e
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
- * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexNotFoundException     No index could be found

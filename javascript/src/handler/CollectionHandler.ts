@@ -29,7 +29,7 @@ export interface CollectionHandler<out T = unknown, > {
     /** Tell if the {@link CollectionHandler handler} is empty */
     get isEmpty(): boolean
 
-    /** Tell if the {@link CollectionHandler handler} has at least one <b>null</b> / <b>undefined</b> value */
+    /** Tell if the {@link CollectionHandler handler} has at least one `null` / `undefined` value */
     get hasNull(): boolean
 
     /** Tell if the {@link CollectionHandler handler} has at least one duplicate value */

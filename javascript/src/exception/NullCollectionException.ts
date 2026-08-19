@@ -16,7 +16,7 @@ import {EmptyCollectionException} from "./EmptyCollectionException"
 
 /**
  * An {@link Error exception} made to tell that the <code>collection</code>
- * was <b>null</b> or <b>undefined</b> while not being expected to be
+ * was `null` or `undefined` while not being expected to be
  */
 export class NullCollectionException<const T extends NullOr<NumericOrObject> = null,
     const CAUSE extends Error = never, >

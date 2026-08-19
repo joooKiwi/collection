@@ -24,7 +24,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The `null` {@link collection} itself
@@ -34,132 +34,132 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function requireNoNulls<const INSTANCE extends NullOrUndefined = NullOrUndefined, >(collection: INSTANCE,): INSTANCE
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: CollectionHolder<Nullable<T>>,): CollectionHolder<T>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: NullOr<CollectionHolder<T>>,): NullOr<CollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: UndefinedOr<CollectionHolder<T>>,): UndefinedOr<CollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: Nullable<CollectionHolder<T>>,): Nullable<CollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: MinimalistCollectionHolder<T>,): MinimalistCollectionHolder<NonNullable<T>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: NullOr<MinimalistCollectionHolder<T>>,): NullOr<MinimalistCollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: UndefinedOr<MinimalistCollectionHolder<T>>,): UndefinedOr<MinimalistCollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Nullable<MinimalistCollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: Array<T>,): Array<NonNullable<T>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: NullOr<Array<T>>,): NullOr<Array<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: UndefinedOr<Array<T>>,): UndefinedOr<Array<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
@@ -185,7 +185,7 @@ export function requireNoNulls<const T, >(collection: Nullable<| MinimalistColle
 
 
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The `null` {@link collection} itself
@@ -195,88 +195,88 @@ export function requireNoNulls<const T, >(collection: Nullable<| MinimalistColle
  */
 export function requireNoNullsByMinimalistCollectionHolder<const INSTANCE extends NullOrUndefined = NullOrUndefined, >(collection: INSTANCE,): INSTANCE
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection: CollectionHolder<T>,): CollectionHolder<NonNullable<T>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection: NullOr<CollectionHolder<T>>,): NullOr<CollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection: UndefinedOr<CollectionHolder<T>>,): UndefinedOr<CollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Nullable<CollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>,): MinimalistCollectionHolder<NonNullable<T>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Nullable<MinimalistCollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection: NullOr<MinimalistCollectionHolder<T>>,): NullOr<MinimalistCollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
@@ -298,7 +298,7 @@ export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection
 }
 
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The `null` {@link collection} itself
@@ -308,44 +308,44 @@ export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection
  */
 export function requireNoNullsByCollectionHolder<const INSTANCE extends NullOrUndefined = NullOrUndefined, >(collection: INSTANCE,): INSTANCE
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByCollectionHolder<const T, >(collection: CollectionHolder<T>,): CollectionHolder<NonNullable<T>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByCollectionHolder<const T, >(collection: NullOr<CollectionHolder<T>>,): NullOr<CollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByCollectionHolder<const T, >(collection: UndefinedOr<CollectionHolder<T>>,): UndefinedOr<CollectionHolder<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
@@ -362,7 +362,7 @@ export function requireNoNullsByCollectionHolder<const T, >(collection: Nullable
 }
 
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The `null` {@link collection} itself
@@ -372,44 +372,44 @@ export function requireNoNullsByCollectionHolder<const T, >(collection: Nullable
  */
 export function requireNoNullsByArray<const INSTANCE extends NullOrUndefined = NullOrUndefined, >(collection: INSTANCE,): INSTANCE
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByArray<const T, >(collection: readonly Nullable<T>[],): Array<NonNullable<T>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByArray<const T, >(collection: NullOr<readonly Nullable<T>[]>,): NullOr<Array<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
 export function requireNoNullsByArray<const T, >(collection: UndefinedOr<readonly Nullable<T>[]>,): UndefinedOr<Array<NonNullable<T>>>
 /**
- * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
+ * Require that no items are `null` or `undefined` in the {@link collection}
  *
  * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} itself
- * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection}
+ * @throws TypeError There is `null` or `undefined` value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction

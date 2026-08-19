@@ -28,7 +28,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is not present in the {@link collection}
  */
 export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, value: T,): boolean {
     if (collection == null)
@@ -53,7 +53,7 @@ export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHol
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is not present in the {@link collection}
  */
 export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: T,): boolean {
     if (collection == null)
@@ -70,7 +70,7 @@ export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullab
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is not present in the {@link collection}
  */
 export function hasNotByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: T,): boolean {
     if (collection == null)
@@ -85,7 +85,7 @@ export function hasNotByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is not present in the {@link collection}
  */
 export function hasNotByArray<const T, >(collection: Nullable<Array<T>>, value: T,): boolean {
     if (collection == null)

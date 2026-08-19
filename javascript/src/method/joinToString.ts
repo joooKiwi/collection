@@ -36,7 +36,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
  * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
  * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit      The maximum number of items to loop (to the end by default if <b>null</b>)
+ * @param limit      The maximum number of items to loop (to the end by default if `null`)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
@@ -79,7 +79,7 @@ export function joinToString<const T, >(collection: Nullable<| MinimalistCollect
  * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
  * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
  * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit      The maximum number of items to loop (to the end by default if <b>null</b>)
+ * @param limit      The maximum number of items to loop (to the end by default if `null`)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
@@ -117,7 +117,7 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
  * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
  * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
  * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit      The maximum number of items to loop (to the end by default if <b>null</b>)
+ * @param limit      The maximum number of items to loop (to the end by default if `null`)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
@@ -155,7 +155,7 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
  * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
  * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
  * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit      The maximum number of items to loop (to the end by default if <b>null</b>)
+ * @param limit      The maximum number of items to loop (to the end by default if `null`)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})

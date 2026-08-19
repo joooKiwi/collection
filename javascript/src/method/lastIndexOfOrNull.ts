@@ -26,14 +26,14 @@ import {isMinimalistCollectionHolder}               from "./isMinimalistCollecti
 
 /**
  * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
- * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -54,14 +54,14 @@ export function lastIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCo
 
 /**
  * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param element    The element to find
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -81,14 +81,14 @@ export function lastIndexOfOrNullByMinimalistCollectionHolder<const T, >(collect
 
 /**
  * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param element    The element to find
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -108,14 +108,14 @@ export function lastIndexOfOrNullByCollectionHolder<const T, >(collection: Nulla
 
 /**
  * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param element    The element to find
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
- * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction

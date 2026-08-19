@@ -28,7 +28,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ * Get a new {@link CollectionHolder} without `null` or `undefined`
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
@@ -54,7 +54,7 @@ export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollec
 
 
 /**
- * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ * Get a new {@link CollectionHolder} without `null` or `undefined`
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
@@ -77,7 +77,7 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
 }
 
 /**
- * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ * Get a new {@link CollectionHolder} without `null` or `undefined`
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
@@ -95,7 +95,7 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
 }
 
 /**
- * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ * Get a new {@link CollectionHolder} without `null` or `undefined`
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
