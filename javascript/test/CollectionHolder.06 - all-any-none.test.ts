@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test, vi} from "vitest"
+
 import {CollectionHolder_1Follower}                                                                                          from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                                          from "./instance/CollectionHolder_2.follower"
 import {CollectionHolder_AdaptorOfArrayFollower}                                                                             from "./instance/CollectionHolder_AdaptorOfArray.follower"
@@ -141,44 +143,44 @@ describe("CollectionHolderTest (all / any / none)", () => {
 
         describe("every", () => {
             test("all", () => {
-                const method = jest.spyOn(allModule, "all",)
+                const method = vi.spyOn(allModule, "all",)
                 every(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(allModule, "allByMinimalistCollectionHolder",)
+                const method = vi.spyOn(allModule, "allByMinimalistCollectionHolder",)
                 everyByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(allModule, "allByCollectionHolder",)
+                const method = vi.spyOn(allModule, "allByCollectionHolder",)
                 everyByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(allModule, "allByArray",)
+                const method = vi.spyOn(allModule, "allByArray",)
                 everyByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("some", () => {
             test("all", () => {
-                const method = jest.spyOn(anyModule, "any",)
+                const method = vi.spyOn(anyModule, "any",)
                 some(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(anyModule, "anyByMinimalistCollectionHolder",)
+                const method = vi.spyOn(anyModule, "anyByMinimalistCollectionHolder",)
                 someByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(anyModule, "anyByCollectionHolder",)
+                const method = vi.spyOn(anyModule, "anyByCollectionHolder",)
                 someByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(anyModule, "anyByArray",)
+                const method = vi.spyOn(anyModule, "anyByArray",)
                 someByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)

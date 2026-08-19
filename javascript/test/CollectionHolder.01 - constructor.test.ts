@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {A, AB, ABC, ABCD, EMPTY}                from "./value/arrays"
 import {ArrayByStructureForTest}                from "./instance/ArrayByStructureForTest"
 import {ArrayForTest}                           from "./instance/ArrayForTest"

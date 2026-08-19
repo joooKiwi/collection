@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {CollectionHolder_ByGenericCollection}                                                                    from "./instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByMinimalistCollection}                                                                 from "./instance/CollectionHolder_ByMinimalistCollection"
 import {A, AA, AAAA, AB, ABAB, ABCD, EMPTY, NULL, NULL_x2}                                                       from "./value/arrays"

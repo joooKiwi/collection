@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {callbackAsFail0}        from "./value/callbacks (fail)"
 import {callbackToString0}      from "./value/callbacks (string)"
 import {everyInfiniteInstances} from "./value/instances"

@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test, vi} from "vitest"
+
 import {CollectionHolder_1Follower}                                                                                                 from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                                                 from "./instance/CollectionHolder_2.follower"
 import {CollectionHolder_AdaptorOfArrayFollower}                                                                                    from "./instance/CollectionHolder_AdaptorOfArray.follower"
@@ -80,22 +82,22 @@ describe("CollectionHolderTest (joinToString)", () => {
         test("SetOf2AsCollectionHolder",      () => expect(new CollectionHolder_SetOf2Follower()             .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
 
         test("all", () => {
-            const method = jest.spyOn(joinToStringModule, "joinToString",)
+            const method = vi.spyOn(joinToStringModule, "joinToString",)
             join(null,)
             expect(method,).toHaveBeenCalledOnce()
         },)
         test("minimalist collection holder", () => {
-            const method = jest.spyOn(joinToStringModule, "joinToStringByMinimalistCollectionHolder",)
+            const method = vi.spyOn(joinToStringModule, "joinToStringByMinimalistCollectionHolder",)
             joinByMinimalistCollectionHolder(null,)
             expect(method,).toHaveBeenCalledOnce()
         },)
         test("collection holder", () => {
-            const method = jest.spyOn(joinToStringModule, "joinToStringByCollectionHolder",)
+            const method = vi.spyOn(joinToStringModule, "joinToStringByCollectionHolder",)
             joinByCollectionHolder(null,)
             expect(method,).toHaveBeenCalledOnce()
         },)
         test("array", () => {
-            const method = jest.spyOn(joinToStringModule, "joinToStringByArray",)
+            const method = vi.spyOn(joinToStringModule, "joinToStringByArray",)
             joinByArray(null,)
             expect(method,).toHaveBeenCalledOnce()
         },)

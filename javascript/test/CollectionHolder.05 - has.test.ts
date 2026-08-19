@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test, vi} from "vitest"
+
 import {expectToBeInstance}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        from "./expect/expectToBeInstance"
 import {ArrayByStructureForTest}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   from "./instance/ArrayByStructureForTest"
 import {ArrayForTest}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              from "./instance/ArrayForTest"
@@ -989,44 +991,44 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("contains", () => {
             test("all", () => {
-                const method = jest.spyOn(hasModule, "has",)
+                const method = vi.spyOn(hasModule, "has",)
                 contains(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasModule, "hasByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasModule, "hasByMinimalistCollectionHolder",)
                 containsByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasModule, "hasByCollectionHolder",)
+                const method = vi.spyOn(hasModule, "hasByCollectionHolder",)
                 containsByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasModule, "hasByArray",)
+                const method = vi.spyOn(hasModule, "hasByArray",)
                 containsByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includes", () => {
             test("all", () => {
-                const method = jest.spyOn(hasModule, "has",)
+                const method = vi.spyOn(hasModule, "has",)
                 includes(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasModule, "hasByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasModule, "hasByMinimalistCollectionHolder",)
                 includesByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasModule, "hasByCollectionHolder",)
+                const method = vi.spyOn(hasModule, "hasByCollectionHolder",)
                 includesByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasModule, "hasByArray",)
+                const method = vi.spyOn(hasModule, "hasByArray",)
                 includesByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -1034,44 +1036,44 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsNot", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotModule, "hasNot",)
+                const method = vi.spyOn(hasNotModule, "hasNot",)
                 containsNot(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotModule, "hasNotByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotModule, "hasNotByMinimalistCollectionHolder",)
                 containsNotByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotModule, "hasNotByCollectionHolder",)
+                const method = vi.spyOn(hasNotModule, "hasNotByCollectionHolder",)
                 containsNotByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotModule, "hasNotByArray",)
+                const method = vi.spyOn(hasNotModule, "hasNotByArray",)
                 containsNotByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNot", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotModule, "hasNot",)
+                const method = vi.spyOn(hasNotModule, "hasNot",)
                 includesNot(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotModule, "hasNotByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotModule, "hasNotByMinimalistCollectionHolder",)
                 includesNotByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotModule, "hasNotByCollectionHolder",)
+                const method = vi.spyOn(hasNotModule, "hasNotByCollectionHolder",)
                 includesNotByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotModule, "hasNotByArray",)
+                const method = vi.spyOn(hasNotModule, "hasNotByArray",)
                 includesNotByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -1080,352 +1082,352 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsOne", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneModule, "hasOne",)
+                const method = vi.spyOn(hasOneModule, "hasOne",)
                 containsOne(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneModule, "hasOneByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneModule, "hasOneByMinimalistCollectionHolder",)
                 containsOneByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneModule, "hasOneByCollectionHolder",)
+                const method = vi.spyOn(hasOneModule, "hasOneByCollectionHolder",)
                 containsOneByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneModule, "hasOneByArray",)
+                const method = vi.spyOn(hasOneModule, "hasOneByArray",)
                 containsOneByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsOne (array)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithArrayModule, "hasOneWithArray",)
+                const method = vi.spyOn(hasOneWithArrayModule, "hasOneWithArray",)
                 containsOneWithArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithArrayModule, "hasOneWithArrayByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithArrayModule, "hasOneWithArrayByMinimalistCollectionHolder",)
                 containsOneWithArrayByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithArrayModule, "hasOneWithArrayByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithArrayModule, "hasOneWithArrayByCollectionHolder",)
                 containsOneWithArrayByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithArrayModule, "hasOneWithArrayByArray",)
+                const method = vi.spyOn(hasOneWithArrayModule, "hasOneWithArrayByArray",)
                 containsOneWithArrayByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsOne (set)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithSetModule, "hasOneWithSet",)
+                const method = vi.spyOn(hasOneWithSetModule, "hasOneWithSet",)
                 containsOneWithSet(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithSetModule, "hasOneWithSetByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithSetModule, "hasOneWithSetByMinimalistCollectionHolder",)
                 containsOneWithSetByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithSetModule, "hasOneWithSetByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithSetModule, "hasOneWithSetByCollectionHolder",)
                 containsOneWithSetByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithSetModule, "hasOneWithSetByArray",)
+                const method = vi.spyOn(hasOneWithSetModule, "hasOneWithSetByArray",)
                 containsOneWithSetByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsOne (collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolder",)
                 containsOneWithCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByMinimalistCollectionHolder",)
                 containsOneWithCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByCollectionHolder",)
                 containsOneWithCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByArray",)
+                const method = vi.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByArray",)
                 containsOneWithCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsOne (minimalist collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolder",)
                 containsOneWithMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
                 containsOneWithMinimalistCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByCollectionHolder",)
                 containsOneWithMinimalistCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByArray",)
+                const method = vi.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByArray",)
                 containsOneWithMinimalistCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsOne (collection iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIterator",)
+                const method = vi.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIterator",)
                 containsOneWithCollectionIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByMinimalistCollectionHolder",)
                 containsOneWithCollectionIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByCollectionHolder",)
                 containsOneWithCollectionIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByArray",)
+                const method = vi.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByArray",)
                 containsOneWithCollectionIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsOne (iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIterator",)
+                const method = vi.spyOn(hasOneWithIteratorModule, "hasOneWithIterator",)
                 containsOneWithIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByMinimalistCollectionHolder",)
                 containsOneWithIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByCollectionHolder",)
                 containsOneWithIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByArray",)
+                const method = vi.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByArray",)
                 containsOneWithIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsOne (iterable)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterable",)
+                const method = vi.spyOn(hasOneWithIterableModule, "hasOneWithIterable",)
                 containsOneWithIterable(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterableByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithIterableModule, "hasOneWithIterableByMinimalistCollectionHolder",)
                 containsOneWithIterableByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterableByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithIterableModule, "hasOneWithIterableByCollectionHolder",)
                 containsOneWithIterableByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterableByArray",)
+                const method = vi.spyOn(hasOneWithIterableModule, "hasOneWithIterableByArray",)
                 containsOneWithIterableByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesOne", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneModule, "hasOne",)
+                const method = vi.spyOn(hasOneModule, "hasOne",)
                 includesOne(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneModule, "hasOneByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneModule, "hasOneByMinimalistCollectionHolder",)
                 includesOneByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneModule, "hasOneByCollectionHolder",)
+                const method = vi.spyOn(hasOneModule, "hasOneByCollectionHolder",)
                 includesOneByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneModule, "hasOneByArray",)
+                const method = vi.spyOn(hasOneModule, "hasOneByArray",)
                 includesOneByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesOne (array)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithArrayModule, "hasOneWithArray",)
+                const method = vi.spyOn(hasOneWithArrayModule, "hasOneWithArray",)
                 includesOneWithArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithArrayModule, "hasOneWithArrayByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithArrayModule, "hasOneWithArrayByMinimalistCollectionHolder",)
                 includesOneWithArrayByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithArrayModule, "hasOneWithArrayByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithArrayModule, "hasOneWithArrayByCollectionHolder",)
                 includesOneWithArrayByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithArrayModule, "hasOneWithArrayByArray",)
+                const method = vi.spyOn(hasOneWithArrayModule, "hasOneWithArrayByArray",)
                 includesOneWithArrayByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesOne (set)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithSetModule, "hasOneWithSet",)
+                const method = vi.spyOn(hasOneWithSetModule, "hasOneWithSet",)
                 includesOneWithSet(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithSetModule, "hasOneWithSetByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithSetModule, "hasOneWithSetByMinimalistCollectionHolder",)
                 includesOneWithSetByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithSetModule, "hasOneWithSetByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithSetModule, "hasOneWithSetByCollectionHolder",)
                 includesOneWithSetByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithSetModule, "hasOneWithSetByArray",)
+                const method = vi.spyOn(hasOneWithSetModule, "hasOneWithSetByArray",)
                 includesOneWithSetByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesOne (collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolder",)
                 includesOneWithCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByMinimalistCollectionHolder",)
                 includesOneWithCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByCollectionHolder",)
                 includesOneWithCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByArray",)
+                const method = vi.spyOn(hasOneWithCollectionHolderModule, "hasOneWithCollectionHolderByArray",)
                 includesOneWithCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesOne (minimalist collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolder",)
                 includesOneWithMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
                 includesOneWithMinimalistCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByCollectionHolder",)
                 includesOneWithMinimalistCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByArray",)
+                const method = vi.spyOn(hasOneWithMinimalistCollectionHolderModule, "hasOneWithMinimalistCollectionHolderByArray",)
                 includesOneWithMinimalistCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesOne (collection iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIterator",)
+                const method = vi.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIterator",)
                 includesOneWithCollectionIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByMinimalistCollectionHolder",)
                 includesOneWithCollectionIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByCollectionHolder",)
                 includesOneWithCollectionIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByArray",)
+                const method = vi.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByArray",)
                 includesOneWithCollectionIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesOne (iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIterator",)
+                const method = vi.spyOn(hasOneWithIteratorModule, "hasOneWithIterator",)
                 includesOneWithIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByMinimalistCollectionHolder",)
                 includesOneWithIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByCollectionHolder",)
                 includesOneWithIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByArray",)
+                const method = vi.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByArray",)
                 includesOneWithIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesOne (iterable)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterable",)
+                const method = vi.spyOn(hasOneWithIterableModule, "hasOneWithIterable",)
                 includesOneWithIterable(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterableByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasOneWithIterableModule, "hasOneWithIterableByMinimalistCollectionHolder",)
                 includesOneWithIterableByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterableByCollectionHolder",)
+                const method = vi.spyOn(hasOneWithIterableModule, "hasOneWithIterableByCollectionHolder",)
                 includesOneWithIterableByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterableByArray",)
+                const method = vi.spyOn(hasOneWithIterableModule, "hasOneWithIterableByArray",)
                 includesOneWithIterableByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -1433,352 +1435,352 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsNotOne", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneModule, "hasNotOne",)
+                const method = vi.spyOn(hasNotOneModule, "hasNotOne",)
                 containsNotOne(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneModule, "hasNotOneByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneModule, "hasNotOneByMinimalistCollectionHolder",)
                 containsNotOneByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneModule, "hasNotOneByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneModule, "hasNotOneByCollectionHolder",)
                 containsNotOneByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneModule, "hasNotOneByArray",)
+                const method = vi.spyOn(hasNotOneModule, "hasNotOneByArray",)
                 containsNotOneByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotOne (array)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArray",)
+                const method = vi.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArray",)
                 containsNotOneWithArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByMinimalistCollectionHolder",)
                 containsNotOneWithArrayByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByCollectionHolder",)
                 containsNotOneWithArrayByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByArray",)
+                const method = vi.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByArray",)
                 containsNotOneWithArrayByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotOne (set)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithSetModule, "hasNotOneWithSet",)
+                const method = vi.spyOn(hasNotOneWithSetModule, "hasNotOneWithSet",)
                 containsNotOneWithSet(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByMinimalistCollectionHolder",)
                 containsNotOneWithSetByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByCollectionHolder",)
                 containsNotOneWithSetByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByArray",)
+                const method = vi.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByArray",)
                 containsNotOneWithSetByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotOne (collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolder",)
                 containsNotOneWithCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByMinimalistCollectionHolder",)
                 containsNotOneWithCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByCollectionHolder",)
                 containsNotOneWithCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByArray",)
+                const method = vi.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByArray",)
                 containsNotOneWithCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotOne (minimalist collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolder",)
                 containsNotOneWithMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
                 containsNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByCollectionHolder",)
                 containsNotOneWithMinimalistCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByArray",)
+                const method = vi.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByArray",)
                 containsNotOneWithMinimalistCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotOne (collection iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIterator",)
+                const method = vi.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIterator",)
                 containsNotOneWithCollectionIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByMinimalistCollectionHolder",)
                 containsNotOneWithCollectionIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByCollectionHolder",)
                 containsNotOneWithCollectionIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByArray",)
+                const method = vi.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByArray",)
                 containsNotOneWithCollectionIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotOne (iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIterator",)
+                const method = vi.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIterator",)
                 containsNotOneWithIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByMinimalistCollectionHolder",)
                 containsNotOneWithIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByCollectionHolder",)
                 containsNotOneWithIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByArray",)
+                const method = vi.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByArray",)
                 containsNotOneWithIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotOne (iterable)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterable",)
+                const method = vi.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterable",)
                 containsNotOneWithIterable(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByMinimalistCollectionHolder",)
                 containsNotOneWithIterableByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByCollectionHolder",)
                 containsNotOneWithIterableByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByArray",)
+                const method = vi.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByArray",)
                 containsNotOneWithIterableByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotOne", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneModule, "hasNotOne",)
+                const method = vi.spyOn(hasNotOneModule, "hasNotOne",)
                 includesNotOne(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneModule, "hasNotOneByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneModule, "hasNotOneByMinimalistCollectionHolder",)
                 includesNotOneByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneModule, "hasNotOneByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneModule, "hasNotOneByCollectionHolder",)
                 includesNotOneByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneModule, "hasNotOneByArray",)
+                const method = vi.spyOn(hasNotOneModule, "hasNotOneByArray",)
                 includesNotOneByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotOne (array)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArray",)
+                const method = vi.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArray",)
                 includesNotOneWithArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByMinimalistCollectionHolder",)
                 includesNotOneWithArrayByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByCollectionHolder",)
                 includesNotOneWithArrayByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByArray",)
+                const method = vi.spyOn(hasNotOneWithArrayModule, "hasNotOneWithArrayByArray",)
                 includesNotOneWithArrayByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotOne (set)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithSetModule, "hasNotOneWithSet",)
+                const method = vi.spyOn(hasNotOneWithSetModule, "hasNotOneWithSet",)
                 includesNotOneWithSet(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByMinimalistCollectionHolder",)
                 includesNotOneWithSetByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByCollectionHolder",)
                 includesNotOneWithSetByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByArray",)
+                const method = vi.spyOn(hasNotOneWithSetModule, "hasNotOneWithSetByArray",)
                 includesNotOneWithSetByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotOne (collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolder",)
                 includesNotOneWithCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByMinimalistCollectionHolder",)
                 includesNotOneWithCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByCollectionHolder",)
                 includesNotOneWithCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByArray",)
+                const method = vi.spyOn(hasNotOneWithCollectionHolderModule, "hasNotOneWithCollectionHolderByArray",)
                 includesNotOneWithCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotOne (minimalist collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolder",)
                 includesNotOneWithMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
                 includesNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByCollectionHolder",)
                 includesNotOneWithMinimalistCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByArray",)
+                const method = vi.spyOn(hasNotOneWithMinimalistCollectionHolderModule, "hasNotOneWithMinimalistCollectionHolderByArray",)
                 includesNotOneWithMinimalistCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotOne (collection iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIterator",)
+                const method = vi.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIterator",)
                 includesNotOneWithCollectionIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByMinimalistCollectionHolder",)
                 includesNotOneWithCollectionIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByCollectionHolder",)
                 includesNotOneWithCollectionIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByArray",)
+                const method = vi.spyOn(hasNotOneWithCollectionIteratorModule, "hasNotOneWithCollectionIteratorByArray",)
                 includesNotOneWithCollectionIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotOne (iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIterator",)
+                const method = vi.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIterator",)
                 includesNotOneWithIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByMinimalistCollectionHolder",)
                 includesNotOneWithIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByCollectionHolder",)
                 includesNotOneWithIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByArray",)
+                const method = vi.spyOn(hasNotOneWithIteratorModule, "hasNotOneWithIteratorByArray",)
                 includesNotOneWithIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotOne (iterable)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterable",)
+                const method = vi.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterable",)
                 includesNotOneWithIterable(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByMinimalistCollectionHolder",)
                 includesNotOneWithIterableByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByCollectionHolder",)
+                const method = vi.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByCollectionHolder",)
                 includesNotOneWithIterableByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByArray",)
+                const method = vi.spyOn(hasNotOneWithIterableModule, "hasNotOneWithIterableByArray",)
                 includesNotOneWithIterableByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -1787,352 +1789,352 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsAll", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllModule, "hasAll",)
+                const method = vi.spyOn(hasAllModule, "hasAll",)
                 containsAll(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllModule, "hasAllByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllModule, "hasAllByMinimalistCollectionHolder",)
                 containsAllByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllModule, "hasAllByCollectionHolder",)
+                const method = vi.spyOn(hasAllModule, "hasAllByCollectionHolder",)
                 containsAllByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllModule, "hasAllByArray",)
+                const method = vi.spyOn(hasAllModule, "hasAllByArray",)
                 containsAllByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsAll (array)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithArrayModule, "hasAllWithArray",)
+                const method = vi.spyOn(hasAllWithArrayModule, "hasAllWithArray",)
                 containsAllWithArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithArrayModule, "hasAllWithArrayByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithArrayModule, "hasAllWithArrayByMinimalistCollectionHolder",)
                 containsAllWithArrayByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithArrayModule, "hasAllWithArrayByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithArrayModule, "hasAllWithArrayByCollectionHolder",)
                 containsAllWithArrayByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithArrayModule, "hasAllWithArrayByArray",)
+                const method = vi.spyOn(hasAllWithArrayModule, "hasAllWithArrayByArray",)
                 containsAllWithArrayByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsAll (set)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithSetModule, "hasAllWithSet",)
+                const method = vi.spyOn(hasAllWithSetModule, "hasAllWithSet",)
                 containsAllWithSet(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithSetModule, "hasAllWithSetByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithSetModule, "hasAllWithSetByMinimalistCollectionHolder",)
                 containsAllWithSetByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithSetModule, "hasAllWithSetByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithSetModule, "hasAllWithSetByCollectionHolder",)
                 containsAllWithSetByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithSetModule, "hasAllWithSetByArray",)
+                const method = vi.spyOn(hasAllWithSetModule, "hasAllWithSetByArray",)
                 containsAllWithSetByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsAll (collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolder",)
                 containsAllWithCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByMinimalistCollectionHolder",)
                 containsAllWithCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByCollectionHolder",)
                 containsAllWithCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByArray",)
+                const method = vi.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByArray",)
                 containsAllWithCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsAll (minimalist collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolder",)
                 containsAllWithMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
                 containsAllWithMinimalistCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByCollectionHolder",)
                 containsAllWithMinimalistCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByArray",)
+                const method = vi.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByArray",)
                 containsAllWithMinimalistCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsAll (collection iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIterator",)
+                const method = vi.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIterator",)
                 containsAllWithCollectionIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByMinimalistCollectionHolder",)
                 containsAllWithCollectionIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByCollectionHolder",)
                 containsAllWithCollectionIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByArray",)
+                const method = vi.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByArray",)
                 containsAllWithCollectionIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsAll (iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIterator",)
+                const method = vi.spyOn(hasAllWithIteratorModule, "hasAllWithIterator",)
                 containsAllWithIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByMinimalistCollectionHolder",)
                 containsAllWithIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByCollectionHolder",)
                 containsAllWithIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByArray",)
+                const method = vi.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByArray",)
                 containsAllWithIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsAll (iterable)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterable",)
+                const method = vi.spyOn(hasAllWithIterableModule, "hasAllWithIterable",)
                 containsAllWithIterable(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterableByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithIterableModule, "hasAllWithIterableByMinimalistCollectionHolder",)
                 containsAllWithIterableByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterableByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithIterableModule, "hasAllWithIterableByCollectionHolder",)
                 containsAllWithIterableByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterableByArray",)
+                const method = vi.spyOn(hasAllWithIterableModule, "hasAllWithIterableByArray",)
                 containsAllWithIterableByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesAll", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllModule, "hasAll",)
+                const method = vi.spyOn(hasAllModule, "hasAll",)
                 includesAll(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllModule, "hasAllByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllModule, "hasAllByMinimalistCollectionHolder",)
                 includesAllByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllModule, "hasAllByCollectionHolder",)
+                const method = vi.spyOn(hasAllModule, "hasAllByCollectionHolder",)
                 includesAllByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllModule, "hasAllByArray",)
+                const method = vi.spyOn(hasAllModule, "hasAllByArray",)
                 includesAllByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesAll (array)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithArrayModule, "hasAllWithArray",)
+                const method = vi.spyOn(hasAllWithArrayModule, "hasAllWithArray",)
                 includesAllWithArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithArrayModule, "hasAllWithArrayByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithArrayModule, "hasAllWithArrayByMinimalistCollectionHolder",)
                 includesAllWithArrayByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithArrayModule, "hasAllWithArrayByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithArrayModule, "hasAllWithArrayByCollectionHolder",)
                 includesAllWithArrayByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithArrayModule, "hasAllWithArrayByArray",)
+                const method = vi.spyOn(hasAllWithArrayModule, "hasAllWithArrayByArray",)
                 includesAllWithArrayByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesAll (set)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithSetModule, "hasAllWithSet",)
+                const method = vi.spyOn(hasAllWithSetModule, "hasAllWithSet",)
                 includesAllWithSet(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithSetModule, "hasAllWithSetByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithSetModule, "hasAllWithSetByMinimalistCollectionHolder",)
                 includesAllWithSetByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithSetModule, "hasAllWithSetByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithSetModule, "hasAllWithSetByCollectionHolder",)
                 includesAllWithSetByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithSetModule, "hasAllWithSetByArray",)
+                const method = vi.spyOn(hasAllWithSetModule, "hasAllWithSetByArray",)
                 includesAllWithSetByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesAll (collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolder",)
                 includesAllWithCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByMinimalistCollectionHolder",)
                 includesAllWithCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByCollectionHolder",)
                 includesAllWithCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByArray",)
+                const method = vi.spyOn(hasAllWithCollectionHolderModule, "hasAllWithCollectionHolderByArray",)
                 includesAllWithCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesAll (minimalist collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolder",)
                 includesAllWithMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
                 includesAllWithMinimalistCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByCollectionHolder",)
                 includesAllWithMinimalistCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByArray",)
+                const method = vi.spyOn(hasAllWithMinimalistCollectionHolderModule, "hasAllWithMinimalistCollectionHolderByArray",)
                 includesAllWithMinimalistCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesAll (collection iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIterator",)
+                const method = vi.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIterator",)
                 includesAllWithCollectionIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByMinimalistCollectionHolder",)
                 includesAllWithCollectionIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByCollectionHolder",)
                 includesAllWithCollectionIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByArray",)
+                const method = vi.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByArray",)
                 includesAllWithCollectionIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesAll (iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIterator",)
+                const method = vi.spyOn(hasAllWithIteratorModule, "hasAllWithIterator",)
                 includesAllWithIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByMinimalistCollectionHolder",)
                 includesAllWithIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByCollectionHolder",)
                 includesAllWithIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByArray",)
+                const method = vi.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByArray",)
                 includesAllWithIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesAll (iterable)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterable",)
+                const method = vi.spyOn(hasAllWithIterableModule, "hasAllWithIterable",)
                 includesAllWithIterable(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterableByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasAllWithIterableModule, "hasAllWithIterableByMinimalistCollectionHolder",)
                 includesAllWithIterableByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterableByCollectionHolder",)
+                const method = vi.spyOn(hasAllWithIterableModule, "hasAllWithIterableByCollectionHolder",)
                 includesAllWithIterableByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterableByArray",)
+                const method = vi.spyOn(hasAllWithIterableModule, "hasAllWithIterableByArray",)
                 includesAllWithIterableByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -2140,352 +2142,352 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsNotAll", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllModule, "hasNotAll",)
+                const method = vi.spyOn(hasNotAllModule, "hasNotAll",)
                 containsNotAll(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllModule, "hasNotAllByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllModule, "hasNotAllByMinimalistCollectionHolder",)
                 containsNotAllByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllModule, "hasNotAllByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllModule, "hasNotAllByCollectionHolder",)
                 containsNotAllByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllModule, "hasNotAllByArray",)
+                const method = vi.spyOn(hasNotAllModule, "hasNotAllByArray",)
                 containsNotAllByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotAll (array)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArray",)
+                const method = vi.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArray",)
                 containsNotAllWithArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByMinimalistCollectionHolder",)
                 containsNotAllWithArrayByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByCollectionHolder",)
                 containsNotAllWithArrayByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByArray",)
+                const method = vi.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByArray",)
                 containsNotAllWithArrayByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotAll (set)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithSetModule, "hasNotAllWithSet",)
+                const method = vi.spyOn(hasNotAllWithSetModule, "hasNotAllWithSet",)
                 containsNotAllWithSet(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByMinimalistCollectionHolder",)
                 containsNotAllWithSetByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByCollectionHolder",)
                 containsNotAllWithSetByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByArray",)
+                const method = vi.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByArray",)
                 containsNotAllWithSetByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotAll (collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolder",)
                 containsNotAllWithCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByMinimalistCollectionHolder",)
                 containsNotAllWithCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByCollectionHolder",)
                 containsNotAllWithCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByArray",)
+                const method = vi.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByArray",)
                 containsNotAllWithCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotAll (minimalist collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolder",)
                 containsNotAllWithMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
                 containsNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByCollectionHolder",)
                 containsNotAllWithMinimalistCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByArray",)
+                const method = vi.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByArray",)
                 containsNotAllWithMinimalistCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotAll (collection iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIterator",)
+                const method = vi.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIterator",)
                 containsNotAllWithCollectionIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByMinimalistCollectionHolder",)
                 containsNotAllWithCollectionIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByCollectionHolder",)
                 containsNotAllWithCollectionIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByArray",)
+                const method = vi.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByArray",)
                 containsNotAllWithCollectionIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotAll (iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIterator",)
+                const method = vi.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIterator",)
                 containsNotAllWithIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByMinimalistCollectionHolder",)
                 containsNotAllWithIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByCollectionHolder",)
                 containsNotAllWithIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByArray",)
+                const method = vi.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByArray",)
                 containsNotAllWithIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("containsNotAll (iterable)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterable",)
+                const method = vi.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterable",)
                 containsNotAllWithIterable(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByMinimalistCollectionHolder",)
                 containsNotAllWithIterableByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByCollectionHolder",)
                 containsNotAllWithIterableByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByArray",)
+                const method = vi.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByArray",)
                 containsNotAllWithIterableByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotAll", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllModule, "hasNotAll",)
+                const method = vi.spyOn(hasNotAllModule, "hasNotAll",)
                 includesNotAll(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllModule, "hasNotAllByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllModule, "hasNotAllByMinimalistCollectionHolder",)
                 includesNotAllByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllModule, "hasNotAllByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllModule, "hasNotAllByCollectionHolder",)
                 includesNotAllByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllModule, "hasNotAllByArray",)
+                const method = vi.spyOn(hasNotAllModule, "hasNotAllByArray",)
                 includesNotAllByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotAll (array)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArray",)
+                const method = vi.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArray",)
                 includesNotAllWithArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByMinimalistCollectionHolder",)
                 includesNotAllWithArrayByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByCollectionHolder",)
                 includesNotAllWithArrayByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByArray",)
+                const method = vi.spyOn(hasNotAllWithArrayModule, "hasNotAllWithArrayByArray",)
                 includesNotAllWithArrayByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotAll (set)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithSetModule, "hasNotAllWithSet",)
+                const method = vi.spyOn(hasNotAllWithSetModule, "hasNotAllWithSet",)
                 includesNotAllWithSet(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByMinimalistCollectionHolder",)
                 includesNotAllWithSetByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByCollectionHolder",)
                 includesNotAllWithSetByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByArray",)
+                const method = vi.spyOn(hasNotAllWithSetModule, "hasNotAllWithSetByArray",)
                 includesNotAllWithSetByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotAll (collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolder",)
                 includesNotAllWithCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByMinimalistCollectionHolder",)
                 includesNotAllWithCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByCollectionHolder",)
                 includesNotAllWithCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByArray",)
+                const method = vi.spyOn(hasNotAllWithCollectionHolderModule, "hasNotAllWithCollectionHolderByArray",)
                 includesNotAllWithCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotAll (minimalist collection holder)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolder",)
                 includesNotAllWithMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder",)
                 includesNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByCollectionHolder",)
                 includesNotAllWithMinimalistCollectionHolderByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByArray",)
+                const method = vi.spyOn(hasNotAllWithMinimalistCollectionHolderModule, "hasNotAllWithMinimalistCollectionHolderByArray",)
                 includesNotAllWithMinimalistCollectionHolderByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotAll (collection iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIterator",)
+                const method = vi.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIterator",)
                 includesNotAllWithCollectionIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByMinimalistCollectionHolder",)
                 includesNotAllWithCollectionIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByCollectionHolder",)
                 includesNotAllWithCollectionIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByArray",)
+                const method = vi.spyOn(hasNotAllWithCollectionIteratorModule, "hasNotAllWithCollectionIteratorByArray",)
                 includesNotAllWithCollectionIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotAll (iterator)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIterator",)
+                const method = vi.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIterator",)
                 includesNotAllWithIterator(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByMinimalistCollectionHolder",)
                 includesNotAllWithIteratorByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByCollectionHolder",)
                 includesNotAllWithIteratorByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByArray",)
+                const method = vi.spyOn(hasNotAllWithIteratorModule, "hasNotAllWithIteratorByArray",)
                 includesNotAllWithIteratorByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNotAll (iterable)", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterable",)
+                const method = vi.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterable",)
                 includesNotAllWithIterable(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByMinimalistCollectionHolder",)
                 includesNotAllWithIterableByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByCollectionHolder",)
+                const method = vi.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByCollectionHolder",)
                 includesNotAllWithIterableByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByArray",)
+                const method = vi.spyOn(hasNotAllWithIterableModule, "hasNotAllWithIterableByArray",)
                 includesNotAllWithIterableByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -2494,44 +2496,44 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsNull", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNullModule, "hasNull",)
+                const method = vi.spyOn(hasNullModule, "hasNull",)
                 containsNull(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNullModule, "hasNullByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNullModule, "hasNullByMinimalistCollectionHolder",)
                 containsNullByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNullModule, "hasNullByCollectionHolder",)
+                const method = vi.spyOn(hasNullModule, "hasNullByCollectionHolder",)
                 containsNullByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNullModule, "hasNullByArray",)
+                const method = vi.spyOn(hasNullModule, "hasNullByArray",)
                 containsNullByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNull", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNullModule, "hasNull",)
+                const method = vi.spyOn(hasNullModule, "hasNull",)
                 includesNull(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNullModule, "hasNullByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNullModule, "hasNullByMinimalistCollectionHolder",)
                 includesNullByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNullModule, "hasNullByCollectionHolder",)
+                const method = vi.spyOn(hasNullModule, "hasNullByCollectionHolder",)
                 includesNullByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNullModule, "hasNullByArray",)
+                const method = vi.spyOn(hasNullModule, "hasNullByArray",)
                 includesNullByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -2539,44 +2541,44 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsNoNulls", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNoNullsModule, "hasNoNulls",)
+                const method = vi.spyOn(hasNoNullsModule, "hasNoNulls",)
                 containsNoNulls(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNoNullsModule, "hasNoNullsByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNoNullsModule, "hasNoNullsByMinimalistCollectionHolder",)
                 containsNoNullsByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNoNullsModule, "hasNoNullsByCollectionHolder",)
+                const method = vi.spyOn(hasNoNullsModule, "hasNoNullsByCollectionHolder",)
                 containsNoNullsByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNoNullsModule, "hasNoNullsByArray",)
+                const method = vi.spyOn(hasNoNullsModule, "hasNoNullsByArray",)
                 containsNoNullsByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNoNulls", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNoNullsModule, "hasNoNulls",)
+                const method = vi.spyOn(hasNoNullsModule, "hasNoNulls",)
                 includesNoNulls(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNoNullsModule, "hasNoNullsByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNoNullsModule, "hasNoNullsByMinimalistCollectionHolder",)
                 includesNoNullsByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNoNullsModule, "hasNoNullsByCollectionHolder",)
+                const method = vi.spyOn(hasNoNullsModule, "hasNoNullsByCollectionHolder",)
                 includesNoNullsByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNoNullsModule, "hasNoNullsByArray",)
+                const method = vi.spyOn(hasNoNullsModule, "hasNoNullsByArray",)
                 includesNoNullsByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -2585,44 +2587,44 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsDuplicate", () => {
             test("all", () => {
-                const method = jest.spyOn(hasDuplicateModule, "hasDuplicate",)
+                const method = vi.spyOn(hasDuplicateModule, "hasDuplicate",)
                 containsDuplicate(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasDuplicateModule, "hasDuplicateByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasDuplicateModule, "hasDuplicateByMinimalistCollectionHolder",)
                 containsDuplicateByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasDuplicateModule, "hasDuplicateByCollectionHolder",)
+                const method = vi.spyOn(hasDuplicateModule, "hasDuplicateByCollectionHolder",)
                 containsDuplicateByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasDuplicateModule, "hasDuplicateByArray",)
+                const method = vi.spyOn(hasDuplicateModule, "hasDuplicateByArray",)
                 containsDuplicateByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesDuplicate", () => {
             test("all", () => {
-                const method = jest.spyOn(hasDuplicateModule, "hasDuplicate",)
+                const method = vi.spyOn(hasDuplicateModule, "hasDuplicate",)
                 includesDuplicate(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasDuplicateModule, "hasDuplicateByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasDuplicateModule, "hasDuplicateByMinimalistCollectionHolder",)
                 includesDuplicateByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasDuplicateModule, "hasDuplicateByCollectionHolder",)
+                const method = vi.spyOn(hasDuplicateModule, "hasDuplicateByCollectionHolder",)
                 includesDuplicateByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasDuplicateModule, "hasDuplicateByArray",)
+                const method = vi.spyOn(hasDuplicateModule, "hasDuplicateByArray",)
                 includesDuplicateByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -2630,44 +2632,44 @@ describe("CollectionHolderTest (has)", () => {
 
         describe("containsNoDuplicates", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNoDuplicatesModule, "hasNoDuplicates",)
+                const method = vi.spyOn(hasNoDuplicatesModule, "hasNoDuplicates",)
                 containsNoDuplicates(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByMinimalistCollectionHolder",)
                 containsNoDuplicatesByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByCollectionHolder",)
+                const method = vi.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByCollectionHolder",)
                 containsNoDuplicatesByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByArray",)
+                const method = vi.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByArray",)
                 containsNoDuplicatesByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("includesNoDuplicates", () => {
             test("all", () => {
-                const method = jest.spyOn(hasNoDuplicatesModule, "hasNoDuplicates",)
+                const method = vi.spyOn(hasNoDuplicatesModule, "hasNoDuplicates",)
                 includesNoDuplicates(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByMinimalistCollectionHolder",)
+                const method = vi.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByMinimalistCollectionHolder",)
                 includesNoDuplicatesByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByCollectionHolder",)
+                const method = vi.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByCollectionHolder",)
                 includesNoDuplicatesByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByArray",)
+                const method = vi.spyOn(hasNoDuplicatesModule, "hasNoDuplicatesByArray",)
                 includesNoDuplicatesByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)

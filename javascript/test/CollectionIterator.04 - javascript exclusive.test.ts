@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {CollectionHolderFromArray} from "./instance/CollectionHolderFromArray"
 import {ABCD}                      from "./value/arrays"
 

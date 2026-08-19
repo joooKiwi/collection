@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {AAAA, ABAB, ABCD} from "./value/arrays"
 import {everyNInstances}  from "./value/instances"
 

@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {CollectionIterator_ByGenericIterator}                                                                                                                                                                                                                                                                       from "./instance/CollectionIterator_ByGenericIterator"
 import {ABCD, EMPTY}                                                                                                                                                                                                                                                                                                from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2, callbackAsFailAfter1Call0, callbackAsFailAfter1Call1, callbackAsFailAfter1Call2, callbackAsFailAfter2Calls0, callbackAsFailAfter2Calls1, callbackAsFailAfter2Calls2, callbackAsFailAfter4Calls0, callbackAsFailAfter4Calls1, callbackAsFailAfter4Calls2} from "./value/callbacks (fail)"

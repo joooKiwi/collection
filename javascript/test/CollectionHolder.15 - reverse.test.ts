@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test, vi} from "vitest"
+
 import {CollectionHolder_1Follower}                                                                                               from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                                               from "./instance/CollectionHolder_2.follower"
 import {CollectionHolder_AdaptorOfArrayFollower}                                                                                  from "./instance/CollectionHolder_AdaptorOfArray.follower"
@@ -137,44 +139,44 @@ describe("CollectionHolderTest (reverse)", () => {
 
         describe("toReversed", () => {
             test("all", () => {
-                const method = jest.spyOn(toReverseModule, "toReverse",)
+                const method = vi.spyOn(toReverseModule, "toReverse",)
                 toReversed(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
+                const method = vi.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
                 toReversedByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByCollectionHolder",)
+                const method = vi.spyOn(toReverseModule, "toReverseByCollectionHolder",)
                 toReversedByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByArray",)
+                const method = vi.spyOn(toReverseModule, "toReverseByArray",)
                 toReversedByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("reversed", () => {
             test("all", () => {
-                const method = jest.spyOn(toReverseModule, "toReverse",)
+                const method = vi.spyOn(toReverseModule, "toReverse",)
                 reversed(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
+                const method = vi.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
                 reversedByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByCollectionHolder",)
+                const method = vi.spyOn(toReverseModule, "toReverseByCollectionHolder",)
                 reversedByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByArray",)
+                const method = vi.spyOn(toReverseModule, "toReverseByArray",)
                 reversedByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)

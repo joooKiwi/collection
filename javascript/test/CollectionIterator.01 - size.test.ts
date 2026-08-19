@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {A, AB, ABCD, EMPTY} from "./value/arrays"
 
 import {EmptyCollectionIterator}                      from "../src/iterator/EmptyCollectionIterator"

@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {CollectionHolder_1Follower}                     from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                     from "./instance/CollectionHolder_2.follower"
 import {CollectionHolder_AdaptorOfArrayFollower}        from "./instance/CollectionHolder_AdaptorOfArray.follower"

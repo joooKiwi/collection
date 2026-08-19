@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test, vi} from "vitest"
+
 import {CollectionHolder_1Follower}                                                                                                                                                                                                                                                                                                                                                                 from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                                                                                                                                                                                                                                                                                                                 from "./instance/CollectionHolder_2.follower"
 import {CollectionHolder_AdaptorOfArrayFollower}                                                                                                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_AdaptorOfArray.follower"
@@ -237,66 +239,66 @@ describe("CollectionHolderTest (take)", () => {
 
         describe("limit", () => {
             test("all", () => {
-                const method = jest.spyOn(takeModule, "take",)
+                const method = vi.spyOn(takeModule, "take",)
                 limit(null, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeModule, "takeByMinimalistCollectionHolder",)
+                const method = vi.spyOn(takeModule, "takeByMinimalistCollectionHolder",)
                 limitByMinimalistCollectionHolder(null, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(takeModule, "takeByCollectionHolder",)
+                const method = vi.spyOn(takeModule, "takeByCollectionHolder",)
                 limitByCollectionHolder(null, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(takeModule, "takeByArray",)
+                const method = vi.spyOn(takeModule, "takeByArray",)
                 limitByArray(null, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("limitWhile", () => {
             test("all", () => {
-                const method = jest.spyOn(takeWhileModule, "takeWhile",)
+                const method = vi.spyOn(takeWhileModule, "takeWhile",)
                 limitWhile(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeWhileModule, "takeWhileByMinimalistCollectionHolder",)
+                const method = vi.spyOn(takeWhileModule, "takeWhileByMinimalistCollectionHolder",)
                 limitWhileByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(takeWhileModule, "takeWhileByCollectionHolder",)
+                const method = vi.spyOn(takeWhileModule, "takeWhileByCollectionHolder",)
                 limitWhileByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(takeWhileModule, "takeWhileByArray",)
+                const method = vi.spyOn(takeWhileModule, "takeWhileByArray",)
                 limitWhileByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("limitWhileIndexed", () => {
             test("all", () => {
-                const method = jest.spyOn(takeWhileIndexedModule, "takeWhileIndexed",)
+                const method = vi.spyOn(takeWhileIndexedModule, "takeWhileIndexed",)
                 limitWhileIndexed(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeWhileIndexedModule, "takeWhileIndexedByMinimalistCollectionHolder",)
+                const method = vi.spyOn(takeWhileIndexedModule, "takeWhileIndexedByMinimalistCollectionHolder",)
                 limitWhileIndexedByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(takeWhileIndexedModule, "takeWhileIndexedByCollectionHolder",)
+                const method = vi.spyOn(takeWhileIndexedModule, "takeWhileIndexedByCollectionHolder",)
                 limitWhileIndexedByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(takeWhileIndexedModule, "takeWhileIndexedByArray",)
+                const method = vi.spyOn(takeWhileIndexedModule, "takeWhileIndexedByArray",)
                 limitWhileIndexedByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
@@ -304,66 +306,66 @@ describe("CollectionHolderTest (take)", () => {
 
         describe("limitLast", () => {
             test("all", () => {
-                const method = jest.spyOn(takeLastModule, "takeLast",)
+                const method = vi.spyOn(takeLastModule, "takeLast",)
                 limitLast(null, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeLastModule, "takeLastByMinimalistCollectionHolder",)
+                const method = vi.spyOn(takeLastModule, "takeLastByMinimalistCollectionHolder",)
                 limitLastByMinimalistCollectionHolder(null, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(takeLastModule, "takeLastByCollectionHolder",)
+                const method = vi.spyOn(takeLastModule, "takeLastByCollectionHolder",)
                 limitLastByCollectionHolder(null, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(takeLastModule, "takeLastByArray",)
+                const method = vi.spyOn(takeLastModule, "takeLastByArray",)
                 limitLastByArray(null, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("limitLastWhile", () => {
             test("all", () => {
-                const method = jest.spyOn(takeLastWhileModule, "takeLastWhile",)
+                const method = vi.spyOn(takeLastWhileModule, "takeLastWhile",)
                 limitLastWhile(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeLastWhileModule, "takeLastWhileByMinimalistCollectionHolder",)
+                const method = vi.spyOn(takeLastWhileModule, "takeLastWhileByMinimalistCollectionHolder",)
                 limitLastWhileByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(takeLastWhileModule, "takeLastWhileByCollectionHolder",)
+                const method = vi.spyOn(takeLastWhileModule, "takeLastWhileByCollectionHolder",)
                 limitLastWhileByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(takeLastWhileModule, "takeLastWhileByArray",)
+                const method = vi.spyOn(takeLastWhileModule, "takeLastWhileByArray",)
                 limitLastWhileByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("limitLastWhileIndexed", () => {
             test("all", () => {
-                const method = jest.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexed",)
+                const method = vi.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexed",)
                 limitLastWhileIndexed(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByMinimalistCollectionHolder",)
+                const method = vi.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByMinimalistCollectionHolder",)
                 limitLastWhileIndexedByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
-                const method = jest.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByCollectionHolder",)
+                const method = vi.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByCollectionHolder",)
                 limitLastWhileIndexedByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
-                const method = jest.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByArray",)
+                const method = vi.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByArray",)
                 limitLastWhileIndexedByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)

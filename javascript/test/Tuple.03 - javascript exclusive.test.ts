@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {CollectionConstants} from "../src/CollectionConstants"
 import {Couple}              from "../src/tuple/Couple"
 import {Empty}               from "../src/tuple/Empty"

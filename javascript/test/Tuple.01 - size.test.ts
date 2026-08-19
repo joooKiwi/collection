@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {Empty}           from "../src/tuple/Empty"
 import {Tuple_1}         from "./instance/Tuple_1"
 import {Tuple_1Follower} from "./instance/Tuple_1.follower"
