@@ -7,8 +7,6 @@
     "clear-dist-folder": "del-cli dist/",
     "build-esm":         "tsc --project tsconfig.esm.json",
     "build-cjs":         "tsc --project tsconfig.cjs.json",
-    "build-amd":         "tsc --project tsconfig.amd.json",
-    "build-umd":         "tsc --project tsconfig.umd.json",
     "build-types":       "tsc --project tsconfig.types.json",
 
     "test":               "jest",
