@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}               from "./isMinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
@@ -60,7 +60,7 @@ export function indexOfLastOrNull<const T, >(collection: Nullable<| MinimalistCo
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
@@ -87,7 +87,7 @@ export function indexOfLastOrNullByMinimalistCollectionHolder<const T, >(collect
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
@@ -114,7 +114,7 @@ export function indexOfLastOrNullByCollectionHolder<const T, >(collection: Nulla
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue

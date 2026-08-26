@@ -16,8 +16,8 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyCollectionHolder}                             from "../EmptyCollectionHolder"
-import {LateRetriever}                                     from "../LateRetriever"
 import {LazyCollectionHolder}                              from "../LazyCollectionHolder"
+import {LazyCollectionHolderOf1}                           from "../LazyCollectionHolderOf1"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
 import {isArray}                                           from "./isArray"
 import {isArrayByStructure}                                from "./isArrayByStructure"
@@ -45,7 +45,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * to a {@link from starting index} (<i>if provided</i>)
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see Array.reverse
@@ -62,7 +62,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -107,7 +107,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * to a {@link from starting index} (<i>if provided</i>)
  *
  * @param collection The nullable collection to reverse
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} s a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
@@ -125,7 +125,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * in the {@link collection}
  *
  * @param collection The nullable collection to reverse
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -169,7 +169,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * to a {@link from starting index} (<i>if provided</i>)
  *
  * @param collection The nullable collection to reverse
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
@@ -187,7 +187,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * in the {@link collection}
  *
  * @param collection The nullable collection to reverse
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -231,7 +231,7 @@ export function toReverseByArray<const T, >(collection: Nullable<Array<T>>,): Co
  * to a {@link from starting index} (<i>if provided</i>)
  *
  * @param collection The nullable collection to reverse
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
@@ -249,7 +249,7 @@ export function toReverseByArray<const T, >(collection: Nullable<Array<T>>, from
  * in the {@link collection}
  *
  * @param collection The nullable collection to reverse
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -300,7 +300,7 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     if (size === 0)
         return EmptyCollectionHolder.get
     if (size === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0),)
+        return new LazyCollectionHolderOf1(() => collection.get(0),)
     return new LazyCollectionHolder(() => __all(collection, size,),)
 }
 
@@ -310,7 +310,7 @@ function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) 
 
     const size = collection.size
     if (size === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+        return new LazyCollectionHolderOf1(() => collection.getFirst(),)
     return new LazyCollectionHolder(() => __all(collection, size,),)
 }
 
@@ -319,7 +319,7 @@ function __core0ByArray<const T, >(collection: Array<T>,) {
     if (size === 0)
         return EmptyCollectionHolder.get
     if (size === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+        return new LazyCollectionHolderOf1(() => collection[0] as T,)
     return new LazyCollectionHolder(() => __allByArray(collection, size,),)
 }
 
@@ -349,7 +349,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const startingIndex = __startingIndex(from, size,)
     const sizeMinus1 = size - 1
     if (startingIndex === sizeMinus1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(sizeMinus1,),)
+        return new LazyCollectionHolderOf1(() => collection.get(sizeMinus1,),)
     return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
@@ -360,7 +360,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     const size = collection.size
     const startingIndex = __startingIndex(from, size,)
     if (startingIndex === size - 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getLast(),)
+        return new LazyCollectionHolderOf1(() => collection.getLast(),)
     return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
@@ -372,7 +372,7 @@ function __core1ByArray<const T, >(collection: Array<T>, from: number,) {
     const startingIndex = __startingIndex(from, size,)
     const sizeMinus1 = size - 1
     if (startingIndex === sizeMinus1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection[sizeMinus1] as T,)
+        return new LazyCollectionHolderOf1(() => collection[sizeMinus1] as T,)
     return new LazyCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
 }
 
@@ -403,7 +403,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
+        return new LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
     return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
@@ -416,7 +416,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
+        return new LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
     return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
@@ -429,7 +429,7 @@ function __core2ByArray<const T, >(collection: Array<T>, from: number, to: numbe
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection[startingIndex] as T,)
+        return new LazyCollectionHolderOf1(() => collection[startingIndex] as T,)
     return new LazyCollectionHolder(() => __fromStartToEndByArray(collection, startingIndex, endingIndex,),)
 }
 
@@ -458,7 +458,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
 
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+        return new LazyCollectionHolderOf1(() => collection.get(0,),)
     return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
@@ -468,7 +468,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
 
     const endingIndex = __endingIndex(to, collection.size,)
     if (endingIndex === 0)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+        return new LazyCollectionHolderOf1(() => collection.getFirst(),)
     return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
@@ -479,7 +479,7 @@ function __coreWithNoFromByArray<const T, >(collection: Array<T>, to: number,) {
 
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+        return new LazyCollectionHolderOf1(() => collection[0] as T,)
     return new LazyCollectionHolder(() => __toEndByArray(collection, endingIndex,),)
 }
 

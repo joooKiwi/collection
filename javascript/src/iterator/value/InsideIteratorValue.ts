@@ -40,7 +40,7 @@ export interface InsideIteratorValue<out T, >
      */
     readonly done: false
 
-    /** Tell that the {@link InsideIteratorValue iterator value} is <b>not</b> able to progress (<i>at the moment of its creation</i>) */
+    /** Tell that the {@link InsideIteratorValue iterator value} is __NOT__ able to progress (<i>at the moment of its creation</i>) */
     isNotDone(): true
 
 

@@ -31,7 +31,7 @@ import {isMinimalistCollectionHolder}               from "./isMinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
@@ -59,7 +59,7 @@ export function lastIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCo
  *
  * @param collection The nullable collection
  * @param element    The element to find
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
@@ -86,7 +86,7 @@ export function lastIndexOfOrNullByMinimalistCollectionHolder<const T, >(collect
  *
  * @param collection The nullable collection
  * @param element    The element to find
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
@@ -113,7 +113,7 @@ export function lastIndexOfOrNullByCollectionHolder<const T, >(collection: Nulla
  *
  * @param collection The nullable collection
  * @param element    The element to find
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue

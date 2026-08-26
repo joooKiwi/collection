@@ -27,7 +27,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -36,7 +36,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function dropLastWhile<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -62,7 +62,7 @@ export function dropLastWhile<const T, >(collection: Nullable<| MinimalistCollec
 
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -71,7 +71,7 @@ export function dropLastWhile<const T, >(collection: Nullable<| MinimalistCollec
  */
 export function dropLastWhileByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -93,7 +93,7 @@ export function dropLastWhileByMinimalistCollectionHolder<const T, >(collection:
 }
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -102,7 +102,7 @@ export function dropLastWhileByMinimalistCollectionHolder<const T, >(collection:
  */
 export function dropLastWhileByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -122,7 +122,7 @@ export function dropLastWhileByCollectionHolder<const T, >(collection: Nullable<
 }
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -131,7 +131,7 @@ export function dropLastWhileByCollectionHolder<const T, >(collection: Nullable<
  */
 export function dropLastWhileByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate

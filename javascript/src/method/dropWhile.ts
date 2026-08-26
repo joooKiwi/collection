@@ -27,7 +27,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -40,7 +40,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function dropWhile<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -70,7 +70,7 @@ export function dropWhile<const T, >(collection: Nullable<| MinimalistCollection
 
 
 /**
- * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -83,7 +83,7 @@ export function dropWhile<const T, >(collection: Nullable<| MinimalistCollection
  */
 export function dropWhileByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -109,7 +109,7 @@ export function dropWhileByMinimalistCollectionHolder<const T, >(collection: Nul
 }
 
 /**
- * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -122,7 +122,7 @@ export function dropWhileByMinimalistCollectionHolder<const T, >(collection: Nul
  */
 export function dropWhileByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -146,7 +146,7 @@ export function dropWhileByCollectionHolder<const T, >(collection: Nullable<Coll
 }
 
 /**
- * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -159,7 +159,7 @@ export function dropWhileByCollectionHolder<const T, >(collection: Nullable<Coll
  */
 export function dropWhileByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate

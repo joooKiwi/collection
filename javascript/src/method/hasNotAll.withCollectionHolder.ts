@@ -24,7 +24,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
@@ -47,7 +47,7 @@ export function hasNotAllWithCollectionHolder<const T, >(collection: Nullable<| 
 
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare
@@ -68,7 +68,7 @@ export function hasNotAllWithCollectionHolderByMinimalistCollectionHolder<const 
 }
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare
@@ -88,7 +88,7 @@ export function hasNotAllWithCollectionHolderByCollectionHolder<const T, >(colle
 }
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare

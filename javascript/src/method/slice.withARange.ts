@@ -42,7 +42,7 @@ export function sliceWithARange<const T, >(collection: Nullable<| MinimalistColl
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -57,7 +57,7 @@ export function sliceWithARange<const T, >(collection: Nullable<| MinimalistColl
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -98,7 +98,7 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} is not within a valid range
@@ -113,7 +113,7 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
  * in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -153,7 +153,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -168,7 +168,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
  * in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -208,7 +208,7 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<Array<T>>
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -222,7 +222,7 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<Array<T>>
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)

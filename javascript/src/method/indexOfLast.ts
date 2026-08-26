@@ -50,7 +50,7 @@ export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -70,7 +70,7 @@ export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
@@ -122,7 +122,7 @@ export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: N
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -142,7 +142,7 @@ export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: N
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
@@ -193,7 +193,7 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -213,7 +213,7 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
@@ -264,7 +264,7 @@ export function indexOfLastByArray<const T, >(collection: Nullable<Array<T>>, pr
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -284,7 +284,7 @@ export function indexOfLastByArray<const T, >(collection: Nullable<Array<T>>, pr
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was `null` or `undefined`

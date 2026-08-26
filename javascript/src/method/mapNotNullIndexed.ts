@@ -27,8 +27,8 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each non-null element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the non-null results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param transform  The given transform
@@ -60,8 +60,8 @@ export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>,
 
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each non-null element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the non-null results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform
@@ -89,8 +89,8 @@ export function mapNotNullIndexedByMinimalistCollectionHolder<const T, const U e
 }
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each non-null element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the non-null results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform
@@ -116,8 +116,8 @@ export function mapNotNullIndexedByCollectionHolder<const T, const U extends Non
 }
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each non-null element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the non-null results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform

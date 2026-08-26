@@ -27,8 +27,8 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param transform  The given transform
@@ -60,8 +60,8 @@ export function mapIndexed<const T, const U, >(collection: Nullable<| Minimalist
 
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform
@@ -89,8 +89,8 @@ export function mapIndexedByMinimalistCollectionHolder<const T, const U, >(colle
 }
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform
@@ -116,8 +116,8 @@ export function mapIndexedByCollectionHolder<const T, const U, >(collection: Nul
 }
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform

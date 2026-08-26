@@ -29,7 +29,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -46,7 +46,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 export function filterNotIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -80,7 +80,7 @@ export function filterNotIndexed<const T, >(collection: Nullable<| MinimalistCol
 
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -97,7 +97,7 @@ export function filterNotIndexed<const T, >(collection: Nullable<| MinimalistCol
 export function filterNotIndexedByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -127,7 +127,7 @@ export function filterNotIndexedByMinimalistCollectionHolder<const T, >(collecti
 
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -144,7 +144,7 @@ export function filterNotIndexedByMinimalistCollectionHolder<const T, >(collecti
 export function filterNotIndexedByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -172,7 +172,7 @@ export function filterNotIndexedByCollectionHolder<const T, >(collection: Nullab
 
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -189,7 +189,7 @@ export function filterNotIndexedByCollectionHolder<const T, >(collection: Nullab
 export function filterNotIndexedByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
