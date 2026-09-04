@@ -19,8 +19,8 @@ import type {CollectionIteratorOf1}                                             
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {AbstractCollectionHolderForTest}                     from "./AbstractCollectionHolderForTest"
-import {ArrayOf1AsCollectionHolder}                          from "../../src/ArrayOf1AsCollectionHolder"
+import {ArrayOf1AsCollectionHolder}      from "../../src/ArrayOf1AsCollectionHolder"
+import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
 
 /**
  * A class to test the functionality of a {@link ArrayOf1AsCollectionHolder}
@@ -159,7 +159,7 @@ export class CollectionHolder_ArrayOf1<const T, >
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) { return this.instance.all(predicate,) }
 

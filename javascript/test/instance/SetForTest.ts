@@ -76,7 +76,7 @@ export class SetForTest<const T, >
 
     public override isDisjointFrom(other: ReadonlySetLike<unknown>,): boolean { return this.set.isDisjointFrom(other,) }
 
-    public override [Symbol.iterator](): ArrayIterator<T> { return this.set[Symbol.iterator]() }
+    public override [Symbol.iterator](): SetIterator<T> { return this.set[Symbol.iterator]() }
 
     public override get [Symbol.toStringTag](): "Set" { return "Set" }
 

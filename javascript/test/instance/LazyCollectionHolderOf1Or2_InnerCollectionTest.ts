@@ -10,10 +10,10 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolderOf1} from "../../src/CollectionHolderOf1"
-import {CollectionHolderOf2} from "../../src/CollectionHolderOf2"
-import {Optional}            from "../../src/optional/Optional"
-import {Couple}              from "../../src/tuple/Couple"
+import type {CollectionHolderOf1} from "../../src/CollectionHolderOf1"
+import type {CollectionHolderOf2} from "../../src/CollectionHolderOf2"
+import type {Optional}            from "../../src/optional/Optional"
+import type {Couple}              from "../../src/tuple/Couple"
 
 import {LazyCollectionHolderOf1Or2} from "../../src/LazyCollectionHolderOf1Or2"
 

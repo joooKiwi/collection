@@ -63,7 +63,7 @@ export class ArrayByStructureForTest<const T, >
 
     public join(separator?: string,): string { return this.array.join(separator,) }
 
-    public filter<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): MutableArray<S>
+    public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): MutableArray<S>
     public filter(predicate: BooleanCallback<T>,): MutableArray<T>
     public filter(predicate: BooleanCallback<T>,) { return this.array.filter(predicate,) }
 

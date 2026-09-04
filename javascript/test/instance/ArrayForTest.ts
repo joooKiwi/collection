@@ -88,7 +88,7 @@ export class ArrayForTest<const T, >
 
     public override join(separator?: string,): string { return this.array.join(separator,) }
 
-    public override filter<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): MutableArray<S>
+    public override filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): MutableArray<S>
     public override filter(predicate: BooleanCallback<T>,): MutableArray<T>
     public override filter(predicate: BooleanCallback<T>,) { return this.array.filter(predicate,) }
 
