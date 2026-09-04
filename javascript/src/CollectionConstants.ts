@@ -10,12 +10,10 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy}                                                              from "@joookiwi/lazy"
 import type {Array, EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
-import {lazyOf}                                                                 from "@joookiwi/lazy"
 
-import type {CollectionHolder}                                                                                                                                                                              from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                    from "./MinimalistCollectionHolder"
+import type {CollectionHolder}                                                                                                                                                                                                                                                           from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                 from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                         from "./iterator/CollectionIterator"
 import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfIterator, KeyOfMap, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableMap, KeyOfMutableSet, KeyOfMutableWeakMap, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakMap, KeyOfWeakSet} from "./type/keyOf"
 
@@ -53,11 +51,6 @@ export class CollectionConstants {
     //#endregion -------------------- Thrown constructor --------------------
     //#region -------------------- Fields held --------------------
 
-    static #LAZY_EMPTY_COLLECTION_HOLDER?: Lazy<EmptyCollectionHolder>
-    static #EMPTY_COLLECTION_HANDLER?: EmptyCollectionHandler
-    static #LAZY_EMPTY_COLLECTION_HANDLER?: Lazy<EmptyCollectionHandler>
-    static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
-
     static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<KeyOfMinimalistCollectionHolder>
     static #COLLECTION_MEMBERS?: CollectionHolder<KeyOfCollectionHolder>
     static #ARRAY_MEMBERS?: CollectionHolder<KeyOfArray>
@@ -74,11 +67,6 @@ export class CollectionConstants {
     static #ITERATOR_MEMBERS?: CollectionHolder<KeyOfIterator>
     static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<KeyOfCollectionIterator>
 
-    static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
-    static #GenericCollectionHolder?: typeof GenericCollectionHolder
-    static #GenericMinimalistCollectionHolder?: typeof GenericMinimalistCollectionHolder
-    static #LazyCollectionHolder?: typeof LazyCollectionHolder
-
     //#endregion -------------------- Fields held --------------------
 
     //#region -------------------- Empty references --------------------
@@ -88,47 +76,9 @@ export class CollectionConstants {
         return EmptyCollectionHolder.get
     }
 
-    /**
-     * An {@link EmptyCollectionHolder} instance in a {@link Lazy}
-     *
-     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
-     */
-    public static get LAZY_EMPTY_COLLECTION_HOLDER(): Lazy<EmptyCollectionHolder> {
-        return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(EmptyCollectionHolder.get,)
-    }
-
-
-    /**
-     * An {@link EmptyCollectionHandler} instance
-     *
-     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
-     */
-    public static get EMPTY_COLLECTION_HANDLER(): EmptyCollectionHandler {
-        return CollectionConstants.#EMPTY_COLLECTION_HANDLER ??= Object.freeze(EmptyCollectionHandler.get,)
-    }
-
-    /**
-     * An {@link EmptyCollectionHandler} instance in a {@link Lazy}
-     *
-     * @deprecated Replace with {@link CollectionConstants.LAZY_EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
-     */
-    public static get LAZY_EMPTY_COLLECTION_HANDLER(): Lazy<EmptyCollectionHandler> {
-        return this.#LAZY_EMPTY_COLLECTION_HANDLER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HANDLER,)
-    }
-
-
     /** An {@link EmptyCollectionIterator} instance */
     public static get EMPTY_COLLECTION_ITERATOR(): EmptyCollectionIterator {
         return EmptyCollectionIterator.get
-    }
-
-    /**
-     * An {@link EmptyCollectionIterator} instance in a {@link Lazy}
-     *
-     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_ITERATOR}. This will be removed in version 2.1
-     */
-    public static get LAZY_EMPTY_COLLECTION_ITERATOR(): Lazy<EmptyCollectionIterator> {
-        return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(EmptyCollectionIterator.get,)
     }
 
     //#endregion -------------------- Empty references --------------------
@@ -548,45 +498,6 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (collection iterator) --------------------
 
     //#endregion -------------------- Members references --------------------
-    //#region -------------------- Constructor references --------------------
-
-    /**
-     * The {@link Object.constructor constructor} reference of an {@link EmptyCollectionHolder}
-     *
-     * @deprecated Use the {@link EmptyCollectionHolder} instance directly. This will be removed in version 2.1
-     */
-    public static get EmptyCollectionHolder(): typeof EmptyCollectionHolder {
-        return CollectionConstants.#EmptyCollectionHolder ??= EmptyCollectionHolder
-    }
-
-    /**
-     * The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder}
-     *
-     * @deprecated Use the {@link GenericCollectionHolder} instance directly. This will be removed in version 2.1
-     */
-    public static get GenericCollectionHolder(): typeof GenericCollectionHolder {
-        return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder",).GenericCollectionHolder
-    }
-
-    /**
-     * The {@link Object.constructor constructor} reference of a {@link GenericMinimalistCollectionHolder}
-     *
-     * @deprecated Use the {@link GenericMinimalistCollectionHolder} instance directly. This will be removed in version 2.1
-     */
-    public static get GenericMinimalistCollectionHolder(): typeof GenericMinimalistCollectionHolder {
-        return CollectionConstants.#GenericMinimalistCollectionHolder ??= require("./GenericMinimalistCollectionHolder",).GenericMinimalistCollectionHolder
-    }
-
-    /**
-     * The {@link Object.constructor constructor} reference of a {@link LazyCollectionHolder}
-     *
-     * @deprecated Use the {@link LazyCollectionHolder} instance directly. This will be removed in version 2.1
-     */
-    public static get LazyGenericCollectionHolder(): typeof LazyCollectionHolder {
-        return CollectionConstants.#LazyCollectionHolder ??= require("./LazyCollectionHolder",).LazyCollectionHolder
-    }
-
-    //#endregion -------------------- Constructor references --------------------
 
 }
 
