@@ -25,7 +25,7 @@ import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
-import {Couple}                        from "../tuple"
+import {Couple}                        from "../tuple/Couple"
 
 //#region -------------------- Facade method --------------------
 
