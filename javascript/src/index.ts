@@ -29,7 +29,6 @@ export {JsIteratorAsCollectionHolder}       from "./JsIteratorAsCollectionHolder
 export {GenericCollectionHolder}            from "./GenericCollectionHolder"
 export {GenericMinimalistCollectionHolder}  from "./GenericMinimalistCollectionHolder"
 export {LazyCollectionHolder}               from "./LazyCollectionHolder"
-export {LazyGenericCollectionHolder}        from "./LazyGenericCollectionHolder"
 export {LazyCollectionHolderOf0Or1}         from "./LazyCollectionHolderOf0Or1"
 export {LazyCollectionHolderOf0Or1Or2}      from "./LazyCollectionHolderOf0Or1Or2"
 export {LazyCollectionHolderOf1}            from "./LazyCollectionHolderOf1"
