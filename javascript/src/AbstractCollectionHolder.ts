@@ -162,6 +162,9 @@ import {toUpperCaseStringByCollectionHolder}                       from "./metho
  * @see EmptyCollectionHolder
  * @see ArrayAsCollectionHolder
  * @see SetAsCollectionHolder
+ * @see IteratorAsCollectionHolder
+ * @see JsIteratorAsCollectionHolder
+ * @see JsIterableAsCollectionHolder
  * @see GenericCollectionHolder
  */
 export abstract class AbstractCollectionHolder<const T = unknown, >
