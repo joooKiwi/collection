@@ -174,32 +174,74 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
+    //#region -------------------- First/last index of --------------------
+
     public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.firstIndexOf(element, from, to,) }
 
+    public override indexOf(element: T, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.firstIndexOf(element, from, to,) }
+
     public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.firstIndexOfOrNull(element, from, to,) }
+
+    public override indexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.firstIndexOfOrNull(element, from, to,) }
 
 
     public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.lastIndexOf(element, from, to,) }
 
     public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.lastIndexOfOrNull(element, from, to,) }
 
+    //#endregion -------------------- First/last index of --------------------
+    //#region -------------------- Index of first --------------------
 
     public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfFirst(predicate, from, to,) }
 
+    public override findFirstIndex(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfFirst(predicate, from, to,) }
+
+    public override findIndex(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfFirst(predicate, from, to,) }
+
+
     public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfFirstOrNull(predicate, from, to,) }
+
+    public override findFirstIndexOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfFirstOrNull(predicate, from, to,) }
+
+    public override findIndexOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfFirstOrNull(predicate, from, to,) }
+
 
     public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfFirstIndexed(predicate, from, to,) }
 
+    public override findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfFirstIndexed(predicate, from, to,) }
+
+    public override findIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfFirstIndexed(predicate, from, to,) }
+
+
     public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfFirstIndexedOrNull(predicate, from, to,) }
 
+    public override findFirstIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfFirstIndexedOrNull(predicate, from, to,) }
+
+    public override findIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfFirstIndexedOrNull(predicate, from, to,) }
+
+    //#endregion -------------------- Index of first --------------------
+    //#region -------------------- Index of last --------------------
 
     public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfLast(predicate, from, to,) }
 
+    public override findLastIndex(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfLast(predicate, from, to,) }
+
+
     public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfLastOrNull(predicate, from, to,) }
+
+    public override findLastIndexOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfLastOrNull(predicate, from, to,) }
+
 
     public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfLastIndexed(predicate, from, to,) }
 
+    public override findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this._innerCollection.indexOfLastIndexed(predicate, from, to,) }
+
+
     public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfLastIndexedOrNull(predicate, from, to,) }
+
+    public override findLastIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this._innerCollection.indexOfLastIndexedOrNull(predicate, from, to,) }
+
+    //#endregion -------------------- Index of last --------------------
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
@@ -233,9 +275,9 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     public override get hasNoNulls(): boolean { return this._innerCollection.hasNoNulls }
 
 
-    public override get hasDuplicate(): false { return this._innerCollection.hasDuplicate }
+    public override get hasDuplicate(): false { return false }
 
-    public override get hasNoDuplicates(): true { return this._innerCollection.hasNoDuplicates }
+    public override get hasNoDuplicates(): true { return true }
 
     //#endregion -------------------- Has ‥ --------------------
     //#region -------------------- Has --------------------
@@ -358,6 +400,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     public override take(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.take(n,) }
 
+    public override limit(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.takeLast(n,) }
+
     public override takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override takeWhile(predicate: BooleanCallback<T>,) { return this._innerCollection.takeWhile(predicate,) }
@@ -368,6 +412,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
 
     public override takeLast(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.takeLast(n,) }
+
+    public override limitLast(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.takeLast(n,) }
 
     public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -382,6 +428,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     public override drop(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.drop(n,) }
 
+    public override skip(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.drop(n,) }
+
     public override dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override dropWhile(predicate: BooleanCallback<T>,) { return this._innerCollection.dropWhile(predicate,) }
@@ -392,6 +440,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
 
     public override dropLast(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.dropLast(n,) }
+
+    public override skipLast(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.dropLast(n,) }
 
     public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
