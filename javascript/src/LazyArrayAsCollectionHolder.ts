@@ -31,7 +31,7 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
 
 /**
  * A {@link CollectionHolder} having a {@link ReadonlyArray Array} value associated to it, but lazily retrieved.
- * It acts as both an adaptor and a lazy instance since the value is retrieved until is is necessary
+ * It acts as both an adaptor and a lazy instance since the value is retrieved until it is necessary
  *
  * @typeParam T         The type (by default `unknown`)
  * @typeParam REFERENCE The reference passed in the constructor (by default `Array<T>`)

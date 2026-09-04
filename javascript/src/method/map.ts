@@ -17,7 +17,7 @@ import type {MinimalistCollectionHolder}   from "../MinimalistCollectionHolder"
 import type {ValueIndexWithReturnCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -82,10 +82,10 @@ export function mapByMinimalistCollectionHolder<const T, const U, >(collection: 
     if (size === 0)
         return EmptyCollectionHolder.get
     if (transform.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, transform as (value: T,) => U, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, transform as (value: T,) => U, size,),)
     if (transform.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, transform, size,),)
-    return new LazyCollectionHolder(() => __with0Argument(transform as () => U, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, transform, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(transform as () => U, size,),)
 }
 
 /**
@@ -109,10 +109,10 @@ export function mapByCollectionHolder<const T, const U, >(collection: Nullable<C
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (transform.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, transform as (value: T,) => U, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, transform as (value: T,) => U, collection.size,),)
     if (transform.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, transform, collection.size,),)
-    return new LazyCollectionHolder(() => __with0Argument(transform as () => U, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, transform, collection.size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(transform as () => U, collection.size,),)
 }
 
 /**
@@ -138,10 +138,10 @@ export function mapByArray<const T, const U, >(collection: Nullable<Array<T>>, t
     if (size === 0)
         return EmptyCollectionHolder.get
     if (transform.length === 1)
-        return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, transform as (value: T,) => U, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1ArgumentByArray(collection, transform as (value: T,) => U, size,),)
     if (transform.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)
-    return new LazyCollectionHolder(() => __with0Argument(transform as () => U, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(transform as () => U, size,),)
 }
 
 //#endregion -------------------- Facade method --------------------

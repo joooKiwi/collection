@@ -16,7 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyCollectionHolder}                             from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}                              from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}                       from "../LazyArrayAsCollectionHolder"
 import {LazyCollectionHolderOf1}                           from "../LazyCollectionHolderOf1"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
 import {isArray}                                           from "./isArray"
@@ -301,7 +301,7 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
         return EmptyCollectionHolder.get
     if (size === 1)
         return new LazyCollectionHolderOf1(() => collection.get(0),)
-    return new LazyCollectionHolder(() => __all(collection, size,),)
+    return new LazyArrayAsCollectionHolder(() => __all(collection, size,),)
 }
 
 function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) {
@@ -311,7 +311,7 @@ function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) 
     const size = collection.size
     if (size === 1)
         return new LazyCollectionHolderOf1(() => collection.getFirst(),)
-    return new LazyCollectionHolder(() => __all(collection, size,),)
+    return new LazyArrayAsCollectionHolder(() => __all(collection, size,),)
 }
 
 function __core0ByArray<const T, >(collection: Array<T>,) {
@@ -320,7 +320,7 @@ function __core0ByArray<const T, >(collection: Array<T>,) {
         return EmptyCollectionHolder.get
     if (size === 1)
         return new LazyCollectionHolderOf1(() => collection[0] as T,)
-    return new LazyCollectionHolder(() => __allByArray(collection, size,),)
+    return new LazyArrayAsCollectionHolder(() => __allByArray(collection, size,),)
 }
 
 //#endregion -------------------- ∅ --------------------
@@ -350,7 +350,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const sizeMinus1 = size - 1
     if (startingIndex === sizeMinus1)
         return new LazyCollectionHolderOf1(() => collection.get(sizeMinus1,),)
-    return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
 function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,) {
@@ -361,7 +361,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     const startingIndex = __startingIndex(from, size,)
     if (startingIndex === size - 1)
         return new LazyCollectionHolderOf1(() => collection.getLast(),)
-    return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
 function __core1ByArray<const T, >(collection: Array<T>, from: number,) {
@@ -373,7 +373,7 @@ function __core1ByArray<const T, >(collection: Array<T>, from: number,) {
     const sizeMinus1 = size - 1
     if (startingIndex === sizeMinus1)
         return new LazyCollectionHolderOf1(() => collection[sizeMinus1] as T,)
-    return new LazyCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
 }
 
 //#endregion -------------------- from --------------------
@@ -404,7 +404,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
         return new LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
-    return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,) {
@@ -417,7 +417,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
         return new LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
-    return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByArray<const T, >(collection: Array<T>, from: number, to: number,) {
@@ -430,7 +430,7 @@ function __core2ByArray<const T, >(collection: Array<T>, from: number, to: numbe
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
         return new LazyCollectionHolderOf1(() => collection[startingIndex] as T,)
-    return new LazyCollectionHolder(() => __fromStartToEndByArray(collection, startingIndex, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __fromStartToEndByArray(collection, startingIndex, endingIndex,),)
 }
 
 //#endregion -------------------- from, to --------------------
@@ -459,7 +459,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
         return new LazyCollectionHolderOf1(() => collection.get(0,),)
-    return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
 function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,) {
@@ -469,7 +469,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
     const endingIndex = __endingIndex(to, collection.size,)
     if (endingIndex === 0)
         return new LazyCollectionHolderOf1(() => collection.getFirst(),)
-    return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
 function __coreWithNoFromByArray<const T, >(collection: Array<T>, to: number,) {
@@ -480,7 +480,7 @@ function __coreWithNoFromByArray<const T, >(collection: Array<T>, to: number,) {
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
         return new LazyCollectionHolderOf1(() => collection[0] as T,)
-    return new LazyCollectionHolder(() => __toEndByArray(collection, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __toEndByArray(collection, endingIndex,),)
 }
 
 //#endregion -------------------- to --------------------

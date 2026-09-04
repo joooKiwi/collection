@@ -18,7 +18,7 @@ import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -102,10 +102,10 @@ export function dropWhileByMinimalistCollectionHolder<const T, >(collection: Nul
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, size, predicate,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, size, predicate as () => boolean,),)
 }
 
 /**
@@ -139,10 +139,10 @@ export function dropWhileByCollectionHolder<const T, >(collection: Nullable<Coll
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, collection.size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, collection.size, predicate as () => boolean,),)
 }
 
 /**
@@ -178,10 +178,10 @@ export function dropWhileByArray<const T, >(collection: Nullable<Array<T>>, pred
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)
-    return new LazyCollectionHolder(() => __with0ArgumentByArray(collection, size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0ArgumentByArray(collection, size, predicate as () => boolean,),)
 }
 
 //#endregion -------------------- Facade method --------------------

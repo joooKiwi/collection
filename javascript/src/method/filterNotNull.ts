@@ -17,7 +17,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {ArrayAsCollectionHolder}       from "../ArrayAsCollectionHolder"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {MinimalistAsCollectionHolder}  from "../MinimalistAsCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
 import {isArray}                       from "./isArray"
@@ -73,7 +73,7 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
     let index = -1
     while (++index < size)
         if ((temporaryArray[index] = collection.get(index,) as T) == null)
-            return new LazyCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
+            return new LazyArrayAsCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
     return new MinimalistAsCollectionHolder(collection as MinimalistCollectionHolder<NonNullable<T>>,)
 }
 
@@ -91,7 +91,7 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (collection.hasNull)
-        return new LazyCollectionHolder(() => __filterNotNull(collection,),)
+        return new LazyArrayAsCollectionHolder(() => __filterNotNull(collection,),)
     return collection as CollectionHolder<NonNullable<T>>
 }
 
@@ -114,7 +114,7 @@ export function filterNotNullByArray<const T, >(collection: Nullable<Array<T>>,)
     let index = -1
     while (++index < size)
         if ((temporaryArray[index] = collection[index] as T) == null)
-            return new LazyCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
+            return new LazyArrayAsCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
     return new ArrayAsCollectionHolder(collection as readonly NonNullable<T>[],)
 }
 

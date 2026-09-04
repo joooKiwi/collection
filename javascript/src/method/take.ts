@@ -17,7 +17,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {ArrayAsCollectionHolder}       from "../ArrayAsCollectionHolder"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {LazyCollectionHolderOf1}       from "../LazyCollectionHolderOf1"
 import {LazyCollectionHolderOf2}       from "../LazyCollectionHolderOf2"
 import {MinimalistAsCollectionHolder}  from "../MinimalistAsCollectionHolder"
@@ -149,7 +149,7 @@ function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCol
             else
                 return new MinimalistAsCollectionHolder(collection,)
         else
-            return new LazyCollectionHolder(() => __getAll(collection, n,),)
+            return new LazyArrayAsCollectionHolder(() => __getAll(collection, n,),)
     if (n <= -size)
         return EmptyCollectionHolder.get
 
@@ -159,8 +159,8 @@ function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCol
     if (size === 1)
         return new LazyCollectionHolderOf1(() => collection.get(0,),)
     if (size === 2)
-    return new LazyCollectionHolder(() => __getAll(collection, n2,),)
         return new LazyCollectionHolderOf2(() => new Couple(collection.get(0,), collection.get(1,),),)
+    return new LazyArrayAsCollectionHolder(() => __getAll(collection, n2,),)
 }
 
 function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n: number,) {
@@ -190,7 +190,7 @@ function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n:
             else
                 return collection
         else
-            return new LazyCollectionHolder(() => __getAll(collection, n,),)
+            return new LazyArrayAsCollectionHolder(() => __getAll(collection, n,),)
 
     const size = collection.size
     if (n <= -size)
@@ -202,8 +202,8 @@ function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n:
     if (collection.hasExactly1Element)
         return new LazyCollectionHolderOf1(() => collection.getFirst(),)
     else if (collection.hasExactly2Elements)
-    return new LazyCollectionHolder(() => __getAll(collection, n + size,),)
         return new LazyCollectionHolderOf2(() => new Couple(collection.getFirst(), collection.getLast(),),)
+    return new LazyArrayAsCollectionHolder(() => __getAll(collection, n + size,),)
 }
 
 function __coreByArray<const T, >(collection: Array<T>, n: number,) {
@@ -234,7 +234,7 @@ function __coreByArray<const T, >(collection: Array<T>, n: number,) {
             else
                 return new ArrayAsCollectionHolder(collection,)
         else
-            return new LazyCollectionHolder(() => __getAllByArray(collection, n,),)
+            return new LazyArrayAsCollectionHolder(() => __getAllByArray(collection, n,),)
     if (n <= -size)
         return EmptyCollectionHolder.get
 
@@ -244,8 +244,8 @@ function __coreByArray<const T, >(collection: Array<T>, n: number,) {
     if (size === 1)
         return new LazyCollectionHolderOf1(() => collection[0] as T,)
     if (size === 2)
-    return new LazyCollectionHolder(() => __getAllByArray(collection, n + size,),)
         return new LazyCollectionHolderOf2(() => new Couple(collection[0] as T, collection[1] as T,),)
+    return new LazyArrayAsCollectionHolder(() => __getAllByArray(collection, n + size,),)
 }
 
 //#endregion -------------------- Core method --------------------

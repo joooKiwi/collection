@@ -17,7 +17,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {ArrayAsCollectionHolder}       from "../ArrayAsCollectionHolder"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {LazyCollectionHolderOf1}       from "../LazyCollectionHolderOf1"
 import {LazyCollectionHolderOf2}       from "../LazyCollectionHolderOf2"
 import {MinimalistAsCollectionHolder}  from "../MinimalistAsCollectionHolder"
@@ -139,7 +139,7 @@ function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCol
         else if (size === 2)
             return new LazyCollectionHolderOf2(() => new Couple(collection.get(0,), collection.get(1,),),)
         else
-            return new LazyCollectionHolder(() => __getAll(collection, size - n,),)
+            return new LazyArrayAsCollectionHolder(() => __getAll(collection, size - n,),)
     if (n <= -size)
         if (size === 1)
             return new LazyCollectionHolderOf1(() => collection.get(0,),)
@@ -154,8 +154,8 @@ function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCol
     if (size === 1)
         return new LazyCollectionHolderOf1(() => collection.get(0,),)
     if (size === 2)
-    return new LazyCollectionHolder(() => __getAll(collection, size - n2,),)
         return new LazyCollectionHolderOf2(() => new Couple(collection.get(0,), collection.get(1,),),)
+    return new LazyArrayAsCollectionHolder(() => __getAll(collection, size - n2,),)
 }
 
 function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
@@ -192,7 +192,7 @@ function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n:
         else if (collection.hasExactly2Elements)
             return new LazyCollectionHolderOf2(() => new Couple(collection.getFirst(), collection.getLast(),),)
         else
-            return new LazyCollectionHolder(() => __getAll(collection, size - n,),)
+            return new LazyArrayAsCollectionHolder(() => __getAll(collection, size - n,),)
     if (n <= -size)
         if (collection.hasExactly1Element)
             return new LazyCollectionHolderOf1(() => collection.getFirst(),)
@@ -207,8 +207,8 @@ function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n:
     if (collection.hasExactly1Element)
         return new LazyCollectionHolderOf1(() => collection.getFirst(),)
     if (collection.hasExactly2Elements)
-    return new LazyCollectionHolder(() => __getAll(collection, size - n2,),)
         return new LazyCollectionHolderOf2(() => new Couple(collection.getFirst(), collection.getLast(),),)
+    return new LazyArrayAsCollectionHolder(() => __getAll(collection, size - n2,),)
 }
 
 function __coreByArray<const T, >(collection: Array<T>, n: number,): CollectionHolder<T> {
@@ -247,7 +247,7 @@ function __coreByArray<const T, >(collection: Array<T>, n: number,): CollectionH
         else if (size === 2)
             return new LazyCollectionHolderOf2(() => new Couple(collection[0] as T, collection[1] as T,),)
         else
-            return new LazyCollectionHolder(() => __getAllByArray(collection, size - n,),)
+            return new LazyArrayAsCollectionHolder(() => __getAllByArray(collection, size - n,),)
     if (n <= -size)
         if (size === 1)
             return new LazyCollectionHolderOf1(() => collection[0] as T,)
@@ -262,8 +262,8 @@ function __coreByArray<const T, >(collection: Array<T>, n: number,): CollectionH
     if (size === 1)
         return new LazyCollectionHolderOf1(() => collection[0] as T,)
     if (size === 2)
-    return new LazyCollectionHolder(() => __getAllByArray(collection, size - n2,),)
         return new LazyCollectionHolderOf2(() => new Couple(collection[0] as T, collection[1] as T,),)
+    return new LazyArrayAsCollectionHolder(() => __getAllByArray(collection, size - n2,),)
 }
 
 //#endregion -------------------- Core method --------------------

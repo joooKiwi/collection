@@ -16,7 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {__get}                         from "./_array utility"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -72,7 +72,7 @@ export function sliceWithCollectionHolderByMinimalistCollectionHolder<const T, >
         return EmptyCollectionHolder.get
     if (indices.isEmpty)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArray(collection, indices, indices.size,),)
+    return new LazyArrayAsCollectionHolder(() => __newArray(collection, indices, indices.size,),)
 }
 
 /**
@@ -93,7 +93,7 @@ export function sliceWithCollectionHolderByCollectionHolder<const T, >(collectio
         return EmptyCollectionHolder.get
     if (indices.isEmpty)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArray(collection, indices, indices.size,),)
+    return new LazyArrayAsCollectionHolder(() => __newArray(collection, indices, indices.size,),)
 }
 
 /**
@@ -114,7 +114,7 @@ export function sliceWithCollectionHolderByArray<const T, >(collection: Nullable
         return EmptyCollectionHolder.get
     if (indices.isEmpty)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArrayByArray(collection, indices, indices.size,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayByArray(collection, indices, indices.size,),)
 }
 
 //#endregion -------------------- Facade method --------------------

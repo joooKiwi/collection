@@ -17,7 +17,7 @@ import type {MinimalistCollectionHolder}                               from "../
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -119,10 +119,10 @@ export function filterNotIndexedByMinimalistCollectionHolder<const T, >(collecti
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, predicate, size,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, predicate, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
 }
 
 /**
@@ -164,10 +164,10 @@ export function filterNotIndexedByCollectionHolder<const T, >(collection: Nullab
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
 }
 
 /**
@@ -211,10 +211,10 @@ export function filterNotIndexedByArray<const T, >(collection: Nullable<Array<T>
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, predicate as (index: number,) => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1ArgumentByArray(collection, predicate as (index: number,) => boolean, size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, predicate, size,),)
-    return new LazyCollectionHolder(() => __with0ArgumentByArray(collection, predicate as () => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, predicate, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0ArgumentByArray(collection, predicate as () => boolean, size,),)
 }
 
 //#endregion -------------------- Facade method --------------------
