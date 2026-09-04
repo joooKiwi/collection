@@ -473,10 +473,10 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
 
     //#region -------------------- All --------------------
 
-    public abstract all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public abstract all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public abstract all(predicate: BooleanCallback<T>,): boolean
 
-    public every<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public every<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public every(predicate: BooleanCallback<T>,): boolean
     public every(predicate: BooleanCallback<T>,) {
         return this.all(predicate,)

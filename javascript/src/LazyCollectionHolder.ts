@@ -444,7 +444,7 @@ export class LazyCollectionHolder<const T = unknown, >
 
     //#region -------------------- All --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) { return this._innerCollection.all(predicate,) }
 
@@ -675,7 +675,7 @@ export class LazyCollectionHolder<const T = unknown, >
 
     //#region -------------------- To reverse --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolder<T> { return this._innerCollection.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this._innerCollection.toReverse(from, to,) }
 
     //#endregion -------------------- To reverse --------------------
 

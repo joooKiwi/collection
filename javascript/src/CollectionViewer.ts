@@ -184,7 +184,7 @@ export class CollectionViewer<const T = unknown,
 
     //#region -------------------- All --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) { return this.reference.all(predicate,) }
 
@@ -422,7 +422,7 @@ export class CollectionViewer<const T = unknown,
 
     //#region -------------------- To reverse --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolder<T> { return this.reference.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this.reference.toReverse(from, to,) }
 
     //#endregion -------------------- To reverse --------------------
 

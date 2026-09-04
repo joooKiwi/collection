@@ -184,28 +184,28 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Get --------------------
     //#region -------------------- First --------------------
 
-    public first<const S, >(..._: Array<unknown>): never
+    public first<const _S, >(..._: Array<unknown>): never
     public first() {
         if (arguments.length === 0)
             this.getFirst()
         this.findFirst()
     }
 
-    public firstOrNull<const S, >(..._: Array<unknown>): null
+    public firstOrNull<const _S, >(..._: Array<unknown>): null
     public firstOrNull() {
         if (arguments.length === 0)
             return this.getFirstOrNull()
         return this.findFirstOrNull()
     }
 
-    public firstIndexed<const S, >(..._: Array<unknown>): never
+    public firstIndexed<const _S, >(..._: Array<unknown>): never
     public firstIndexed() {
         if (arguments.length === 0)
             this.getFirst()
         this.findFirstIndexed()
     }
 
-    public firstIndexedOrNull<const S, >(..._: Array<unknown>): null
+    public firstIndexedOrNull<const _S, >(..._: Array<unknown>): null
     public firstIndexedOrNull() {
         if (arguments.length === 0)
             return this.getFirstOrNull()
@@ -215,28 +215,28 @@ export class EmptyCollectionHolder
     //#endregion -------------------- First --------------------
     //#region -------------------- Last --------------------
 
-    public last<const S, >(..._: Array<unknown>): never
+    public last<const _S, >(..._: Array<unknown>): never
     public last() {
         if (arguments.length === 0)
             this.getLast()
         this.findLast()
     }
 
-    public lastOrNull<const S, >(..._: Array<unknown>): null
+    public lastOrNull<const _S, >(..._: Array<unknown>): null
     public lastOrNull() {
         if (arguments.length === 0)
             return this.getLastOrNull()
         return this.findLastOrNull()
     }
 
-    public lastIndexed<const S, >(..._: Array<unknown>): never
+    public lastIndexed<const _S, >(..._: Array<unknown>): never
     public lastIndexed() {
         if (arguments.length === 0)
             this.getLast()
         this.findLastIndexed()
     }
 
-    public lastIndexedOrNull<const S, >(..._: Array<unknown>): null
+    public lastIndexedOrNull<const _S, >(..._: Array<unknown>): null
     public lastIndexedOrNull() {
         if (arguments.length === 0)
             return this.getLastOrNull()
@@ -247,57 +247,57 @@ export class EmptyCollectionHolder
     //#region -------------------- Find first --------------------
 
     public findFirst(..._: Array<unknown>): never
-    public findFirst<const S, >(..._: Array<unknown>): never
+    public findFirst<const _S, >(..._: Array<unknown>): never
     public findFirst() { throw new EmptyCollectionException() }
 
     public find(..._: Array<unknown>): never
-    public find<const S, >(..._: Array<unknown>): never
+    public find<const _S, >(..._: Array<unknown>): never
     public find() { this.findFirst() }
 
 
     public findFirstOrNull(..._: Array<unknown>): null
-    public findFirstOrNull<const S, >(..._: Array<unknown>): null
+    public findFirstOrNull<const _S, >(..._: Array<unknown>): null
     public findFirstOrNull() { return null }
 
     public findOrNull(..._: Array<unknown>): null
-    public findOrNull<const S, >(..._: Array<unknown>): null
+    public findOrNull<const _S, >(..._: Array<unknown>): null
     public findOrNull() { return this.findFirstOrNull() }
 
 
     public findFirstIndexed(..._: Array<unknown>): never
-    public findFirstIndexed<const S, >(..._: Array<unknown>): never
+    public findFirstIndexed<const _S, >(..._: Array<unknown>): never
     public findFirstIndexed() { throw new EmptyCollectionException() }
 
     public findIndexed(..._: Array<unknown>): never
-    public findIndexed<const S, >(..._: Array<unknown>): never
+    public findIndexed<const _S, >(..._: Array<unknown>): never
     public findIndexed() { this.findFirstIndexed() }
 
 
     public findFirstIndexedOrNull(..._: Array<unknown>): null
-    public findFirstIndexedOrNull<const S, >(..._: Array<unknown>): null
+    public findFirstIndexedOrNull<const _S, >(..._: Array<unknown>): null
     public findFirstIndexedOrNull() { return null }
 
     public findIndexedOrNull(..._: Array<unknown>): null
-    public findIndexedOrNull<const S, >(..._: Array<unknown>): null
+    public findIndexedOrNull<const _S, >(..._: Array<unknown>): null
     public findIndexedOrNull() { return this.findFirstIndexedOrNull() }
 
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find last --------------------
 
     public findLast(..._: Array<unknown>): never
-    public findLast<const S, >(..._: Array<unknown>): never
+    public findLast<const _S, >(..._: Array<unknown>): never
     public findLast() { throw new EmptyCollectionException() }
 
     public findLastOrNull(..._: Array<unknown>): null
-    public findLastOrNull<const S, >(..._: Array<unknown>): null
+    public findLastOrNull<const _S, >(..._: Array<unknown>): null
     public findLastOrNull() { return null }
 
     public findLastIndexed(..._: Array<unknown>): never
-    public findLastIndexed<const S, >(..._: Array<unknown>): never
+    public findLastIndexed<const _S, >(..._: Array<unknown>): never
     public findLastIndexed() { throw new EmptyCollectionException() }
 
     public findLastIndexedOrNull(..._: Array<unknown>): null
-    public findLastIndexedOrNull<const S, >(..._: Array<unknown>): null
+    public findLastIndexedOrNull<const _S, >(..._: Array<unknown>): null
     public findLastIndexedOrNull() { return null }
 
     //#endregion -------------------- Find last --------------------
@@ -410,14 +410,14 @@ export class EmptyCollectionHolder
     //#region -------------------- All --------------------
 
     /** @return {true} */
-    public all<const S extends never, >(..._: Array<unknown>): this is EmptyCollectionHolder
+    public all<const _S extends never, >(..._: Array<unknown>): this is EmptyCollectionHolder
     public all(..._: Array<unknown>): true
     public all() {
         return true
     }
 
     /** @return {true} */
-    public every<const S extends never, >(..._: Array<unknown>): this is EmptyCollectionHolder
+    public every<const _S extends never, >(..._: Array<unknown>): this is EmptyCollectionHolder
     public every(..._: Array<unknown>): true
     public every() {
         return this.all()
@@ -665,20 +665,20 @@ export class EmptyCollectionHolder
     //#region -------------------- Filter --------------------
 
     public filter(..._: Array<unknown>): this
-    public filter<const S, >(..._: Array<unknown>): this
+    public filter<const _S, >(..._: Array<unknown>): this
     public filter() { return this }
 
     public filterIndexed(..._: Array<unknown>): this
-    public filterIndexed<const S, >(..._: Array<unknown>): this
+    public filterIndexed<const _S, >(..._: Array<unknown>): this
     public filterIndexed() { return this }
 
 
     public filterNot(..._: Array<unknown>): this
-    public filterNot<const S, >(..._: Array<unknown>): this
+    public filterNot<const _S, >(..._: Array<unknown>): this
     public filterNot() { return this }
 
     public filterNotIndexed(..._: Array<unknown>): this
-    public filterNotIndexed<const S, >(..._: Array<unknown>): this
+    public filterNotIndexed<const _S, >(..._: Array<unknown>): this
     public filterNotIndexed() { return this }
 
 
@@ -788,17 +788,17 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Map --------------------
 
-    public map<const U, >(..._: Array<unknown>): CollectionHolder<U>
+    public map<const _U, >(..._: Array<unknown>): this
     public map() { return this }
 
-    public mapIndexed<const U, >(..._: Array<unknown>): CollectionHolder<U>
+    public mapIndexed<const _U, >(..._: Array<unknown>): this
     public mapIndexed() { return this }
 
 
-    public mapNotNull<const U extends NonNullable<unknown>, >(..._: Array<unknown>): CollectionHolder<U>
+    public mapNotNull<const _U extends NonNullable<unknown>, >(..._: Array<unknown>): this
     public mapNotNull() { return this }
 
-    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(..._: Array<unknown>): CollectionHolder<U>
+    public mapNotNullIndexed<const _U extends NonNullable<unknown>, >(..._: Array<unknown>): this
     public mapNotNullIndexed() { return this }
 
     //#endregion -------------------- Map --------------------
