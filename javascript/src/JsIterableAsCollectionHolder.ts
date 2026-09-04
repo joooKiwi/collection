@@ -39,6 +39,7 @@ import {IndexOutOfBoundsException} from "./exception/IndexOutOfBoundsException"
  * @typeParam REFERENCE The reference passed in the constructor (by default `IterableWithPossibleSize<T>`)
  * @adaptor
  * @beta
+ * @see LazyJsIterableAsCollectionHolder
  */
 export class JsIterableAsCollectionHolder<const T = unknown,
     const REFERENCE extends IterableWithPossibleSize<T> = IterableWithPossibleSize<T>, >

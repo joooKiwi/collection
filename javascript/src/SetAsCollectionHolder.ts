@@ -35,6 +35,7 @@ import {IndexOutOfBoundsException} from "./exception/IndexOutOfBoundsException"
  * @typeParam REFERENCE The reference passed in the constructor (by default `Set<T>`)
  * @adaptor
  * @beta
+ * @see LazySetAsCollectionHolder
  */
 export class SetAsCollectionHolder<const T = unknown,
     const REFERENCE extends Set<T> = Set<T>, >

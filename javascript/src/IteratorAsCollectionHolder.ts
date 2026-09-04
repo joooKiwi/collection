@@ -29,6 +29,7 @@ import {CollectionIterator}        from "./iterator/CollectionIterator"
  * @typeParam REFERENCE The reference passed in the constructor (by default `CollectionIterator<T>`)
  * @adaptor
  * @beta
+ * @see LazyIteratorAsCollectionHolder
  */
 export class IteratorAsCollectionHolder<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>, >
@@ -139,7 +140,6 @@ export class IteratorAsCollectionHolder<const T = unknown,
     }
 
     //#endregion -------------------- Get --------------------
-
 
     //#endregion -------------------- Research methods --------------------
 

@@ -16,7 +16,10 @@ import {AbstractCollectionHolder} from "./AbstractCollectionHolder"
 
 /**
  *
+ * @typeParam T         The type (by default `unknown`)
+ * @typeParam REFERENCE The reference passed in the constructor (by default `MinimalistCollectionHolder<T>`)
  * @adaptor
+ * @see LazyMinimalistAsCollectionHolder
  */
 export class MinimalistAsCollectionHolder<const T,
     const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >

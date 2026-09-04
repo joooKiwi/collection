@@ -38,6 +38,7 @@ import {IndexOutOfBoundsException} from "./exception/IndexOutOfBoundsException"
  * @typeParam REFERENCE The reference passed in the constructor (by default `Iterator<T, unknown, unknown>`)
  * @adaptor
  * @beta
+ * @see LazyJsIteratorAsCollectionHolder
  */
 export class JsIteratorAsCollectionHolder<const T = unknown,
     const REFERENCE extends Iterator<T, unknown, unknown> = Iterator<T, unknown, unknown>, >
