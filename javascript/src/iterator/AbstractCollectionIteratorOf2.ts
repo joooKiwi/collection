@@ -28,16 +28,14 @@ import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirs
  * It is a specialization of the {@link AbstractCollectionIterator}
  * without the internal values required for an unknown amount of elements.
  *
- * @typeParam T  The element type
- * @typeParam T1 The first element type (`T` by default)
- * @typeParam T2 The second element type (`T` by default)
+ * @typeParam T1 The first element type (`unknown` by default)
+ * @typeParam T2 The second element type (`unknown` by default)
  * @see EmptyCollectionIterator
  * @see CollectionIteratorOf2
  */
-export abstract class AbstractCollectionIteratorOf2<const T,
-    const T1 extends T = T,
-    const T2 extends T = T, >
-    extends AbstractUnimplementedCollectionIterator<T> {
+export abstract class AbstractCollectionIteratorOf2<const T1 = unknown,
+    const T2 = unknown, >
+    extends AbstractUnimplementedCollectionIterator<| T1 | T2> {
 
     //#region -------------------- Fields --------------------
 
@@ -146,7 +144,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     protected get _isNextIndexInitialized(): boolean { return this.#nextIndex !== undefined }
 
 
-    public override get nextValue(): T {
+    public override get nextValue(): | T1 | T2 {
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
@@ -178,7 +176,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     }
 
 
-    public override next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> {
+    public override next(): PossibleIteratorValue<| T1 | T2, AfterLastValueInCollectionIteratorSymbol> {
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
@@ -245,7 +243,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     protected get _isPreviousIndexInitialized(): boolean { return this.#previousIndex !== undefined }
 
 
-    public override get previousValue(): T {
+    public override get previousValue(): | T1 | T2 {
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
@@ -277,7 +275,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     }
 
 
-    public override previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> {
+    public override previous(): PossibleIteratorValue<| T1 | T2, BeforeFirstValueInCollectionIteratorSymbol> {
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
@@ -321,7 +319,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
 
     //#region -------------------- Loop methods --------------------
 
-    public override forEach(operation: ValueIndexCallback<T>,): this {
+    public override forEach(operation: ValueIndexCallback<| T1 | T2>,): this {
         const currentIndex = this._currentIndex
         if (currentIndex != null)
             return this
@@ -334,7 +332,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
         return this
     }
 
-    public override forEachIndexed(operation: IndexValueCallback<T>,): this {
+    public override forEachIndexed(operation: IndexValueCallback<| T1 | T2>,): this {
         const currentIndex = this._currentIndex
         if (currentIndex != null)
             return this
@@ -350,7 +348,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public abstract override [Symbol.iterator](): AbstractCollectionIteratorOf2<T, T1, T2>
+    public abstract override [Symbol.iterator](): AbstractCollectionIteratorOf2<T1, T2>
 
     //#endregion -------------------- JavaScript methods --------------------
 

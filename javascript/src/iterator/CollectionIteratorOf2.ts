@@ -14,10 +14,9 @@ import {AbstractCollectionIteratorOf2} from "./AbstractCollectionIteratorOf2"
 import {IteratorValueOf1On2}           from "./value/IteratorValueOf1On2"
 import {IteratorValueOf2On2}           from "./value/IteratorValueOf2On2"
 
-export class CollectionIteratorOf2<const T = unknown,
-    const T1 extends T = T,
-    const T2 extends T = T, >
-    extends AbstractCollectionIteratorOf2<T, T1, T2> {
+export class CollectionIteratorOf2<const T1 = unknown,
+    const T2 = unknown, >
+    extends AbstractCollectionIteratorOf2<T1, T2> {
 
     readonly #value1: T1
     readonly #value2: T2
@@ -38,7 +37,7 @@ export class CollectionIteratorOf2<const T = unknown,
 
     protected override get _valueResult2(): IteratorValueOf2On2<T2> { return this.#valueResult2 ??= new IteratorValueOf2On2(this.value2,) }
 
-    public override [Symbol.iterator](): CollectionIteratorOf2<T, T1, T2> {
+    public override [Symbol.iterator](): CollectionIteratorOf2<T1, T2> {
         return new CollectionIteratorOf2(this.value1, this.value2,)
     }
 
