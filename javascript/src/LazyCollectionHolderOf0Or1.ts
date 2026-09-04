@@ -347,8 +347,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        if (this._innerCollection.hasNull)
-            throw new TypeError("Forbidden null value. The current collection contains null values.",)
+        this._innerCollection.requireNoNulls()
         return this as CollectionHolder<NonNullable<T>>
     }
 
