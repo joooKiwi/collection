@@ -10,8 +10,6 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {UndefinedOr} from "@joookiwi/type"
-
 import type {CollectionHolder}    from "./CollectionHolder"
 import type {CollectionHolderOf1} from "./CollectionHolderOf1"
 import type {Optional}            from "./optional/Optional"
@@ -21,37 +19,27 @@ import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
 import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
 
 /**
- * An instance of {@link CollectionHolder} adapted from an {@link ReadonlyArray Array} having a lone value inside.
+ * An instance of [CollectionHolder] with only a single value from its `constructor`
  *
- * Note that the value is directly retrieved from the array and it is kept
- *
- * @typeParam T The type
- * @see ArrayAsCollectionHolder
- * @see SetOf1AsCollectionHolder
- * @see SingleValueCollectionHolder
+ * @typeParam T The type (by default `unknown`)
  * @see LazyCollectionHolderOf1
+ * @see ArrayOf1AsCollectionHolder
  */
-export class ArrayOf1AsCollectionHolder<const T = unknown,
-    const REFERENCE extends readonly [T,] = readonly [T,], >
+export class SingleValueCollectionHolder<const T = unknown, >
     extends AbstractCollectionHolderOf1<T> {
 
-    /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
+    /** The internal value passed through the {@link constructor} */
     public override readonly 0: T
-    readonly #reference: WeakRef<REFERENCE>
     readonly #value: T
     readonly #hasNull: boolean
     readonly #hasNoNulls: boolean
 
-    public constructor(reference: & readonly [T,] & REFERENCE,)
-    public constructor(reference: REFERENCE,) {
+    public constructor(value: T,) {
         super()
-        if (reference.length !== 1)
-            throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 1.`,)
-        this.#reference = new WeakRef(reference,)
-        this.#hasNoNulls = !(this.#hasNull = (this.#value = this[0] = reference[0]) == null)
+        this.#hasNoNulls = !(this.#hasNull = (this[0] = this.#value = value) == null)
     }
 
-    public override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
+    protected override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
         return new LazyCollectionHolderOf1(lateValue,)
     }
 
@@ -59,15 +47,8 @@ export class ArrayOf1AsCollectionHolder<const T = unknown,
         return new LazyCollectionHolderOf0Or1(latePossibleValue,)
     }
 
-    /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
+    /** The internal value passed through the {@link constructor} */
     public override get value(): T { return this.#value }
-
-    /**
-     * The internal referenced passed through the {@link constructor}.
-     *
-     * It returns `undefined` if the reference has been garbed-collected.
-     */
-    protected get _reference(): UndefinedOr<REFERENCE> { return this.#reference.deref() }
 
     public override get hasNull(): boolean { return this.#hasNull }
 

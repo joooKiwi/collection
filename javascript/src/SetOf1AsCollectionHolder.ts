@@ -12,7 +12,13 @@
 
 import type {Set, UndefinedOr} from "@joookiwi/type"
 
+import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionHolderOf1} from "./CollectionHolderOf1"
+import type {Optional}            from "./optional/Optional"
+
 import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
+import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
+import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
 
 /**
  * An instance of {@link CollectionHolder} adapted from an {@link ReadonlySet Set} having a lone value inside.
@@ -23,7 +29,7 @@ import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
  * @typeParam REFERENCE The reference passed in the constructor (by default `Set<T>`)
  * @see SetAsCollectionHolder
  * @see ArrayOf1AsCollectionHolder
- * @see CollectionHolderOf1
+ * @see SingleValueCollectionHolder
  * @see LazyCollectionHolderOf1
  */
 export class SetOf1AsCollectionHolder<const T = unknown,
@@ -37,12 +43,21 @@ export class SetOf1AsCollectionHolder<const T = unknown,
     readonly #hasNull: boolean
     readonly #hasNoNulls: boolean
 
+    public constructor(reference: & Set<T> & REFERENCE,)
     public constructor(reference: REFERENCE,) {
         super()
         if (reference.size !== 1)
             throw new TypeError(`The set received in the “${this.constructor.name}” cannot have a different size than 1.`,)
         this.#reference = new WeakRef(reference,)
         this.#hasNoNulls = !(this.#hasNull = (this.#value = this[0] = reference[Symbol.iterator]().next().value as T) == null)
+    }
+
+    override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
+        return new LazyCollectionHolderOf1(lateValue,)
+    }
+
+    protected override _create0Or1<const U, >(latePossibleValue: () => Optional<U>,): CollectionHolder<U> {
+        return new LazyCollectionHolderOf0Or1(latePossibleValue,)
     }
 
     /** The internal value passed through the {@link constructor} in the {@link _reference} first field */

@@ -10,7 +10,12 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionHolderOf1} from "./CollectionHolderOf1"
+import type {Optional}            from "./optional/Optional"
+
 import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
+import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
 
@@ -20,7 +25,7 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * It does retrieve the value only once from the callback received in its `constructor`.
  *
  * @typeParam T The type (by default `unknown`)
- * @see CollectionHolderOf1
+ * @see SingleValueCollectionHolder
  * @see ArrayOf1AsCollectionHolder
  */
 export class LazyCollectionHolderOf1<const T = unknown, >
@@ -45,6 +50,14 @@ export class LazyCollectionHolderOf1<const T = unknown, >
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
+
+    public override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
+        return new LazyCollectionHolderOf1(lateValue,)
+    }
+
+    protected override _create0Or1<const U, >(latePossibleValue: () => Optional<U>,): CollectionHolder<U> {
+        return new LazyCollectionHolderOf0Or1(latePossibleValue,)
+    }
 
     /** The internal value passed through the {@link constructor} */
     public override get 0() { return this.value }

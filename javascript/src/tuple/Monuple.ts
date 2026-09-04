@@ -12,8 +12,10 @@
 
 import type {Set} from "@joookiwi/type"
 
-import {AbstractTuple}       from "./AbstractTuple"
-import {CollectionHolderOf1} from "../CollectionHolderOf1"
+import type {CollectionHolderOf1} from "../CollectionHolderOf1"
+
+import {AbstractTuple}               from "./AbstractTuple"
+import {SingleValueCollectionHolder} from "../SingleValueCollectionHolder"
 
 /**
  * An instance of [Tuple] with only a single value from its `constructor`
@@ -72,7 +74,7 @@ export class Monuple<const T = unknown, >
 
     public override toSet(): Set<T> { return this.#set ??= Object.freeze(new Set([this.value1,],),) }
 
-    public override toCollection(): CollectionHolderOf1<T> { return this.#collection ??= new CollectionHolderOf1(this.value1,) }
+    public override toCollection(): CollectionHolderOf1<T> { return this.#collection ??= new SingleValueCollectionHolder(this.value1,) }
 
     public override toString(): string {
         const value1 = this.value1
