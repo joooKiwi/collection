@@ -13,20 +13,18 @@
 import type {Array, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
-import type {EmptyCollectionHolder}                                                                                                                                                                                                                                             from "./EmptyCollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
-import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "./iterator/CollectionIteratorOf1"
-import type {CollectionIteratorOf2}                                                                                                                                                                                                                                             from "./iterator/CollectionIteratorOf2"
 import type {Optional}                                                                                                                                                                                                                                                          from "./optional/Optional"
 import type {Couple}                                                                                                                                                                                                                                                            from "./tuple/Couple"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
+import type {CollectionHolderOfSame0Or1Or2, CollectionHolderOfSame1Or2}                                                                                                                                                                                                         from "./type/collection"
+import type {CollectionIteratorOfSame1Or2}                                                                                                                                                                                                                                      from "./type/iterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "./type/possibleInstance"
 
 import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedCollectionHolder"
-import type {CollectionHolderOf1}              from "./CollectionHolderOf1"
-import type {CollectionHolderOf2}              from "./CollectionHolderOf2"
-import {LateRetriever}                         from "./LateRetriever"
+import {DualValueCollectionHolder}             from "./DualValueCollectionHolder"
+import {SingleValueCollectionHolder}           from "./SingleValueCollectionHolder"
 import {IndexOutOfBoundsException}             from "./exception/IndexOutOfBoundsException"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
@@ -43,17 +41,17 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
 
     //#region -------------------- Field --------------------
 
-    #latePossibleValue: () => Couple<unknown, T, Optional<T>>
+    #latePossibleValue: () => Couple<T, Optional<T>>
     #value1?: T
     #isValue1Initialized: boolean
     #value2?: T
     #isValue2Initialized: boolean
-    #innerCollection?: | CollectionHolderOf2<T> | CollectionHolderOf1<T>
+    #innerCollection?: CollectionHolderOfSame1Or2<T>
 
     //#endregion -------------------- Field --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(latePossibleValue: () => Couple<unknown, T, Optional<T>>,) {
+    public constructor(latePossibleValue: () => Couple<T, Optional<T>>,) {
         super()
         this.#latePossibleValue = latePossibleValue
         this.#isValue1Initialized = this.#isValue2Initialized = false
@@ -67,7 +65,7 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
      *
      * @initializedOnFirstCall
      */
-    protected get _innerCollection(): | CollectionHolderOf2<T> | CollectionHolderOf1<T> {
+    protected get _innerCollection(): CollectionHolderOfSame1Or2<T> {
         const value = this.#innerCollection
         if (value != null)
             return value
@@ -76,8 +74,8 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
         this.#latePossibleValue = FAIL_CALLBACK // We do not need the callback anymore once the value has been retrieved
         const value2 = couple.value2
         if (value2.isEmpty)
-            return this.#innerCollection = new LateRetriever.CollectionHolderOf1(couple.value1,)
-        return this.#innerCollection = new LateRetriever.CollectionHolderOf2(couple.value1, value2.get,)
+            return this.#innerCollection = new SingleValueCollectionHolder(couple.value1,)
+        return this.#innerCollection = new DualValueCollectionHolder(couple.value1, value2.get,)
     }
 
     public get 0(): T { return this.value1 }
@@ -370,7 +368,7 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     //#endregion -------------------- Slice --------------------
     //#region -------------------- Take --------------------
 
-    public override take(n: number,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.take(n,) }
+    public override take(n: number,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.take(n,) }
 
     public override takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -381,7 +379,7 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this._innerCollection.takeWhileIndexed(predicate,) }
 
 
-    public override takeLast(n: number,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.takeLast(n,) }
+    public override takeLast(n: number,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.takeLast(n,) }
 
     public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -394,7 +392,7 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     //#endregion -------------------- Take --------------------
     //#region -------------------- Drop --------------------
 
-    public override drop(n: number,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.drop(n,) }
+    public override drop(n: number,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.drop(n,) }
 
     public override dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -405,7 +403,7 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this._innerCollection.dropWhileIndexed(predicate,) }
 
 
-    public override dropLast(n: number,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.dropLast(n,) }
+    public override dropLast(n: number,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.dropLast(n,) }
 
     public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -452,14 +450,14 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
 
     //#region -------------------- To reverse --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> { return this._innerCollection.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOfSame1Or2<T> { return this._innerCollection.toReverse(from, to,) }
 
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public override [Symbol.iterator](): | CollectionIteratorOf2<T> | CollectionIteratorOf1<T> {
+    public override [Symbol.iterator](): CollectionIteratorOfSame1Or2<T> {
         return this.toIterator()
     }
 
@@ -468,7 +466,7 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
 
     //#region -------------------- To other structure --------------------
 
-    public override toIterator(): | CollectionIteratorOf2<T> | CollectionIteratorOf1<T> { return this._innerCollection.toIterator() }
+    public override toIterator(): CollectionIteratorOfSame1Or2<T> { return this._innerCollection.toIterator() }
 
     public override toArray(): | readonly [T, T,] | readonly [T,] { return this._innerCollection.toArray() }
 

@@ -12,20 +12,20 @@
 
 import type {Set} from "@joookiwi/type"
 
-import {AbstractTuple}       from "./AbstractTuple"
-import {CollectionHolderOf2} from "../CollectionHolderOf2"
+import type {CollectionHolderOf2} from "../CollectionHolderOf2"
+
+import {AbstractTuple}             from "./AbstractTuple"
+import {DualValueCollectionHolder} from "../DualValueCollectionHolder"
 
 /**
  * An instance of [Tuple] with only 2 values from its `constructor`
  *
- * @typeParam T The type (by default `unknown`)
- * @typeParam T1 The 1st type (by default `T`)
- * @typeParam T2 The 2nd type (by default `T`)
+ * @typeParam T1 The 1st type (by default `unknown`)
+ * @typeParam T2 The 2nd type (by default `unknown`)
  */
-export class Couple<const T = unknown,
-    const T1 extends T = T,
-    const T2 extends T = T, >
-    extends AbstractTuple<T> {
+export class Couple<const T1 = unknown,
+    const T2 = unknown, >
+    extends AbstractTuple<| T1 | T2> {
 
     //#region -------------------- Fields --------------------
 
@@ -35,7 +35,7 @@ export class Couple<const T = unknown,
     readonly #value2: T2
     #array?: readonly [T1, T2,]
     #set?: Set<| T1 | T2>
-    #collection?: CollectionHolderOf2<T, T1, T2>
+    #collection?: CollectionHolderOf2<T1, T2>
     readonly #hasNull: boolean
     readonly #hasNoNulls: boolean
     readonly #hasDuplicate: boolean
@@ -49,7 +49,7 @@ export class Couple<const T = unknown,
         this[0] = this.#value1 = value1
         this[1] = this.#value2 = value2
         this.#hasNoNulls = !(this.#hasNull = value1 == null || value2 == null)
-        this.#hasNoDuplicates = !(this.#hasDuplicate = value1 as T === value2 as T)
+        this.#hasNoDuplicates = !(this.#hasDuplicate = value1 as (| T1 | T2) === value2)
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -86,7 +86,7 @@ export class Couple<const T = unknown,
 
     public override toSet(): Set<| T1 | T2> { return this.#set ??= Object.freeze(new Set([this.value1, this.value2,],),) }
 
-    public override toCollection(): CollectionHolderOf2<T, T1, T2> { return this.#collection ??= new CollectionHolderOf2(this.value1, this.value2,) }
+    public override toCollection(): CollectionHolderOf2<T1, T2> { return this.#collection ??= new DualValueCollectionHolder(this.value1, this.value2,) }
 
     public override toString(): string {
         const value1 = this.value1

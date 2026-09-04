@@ -13,18 +13,22 @@
 import type {Array, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrOneNumber, NullOrUndefined, NullOrZeroNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
+import type {CollectionHolderOf1}                                                                                                                                                                                                                                               from "./CollectionHolderOf1"
+import type {CollectionHolderOf2}                                                                                                                                                                                                                                               from "./CollectionHolderOf2"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
+import type {Couple}                                                                                                                                                                                                                                                            from "./tuple/Couple"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
+import type {CollectionHolderOf0Or1Or2, CollectionHolderOf1Or2, CollectionHolderOfAny0Or1Or2, CollectionHolderOfAny1Or2, CollectionHolderOfLast0Or1Or2, CollectionHolderOfLast1Or2}                                                                                             from "./type/collection"
+import type {IndexOf2, IndexOf2Of1, IndexOf2Of2}                                                                                                                                                                                                                                from "./type/indexOf"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "./type/possibleInstance"
+import type {ToReverse_from, ToReverse_fromTo, ToReverse_to}                                                                                                                                                                                                                    from "./type/toReverse"
+import type {DoubleValueFromIndex, DoubleValueFromIndexOrElse, DoubleValueFromIndexOrNull}                                                                                                                                                                                      from "./type/value"
 
-import {AbstractUnimplementedCollectionHolder}                                                                            from "./AbstractUnimplementedCollectionHolder"
+import {AbstractUnimplementedCollectionHolderOf2}                                                                         from "./AbstractUnimplementedCollectionHolderOf2"
 import {EmptyCollectionHolder}                                                                                            from "./EmptyCollectionHolder"
-import {LateRetriever}                                                                                                    from "./LateRetriever"
-import {LazyCollectionHolder}                                                                                             from "./LazyCollectionHolder"
-import {LazyCollectionHolderOf0Or1Or2}                                                                                    from "./LazyCollectionHolderOf0Or1Or2"
-import {CollectionHolderOf1}                                                                                              from "./CollectionHolderOf1"
-import type {CollectionHolderOf2}                                                                                         from "./CollectionHolderOf2"
+import {LazyArrayAsCollectionHolder}                                                                                      from "./LazyArrayAsCollectionHolder"
+import {SingleValueCollectionHolder}                                                                                      from "./SingleValueCollectionHolder"
 import {CollectionIteratorOf2}                                                                                            from "./iterator/CollectionIteratorOf2"
 import {ForbiddenIndexException}                                                                                          from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                        from "./exception/IndexOutOfBoundsException"
@@ -42,7 +46,6 @@ import {isMinimalistCollectionHolderByStructure}                                
 import {isSetByStructure}                                                                                                 from "./method/isSetByStructure"
 import {EmptyOptional}                                                                                                    from "./optional/EmptyOptional"
 import {Optional}                                                                                                         from "./optional/Optional"
-import {Couple}                                                                                                           from "./tuple/Couple"
 
 /**
  * A {@link CollectionHolder} having 2 values.
@@ -53,25 +56,15 @@ import {Couple}                                                                 
  *
  * @see AbstractCollectionHolder
  * @see AbstractCollectionHolderOf1
- * @see CollectionHolderOf2
+ * @see DualValueCollectionHolder
  * @see LazyCollectionHolderOf2
  * @see ArrayOf2AsCollectionHolder
  * @see SetOf2AsCollectionHolder
  */
-export abstract class AbstractCollectionHolderOf2<const T = unknown,
-    const T1 extends T = T,
-    const T2 extends T = T, >
-    extends AbstractUnimplementedCollectionHolder<T> {
+export abstract class AbstractCollectionHolderOf2<const T1 = unknown,
+    const T2 = unknown, >
+    extends AbstractUnimplementedCollectionHolderOf2<T1, T2> {
 
-    //#region -------------------- Fields --------------------
-
-    /** The first value (out of 2) of the current instance */
-    public abstract readonly 0: T1
-
-    /** The second value (out of 2) of the current instance */
-    public abstract readonly 1: T2
-
-    //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
     protected constructor() { super() }
@@ -79,15 +72,43 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    //#region -------------------- Reference methods --------------------
+    //#region -------------------- Create methods --------------------
 
-    /** The first value (out of 2) of the current instance */
-    public abstract get value1(): T1
+    protected abstract _createCouple<const U1, const U2, >(value1: U1, value2: U2,): Couple<U1, U2>
 
-    /** The second value (out of 2) of the current instance */
-    public abstract get value2(): T2
+    protected _create1<const U, >(value: U,): CollectionHolderOf1<U> {
+        return new SingleValueCollectionHolder(value,)
+    }
 
-    //#endregion -------------------- Reference methods --------------------
+    protected abstract _create2(value2: T2, value1: T1,): CollectionHolderOf2<T2, T1>
+
+    protected abstract _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2>
+
+    protected abstract _create0Or1Or2<const U1, const U2, >(latePossibleValue: () => Nullable<Couple<Optional<| U1 | U2>, Optional<U2>>>,): CollectionHolder<| U1 | U2>
+
+    /**
+     * Create a new instance from a late {@link ReadonlyArray Array}
+     *
+     * Note that this should usually be:
+     * ```typescript
+     * protected override _create(lateArray: () => Array<T1 | T2>): CollectionHolder<T1 | T2> {
+     *     return new LazyArrayAsCollectionHolder(lateArray)
+     * }
+     * ```
+     * or in JavaScript:
+     * ```javascript
+     * _create(lateArray) {
+     *     return new LazyArrayAsCollectionHolder(lateArray)
+     * }
+     * ```
+     *
+     * @param lateArray The late array
+     */
+    protected _createLazyArray(lateArray: () => Array<| T1 | T2>,): CollectionHolder<| T1 | T2> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
+    }
+
+    //#endregion -------------------- Create methods --------------------
     //#region -------------------- Size methods --------------------
 
     public override get size(): 2 { return 2 }
@@ -107,7 +128,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- Get --------------------
 
-    public override get<const I extends number, >(index: I,): I extends | 0 | -1 ? T1 : I extends | 1 | -2 ? T2 : never
+    public override get<const I extends number, >(index: I,): DoubleValueFromIndex<I, T1, T2>
+    public override get(index: number,): | T1 | T2
     public override get(index: number,) {
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
@@ -142,10 +164,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     public override getLast(): T2 { return this.value2 }
 
 
-    public override getOrElse<const U, const I extends number,>(index: I, defaultValue: IndexWithReturnCallback<U>,): I extends | 0 | -1 ? T1 : I extends | 1 | -2 ? T2 : U
-    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public override getOrElse<const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<T>,): I extends | 0 | -1 ? T1 : I extends | 1 | -2 ? T2 : T
-    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    public override getOrElse<const U, const I extends number,>(index: I, defaultValue: IndexWithReturnCallback<U>,): DoubleValueFromIndexOrElse<I, T1, T2, U>
+    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T1 | T2 | U
+    public override getOrElse<const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<| T1 | T2>,): DoubleValueFromIndexOrElse<I, T1, T2, | T1 | T2>
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<| T1 | T2>,): | T1 | T2
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         if (index === 0)
             return this.value1
@@ -160,15 +182,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
 
     public override getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): T1
-    public override getFirstOrElse(defaultValue: ReturnCallback<T>,): T1
+    public override getFirstOrElse(defaultValue: ReturnCallback<| T1 | T2>,): T1
     public override getFirstOrElse() { return this.value1 }
 
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): T2
-    public override getLastOrElse(defaultValue: ReturnCallback<T>,): T2
+    public override getLastOrElse(defaultValue: ReturnCallback<| T1 | T2>,): T2
     public override getLastOrElse() { return this.value2 }
 
 
-    public override getOrNull<const I extends number, >(index: I,): I extends | 0 | -1 ? T1 : I extends | 1 | -2 ? T2 : null
+    public override getOrNull<const I extends number, >(index: I,): DoubleValueFromIndexOrNull<I, T1, T2>
+    public override getOrNull(index: number,): NullOr<| T1 | T2>
     public override getOrNull(index: number,) {
         if (index === 0)
             return this.value1
@@ -188,16 +211,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Get --------------------
     //#region -------------------- Find first --------------------
 
-    public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
-    public override findFirst(predicate: BooleanCallback<T>,): T
-    public override findFirst(predicate: BooleanCallback<T>,) {
+    public override findFirst<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): S
+    public override findFirst(predicate: BooleanCallback<| T1 | T2>,): | T1 | T2
+    public override findFirst(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1) {
             const value1 = this.value1
-            if ((predicate as (value: T,) => boolean)(value1,))
+            if ((predicate as (value: | T1 | T2,) => boolean)(value1,))
                 return value1
 
             const value2 = this.value2
-            if ((predicate as (value: T,) => boolean)(value2,))
+            if ((predicate as (value: | T1 | T2,) => boolean)(value2,))
                 return value2
             throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 2,)
         }
@@ -219,16 +242,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 2,)
     }
 
-    public override findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
-    public override findFirstOrNull(predicate: BooleanCallback<T>,) {
+    public override findFirstOrNull<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): NullOr<S>
+    public override findFirstOrNull(predicate: BooleanCallback<| T1 | T2>,): NullOr<| T1 | T2>
+    public override findFirstOrNull(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1) {
             const value1 = this.value1
-            if ((predicate as (value: T,) => boolean)(value1,))
+            if ((predicate as (value: | T1 | T2,) => boolean)(value1,))
                 return value1
 
             const value2 = this.value2
-            if ((predicate as (value: T,) => boolean)(value2,))
+            if ((predicate as (value: | T1 | T2,) => boolean)(value2,))
                 return value2
             return null
         }
@@ -250,9 +273,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
-    public override findFirstIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
-    public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,): T
-    public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,) {
+    public override findFirstIndexed<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): S
+    public override findFirstIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): | T1 | T2
+    public override findFirstIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
             if ((predicate as (index: number,) => boolean)(0,))
                 return this.value1
@@ -278,9 +301,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 2,)
     }
 
-    public override findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,) {
+    public override findFirstIndexedOrNull<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): NullOr<S>
+    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<| T1 | T2>,): NullOr<| T1 | T2>
+    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
             if ((predicate as (index: number,) => boolean)(0,))
                 return this.value1
@@ -309,16 +332,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find last --------------------
 
-    public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
-    public override findLast(predicate: BooleanCallback<T>,): T
-    public override findLast(predicate: BooleanCallback<T>,) {
+    public override findLast<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): S
+    public override findLast(predicate: BooleanCallback<| T1 | T2>,): | T1 | T2
+    public override findLast(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1) {
             const value2 = this.value2
-            if ((predicate as (value: T,) => boolean)(value2,))
+            if ((predicate as (value: | T1 | T2,) => boolean)(value2,))
                 return value2
 
             const value1 = this.value1
-            if ((predicate as (value: T,) => boolean)(value1,))
+            if ((predicate as (value: | T1 | T2,) => boolean)(value1,))
                 return value1
             throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 2,)
         }
@@ -340,16 +363,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 2,)
     }
 
-    public override findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
-    public override findLastOrNull(predicate: BooleanCallback<T>,) {
+    public override findLastOrNull<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): NullOr<S>
+    public override findLastOrNull(predicate: BooleanCallback<| T1 | T2>,): NullOr<| T1 | T2>
+    public override findLastOrNull(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1) {
             const value2 = this.value2
-            if ((predicate as (value: T,) => boolean)(value2,))
+            if ((predicate as (value: | T1 | T2,) => boolean)(value2,))
                 return value2
 
             const value1 = this.value1
-            if ((predicate as (value: T,) => boolean)(value1,))
+            if ((predicate as (value: | T1 | T2,) => boolean)(value1,))
                 return value1
             return null
         }
@@ -371,9 +394,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
-    public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): T
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
+    public override findLastIndexed<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): S
+    public override findLastIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): | T1 | T2
+    public override findLastIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
             if ((predicate as (index: number,) => boolean)(1,))
                 return this.value2
@@ -399,9 +422,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 2,)
     }
 
-    public override findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,) {
+    public override findLastIndexedOrNull<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): NullOr<S>
+    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<| T1 | T2>,): NullOr<| T1 | T2>
+    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
             if ((predicate as (index: number,) => boolean)(1,))
                 return this.value2
@@ -429,20 +452,63 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#endregion -------------------- Find last --------------------
 
+    //#region -------------------- First --------------------
+
+    public override firstOrNull(): T1
+    public override firstOrNull<const S extends | T1 | T2, >(predicate: Nullable<RestrainedBooleanCallback<| T1 | T2, S>>,): NullOr<S>
+    public override firstOrNull(predicate: Nullable<BooleanCallback<| T1 | T2>>,): NullOr<| T1 | T2>
+    public override firstOrNull(predicate?: Nullable<BooleanCallback<| T1 | T2>>,) {
+        if (predicate == null)
+            return this.getFirst()
+        return this.findFirstOrNull(predicate,)
+    }
+
+    public override firstIndexedOrNull(): T1
+    public override firstIndexedOrNull<const S extends | T1 | T2, >(predicate: Nullable<ReverseRestrainedBooleanCallback<| T1 | T2, S>>,): NullOr<S>
+    public override firstIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<| T1 | T2>>,): NullOr<| T1 | T2>
+    public override firstIndexedOrNull(predicate?: Nullable<ReverseBooleanCallback<| T1 | T2>>,) {
+        if (predicate == null)
+            return this.getFirst()
+        return this.findFirstIndexedOrNull(predicate,)
+    }
+
+    //#endregion -------------------- First --------------------
+    //#region -------------------- Last --------------------
+
+    public override lastOrNull(): T2
+    public override lastOrNull<const S extends | T1 | T2, >(predicate: Nullable<RestrainedBooleanCallback<| T1 | T2, S>>,): NullOr<S>
+    public override lastOrNull(predicate: Nullable<BooleanCallback<| T1 | T2>>,): NullOr<| T1 | T2>
+    public override lastOrNull(predicate?: Nullable<BooleanCallback<| T1 | T2>>,) {
+        if (predicate == null)
+            return this.getLast()
+        return this.findLastOrNull(predicate,)
+    }
+
+    public override lastIndexedOrNull(): T2
+    public override lastIndexedOrNull<const S extends | T1 | T2, >(predicate: Nullable<ReverseRestrainedBooleanCallback<| T1 | T2, S>>,): NullOr<S>
+    public override lastIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<| T1 | T2>>,): NullOr<| T1 | T2>
+    public override lastIndexedOrNull(predicate?: Nullable<ReverseBooleanCallback<| T1 | T2>>,) {
+        if (predicate == null)
+            return this.getLast()
+        return this.findLastIndexedOrNull(predicate,)
+    }
+
+    //#endregion -------------------- Last --------------------
+
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
     //#region -------------------- First index of --------------------
 
-    protected _firstIndexOf_core0(element: T,): | 0 | 1 { return this.#firstIndexOf_findInRange(element,) }
+    protected _firstIndexOf_core0(element: | T1 | T2,): | 0 | 1 { return this.#firstIndexOf_findInRange(element,) }
 
-    protected _firstIndexOf_core1(element: T, from: number,): | 0 | 1 {
+    protected _firstIndexOf_core1(element: | T1 | T2, from: number,): | 0 | 1 {
         if (__getStartingIndex(from,) === 0)
             return this.#firstIndexOf_findInRange(element,)
         return this.#firstIndexOf_find2(element,)
     }
 
-    protected _firstIndexOf_core2(element: T, from: number, to: number,): | 0 | 1 {
+    protected _firstIndexOf_core2(element: | T1 | T2, from: number, to: number,): | 0 | 1 {
         const startingIndex = __getStartingIndex(from,)
         const endingIndex = __getEndingIndex(to,)
         __validateInRange(from, startingIndex, to, endingIndex,)
@@ -454,26 +520,26 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#firstIndexOf_findInRange(element,)
     }
 
-    protected _firstIndexOf_withNoFrom(element: T, to: number,): | 0 | 1 {
+    protected _firstIndexOf_withNoFrom(element: | T1 | T2, to: number,): | 0 | 1 {
         if (__getEndingIndex(to,) === 0)
             return this.#firstIndexOf_find1(element,)
         return this.#firstIndexOf_findInRange(element,)
     }
 
 
-    #firstIndexOf_find1(element: T,): 0 {
+    #firstIndexOf_find1(element: | T1 | T2,): 0 {
         if (this.value1 === element)
             return 0
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
-    #firstIndexOf_find2(element: T,): 1 {
+    #firstIndexOf_find2(element: | T1 | T2,): 1 {
         if (this.value2 === element)
             return 1
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 1,)
     }
 
-    #firstIndexOf_findInRange(element: T,): | 0 | 1 {
+    #firstIndexOf_findInRange(element: | T1 | T2,): | 0 | 1 {
         if (this.value1 === element)
             return 0
         if (this.value2 === element)
@@ -482,7 +548,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
-    public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+    public override firstIndexOf<const I1 extends NullableNumber, const I2 extends NullableNumber, >(element: T1,        from?: I1,             to?: I2,):             IndexOf2Of1<I1, I2>
+    public override firstIndexOf                                                                    (element: T1,        from?: NullableNumber, to?: NullableNumber,): 0
+    public override firstIndexOf<const I1 extends NullableNumber, const I2 extends NullableNumber, >(element: T2,        from?: I1,             to?: I2,):             IndexOf2Of2<I1, I2>
+    public override firstIndexOf                                                                    (element: T2,        from?: NullableNumber, to?: NullableNumber,): 1
+    public override firstIndexOf<const I1 extends NullableNumber, const I2 extends NullableNumber, >(element: | T1 | T2, from?: I1,             to?: I2,):             IndexOf2<I1, I2>
+    public override firstIndexOf                                                                    (element: | T1 | T2, from?: NullableNumber, to?: NullableNumber,): | 0 | 1
+    public override firstIndexOf(element: | T1 | T2, from?: NullableNumber, to?: NullableNumber,) {
         if (to == null)
             if (from == null)
                 return this._firstIndexOf_core0(element,)
@@ -496,9 +568,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- First index of --------------------
     //#region -------------------- First index of or null --------------------
 
-    protected _firstIndexOfOrNull_core0(element: T,): NullOrNumber<| 0 | 1> { return this.#firstIndexOfOrNull_findInRange(element,) }
+    protected _firstIndexOfOrNull_core0(element: | T1 | T2,): NullOrNumber<| 0 | 1> { return this.#firstIndexOfOrNull_findInRange(element,) }
 
-    protected _firstIndexOfOrNull_core1(element: T, from: number,): NullOrNumber<| 0 | 1> {
+    protected _firstIndexOfOrNull_core1(element: | T1 | T2, from: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -507,7 +579,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#firstIndexOfOrNull_find2(element,)
     }
 
-    protected _firstIndexOfOrNull_core2(element: T, from: number, to: number,): NullOrNumber<| 0 | 1> {
+    protected _firstIndexOfOrNull_core2(element: | T1 | T2, from: number, to: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -525,7 +597,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#firstIndexOfOrNull_findInRange(element,)
     }
 
-    protected _firstIndexOfOrNull_withNoFrom(element: T, to: number,): NullOrNumber<| 0 | 1> {
+    protected _firstIndexOfOrNull_withNoFrom(element: | T1 | T2, to: number,): NullOrNumber<| 0 | 1> {
         const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
@@ -535,19 +607,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
-    #firstIndexOfOrNull_find1(element: T,): NullOrZeroNumber {
+    #firstIndexOfOrNull_find1(element: | T1 | T2,): NullOrZeroNumber {
         if (this.value1 === element)
             return 0
         return null
     }
 
-    #firstIndexOfOrNull_find2(element: T,): NullOrOneNumber {
+    #firstIndexOfOrNull_find2(element: | T1 | T2,): NullOrOneNumber {
         if (this.value2 === element)
             return 1
         return null
     }
 
-    #firstIndexOfOrNull_findInRange(element: T,): NullOrNumber<| 0 | 1> {
+    #firstIndexOfOrNull_findInRange(element: | T1 | T2,): NullOrNumber<| 0 | 1> {
         if (this.value1 === element)
             return 0
         if (this.value2 === element)
@@ -556,7 +628,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
-    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+    public override firstIndexOfOrNull(element: T1,        from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber
+    public override firstIndexOfOrNull(element: T2,        from?: NullableNumber, to?: NullableNumber,): NullOrOneNumber
+    public override firstIndexOfOrNull(element: | T1 | T2, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1>
+    public override firstIndexOfOrNull(element: | T1 | T2, from?: NullableNumber, to?: NullableNumber,) {
         if (to == null)
             if (from == null)
                 return this._firstIndexOfOrNull_core0(element,)
@@ -571,15 +646,15 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- Last index of --------------------
 
-    protected _lastIndexOf_core0(element: T,): | 0 | 1 { return this.#lastIndexOf_findInRange(element,) }
+    protected _lastIndexOf_core0(element: | T1 | T2,): | 0 | 1 { return this.#lastIndexOf_findInRange(element,) }
 
-    protected _lastIndexOf_core1(element: T, from: number,): | 0 | 1 {
+    protected _lastIndexOf_core1(element: | T1 | T2, from: number,): | 0 | 1 {
         if (__getStartingIndex(from,) === 1)
             return this.#lastIndexOf_find2(element,)
         return this.#lastIndexOf_findInRange(element,)
     }
 
-    protected _lastIndexOf_core2(element: T, from: number, to: number,): | 0 | 1 {
+    protected _lastIndexOf_core2(element: | T1 | T2, from: number, to: number,): | 0 | 1 {
         const startingIndex = __getStartingIndex(from,)
         const endingIndex = __getEndingIndex(to,)
         __validateInRange(from, startingIndex, to, endingIndex,)
@@ -591,26 +666,26 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#lastIndexOf_findInRange(element,)
     }
 
-    protected _lastIndexOf_withNoFrom(element: T, to: number,): | 0 | 1 {
+    protected _lastIndexOf_withNoFrom(element: | T1 | T2, to: number,): | 0 | 1 {
         if (__getEndingIndex(to,) === 1)
             return this.#lastIndexOf_findInRange(element,)
         return this.#lastIndexOf_find1(element,)
     }
 
 
-    #lastIndexOf_find1(element: T,): 0 {
+    #lastIndexOf_find1(element: | T1 | T2,): 0 {
         if (this.value1 === element)
             return 0
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“0”) indexes in the collection.`, 1,)
     }
 
-    #lastIndexOf_find2(element: T,): 1 {
+    #lastIndexOf_find2(element: | T1 | T2,): 1 {
         if (this.value2 === element)
             return 1
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“1”) to the ending (“1”) indexes in the collection.`, 1,)
     }
 
-    #lastIndexOf_findInRange(element: T,): | 0 | 1 {
+    #lastIndexOf_findInRange(element: | T1 | T2,): | 0 | 1 {
         if (this.value2 === element)
             return 1
         if (this.value1 === element)
@@ -619,7 +694,13 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
-    public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+    public override lastIndexOf<const I1 extends NullableNumber, const I2 extends NullableNumber, >(element: T1,        from?: I1,             to?: I2,):             IndexOf2Of1<I1, I2>
+    public override lastIndexOf                                                                    (element: T1,        from?: NullableNumber, to?: NullableNumber,): 0
+    public override lastIndexOf<const I1 extends NullableNumber, const I2 extends NullableNumber, >(element: T2,        from?: I1,             to?: I2,):             IndexOf2Of2<I1, I2>
+    public override lastIndexOf                                                                    (element: T2,        from?: NullableNumber, to?: NullableNumber,): 1
+    public override lastIndexOf<const I1 extends NullableNumber, const I2 extends NullableNumber, >(element: | T1 | T2, from?: I1,             to?: I2,):             IndexOf2<I1, I2>
+    public override lastIndexOf                                                                    (element: | T1 | T2, from?: NullableNumber, to?: NullableNumber,): | 0 | 1
+    public override lastIndexOf(element: | T1 | T2, from?: NullableNumber, to?: NullableNumber,) {
         if (to == null)
             if (from == null)
                 return this._lastIndexOf_core0(element,)
@@ -633,9 +714,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Last index of --------------------
     //#region -------------------- last index of or null --------------------
 
-    protected _lastIndexOfOrNull_core0(element: T,): NullOrNumber<| 0 | 1> { return this.#lastIndexOfOrNull_findInRange(element,) }
+    protected _lastIndexOfOrNull_core0(element: | T1 | T2,): NullOrNumber<| 0 | 1> { return this.#lastIndexOfOrNull_findInRange(element,) }
 
-    protected _lastIndexOfOrNull_core1(element: T, from: number,): NullOrNumber<| 0 | 1> {
+    protected _lastIndexOfOrNull_core1(element: | T1 | T2, from: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -644,7 +725,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#lastIndexOfOrNull_findInRange(element,)
     }
 
-    protected _lastIndexOfOrNull_core2(element: T, from: number, to: number,): NullOrNumber<| 0 | 1> {
+    protected _lastIndexOfOrNull_core2(element: | T1 | T2, from: number, to: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -662,7 +743,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#lastIndexOfOrNull_findInRange(element,)
     }
 
-    protected _lastIndexOfOrNull_withNoFrom(element: T, to: number,): NullOrNumber<| 0 | 1> {
+    protected _lastIndexOfOrNull_withNoFrom(element: | T1 | T2, to: number,): NullOrNumber<| 0 | 1> {
         const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
@@ -672,19 +753,19 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
-    #lastIndexOfOrNull_find1(element: T,): NullOrZeroNumber {
+    #lastIndexOfOrNull_find1(element: | T1 | T2,): NullOrZeroNumber {
         if (this.value1 === element)
             return 0
         return null
     }
 
-    #lastIndexOfOrNull_find2(element: T,): NullOrOneNumber {
+    #lastIndexOfOrNull_find2(element: | T1 | T2,): NullOrOneNumber {
         if (this.value2 === element)
             return 1
         return null
     }
 
-    #lastIndexOfOrNull_findInRange(element: T,): NullOrNumber<| 0 | 1> {
+    #lastIndexOfOrNull_findInRange(element: | T1 | T2,): NullOrNumber<| 0 | 1> {
         if (this.value2 === element)
             return 1
         if (this.value1 === element)
@@ -693,7 +774,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
-    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+    public override lastIndexOfOrNull(element: T1,        from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber
+    public override lastIndexOfOrNull(element: T2,        from?: NullableNumber, to?: NullableNumber,): NullOrOneNumber
+    public override lastIndexOfOrNull(element: | T1 | T2, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1>
+    public override lastIndexOfOrNull(element: | T1 | T2, from?: NullableNumber, to?: NullableNumber,) {
         if (to == null)
             if (from == null)
                 return this._lastIndexOfOrNull_core0(element,)
@@ -708,67 +792,81 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- Index of first --------------------
 
-    protected _indexOfFirst_core0(predicate: BooleanCallback<T>,): | 0 | 1 {
+    protected _indexOfFirst_core0(predicate: BooleanCallback<| T1 | T2>,): | 0 | 1 {
         if (predicate.length === 1)
-            return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfFirst_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirst_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfFirst_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfFirst_core1(predicate: BooleanCallback<T>, from: number,): | 0 | 1 {
+    protected _indexOfFirst_core1(predicate: BooleanCallback<| T1 | T2>, from: number,): | 0 | 1 {
         if (__getStartingIndex(from,) === 0)
             if (predicate.length === 1)
-                return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfFirst_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirst_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfFirst_with0Argument_findInRange(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfFirst_with1Argument_find2(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirst_with1Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfFirst_with2Argument_find2(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirst_with2Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfFirst_with0Argument_find2(predicate as () => boolean,)
     }
 
-    protected _indexOfFirst_core2(predicate: BooleanCallback<T>, from: number, to: number,): | 0 | 1 {
+    protected _indexOfFirst_core2(predicate: BooleanCallback<| T1 | T2>, from: number, to: number,): | 0 | 1 {
         const startingIndex = __getStartingIndex(from,)
         const endingIndex = __getEndingIndex(to,)
         __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 0)
                 if (predicate.length === 1)
-                    return this.#indexOfFirst_with1Argument_find1(predicate as (value: T,) => boolean,)
+                    return this.#indexOfFirst_with1Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
                 else if (predicate.length >= 2)
-                    return this.#indexOfFirst_with2Argument_find1(predicate as (value: T,) => boolean,)
+                    return this.#indexOfFirst_with2Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
                 else
                     return this.#indexOfFirst_with0Argument_find1(predicate as () => boolean,)
             else if (predicate.length === 1)
-                return this.#indexOfFirst_with1Argument_find2(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirst_with1Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfFirst_with2Argument_find2(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirst_with2Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfFirst_with0Argument_find2(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfFirst_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirst_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfFirst_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfFirst_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): | 0 | 1 {
+    protected _indexOfFirst_coreWithNoFrom(predicate: BooleanCallback<| T1 | T2>, to: number,): | 0 | 1 {
         if (__getEndingIndex(to,) === 0)
             if (predicate.length === 1)
-                return this.#indexOfFirst_with1Argument_find1(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirst_with1Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfFirst_with2Argument_find1(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirst_with2Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfFirst_with0Argument_find1(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirst_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfFirst_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirst_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfFirst_with0Argument_findInRange(predicate as () => boolean,)
+    }
+
+
+    public override indexOfFirst<const I1 extends NullableNumber, const I2 extends NullableNumber, >(predicate: BooleanCallback<| T1 | T2>, from?: I1,             to?: I2,):             IndexOf2<I1, I2>
+    public override indexOfFirst                                                                    (predicate: BooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1
+    public override indexOfFirst(predicate: BooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,) {
+        if (to == null)
+            if (from == null)
+                return this._indexOfFirst_core0(predicate,)
+            else
+                return this._indexOfFirst_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfFirst_coreWithNoFrom(predicate, to,)
+        return this._indexOfFirst_core2(predicate, from, to,)
     }
 
 
@@ -832,48 +930,36 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexNotFoundException("Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.", 2,)
     }
 
-
-    public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            if (from == null)
-                return this._indexOfFirst_core0(predicate,)
-            else
-                return this._indexOfFirst_core1(predicate, from,)
-        if (from == null)
-            return this._indexOfFirst_coreWithNoFrom(predicate, to,)
-        return this._indexOfFirst_core2(predicate, from, to,)
-    }
-
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first or null --------------------
 
-    protected _indexOfFirstOrNull_core0(predicate: BooleanCallback<T>,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstOrNull_core0(predicate: BooleanCallback<| T1 | T2>,): NullOrNumber<| 0 | 1> {
         if (predicate.length === 1)
-            return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfFirstOrNull_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirstOrNull_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfFirstOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstOrNull_core1(predicate: BooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstOrNull_core1(predicate: BooleanCallback<| T1 | T2>, from: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
         if (startingIndex === 0)
             if (predicate.length === 1)
-                return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfFirstOrNull_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirstOrNull_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfFirstOrNull_with0Argument_findInRange(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfFirstOrNull_with1Argument_find2(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirstOrNull_with1Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfFirstOrNull_with2Argument_find2(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirstOrNull_with2Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfFirstOrNull_with0Argument_find2(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstOrNull_core2(predicate: BooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstOrNull_core2(predicate: BooleanCallback<| T1 | T2>, from: number, to: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -886,40 +972,52 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (startingIndex === endingIndex)
             if (startingIndex === 0)
                 if (predicate.length === 1)
-                    return this.#indexOfFirstOrNull_with1Argument_find1(predicate as (value: T,) => boolean,)
+                    return this.#indexOfFirstOrNull_with1Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
                 else if (predicate.length >= 2)
-                    return this.#indexOfFirstOrNull_with2Argument_find1(predicate as (value: T,) => boolean,)
+                    return this.#indexOfFirstOrNull_with2Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
                 else
                     return this.#indexOfFirstOrNull_with0Argument_find1(predicate as () => boolean,)
             else if (predicate.length === 1)
-                return this.#indexOfFirstOrNull_with1Argument_find2(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirstOrNull_with1Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfFirstOrNull_with2Argument_find2(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirstOrNull_with2Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfFirstOrNull_with0Argument_find2(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfFirstOrNull_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirstOrNull_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfFirstOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstOrNull_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstOrNull_coreWithNoFrom(predicate: BooleanCallback<| T1 | T2>, to: number,): NullOrNumber<| 0 | 1> {
         const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex === 0)
             if (predicate.length === 1)
-                return this.#indexOfFirstOrNull_with1Argument_find1(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirstOrNull_with1Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfFirstOrNull_with2Argument_find1(predicate as (value: T,) => boolean,)
+                return this.#indexOfFirstOrNull_with2Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfFirstOrNull_with0Argument_find1(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirstOrNull_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfFirstOrNull_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfFirstOrNull_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfFirstOrNull_with0Argument_findInRange(predicate as () => boolean,)
+    }
+
+
+    public override indexOfFirstOrNull(predicate: BooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+        if (to == null)
+            if (from == null)
+                return this._indexOfFirstOrNull_core0(predicate,)
+            else
+                return this._indexOfFirstOrNull_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfFirstOrNull_coreWithNoFrom(predicate, to,)
+        return this._indexOfFirstOrNull_core2(predicate, from, to,)
     }
 
 
@@ -983,22 +1081,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
-
-    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            if (from == null)
-                return this._indexOfFirstOrNull_core0(predicate,)
-            else
-                return this._indexOfFirstOrNull_core1(predicate, from,)
-        if (from == null)
-            return this._indexOfFirstOrNull_coreWithNoFrom(predicate, to,)
-        return this._indexOfFirstOrNull_core2(predicate, from, to,)
-    }
-
     //#endregion -------------------- Index of first or null --------------------
     //#region -------------------- Index of first indexed --------------------
 
-    protected _indexOfFirstIndexed_core0(predicate: ReverseBooleanCallback<T>,): | 0 | 1 {
+    protected _indexOfFirstIndexed_core0(predicate: ReverseBooleanCallback<| T1 | T2>,): | 0 | 1 {
         if (predicate.length === 1)
             return this.#indexOfFirstIndexed_with1Argument_findInRange(predicate as (index: number,) => boolean,)
         if (predicate.length >= 2)
@@ -1006,7 +1092,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstIndexed_core1(predicate: ReverseBooleanCallback<T>, from: number,): | 0 | 1 {
+    protected _indexOfFirstIndexed_core1(predicate: ReverseBooleanCallback<| T1 | T2>, from: number,): | 0 | 1 {
         if (__getStartingIndex(from,) === 0)
             if (predicate.length === 1)
                 return this.#indexOfFirstIndexed_with1Argument_findInRange(predicate as (index: number,) => boolean,)
@@ -1021,7 +1107,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexed_with0Argument_find2(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstIndexed_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): | 0 | 1 {
+    protected _indexOfFirstIndexed_core2(predicate: ReverseBooleanCallback<| T1 | T2>, from: number, to: number,): | 0 | 1 {
         const startingIndex = __getStartingIndex(from,)
         const endingIndex = __getEndingIndex(to,)
         __validateInRange(from, startingIndex, to, endingIndex,)
@@ -1046,7 +1132,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstIndexed_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): | 0 | 1 {
+    protected _indexOfFirstIndexed_coreWithNoFrom(predicate: ReverseBooleanCallback<| T1 | T2>, to: number,): | 0 | 1 {
         if (__getEndingIndex(to,) === 0)
             if (predicate.length === 1)
                 return this.#indexOfFirstIndexed_with1Argument_find1(predicate as (index: number,) => boolean,)
@@ -1059,6 +1145,20 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (predicate.length >= 2)
             return this.#indexOfFirstIndexed_with2Argument_findInRange(predicate as (index: number,) => boolean,)
         return this.#indexOfFirstIndexed_with0Argument_findInRange(predicate as () => boolean,)
+    }
+
+
+    public override indexOfFirstIndexed<const I1 extends NullableNumber, const I2 extends NullableNumber, >(predicate: ReverseBooleanCallback<| T1 | T2>, from?: I1,             to?: I2,):             IndexOf2<I1, I2>
+    public override indexOfFirstIndexed                                                                    (predicate: ReverseBooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,) {
+        if (to == null)
+            if (from == null)
+                return this._indexOfFirstIndexed_core0(predicate,)
+            else
+                return this._indexOfFirstIndexed_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfFirstIndexed_coreWithNoFrom(predicate, to,)
+        return this._indexOfFirstIndexed_core2(predicate, from, to,)
     }
 
 
@@ -1122,22 +1222,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         throw new IndexNotFoundException(`Index not found. No index could be found from the starting (“0”) to the ending (“1”) indexes in the collection.`, 2,)
     }
 
-
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
-        if (to == null)
-            if (from == null)
-                return this._indexOfFirstIndexed_core0(predicate,)
-            else
-                return this._indexOfFirstIndexed_core1(predicate, from,)
-        if (from == null)
-            return this._indexOfFirstIndexed_coreWithNoFrom(predicate, to,)
-        return this._indexOfFirstIndexed_core2(predicate, from, to,)
-    }
-
     //#endregion -------------------- Index of first indexed --------------------
     //#region -------------------- Index of first indexed or null --------------------
 
-    protected _indexOfFirstIndexedOrNull_core0(predicate: ReverseBooleanCallback<T>,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstIndexedOrNull_core0(predicate: ReverseBooleanCallback<| T1 | T2>,): NullOrNumber<| 0 | 1> {
         if (predicate.length === 1)
             return this.#indexOfFirstIndexedOrNull_with1Argument_findInRange(predicate as (index: number,) => boolean,)
         if (predicate.length >= 2)
@@ -1145,7 +1233,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstIndexedOrNull_core1(predicate: ReverseBooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstIndexedOrNull_core1(predicate: ReverseBooleanCallback<| T1 | T2>, from: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -1163,7 +1251,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexedOrNull_with0Argument_find2(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstIndexedOrNull_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstIndexedOrNull_core2(predicate: ReverseBooleanCallback<| T1 | T2>, from: number, to: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -1194,7 +1282,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfFirstIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfFirstIndexedOrNull_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfFirstIndexedOrNull_coreWithNoFrom(predicate: ReverseBooleanCallback<| T1 | T2>, to: number,): NullOrNumber<| 0 | 1> {
         const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
@@ -1210,6 +1298,18 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (predicate.length >= 2)
             return this.#indexOfFirstIndexedOrNull_with2Argument_findInRange(predicate as (index: number,) => boolean,)
         return this.#indexOfFirstIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
+    }
+
+
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+        if (to == null)
+            if (from == null)
+                return this._indexOfFirstIndexedOrNull_core0(predicate,)
+            else
+                return this._indexOfFirstIndexedOrNull_core1(predicate, from,)
+        if (from == null)
+            return this._indexOfFirstIndexedOrNull_coreWithNoFrom(predicate, to,)
+        return this._indexOfFirstIndexedOrNull_core2(predicate, from, to,)
     }
 
 
@@ -1273,87 +1373,76 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
-
-    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
-        if (to == null)
-            if (from == null)
-                return this._indexOfFirstIndexedOrNull_core0(predicate,)
-            else
-                return this._indexOfFirstIndexedOrNull_core1(predicate, from,)
-        if (from == null)
-            return this._indexOfFirstIndexedOrNull_coreWithNoFrom(predicate, to,)
-        return this._indexOfFirstIndexedOrNull_core2(predicate, from, to,)
-    }
-
     //#endregion -------------------- Index of first indexed or null --------------------
 
     //#region -------------------- Index of last --------------------
 
-    protected _indexOfLast_core0(predicate: BooleanCallback<T>,): | 0 | 1 {
+    protected _indexOfLast_core0(predicate: BooleanCallback<| T1 | T2>,): | 0 | 1 {
         if (predicate.length === 1)
-            return this.#indexOfLast_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLast_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfLast_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLast_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfLast_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLast_core1(predicate: BooleanCallback<T>, from: number,): | 0 | 1 {
+    protected _indexOfLast_core1(predicate: BooleanCallback<| T1 | T2>, from: number,): | 0 | 1 {
         if (__getStartingIndex(from,) === 1)
             if (predicate.length === 1)
-                return this.#indexOfLast_with1Argument_find2(predicate as (value: T,) => boolean,)
+                return this.#indexOfLast_with1Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfLast_with2Argument_find2(predicate as (value: T,) => boolean,)
+                return this.#indexOfLast_with2Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfLast_with0Argument_find2(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfLast_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLast_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfLast_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLast_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfLast_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLast_core2(predicate: BooleanCallback<T>, from: number, to: number,): | 0 | 1 {
+    protected _indexOfLast_core2(predicate: BooleanCallback<| T1 | T2>, from: number, to: number,): | 0 | 1 {
         const startingIndex = __getStartingIndex(from,)
         const endingIndex = __getEndingIndex(to,)
         __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 1)
                 if (predicate.length === 1)
-                    return this.#indexOfLast_with1Argument_find2(predicate as (value: T,) => boolean,)
+                    return this.#indexOfLast_with1Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
                 else if (predicate.length >= 2)
-                    return this.#indexOfLast_with2Argument_find2(predicate as (value: T,) => boolean,)
+                    return this.#indexOfLast_with2Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
                 else
                     return this.#indexOfLast_with0Argument_find2(predicate as () => boolean,)
             else if (predicate.length === 1)
-                return this.#indexOfLast_with1Argument_find1(predicate as (value: T,) => boolean,)
+                return this.#indexOfLast_with1Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfLast_with2Argument_find1(predicate as (value: T,) => boolean,)
+                return this.#indexOfLast_with2Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfLast_with0Argument_find1(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfLast_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLast_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfLast_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLast_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfLast_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLast_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): | 0 | 1 {
+    protected _indexOfLast_coreWithNoFrom(predicate: BooleanCallback<| T1 | T2>, to: number,): | 0 | 1 {
         if (__getEndingIndex(to,) === 1)
             if (predicate.length === 1)
-                return this.#indexOfLast_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+                return this.#indexOfLast_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfLast_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+                return this.#indexOfLast_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfLast_with0Argument_findInRange(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfLast_with1Argument_find1(predicate as (value: T,) => boolean,)
+            return this.#indexOfLast_with1Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfLast_with2Argument_find1(predicate as (value: T,) => boolean,)
+            return this.#indexOfLast_with2Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfLast_with0Argument_find1(predicate as () => boolean,)
     }
 
-
-    public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+    public override indexOfLast<const I1 extends NullableNumber, const I2 extends NullableNumber, >(predicate: BooleanCallback<| T1 | T2>, from?: I1,             to?: I2,):             IndexOf2<I1, I2>
+    public override indexOfLast                                                                    (predicate: BooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1
+    public override indexOfLast(predicate: BooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,) {
         if (to == null)
             if (from == null)
                 return this._indexOfLast_core0(predicate,)
@@ -1428,33 +1517,33 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last or null --------------------
 
-    protected _indexOfLastOrNull_core0(predicate: BooleanCallback<T>,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastOrNull_core0(predicate: BooleanCallback<| T1 | T2>,): NullOrNumber<| 0 | 1> {
         if (predicate.length === 1)
-            return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfLastOrNull_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLastOrNull_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfLastOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastOrNull_core1(predicate: BooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastOrNull_core1(predicate: BooleanCallback<| T1 | T2>, from: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
         if (startingIndex === 1)
             if (predicate.length === 1)
-                return this.#indexOfLastOrNull_with1Argument_find2(predicate as (value: T,) => boolean,)
+                return this.#indexOfLastOrNull_with1Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfLastOrNull_with2Argument_find2(predicate as (value: T,) => boolean,)
+                return this.#indexOfLastOrNull_with2Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfLastOrNull_with0Argument_find2(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfLastOrNull_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLastOrNull_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfLastOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastOrNull_core2(predicate: BooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastOrNull_core2(predicate: BooleanCallback<| T1 | T2>, from: number, to: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -1467,44 +1556,44 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (startingIndex === endingIndex)
             if (startingIndex === 1)
                 if (predicate.length === 1)
-                    return this.#indexOfLastOrNull_with1Argument_find2(predicate as (value: T,) => boolean,)
+                    return this.#indexOfLastOrNull_with1Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
                 else if (predicate.length >= 2)
-                    return this.#indexOfLastOrNull_with2Argument_find2(predicate as (value: T,) => boolean,)
+                    return this.#indexOfLastOrNull_with2Argument_find2(predicate as (value: | T1 | T2,) => boolean,)
                 else
                     return this.#indexOfLastOrNull_with0Argument_find2(predicate as () => boolean,)
             else if (predicate.length === 1)
-                return this.#indexOfLastOrNull_with1Argument_find1(predicate as (value: T,) => boolean,)
+                return this.#indexOfLastOrNull_with1Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfLastOrNull_with2Argument_find1(predicate as (value: T,) => boolean,)
+                return this.#indexOfLastOrNull_with2Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfLastOrNull_with0Argument_find1(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfLastOrNull_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+            return this.#indexOfLastOrNull_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfLastOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastOrNull_coreWithNoFrom(predicate: BooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastOrNull_coreWithNoFrom(predicate: BooleanCallback<| T1 | T2>, to: number,): NullOrNumber<| 0 | 1> {
         const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
         if (endingIndex === 1)
             if (predicate.length === 1)
-                return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: T,) => boolean,)
+                return this.#indexOfLastOrNull_with1Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
             else if (predicate.length >= 2)
-                return this.#indexOfLastOrNull_with2Argument_findInRange(predicate as (value: T,) => boolean,)
+                return this.#indexOfLastOrNull_with2Argument_findInRange(predicate as (value: | T1 | T2,) => boolean,)
             else
                 return this.#indexOfLastOrNull_with0Argument_findInRange(predicate as () => boolean,)
         if (predicate.length === 1)
-            return this.#indexOfLastOrNull_with1Argument_find1(predicate as (value: T,) => boolean,)
+            return this.#indexOfLastOrNull_with1Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
         if (predicate.length >= 2)
-            return this.#indexOfLastOrNull_with2Argument_find1(predicate as (value: T,) => boolean,)
+            return this.#indexOfLastOrNull_with2Argument_find1(predicate as (value: | T1 | T2,) => boolean,)
         return this.#indexOfLastOrNull_with0Argument_find1(predicate as () => boolean,)
     }
 
 
-    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+    public override indexOfLastOrNull(predicate: BooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
         if (to == null)
             if (from == null)
                 return this._indexOfLastOrNull_core0(predicate,)
@@ -1548,7 +1637,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
-    #indexOfLastOrNull_with1Argument_findInRange(predicate: (value: T,) => boolean,): NullOrNumber<| 0 | 1> {
+    #indexOfLastOrNull_with1Argument_findInRange(predicate: (value: | T1 | T2,) => boolean,): NullOrNumber<| 0 | 1> {
         if (predicate(this.value2,))
             return 1
         if (predicate(this.value1,))
@@ -1579,7 +1668,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Index of last or null --------------------
     //#region -------------------- Index of last indexed --------------------
 
-    protected _indexOfLastIndexed_core0(predicate: ReverseBooleanCallback<T>,): | 0 | 1 {
+    protected _indexOfLastIndexed_core0(predicate: ReverseBooleanCallback<| T1 | T2>,): | 0 | 1 {
         if (predicate.length === 1)
             return this.#indexOfLastIndexed_with1Argument_findInRange(predicate as (index: number,) => boolean,)
         if (predicate.length >= 2)
@@ -1587,7 +1676,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastIndexed_core1(predicate: ReverseBooleanCallback<T>, from: number,): | 0 | 1 {
+    protected _indexOfLastIndexed_core1(predicate: ReverseBooleanCallback<| T1 | T2>, from: number,): | 0 | 1 {
         if (__getStartingIndex(from,) === 1)
             if (predicate.length === 1)
                 return this.#indexOfLastIndexed_with1Argument_find2(predicate as (index: number,) => boolean,)
@@ -1602,7 +1691,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastIndexed_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): | 0 | 1 {
+    protected _indexOfLastIndexed_core2(predicate: ReverseBooleanCallback<| T1 | T2>, from: number, to: number,): | 0 | 1 {
         const startingIndex = __getStartingIndex(from,)
         const endingIndex = __getEndingIndex(to,)
         __validateInRange(from, startingIndex, to, endingIndex,)
@@ -1627,7 +1716,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexed_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastIndexed_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): | 0 | 1 {
+    protected _indexOfLastIndexed_coreWithNoFrom(predicate: ReverseBooleanCallback<| T1 | T2>, to: number,): | 0 | 1 {
         if (__getEndingIndex(to,) === 1)
             if (predicate.length === 1)
                 return this.#indexOfLastIndexed_with1Argument_findInRange(predicate as (index: number,) => boolean,)
@@ -1642,8 +1731,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexed_with0Argument_find1(predicate as () => boolean,)
     }
 
-
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1 {
+    public override indexOfLastIndexed<const I1 extends NullableNumber, const I2 extends NullableNumber, >(predicate: ReverseBooleanCallback<| T1 | T2>, from?: I1,             to?: I2,):             IndexOf2<I1, I2>
+    public override indexOfLastIndexed                                                                    (predicate: ReverseBooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,): | 0 | 1
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,) {
         if (to == null)
             if (from == null)
                 return this._indexOfLastIndexed_core0(predicate,)
@@ -1718,7 +1808,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Index of last indexed --------------------
     //#region -------------------- Index of last indexed or null --------------------
 
-    protected _indexOfLastIndexedOrNull_core0(predicate: ReverseBooleanCallback<T>,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastIndexedOrNull_core0(predicate: ReverseBooleanCallback<| T1 | T2>,): NullOrNumber<| 0 | 1> {
         if (predicate.length === 1)
             return this.#indexOfLastIndexedOrNull_with1Argument_findInRange(predicate as (index: number,) => boolean,)
         if (predicate.length >= 2)
@@ -1726,7 +1816,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastIndexedOrNull_core1(predicate: ReverseBooleanCallback<T>, from: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastIndexedOrNull_core1(predicate: ReverseBooleanCallback<| T1 | T2>, from: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -1744,7 +1834,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastIndexedOrNull_core2(predicate: ReverseBooleanCallback<T>, from: number, to: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastIndexedOrNull_core2(predicate: ReverseBooleanCallback<| T1 | T2>, from: number, to: number,): NullOrNumber<| 0 | 1> {
         const startingIndex = __getIndexOrNull(from,)
         if (startingIndex == null)
             return null
@@ -1775,7 +1865,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this.#indexOfLastIndexedOrNull_with0Argument_findInRange(predicate as () => boolean,)
     }
 
-    protected _indexOfLastIndexedOrNull_coreWithNoFrom(predicate: ReverseBooleanCallback<T>, to: number,): NullOrNumber<| 0 | 1> {
+    protected _indexOfLastIndexedOrNull_coreWithNoFrom(predicate: ReverseBooleanCallback<| T1 | T2>, to: number,): NullOrNumber<| 0 | 1> {
         const endingIndex = __getIndexOrNull(to,)
         if (endingIndex == null)
             return null
@@ -1794,7 +1884,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
-    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<| T1 | T2>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber<| 0 | 1> {
         if (to == null)
             if (from == null)
                 return this._indexOfLastIndexedOrNull_core0(predicate,)
@@ -1858,7 +1948,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return null
     }
 
-    #indexOfLastIndexedOrNull_with2Argument_findInRange(predicate: (index: | 0 | 1, value: T,) => boolean,): NullOrNumber<| 0 | 1> {
+    #indexOfLastIndexedOrNull_with2Argument_findInRange(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOrNumber<| 0 | 1> {
         if (predicate(1, this.value2,))
             return 1
         if (predicate(0, this.value1,))
@@ -1873,31 +1963,47 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- All --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
-    public override all(predicate: BooleanCallback<T>,): boolean
-    public override all(predicate: BooleanCallback<T>,) {
+    public override all<const S extends T1, >(predicate: RestrainedBooleanCallback<| T1 | T2, | S | T2>,): this is CollectionHolderOf2<S, T2>
+    public override all<const S extends T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, | T1 | S>,): this is CollectionHolderOf2<T1, S>
+    public override all<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): this is CollectionHolderOf2<S, S>
+    public override all(predicate: BooleanCallback<| T1 | T2>,): boolean
+    public override all(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return (predicate as (value: T,) => boolean)(this.value1,) && (predicate as (value: T,) => boolean)(this.value2,)
+            return (predicate as (value: | T1 | T2,) => boolean)(this.value1,) && (predicate as (value: | T1 | T2,) => boolean)(this.value2,)
         if (predicate.length >= 2)
             return predicate(this.value1, 0,) && predicate(this.value2, 1,)
         return (predicate as () => boolean)() && (predicate as () => boolean)()
     }
 
+    public override every<const S extends T1, >(predicate: RestrainedBooleanCallback<| T1 | T2, | S | T2>,): this is CollectionHolderOf2<S, T2>
+    public override every<const S extends T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, | T1 | S>,): this is CollectionHolderOf2<T1, S>
+    public override every<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): this is CollectionHolderOf2<S, S>
+    public override every(predicate: BooleanCallback<| T1 | T2>,): boolean
+    public override every(predicate: BooleanCallback<| T1 | T2>,) {
+        return this.all(predicate,)
+    }
+
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
 
-    public override any(): true
-    public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override any(predicate?: Nullable<BooleanCallback<T>>,) {
+    public override any(): this["isNotEmpty"]
+    public override any(predicate: Nullable<BooleanCallback<| T1 | T2>>,): boolean
+    public override any(predicate?: Nullable<BooleanCallback<| T1 | T2>>,) {
         if (predicate == null)
             return true
         return this._any(predicate,)
     }
 
+    public override some(): this["isNotEmpty"]
+    public override some(predicate: Nullable<BooleanCallback<| T1 | T2>>,): boolean
+    public override some(predicate?: Nullable<BooleanCallback<| T1 | T2>>,) {
+        return this.any(predicate,)
+    }
+
     /** An additional method to be the equivalent of {@link CollectionHolder.any CollectionHolder.any(predicate)} */
-    protected _any(predicate: BooleanCallback<T>,): boolean {
+    protected _any(predicate: BooleanCallback<| T1 | T2>,): boolean {
         if (predicate.length === 1)
-            return (predicate as (value: T,) => boolean)(this.value1,) || (predicate as (value: T,) => boolean)(this.value2,)
+            return (predicate as (value: | T1 | T2,) => boolean)(this.value1,) || (predicate as (value: | T1 | T2,) => boolean)(this.value2,)
         if (predicate.length >= 2)
             return predicate(this.value1, 0,) || predicate(this.value2, 1,)
         return (predicate as () => boolean)() || (predicate as () => boolean)()
@@ -1906,18 +2012,18 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
-    public override none(): false
-    public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override none(predicate?: Nullable<BooleanCallback<T>>,) {
+    public override none(): this["isEmpty"]
+    public override none(predicate: Nullable<BooleanCallback<| T1 | T2>>,): boolean
+    public override none(predicate?: Nullable<BooleanCallback<| T1 | T2>>,) {
         if (predicate == null)
             return false
         return this._none(predicate,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.none CollectionHolder.none(predicate)} */
-    protected _none(predicate: BooleanCallback<T>,): boolean {
+    protected _none(predicate: BooleanCallback<| T1 | T2>,): boolean {
         if (predicate.length === 1)
-            return !(predicate as (value: T,) => boolean)(this.value1,) && !(predicate as (value: T,) => boolean)(this.value2,)
+            return !(predicate as (value: | T1 | T2,) => boolean)(this.value1,) && !(predicate as (value: | T1 | T2,) => boolean)(this.value2,)
         if (predicate.length >= 2)
             return !predicate(this.value1, 0,) && !predicate(this.value2, 1,)
         return !(predicate as () => boolean)() && !(predicate as () => boolean)()
@@ -1937,37 +2043,37 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
 
     public override get hasDuplicate(): boolean {
-        return this.value1 as T === this.value2 as T
+        return (this.value1 as | T1 | T2) === this.value2
     }
 
     public override get hasNoDuplicates(): boolean {
-        return this.value1 as T !== this.value2 as T
+        return (this.value1 as | T1 | T2) !== this.value2
     }
 
     //#endregion -------------------- Has ‥ --------------------
     //#region -------------------- Has --------------------
 
-    public override has(value: T,): boolean {
+    public override has(value: | T1 | T2,): boolean {
         return this.value1 === value || this.value2 === value
     }
 
-    public override hasNot(value: T,): boolean {
+    public override hasNot(value: | T1 | T2,): boolean {
         return this.value1 !== value && this.value2 !== value
     }
 
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    public override hasOne(values: Nullable<Array<T>>,): boolean
-    public override hasOne(values: Nullable<Set<T>>,): boolean
-    public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
-    public override hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+    public override hasOne(values: Nullable<Array<| T1 | T2>>,): boolean
+    public override hasOne(values: Nullable<Set<| T1 | T2>>,): boolean
+    public override hasOne(values: Nullable<CollectionHolder<| T1 | T2>>,): boolean
+    public override hasOne(values: Nullable<MinimalistCollectionHolder<| T1 | T2>>,): boolean
+    public override hasOne(values: Nullable<CollectionIterator<| T1 | T2>>,): boolean
+    public override hasOne(values: Nullable<IteratorObject<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<Iterator<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<Iterable<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<| T1 | T2>>,): boolean
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<| T1 | T2>>,) {
         if (values == null)
             return this._hasOneByNull(values,)
 
@@ -1984,17 +2090,17 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (values instanceof Iterator)
             return this._hasOneByIterator(values,)
 
-        if (isArrayByStructure<T>(values,))
+        if (isArrayByStructure<| T1 | T2>(values,))
             return this._hasOneByArray(values,)
-        if (isSetByStructure<T>(values,))
+        if (isSetByStructure<| T1 | T2>(values,))
             return this._hasOneBySet(values,)
-        if (isCollectionHolderByStructure<T>(values,))
+        if (isCollectionHolderByStructure<| T1 | T2>(values,))
             return this._hasOneByCollectionHolder(values,)
-        if (isMinimalistCollectionHolderByStructure<T>(values,))
+        if (isMinimalistCollectionHolderByStructure<| T1 | T2>(values,))
             return this._hasOneByMinimalistCollectionHolder(values,)
-        if (isCollectionIteratorByStructure<T>(values,))
+        if (isCollectionIteratorByStructure<| T1 | T2>(values,))
             return this._hasOneByCollectionIterator(values,)
-        if (isIteratorByStructure<T>(values,))
+        if (isIteratorByStructure<| T1 | T2>(values,))
             return this._hasOneByIterator(values,)
         return this._hasOneByIterable(values,)
     }
@@ -2003,8 +2109,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: NullOrUndefined)} */
     protected _hasOneByNull(_values: NullOrUndefined): true { return true }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Array<T>)} */
-    protected _hasOneByArray(values: Array<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Array<T1 | T2>)} */
+    protected _hasOneByArray(values: Array<| T1 | T2>,): boolean {
         const size = values.length
         if (size === 0)
             return true
@@ -2020,8 +2126,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Set<T>)} */
-    protected _hasOneBySet(values: Set<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Set<T1 | T2>)} */
+    protected _hasOneBySet(values: Set<| T1 | T2>,): boolean {
         const size = values.size
         if (size === 0)
             return true
@@ -2038,8 +2144,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: MinimalistCollectionHolder<T>)} */
-    protected _hasOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: MinimalistCollectionHolder<T1 | T2>)} */
+    protected _hasOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<| T1 | T2>,): boolean {
         const size = values.size
         if (size === 0)
             return true
@@ -2055,8 +2161,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: CollectionHolder<T>)} */
-    protected _hasOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: CollectionHolder<T1 | T2>)} */
+    protected _hasOneByCollectionHolder(values: CollectionHolder<| T1 | T2>,): boolean {
         if (values.isEmpty)
             return true
 
@@ -2072,8 +2178,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: CollectionIterator<T>)} */
-    protected _hasOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: CollectionIterator<T1 | T2>)} */
+    protected _hasOneByCollectionIterator(values: CollectionIterator<| T1 | T2>,): boolean {
         if (values.isEmpty)
             return true
 
@@ -2091,8 +2197,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Iterator<T>)} */
-    protected _hasOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Iterator<T1 | T2, unknown, unknown>)} */
+    protected _hasOneByIterator(values: Iterator<| T1 | T2, unknown, unknown>,): boolean {
         let iteratorResult = values.next()
         if (iteratorResult.done)
             return true
@@ -2114,8 +2220,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Iterable<T>)} */
-    protected _hasOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Iterable<T1 | T2, unknown, unknown>)} */
+    protected _hasOneByIterable(values: Iterable<| T1 | T2, unknown, unknown>,): boolean {
         const iterator = values[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
@@ -2141,16 +2247,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public override hasNotOne(values: Nullable<Array<T>>,): boolean
-    public override hasNotOne(values: Nullable<Set<T>>,): boolean
-    public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasNotOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
-    public override hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+    public override hasNotOne(values: Nullable<Array<| T1 | T2>>,): boolean
+    public override hasNotOne(values: Nullable<Set<| T1 | T2>>,): boolean
+    public override hasNotOne(values: Nullable<CollectionHolder<| T1 | T2>>,): boolean
+    public override hasNotOne(values: Nullable<MinimalistCollectionHolder<| T1 | T2>>,): boolean
+    public override hasNotOne(values: Nullable<CollectionIterator<| T1 | T2>>,): boolean
+    public override hasNotOne(values: Nullable<IteratorObject<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<Iterator<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<Iterable<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<| T1 | T2>>,): boolean
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<| T1 | T2>>,) {
         if (values == null)
             return this._hasNotOneByNull(values,)
 
@@ -2167,17 +2273,17 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (values instanceof Iterator)
             return this._hasNotOneByIterator(values,)
 
-        if (isArrayByStructure<T>(values,))
+        if (isArrayByStructure<| T1 | T2>(values,))
             return this._hasNotOneByArray(values,)
-        if (isSetByStructure<T>(values,))
+        if (isSetByStructure<| T1 | T2>(values,))
             return this._hasNotOneBySet(values,)
-        if (isCollectionHolderByStructure<T>(values,))
+        if (isCollectionHolderByStructure<| T1 | T2>(values,))
             return this._hasNotOneByCollectionHolder(values,)
-        if (isMinimalistCollectionHolderByStructure<T>(values,))
+        if (isMinimalistCollectionHolderByStructure<| T1 | T2>(values,))
             return this._hasNotOneByMinimalistCollectionHolder(values,)
-        if (isCollectionIteratorByStructure<T>(values,))
+        if (isCollectionIteratorByStructure<| T1 | T2>(values,))
             return this._hasNotOneByCollectionIterator(values,)
-        if (isIteratorByStructure<T>(values,))
+        if (isIteratorByStructure<| T1 | T2>(values,))
             return this._hasNotOneByIterator(values,)
         return this._hasNotOneByIterable(values,)
     }
@@ -2186,8 +2292,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: NullOrUndefined)} */
     protected _hasNotOneByNull(_values: NullOrUndefined,): false { return false }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Array<T>)} */
-    protected _hasNotOneByArray(values: Array<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Array<T1 | T2>)} */
+    protected _hasNotOneByArray(values: Array<| T1 | T2>,): boolean {
         const size = values.length
         if (size === 0)
             return false
@@ -2196,7 +2302,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         const value2 = this.value2
         let index = -1
         while (++index < size) {
-            const value = values[index] as T
+            const value = values[index] as | T1 | T2
             if (value1 === value)
                 return false
             if (value2 === value)
@@ -2205,8 +2311,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Set<T>)} */
-    protected _hasNotOneBySet(values: Set<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Set<T1 | T2>)} */
+    protected _hasNotOneBySet(values: Set<| T1 | T2>,): boolean {
         const size = values.size
         if (size === 0)
             return false
@@ -2216,7 +2322,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         const iterator = values[Symbol.iterator]()
         let index = -1
         while (++index < size) {
-            const value = iterator.next().value as T
+            const value = iterator.next().value as | T1 | T2
             if (value1 === value)
                 return false
             if (value2 === value)
@@ -2225,8 +2331,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: MinimalistCollectionHolder<T>)} */
-    protected _hasNotOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: MinimalistCollectionHolder<T1 | T2>)} */
+    protected _hasNotOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<| T1 | T2>,): boolean {
         const size = values.size
         if (size === 0)
             return false
@@ -2244,8 +2350,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionHolder<T>)} */
-    protected _hasNotOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionHolder<T1 | T2>)} */
+    protected _hasNotOneByCollectionHolder(values: CollectionHolder<| T1 | T2>,): boolean {
         if (values.isEmpty)
             return false
 
@@ -2263,8 +2369,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionIterator<T>)} */
-    protected _hasNotOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionIterator<T1 | T2>)} */
+    protected _hasNotOneByCollectionIterator(values: CollectionIterator<| T1 | T2>,): boolean {
         if (values.isEmpty)
             return false
 
@@ -2282,8 +2388,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterator<T>)} */
-    protected _hasNotOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterator<T1 | T2, unknown, unknown>)} */
+    protected _hasNotOneByIterator(values: Iterator<| T1 | T2, unknown, unknown>,): boolean {
         let iteratorResult = values.next()
         if (iteratorResult.done)
             return false
@@ -2305,8 +2411,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterable<T>)} */
-    protected _hasNotOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterable<T1 | T2, unknown, unknoen>)} */
+    protected _hasNotOneByIterable(values: Iterable<| T1 | T2, unknown, unknown>,): boolean {
         const iterator = values[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
@@ -2332,16 +2438,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public override hasAll(values: Nullable<Array<T>>,): boolean
-    public override hasAll(values: Nullable<Set<T>>,): boolean
-    public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
-    public override hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+    public override hasAll(values: Nullable<Array<| T1 | T2>>,): boolean
+    public override hasAll(values: Nullable<Set<| T1 | T2>>,): boolean
+    public override hasAll(values: Nullable<CollectionHolder<| T1 | T2>>,): boolean
+    public override hasAll(values: Nullable<MinimalistCollectionHolder<| T1 | T2>>,): boolean
+    public override hasAll(values: Nullable<CollectionIterator<| T1 | T2>>,): boolean
+    public override hasAll(values: Nullable<IteratorObject<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<Iterator<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<Iterable<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<| T1 | T2>>,): boolean
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<| T1 | T2>>,) {
         if (values == null)
             return this._hasAllByNull(values,)
 
@@ -2358,17 +2464,17 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (values instanceof Iterator)
             return this._hasAllByIterator(values,)
 
-        if (isArrayByStructure<T>(values))
+        if (isArrayByStructure<| T1 | T2>(values))
             return this._hasAllByArray(values,)
-        if (isSetByStructure<T>(values))
+        if (isSetByStructure<| T1 | T2>(values))
             return this._hasAllBySet(values,)
-        if (isCollectionHolderByStructure<T>(values))
+        if (isCollectionHolderByStructure<| T1 | T2>(values))
             return this._hasAllByCollectionHolder(values,)
-        if (isMinimalistCollectionHolderByStructure<T>(values,))
+        if (isMinimalistCollectionHolderByStructure<| T1 | T2>(values,))
             return this._hasAllByMinimalistCollectionHolder(values,)
-        if (isCollectionIteratorByStructure<T>(values,))
+        if (isCollectionIteratorByStructure<| T1 | T2>(values,))
             return this._hasAllByCollectionIterator(values,)
-        if (isIteratorByStructure<T>(values,))
+        if (isIteratorByStructure<| T1 | T2>(values,))
             return this._hasAllByIterator(values,)
         return this._hasAllByIterable(values,)
     }
@@ -2379,8 +2485,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Array<T>)} */
-    protected _hasAllByArray(values: Array<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Array<T1 | T2>)} */
+    protected _hasAllByArray(values: Array<| T1 | T2>,): boolean {
         const size = values.length
         if (size === 0)
             return true
@@ -2389,7 +2495,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         const value2 = this.value2
         let index = -1
         while (++index < size) {
-            const value = values[index] as T
+            const value = values[index] as | T1 | T2
             if (value1 === value)
                 continue
             if (value2 === value)
@@ -2399,8 +2505,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Set<T>)} */
-    protected _hasAllBySet(values: Set<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Set<T1 | T2>)} */
+    protected _hasAllBySet(values: Set<| T1 | T2>,): boolean {
         const size = values.size
         if (size === 0)
             return true
@@ -2410,7 +2516,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         const iterator = values[Symbol.iterator]()
         let index = -1
         while (++index < size) {
-            const value = iterator.next().value as T
+            const value = iterator.next().value as | T1 | T2
             if (value1 === value)
                 continue
             if (value2 === value)
@@ -2420,8 +2526,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: MinimalistCollectionHolder<T>)} */
-    protected _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: MinimalistCollectionHolder<T1 | T2>)} */
+    protected _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<| T1 | T2>,): boolean {
         const size = values.size
         if (size === 0)
             return true
@@ -2440,8 +2546,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: CollectionHolder<T>)} */
-    protected _hasAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: CollectionHolder<T1 | T2>)} */
+    protected _hasAllByCollectionHolder(values: CollectionHolder<| T1 | T2>,): boolean {
         if (values.isEmpty)
             return true
 
@@ -2460,8 +2566,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: CollectionIterator<T>)} */
-    protected _hasAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: CollectionIterator<T1 | T2>)} */
+    protected _hasAllByCollectionIterator(values: CollectionIterator<| T1 | T2>,): boolean {
         if (values.isEmpty)
             return true
 
@@ -2480,8 +2586,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterator<T>)} */
-    protected _hasAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterator<T1 | T2, unknown, unknown>)} */
+    protected _hasAllByIterator(values: Iterator<| T1 | T2, unknown, unknown>,): boolean {
         let iteratorResult = values.next()
         if (iteratorResult.done)
             return true
@@ -2508,8 +2614,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterable<T>)} */
-    protected _hasAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterable<T1 | T2, unknown, unknown>)} */
+    protected _hasAllByIterable(values: Iterable<| T1 | T2, unknown, unknown>,): boolean {
         const iterator = values[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
@@ -2540,16 +2646,16 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public override hasNotAll(values: Nullable<Array<T>>,): boolean
-    public override hasNotAll(values: Nullable<Set<T>>,): boolean
-    public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasNotAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
-    public override hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+    public override hasNotAll(values: Nullable<Array<| T1 | T2>>,): boolean
+    public override hasNotAll(values: Nullable<Set<| T1 | T2>>,): boolean
+    public override hasNotAll(values: Nullable<CollectionHolder<| T1 | T2>>,): boolean
+    public override hasNotAll(values: Nullable<MinimalistCollectionHolder<| T1 | T2>>,): boolean
+    public override hasNotAll(values: Nullable<CollectionIterator<| T1 | T2>>,): boolean
+    public override hasNotAll(values: Nullable<IteratorObject<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<Iterator<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<Iterable<| T1 | T2, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<| T1 | T2>>,): boolean
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<| T1 | T2>>,) {
         if (values == null)
             return this._hasNotAllByNull(values,)
 
@@ -2566,17 +2672,17 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (values instanceof Iterator)
             return this._hasNotAllByIterator(values,)
 
-        if (isArrayByStructure<T>(values,))
+        if (isArrayByStructure<| T1 | T2>(values,))
             return this._hasNotAllByArray(values,)
-        if (isSetByStructure<T>(values,))
+        if (isSetByStructure<| T1 | T2>(values,))
             return this._hasNotAllBySet(values,)
-        if (isCollectionHolderByStructure<T>(values,))
+        if (isCollectionHolderByStructure<| T1 | T2>(values,))
             return this._hasNotAllByCollectionHolder(values,)
-        if (isMinimalistCollectionHolderByStructure<T>(values,))
+        if (isMinimalistCollectionHolderByStructure<| T1 | T2>(values,))
             return this._hasNotAllByMinimalistCollectionHolder(values,)
-        if (isCollectionIteratorByStructure<T>(values,))
+        if (isCollectionIteratorByStructure<| T1 | T2>(values,))
             return this._hasNotAllByCollectionIterator(values,)
-        if (isIteratorByStructure<T>(values,))
+        if (isIteratorByStructure<| T1 | T2>(values,))
             return this._hasNotAllByIterator(values,)
         return this._hasNotAllByIterable(values,)
     }
@@ -2587,8 +2693,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Array<T>)} */
-    protected _hasNotAllByArray(values: Array<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Array<T1 | T2>)} */
+    protected _hasNotAllByArray(values: Array<| T1 | T2>,): boolean {
         const size = values.length
         if (size === 0)
             return false
@@ -2597,7 +2703,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         const value2 = this.value2
         let index = -1
         while (++index < size) {
-            const value = values[index] as T
+            const value = values[index] as | T1 | T2
             if (value1 === value)
                 continue
             if (value2 === value)
@@ -2607,8 +2713,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Set<T>)} */
-    protected _hasNotAllBySet(values: Set<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Set<T1 | T2>)} */
+    protected _hasNotAllBySet(values: Set<| T1 | T2>,): boolean {
         const size = values.size
         if (size === 0)
             return false
@@ -2618,7 +2724,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         const iterator = values[Symbol.iterator]()
         let index = -1
         while (++index < size) {
-            const value = iterator.next().value as T
+            const value = iterator.next().value as | T1 | T2
             if (value1 === value)
                 continue
             if (value2 === value)
@@ -2628,8 +2734,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: MinimalistCollectionHolder<T>)} */
-    protected _hasNotAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: MinimalistCollectionHolder<T1 | T2>)} */
+    protected _hasNotAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<| T1 | T2>,): boolean {
         const size = values.size
         if (size === 0)
             return false
@@ -2648,8 +2754,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionHolder<T>)} */
-    protected _hasNotAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionHolder<T1 | T2>)} */
+    protected _hasNotAllByCollectionHolder(values: CollectionHolder<| T1 | T2>,): boolean {
         if (values.isEmpty)
             return false
 
@@ -2668,8 +2774,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionIterator<T>)} */
-    protected _hasNotAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionIterator<T1 | T2>)} */
+    protected _hasNotAllByCollectionIterator(values: CollectionIterator<| T1 | T2>,): boolean {
         if (values.isEmpty)
             return false
 
@@ -2688,8 +2794,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterator<T>)} */
-    protected _hasNotAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterator<T1 | T2, unknown, unknown>)} */
+    protected _hasNotAllByIterator(values: Iterator<| T1 | T2, unknown, unknown>,): boolean {
         let iteratorResult = values.next()
         if (iteratorResult.done)
             return false
@@ -2716,8 +2822,8 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterable<T>)} */
-    protected _hasNotAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterable<T1 | T2, unknown, unknown>)} */
+    protected _hasNotAllByIterable(values: Iterable<| T1 | T2, unknown, unknown>,): boolean {
         const iterator = values[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
@@ -2749,10 +2855,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- Require no nulls --------------------
 
-    public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
+    public override requireNoNulls(): CollectionHolderOf2<NonNullable<T1>, NonNullable<T2>> {
         if (this.hasNull)
             throw new TypeError("Forbidden null value. The current collection contains null values.",)
-        return this as CollectionHolder<NonNullable<T>>
+        return this as CollectionHolderOf2<NonNullable<T1>, NonNullable<T2>>
     }
 
     //#endregion -------------------- Require no nulls --------------------
@@ -2762,176 +2868,178 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- Filter --------------------
 
-    public override filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override filter(predicate: BooleanCallback<T>,) {
+    public override filter<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override filter(predicate: BooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override filter(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+            return this._create0Or1Or2(() => {
                 const value1 = this.value1
                 const value2 = this.value2
-                if ((predicate as (value: T,) => boolean)(value1,))
-                    if ((predicate as (value: T,) => boolean)(value2,))
-                        return new Couple(new Optional(value1,), new Optional(value2,),)
+                if ((predicate as (value: | T1 | T2,) => boolean)(value1,))
+                    if ((predicate as (value: | T1 | T2,) => boolean)(value2,))
+                        return this._createCouple(new Optional(value1,), new Optional(value2,),)
                     else
-                        return new Couple(new Optional(value1,), EmptyOptional.get,)
-                if ((predicate as (value: T,) => boolean)(value2,))
-                    return new Couple(new Optional(value2,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(value1,), EmptyOptional.get,)
+                if ((predicate as (value: | T1 | T2,) => boolean)(value2,))
+                    return this._createCouple(new Optional(value2,), EmptyOptional.get,)
                 return null
             },)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+            return this._create0Or1Or2(() => {
                 const value1 = this.value1
                 const value2 = this.value2
                 if (predicate(value1, 0,))
                     if (predicate(value2, 1,))
-                        return new Couple(new Optional(value1,), new Optional(value2,),)
+                        return this._createCouple(new Optional(value1,), new Optional(value2,),)
                     else
-                        return new Couple(new Optional(value1,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(value1,), EmptyOptional.get,)
                 if (predicate(value2, 1,))
-                    return new Couple(new Optional(value2,), EmptyOptional.get,)
+                    return this._createCouple(new Optional(value2,), EmptyOptional.get,)
                 return null
             },)
-        return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as () => boolean)()
+        return this._create0Or1Or2(() => (predicate as () => boolean)()
             ? (predicate as () => boolean)()
-                ? new Couple(new Optional(this.value1,), new Optional(this.value2,),)
-                : new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                ? this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
+                : this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
             : (predicate as () => boolean)()
-                ? new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                ? this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
                 : null,)
     }
 
-    public override filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterIndexed(predicate: ReverseBooleanCallback<T>,) {
+    public override filterIndexed<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override filterIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override filterIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as (index: number,) => boolean)(0,)
+            return this._create0Or1Or2(() => (predicate as (index: number,) => boolean)(0,)
                 ? (predicate as (index: number,) => boolean)(1,)
-                    ? new Couple(new Optional(this.value1,), new Optional(this.value2,),)
-                    : new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                    ? this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
+                    : this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
                 : (predicate as (index: number,) => boolean)(1,)
-                    ? new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                    ? this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
                     : null,)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+            return this._create0Or1Or2(() => {
                 const value1 = this.value1
                 const value2 = this.value2
                 if (predicate(0, value1,))
                     if (predicate(1, value2,))
-                        return new Couple(new Optional(value1,), new Optional(value2,),)
+                        return this._createCouple(new Optional(value1,), new Optional(value2,),)
                     else
-                        return new Couple(new Optional(value1,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(value1,), EmptyOptional.get,)
                 if (predicate(1, value2,))
-                    return new Couple(new Optional(value2,), EmptyOptional.get,)
+                    return this._createCouple(new Optional(value2,), EmptyOptional.get,)
                 return null
             },)
-        return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as () => boolean)()
+        return this._create0Or1Or2(() => (predicate as () => boolean)()
             ? (predicate as () => boolean)()
-                ? new Couple(new Optional(this.value1,), new Optional(this.value2,),)
-                : new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                ? this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
+                : this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
             : (predicate as () => boolean)()
-                ? new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                ? this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
                 : null,)
     }
 
 
-    public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T> {
+    public override filterNot<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<Exclude<| T1 | T2, S>>
+    public override filterNot(predicate: BooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override filterNot(predicate: BooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2> {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+            return this._create0Or1Or2(() => {
                 const value1 = this.value1
                 const value2 = this.value2
-                if ((predicate as (value: T,) => boolean)(value1,))
-                    if ((predicate as (value: T,) => boolean)(value2,))
+                if ((predicate as (value: | T1 | T2,) => boolean)(value1,))
+                    if ((predicate as (value: | T1 | T2,) => boolean)(value2,))
                         return null
                     else
-                        return new Couple(new Optional(value2,), EmptyOptional.get,)
-                if ((predicate as (value: T,) => boolean)(value2,))
-                    return new Couple(new Optional(value1,), EmptyOptional.get,)
-                return new Couple(new Optional(value1,), new Optional(value2,),)
+                        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
+                if ((predicate as (value: | T1 | T2,) => boolean)(value2,))
+                    return this._createCouple(new Optional(value1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(value1,), new Optional(value2,),)
             },)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+            return this._create0Or1Or2(() => {
                 const value1 = this.value1
                 const value2 = this.value2
                 if (predicate(value1, 0,))
                     if (predicate(value2, 1,))
                         return null
                     else
-                        return new Couple(new Optional(value2,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
                 if (predicate(value2, 1,))
-                    return new Couple(new Optional(value1,), EmptyOptional.get,)
-                return new Couple(new Optional(value1,), new Optional(value2,),)
+                    return this._createCouple(new Optional(value1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(value1,), new Optional(value2,),)
             },)
-        return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as () => boolean)()
+        return this._create0Or1Or2(() => (predicate as () => boolean)()
             ? (predicate as () => boolean)()
                 ? null
-                : new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                : this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
             : (predicate as () => boolean)()
-                ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
-                : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
+                ? this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
+                : this._createCouple(new Optional(this.value1,), new Optional(this.value2,),),)
     }
 
-    public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T> {
+    public override filterNotIndexed<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<Exclude<| T1 | T2, S>>
+    public override filterNotIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override filterNotIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2> {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as (index: number,) => boolean)(0,)
+            return this._create0Or1Or2(() => (predicate as (index: number,) => boolean)(0,)
                 ? (predicate as (index: number,) => boolean)(1,)
                     ? null
-                    : new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                    : this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
                 : (predicate as (index: number,) => boolean)(1,)
-                    ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
-                    : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
+                    ? this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
+                    : this._createCouple(new Optional(this.value1,), new Optional(this.value2,),),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+            return this._create0Or1Or2(() => {
                 const value1 = this.value1
                 const value2 = this.value2
                 if (predicate(0, value1,))
                     if (predicate(1, value2,))
                         return null
                     else
-                        return new Couple(new Optional(value2,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
                 if (predicate(1, value2,))
-                    return new Couple(new Optional(value1,), EmptyOptional.get,)
-                return new Couple(new Optional(value1,), new Optional(value2,),)
+                    return this._createCouple(new Optional(value1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(value1,), new Optional(value2,),)
             },)
-        return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as () => boolean)()
+        return this._create0Or1Or2(() => (predicate as () => boolean)()
             ? (predicate as () => boolean)()
                 ? null
-                : new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                : this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
             : (predicate as () => boolean)()
-                ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
-                : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
+                ? this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
+                : this._createCouple(new Optional(this.value1,), new Optional(this.value2,),),)
     }
 
 
-    public override filterNotNull(): CollectionHolder<NonNullable<T>> {
+    public override filterNotNull(): CollectionHolderOfAny0Or1Or2<NonNullable<T1>, NonNullable<T2>>
+    public override filterNotNull() {
         const value1 = this.value1
         const value2 = this.value2
         if (value1 == null)
             if (value2 == null)
                 return EmptyCollectionHolder.get
             else
-                return new CollectionHolderOf1(value2,)
+                return this._create1(value2,)
         if (value2 == null)
-            return new CollectionHolderOf1(value1,)
-        return this as CollectionHolder<NonNullable<T>>
+            return this._create1(value1,)
+        return this as CollectionHolderOf2<NonNullable<T1>, NonNullable<T2>>
     }
 
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
-    public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: NumberArray,): CollectionHolder<T>
-    public override slice(indices: NumberSet,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    public override slice(): CollectionHolderOf2<T1, T2>
+    public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOf1Or2<T1, T2>
+    public override slice(indices: NumberArray,): CollectionHolder<| T1 | T2>
+    public override slice(indices: NumberSet,): CollectionHolder<| T1 | T2>
+    public override slice(indices: CollectionHolder<number>,): CollectionHolder<| T1 | T2>
+    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<| T1 | T2>
+    public override slice(indices: CollectionIterator<number>,): CollectionHolder<| T1 | T2>
+    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<| T1 | T2>
+    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<| T1 | T2>
+    public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<| T1 | T2>
+    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<| T1 | T2>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         //#region -------------------- 0 arguments --------------------
 
@@ -3055,43 +3163,43 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from)} */
-    protected _sliceWith1Argument(from: number,): | this | CollectionHolderOf1<T> {
+    protected _sliceWith1Argument(from: number,): CollectionHolderOfLast1Or2<T1, T2> {
         const startingIndex = __getStartingIndex(from,)
         if (startingIndex == 0)
             return this
-        return new CollectionHolderOf1<T>(this.value2,)
+        return this._create1(this.value2,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from, to)} */
-    protected _sliceWith2Argument(from: number, to: number,): | this | CollectionHolderOf1<T> {
+    protected _sliceWith2Argument(from: number, to: number,): CollectionHolderOfAny1Or2<T1, T2> {
         const startingIndex = __getStartingIndex(from,)
         const endingIndex = __getEndingIndex(to,)
         __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 0)
-                return new CollectionHolderOf1(this.value1,)
+                return this._create1(this.value1,)
             else
-                return new CollectionHolderOf1(this.value2,)
+                return this._create1(this.value2,)
         return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, to)} */
-    protected _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): | this | CollectionHolderOf1<T> {
+    protected _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): CollectionHolderOf1Or2<T1, T2> {
         const endingIndex = __getEndingIndex(to,)
         if (endingIndex == 0)
-            return new CollectionHolderOf1(this.value1,)
+            return this._create1(this.value1,)
         return this
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberArray)} */
-    protected _sliceByArray(indices: NumberArray,): CollectionHolder<T> {
+    protected _sliceByArray(indices: NumberArray,): CollectionHolder<| T1 | T2> {
         const indicesSize = indices.length
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
-        return new LazyCollectionHolder(() => {
+        return this._createLazyArray(() => {
             const value1 = this.value1
             const value2 = this.value2
-            const newArray = new Array<T>(indicesSize,)
+            const newArray = new Array<| T1 | T2>(indicesSize,)
             let index = indicesSize
             while (index-- > 0)
                 if (__getIndex(indices[index]!,) === 0)
@@ -3103,14 +3211,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberSet)} */
-    protected _sliceBySet(indices: NumberSet,): CollectionHolder<T> {
+    protected _sliceBySet(indices: NumberSet,): CollectionHolder<| T1 | T2> {
         const indicesSize = indices.size
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
-        return new LazyCollectionHolder(() => {
+        return this._createLazyArray(() => {
             const value1 = this.value1
             const value2 = this.value2
-            const newArray = new Array<T>(indicesSize,)
+            const newArray = new Array<| T1 | T2>(indicesSize,)
             const iterator = indices[Symbol.iterator]()
             let index = -1
             while (++index < indicesSize)
@@ -3123,14 +3231,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: MinimalistCollectionHolder<number>)} */
-    protected _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+    protected _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<| T1 | T2> {
         const indicesSize = indices.size
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
-        return new LazyCollectionHolder(() => {
+        return this._createLazyArray(() => {
             const value1 = this.value1
             const value2 = this.value2
-            const newArray = new Array<T>(indicesSize,)
+            const newArray = new Array<| T1 | T2>(indicesSize,)
             let index = indicesSize
             while (index-- > 0)
                 if (__getIndex(indices.get(index,),) === 0)
@@ -3142,14 +3250,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: CollectionHolder<number>)} */
-    protected _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+    protected _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<| T1 | T2> {
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
-        return new LazyCollectionHolder(() => {
+        return this._createLazyArray(() => {
             const value1 = this.value1
             const value2 = this.value2
             const indicesSize = indices.size
-            const newArray = new Array<T>(indicesSize,)
+            const newArray = new Array<| T1 | T2>(indicesSize,)
             let index = indicesSize
             while (index-- > 0)
                 if (__getIndex(indices.get(index,),) === 0)
@@ -3161,14 +3269,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: CollectionIterator<number>)} */
-    protected _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+    protected _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<| T1 | T2> {
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
-        return new LazyCollectionHolder(() => {
+        return this._createLazyArray(() => {
             const value1 = this.value1
             const value2 = this.value2
             const indicesSize = indices.size
-            const newArray = new Array<T>(indicesSize,)
+            const newArray = new Array<| T1 | T2>(indicesSize,)
             let index = indicesSize
             while (index-- > 0)
                 if (__getIndex(indices.previousValue,) === 0)
@@ -3180,11 +3288,11 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: Iterator<number>)} */
-    protected _sliceByIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
+    protected _sliceByIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<| T1 | T2> {
         let iteratorResult = indices.next()
         if (iteratorResult.done)
             return EmptyCollectionHolder.get
-        return new LazyCollectionHolder(() => {
+        return this._createLazyArray(() => {
             const value1 = this.value1
             const value2 = this.value2
             const newArray = [__getIndex(iteratorResult.value as number,) === 0 ? value1 : value2,]
@@ -3198,12 +3306,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: Iterable<number>)} */
-    protected _sliceByIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
+    protected _sliceByIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<| T1 | T2> {
         const iterator = indices[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
             return EmptyCollectionHolder.get
-        return new LazyCollectionHolder(() => {
+        return this._createLazyArray(() => {
             const value1 = this.value1
             const value2 = this.value2
             const newArray = [__getIndex(iteratorResult.value as number,) === 0 ? value1 : value2,]
@@ -3221,7 +3329,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- Take --------------------
 
-    public override take(n: number,): | this | CollectionHolderOf1<T1> | EmptyCollectionHolder {
+    public override take(n: number,): CollectionHolderOf0Or1Or2<T1, T2> {
         if (Number.isNaN(n,))
             throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
         if (n === Number.NEGATIVE_INFINITY)
@@ -3231,107 +3339,107 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (n === 0)
             return EmptyCollectionHolder.get
         if (n === 1)
-            return new CollectionHolderOf1(this.value1,)
+            return this._create1(this.value1,)
         if (n === 2)
             return this
         if (n > 2)
             return this
         if (n === -1)
-            return new CollectionHolderOf1(this.value1,)
+            return this._create1(this.value1,)
         return EmptyCollectionHolder.get
     }
 
     //#endregion -------------------- Take --------------------
     //#region -------------------- Take while --------------------
 
-    public override takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override takeWhile(predicate: BooleanCallback<T>,) {
+    public override takeWhile<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override takeWhile(predicate: BooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override takeWhile(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#takeWhile1(predicate as (value: T,) => boolean,),)
+            return this._create0Or1Or2(() => this.#takeWhile1(predicate as (value: | T1 | T2,) => boolean,),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#takeWhile2(predicate,),)
-        return new LazyCollectionHolderOf0Or1Or2(() => this.#takeWhile0(predicate as () => boolean,),)
+            return this._create0Or1Or2(() => this.#takeWhile2(predicate,),)
+        return this._create0Or1Or2(() => this.#takeWhile0(predicate as () => boolean,),)
     }
 
-    #takeWhile0(predicate: () => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #takeWhile0(predicate: () => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         if (predicate())
             if (predicate())
-                return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
             else
-                return new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
         return null
     }
 
-    #takeWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #takeWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
         if (!predicate(value1,))
             return null
 
         const value2 = this.value2
         if (predicate(value2,))
-            return new Couple(new Optional(value1,), new Optional(value2,),)
-        return new Couple(new Optional(value1,), EmptyOptional.get,)
+            return this._createCouple(new Optional(value1,), new Optional(value2,),)
+        return this._createCouple(new Optional(value1,), EmptyOptional.get,)
     }
 
-    #takeWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #takeWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
         if (!predicate(value1, 0,))
             return null
 
         const value2 = this.value2
         if (predicate(value2, 1,))
-            return new Couple(new Optional(value1,), new Optional(value2,),)
-        return new Couple(new Optional(value1,), EmptyOptional.get,)
+            return this._createCouple(new Optional(value1,), new Optional(value2,),)
+        return this._createCouple(new Optional(value1,), EmptyOptional.get,)
     }
 
     //#endregion -------------------- Take while --------------------
     //#region -------------------- Take while indexed --------------------
 
-    public override takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+    public override takeWhileIndexed<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override takeWhileIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override takeWhileIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#takeWhileIndexed1(predicate as (index: number,) => boolean,),)
+            return this._create0Or1Or2(() => this.#takeWhileIndexed1(predicate as (index: number,) => boolean,),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#takeWhileIndexed2(predicate,),)
-        return new LazyCollectionHolderOf0Or1Or2(() => this.#takeWhileIndexed0(predicate as () => boolean,),)
+            return this._create0Or1Or2(() => this.#takeWhileIndexed2(predicate,),)
+        return this._create0Or1Or2(() => this.#takeWhileIndexed0(predicate as () => boolean,),)
     }
 
-    #takeWhileIndexed0(predicate: () => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #takeWhileIndexed0(predicate: () => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         if (predicate())
             if (predicate())
-                return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
             else
-                return new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
         return null
     }
 
-    #takeWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #takeWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         if (predicate(0,))
             if (predicate(1,))
-                return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
             else
-                return new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
         return null
     }
 
-    #takeWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #takeWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
         if (!predicate(0, value1,))
             return null
 
         const value2 = this.value2
         if (predicate(1, value2,))
-            return new Couple(new Optional(value1,), new Optional(value2,),)
-        return new Couple(new Optional(value1,), EmptyOptional.get,)
+            return this._createCouple(new Optional(value1,), new Optional(value2,),)
+        return this._createCouple(new Optional(value1,), EmptyOptional.get,)
     }
 
     //#endregion -------------------- Take while indexed --------------------
 
     //#region -------------------- Take last --------------------
 
-    public override takeLast(n: number,): | this | CollectionHolderOf1<T2> | EmptyCollectionHolder {
+    public override takeLast(n: number,): CollectionHolderOfLast0Or1Or2<T1, T2> {
         if (Number.isNaN(n,))
             throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
         if (n === Number.NEGATIVE_INFINITY)
@@ -3341,100 +3449,100 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (n === 0)
             return EmptyCollectionHolder.get
         if (n === 1)
-            return new CollectionHolderOf1(this.value2,)
+            return this._create1(this.value2,)
         if (n === 2)
             return this
         if (n > 2)
             return this
         if (n === -1)
-            return new CollectionHolderOf1(this.value2,)
+            return this._create1(this.value2,)
         return EmptyCollectionHolder.get
     }
 
     //#endregion -------------------- Take last --------------------
     //#region -------------------- Take last while --------------------
 
-    public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override takeLastWhile(predicate: BooleanCallback<T>,) {
+    public override takeLastWhile<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override takeLastWhile(predicate: BooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override takeLastWhile(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#takeLastWhile1(predicate as (value: T,) => boolean,),)
+            return this._create0Or1Or2(() => this.#takeLastWhile1(predicate as (value: | T1 | T2,) => boolean,),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#takeLastWhile2(predicate,),)
-        return new LazyCollectionHolderOf0Or1Or2(() => this.#takeLastWhile0(predicate as () => boolean,),)
+            return this._create0Or1Or2(() => this.#takeLastWhile2(predicate,),)
+        return this._create0Or1Or2(() => this.#takeLastWhile0(predicate as () => boolean,),)
     }
 
-    #takeLastWhile0(predicate: () => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #takeLastWhile0(predicate: () => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         if (predicate())
             if (predicate())
-                return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
             else
-                return new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                return this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
         return null
     }
 
-    #takeLastWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #takeLastWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         const value2 = this.value2
         if (!predicate(value2,))
             return null
 
         const value1 = this.value1
         if (predicate(value1,))
-            return new Couple(new Optional(value1,), new Optional(value2,),)
-        return new Couple(new Optional(value2,), EmptyOptional.get,)
+            return this._createCouple(new Optional(value1,), new Optional(value2,),)
+        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
     }
 
-    #takeLastWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #takeLastWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         const value2 = this.value2
         if (!predicate(value2, 1,))
             return null
 
         const value1 = this.value1
         if (predicate(value1, 0,))
-            return new Couple(new Optional(value1,), new Optional(value2,),)
-        return new Couple(new Optional(value2,), EmptyOptional.get,)
+            return this._createCouple(new Optional(value1,), new Optional(value2,),)
+        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
     }
 
     //#endregion -------------------- Take last while --------------------
     //#region -------------------- Take last while indexed --------------------
 
-    public override takeLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+    public override takeLastWhileIndexed<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#takeLastWhileIndexed1(predicate as (index: number,) => boolean,),)
+            return this._create0Or1Or2(() => this.#takeLastWhileIndexed1(predicate as (index: number,) => boolean,),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#takeLastWhileIndexed2(predicate,),)
-        return new LazyCollectionHolderOf0Or1Or2(() => this.#takeLastWhileIndexed0(predicate as () => boolean,),)
+            return this._create0Or1Or2(() => this.#takeLastWhileIndexed2(predicate,),)
+        return this._create0Or1Or2(() => this.#takeLastWhileIndexed0(predicate as () => boolean,),)
     }
 
-    #takeLastWhileIndexed0(predicate: () => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #takeLastWhileIndexed0(predicate: () => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         if (predicate())
             if (predicate())
-                return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
             else
-                return new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                return this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
         return null
     }
 
-    #takeLastWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #takeLastWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         if (predicate(1,))
             if (predicate(0,))
-                return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
             else
-                return new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                return this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
         return null
     }
 
-    #takeLastWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #takeLastWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         const value2 = this.value2
         if (!predicate(1, value2,))
             return null
 
         const value1 = this.value1
         if (predicate(0, value1,))
-            return new Couple(new Optional(value1,), new Optional(value2,),)
-        return new Couple(new Optional(value2,), EmptyOptional.get,)
+            return this._createCouple(new Optional(value1,), new Optional(value2,),)
+        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
     }
 
     //#endregion -------------------- Take last while indexed --------------------
@@ -3444,7 +3552,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- Drop --------------------
 
-    public override drop(n: number,): | this | CollectionHolderOf1<T2> | EmptyCollectionHolder {
+    public override drop(n: number,): CollectionHolderOfLast0Or1Or2<T1, T2> {
         if (Number.isNaN(n,))
             throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
         if (n === Number.NEGATIVE_INFINITY)
@@ -3454,107 +3562,107 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (n === 0)
             return this
         if (n === 1)
-            return new CollectionHolderOf1(this.value2,)
+            return this._create1(this.value2,)
         if (n === 2)
             return EmptyCollectionHolder.get
         if (n > 2)
             return EmptyCollectionHolder.get
         if (n === -1)
-            return new CollectionHolderOf1(this.value2,)
+            return this._create1(this.value2,)
         return this
     }
 
     //#endregion -------------------- Drop --------------------
     //#region -------------------- Drop while --------------------
 
-    public override dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override dropWhile(predicate: BooleanCallback<T>,) {
+    public override dropWhile<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override dropWhile(predicate: BooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override dropWhile(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#dropWhile1(predicate as (value: T,) => boolean,),)
+            return this._create0Or1Or2(() => this.#dropWhile1(predicate as (value: | T1 | T2,) => boolean,),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#dropWhile2(predicate,),)
-        return new LazyCollectionHolderOf0Or1Or2(() => this.#dropWhile0(predicate as () => boolean,),)
+            return this._create0Or1Or2(() => this.#dropWhile2(predicate,),)
+        return this._create0Or1Or2(() => this.#dropWhile0(predicate as () => boolean,),)
     }
 
-    #dropWhile0(predicate: () => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #dropWhile0(predicate: () => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         if (predicate())
             if (predicate())
                 return null
             else
-                return new Couple(new Optional(this.value2,), EmptyOptional.get,)
-        return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
+        return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
     }
 
-    #dropWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #dropWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         const value1 = this.value1
         if (!predicate(value1,))
-            return new Couple(new Optional(value1,), new Optional(this.value2,),)
+            return this._createCouple(new Optional(value1,), new Optional(this.value2,),)
 
         const value2 = this.value2
         if (predicate(value2,))
             return null
-        return new Couple(new Optional(value2,), EmptyOptional.get,)
+        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
     }
 
-    #dropWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #dropWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         const value1 = this.value1
         if (!predicate(value1, 0,))
-            return new Couple(new Optional(value1,), new Optional(this.value2,),)
+            return this._createCouple(new Optional(value1,), new Optional(this.value2,),)
 
         const value2 = this.value2
         if (predicate(value2, 1,))
             return null
-        return new Couple(new Optional(value2,), EmptyOptional.get,)
+        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
     }
 
     //#endregion -------------------- Drop while --------------------
     //#region -------------------- Drop while indexed --------------------
 
-    public override dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+    public override dropWhileIndexed<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override dropWhileIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override dropWhileIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#dropWhileIndexed1(predicate as (index: number,) => boolean,),)
+            return this._create0Or1Or2(() => this.#dropWhileIndexed1(predicate as (index: number,) => boolean,),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#dropWhileIndexed2(predicate,),)
-        return new LazyCollectionHolderOf0Or1Or2(() => this.#dropWhileIndexed0(predicate as () => boolean,),)
+            return this._create0Or1Or2(() => this.#dropWhileIndexed2(predicate,),)
+        return this._create0Or1Or2(() => this.#dropWhileIndexed0(predicate as () => boolean,),)
     }
 
-    #dropWhileIndexed0(predicate: () => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #dropWhileIndexed0(predicate: () => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         if (predicate())
             if (predicate())
                 return null
             else
-                return new Couple(new Optional(this.value2,), EmptyOptional.get,)
-        return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
+        return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
     }
 
-    #dropWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #dropWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         if (predicate(0,))
             if (predicate(1,))
                 return null
             else
-                return new Couple(new Optional(this.value2,), EmptyOptional.get,)
-        return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value2,), EmptyOptional.get,)
+        return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
     }
 
-    #dropWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<| T1 | T2>, Optional<T2>>> {
+    #dropWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<| T1 | T2>, Optional<T2>>> {
         const value1 = this.value1
         if (!predicate(0, value1,))
-            return new Couple(new Optional(value1,), new Optional(this.value2,),)
+            return this._createCouple(new Optional(value1,), new Optional(this.value2,),)
 
         const value2 = this.value2
         if (predicate(1, value2,))
             return null
-        return new Couple(new Optional(value2,), EmptyOptional.get,)
+        return this._createCouple(new Optional(value2,), EmptyOptional.get,)
     }
 
     //#endregion -------------------- Drop while indexed --------------------
 
     //#region -------------------- Drop last --------------------
 
-    public override dropLast(n: number,): | this | CollectionHolderOf1<T1> | EmptyCollectionHolder {
+    public override dropLast(n: number,): CollectionHolderOf0Or1Or2<T1, T2> {
         if (Number.isNaN(n,))
             throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
         if (n === Number.NEGATIVE_INFINITY)
@@ -3564,100 +3672,100 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (n === 0)
             return this
         if (n === 1)
-            return new CollectionHolderOf1(this.value1,)
+            return this._create1(this.value1,)
         if (n === 2)
             return EmptyCollectionHolder.get
         if (n > 2)
             return EmptyCollectionHolder.get
         if (n === -1)
-            return new CollectionHolderOf1(this.value1,)
+            return this._create1(this.value1,)
         return this
     }
 
     //#endregion -------------------- Drop last --------------------
     //#region -------------------- Drop last while --------------------
 
-    public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override dropLastWhile(predicate: BooleanCallback<T>,) {
+    public override dropLastWhile<const S extends | T1 | T2, >(predicate: RestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override dropLastWhile(predicate: BooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override dropLastWhile(predicate: BooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#dropLastWhile1(predicate as (value: T,) => boolean,),)
+            return this._create0Or1Or2(() => this.#dropLastWhile1(predicate as (value: | T1 | T2,) => boolean,),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#dropLastWhile2(predicate,),)
-        return new LazyCollectionHolderOf0Or1Or2(() => this.#dropLastWhile0(predicate as () => boolean,),)
+            return this._create0Or1Or2(() => this.#dropLastWhile2(predicate,),)
+        return this._create0Or1Or2(() => this.#dropLastWhile0(predicate as () => boolean,),)
     }
 
-    #dropLastWhile0(predicate: () => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #dropLastWhile0(predicate: () => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         if (predicate())
             if (predicate())
                 return null
             else
-                return new Couple(new Optional(this.value1,), EmptyOptional.get,)
-        return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
+        return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
     }
 
-    #dropLastWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #dropLastWhile1(predicate: (value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
         const value2 = this.value2
         if (predicate(value2,))
             if (predicate(value1,))
                 return null
             else
-                return new Couple(new Optional(value1,), EmptyOptional.get,)
-        return new Couple(new Optional(value1,), new Optional(value2,),)
+                return this._createCouple(new Optional(value1,), EmptyOptional.get,)
+        return this._createCouple(new Optional(value1,), new Optional(value2,),)
     }
 
-    #dropLastWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #dropLastWhile2(predicate: (value: | T1 | T2, index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
         const value2 = this.value2
         if (predicate(value2, 1,))
             if (predicate(value1, 0,))
                 return null
             else
-                return new Couple(new Optional(value1,), EmptyOptional.get,)
-        return new Couple(new Optional(value1,), new Optional(value2,),)
+                return this._createCouple(new Optional(value1,), EmptyOptional.get,)
+        return this._createCouple(new Optional(value1,), new Optional(value2,),)
     }
 
     //#endregion -------------------- Drop last while --------------------
     //#region -------------------- Drop last while indexed --------------------
 
-    public override dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+    public override dropLastWhileIndexed<const S extends | T1 | T2, >(predicate: ReverseRestrainedBooleanCallback<| T1 | T2, S>,): CollectionHolder<S>
+    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,): CollectionHolder<| T1 | T2>
+    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<| T1 | T2>,) {
         if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#dropLastWhileIndexed1(predicate as (index: number,) => boolean,),)
+            return this._create0Or1Or2(() => this.#dropLastWhileIndexed1(predicate as (index: number,) => boolean,),)
         if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2(() => this.#dropLastWhileIndexed2(predicate,),)
-        return new LazyCollectionHolderOf0Or1Or2(() => this.#dropLastWhileIndexed0(predicate as () => boolean,),)
+            return this._create0Or1Or2(() => this.#dropLastWhileIndexed2(predicate,),)
+        return this._create0Or1Or2(() => this.#dropLastWhileIndexed0(predicate as () => boolean,),)
     }
 
-    #dropLastWhileIndexed0(predicate: () => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #dropLastWhileIndexed0(predicate: () => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         if (predicate())
             if (predicate())
                 return null
             else
-                return new Couple(new Optional(this.value1,), EmptyOptional.get,)
-        return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
+        return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
     }
 
-    #dropLastWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #dropLastWhileIndexed1(predicate: (index: | 0 | 1,) => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         if (predicate(1,))
             if (predicate(0,))
                 return null
             else
-                return new Couple(new Optional(this.value1,), EmptyOptional.get,)
-        return new Couple(new Optional(this.value1,), new Optional(this.value2,),)
+                return this._createCouple(new Optional(this.value1,), EmptyOptional.get,)
+        return this._createCouple(new Optional(this.value1,), new Optional(this.value2,),)
     }
 
-    #dropLastWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T>, Optional<T1>, Optional<T2>>> {
+    #dropLastWhileIndexed2(predicate: (index: | 0 | 1, value: | T1 | T2,) => boolean,): NullOr<Couple<Optional<T1>, Optional<T2>>> {
         const value1 = this.value1
         const value2 = this.value2
         if (predicate(1, value2,))
             if (predicate(0, value1,))
                 return null
             else
-                return new Couple(new Optional(value1,), EmptyOptional.get,)
-        return new Couple(new Optional(value1,), new Optional(value2,),)
+                return this._createCouple(new Optional(value1,), EmptyOptional.get,)
+        return this._createCouple(new Optional(value1,), new Optional(value2,),)
     }
 
     //#endregion -------------------- Drop last while indexed --------------------
@@ -3665,102 +3773,102 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Drop --------------------
     //#region -------------------- Map --------------------
 
-    public override map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
+    public override map<const U, >(transform: ValueIndexWithReturnCallback<| T1 | T2, U>,): CollectionHolderOf2<U, U> {
         if (transform.length === 1)
-            return new LateRetriever.LazyCollectionHolderOf2<U>(() => new Couple((transform as (value: T,) => U)(this.value1,), (transform as (value: T,) => U)(this.value2,),),)
+            return this._createLazy2(() => this._createCouple((transform as (value: | T1 | T2,) => U)(this.value1,), (transform as (value: | T1 | T2,) => U)(this.value2,),),)
         if (transform.length >= 2)
-            return new LateRetriever.LazyCollectionHolderOf2<U>(() => new Couple(transform(this.value1, 0,), transform(this.value2, 1,),),)
-        return new LateRetriever.LazyCollectionHolderOf2<U>(() => new Couple((transform as () => U)(), (transform as () => U)(),),)
+            return this._createLazy2(() => this._createCouple(transform(this.value1, 0,), transform(this.value2, 1,),),)
+        return this._createLazy2(() => this._createCouple((transform as () => U)(), (transform as () => U)(),),)
     }
 
-    public override mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
+    public override mapIndexed<const U, >(transform: IndexValueWithReturnCallback<| T1 | T2, U>,): CollectionHolderOf2<U, U> {
         if (transform.length === 1)
-            return new LateRetriever.LazyCollectionHolderOf2<U>(() => new Couple((transform as (index: number,) => U)(0,), (transform as (index: number,) => U)(1,),),)
+            return this._createLazy2(() => this._createCouple((transform as (index: number,) => U)(0,), (transform as (index: number,) => U)(1,),),)
         if (transform.length >= 2)
-            return new LateRetriever.LazyCollectionHolderOf2<U>(() => new Couple(transform(0, this.value1,),transform(1, this.value2,),),)
-        return new LateRetriever.LazyCollectionHolderOf2<U>(() => new Couple((transform as () => U)(), (transform as () => U)(),),)
+            return this._createLazy2(() => this._createCouple(transform(0, this.value1,),transform(1, this.value2,),),)
+        return this._createLazy2(() => this._createCouple((transform as () => U)(), (transform as () => U)(),),)
     }
 
 
-    public override mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+    public override mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<| T1 | T2, Nullable<U>>,): CollectionHolder<U> {
         if (transform.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2<U>(() => {
-                const newValue1 = (transform as (value: T,) => Nullable<U>)(this.value1,)
-                const newValue2 = (transform as (value: T,) => Nullable<U>)(this.value2,)
+            return this._create0Or1Or2(() => {
+                const newValue1 = (transform as (value: | T1 | T2,) => Nullable<U>)(this.value1,)
+                const newValue2 = (transform as (value: | T1 | T2,) => Nullable<U>)(this.value2,)
                 if (newValue1 == null)
                     if (newValue2 == null)
                         return null
                     else
-                        return new Couple(new Optional(newValue2,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(newValue2,), EmptyOptional.get,)
                 if (newValue2 == null)
-                    return new Couple(new Optional(newValue1,), EmptyOptional.get,)
-                return new Couple(new Optional(newValue1,), new Optional(newValue2,),)
+                    return this._createCouple(new Optional(newValue1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(newValue1,), new Optional(newValue2,),)
             },)
         if (transform.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2<U>(() => {
+            return this._create0Or1Or2(() => {
                 const newValue1 = transform(this.value1, 0,)
                 const newValue2 = transform(this.value2, 1,)
                 if (newValue1 == null)
                     if (newValue2 == null)
                         return null
                     else
-                        return new Couple(new Optional(newValue2,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(newValue2,), EmptyOptional.get,)
                 if (newValue2 == null)
-                    return new Couple(new Optional(newValue1,), EmptyOptional.get,)
-                return new Couple(new Optional(newValue1,), new Optional(newValue2,),)
+                    return this._createCouple(new Optional(newValue1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(newValue1,), new Optional(newValue2,),)
             },)
-        return new LazyCollectionHolderOf0Or1Or2<U>(() => {
+        return this._create0Or1Or2(() => {
             const newValue1 = (transform as () => Nullable<U>)()
             const newValue2 = (transform as () => Nullable<U>)()
             if (newValue1 == null)
                 if (newValue2 == null)
                     return null
                 else
-                    return new Couple(new Optional(newValue2,), EmptyOptional.get,)
+                    return this._createCouple(new Optional(newValue2,), EmptyOptional.get,)
             if (newValue2 == null)
-                return new Couple(new Optional(newValue1,), EmptyOptional.get,)
-            return new Couple(new Optional(newValue1,), new Optional(newValue2,),)
+                return this._createCouple(new Optional(newValue1,), EmptyOptional.get,)
+            return this._createCouple(new Optional(newValue1,), new Optional(newValue2,),)
         },)
     }
 
-    public override mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+    public override mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<| T1 | T2, Nullable<U>>,): CollectionHolder<U> {
         if (transform.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2<U>(() => {
+            return this._create0Or1Or2(() => {
                 const newValue1 = (transform as (index: number,) => Nullable<U>)(0,)
                 const newValue2 = (transform as (index: number,) => Nullable<U>)(1,)
                 if (newValue1 == null)
                     if (newValue2 == null)
                         return null
                     else
-                        return new Couple(new Optional(newValue2,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(newValue2,), EmptyOptional.get,)
                 if (newValue2 == null)
-                    return new Couple(new Optional(newValue1,), EmptyOptional.get,)
-                return new Couple(new Optional(newValue1,), new Optional(newValue2,),)
+                    return this._createCouple(new Optional(newValue1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(newValue1,), new Optional(newValue2,),)
             },)
         if (transform.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2<U>(() => {
+            return this._create0Or1Or2(() => {
                 const newValue1 = transform(0, this.value1,)
                 const newValue2 = transform(1, this.value2,)
                 if (newValue1 == null)
                     if (newValue2 == null)
                         return null
                     else
-                        return new Couple(new Optional(newValue2,), EmptyOptional.get,)
+                        return this._createCouple(new Optional(newValue2,), EmptyOptional.get,)
                 if (newValue2 == null)
-                    return new Couple(new Optional(newValue1,), EmptyOptional.get,)
-                return new Couple(new Optional(newValue1,), new Optional(newValue2,),)
+                    return this._createCouple(new Optional(newValue1,), EmptyOptional.get,)
+                return this._createCouple(new Optional(newValue1,), new Optional(newValue2,),)
             },)
-        return new LazyCollectionHolderOf0Or1Or2<U>(() => {
+        return this._create0Or1Or2(() => {
             const newValue1 = (transform as () => Nullable<U>)()
             const newValue2 = (transform as () => Nullable<U>)()
             if (newValue1 == null)
                 if (newValue2 == null)
                     return null
                 else
-                    return new Couple(new Optional(newValue2,), EmptyOptional.get,)
+                    return this._createCouple(new Optional(newValue2,), EmptyOptional.get,)
             if (newValue2 == null)
-                return new Couple(new Optional(newValue1,), EmptyOptional.get,)
-            return new Couple(new Optional(newValue1,), new Optional(newValue2,),)
+                return this._createCouple(new Optional(newValue1,), EmptyOptional.get,)
+            return this._createCouple(new Optional(newValue1,), new Optional(newValue2,),)
         },)
     }
 
@@ -3771,10 +3879,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- For each --------------------
 
-    public override forEach(action: ValueIndexCallback<T>,): void {
+    public override forEach(action: ValueIndexCallback<| T1 | T2>,): void {
         if (action.length === 1) {
-            (action as (value: T,) => void)(this.value1,);
-            (action as (value: T,) => void)(this.value2,)
+            (action as (value: | T1 | T2,) => void)(this.value1,);
+            (action as (value: | T1 | T2,) => void)(this.value2,)
             return
         }
         if (action.length >= 2) {
@@ -3786,7 +3894,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         (action as () => void)()
     }
 
-    public override forEachIndexed(action: IndexValueCallback<T>,): void {
+    public override forEachIndexed(action: IndexValueCallback<| T1 | T2>,): void {
         if (action.length === 1) {
             (action as (index: number,) => void)(0,);
             (action as (index: number,) => void)(1,)
@@ -3804,10 +3912,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- For each --------------------
     //#region -------------------- On each --------------------
 
-    public override onEach(action: ValueIndexCallback<T>,): this {
+    public override onEach(action: ValueIndexCallback<| T1 | T2>,): this {
         if (action.length === 1) {
-            (action as (value: T,) => void)(this.value1,);
-            (action as (value: T,) => void)(this.value2,)
+            (action as (value: | T1 | T2,) => void)(this.value1,);
+            (action as (value: | T1 | T2,) => void)(this.value2,)
             return this
         }
         if (action.length >= 2) {
@@ -3820,7 +3928,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return this
     }
 
-    public override onEachIndexed(action: IndexValueCallback<T>,): this {
+    public override onEachIndexed(action: IndexValueCallback<| T1 | T2>,): this {
         if (action.length === 1) {
             (action as (index: number,) => void)(0,);
             (action as (index: number,) => void)(1,)
@@ -3843,7 +3951,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     //#region -------------------- To reverse --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T1> | CollectionHolderOf1<T2> {
+    public override toReverse                                                                    (                                          ): CollectionHolderOf2<T2, T1>
+    public override toReverse<const I1 extends NullableNumber, >                                 (from: I1,                                 ): ToReverse_from<T1, T2, I1>
+    public override toReverse                                                                    (from: NullableNumber,                     ): CollectionHolderOf1Or2<T2, T1>
+    public override toReverse<                                 const I2 extends NullableNumber, >(from: NullOrUndefined, to: I2,            ): ToReverse_to<T1, T2, I2>
+    public override toReverse                                                                    (from: NullOrUndefined, to: NullableNumber,): CollectionHolderOf1Or2<T2, T1>
+    public override toReverse<const I1 extends NullableNumber, const I2 extends NullableNumber, >(from: I1,              to: I2,            ): ToReverse_fromTo<T1, T2, I1, I2>
+    public override toReverse                                                                    (from: NullableNumber,  to: NullableNumber,): CollectionHolderOfAny1Or2<T2, T1>
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,) {
         if (to == null)
             if (from == null)
                 return this._toReverse_core0()
@@ -3855,47 +3970,40 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
-    protected _toReverse_core0(): CollectionHolderOf2<T, T2, T1> { return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,) }
+    protected _toReverse_core0(): CollectionHolderOf2<T2, T1> { return this._create2(this.value2, this.value1,) }
 
-    protected _toReverse_core1(from: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T2> {
+    protected _toReverse_core1(from: number,): CollectionHolderOf1Or2<T2, T1> {
         if (__getStartingIndex(from,) === 0)
-            return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,)
-        return new CollectionHolderOf1(this.value2,)
+            return this._create2(this.value2, this.value1,)
+        return this._create1(this.value2,)
     }
 
-    protected _toReverse_core2(from: number, to: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T1> | CollectionHolderOf1<T2> {
+    protected _toReverse_core2(from: number, to: number,): CollectionHolderOfAny1Or2<T2, T1> {
         const startingIndex = __getStartingIndex(from,)
         const endingIndex = __getEndingIndex(to,)
         __validateInRange(from, startingIndex, to, endingIndex,)
         if (startingIndex === endingIndex)
             if (startingIndex === 0)
-                return new CollectionHolderOf1(this.value1,)
+                return this._create1(this.value1,)
             else
-                return new CollectionHolderOf1(this.value2,)
-        return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,)
+                return this._create1(this.value2,)
+        return this._create2(this.value2, this.value1,)
     }
 
-    protected _toReverse_coreWithNoFrom(to: number,): | CollectionHolderOf2<T, T2, T1> | CollectionHolderOf1<T1> {
+    protected _toReverse_coreWithNoFrom(to: number,): CollectionHolderOfLast1Or2<T2, T1> {
         if (__getEndingIndex(to,) === 0)
-            return new CollectionHolderOf1(this.value1,)
-        return new LateRetriever.CollectionHolderOf2(this.value2, this.value1,)
+            return this._create1(this.value1,)
+        return this._create2(this.value2, this.value1,)
     }
 
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
-
-    public override [Symbol.iterator](): CollectionIteratorOf2<T> {
-        return this.toIterator()
-    }
-
-    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------
 
-    public override toIterator(): CollectionIteratorOf2<T, T1, T2> {
+    public override toIterator(): CollectionIteratorOf2<T1, T2> {
         return new CollectionIteratorOf2(this.value1, this.value2,)
     }
 
@@ -3967,24 +4075,24 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return `${prefix}${this.value1}${separator}${truncated}${postfix}`
     }
 
-    protected _joinToString_truncatedTransform(separator: string, prefix: string, postfix: string, truncated: string, transform: StringCallback<T>,) {
+    protected _joinToString_truncatedTransform(separator: string, prefix: string, postfix: string, truncated: string, transform: StringCallback<| T1 | T2>,) {
         if (transform.length === 1)
-            return `${prefix}${(transform as (value: T,) => string)(this.value1,)}${separator}${truncated}${postfix}`
+            return `${prefix}${(transform as (value: | T1 | T2,) => string)(this.value1,)}${separator}${truncated}${postfix}`
         if (transform.length >= 2)
             return `${prefix}${transform(this.value1, 0,)}${separator}${truncated}${postfix}`
         return `${prefix}${(transform as () => string)()}${separator}${truncated}${postfix}`
     }
 
-    protected _joinToString_transform(separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
+    protected _joinToString_transform(separator: string, prefix: string, postfix: string, transform: StringCallback<| T1 | T2>,) {
         if (transform.length === 1)
-            return `${prefix}${(transform as (value: T,) => string)(this.value1,)}${separator}${(transform as (value: T,) => string)(this.value2,)}${postfix}`
+            return `${prefix}${(transform as (value: | T1 | T2,) => string)(this.value1,)}${separator}${(transform as (value: | T1 | T2,) => string)(this.value2,)}${postfix}`
         if (transform.length >= 2)
             return `${prefix}${transform(this.value1, 0,)}${separator}${transform(this.value2, 1,)}${postfix}`
         return `${prefix}${(transform as () => string)()}${separator}${(transform as () => string)()}${postfix}`
     }
 
 
-    public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
+    public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<| T1 | T2>>,): string {
         if (transform == null)
             if (limit == null)
                 return this._joinToString_core(separator ?? ", ", prefix ?? '[', postfix ?? ']',)

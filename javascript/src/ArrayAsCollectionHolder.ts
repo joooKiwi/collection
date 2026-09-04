@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined, NumberArray, NumberKeyMap, NumberSet, Set, UndefinedOr} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -157,16 +157,23 @@ export class ArrayAsCollectionHolder<const T = unknown,
 
     //#region -------------------- Fields --------------------
 
-    readonly #reference: WeakRef<REFERENCE>
+    readonly #reference: REFERENCE
     readonly #size: REFERENCE["length"]
     readonly #isEmpty: boolean
+    #isNotEmpty?: boolean
+    #hasExactly1Element?: boolean
+    #hasAtMost1Element?: boolean
+    #hasAtLeast2Elements?: boolean
+    #hasExactly2Elements?: boolean
+    #hasAtMost2Elements?: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
+    public constructor(reference: & Array<T> & REFERENCE,)
     public constructor(reference: REFERENCE,) {
         super()
-        this.#reference = new WeakRef(reference,)
+        this.#reference = reference
         const size = this.#size = reference.length
         if (this.#isEmpty = size === 0)
             return
@@ -181,13 +188,9 @@ export class ArrayAsCollectionHolder<const T = unknown,
 
     //#region -------------------- Reference methods --------------------
 
-    /**
-     * The internal referenced passed through the {@link constructor}
-     *
-     * It returns `undefined` if the reference has been garbed-collected.
-     */
-    protected get _reference(): UndefinedOr<REFERENCE> {
-        return this.#reference.deref()
+    /** The internal referenced passed through the {@link constructor} */
+    protected get _reference(): REFERENCE {
+        return this.#reference
     }
 
     //#endregion -------------------- Reference methods --------------------
@@ -198,22 +201,25 @@ export class ArrayAsCollectionHolder<const T = unknown,
 
     public override get isEmpty(): IsEmptyOnArray<REFERENCE> { return this.#isEmpty as IsEmptyOnArray<REFERENCE> }
 
-    public override get isNotEmpty(): IsNotEmptyOnArray<REFERENCE> { return !this.isEmpty as IsNotEmptyOnArray<REFERENCE> }
+    public override get isNotEmpty(): IsNotEmptyOnArray<REFERENCE> { return (this.#isNotEmpty ??= !this.isEmpty) as IsNotEmptyOnArray<REFERENCE> }
 
-    public override get hasExactly1Element(): HasExactly1ElementOnArray<REFERENCE> { return (this.size === 1) as HasExactly1ElementOnArray<REFERENCE> }
+    public override get hasExactly1Element(): HasExactly1ElementOnArray<REFERENCE> { return (this.#hasExactly1Element ??= this.size === 1) as HasExactly1ElementOnArray<REFERENCE> }
 
-    public override get hasAtMost1Element(): HasAtMost1ElementOnArray<REFERENCE> { return (this.isEmpty || this.size === 1) as HasAtMost1ElementOnArray<REFERENCE> }
+    public override get hasAtMost1Element(): HasAtMost1ElementOnArray<REFERENCE> { return (this.#hasAtMost1Element ??= this.isEmpty || this.size === 1) as HasAtMost1ElementOnArray<REFERENCE> }
 
-    public override get hasAtLeast2Elements(): boolean { return this.size >= 2 }
+    public override get hasAtLeast2Elements(): boolean { return this.#hasAtLeast2Elements ??= this.size >= 2 }
 
-    public override get hasExactly2Elements(): HasExactly2ElementsOnArray<REFERENCE> { return (this.size === 2) as HasExactly2ElementsOnArray<REFERENCE> }
+    public override get hasExactly2Elements(): HasExactly2ElementsOnArray<REFERENCE> { return (this.#hasExactly2Elements ??= this.size === 2) as HasExactly2ElementsOnArray<REFERENCE> }
 
     public override get hasAtMost2Elements(): HasAtMost2ElementsOnArray<REFERENCE> {
+        const value = this.#hasAtMost2Elements
+        if (value != null)
+            return value as HasAtMost2ElementsOnArray<REFERENCE>
         if (this.isEmpty)
-            return true as HasAtMost2ElementsOnArray<REFERENCE>
+            return (this.#hasAtMost2Elements = true) as HasAtMost2ElementsOnArray<REFERENCE>
 
         const size = this.size
-        return (size === 1 || size === 2) as HasAtMost2ElementsOnArray<REFERENCE>
+        return (this.#hasAtMost2Elements = size === 1 || size === 2) as HasAtMost2ElementsOnArray<REFERENCE>
     }
 
     //#endregion -------------------- Size methods --------------------
