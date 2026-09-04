@@ -149,6 +149,7 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * @typeParam T         The type (by default `unknown`)
  * @typeParam REFERENCE The reference passed in the constructor (by default `Array<T>`)
  * @adaptor
+ * @see LazyArrayAsCollectionHolder
  */
 export class ArrayAsCollectionHolder<const T = unknown,
     const REFERENCE extends Array<T> = Array<T>, >

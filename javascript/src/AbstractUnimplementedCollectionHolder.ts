@@ -37,6 +37,7 @@ import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollection
  * @see LazyCollectionHolderOf0Or1
  * @see LazyCollectionHolderOf0Or1Or2
  * @see LazyCollectionHolderOf1Or2
+ * @see LazyArrayAsCollectionHolder
  */
 export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     extends AbstractMinimalistCollectionHolder<T>

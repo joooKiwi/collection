@@ -28,6 +28,7 @@ export {JsIterableAsCollectionHolder}       from "./JsIterableAsCollectionHolder
 export {JsIteratorAsCollectionHolder}       from "./JsIteratorAsCollectionHolder"
 export {GenericCollectionHolder}            from "./GenericCollectionHolder"
 export {GenericMinimalistCollectionHolder}  from "./GenericMinimalistCollectionHolder"
+export {LazyArrayAsCollectionHolder}        from "./LazyArrayAsCollectionHolder"
 export {LazyCollectionHolder}               from "./LazyCollectionHolder"
 export {LazyCollectionHolderOf0Or1}         from "./LazyCollectionHolderOf0Or1"
 export {LazyCollectionHolderOf0Or1Or2}      from "./LazyCollectionHolderOf0Or1Or2"
