@@ -15,9 +15,12 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {ArrayAsCollectionHolder}       from "../ArrayAsCollectionHolder"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LateRetriever}                 from "../LateRetriever"
 import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyCollectionHolderOf1}       from "../LazyCollectionHolderOf1"
+import {LazyCollectionHolderOf2}       from "../LazyCollectionHolderOf2"
+import {MinimalistAsCollectionHolder}  from "../MinimalistAsCollectionHolder"
 import {ForbiddenIndexException}       from "../exception/ForbiddenIndexException"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -128,23 +131,23 @@ function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCol
         return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
         if (size === 1)
-            return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+            return new LazyCollectionHolderOf1(() => collection.get(0,),)
         else if (size === 2)
-            return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.get(0,), collection.get(1,),),)
+            return new LazyCollectionHolderOf2(() => new Couple(collection.get(0,), collection.get(1,),),)
         else
-            return new LateRetriever.MinimalistAsCollectionHolder<T>(collection,)
+            return new MinimalistAsCollectionHolder(collection,)
     if (n === 0)
         return EmptyCollectionHolder.get
     if (n === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+        return new LazyCollectionHolderOf1(() => collection.get(0,),)
     if (n > 0)
         if (n >= size)
             if (size === 1)
-                return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+                return new LazyCollectionHolderOf1(() => collection.get(0,),)
             else if (size === 2)
-                return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.get(0,), collection.get(1,),),)
+                return new LazyCollectionHolderOf2(() => new Couple(collection.get(0,), collection.get(1,),),)
             else
-                return new LateRetriever.MinimalistAsCollectionHolder<T>(collection,)
+                return new MinimalistAsCollectionHolder(collection,)
         else
             return new LazyCollectionHolder(() => __getAll(collection, n,),)
     if (n <= -size)
@@ -152,12 +155,12 @@ function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCol
 
     const n2 = n + size
     if (n2 === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+        return new LazyCollectionHolderOf1(() => collection.get(0,),)
     if (size === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+        return new LazyCollectionHolderOf1(() => collection.get(0,),)
     if (size === 2)
-        return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.get(0,), collection.get(1,),),)
     return new LazyCollectionHolder(() => __getAll(collection, n2,),)
+        return new LazyCollectionHolderOf2(() => new Couple(collection.get(0,), collection.get(1,),),)
 }
 
 function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n: number,) {
@@ -169,21 +172,21 @@ function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n:
         return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
         if (collection.hasExactly1Element)
-            return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+            return new LazyCollectionHolderOf1(() => collection.getFirst(),)
         else if (collection.hasExactly2Elements)
-            return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.getFirst(), collection.getLast(),),)
+            return new LazyCollectionHolderOf2(() => new Couple(collection.getFirst(), collection.getLast(),),)
         else
             return collection
     if (n === 0)
         return EmptyCollectionHolder.get
     if (n === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+        return new LazyCollectionHolderOf1(() => collection.getFirst(),)
     if (n > 0)
         if (n >= collection.size)
             if (collection.hasExactly1Element)
-                return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+                return new LazyCollectionHolderOf1(() => collection.getFirst(),)
             else if (collection.hasExactly2Elements)
-                return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.getFirst(), collection.getLast(),),)
+                return new LazyCollectionHolderOf2(() => new Couple(collection.getFirst(), collection.getLast(),),)
             else
                 return collection
         else
@@ -195,12 +198,12 @@ function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n:
 
     const n2 = n + size
     if (n2 === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+        return new LazyCollectionHolderOf1(() => collection.getFirst(),)
     if (collection.hasExactly1Element)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+        return new LazyCollectionHolderOf1(() => collection.getFirst(),)
     else if (collection.hasExactly2Elements)
-        return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection.getFirst(), collection.getLast(),),)
     return new LazyCollectionHolder(() => __getAll(collection, n + size,),)
+        return new LazyCollectionHolderOf2(() => new Couple(collection.getFirst(), collection.getLast(),),)
 }
 
 function __coreByArray<const T, >(collection: Array<T>, n: number,) {
@@ -213,23 +216,23 @@ function __coreByArray<const T, >(collection: Array<T>, n: number,) {
         return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
         if (size === 1)
-            return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+            return new LazyCollectionHolderOf1(() => collection[0] as T,)
         else if (size === 2)
-            return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection[0] as T, collection[1] as T,),)
+            return new LazyCollectionHolderOf2(() => new Couple(collection[0] as T, collection[1] as T,),)
         else
-            return new LateRetriever.ArrayAsCollectionHolder<T>(collection,)
+            return new ArrayAsCollectionHolder(collection,)
     if (n === 0)
         return EmptyCollectionHolder.get
     if (n === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+        return new LazyCollectionHolderOf1(() => collection[0] as T,)
     if (n > 0)
         if (n >= size)
             if (size === 1)
-                return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+                return new LazyCollectionHolderOf1(() => collection[0] as T,)
             else if (size === 2)
-                return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection[0] as T, collection[1] as T,),)
+                return new LazyCollectionHolderOf2(() => new Couple(collection[0] as T, collection[1] as T,),)
             else
-                return new LateRetriever.ArrayAsCollectionHolder<T>(collection,)
+                return new ArrayAsCollectionHolder(collection,)
         else
             return new LazyCollectionHolder(() => __getAllByArray(collection, n,),)
     if (n <= -size)
@@ -237,12 +240,12 @@ function __coreByArray<const T, >(collection: Array<T>, n: number,) {
 
     const n2 = n + size
     if (n2 === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+        return new LazyCollectionHolderOf1(() => collection[0] as T,)
     if (size === 1)
-        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+        return new LazyCollectionHolderOf1(() => collection[0] as T,)
     if (size === 2)
-        return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(collection[0] as T, collection[1] as T,),)
     return new LazyCollectionHolder(() => __getAllByArray(collection, n + size,),)
+        return new LazyCollectionHolderOf2(() => new Couple(collection[0] as T, collection[1] as T,),)
 }
 
 //#endregion -------------------- Core method --------------------

@@ -15,9 +15,10 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {ArrayAsCollectionHolder}       from "../ArrayAsCollectionHolder"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LateRetriever}                 from "../LateRetriever"
 import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {MinimalistAsCollectionHolder}  from "../MinimalistAsCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -73,7 +74,7 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
     while (++index < size)
         if ((temporaryArray[index] = collection.get(index,) as T) == null)
             return new LazyCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
-    return new LateRetriever.MinimalistAsCollectionHolder<NonNullable<T>>(collection as MinimalistCollectionHolder<NonNullable<T>>,)
+    return new MinimalistAsCollectionHolder(collection as MinimalistCollectionHolder<NonNullable<T>>,)
 }
 
 /**
@@ -114,7 +115,7 @@ export function filterNotNullByArray<const T, >(collection: Nullable<Array<T>>,)
     while (++index < size)
         if ((temporaryArray[index] = collection[index] as T) == null)
             return new LazyCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
-    return new LateRetriever.ArrayAsCollectionHolder<NonNullable<T>>(collection as readonly NonNullable<T>[],)
+    return new ArrayAsCollectionHolder(collection as readonly NonNullable<T>[],)
 }
 
 //#endregion -------------------- Facade method --------------------
