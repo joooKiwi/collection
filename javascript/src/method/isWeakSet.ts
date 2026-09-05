@@ -10,13 +10,15 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {WeakSet} from "@joookiwi/type"
+
 /**
- * Tell that the value is a {@link WeakSet}
+ * Tell that the value is a {@link globalThis.WeakSet WeakSet}
  *
  * @param value The value to identify
  * @see isWeakSetByStructure
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isWeakSet<T extends WeakKey, const INSTANCE extends Readonly<WeakSet<T>> = Readonly<WeakSet<T>>, >(value: unknown,): value is  INSTANCE {
+export function isWeakSet<const T extends WeakKey, const INSTANCE extends WeakSet<T> = WeakSet<T>, >(value: unknown,): value is  INSTANCE {
     return value instanceof WeakSet
 }
