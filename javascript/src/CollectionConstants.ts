@@ -17,13 +17,10 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                         from "./iterator/CollectionIterator"
 import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfIterator, KeyOfMap, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableMap, KeyOfMutableSet, KeyOfMutableWeakMap, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakMap, KeyOfWeakSet} from "./type/keyOf"
 
-import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
-import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
-import type {GenericMinimalistCollectionHolder} from "./GenericMinimalistCollectionHolder"
-import {LateRetriever}                          from "./LateRetriever"
-import type {LazyCollectionHolder}              from "./LazyCollectionHolder"
-import {EmptyCollectionIterator}                from "./iterator/EmptyCollectionIterator"
-import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionHandler"
+import {ArrayAsCollectionHolder}   from "./ArrayAsCollectionHolder"
+import {DualValueCollectionHolder} from "./DualValueCollectionHolder"
+import {EmptyConstants}            from "./EmptyConstants"
+import {SymbolConstants}           from "./SymbolConstants"
 
 /**
  * A utility class containing every field used by any {@link CollectionHolder} instances.
@@ -88,7 +85,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link MinimalistCollectionHolder} */
     public static get MINIMALIST_COLLECTION_MEMBERS(): CollectionHolder<KeyOfMinimalistCollectionHolder> {
-        return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new LateRetriever.CollectionHolderOf2<KeyOfMinimalistCollectionHolder>("size", "get",),)
+        return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new DualValueCollectionHolder("size", "get",),)
     }
 
     //#endregion -------------------- Members references (minimalist collection holder) --------------------
@@ -96,7 +93,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link CollectionHolder} */
     public static get COLLECTION_MEMBERS(): CollectionHolder<KeyOfCollectionHolder> {
-        return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfCollectionHolder>([
+        return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfCollectionHolder>([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
             "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
@@ -205,7 +202,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
      */
     public static get ARRAY_MEMBERS(): CollectionHolder<KeyOfArray> {
-        return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfArray>([
+        return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfArray>([
             "length",
             "at",
             "indexOf", "lastIndexOf",
@@ -236,7 +233,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
      */
     public static get MUTABLE_ARRAY_MEMBERS(): CollectionHolder<KeyOfMutableArray> {
-        return CollectionConstants.#MUTABLE_ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableArray>([
+        return CollectionConstants.#MUTABLE_ARRAY_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfMutableArray>([
             "length",
             "at", "push", "pop",
             "shift", "unshift",
@@ -273,7 +270,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
      */
     public static get TYPED_ARRAY_MEMBERS(): CollectionHolder<KeyOfTypedArray> {
-        return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfTypedArray>([
+        return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfTypedArray>([
             "length",
             "at", "set",
             "buffer",
@@ -310,7 +307,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
      */
     public static get SET_MEMBERS(): CollectionHolder<KeyOfSet> {
-        return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfSet>([
+        return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfSet>([
             "size",
             "has",
             "forEach",
@@ -330,7 +327,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
      */
     public static get MUTABLE_SET_MEMBERS(): CollectionHolder<KeyOfMutableSet> {
-        return CollectionConstants.#MUTABLE_SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableSet>([
+        return CollectionConstants.#MUTABLE_SET_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfMutableSet>([
             "size",
             "clear",
             "add", "delete",
@@ -355,7 +352,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
      */
     public static get WEAK_SET_MEMBERS(): CollectionHolder<KeyOfWeakSet> {
-        return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new LateRetriever.CollectionHolderOf2<KeyOfWeakSet>(
+        return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new DualValueCollectionHolder(
             "has",
             Symbol.toStringTag,
         ),)
@@ -367,7 +364,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
      */
     public static get MUTABLE_WEAK_SET_MEMBERS(): CollectionHolder<KeyOfMutableWeakSet> {
-        return CollectionConstants.#MUTABLE_WEAK_SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableWeakSet>([
+        return CollectionConstants.#MUTABLE_WEAK_SET_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfMutableWeakSet>([
             "add", "delete",
             "has",
             Symbol.toStringTag,
@@ -383,7 +380,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
      */
     public static get MAP_MEMBERS(): CollectionHolder<KeyOfMap> {
-        return CollectionConstants.#MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMap>([
+        return CollectionConstants.#MAP_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfMap>([
             "size",
             "get",
             "has",
@@ -400,7 +397,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
      */
     public static get MUTABLE_MAP_MEMBERS(): CollectionHolder<KeyOfMutableMap> {
-        return CollectionConstants.#MUTABLE_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableMap>([
+        return CollectionConstants.#MUTABLE_MAP_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfMutableMap>([
             "size",
             "get",
             "set", "delete",
@@ -422,7 +419,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
      */
     public static get WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfWeakMap> {
-        return CollectionConstants.#WEAK_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfWeakMap>([
+        return CollectionConstants.#WEAK_MAP_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfWeakMap>([
             "get",
             "has",
             Symbol.toStringTag,
@@ -435,7 +432,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
      */
     public static get MUTABLE_WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfMutableWeakMap> {
-        return CollectionConstants.#MUTABLE_WEAK_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableWeakMap>([
+        return CollectionConstants.#MUTABLE_WEAK_MAP_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfMutableWeakMap>([
             "get",
             "set", "delete",
             "has",
@@ -452,7 +449,7 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator
      */
     public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
-        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfIterator>([
+        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfIterator>([
             "next",
             "every", "some",
             "find", "filter", "reduce",
@@ -469,7 +466,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link CollectionIterator} */
     public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<KeyOfCollectionIterator> {
-        return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfCollectionIterator>([
+        return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfCollectionIterator>([
             "size", "length", "count",
             "isEmpty",
             "isNotEmpty", "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
