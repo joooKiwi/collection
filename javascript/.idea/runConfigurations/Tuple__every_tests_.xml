@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Tuple (every tests)" type="CompoundRunConfigurationType">
-    <toRun name="Tuple (conversion)" type="JavaScriptTestRunnerJest" />
-    <toRun name="Tuple (has)" type="JavaScriptTestRunnerJest" />
-    <toRun name="Tuple (javascript exclusive)" type="JavaScriptTestRunnerJest" />
-    <toRun name="Tuple (size)" type="JavaScriptTestRunnerJest" />
+    <toRun name="Tuple (conversion)" type="JavaScriptTestRunnerVitest" />
+    <toRun name="Tuple (has)" type="JavaScriptTestRunnerVitest" />
+    <toRun name="Tuple (javascript exclusive)" type="JavaScriptTestRunnerVitest" />
+    <toRun name="Tuple (size)" type="JavaScriptTestRunnerVitest" />
     <method v="2" />
   </configuration>
 </component>

@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="CollectionIterator (every tests)" type="CompoundRunConfigurationType">
-    <toRun name="CollectionIterator (javascript exclusive)" type="JavaScriptTestRunnerJest" />
-    <toRun name="CollectionIterator (loop)" type="JavaScriptTestRunnerJest" />
-    <toRun name="CollectionIterator (normal)" type="JavaScriptTestRunnerJest" />
-    <toRun name="CollectionIterator (size)" type="JavaScriptTestRunnerJest" />
+    <toRun name="CollectionIterator (javascript exclusive)" type="JavaScriptTestRunnerVitest" />
+    <toRun name="CollectionIterator (loop)" type="JavaScriptTestRunnerVitest" />
+    <toRun name="CollectionIterator (normal)" type="JavaScriptTestRunnerVitest" />
+    <toRun name="CollectionIterator (size)" type="JavaScriptTestRunnerVitest" />
     <method v="2" />
   </configuration>
 </component>
