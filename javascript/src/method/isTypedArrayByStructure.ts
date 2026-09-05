@@ -13,8 +13,6 @@
 import type {KeyOfTypedArray} from "../type/keyOf"
 import type {TypedArray}      from "../type/TypedArray"
 
-import {CollectionConstants} from "../CollectionConstants"
-
 /**
  * Tell that the value has the structure of an {@link TypedArray}
  *
@@ -39,12 +37,44 @@ export function isTypedArrayByStructure(value: unknown,) {
         return false
     if (typeof value != "object")
         return false
-
-    const members = CollectionConstants.TYPED_ARRAY_MEMBERS
-    const size = members.length
-    let index = -1
-    while (++index < size)
-        if (!(members[index]! in value))
-            return false
-    return true
+    if ("length" in value)
+    if ("at" in value)
+    if ("set" in value)
+    if ("buffer" in value)
+    if ("BYTES_PER_ELEMENT" in value)
+    if ("byteLength" in value)
+    if ("byteOffset" in value)
+    if ("indexOf" in value)
+    if ("lastIndexOf" in value)
+    if ("includes" in value)
+    if ("every" in value)
+    if ("some" in value)
+    if ("with" in value)
+    if ("join" in value)
+    if ("filter" in value)
+    if ("find" in value)
+    if ("findLast" in value)
+    if ("findIndex" in value)
+    if ("findLastIndex" in value)
+    if ("reduce" in value)
+    if ("reduceRight" in value)
+    if ("map" in value)
+    if ("forEach" in value)
+    if ("keys" in value)
+    if ("values" in value)
+    if ("entries" in value)
+    if (Symbol.iterator in value)
+    if ("copyWithin" in value)
+    if ("fill" in value)
+    if ("reverse" in value)
+    if ("toReversed" in value)
+    if ("sort" in value)
+    if ("toSorted" in value)
+    if ("slice" in value)
+    if ("subarray" in value)
+    if ("valueOf" in value)
+    if ("toString" in value)
+    if ("toLocaleString" in value)
+        return true
+    return false
 }

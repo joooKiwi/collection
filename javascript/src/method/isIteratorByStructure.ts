@@ -12,8 +12,6 @@
 
 import type {KeyOfIterator} from "../type/keyOf"
 
-import {CollectionConstants} from "../CollectionConstants"
-
 /**
  * Tell that the value has the structure of an {@link IteratorObject Iterator}
  *
@@ -38,12 +36,20 @@ export function isIteratorByStructure(value: unknown,) {
         return false
     if (typeof value != "object")
         return false
-
-    const members = CollectionConstants.ITERATOR_MEMBERS
-    const size = members.length
-    let index = -1
-    while (++index < size)
-        if (!(members[index]! in value))
-            return false
-    return true
+    if ("next" in value)
+    if ("every" in value)
+    if ("some" in value)
+    if ("find" in value)
+    if ("filter" in value)
+    if ("reduce" in value)
+    if ("take" in value)
+    if ("drop" in value)
+    if ("forEach" in value)
+    if ("map" in value)
+    if ("flatMap" in value)
+    if ("toArray" in value)
+    if (Symbol.iterator in value)
+    if (Symbol.toStringTag in value)
+        return true
+    return false
 }

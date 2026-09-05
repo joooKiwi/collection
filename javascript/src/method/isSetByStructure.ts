@@ -14,8 +14,6 @@ import type {Set} from "@joookiwi/type"
 
 import type {KeyOfSet} from "../type/keyOf"
 
-import {CollectionConstants} from "../CollectionConstants"
-
 /**
  * Tell that the value has the structure of an {@link ReadonlySet Set}
  *
@@ -40,12 +38,20 @@ export function isSetByStructure(value: unknown,) {
         return false
     if (typeof value != "object")
         return false
-
-    const members = CollectionConstants.SET_MEMBERS
-    const size = members.length
-    let index = -1
-    while (++index < size)
-        if (!(members[index]! in value))
-            return false
-    return true
+    if ("size" in value)
+    if ("has" in value)
+    if ("forEach" in value)
+    if ("keys" in value)
+    if ("values" in value)
+    if ("entries" in value)
+    if ("union" in value)
+    if ("intersection" in value)
+    if ("difference" in value)
+    if ("symmetricDifference" in value)
+    if ("isSubsetOf" in value)
+    if ("isSupersetOf" in value)
+    if ("isDisjointFrom" in value)
+    if (Symbol.iterator in value)
+        return true
+    return false
 }
