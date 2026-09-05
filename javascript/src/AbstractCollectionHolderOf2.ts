@@ -74,16 +74,108 @@ export abstract class AbstractCollectionHolderOf2<const T1 = unknown,
 
     //#region -------------------- Create methods --------------------
 
+    /**
+     * Create a new {@link Couple} from 2 values
+     *
+     * Note that this should usually be:
+     * ```typescript
+     * protected override _createCouple<const U1, const U2>(value1: U1, value2: U2): Couple<U1, U2> {
+     *     return new Couple(value1, value2)
+     * }
+     * ```
+     * or in JavaScript:
+     * ```javascript
+     * _createCouple(value1, value2) {
+     *     return new Couple(value1, value2)
+     * }
+     * ```
+     *
+     * @param value1 The 1st value
+     * @param value2 The 2nd value
+     */
     protected abstract _createCouple<const U1, const U2, >(value1: U1, value2: U2,): Couple<U1, U2>
 
+    /**
+     * Create a new instance from 1 value
+     *
+     * Note that this should usually be:
+     * ```typescript
+     * protected override _create1<const U>(value: U): CollectionHolderOf1<U> {
+     *     return new SingleValueCollectionHolder(value)
+     * }
+     * ```
+     * or in JavaScript:
+     * ```javascript
+     * _create1(value) {
+     *     return new SingleValueCollectionHolder(value)
+     * }
+     * ```
+     *
+     * @param value The value
+     */
     protected _create1<const U, >(value: U,): CollectionHolderOf1<U> {
         return new SingleValueCollectionHolder(value,)
     }
 
+    /**
+     * Create a new instance from 2 values
+     *
+     * Note that this should usually be:
+     * ```typescript
+     * protected override _create2(value1: T2, value2: T1): CollectionHolderOf2<T2, T1> {
+     *     return new DualValueCollectionHolder(value1, value2)
+     * }
+     * ```
+     * or in JavaScript:
+     * ```javascript
+     * _create2(value1, value2) {
+     *     return new DualValueCollectionHolder(value1, value2)
+     * }
+     * ```
+     *
+     * @param value1 The 1st value
+     * @param value2 The 2nd value
+     */
     protected abstract _create2(value2: T2, value1: T1,): CollectionHolderOf2<T2, T1>
 
+    /**
+     * Create a new instance from a late dual value
+     *
+     * Note that this should usually be:
+     * ```typescript
+     * protected override _createLazy2(lateValue: () => Couple<U1, U2>): CollectionHolderOf2<U1, U2> {
+     *     return new LazyCollectionHolderOf2(lateValue)
+     * }
+     * ```
+     * or in JavaScript:
+     * ```javascript
+     * _createLazy2(lateValue) {
+     *     return new LazyCollectionHolderOf2(lateValue)
+     * }
+     * ```
+     *
+     * @param lateArray The late couple
+     */
     protected abstract _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2>
 
+    /**
+     * Create a new instance that has possibly 0, 1 or 2 values.
+     *
+     * Note that this should usually be:
+     * ```typescript
+     * protected override _create0Or1Or2<const U1, const U2>(latePossibleValue: () => Couple<Optional<U1|U2>, Optional<U2>>): CollectionHolder<U1|U2> {
+     *     return new LazyCollectionHolderOf0Or1Or2(latePossibleValue)
+     * }
+     * ```
+     * or in JavaScript:
+     * ```javascript
+     * _create0Or1Or2(latePossibleValue) {
+     *     return new LazyCollectionHolderOf0Or1Or2(latePossibleValue)
+     * }
+     * ```
+     *
+     * @param latePossibleValue The possible value that is late
+     */
     protected abstract _create0Or1Or2<const U1, const U2, >(latePossibleValue: () => Nullable<Couple<Optional<| U1 | U2>, Optional<U2>>>,): CollectionHolder<| U1 | U2>
 
     /**
@@ -91,13 +183,13 @@ export abstract class AbstractCollectionHolderOf2<const T1 = unknown,
      *
      * Note that this should usually be:
      * ```typescript
-     * protected override _create(lateArray: () => Array<T1 | T2>): CollectionHolder<T1 | T2> {
+     * protected override _createLazyArray(lateArray: () => Array<T1 | T2>): CollectionHolder<T1 | T2> {
      *     return new LazyArrayAsCollectionHolder(lateArray)
      * }
      * ```
      * or in JavaScript:
      * ```javascript
-     * _create(lateArray) {
+     * _createLazyArray(lateArray) {
      *     return new LazyArrayAsCollectionHolder(lateArray)
      * }
      * ```

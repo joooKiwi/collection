@@ -92,13 +92,13 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
      *
      * Note that this should usually be:
      * ```typescript
-     * protected override _create<const U>(latePossibleValue: () => Optional<U>): CollectionHolder<U> {
+     * protected override _create0Or1<const U>(latePossibleValue: () => Optional<U>): CollectionHolder<U> {
      *     return new LazyCollectionHolderOf0Or1(latePossibleValue)
      * }
      * ```
      * or in JavaScript:
      * ```javascript
-     * _create(latePossibleValue) {
+     * _create0Or1(latePossibleValue) {
      *     return new LazyCollectionHolderOf0Or1(latePossibleValue)
      * }
      * ```
@@ -112,13 +112,13 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
      *
      * Note that this should usually be:
      * ```typescript
-     * protected override _create(lateArray: () => Array<T>): CollectionHolder<T> {
+     * protected override _createLazyArray(lateArray: () => Array<T>): CollectionHolder<T> {
      *     return new LazyArrayAsCollectionHolder(lateArray)
      * }
      * ```
      * or in JavaScript:
      * ```javascript
-     * _create(lateArray) {
+     * _createLazyArray(lateArray) {
      *     return new LazyArrayAsCollectionHolder(lateArray)
      * }
      * ```
