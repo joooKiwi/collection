@@ -24,7 +24,6 @@ import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIn
 
 import {AbstractUnimplementedCollectionHolderOf1}                                                                         from "./AbstractUnimplementedCollectionHolderOf1"
 import {EmptyCollectionHolder}                                                                                            from "./EmptyCollectionHolder"
-import {LazyArrayAsCollectionHolder}                                                                                      from "./LazyArrayAsCollectionHolder"
 import {CollectionIteratorOf1}                                                                                            from "./iterator/CollectionIteratorOf1"
 import {ForbiddenIndexException}                                                                                          from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                        from "./exception/IndexOutOfBoundsException"
@@ -126,9 +125,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
      *
      * @param lateArray The late array
      */
-    protected _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T> {
-        return new LazyArrayAsCollectionHolder(lateArray,)
-    }
+    protected abstract _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T>
 
     //#endregion -------------------- Create methods --------------------
     //#region -------------------- Size methods --------------------

@@ -10,13 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {UndefinedOr} from "@joookiwi/type"
+import type {Array, UndefinedOr} from "@joookiwi/type"
 
 import type {CollectionHolder}    from "./CollectionHolder"
 import type {CollectionHolderOf1} from "./CollectionHolderOf1"
 import type {Optional}            from "./optional/Optional"
 
 import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder} from "./LazyArrayAsCollectionHolder"
 import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
 import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
 
@@ -57,6 +58,10 @@ export class ArrayOf1AsCollectionHolder<const T = unknown,
 
     protected override _create0Or1<const U, >(latePossibleValue: () => Optional<U>,): CollectionHolder<U> {
         return new LazyCollectionHolderOf0Or1(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
     }
 
     /** The internal value passed through the {@link constructor} in the {@link _reference} first field */

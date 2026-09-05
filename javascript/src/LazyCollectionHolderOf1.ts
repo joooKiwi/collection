@@ -10,11 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array}                  from "@joookiwi/type"
+
 import type {CollectionHolder}    from "./CollectionHolder"
 import type {CollectionHolderOf1} from "./CollectionHolderOf1"
 import type {Optional}            from "./optional/Optional"
 
 import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder} from "./LazyArrayAsCollectionHolder"
 import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
@@ -57,6 +60,10 @@ export class LazyCollectionHolderOf1<const T = unknown, >
 
     protected override _create0Or1<const U, >(latePossibleValue: () => Optional<U>,): CollectionHolder<U> {
         return new LazyCollectionHolderOf0Or1(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
     }
 
     /** The internal value passed through the {@link constructor} */
