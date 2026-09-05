@@ -15,6 +15,7 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {ArrayAsCollectionHolder}       from "../ArrayAsCollectionHolder"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {LazyCollectionHolderOf1}       from "../LazyCollectionHolderOf1"
