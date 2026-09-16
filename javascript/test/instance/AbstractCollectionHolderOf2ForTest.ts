@@ -13,21 +13,22 @@
 import type {CollectionHolder}        from "../../src/CollectionHolder"
 import type {CollectionHolderForTest} from "./CollectionHolderForTest"
 
-import {EmptyCollectionException}              from "../../src/exception/EmptyCollectionException"
-import {ForbiddenIndexException}               from "../../src/exception/ForbiddenIndexException"
-import {IndexNotFoundException}                from "../../src/exception/IndexNotFoundException"
-import {IndexOutOfBoundsException}             from "../../src/exception/IndexOutOfBoundsException"
-import {InvalidIndexRangeException}            from "../../src/exception/InvalidIndexRangeException"
-import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedCollectionHolder"
+import {EmptyCollectionException}                 from "../../src/exception/EmptyCollectionException"
+import {ForbiddenIndexException}                  from "../../src/exception/ForbiddenIndexException"
+import {IndexNotFoundException}                   from "../../src/exception/IndexNotFoundException"
+import {IndexOutOfBoundsException}                from "../../src/exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException}               from "../../src/exception/InvalidIndexRangeException"
+import {AbstractUnimplementedCollectionHolderOf2} from "./AbstractUnimplementedCollectionHolderOf2"
 
 /**
- * A bare-bone implementation of a {@link CollectionHolderForTest} with nothing implemented
+ * A bare-bone implementation of a {@link CollectionHolderForTest}+{@link CollectionHolderOf2} with nothing implemented
  *
- * @typeParam T The type
+ * @typeParam T1 The 1st type
+ * @typeParam T2 The 2nd type
  */
-export abstract class AbstractCollectionHolderForTest<const T, >
-    extends AbstractUnimplementedCollectionHolder<T>
-    implements CollectionHolderForTest<T> {
+export abstract class AbstractCollectionHolderOf2ForTest<const T1, const T2, >
+    extends AbstractUnimplementedCollectionHolderOf2<T1, T2>
+    implements CollectionHolderForTest<| T1 | T2> {
 
     #amountOfCall?: number
 

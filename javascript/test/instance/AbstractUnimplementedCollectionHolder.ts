@@ -18,12 +18,17 @@ import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, 
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 import type {CollectionHolderName}                                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
+/**
+ * A definition of a {@link CollectionHolder} to have a common ancestor **only for the tests**.
+ *
+ * @typeParam T The type
+ */
 export abstract class AbstractUnimplementedCollectionHolder<const T, >
     implements CollectionHolder<T> {
 
     [index: TemplateOrNumber]: undefined
 
-    public constructor() {}
+    protected constructor() {}
 
     //#region -------------------- Size methods --------------------
 
