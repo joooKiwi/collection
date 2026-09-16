@@ -10,23 +10,26 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber} from "@joookiwi/type"
+import type {Nullable, NullableNumber, NullableString, NullOr, NullOrString, NullOrUndefined, NullOrZeroNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                              from "../../src/CollectionHolder"
-import type {EmptyCollectionHolder}                                                                                                                         from "../../src/EmptyCollectionHolder"
+import type {CollectionHolderOf1}                                                                                                                           from "../../src/CollectionHolderOf1"
 import type {CollectionIteratorOf1}                                                                                                                         from "../../src/iterator/CollectionIteratorOf1"
 import type {BooleanCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback} from "../../src/type/callback"
+import type {CollectionHolderOf0Or1}                                                                                                                        from "../../src/type/collection"
+import type {IndexOf1}                                                                                                                                      from "../../src/type/indexOf"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
+import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIndexOrNull}                                                                  from "../../src/type/value"
 import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
 
-import {CollectionHolderOf1} from "../../src/CollectionHolderOf1"
+import {SingleValueCollectionHolder} from "../../src/SingleValueCollectionHolder"
 
 /**
- * An inherited instance of {@link CollectionHolderOf1}
+ * An inherited instance of {@link SingleValueCollectionHolder}
  * made to have the followed methods based on the specific non-aliased method
  */
 export class CollectionHolder_1Follower
-    extends CollectionHolderOf1<string>
+    extends SingleValueCollectionHolder<string>
     implements CollectionHolderFollower<string> {
 
     //#region -------------------- Fields --------------------
@@ -170,7 +173,9 @@ export class CollectionHolder_1Follower
 
     //#region -------------------- Get --------------------
 
-    public override get<const I extends number, >(index: I,): I extends | 0 | -1 ? string : never {
+    public override get<const I extends number, >(index: I,): SingleValueFromIndex<I, string>
+    public override get(index: number,): string
+    public override get(index: number,) {
         this.get_amountOfCall++
         return super.get(index,)
     }
@@ -186,6 +191,7 @@ export class CollectionHolder_1Follower
     }
 
 
+    public override getOrElse<const U, const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<U>,): SingleValueFromIndexOrElse<I, string, U>
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | string | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<string>,): string
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
@@ -194,7 +200,9 @@ export class CollectionHolder_1Follower
     }
 
 
-    public override getOrNull<const I extends number, >(index: I,): I extends | 0 | -1 ? string : null {
+    public override getOrNull<const I extends number, >(index: I,): SingleValueFromIndexOrNull<I, string>
+    public override getOrNull(index: number,): NullOrString
+    public override getOrNull(index: number,) {
         this.getOrNull_amountOfCall++
         return super.getOrNull(index)
     }
@@ -276,7 +284,9 @@ export class CollectionHolder_1Follower
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override firstIndexOf(element: string, from?: NullableNumber, to?: NullableNumber,): 0 {
+    public override firstIndexOf<const I1 extends NullableNumber, const I2 extends NullableNumber, >(element: string, from?: I1, to?: I2,): IndexOf1<I1, I2>
+    public override firstIndexOf(element: string, from?: NullableNumber, to?: NullableNumber,): 0
+    public override firstIndexOf(element: string, from?: NullableNumber, to?: NullableNumber,) {
         this.firstIndexOf_amountOfCall++
         return super.firstIndexOf(element, from, to,)
     }
@@ -331,7 +341,7 @@ export class CollectionHolder_1Follower
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    public override all<S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolder<S>
+    public override all<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolderOf1<S>
     public override all(predicate: BooleanCallback<string>,): boolean
     public override all(predicate: BooleanCallback<string>,) {
         this.all_amountOfCall++
@@ -339,6 +349,8 @@ export class CollectionHolder_1Follower
     }
 
     public override any(): this["isNotEmpty"]
+    public override any<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolderOf1<S>
+    public override any(predicate: NullOrUndefined,): this["isNotEmpty"]
     public override any(predicate: Nullable<BooleanCallback<string>>,): boolean
     public override any(predicate?: Nullable<BooleanCallback<string>>,) {
         this.any_amountOfCall++
@@ -401,7 +413,7 @@ export class CollectionHolder_1Follower
 
     //#region -------------------- Take --------------------
 
-    public override take(n: number,): | this | EmptyCollectionHolder {
+    public override take(n: number,): CollectionHolderOf0Or1<string> {
         this.take_amountOfCall++
         return super.take(n,)
     }
@@ -420,7 +432,7 @@ export class CollectionHolder_1Follower
         return super.takeWhileIndexed(predicate,)
     }
 
-    public override takeLast(n: number,): | this | EmptyCollectionHolder {
+    public override takeLast(n: number,): CollectionHolderOf0Or1<string> {
         this.takeLast_amountOfCall++
         return super.takeLast(n,)
     }
@@ -442,7 +454,7 @@ export class CollectionHolder_1Follower
     //#endregion -------------------- Take --------------------
     //#region -------------------- Drop --------------------
 
-    public override drop(n: number,): | this | EmptyCollectionHolder {
+    public override drop(n: number,): CollectionHolderOf0Or1<string> {
         this.drop_amountOfCall++
         return super.drop(n,)
     }
@@ -461,7 +473,7 @@ export class CollectionHolder_1Follower
         return super.dropWhileIndexed(predicate,)
     }
 
-    public override dropLast(n: number,): | this | EmptyCollectionHolder {
+    public override dropLast(n: number,): CollectionHolderOf0Or1<string> {
         this.dropLast_amountOfCall++
         return super.dropLast(n,)
     }
@@ -485,7 +497,7 @@ export class CollectionHolder_1Follower
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): this {
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOf1<string> {
         this.toReverse_amountOfCall++
         return super.toReverse(from, to,)
     }

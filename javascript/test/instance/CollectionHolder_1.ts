@@ -13,17 +13,19 @@
 import type {Array, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberKeyMap, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
+import type {CollectionHolderOf1}                                                                                                                                                                                                                                               from "../../src/CollectionHolderOf1"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "../../src/iterator/CollectionIteratorOf1"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
+import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIndexOrNull}                                                                                                                                                                                      from "../../src/type/value"
 
-import {AbstractCollectionHolderForTest}                     from "./AbstractCollectionHolderForTest"
-import {CollectionHolderOf1}                                 from "../../src/CollectionHolderOf1"
+import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
+import {SingleValueCollectionHolder}     from "../../src/SingleValueCollectionHolder"
 
 /**
- * A class to test the functionality of a {@link CollectionHolderOf1}
+ * A class to test the functionality of a {@link SingleValueCollectionHolder}
  *
  * @typeParam T The type
  */
@@ -31,15 +33,15 @@ export class CollectionHolder_1<const T, >
     extends AbstractCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: CollectionHolderOf1<T>
+    public readonly instance: SingleValueCollectionHolder<T>
 
     public constructor(public readonly value: T,) {
         super()
         const $this = this
         this.instance = new class CollectionHolder_CountingGetOn1
-            extends CollectionHolderOf1<T> {
+            extends SingleValueCollectionHolder<T> {
 
-            public override get<const I extends number, >(index: I,): I extends | 0 | -1 ? T : never
+            public override get<const I extends number, >(index: I,): SingleValueFromIndex<I, T>
             public override get(index: number,) {
                 $this.amountOfCall++
                 return super.get(index,)
@@ -67,7 +69,8 @@ export class CollectionHolder_1<const T, >
 
     //#region -------------------- Get --------------------
 
-    public override get<const I extends number, >(index: number,): I extends | 0 | -1 ? T : never
+    public override get<const I extends number, >(index: I,): SingleValueFromIndex<I, T>
+    public override get(index: number,): T
     public override get(index: number,) { return this.instance.get(index,) }
 
     public override getFirst(): T { return this.instance.getFirst() }
@@ -75,9 +78,8 @@ export class CollectionHolder_1<const T, >
     public override getLast(): T { return this.instance.getLast() }
 
 
-    public override getOrElse<const U, const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<U>,): I extends | 0 | -1 ? T : U
+    public override getOrElse<const U, const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<U>,): SingleValueFromIndexOrElse<I, T, U>
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public override getOrElse<const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.instance.getOrElse(index, defaultValue,) }
 
@@ -90,7 +92,8 @@ export class CollectionHolder_1<const T, >
     public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return this.instance.getLastOrElse(defaultValue,) }
 
 
-    public override getOrNull<const I extends number, >(index: I,): I extends | 0 | -1 ? T : null
+    public override getOrNull<const I extends number, >(index: I,): SingleValueFromIndexOrNull<I, T>
+    public override getOrNull(index: number,): NullOr<T>
     public override getOrNull(index: number,) { return this.instance.getOrNull(index,) }
 
     public override getFirstOrNull(): T { return this.instance.getFirstOrNull() }
@@ -392,7 +395,7 @@ export class CollectionHolder_1<const T, >
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): this["instance"] { return this.instance.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOf1<T> { return this.instance.toReverse(from, to,) }
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------

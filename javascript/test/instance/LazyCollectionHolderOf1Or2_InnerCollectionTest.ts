@@ -20,7 +20,7 @@ import {LazyCollectionHolderOf1Or2} from "../../src/LazyCollectionHolderOf1Or2"
 export class LazyCollectionHolderOf1Or2_InnerCollectionTest<const T, >
     extends LazyCollectionHolderOf1Or2<T> {
 
-    public constructor(latePossibleValue: () => Couple<| T | Optional<T>, T, Optional<T>>,) { super(latePossibleValue,) }
+    public constructor(latePossibleValue: () => Couple<T, Optional<T>>,) { super(latePossibleValue,) }
 
     public get innerCollection(): | CollectionHolderOf2<T> | CollectionHolderOf1<T> { return this._innerCollection }
 

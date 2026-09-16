@@ -13,13 +13,12 @@
 import type {Array, EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptySet, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberKeyMap, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {CollectionHolderOf1}                                                                                                                                                                                                                                               from "../../src/CollectionHolderOf1"
-import type {EmptyCollectionHolder}                                                                                                                                                                                                                                             from "../../src/EmptyCollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "../../src/iterator/CollectionIteratorOf1"
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                           from "../../src/iterator/EmptyCollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
+import type {CollectionHolderOf0Or1}                                                                                                                                                                                                                                            from "../../src/type/collection"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
 import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
@@ -55,7 +54,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
                 return super.get(index,)
             }
 
-            public get innerCollection(): | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection }
+            public get innerCollection(): CollectionHolderOf0Or1<T> { return this._innerCollection }
 
         }(() => optional,)
     }
@@ -274,7 +273,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
         const instance = this.instance
-        const newInstance = instance.filterNotNull()
+        const newInstance: CollectionHolder<NonNullable<T>> = instance.filterNotNull()
         if (newInstance === instance)
             return this as CollectionHolder<NonNullable<T>>
         return newInstance
@@ -400,7 +399,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolderOf1<T> | EmptyCollectionHolder { return this.instance.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOf0Or1<T> { return this.instance.toReverse(from, to,) }
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
@@ -446,6 +445,6 @@ export class CollectionHolder_LazyOf0Or1<const T, >
 interface LazyCollectionHolderOf0Or1ForTest<T,>
     extends LazyCollectionHolderOf0Or1<T> {
 
-    readonly innerCollection: | CollectionHolderOf1<T> | EmptyCollectionHolder
+    readonly innerCollection: CollectionHolderOf0Or1<T>
 
 }

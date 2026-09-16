@@ -13,13 +13,9 @@
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                              from "../../src/CollectionHolder"
-import type {CollectionHolderOf1}                                                                                                                           from "../../src/CollectionHolderOf1"
-import type {CollectionHolderOf2}                                                                                                                           from "../../src/CollectionHolderOf2"
-import type {EmptyCollectionHolder}                                                                                                                         from "../../src/EmptyCollectionHolder"
-import type {CollectionIteratorOf1}                                                                                                                         from "../../src/iterator/CollectionIteratorOf1"
-import type {CollectionIteratorOf2}                                                                                                                         from "../../src/iterator/CollectionIteratorOf2"
-import type {EmptyCollectionIterator}                                                                                                                       from "../../src/iterator/EmptyCollectionIterator"
 import type {BooleanCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback} from "../../src/type/callback"
+import type {CollectionHolderOfSame0Or1Or2}                                                                                                                 from "../../src/type/collection"
+import type {CollectionIteratorOfSame0Or1Or2}                                                                                                               from "../../src/type/iterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
 import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
 
@@ -407,7 +403,7 @@ export class CollectionHolder_LazyOf0Or1Or2Follower
 
     //#region -------------------- Take --------------------
 
-    public override take(n: number,): | CollectionHolderOf2<string> | CollectionHolderOf1<string> | EmptyCollectionHolder {
+    public override take(n: number,): CollectionHolderOfSame0Or1Or2<string> {
         this.take_amountOfCall++
         return super.take(n,)
     }
@@ -426,7 +422,7 @@ export class CollectionHolder_LazyOf0Or1Or2Follower
         return super.takeWhileIndexed(predicate,)
     }
 
-    public override takeLast(n: number,): | CollectionHolderOf2<string> | CollectionHolderOf1<string> | EmptyCollectionHolder {
+    public override takeLast(n: number,): CollectionHolderOfSame0Or1Or2<string> {
         this.takeLast_amountOfCall++
         return super.takeLast(n,)
     }
@@ -448,7 +444,7 @@ export class CollectionHolder_LazyOf0Or1Or2Follower
     //#endregion -------------------- Take --------------------
     //#region -------------------- Drop --------------------
 
-    public override drop(n: number,): | CollectionHolderOf2<string> | CollectionHolderOf1<string> | EmptyCollectionHolder {
+    public override drop(n: number,): CollectionHolderOfSame0Or1Or2<string> {
         this.drop_amountOfCall++
         return super.drop(n,)
     }
@@ -467,7 +463,7 @@ export class CollectionHolder_LazyOf0Or1Or2Follower
         return super.dropWhileIndexed(predicate,)
     }
 
-    public override dropLast(n: number,): | CollectionHolderOf2<string> | CollectionHolderOf1<string> | EmptyCollectionHolder {
+    public override dropLast(n: number,): CollectionHolderOfSame0Or1Or2<string> {
         this.dropLast_amountOfCall++
         return super.dropLast(n,)
     }
@@ -491,7 +487,7 @@ export class CollectionHolder_LazyOf0Or1Or2Follower
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolderOf2<string> | CollectionHolderOf1<string> | EmptyCollectionHolder {
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOfSame0Or1Or2<string> {
         this.toReverse_amountOfCall++
         return super.toReverse(from, to,)
     }
@@ -499,7 +495,7 @@ export class CollectionHolder_LazyOf0Or1Or2Follower
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toIterator(): | CollectionIteratorOf2<string> | CollectionIteratorOf1<string> | EmptyCollectionIterator {
+    public override toIterator(): CollectionIteratorOfSame0Or1Or2<string> {
         this.toIterator_amountOfCall++
         return super.toIterator()
     }

@@ -22,13 +22,12 @@ import {AbstractTupleForTest} from "./AbstractTupleForTest"
  *
  * @typeParam T The type
  */
-export class Tuple_2<const T,
-    const T1 extends T = T,
-    const T2 extends T = T, >
-    extends AbstractTupleForTest<T> {
+export class Tuple_2<const T1 = unknown,
+    const T2 = unknown, >
+    extends AbstractTupleForTest<| T1 | T2> {
 
     /** The internal instance that is tested */
-    public readonly instance: Couple<T, T1, T2>
+    public readonly instance: Couple<T1, T2>
 
     public constructor(public readonly value1: T1, public readonly value2: T2,) {
         super()
@@ -65,7 +64,7 @@ export class Tuple_2<const T,
 
     public override toSet(): Set<| T1 | T2> { return this.instance.toSet() }
 
-    public override toCollection(): CollectionHolderOf2<T, T1, T2> { return this.instance.toCollection() }
+    public override toCollection(): CollectionHolderOf2<T1, T2> { return this.instance.toCollection() }
 
     public override toString(): string { return this.instance.toString() }
 

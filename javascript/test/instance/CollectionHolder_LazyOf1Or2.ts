@@ -13,13 +13,11 @@
 import type {Array, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {CollectionHolderOf1}                                                                                                                                                                                                                                               from "../../src/CollectionHolderOf1"
-import type {CollectionHolderOf2}                                                                                                                                                                                                                                               from "../../src/CollectionHolderOf2"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "../../src/iterator/CollectionIteratorOf1"
-import type {CollectionIteratorOf2}                                                                                                                                                                                                                                             from "../../src/iterator/CollectionIteratorOf2"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
+import type {CollectionHolderOfSame1Or2}                                                                                                                                                                                                                                        from "../../src/type/collection"
+import type {CollectionIteratorOfSame1Or2}                                                                                                                                                                                                                                      from "../../src/type/iterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
 import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
@@ -45,7 +43,7 @@ export class CollectionHolder_LazyOf1Or2<const T,
 
     public readonly value1: T1
     public readonly value2: Optional<T2>
-    public readonly values: Couple<| Optional<T2> | T1, T1, Optional<T2>>
+    public readonly values: Couple<T1, Optional<T2>>
 
     public constructor(value1: T1,)
     public constructor(value1: T1, value2: T2,)
@@ -65,7 +63,7 @@ export class CollectionHolder_LazyOf1Or2<const T,
                 return super.get(index,)
             }
 
-            public get innerCollection(): | CollectionHolderOf2<T> | CollectionHolderOf1<T> { return this._innerCollection }
+            public get innerCollection(): CollectionHolderOfSame1Or2<T> { return this._innerCollection }
 
         }(() => values,)
     }
@@ -410,12 +408,12 @@ export class CollectionHolder_LazyOf1Or2<const T,
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> { return this.instance.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOfSame1Or2<T> { return this.instance.toReverse(from, to,) }
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toIterator(): | CollectionIteratorOf2<T> | CollectionIteratorOf1<T> { return this.instance.toIterator() }
+    public override toIterator(): CollectionIteratorOfSame1Or2<T> { return this.instance.toIterator() }
 
     public override toArray(): | readonly [T, T,] | readonly [T,] { return this.instance.toArray() }
     public override toMutableArray(): | [T, T,] | [T,] { return this.instance.toMutableArray() }
@@ -456,6 +454,6 @@ export class CollectionHolder_LazyOf1Or2<const T,
 interface LazyCollectionHolderOf1Or2ForTest<out T, >
     extends LazyCollectionHolderOf1Or2<T> {
 
-    readonly innerCollection: | CollectionHolderOf2<T> | CollectionHolderOf1<T>
+    readonly innerCollection: CollectionHolderOfSame1Or2<T>
 
 }
