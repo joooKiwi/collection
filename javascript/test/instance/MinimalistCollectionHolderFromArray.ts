@@ -12,26 +12,25 @@
 
 import type {Array} from "@joookiwi/type"
 
-import {AbstractMinimalistCollectionHolder} from "../../src/AbstractMinimalistCollectionHolder"
+import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHolder"
 
 /**
  * A {@link MinimalistCollectionHolder} having the functionality from an {@link ReadonlyArray array}
  * without handling negative indexes in the {@link MinimalistCollectionHolder.get} method
  */
 export class MinimalistCollectionHolderFromArray<const T, >
-    extends AbstractMinimalistCollectionHolder<T> {
+    implements MinimalistCollectionHolder<T> {
 
     public readonly array
     readonly #size
 
     public constructor(array: Array<T>,) {
-        super()
         this.#size = (this.array = array).length
     }
 
     public get size(): number { return this.#size }
 
-    public override get(index: number,): T {
+    public get(index: number,): T {
         const array = this.array
         if (index in array)
             return array[index] as T
