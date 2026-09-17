@@ -21,7 +21,7 @@ import {CollectionIteratorOf2} from "../../src/iterator/CollectionIteratorOf2"
  * made to have the followed methods based on the specific non-aliased method
  */
 export class CollectionIterator_2Follower
-    extends CollectionIteratorOf2<string>
+    extends CollectionIteratorOf2<string, string>
     implements CollectionIteratorFollower<string> {
 
     //#region -------------------- Fields --------------------
