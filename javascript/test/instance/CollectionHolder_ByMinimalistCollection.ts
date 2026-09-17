@@ -14,15 +14,14 @@ import type {Array} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHolder"
 
-import {GenericMinimalistCollectionHolder}                from "../../src/GenericMinimalistCollectionHolder"
-import {AbstractMinimalistCollectionHolderForTest}        from "./AbstractMinimalistCollectionHolderForTest"
+import {AbstractMinimalistCollectionHolderForTest} from "./AbstractMinimalistCollectionHolderForTest"
+import {CollectionHolderFromArray}                 from "./CollectionHolderFromArray"
 
 /**
- * A class to test the functionality of a {@link GenericMinimalistCollectionHolder}
- * for both {@link GenericMinimalistCollectionHolder.size get size}
- * and {@link GenericMinimalistCollectionHolder.get get}.
+ * A class to test the functionality of a {@link MinimalistCollectionHolder}
+ * having its {@link MinimalistCollectionHolder.get get method} being called.
  *
- * The remaining methods are from the extension methods for a {@link MinimalistCollectionHolder}
+ * Note that all the methods are on the extension method for {@link MinimalistCollectionHolder}.
  *
  * @typeParam T The type
  */
@@ -33,11 +32,11 @@ export class CollectionHolder_ByMinimalistCollection<const T, >
     public amountOfCall = 0
 
     /** The internal instance that is tested */
-    public readonly instance: GenericMinimalistCollectionHolder<T>
+    public readonly instance: CollectionHolderFromArray<T>
 
     public constructor(array: Array<T>,) {
         super()
-        this.instance = new GenericMinimalistCollectionHolder(array,)
+        this.instance = new CollectionHolderFromArray(array,)
     }
 
     public override get size(): number {
