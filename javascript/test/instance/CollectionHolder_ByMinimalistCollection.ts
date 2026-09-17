@@ -27,13 +27,13 @@ import {AbstractMinimalistCollectionHolderForTest}        from "./AbstractMinima
  * @typeParam T The type
  */
 export class CollectionHolder_ByMinimalistCollection<const T, >
-    extends AbstractMinimalistCollectionHolderForTest<T, Array<T>> {
+    extends AbstractMinimalistCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: GenericMinimalistCollectionHolder<T>
 
     public constructor(array: Array<T>,) {
-        super(array,)
+        super()
         this.instance = new GenericMinimalistCollectionHolder(array,)
     }
 

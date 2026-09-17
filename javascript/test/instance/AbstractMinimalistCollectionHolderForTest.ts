@@ -111,11 +111,10 @@ import {toUpperCaseStringByMinimalistCollectionHolder}         from "../../src/m
 import {AbstractCollectionHolderForTest}                       from "./AbstractCollectionHolderForTest"
 
 /** A common ancestor that have the methods reference to the {@link MinimalistCollectionHolder} extension methods */
-export abstract class AbstractMinimalistCollectionHolderForTest<const T,
-    const REFERENCE extends Array<T>, >
+export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
     extends AbstractCollectionHolderForTest<T> {
 
-    public constructor(/** The array received in the constructor */ public readonly array: REFERENCE,) { super() }
+    protected constructor() { super() }
 
     //#region -------------------- Size methods --------------------
 
