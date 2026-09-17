@@ -7,7 +7,7 @@
     <scope-kind value="SUITE" />
     <test-file value="$PROJECT_DIR$/test/CollectionIterator.03 - loop.test.ts" />
     <test-names>
-      <test-name value="CollectionIteratorTest (forEach)" />
+      <test-name value="CollectionIteratorTest (loop)" />
     </test-names>
     <method v="2" />
   </configuration>

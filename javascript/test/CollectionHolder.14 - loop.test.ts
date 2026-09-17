@@ -22,7 +22,7 @@ import {every0Instances, every1Instances, every2Instances, everyExtensionMethodI
 
 import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
-describe("CollectionHolderTest (forEach / onEach)", () => {
+describe("CollectionHolderTest (loop)", () => {
 
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get

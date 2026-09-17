@@ -19,7 +19,7 @@ import {callbackAsFail0, callbackAsFail1, callbackAsFail2, callbackAsFailAfter1C
 import {EmptyCollectionIterator}          from "../src/iterator/EmptyCollectionIterator"
 import {every1Iterators, every2Iterators} from "./value/instances"
 
-describe("CollectionIteratorTest (forEach)", () => {
+describe("CollectionIteratorTest (loop)", () => {
 
     describe("EmptyCollectionIterator", () => {
         const instance = EmptyCollectionIterator.get
