@@ -19,7 +19,6 @@ import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -65,7 +64,7 @@ export function filterNotIndexed<const T, >(collection: Nullable<| MinimalistCol
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterNotIndexedByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return filterNotIndexedByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return filterNotIndexedByMinimalistCollectionHolder(collection, predicate,)

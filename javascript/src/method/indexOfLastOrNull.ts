@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {BooleanCallback}            from "../type/callback"
 
 import {__endingIndexOrNull, __startingIndexOrNull} from "./_indexes utility"
-import {isArray}                                    from "./isArray"
 import {isArrayByStructure}                         from "./isArrayByStructure"
 import {isCollectionHolder}                         from "./isCollectionHolder"
 import {isCollectionHolderByStructure}              from "./isCollectionHolderByStructure"
@@ -142,7 +141,7 @@ export function indexOfLastOrNullByArray<const T, >(collection: Nullable<Array<T
 function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core0ByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return __core0ByMinimalistCollectionHolder(collection, predicate,)
@@ -192,7 +191,7 @@ function __core0ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, predicate, from,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core1ByArray(collection, predicate, from,)
     if (isMinimalistCollectionHolder(collection,))
         return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
@@ -255,7 +254,7 @@ function __core1ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, predicate, from, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core2ByArray(collection, predicate, from, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
@@ -336,7 +335,7 @@ function __core2ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __coreWithNoFromByArray(collection, predicate, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)

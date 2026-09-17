@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asLocaleString}                from "./asString"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -42,7 +41,7 @@ export function toLocaleString<const T, >(collection: Nullable<| MinimalistColle
         return "[]"
     if (isCollectionHolder(collection,))
         return toLocaleStringByCollectionHolder(collection, locale,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toLocaleStringByArray(collection, locale,)
     if (isMinimalistCollectionHolder(collection,))
         return toLocaleStringByMinimalistCollectionHolder(collection, locale,)

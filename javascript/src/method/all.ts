@@ -16,7 +16,6 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -97,7 +96,7 @@ export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder
         return true
     if (isCollectionHolder(collection,))
         return allByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return allByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return allByMinimalistCollectionHolder(collection, predicate,)

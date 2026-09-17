@@ -18,7 +18,6 @@ import type {ValueIndexWithReturnCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -46,7 +45,7 @@ export function map<const T, const U, >(collection: Nullable<| MinimalistCollect
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return mapByCollectionHolder(collection, transform,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return mapByArray(collection, transform,)
     if (isMinimalistCollectionHolder(collection,))
         return mapByMinimalistCollectionHolder(collection, transform,)

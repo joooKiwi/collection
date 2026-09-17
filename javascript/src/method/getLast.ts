@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyCollectionException}      from "../exception/EmptyCollectionException"
 import {NullCollectionException}       from "../exception/NullCollectionException"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -41,7 +40,7 @@ export function getLast<const T, >(collection: Nullable<| MinimalistCollectionHo
         throw new NullCollectionException()
     if (isCollectionHolder(collection,))
         return getLastByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return getLastByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return getLastByMinimalistCollectionHolder(collection,)

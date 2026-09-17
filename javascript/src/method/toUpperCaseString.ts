@@ -18,7 +18,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import {asUpperCaseString}             from "./asString"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
@@ -37,7 +36,7 @@ export function toUpperCaseString<const T, >(collection: Nullable<| MinimalistCo
         return "[]"
     if (isCollectionHolder(collection,))
         return toUpperCaseStringByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toUpperCaseStringByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toUpperCaseStringByMinimalistCollectionHolder(collection,)

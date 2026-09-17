@@ -16,7 +16,6 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -56,7 +55,7 @@ export function findLastOrNull<const T, >(collection: Nullable<| MinimalistColle
         return null
     if (isCollectionHolder(collection,))
         return findLastOrNullByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return findLastOrNullByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return findLastOrNullByMinimalistCollectionHolder(collection, predicate,)

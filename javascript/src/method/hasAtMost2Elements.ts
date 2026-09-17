@@ -16,7 +16,6 @@ import type {CollectionHolder}                                                  
 import type {HasAtMost2ElementsOn, HasAtMost2ElementsOnArray, HasAtMost2ElementsOnCollectionHolder, HasAtMost2ElementsOnMinimalistCollectionHolder, HasAtMost2ElementsOnNullable, HasAtMost2ElementsOnNullableArray, HasAtMost2ElementsOnNullableCollectionHolder, HasAtMost2ElementsOnNullableMinimalistCollectionHolder} from "../type/hasAtMost2Elements"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                   from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -83,7 +82,7 @@ export function hasAtMost2Elements<const T, >(collection: Nullable<| MinimalistC
         return true
     if (isCollectionHolder(collection,))
         return hasAtMost2ElementsByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasAtMost2ElementsByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return hasAtMost2ElementsByMinimalistCollectionHolder(collection,)

@@ -16,7 +16,6 @@ import type {CollectionHolder}                                                  
 import type {HasExactly2ElementsOn, HasExactly2ElementsOnArray, HasExactly2ElementsOnCollectionHolder, HasExactly2ElementsOnMinimalistCollectionHolder, HasExactly2ElementsOnNullable, HasExactly2ElementsOnNullableArray, HasExactly2ElementsOnNullableCollectionHolder, HasExactly2ElementsOnNullableMinimalistCollectionHolder} from "../type/hasExactly2Elements"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                           from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -83,7 +82,7 @@ export function hasExactly2Elements<const T, >(collection: Nullable<| Minimalist
         return false
     if (isCollectionHolder(collection,))
         return hasExactly2ElementsByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasExactly2ElementsByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return hasExactly2ElementsByMinimalistCollectionHolder(collection,)

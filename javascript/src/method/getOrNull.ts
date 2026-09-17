@@ -15,7 +15,6 @@ import type {Array, Nullable, NullOr} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -39,7 +38,7 @@ export function getOrNull<const T, >(collection: Nullable<| MinimalistCollection
         return null
     if (isCollectionHolder(collection,))
         return getOrNullByCollectionHolder(collection, index,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return getOrNullByArray(collection, index,)
     if (isMinimalistCollectionHolder(collection,))
         return getOrNullByMinimalistCollectionHolder(collection, index,)

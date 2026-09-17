@@ -20,7 +20,6 @@ import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {MinimalistAsCollectionHolder}  from "../MinimalistAsCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -41,7 +40,7 @@ export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollec
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterNotNullByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return filterNotNullByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return filterNotNullByMinimalistCollectionHolder(collection,)

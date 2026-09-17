@@ -16,7 +16,6 @@ import type {CollectionHolder}                                         from "../
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -52,7 +51,7 @@ export function findFirstIndexedOrNull<const T, >(collection: Nullable<| Minimal
         return null
     if (isCollectionHolder(collection,))
         return findFirstIndexedOrNullByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return findFirstIndexedOrNullByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return findFirstIndexedOrNullByMinimalistCollectionHolder(collection, predicate,)

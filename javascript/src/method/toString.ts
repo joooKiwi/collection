@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asString}                      from "./asString"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -38,7 +37,7 @@ export function toString<const T, >(collection: Nullable<| MinimalistCollectionH
         return "[]"
     if (isCollectionHolder(collection,))
         return toStringByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toStringByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toStringByMinimalistCollectionHolder(collection,)

@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {BooleanCallback}            from "../type/callback"
 
-import {isArray}                                                                                             from "./isArray"
 import {isArrayByStructure}                                                                                  from "./isArrayByStructure"
 import {isCollectionHolder}                                                                                  from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                                                                       from "./isCollectionHolderByStructure"
@@ -212,7 +211,7 @@ function __any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> |
         return __anyByCollectionHolder(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return __anyByMinimalistCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __anyByArray(collection, predicate,)
     if (isCollectionHolderByStructure<T>(collection,))
         return __anyByCollectionHolder(collection, predicate,)

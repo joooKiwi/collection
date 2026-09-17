@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {IndexWithReturnCallback}    from "../type/callback"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -57,7 +56,7 @@ export function getOrElse<const T, >(collection: Nullable<| MinimalistCollection
         return defaultValue(index,)
     if (isCollectionHolder(collection,))
         return getOrElseByCollectionHolder(collection, index, defaultValue,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return getOrElseByArray(collection, index, defaultValue,)
     if (isMinimalistCollectionHolder(collection,))
         return getOrElseByMinimalistCollectionHolder(collection, index, defaultValue,)

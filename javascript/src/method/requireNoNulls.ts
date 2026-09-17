@@ -15,7 +15,6 @@ import type {Array, Nullable, NullOr, NullOrUndefined, UndefinedOr} from "@joook
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -171,7 +170,7 @@ export function requireNoNulls<const T, >(collection: Nullable<| MinimalistColle
 
     if (isCollectionHolder(collection,))
         return requireNoNullsByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return requireNoNullsByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return requireNoNullsByMinimalistCollectionHolder(collection,)

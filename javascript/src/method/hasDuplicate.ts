@@ -15,7 +15,6 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -35,7 +34,7 @@ export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollect
         return false
     if (isCollectionHolder(collection,))
         return hasDuplicateByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasDuplicateByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return hasDuplicateByMinimalistCollectionHolder(collection,)

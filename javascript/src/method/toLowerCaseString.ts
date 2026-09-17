@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asLowerCaseString}             from "./asString"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -37,7 +36,7 @@ export function toLowerCaseString<const T, >(collection: Nullable<| MinimalistCo
         return "[]"
     if (isCollectionHolder(collection,))
         return toLowerCaseStringByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toLowerCaseStringByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toLowerCaseStringByMinimalistCollectionHolder(collection,)

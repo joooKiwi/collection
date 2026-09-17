@@ -16,7 +16,6 @@ import type {CollectionHolder}                                                  
 import type {IsEmptyOn, IsEmptyOnArray, IsEmptyOnCollectionHolder, IsEmptyOnMinimalistCollectionHolder, IsEmptyOnNullable, IsEmptyOnNullableArray, IsEmptyOnNullableCollectionHolder, IsEmptyOnNullableMinimalistCollectionHolder} from "../type/isEmpty"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                           from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -123,7 +122,7 @@ export function isEmpty<const T, >(collection: Nullable<| MinimalistCollectionHo
         return true
     if (isCollectionHolder(collection,))
         return isEmptyByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return isEmptyByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return isEmptyByMinimalistCollectionHolder(collection,)

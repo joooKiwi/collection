@@ -15,7 +15,6 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionHolder}           from "../CollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -42,7 +41,7 @@ export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder
         return false
     if (isCollectionHolder(collection,))
         return hasByCollectionHolder(collection, value,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasByArray(collection, value,)
     if (isMinimalistCollectionHolder(collection,))
         return hasByMinimalistCollectionHolder(collection, value,)

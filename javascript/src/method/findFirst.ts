@@ -19,7 +19,6 @@ import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 import {EmptyCollectionException}      from "../exception/EmptyCollectionException"
 import {IndexOutOfBoundsException}     from "../exception/IndexOutOfBoundsException"
 import {NullCollectionException}       from "../exception/NullCollectionException"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -59,7 +58,7 @@ export function findFirst<const T, >(collection: Nullable<| MinimalistCollection
         throw new NullCollectionException()
     if (isCollectionHolder(collection,))
         return findFirstByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return findFirstByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return findFirstByMinimalistCollectionHolder(collection, predicate,)

@@ -19,7 +19,6 @@ import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../
 import {EmptyCollectionException}      from "../exception/EmptyCollectionException"
 import {IndexOutOfBoundsException}     from "../exception/IndexOutOfBoundsException"
 import {NullCollectionException}       from "../exception/NullCollectionException"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -59,7 +58,7 @@ export function findLastIndexed<const T, >(collection: Nullable<| MinimalistColl
         throw new NullCollectionException()
     if (isCollectionHolder(collection,))
         return findLastIndexedByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return findLastIndexedByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return findLastIndexedByMinimalistCollectionHolder(collection, predicate,)

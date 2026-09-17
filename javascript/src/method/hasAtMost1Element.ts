@@ -16,7 +16,6 @@ import type {CollectionHolder}                                                  
 import type {HasAtMost1ElementOn, HasAtMost1ElementOnArray, HasAtMost1ElementOnCollectionHolder, HasAtMost1ElementOnMinimalistCollectionHolder, HasAtMost1ElementOnNullable, HasAtMost1ElementOnNullableArray, HasAtMost1ElementOnNullableCollectionHolder, HasAtMost1ElementOnNullableMinimalistCollectionHolder} from "../type/hasAtMost1Element"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                   from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -83,7 +82,7 @@ export function hasAtMost1Element<const T, >(collection: Nullable<| MinimalistCo
         return true
     if (isCollectionHolder(collection,))
         return hasAtMost1ElementByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasAtMost1ElementByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return hasAtMost1ElementByMinimalistCollectionHolder(collection,)

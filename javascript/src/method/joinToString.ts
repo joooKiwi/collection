@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {StringCallback}             from "../type/callback"
 
 import {__lastIndex}                   from "./_indexes utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -55,7 +54,7 @@ export function joinToString<const T, >(collection: Nullable<| MinimalistCollect
         return prefixAndPostfixOnly(prefix, postfix,)
     if (isCollectionHolder(collection,))
         return joinToStringByCollectionHolder(collection, separator, prefix, postfix, limit, truncated, transform,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return joinToStringByArray(collection, separator, prefix, postfix, limit, truncated, transform,)
     if (isMinimalistCollectionHolder(collection,))
         return joinToStringByMinimalistCollectionHolder(collection, separator, prefix, postfix, limit, truncated, transform,)

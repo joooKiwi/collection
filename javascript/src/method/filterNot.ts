@@ -18,7 +18,6 @@ import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -65,7 +64,7 @@ export function filterNot<const T, >(collection: Nullable<| MinimalistCollection
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterNotByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return filterNotByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return filterNotByMinimalistCollectionHolder(collection, predicate,)

@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {__endingIndexOrNull, __startingIndexOrNull} from "./_indexes utility"
-import {isArray}                                    from "./isArray"
 import {isArrayByStructure}                         from "./isArrayByStructure"
 import {isCollectionHolder}                         from "./isCollectionHolder"
 import {isCollectionHolderByStructure}              from "./isCollectionHolderByStructure"
@@ -141,7 +140,7 @@ export function firstIndexOfOrNullByArray<const T, >(collection: Nullable<Array<
 function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, element,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core0ByArray(collection, element,)
     if (isMinimalistCollectionHolder(collection,))
         return __core0ByMinimalistCollectionHolder(collection, element,)
@@ -179,7 +178,7 @@ function __core0ByArray<const T, >(collection: Array<T>, element: T,): NullOrNum
 function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, element, from,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core1ByArray(collection, element, from,)
     if (isMinimalistCollectionHolder(collection,))
         return __core1ByMinimalistCollectionHolder(collection, element, from,)
@@ -230,7 +229,7 @@ function __core1ByArray<const T, >(collection: Array<T>, element: T, from: numbe
 function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, element, from, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core2ByArray(collection, element, from, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __core2ByMinimalistCollectionHolder(collection, element, from, to,)
@@ -299,7 +298,7 @@ function __core2ByArray<const T, >(collection: Array<T>, element: T, from: numbe
 function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, element, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __coreWithNoFromByArray(collection, element, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __coreWithNoFromByMinimalistCollectionHolder(collection, element, to,)
