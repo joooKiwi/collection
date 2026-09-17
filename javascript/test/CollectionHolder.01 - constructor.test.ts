@@ -36,8 +36,7 @@ import {MinimalistCollectionHolder_ByStructure} from "./instance/MinimalistColle
 import {ArrayAsCollectionHolder}           from "../src/ArrayAsCollectionHolder"
 import {ArrayOf1AsCollectionHolder}        from "../src/ArrayOf1AsCollectionHolder"
 import {ArrayOf2AsCollectionHolder}        from "../src/ArrayOf2AsCollectionHolder"
-import {CollectionHolderOf1}               from "../src/CollectionHolderOf1"
-import {CollectionHolderOf2}               from "../src/CollectionHolderOf2"
+import {DualValueCollectionHolder}         from "../src/DualValueCollectionHolder"
 import {GenericCollectionHolder}           from "../src/GenericCollectionHolder"
 import {GenericMinimalistCollectionHolder} from "../src/GenericMinimalistCollectionHolder"
 import {LazyCollectionHolder}              from "../src/LazyCollectionHolder"
@@ -49,6 +48,7 @@ import {LazyCollectionHolderOf2}           from "../src/LazyCollectionHolderOf2"
 import {SetAsCollectionHolder}             from "../src/SetAsCollectionHolder"
 import {SetOf1AsCollectionHolder}          from "../src/SetOf1AsCollectionHolder"
 import {SetOf2AsCollectionHolder}          from "../src/SetOf2AsCollectionHolder"
+import {SingleValueCollectionHolder}       from "../src/SingleValueCollectionHolder"
 import {IndexOutOfBoundsException}         from "../src/exception/IndexOutOfBoundsException"
 import {EmptyOptional}                     from "../src/optional/EmptyOptional"
 import {Optional}                          from "../src/optional/Optional"
@@ -479,10 +479,10 @@ describe("CollectionHolderTest (constructor)", () => {
         test("4 fields [3] - iterable with possible size (length + fail count)", () => expect(new GenericMinimalistCollectionHolder(new IterableWithLengthThatFailOnCount(ABCD,),).get(3,),)     .toBe('d',),)
     },)
 
-    test("CollectionHolderOf1", () => expect(new CollectionHolderOf1('a',)[0],).toBe('a',),)
-    describe("CollectionHolderOf2", () => {
-        test("[0]", () => expect(new CollectionHolderOf2("a", "b",)[0],).toBe('a',),)
-        test("[1]", () => expect(new CollectionHolderOf2("a", "b",)[1],).toBe('b',),)
+    test("SingleValueCollectionHolder", () => expect(new SingleValueCollectionHolder('a',)[0],).toBe('a',),)
+    describe("DualValueCollectionHolder", () => {
+        test("[0]", () => expect(new DualValueCollectionHolder("a", "b",)[0],).toBe('a',),)
+        test("[1]", () => expect(new DualValueCollectionHolder("a", "b",)[1],).toBe('b',),)
     },)
 
     describe("ArrayAsCollectionHolder", () => {

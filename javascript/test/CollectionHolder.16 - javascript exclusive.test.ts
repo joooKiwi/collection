@@ -39,9 +39,8 @@ import {CollectionConstants}           from "../src/CollectionConstants"
 import {ArrayAsCollectionHolder}       from "../src/ArrayAsCollectionHolder"
 import {ArrayOf1AsCollectionHolder}    from "../src/ArrayOf1AsCollectionHolder"
 import {ArrayOf2AsCollectionHolder}    from "../src/ArrayOf2AsCollectionHolder"
-import {CollectionHolderOf1}           from "../src/CollectionHolderOf1"
-import {CollectionHolderOf2}           from "../src/CollectionHolderOf2"
 import {CollectionViewer}              from "../src/CollectionViewer"
+import {DualValueCollectionHolder}     from "../src/DualValueCollectionHolder"
 import {GenericCollectionHolder}       from "../src/GenericCollectionHolder"
 import {IteratorAsCollectionHolder}    from "../src/IteratorAsCollectionHolder"
 import {JsIteratorAsCollectionHolder}  from "../src/JsIteratorAsCollectionHolder"
@@ -56,6 +55,7 @@ import {MinimalistAsCollectionHolder}  from "../src/MinimalistAsCollectionHolder
 import {SetAsCollectionHolder}         from "../src/SetAsCollectionHolder"
 import {SetOf1AsCollectionHolder}      from "../src/SetOf1AsCollectionHolder"
 import {SetOf2AsCollectionHolder}      from "../src/SetOf2AsCollectionHolder"
+import {SingleValueCollectionHolder}   from "../src/SingleValueCollectionHolder"
 import {EmptyCollectionHolder}         from "../src/EmptyCollectionHolder"
 import {EmptyOptional}                 from "../src/optional/EmptyOptional"
 import {Couple}                        from "../src/tuple/Couple"
@@ -72,8 +72,8 @@ describe("CollectionHolderTest (javascript exclusive)", () => {
     describe("instances", () => {
         describe("Symbol.toStringTag", () => {
             test("GenericCollectionHolder",       () => expect(new GenericCollectionHolder(EMPTY,)                                        [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("CollectionHolderOf1",           () => expect(new CollectionHolderOf1(null,)                                             [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("CollectionHolderOf2",           () => expect(new CollectionHolderOf2(null, null,)                                       [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("SingleValueCollectionHolder",   () => expect(new SingleValueCollectionHolder(null,)                                     [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("DualValueCollectionHolder",     () => expect(new DualValueCollectionHolder(null, null,)                                 [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
             test("ArrayAsCollectionHolder",       () => expect(new ArrayAsCollectionHolder(EMPTY,)                                        [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
             test("ArrayOf1AsCollectionHolder",    () => expect(new ArrayOf1AsCollectionHolder(A,)                                         [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
             test("ArrayOf2AsCollectionHolder",    () => expect(new ArrayOf2AsCollectionHolder(AB,)                                        [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)

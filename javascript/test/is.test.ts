@@ -22,9 +22,8 @@ import {MinimalistCollectionHolderFromArray}    from "./instance/MinimalistColle
 import {ArrayAsCollectionHolder}                 from "../src/ArrayAsCollectionHolder"
 import {ArrayOf1AsCollectionHolder}              from "../src/ArrayOf1AsCollectionHolder"
 import {ArrayOf2AsCollectionHolder}              from "../src/ArrayOf2AsCollectionHolder"
-import {CollectionHolderOf1}                     from "../src/CollectionHolderOf1"
-import {CollectionHolderOf2}                     from "../src/CollectionHolderOf2"
 import {CollectionViewer}                        from "../src/CollectionViewer"
+import {DualValueCollectionHolder}               from "../src/DualValueCollectionHolder"
 import {IteratorAsCollectionHolder}              from "../src/IteratorAsCollectionHolder"
 import {JsIterableAsCollectionHolder}            from "../src/JsIterableAsCollectionHolder"
 import {JsIteratorAsCollectionHolder}            from "../src/JsIteratorAsCollectionHolder"
@@ -41,6 +40,7 @@ import {MinimalistCollectionViewer}              from "../src/MinimalistCollecti
 import {SetAsCollectionHolder}                   from "../src/SetAsCollectionHolder"
 import {SetOf1AsCollectionHolder}                from "../src/SetOf1AsCollectionHolder"
 import {SetOf2AsCollectionHolder}                from "../src/SetOf2AsCollectionHolder"
+import {SingleValueCollectionHolder}             from "../src/SingleValueCollectionHolder"
 import {CollectionIteratorOf1}                   from "../src/iterator/CollectionIteratorOf1"
 import {CollectionIteratorOf2}                   from "../src/iterator/CollectionIteratorOf2"
 import {GenericCollectionIterator}               from "../src/iterator/GenericCollectionIterator"
@@ -1032,7 +1032,7 @@ describe("is", () => {
         test("collection iterator by structure",          () => expect(isCollectionIteratorByStructure(instance,),)        .toBeFalse(),)
     },)
     describe("collection holder (of 1)", () => {
-        const instance = new CollectionHolderOf1(null,)
+        const instance = new SingleValueCollectionHolder(null,)
 
         test("array",                                     () => expect(isArray(instance,),)                                .toBeFalse(),)
         test("array by structure",                        () => expect(isArrayByStructure(instance,),)                     .toBeFalse(),)
@@ -1067,7 +1067,7 @@ describe("is", () => {
         test("collection iterator by structure",          () => expect(isCollectionIteratorByStructure(instance,),)        .toBeFalse(),)
     },)
     describe("collection holder (of 2)", () => {
-        const instance = new CollectionHolderOf2(null, null,)
+        const instance = new DualValueCollectionHolder(null, null,)
 
         test("array",                                     () => expect(isArray(instance,),)                                .toBeFalse(),)
         test("array by structure",                        () => expect(isArrayByStructure(instance,),)                     .toBeFalse(),)

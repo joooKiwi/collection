@@ -13,8 +13,7 @@
 import {describe, expect, test} from "vitest"
 
 import {ArrayAsCollectionHolder}                           from "../src/ArrayAsCollectionHolder"
-import {CollectionHolderOf1}                               from "../src/CollectionHolderOf1"
-import {CollectionHolderOf2}                               from "../src/CollectionHolderOf2"
+import {DualValueCollectionHolder}                         from "../src/DualValueCollectionHolder"
 import {EmptyCollectionHolder}                             from "../src/EmptyCollectionHolder"
 import {IteratorAsCollectionHolder}                        from "../src/IteratorAsCollectionHolder"
 import {JsIterableAsCollectionHolder}                      from "../src/JsIterableAsCollectionHolder"
@@ -23,6 +22,7 @@ import {LazyCollectionHolderOf1}                           from "../src/LazyColl
 import {LazyCollectionHolderOf2}                           from "../src/LazyCollectionHolderOf2"
 import {MinimalistAsCollectionHolder}                      from "../src/MinimalistAsCollectionHolder"
 import {SetAsCollectionHolder}                             from "../src/SetAsCollectionHolder"
+import {SingleValueCollectionHolder}                       from "../src/SingleValueCollectionHolder"
 import {EmptyOptional}                                     from "../src/optional/EmptyOptional"
 import {Optional}                                          from "../src/optional/Optional"
 import {Couple}                                            from "../src/tuple/Couple"
@@ -78,8 +78,8 @@ describe("CollectionHolderTest (inner-collection)", () => {
             test("late iterable",                                    () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new IterableForTest(EMPTY,),)                       .innerCollection,).toBeInstanceOf(JsIterableAsCollectionHolder,),)
         },)
         describe('1', () => {
-            test("array",                                            () => expect(new LazyCollectionHolder_InnerCollectionTest(new ArrayForTest(A,),)                                .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
-            test("array (by structure)",                             () => expect(new LazyCollectionHolder_InnerCollectionTest(new ArrayByStructureForTest(A,),)                     .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
+            test("array",                                            () => expect(new LazyCollectionHolder_InnerCollectionTest(new ArrayForTest(A,),)                                .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
+            test("array (by structure)",                             () => expect(new LazyCollectionHolder_InnerCollectionTest(new ArrayByStructureForTest(A,),)                     .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
             test("set",                                              () => expect(new LazyCollectionHolder_InnerCollectionTest(new SetForTest(A,),)                                  .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf1,),)
             test("set (by structure)",                               () => expect(new LazyCollectionHolder_InnerCollectionTest(new SetByStructureForTest(A,),)                       .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf1,),)
             test("collection holder",                                () => expect(new LazyCollectionHolder_InnerCollectionTest(new CollectionHolderFromArray(A,),)                   .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf1,),)
@@ -91,8 +91,8 @@ describe("CollectionHolderTest (inner-collection)", () => {
             test("iterator",                                         () => expect(new LazyCollectionHolder_InnerCollectionTest(new IteratorForTest(A,),)                             .innerCollection,).toBeInstanceOf(JsIteratorAsCollectionHolder,),)
             test("iterator (by structure)",                          () => expect(new LazyCollectionHolder_InnerCollectionTest(new IteratorByStructureForTest(A,),)                  .innerCollection,).toBeInstanceOf(JsIteratorAsCollectionHolder,),)
             test("iterable",                                         () => expect(new LazyCollectionHolder_InnerCollectionTest(new IterableForTest(A,),)                             .innerCollection,).toBeInstanceOf(JsIterableAsCollectionHolder,),)
-            test("late array",                                       () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new ArrayForTest(A,),)                          .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
-            test("late array (by structure)",                        () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new ArrayByStructureForTest(A,),)               .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
+            test("late array",                                       () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new ArrayForTest(A,),)                          .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
+            test("late array (by structure)",                        () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new ArrayByStructureForTest(A,),)               .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
             test("late set",                                         () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new SetForTest(A,),)                            .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf1,),)
             test("late set (by structure)",                          () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new SetByStructureForTest(A,),)                 .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf1,),)
             test("late collection holder",                           () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new CollectionHolderFromArray(A,),)             .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf1,),)
@@ -106,8 +106,8 @@ describe("CollectionHolderTest (inner-collection)", () => {
             test("late iterable",                                    () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new IterableForTest(A,),)                       .innerCollection,).toBeInstanceOf(JsIterableAsCollectionHolder,),)
         },)
         describe('2', () => {
-            test("array",                                            () => expect(new LazyCollectionHolder_InnerCollectionTest(new ArrayForTest(AB,),)                                .innerCollection,).toBeInstanceOf(CollectionHolderOf2,),)
-            test("array (by structure)",                             () => expect(new LazyCollectionHolder_InnerCollectionTest(new ArrayByStructureForTest(AB,),)                     .innerCollection,).toBeInstanceOf(CollectionHolderOf2,),)
+            test("array",                                            () => expect(new LazyCollectionHolder_InnerCollectionTest(new ArrayForTest(AB,),)                                .innerCollection,).toBeInstanceOf(DualValueCollectionHolder,),)
+            test("array (by structure)",                             () => expect(new LazyCollectionHolder_InnerCollectionTest(new ArrayByStructureForTest(AB,),)                     .innerCollection,).toBeInstanceOf(DualValueCollectionHolder,),)
             test("set",                                              () => expect(new LazyCollectionHolder_InnerCollectionTest(new SetForTest(AB,),)                                  .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf2,),)
             test("set (by structure)",                               () => expect(new LazyCollectionHolder_InnerCollectionTest(new SetByStructureForTest(AB,),)                       .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf2,),)
             test("collection holder",                                () => expect(new LazyCollectionHolder_InnerCollectionTest(new CollectionHolderFromArray(AB,),)                   .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf2,),)
@@ -119,8 +119,8 @@ describe("CollectionHolderTest (inner-collection)", () => {
             test("iterator",                                         () => expect(new LazyCollectionHolder_InnerCollectionTest(new IteratorForTest(AB,),)                             .innerCollection,).toBeInstanceOf(JsIteratorAsCollectionHolder,),)
             test("iterator (by structure)",                          () => expect(new LazyCollectionHolder_InnerCollectionTest(new IteratorByStructureForTest(AB,),)                  .innerCollection,).toBeInstanceOf(JsIteratorAsCollectionHolder,),)
             test("iterable",                                         () => expect(new LazyCollectionHolder_InnerCollectionTest(new IterableForTest(AB,),)                             .innerCollection,).toBeInstanceOf(JsIterableAsCollectionHolder,),)
-            test("late array",                                       () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new ArrayForTest(AB,),)                          .innerCollection,).toBeInstanceOf(CollectionHolderOf2,),)
-            test("late array (by structure)",                        () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new ArrayByStructureForTest(AB,),)               .innerCollection,).toBeInstanceOf(CollectionHolderOf2,),)
+            test("late array",                                       () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new ArrayForTest(AB,),)                          .innerCollection,).toBeInstanceOf(DualValueCollectionHolder,),)
+            test("late array (by structure)",                        () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new ArrayByStructureForTest(AB,),)               .innerCollection,).toBeInstanceOf(DualValueCollectionHolder,),)
             test("late set",                                         () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new SetForTest(AB,),)                            .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf2,),)
             test("late set (by structure)",                          () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new SetByStructureForTest(AB,),)                 .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf2,),)
             test("late collection holder",                           () => expect(new LazyCollectionHolder_InnerCollectionTest(() => new CollectionHolderFromArray(AB,),)             .innerCollection,).toBeInstanceOf(LazyCollectionHolderOf2,),)
@@ -192,11 +192,11 @@ describe("CollectionHolderTest (inner-collection)", () => {
     },)
     describe("LazyCollectionHolderOf0Or1", () => {
         test('0', () => expect(new LazyCollectionHolderOf0Or1_InnerCollectionTest(() => EmptyOptional.get,).innerCollection,) .toBe(EmptyCollectionHolder.get,),)
-        test('1', () => expect(new LazyCollectionHolderOf0Or1_InnerCollectionTest(() => new Optional('a',),).innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
+        test('1', () => expect(new LazyCollectionHolderOf0Or1_InnerCollectionTest(() => new Optional('a',),).innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
     },)
     describe("LazyCollectionHolderOf1Or2", () => {
-        test('1', () => expect(new LazyCollectionHolderOf1Or2_InnerCollectionTest(() => new Couple('a', EmptyOptional.get,),) .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
-        test('2', () => expect(new LazyCollectionHolderOf1Or2_InnerCollectionTest(() => new Couple('a', new Optional('b',),),).innerCollection,).toBeInstanceOf(CollectionHolderOf2,),)
+        test('1', () => expect(new LazyCollectionHolderOf1Or2_InnerCollectionTest(() => new Couple('a', EmptyOptional.get,),) .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
+        test('2', () => expect(new LazyCollectionHolderOf1Or2_InnerCollectionTest(() => new Couple('a', new Optional('b',),),).innerCollection,).toBeInstanceOf(DualValueCollectionHolder,),)
     },)
     describe("LazyCollectionHolderOf0Or1Or2", () => {
         test("null",                         () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => null,)                                                              .innerCollection,).toBe(EmptyCollectionHolder.get,),)
@@ -204,12 +204,12 @@ describe("CollectionHolderTest (inner-collection)", () => {
         test("empty optional",               () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => EmptyOptional.get,)                                                 .innerCollection,).toBe(EmptyCollectionHolder.get,),)
         test("couple (only empty)",          () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Couple(EmptyOptional.get, EmptyOptional.get,),)                 .innerCollection,).toBe(EmptyCollectionHolder.get,),)
         test("optional couple (only empty)", () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Optional(new Couple(EmptyOptional.get, EmptyOptional.get,),),)  .innerCollection,).toBe(EmptyCollectionHolder.get,),)
-        test("couple (1 before)",            () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Couple(new Optional('a',), EmptyOptional.get,),)                .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
-        test("optional couple (1 before)",   () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Optional(new Couple(new Optional('a',), EmptyOptional.get,),),) .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
-        test("couple (1 after)",             () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Couple(EmptyOptional.get, new Optional('a',),),)                .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
-        test("optional couple (1 after)",    () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Optional(new Couple(EmptyOptional.get, new Optional('a',),),),) .innerCollection,).toBeInstanceOf(CollectionHolderOf1,),)
-        test("couple (2)",                   () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Couple(new Optional('a',), new Optional('b',),),)               .innerCollection,).toBeInstanceOf(CollectionHolderOf2,),)
-        test("optional couple (2)",          () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Optional(new Couple(new Optional('a',), new Optional('b',),),),).innerCollection,).toBeInstanceOf(CollectionHolderOf2,),)
+        test("couple (1 before)",            () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Couple(new Optional('a',), EmptyOptional.get,),)                .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
+        test("optional couple (1 before)",   () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Optional(new Couple(new Optional('a',), EmptyOptional.get,),),) .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
+        test("couple (1 after)",             () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Couple(EmptyOptional.get, new Optional('a',),),)                .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
+        test("optional couple (1 after)",    () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Optional(new Couple(EmptyOptional.get, new Optional('a',),),),) .innerCollection,).toBeInstanceOf(SingleValueCollectionHolder,),)
+        test("couple (2)",                   () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Couple(new Optional('a',), new Optional('b',),),)               .innerCollection,).toBeInstanceOf(DualValueCollectionHolder,),)
+        test("optional couple (2)",          () => expect(new LazyCollectionHolderOf0Or1Or2_InnerCollectionTest(() => new Optional(new Couple(new Optional('a',), new Optional('b',),),),).innerCollection,).toBeInstanceOf(DualValueCollectionHolder,),)
     },)
 
 },)
