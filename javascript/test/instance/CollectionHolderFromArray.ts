@@ -23,12 +23,11 @@ import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplemen
 export class CollectionHolderFromArray<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {
 
-    public readonly array
     readonly #size
 
-    public constructor(array: Array<T>,) {
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        this.#size = (this.array = array).length
+        this.#size = array.length
     }
 
     public get size(): number { return this.#size }

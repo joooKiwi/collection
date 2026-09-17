@@ -29,12 +29,10 @@ import {CollectionHolderFromArray}      from "./CollectionHolderFromArray"
 export class CollectionIteratorFromArray<const T, >
     extends AbstractCollectionIterator<T> {
 
-    public readonly array
     public readonly collection
 
-    public constructor(array: Array<T>,) {
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        this.array = array
         this.collection = new CollectionHolderFromArray(array,)
     }
 
