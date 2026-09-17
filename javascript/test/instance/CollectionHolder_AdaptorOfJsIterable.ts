@@ -18,32 +18,19 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {JsIterableAsCollectionHolder}    from "../../src/JsIterableAsCollectionHolder"
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
+import {JsIterableAsCollectionHolder}                 from "../../src/JsIterableAsCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /** A class to test the functionality of a {@link JsIterableAsCollectionHolder} */
 export class CollectionHolder_AdaptorOfJsIterable<const T, >
-    extends AbstractCollectionHolderForTest<T> {
-
-    //#region -------------------- Fields --------------------
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: JsIterableAsCollectionHolder<T, Array<T>>
 
-    //#endregion -------------------- Fields --------------------
-
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetByJsIterableAdaptor
-            extends JsIterableAsCollectionHolder<T, Array<T>> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-        }(array,)
+        this.instance = new JsIterableAsCollectionHolder(array,)
     }
 
     //#region -------------------- Size methods --------------------

@@ -10,44 +10,57 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Array} from "@joookiwi/type"
+import type {CollectionHolder}                from "../../src/CollectionHolder"
 
-import type {CollectionHolder} from "../../src/CollectionHolder"
-
-import {MinimalistCollectionViewer}      from "../../src/MinimalistCollectionViewer"
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {CollectionHolderFromArray}       from "./CollectionHolderFromArray"
+import {MinimalistCollectionViewer}                   from "../../src/MinimalistCollectionViewer"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
+import {CollectionHolderFromArray}                    from "./CollectionHolderFromArray"
+import {ABCD}                                         from "../value/arrays"
 
 /**
  * A class to test the functionality of a {@link MinimalistCollectionViewer}
  * for both {@link MinimalistCollectionViewer.size get size}
- * and {@link MinimalistCollectionViewer.get get}.
- *
- * The remaining methods are from the extension methods for a {@link MinimalistCollectionHolder}
- *
- * @typeParam T The type
+ * and {@link MinimalistCollectionViewer.get get}
  */
-export class CollectionHolder_ByMinimalistViewer<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+export class CollectionHolder_ByMinimalistViewer
+    extends AbstractUnimplementedCollectionHolderForTest<string> {
+
+    //#region -------------------- Fields --------------------
+
+    /** The amount of time {@link MinimalistCollectionViewer.size} has been called */
+    public size_amountOfCall = 0
+    /** The amount of time {@link MinimalistCollectionViewer.get} has been called */
+    public get_amountOfCall = 0
 
     /** The internal instance that is tested */
-    public readonly instance: MinimalistCollectionViewer<T, CollectionHolderFromArray<T>>
+    public readonly instance: MinimalistCollectionViewer<string, CollectionHolderFromArray<string>>
 
-    public readonly reference: CollectionHolderFromArray<T>
+    public readonly reference: CollectionHolderFromArray<string>
 
-    public constructor(public readonly array: Array<T>,) {
+    //#endregion -------------------- Fields --------------------
+    //#region -------------------- Constructor --------------------
+
+    public constructor() {
         super()
         const $this = this
-        this.instance = new class CollectionHolder_CountingGetByMinimalistViewer
-            extends MinimalistCollectionViewer<T, CollectionHolderFromArray<T>> {
+        this.instance = new MinimalistCollectionViewer(this.reference = new class CollectionHolder_CountingByMinimalistViewer
+            extends CollectionHolderFromArray<string> {
 
-            public override get(index: number,): T {
-                $this.amountOfCall++
+            public override get size(): number {
+                $this.size_amountOfCall++
+                return super.size
+            }
+
+            public override get(index: number,): string {
+                $this.get_amountOfCall++
                 return super.get(index,)
             }
 
-        }(this.reference = new CollectionHolderFromArray(array,),)
+        }(ABCD,),)
     }
+
+    //#endregion -------------------- Constructor --------------------
+    //#region -------------------- Methods --------------------
 
     //#region -------------------- Size methods --------------------
 
@@ -64,7 +77,7 @@ export class CollectionHolder_ByMinimalistViewer<const T, >
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 
-    public override get(index: number,): T { return this.instance.get(index,) }
+    public override get(index: number,): string { return this.instance.get(index,) }
 
     public override getFirst(): never { throw new Error("The method “getFirst” was not expected to be called.") }
     public override getLast(): never { throw new Error("The method “getLast” was not expected to be called.") }
@@ -107,7 +120,7 @@ export class CollectionHolder_ByMinimalistViewer<const T, >
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    public override all<const S extends T, >(): this is CollectionHolder<S>
+    public override all<const S extends string, >(): this is CollectionHolder<S>
     public override all(): never { throw new Error("The method “all” was not expected to be called.") }
     public override any(): never { throw new Error("The method “any” was not expected to be called.") }
     public override none(): never { throw new Error("The method “none” was not expected to be called.") }
@@ -194,5 +207,7 @@ export class CollectionHolder_ByMinimalistViewer<const T, >
     public override joinToString(): never { throw new Error("The method “joinToString” was not expected to be called.") }
 
     //#endregion -------------------- Conversion methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }

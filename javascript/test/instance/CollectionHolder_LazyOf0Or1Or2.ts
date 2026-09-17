@@ -20,11 +20,11 @@ import type {CollectionHolderOfSame0Or1Or2}                                     
 import type {CollectionIteratorOfSame0Or1Or2}                                                                                                                                                                                                                                   from "../../src/type/iterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {LazyCollectionHolderOf0Or1Or2}   from "../../src/LazyCollectionHolderOf0Or1Or2"
-import {EmptyOptional}                   from "../../src/optional/EmptyOptional"
-import {Optional}                        from "../../src/optional/Optional"
-import {Couple}                          from "../../src/tuple/Couple"
+import {LazyCollectionHolderOf0Or1Or2}                from "../../src/LazyCollectionHolderOf0Or1Or2"
+import {EmptyOptional}                                from "../../src/optional/EmptyOptional"
+import {Optional}                                     from "../../src/optional/Optional"
+import {Couple}                                       from "../../src/tuple/Couple"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A class to test the functionality of a {@link LazyCollectionHolderOf0Or1Or2}
@@ -36,10 +36,10 @@ import {Couple}                          from "../../src/tuple/Couple"
 export class CollectionHolder_LazyOf0Or1Or2<const T,
     const T1 extends T = T,
     const T2 extends T = T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: LazyCollectionHolderOf0Or1Or2ForTest<T>
+    public readonly instance: LazyCollectionHolderOf0Or1Or2<T>
 
     public readonly value1: Optional<T1>
     public readonly value2: Optional<T2>
@@ -51,24 +51,12 @@ export class CollectionHolder_LazyOf0Or1Or2<const T,
     public constructor(value1?: T1, value2?: T2,) {
         super()
 
-        const values = this.values = arguments.length === 0
-            ? new Couple(this.value1 = EmptyOptional.get, this.value2 = EmptyOptional.get,)
+        const values: Couple<Optional<T>, Optional<T>> = this.values = arguments.length === 0
+            ? this.values = new Couple(this.value1 = EmptyOptional.get, this.value2 = EmptyOptional.get,)
             : arguments.length === 1
                 ? new Couple(this.value1 = new Optional(value1 as T1,), this.value2 = EmptyOptional.get,)
                 : new Couple(this.value1 = new Optional(value1 as T1,), this.value2 = new Optional(value2 as T2,),)
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetOnLazyOf0Or1Or2
-            extends LazyCollectionHolderOf0Or1Or2<T>
-            implements LazyCollectionHolderOf0Or1Or2ForTest<T> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-            public get innerCollection(): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection }
-
-        }(() => values,)
+        this.instance = new LazyCollectionHolderOf0Or1Or2(() => values,)
     }
 
     //#region -------------------- Size methods --------------------
@@ -451,12 +439,5 @@ export class CollectionHolder_LazyOf0Or1Or2<const T,
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.instance.joinToString(separator, prefix, postfix, limit, truncated, transform,) }
 
     //#endregion -------------------- Conversion methods --------------------
-
-}
-
-interface LazyCollectionHolderOf0Or1Or2ForTest<out T, >
-    extends LazyCollectionHolderOf0Or1Or2<T> {
-
-    readonly innerCollection: CollectionHolderOfSame0Or1Or2<T>
 
 }

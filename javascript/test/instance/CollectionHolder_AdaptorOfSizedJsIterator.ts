@@ -18,34 +18,22 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {JsIteratorAsCollectionHolder}    from "../../src/JsIteratorAsCollectionHolder"
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
+import {JsIteratorAsCollectionHolder}                 from "../../src/JsIteratorAsCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /** A class to test the functionality of a {@link JsIteratorAsCollectionHolder} with a size argument */
 export class CollectionHolder_AdaptorOfSizedJsIterator<const T, >
-    extends AbstractCollectionHolderForTest<T> {
-
-    //#region -------------------- Fields --------------------
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: JsIteratorAsCollectionHolder<T, ArrayIterator<T>>
 
+    /** The iterator that is sent to the {@link instance} */
     public readonly iterator: ArrayIterator<T>
-
-    //#endregion -------------------- Fields --------------------
 
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetBySizedJsIteratorAdaptor
-            extends JsIteratorAsCollectionHolder<T, ArrayIterator<T>> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-        }(this.iterator = array[Symbol.iterator](), array.length,)
+        this.instance = new JsIteratorAsCollectionHolder(this.iterator = array[Symbol.iterator](), array.length,)
     }
 
     //#region -------------------- Size methods --------------------

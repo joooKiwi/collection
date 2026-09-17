@@ -18,8 +18,8 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {LazyCollectionHolder}            from "../../src/LazyCollectionHolder"
+import {LazyCollectionHolder}                         from "../../src/LazyCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A class to test the functionality of a {@link LazyCollectionHolder}
@@ -27,26 +27,14 @@ import {LazyCollectionHolder}            from "../../src/LazyCollectionHolder"
  * @typeParam T The type
  */
 export class CollectionHolder_Lazy<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: LazyCollectionHolderForTest<T>
+    public readonly instance: LazyCollectionHolder<T>
 
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetOnLazy
-            extends LazyCollectionHolder<T>
-            implements LazyCollectionHolderForTest<T> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-            public get innerCollection(): CollectionHolder<T> { return this._innerCollection }
-
-        }(array,)
+        this.instance = new LazyCollectionHolder(array,)
     }
 
     //#region -------------------- Size methods --------------------
@@ -429,12 +417,5 @@ export class CollectionHolder_Lazy<const T, >
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.instance.joinToString(separator, prefix, postfix, limit, truncated, transform,) }
 
     //#endregion -------------------- Conversion methods --------------------
-
-}
-
-interface LazyCollectionHolderForTest<T,>
-    extends LazyCollectionHolder<T> {
-
-    readonly innerCollection: CollectionHolder<T>
 
 }

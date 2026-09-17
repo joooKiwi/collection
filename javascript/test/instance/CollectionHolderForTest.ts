@@ -11,16 +11,23 @@
 //··························································
 
 import type {CollectionHolder}                from "../../src/CollectionHolder"
-import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
 /**
- * A {@link StraightCollectionHolderForTest} that has more utility methods
+ * A {@link CollectionHolder} that has utility methods
  * and is watching the amount of time {@link get} is being called for the tests
  *
  * @typeParam T The type
  */
 export interface CollectionHolderForTest<out T, >
-    extends StraightCollectionHolderForTest<T> {
+    extends CollectionHolder<T> {
+
+    /**
+     * Do an action on the curent {@link StraightCollectionHolderForTest instance}
+     * and return itself afterward
+     *
+     * @param action The action to do
+     */
+    execute(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}

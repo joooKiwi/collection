@@ -10,603 +10,176 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, Set, TemplateOrNumber} from "@joookiwi/type"
+import type {Array} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
-import type {CollectionHolderName}                                                                                                                                                                                                                                              from "../../src/type/toStringTag"
+import type {CollectionHolder} from "../../src/CollectionHolder"
 
-import {CollectionHolderFromArray} from "./CollectionHolderFromArray"
+import {CollectionHolderFromArray}                    from "./CollectionHolderFromArray"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A {@link CollectionHolder} having the structure of it,
  * but without inheriting the {@link AbstractCollectionHolder}.
  *
- * Internally, it is using a {@link CollectionHolderFromArray} for every method
+ * Internally, it is using a {@link CollectionHolderFromArray} for every method (that is supported by it).
  *
  * @typeParam T The type
  */
 export class CollectionHolder_ByStructure<const T, >
-    implements CollectionHolder<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
-    [index: TemplateOrNumber]: undefined
     public readonly reference
 
-    public constructor(array: Array<T>,) { this.reference = new CollectionHolderFromArray(array,) }
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
+        super()
+        this.reference = new CollectionHolderFromArray(array,)
+    }
 
     //#region -------------------- Size methods --------------------
 
-    public get size(): number { return this.reference.size }
-    public get length(): this["size"] { return this.reference.length }
-    public get count(): this["size"] { return this.reference.count }
+    public override get size(): number { return this.reference.size }
 
-    public get isEmpty(): boolean { return this.reference.isEmpty }
-    public get isNotEmpty(): boolean { return this.reference.isNotEmpty }
+    public override get isEmpty(): boolean { return this.reference.isEmpty }
+    public override get isNotEmpty(): boolean { return this.reference.isNotEmpty }
 
-    public get hasAtLeast1Element(): this["isNotEmpty"] { return this.reference.hasAtLeast1Element }
-    public get containsAtLeast1Element(): this["isNotEmpty"] { return this.reference.containsAtLeast1Element }
-    public get includesAtLeast1Element(): this["isNotEmpty"] { return this.reference.includesAtLeast1Element }
+    public override get hasExactly1Element(): boolean { return this.reference.hasExactly1Element }
+    public override get hasAtMost1Element(): never { throw new Error("The getter method “hasAtMost1Element” was not expected to be called.") }
 
-    public get hasExactly1Element(): boolean { return this.reference.hasExactly1Element }
-    public get containsExactly1Element(): this["hasExactly1Element"] { return this.reference.containsExactly1Element }
-    public get includesExactly1Element(): this["hasExactly1Element"] { return this.reference.includesExactly1Element }
-
-    public get hasAtMost1Element(): boolean { return this.reference.hasAtMost1Element }
-    public get containsAtMost1Element(): this["hasAtMost1Element"] { return this.reference.containsAtMost1Element }
-    public get includesAtMost1Element(): this["hasAtMost1Element"] { return this.reference.includesAtMost1Element }
-
-    public get hasAtLeast2Elements(): boolean { return this.reference.hasAtLeast2Elements }
-    public get containsAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.reference.containsAtLeast2Elements }
-    public get includesAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.reference.includesAtLeast2Elements }
-
-    public get hasExactly2Elements(): boolean { return this.reference.hasExactly2Elements }
-    public get containsExactly2Elements(): this["hasExactly2Elements"] { return this.reference.containsExactly2Elements }
-    public get includesExactly2Elements(): this["hasExactly2Elements"] { return this.reference.includesExactly2Elements }
-
-    public get hasAtMost2Elements(): boolean { return this.reference.hasAtMost2Elements }
-    public get containsAtMost2Elements(): this["hasAtMost2Elements"] { return this.reference.containsAtMost2Elements }
-    public get includesAtMost2Elements(): this["hasAtMost2Elements"] { return this.reference.includesAtMost2Elements }
+    public override get hasAtLeast2Elements(): never { throw new Error("The getter method “hasAtLeast2Elements” was not expected to be called.") }
+    public override get hasExactly2Elements(): boolean { return this.reference.hasExactly2Elements }
+    public override get hasAtMost2Elements(): never { throw new Error("The getter method “hasAtMost2Elements” was not expected to be called.") }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 
-    //#region -------------------- Get --------------------
+    public override get(index: number,): T { return this.reference.get(index,) }
+    public override getFirst(): T { return this.reference.getFirst() }
+    public override getLast(): T { return this.reference.getLast() }
 
-    public get(index: number,): T { return this.reference.get(index,) }
-    public getFirst(): T { return this.reference.getFirst() }
-    public getLast(): T { return this.reference.getLast() }
+    public override getOrElse(): never { throw new Error("The method “getOrElse” was not expected to be called.") }
+    public override getFirstOrElse(): never { throw new Error("The method “getFirstOrElse” was not expected to be called.") }
+    public override getLastOrElse(): never { throw new Error("The method “getLastOrElse” was not expected to be called.") }
+    public override getOrNull(): never { throw new Error("The method “getOrNull” was not expected to be called.") }
+    public override getFirstOrNull(): never { throw new Error("The method “getFirstOrNull” was not expected to be called.") }
+    public override getLastOrNull(): never { throw new Error("The method “getLastOrNull” was not expected to be called.") }
 
-    public at(index: number,): T { return this.reference.at(index,) }
+    public override findFirst(): never { throw new Error("The method “findFirst” was not expected to be called.") }
+    public override findFirstOrNull(): never { throw new Error("The method “findFirstOrNull” was not expected to be called.") }
+    public override findFirstIndexed(): never { throw new Error("The method “findFirstIndexed” was not expected to be called.") }
+    public override findFirstIndexedOrNull(): never { throw new Error("The method “findFirstIndexedOrNull” was not expected to be called.") }
 
-    public elementAt(index: number,): T { return this.reference.elementAt(index,) }
-
-
-    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.getOrElse(index, defaultValue,) }
-
-    public getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
-    public getFirstOrElse(defaultValue: ReturnCallback<T>,): T
-    public getFirstOrElse(defaultValue: ReturnCallback<unknown>,) { return this.reference.getFirstOrElse(defaultValue,) }
-
-    public getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
-    public getLastOrElse(defaultValue: ReturnCallback<T>,): T
-    public getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return this.reference.getLastOrElse(defaultValue,) }
-
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.atOrElse(index, defaultValue,) }
-
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.elementAtOrElse(index, defaultValue,) }
-
-
-    public getOrNull(index: number,): NullOr<T> { return this.reference.getOrNull(index,) }
-    public getFirstOrNull(): NullOr<T> { return this.reference.getFirstOrNull() }
-    public getLastOrNull(): NullOr<T> { return this.reference.getLastOrNull() }
-
-    public atOrNull(index: number,): NullOr<T> { return this.reference.atOrNull(index,) }
-
-    public elementAtOrNull(index: number,): NullOr<T> { return this.reference.elementAtOrNull(index,) }
-
-    //#endregion -------------------- Get --------------------
-    //#region -------------------- First --------------------
-
-    public first(): T
-    public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
-    public first(predicate: Nullable<BooleanCallback<T>>,): T
-    public first(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.first(predicate,) }
-
-    public firstOrNull(): NullOr<T>
-    public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.firstOrNull(predicate,) }
-
-    public firstIndexed(): T
-    public firstIndexed<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
-    public firstIndexed(predicate: Nullable<ReverseBooleanCallback<T>>,): T
-    public firstIndexed(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.firstIndexed(predicate,) }
-
-    public firstIndexedOrNull(): NullOr<T>
-    public firstIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public firstIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
-    public firstIndexedOrNull(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.firstIndexedOrNull(predicate,) }
-
-    //#endregion -------------------- First --------------------
-    //#region -------------------- Last --------------------
-
-    public last(): T
-    public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
-    public last(predicate: Nullable<BooleanCallback<T>>,): T
-    public last(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.last(predicate,) }
-
-    public lastOrNull(): NullOr<T>
-    public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.lastOrNull(predicate,) }
-
-    public lastIndexed(): T
-    public lastIndexed<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
-    public lastIndexed(predicate: Nullable<ReverseBooleanCallback<T>>,): T
-    public lastIndexed(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.lastIndexed(predicate,) }
-
-    public lastIndexedOrNull(): NullOr<T>
-    public lastIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public lastIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
-    public lastIndexedOrNull(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.lastIndexedOrNull(predicate,) }
-
-    //#endregion -------------------- Last --------------------
-    //#region -------------------- Find first --------------------
-
-    public findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
-    public findFirst(predicate: BooleanCallback<T>,): T
-    public findFirst(predicate: BooleanCallback<T>,) { return this.reference.findFirst(predicate,) }
-
-    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
-    public find(predicate: BooleanCallback<T>,): T
-    public find(predicate: BooleanCallback<T>,) { return this.reference.find(predicate,) }
-
-
-    public findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
-    public findFirstOrNull(predicate: BooleanCallback<T>,) { return this.reference.findFirstOrNull(predicate,) }
-
-    public findOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findOrNull(predicate: BooleanCallback<T>,): NullOr<T>
-    public findOrNull(predicate: BooleanCallback<T>,) { return this.reference.findOrNull(predicate,) }
-
-
-    public findFirstIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
-    public findFirstIndexed(predicate: ReverseBooleanCallback<T>,): T
-    public findFirstIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.findFirstIndexed(predicate,) }
-
-    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
-    public findIndexed(predicate: ReverseBooleanCallback<T>,): T
-    public findIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.findIndexed(predicate,) }
-
-
-    public findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.reference.findFirstIndexedOrNull(predicate,) }
-
-    public findIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.reference.findIndexedOrNull(predicate,) }
-
-    //#endregion -------------------- Find first --------------------
-    //#region -------------------- Find last --------------------
-
-    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
-    public findLast(predicate: BooleanCallback<T>,): T
-    public findLast(predicate: BooleanCallback<T>,) { return this.reference.findLast(predicate,) }
-
-    public findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
-    public findLastOrNull(predicate: BooleanCallback<T>,) { return this.reference.findLastOrNull(predicate,) }
-
-    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): T
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.findLastIndexed(predicate,) }
-
-    public findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.reference.findLastIndexedOrNull(predicate,) }
-
-    //#endregion -------------------- Find last --------------------
+    public override findLast(): never { throw new Error("The method “findLast” was not expected to be called.") }
+    public override findLastOrNull(): never { throw new Error("The method “findLastOrNull” was not expected to be called.") }
+    public override findLastIndexed(): never { throw new Error("The method “findLastIndexed” was not expected to be called.") }
+    public override findLastIndexedOrNull(): never { throw new Error("The method “findLastIndexedOrNull” was not expected to be called.") }
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.firstIndexOf(element, from, to,) }
-    public indexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.indexOf(element, from, to,) }
-    public firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.firstIndexOfOrNull(element, from, to,) }
-    public indexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.indexOfOrNull(element, from, to,) }
+    public override firstIndexOf(): never { throw new Error("The method “firstIndexOf” was not expected to be called.") }
+    public override firstIndexOfOrNull(): never { throw new Error("The method “firstIndexOfOrNull” was not expected to be called.") }
 
-    public lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.lastIndexOf(element, from, to,) }
-    public lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.lastIndexOfOrNull(element, from, to,) }
+    public override lastIndexOf(): never { throw new Error("The method “lastIndexOf” was not expected to be called.") }
+    public override lastIndexOfOrNull(): never { throw new Error("The method “lastIndexOfOrNull” was not expected to be called.") }
 
-    public indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.indexOfFirst(predicate, from, to,) }
-    public findFirstIndex(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.findFirstIndex(predicate, from, to,) }
-    public findIndex(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.findIndex(predicate, from, to,) }
-    public indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.indexOfFirstOrNull(predicate, from, to,) }
-    public findFirstIndexOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.findFirstIndexOrNull(predicate, from, to,) }
-    public findIndexOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.findIndexOrNull(predicate, from, to,) }
+    public override indexOfFirst(): never { throw new Error("The method “indexOfFirst” was not expected to be called.") }
+    public override indexOfFirstOrNull(): never { throw new Error("The method “indexOfFirstOrNull” was not expected to be called.") }
+    public override indexOfFirstIndexed(): never { throw new Error("The method “indexOfFirstIndexed” was not expected to be called.") }
+    public override indexOfFirstIndexedOrNull(): never { throw new Error("The method “indexOfFirstIndexedOrNull” was not expected to be called.") }
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.indexOfFirstIndexed(predicate, from, to,) }
-    public findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.findFirstIndexIndexed(predicate, from, to,) }
-    public findIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.findIndexIndexed(predicate, from, to,) }
-    public indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.indexOfFirstIndexedOrNull(predicate, from, to,) }
-    public findFirstIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.findFirstIndexIndexedOrNull(predicate, from, to,) }
-    public findIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.findIndexIndexedOrNull(predicate, from, to,) }
-
-    public indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.indexOfLast(predicate, from, to,) }
-    public findLastIndex(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.findLastIndex(predicate, from, to,) }
-    public indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.indexOfLastOrNull(predicate, from, to,) }
-    public findLastIndexOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.findLastIndexOrNull(predicate, from, to,) }
-
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.indexOfLastIndexed(predicate, from, to,) }
-    public findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.reference.findLastIndexIndexed(predicate, from, to,) }
-    public indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.indexOfLastIndexedOrNull(predicate, from, to,) }
-    public findLastIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.reference.findLastIndexIndexedOrNull(predicate, from, to,) }
+    public override indexOfLast(): never { throw new Error("The method “indexOfLast” was not expected to be called.") }
+    public override indexOfLastOrNull(): never { throw new Error("The method “indexOfLastOrNull” was not expected to be called.") }
+    public override indexOfLastIndexed(): never { throw new Error("The method “indexOfLastIndexed” was not expected to be called.") }
+    public override indexOfLastIndexedOrNull(): never { throw new Error("The method “indexOfLastIndexedOrNull” was not expected to be called.") }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    //#region -------------------- All --------------------
+    public override all<const S extends T, >(): this is CollectionHolder<S>
+    public override all(): never { throw new Error("The method “all” was not expected to be called.") }
+    public override any(): never { throw new Error("The method “any” was not expected to be called.") }
+    public override none(): never { throw new Error("The method “none” was not expected to be called.") }
 
-    public all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
-    public all(predicate: BooleanCallback<T>,): boolean
-    public all(predicate: BooleanCallback<T>,) { return this.reference.all(predicate,) }
+    public override get hasNull(): never { throw new Error("The getter method “hasNull” was not expected to be called.") }
+    public override get hasNoNulls(): never { throw new Error("The getter method “hasNoNulls” was not expected to be called.") }
+    public override get hasDuplicate(): never { throw new Error("The getter method “hasDuplicate” was not expected to be called.") }
+    public override get hasNoDuplicates(): never { throw new Error("The getter method “hasNoDuplicates” was not expected to be called.") }
 
-    public every<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
-    public every(predicate: BooleanCallback<T>,): boolean
-    public every(predicate: BooleanCallback<T>,) { return this.reference.every(predicate,) }
+    public override has(): never { throw new Error("The method “has” was not expected to be called.") }
+    public override hasNot(): never { throw new Error("The method “hasNot” was not expected to be called.") }
+    public override hasOne(): never { throw new Error("The method “hasOne” was not expected to be called.") }
+    public override hasNotOne(): never { throw new Error("The method “hasNotOne” was not expected to be called.") }
+    public override hasAll(): never { throw new Error("The method “hasAll” was not expected to be called.") }
+    public override hasNotAll(): never { throw new Error("The method “hasNotAll” was not expected to be called.") }
 
-    //#endregion -------------------- All --------------------
-    //#region -------------------- Any --------------------
-
-    public any(): this["isEmpty"]
-    public any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public any(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.any(predicate,) }
-
-    public some(): this["isEmpty"]
-    public some(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public some(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.some(predicate,) }
-
-    //#endregion -------------------- Any --------------------
-    //#region -------------------- None --------------------
-
-    public none(): this["isNotEmpty"]
-    public none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public none(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.none(predicate,) }
-
-    //#endregion -------------------- None --------------------
-
-    //#region -------------------- Has null --------------------
-
-    public get hasNull(): boolean { return this.reference.hasNull }
-    public get includesNull(): this["hasNull"] { return this.reference.includesNull }
-    public get containsNull(): this["hasNull"] { return this.reference.containsNull }
-
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has no nulls --------------------
-
-    public get hasNoNulls(): boolean { return this.reference.hasNoNulls }
-    public get includesNoNulls(): this["hasNoNulls"] { return this.reference.includesNoNulls }
-    public get containsNoNulls(): this["hasNoNulls"] { return this.reference.containsNoNulls }
-
-    //#endregion -------------------- Has no nulls --------------------
-    //#region -------------------- Has duplicate --------------------
-
-    public get hasDuplicate(): boolean { return this.reference.hasDuplicate }
-    public get includesDuplicate(): this["hasDuplicate"] { return this.reference.includesDuplicate }
-    public get containsDuplicate(): this["hasDuplicate"] { return this.reference.containsDuplicate }
-
-    //#endregion -------------------- Has duplicate --------------------
-    //#region -------------------- Has no duplicates --------------------
-
-    public get hasNoDuplicates(): boolean { return this.reference.hasNoDuplicates }
-    public get includesNoDuplicates(): this["hasNoDuplicates"] { return this.reference.includesNoDuplicates }
-    public get containsNoDuplicates(): this["hasNoDuplicates"] { return this.reference.containsNoDuplicates }
-
-    //#endregion -------------------- Has no duplicates --------------------
-
-    //#region -------------------- Has --------------------
-
-    public has(value: T,): boolean { return this.reference.has(value,) }
-
-    public includes(value: T,): boolean { return this.reference.includes(value,) }
-
-    public contains(value: T,): boolean { return this.reference.contains(value,) }
-
-    //#endregion -------------------- Has --------------------
-    //#region -------------------- Has not --------------------
-
-    public hasNot(value: T,): boolean { return this.reference.hasNot(value,) }
-
-    public includesNot(value: T,): boolean { return this.reference.includesNot(value,) }
-
-    public containsNot(value: T,): boolean { return this.reference.containsNot(value,) }
-
-    //#endregion -------------------- Has not --------------------
-    //#region -------------------- Has one --------------------
-
-    public hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.hasOne(values,) }
-
-    public includesOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.includesOne(values,) }
-
-    public containsOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.containsOne(values,) }
-
-    //#endregion -------------------- Has one --------------------
-    //#region -------------------- Has not one --------------------
-
-    public hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.hasNotOne(values,) }
-
-    public includesNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.includesNotOne(values,) }
-
-    public containsNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.containsNotOne(values,) }
-
-    //#endregion -------------------- Has not one --------------------
-    //#region -------------------- Has all --------------------
-
-    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.hasAll(values,) }
-
-    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.includesAll(values,) }
-
-    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.containsAll(values,) }
-
-    //#endregion -------------------- Has all --------------------
-    //#region -------------------- Has not all --------------------
-
-    public hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.hasNotAll(values,) }
-
-    public includesNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.includesNotAll(values,) }
-
-    public containsNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.reference.containsNotAll(values,) }
-
-    //#endregion -------------------- Has not all --------------------
-
-    //#region -------------------- Require no nulls --------------------
-
-    public requireNoNulls(): CollectionHolder<NonNullable<T>> { return this.reference.requireNoNulls() }
-
-    //#endregion -------------------- Require no nulls --------------------
+    public override requireNoNulls(): never { throw new Error("The method “requireNoNulls” was not expected to be called.") }
 
     //#endregion -------------------- Validation methods --------------------
     //#region -------------------- Transformation methods --------------------
 
-    //#region -------------------- Filter --------------------
+    public override filter(): never { throw new Error("The method “filter” was not expected to be called.") }
+    public override filterIndexed(): never { throw new Error("The method “filterIndexed” was not expected to be called.") }
+    public override filterNot(): never { throw new Error("The method “filterNot” was not expected to be called.") }
+    public override filterNotIndexed(): never { throw new Error("The method “filterNotIndexed” was not expected to be called.") }
+    public override filterNotNull(): never { throw new Error("The method “filterNotNull” was not expected to be called.") }
 
-    public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public filter(predicate: BooleanCallback<T>,) { return this.reference.filter(predicate,) }
+    public override slice(): never { throw new Error("The method “slice” was not expected to be called.") }
 
-    public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.filterIndexed(predicate,) }
+    public override take(): never { throw new Error("The method “take” was not expected to be called.") }
+    public override takeWhile(): never { throw new Error("The method “takeWhile” was not expected to be called.") }
+    public override takeWhileIndexed(): never { throw new Error("The method “takeWhileIndexed” was not expected to be called.") }
+    public override takeLast(): never { throw new Error("The method “takeLast” was not expected to be called.") }
+    public override takeLastWhile(): never { throw new Error("The method “takeLastWhile” was not expected to be called.") }
+    public override takeLastWhileIndexed(): never { throw new Error("The method “takeLastWhileIndexed” was not expected to be called.") }
 
-    public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public filterNot(predicate: BooleanCallback<T>,) { return this.reference.filterNot(predicate,) }
+    public override drop(): never { throw new Error("The method “drop” was not expected to be called.") }
+    public override dropWhile(): never { throw new Error("The method “dropWhile” was not expected to be called.") }
+    public override dropWhileIndexed(): never { throw new Error("The method “dropWhileIndexed” was not expected to be called.") }
+    public override dropLast(): never { throw new Error("The method “dropLast” was not expected to be called.") }
+    public override dropLastWhile(): never { throw new Error("The method “dropLastWhile” was not expected to be called.") }
+    public override dropLastWhileIndexed(): never { throw new Error("The method “dropLastWhileIndexed” was not expected to be called.") }
 
-    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.filterNotIndexed(predicate,) }
-
-
-    public filterNotNull(): CollectionHolder<NonNullable<T>> { return this.reference.filterNotNull() }
-
-    //#endregion -------------------- Filter --------------------
-    //#region -------------------- Slice --------------------
-
-    public slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) { return this.reference.slice(indicesOrFrom, to,) }
-
-    //#endregion -------------------- Slice --------------------
-
-    //#region -------------------- Take --------------------
-
-    public take(n: number,): CollectionHolder<T> { return this.reference.take(n,) }
-
-    public limit(n: number,): CollectionHolder<T> { return this.reference.limit(n,) }
-
-
-    public takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public takeWhile(predicate: BooleanCallback<T>,) { return this.reference.takeWhile(predicate,) }
-
-    public limitWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public limitWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public limitWhile(predicate: BooleanCallback<T>,) { return this.reference.limitWhile(predicate,) }
-
-
-    public takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.takeWhileIndexed(predicate,) }
-
-    public limitWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public limitWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public limitWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.limitWhileIndexed(predicate,) }
-
-    //#endregion -------------------- Take --------------------
-    //#region -------------------- Take last --------------------
-
-    public takeLast(n: number,): CollectionHolder<T> { return this.reference.takeLast(n,) }
-
-    public limitLast(n: number,): CollectionHolder<T> { return this.reference.limitLast(n,) }
-
-
-    public takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public takeLastWhile(predicate: BooleanCallback<T>,) { return this.reference.takeLastWhile(predicate,) }
-
-    public limitLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public limitLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public limitLastWhile(predicate: BooleanCallback<T>,) { return this.reference.limitLastWhile(predicate,) }
-
-
-    public takeLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.takeLastWhileIndexed(predicate,) }
-
-    public limitLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public limitLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public limitLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.limitLastWhileIndexed(predicate,) }
-
-    //#endregion -------------------- Take end --------------------
-    //#region -------------------- Drop --------------------
-
-    public drop(n: number,): CollectionHolder<T> { return this.reference.drop(n,) }
-
-    public skip(n: number,): CollectionHolder<T> { return this.reference.skip(n,) }
-
-
-    public dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public dropWhile(predicate: BooleanCallback<T>,) { return this.reference.dropWhile(predicate,) }
-
-    public skipWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public skipWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public skipWhile(predicate: BooleanCallback<T>,) { return this.reference.skipWhile(predicate,) }
-
-
-    public dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.dropWhileIndexed(predicate,) }
-
-    public skipWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public skipWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public skipWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.skipWhileIndexed(predicate,) }
-
-    //#endregion -------------------- Drop --------------------
-    //#region -------------------- Drop last --------------------
-
-    public dropLast(n: number,): CollectionHolder<T> { return this.reference.dropLast(n,) }
-
-    public skipLast(n: number,): CollectionHolder<T> { return this.reference.skipLast(n,) }
-
-
-    public dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public dropLastWhile(predicate: BooleanCallback<T>,) { return this.reference.dropLastWhile(predicate,) }
-
-    public skipLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public skipLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public skipLastWhile(predicate: BooleanCallback<T>,) { return this.reference.skipLastWhile(predicate,) }
-
-
-    public dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.dropLastWhileIndexed(predicate,) }
-
-    public skipLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public skipLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public skipLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.skipLastWhileIndexed(predicate,) }
-
-    //#endregion -------------------- Drop last --------------------
-
-    //#region -------------------- Map --------------------
-
-    public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> { return this.reference.map(transform,) }
-
-    public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> { return this.reference.mapIndexed(transform,) }
-
-
-    public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> { return this.reference.mapNotNull(transform,) }
-
-    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> { return this.reference.mapNotNullIndexed(transform,) }
-
-    //#endregion -------------------- Map --------------------
+    public override map(): never { throw new Error("The method “map” was not expected to be called.") }
+    public override mapIndexed(): never { throw new Error("The method “mapIndexed” was not expected to be called.") }
+    public override mapNotNull(): never { throw new Error("The method “mapNotNull” was not expected to be called.") }
+    public override mapNotNullIndexed(): never { throw new Error("The method “mapNotNullIndexed” was not expected to be called.") }
 
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- For each --------------------
+    public override forEach(): never { throw new Error("The method “forEach” was not expected to be called.") }
+    public override forEachIndexed(): never { throw new Error("The method “forEachIndexed” was not expected to be called.") }
 
-    public forEach(action: ValueIndexCallback<T>,): void { this.reference.forEach(action,) }
-
-    public forEachIndexed(action: IndexValueCallback<T>,): void { this.reference.forEachIndexed(action,) }
-
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- On each --------------------
-
-    public onEach(action: ValueIndexCallback<T>,): this {
-        this.reference.onEach(action,)
-        return this
-    }
-
-    public onEachIndexed(action: IndexValueCallback<T>,): this {
-        this.reference.onEachIndexed(action,)
-        return this
-    }
-
-    //#endregion -------------------- On each --------------------
+    public override onEach(): never { throw new Error("The method “onEach” was not expected to be called.") }
+    public override onEachIndexed(): never { throw new Error("The method “onEachIndexed” was not expected to be called.") }
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    //#region -------------------- To reverse --------------------
-
-    public toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this.reference.toReverse(from, to,) }
-
-    public toReversed(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this.reference.toReversed(from, to,) }
-
-    public reversed(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this.reference.reversed(from, to,) }
-
-    //#endregion -------------------- To reverse --------------------
+    public override toReverse(): never { throw new Error("The method “toReverse” was not expected to be called.") }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
-
-    public [Symbol.iterator](): CollectionIterator<T> { return this.reference[Symbol.iterator]() }
-
-    public get [Symbol.toStringTag](): CollectionHolderName { return this.reference[Symbol.toStringTag] }
-
-    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    //#region -------------------- To other structure --------------------
+    public override toIterator(): never { throw new Error("The method “toIterator” was not expected to be called.") }
 
-    public toIterator(): CollectionIterator<T> { return this.reference.toIterator() }
+    public override toArray(): never { throw new Error("The method “toArray” was not expected to be called.") }
+    public override toMutableArray(): never { throw new Error("The method “toMutableArray” was not expected to be called.") }
 
-    public toArray(): Array<T> { return this.reference.toArray() }
-    public toMutableArray(): MutableArray<T> { return this.reference.toMutableArray() }
+    public override toSet(): never { throw new Error("The method “toSet” was not expected to be called.") }
+    public override toMutableSet(): never { throw new Error("The method “toMutableSet” was not expected to be called.") }
 
-    public toSet(): Set<T> { return this.reference.toSet() }
-    public toMutableSet(): MutableSet<T> { return this.reference.toMutableSet() }
+    public override toMap(): never { throw new Error("The method “toMap” was not expected to be called.") }
+    public override toMutableMap(): never { throw new Error("The method “toMutableMap” was not expected to be called.") }
 
-    public toMap(): NumberKeyMap<T> { return this.reference.toMap() }
-    public toMutableMap(): MutableNumberKeyMap<T> { return this.reference.toMutableMap() }
+    public override toString(): never { throw new Error("The method “toString” was not expected to be called.") }
+    public override toLocaleString(): never { throw new Error("The method “toLocaleString” was not expected to be called.") }
+    public override toLowerCaseString(): never { throw new Error("The method “toLowerCaseString” was not expected to be called.") }
+    public override toLocaleLowerCaseString(): never { throw new Error("The method “toLocaleLowerCaseString” was not expected to be called.") }
+    public override toUpperCaseString(): never { throw new Error("The method “toUpperCaseString” was not expected to be called.") }
+    public override toLocaleUpperCaseString(): never { throw new Error("The method “toLocaleUpperCaseString” was not expected to be called.") }
 
-    //#endregion -------------------- To other structure --------------------
-    //#region -------------------- To string --------------------
-
-    public toString(): string { return this.reference.toString() }
-
-    public toLocaleString(locale?: NullableString,): string { return this.reference.toLocaleString(locale,) }
-
-
-    public toLowerCaseString(): string { return this.reference.toLowerCaseString() }
-
-    public toLocaleLowerCaseString(locale?: NullableString,): string { return this.reference.toLocaleLowerCaseString(locale,) }
-
-
-    public toUpperCaseString(): string { return this.reference.toUpperCaseString() }
-
-    public toLocaleUpperCaseString(locale?: NullableString,): string { return this.reference.toLocaleUpperCaseString(locale,) }
-
-    //#endregion -------------------- To string --------------------
-    //#region -------------------- Join to string --------------------
-
-    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.reference.joinToString(separator, prefix, postfix, limit, truncated, transform,) }
-
-    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.reference.join(separator, prefix, postfix, limit, truncated, transform,) }
-
-    //#endregion -------------------- Join to string --------------------
+    public override joinToString(): never { throw new Error("The method “joinToString” was not expected to be called.") }
 
     //#endregion -------------------- Conversion methods --------------------
 

@@ -16,8 +16,8 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
 
-import {CollectionIteratorOf1}             from "../../src/iterator/CollectionIteratorOf1"
-import {AbstractCollectionIteratorForTest} from "./AbstractCollectionIteratorForTest"
+import {AbstractUnimplementedCollectionIteratorForTest} from "./AbstractUnimplementedCollectionIteratorForTest"
+import {CollectionIteratorOf1}                          from "../../src/iterator/CollectionIteratorOf1"
 
 /**
  * A class to test the functionality of a {@link CollectionIteratorOf1}
@@ -25,7 +25,7 @@ import {AbstractCollectionIteratorForTest} from "./AbstractCollectionIteratorFor
  * @typeParam T The type
  */
 export class CollectionIterator_1<const T, >
-    extends AbstractCollectionIteratorForTest<T> {
+    extends AbstractUnimplementedCollectionIteratorForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: CollectionIteratorOf1<T>

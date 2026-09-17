@@ -29,6 +29,9 @@ import {AbstractMinimalistCollectionHolderForTest}        from "./AbstractMinima
 export class CollectionHolder_ByMinimalistCollection<const T, >
     extends AbstractMinimalistCollectionHolderForTest<T> {
 
+    /** The amount of time the specific method ({@link MinimalistCollectionHolder.get}) has been called */
+    public amountOfCall = 0
+
     /** The internal instance that is tested */
     public readonly instance: GenericMinimalistCollectionHolder<T>
 

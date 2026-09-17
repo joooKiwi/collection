@@ -108,11 +108,11 @@ import {toReverseByMinimalistCollectionHolder}                 from "../../src/m
 import {toSetByMinimalistCollectionHolder}                     from "../../src/method/toSet"
 import {toStringByMinimalistCollectionHolder}                  from "../../src/method/toString"
 import {toUpperCaseStringByMinimalistCollectionHolder}         from "../../src/method/toUpperCaseString"
-import {AbstractCollectionHolderForTest}                       from "./AbstractCollectionHolderForTest"
+import {AbstractUnimplementedCollectionHolderForTest}          from "./AbstractUnimplementedCollectionHolderForTest"
 
 /** A common ancestor that have the methods reference to the {@link MinimalistCollectionHolder} extension methods */
 export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     protected constructor() { super() }
 

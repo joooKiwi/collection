@@ -15,16 +15,17 @@ import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 import type {CollectionIterator}                                                                   from "../../src/iterator/CollectionIterator"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../../src/type/callback"
 import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
-import type {CollectionIteratorName}                                                               from "../../src/type/toStringTag"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
-import type {CollectionIteratorForTest}                                                            from "./CollectionIteratorForTest"
+import {CollectionIteratorForTest}                                                                 from "./CollectionIteratorForTest"
 
 /**
- * A bare-bone implementation of a {@link CollectionIteratorForTest} with nothing implemented
+ * A definition of a {@link CollectionIterator} to have a common ancestor **only for the tests**.
+ *
+ * Plus, all the aliases should always throw {@link Error}.
  *
  * @typeParam T The type
  */
-export abstract class AbstractCollectionIteratorForTest<const T, >
+export abstract class AbstractUnimplementedCollectionIteratorForTest<const T, >
     implements CollectionIteratorForTest<T> {
 
     protected constructor() {}
@@ -258,7 +259,9 @@ export abstract class AbstractCollectionIteratorForTest<const T, >
 
     public abstract [Symbol.iterator](): CollectionIterator<T>
 
-    public get [Symbol.toStringTag](): CollectionIteratorName { return "CollectionIterator" }
+    public get [Symbol.toStringTag](): never {
+        throw new Error("The symbol getter method “toStringTag” was not expected to be called.",)
+    }
 
     //#endregion -------------------- JavaScript methods --------------------
 

@@ -21,10 +21,10 @@ import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, 
 import type {CollectionHolderOf0Or1}                                                                                                                                                                                                                                            from "../../src/type/collection"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {LazyCollectionHolderOf0Or1}      from "../../src/LazyCollectionHolderOf0Or1"
-import {EmptyOptional}                   from "../../src/optional/EmptyOptional"
-import {Optional}                        from "../../src/optional/Optional"
+import {LazyCollectionHolderOf0Or1}                   from "../../src/LazyCollectionHolderOf0Or1"
+import {EmptyOptional}                                from "../../src/optional/EmptyOptional"
+import {Optional}                                     from "../../src/optional/Optional"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A class to test the functionality of a {@link LazyCollectionHolderOf0Or1}
@@ -32,10 +32,10 @@ import {Optional}                        from "../../src/optional/Optional"
  * @typeParam T The type
  */
 export class CollectionHolder_LazyOf0Or1<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: LazyCollectionHolderOf0Or1ForTest<T>
+    public readonly instance: LazyCollectionHolderOf0Or1<T>
 
     public readonly value: Optional<T>
 
@@ -44,19 +44,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     public constructor(value?: T,) {
         super()
         const optional = this.value = arguments.length === 0 ? EmptyOptional.get : new Optional(value as T,)
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetOnLazyOf0Or1
-            extends LazyCollectionHolderOf0Or1<T>
-            implements LazyCollectionHolderOf0Or1ForTest<T> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-            public get innerCollection(): CollectionHolderOf0Or1<T> { return this._innerCollection }
-
-        }(() => optional,)
+        this.instance = new LazyCollectionHolderOf0Or1(() => optional,)
     }
 
     //#region -------------------- Size methods --------------------
@@ -439,12 +427,5 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.instance.joinToString(separator, prefix, postfix, limit, truncated, transform,) }
 
     //#endregion -------------------- Conversion methods --------------------
-
-}
-
-interface LazyCollectionHolderOf0Or1ForTest<T,>
-    extends LazyCollectionHolderOf0Or1<T> {
-
-    readonly innerCollection: CollectionHolderOf0Or1<T>
 
 }

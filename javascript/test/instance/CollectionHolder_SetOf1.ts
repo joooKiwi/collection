@@ -10,19 +10,16 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Array, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberKeyMap, Set} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {CollectionHolderOf1}                                                                                                                                                                                                                                               from "../../src/CollectionHolderOf1"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "../../src/iterator/CollectionIteratorOf1"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIndexOrNull}                                                                                                                                                                                      from "../../src/type/value"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {SetOf1AsCollectionHolder}        from "../../src/SetOf1AsCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
+import {SetOf1AsCollectionHolder}                     from "../../src/SetOf1AsCollectionHolder"
 
 /**
  * A class to test the functionality of a {@link SetOf1AsCollectionHolder}
@@ -30,58 +27,45 @@ import {SetOf1AsCollectionHolder}        from "../../src/SetOf1AsCollectionHolde
  * @typeParam T The type
  */
 export class CollectionHolder_SetOf1<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: SetOf1AsCollectionHolder<T>
 
+    /** The set that is sent to the {@link instance} */
     public readonly set: Set<T>
 
     public constructor(public readonly value: T,) {
         super()
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetOnSetOf1
-            extends SetOf1AsCollectionHolder<T> {
-
-            public override get<const I extends number, >(index: I,): SingleValueFromIndex<I, T>
-            public override get(index: number,): T
-            public override get(index: number,) {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-        }(this.set = new Set([value,],),)
+        this.instance = new SetOf1AsCollectionHolder(this.set = new Set([value,],),)
     }
 
     //#region -------------------- Size methods --------------------
 
-    public override get size(): 1 { return this.instance.size }
+    public override get size(): number { return this.instance.size }
 
-    public override get isEmpty(): false { return this.instance.isEmpty }
-    public override get isNotEmpty(): true { return this.instance.isNotEmpty }
+    public override get isEmpty(): boolean { return this.instance.isEmpty }
+    public override get isNotEmpty(): boolean { return this.instance.isNotEmpty }
 
-    public override get hasExactly1Element(): true { return this.instance.hasExactly1Element }
-    public override get hasAtMost1Element(): true { return this.instance.hasAtMost1Element }
+    public override get hasExactly1Element(): boolean { return this.instance.hasExactly1Element }
+    public override get hasAtMost1Element(): boolean { return this.instance.hasAtMost1Element }
 
-    public override get hasAtLeast2Elements(): false { return this.instance.hasAtLeast2Elements }
-    public override get hasExactly2Elements(): false { return this.instance.hasExactly2Elements }
-    public override get hasAtMost2Elements(): true { return this.instance.hasAtMost2Elements }
+    public override get hasAtLeast2Elements(): boolean { return this.instance.hasAtLeast2Elements }
+    public override get hasExactly2Elements(): boolean { return this.instance.hasExactly2Elements }
+    public override get hasAtMost2Elements(): boolean { return this.instance.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 
     //#region -------------------- Get --------------------
 
-    public override get<const I extends number, >(index: number,): SingleValueFromIndex<I, T>
-    public override get(index: number,): T
-    public override get(index: number,) { return this.instance.get(index,) }
+    public override get(index: number,): T { return this.instance.get(index,) }
 
     public override getFirst(): T { return this.instance.getFirst() }
 
     public override getLast(): T { return this.instance.getLast() }
 
 
-    public override getOrElse<const U, const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<U>,): SingleValueFromIndexOrElse<I, T, U>
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.instance.getOrElse(index, defaultValue,) }
@@ -95,12 +79,11 @@ export class CollectionHolder_SetOf1<const T, >
     public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return this.instance.getLastOrElse(defaultValue,) }
 
 
-    public override getOrNull<const I extends number, >(index: I,): SingleValueFromIndexOrNull<I, T>
-    public override getOrNull(index: number,) { return this.instance.getOrNull(index,) }
+    public override getOrNull(index: number,): NullOr<T> { return this.instance.getOrNull(index,) }
 
-    public override getFirstOrNull(): T { return this.instance.getFirstOrNull() }
+    public override getFirstOrNull(): NullOr<T> { return this.instance.getFirstOrNull() }
 
-    public override getLastOrNull(): T { return this.instance.getLastOrNull() }
+    public override getLastOrNull(): NullOr<T> { return this.instance.getLastOrNull() }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- Find --------------------
@@ -143,21 +126,21 @@ export class CollectionHolder_SetOf1<const T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): 0 { return this.instance.firstIndexOf(element, from, to,) }
-    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this.instance.firstIndexOfOrNull(element, from, to,) }
+    public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.firstIndexOf(element, from, to,) }
+    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.firstIndexOfOrNull(element, from, to,) }
 
-    public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): 0 { return this.instance.lastIndexOf(element, from, to,) }
-    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this.instance.lastIndexOfOrNull(element, from, to,) }
+    public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.lastIndexOf(element, from, to,) }
+    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.lastIndexOfOrNull(element, from, to,) }
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this.instance.indexOfFirst(predicate, from, to,) }
-    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this.instance.indexOfFirstOrNull(predicate, from, to,) }
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this.instance.indexOfFirstIndexed(predicate, from, to,) }
-    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this.instance.indexOfFirstIndexedOrNull(predicate, from, to,) }
+    public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.indexOfFirst(predicate, from, to,) }
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstOrNull(predicate, from, to,) }
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.indexOfFirstIndexed(predicate, from, to,) }
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstIndexedOrNull(predicate, from, to,) }
 
-    public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this.instance.indexOfLast(predicate, from, to,) }
-    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this.instance.indexOfLastOrNull(predicate, from, to,) }
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): 0 { return this.instance.indexOfLastIndexed(predicate, from, to,) }
-    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber { return this.instance.indexOfLastIndexedOrNull(predicate, from, to,) }
+    public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.indexOfLast(predicate, from, to,) }
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastOrNull(predicate, from, to,) }
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.indexOfLastIndexed(predicate, from, to,) }
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastIndexedOrNull(predicate, from, to,) }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
@@ -397,15 +380,15 @@ export class CollectionHolder_SetOf1<const T, >
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOf1<T> { return this.instance.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this.instance.toReverse(from, to,) }
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toIterator(): CollectionIteratorOf1<T> { return this.instance.toIterator() }
+    public override toIterator(): CollectionIterator<T> { return this.instance.toIterator() }
 
-    public override toArray(): readonly [T,] { return this.instance.toArray() }
-    public override toMutableArray(): [T,] { return this.instance.toMutableArray() }
+    public override toArray(): Array<T> { return this.instance.toArray() }
+    public override toMutableArray(): MutableArray<T> { return this.instance.toMutableArray() }
     public override toSet(): Set<T> { return this.instance.toSet() }
     public override toMutableSet(): MutableSet<T> { return this.instance.toMutableSet() }
     public override toMap(): NumberKeyMap<T, 0> { return this.instance.toMap() }

@@ -18,7 +18,7 @@ import type {CollectionIterator}                                 from "../../src
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
 import type {CollectionHolder_FromExtension}                     from "./CollectionHolder_FromExtension"
 
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A base-bone implementation of a {@link CollectionHolderForTest} with `null` or `undefined` being the value
@@ -26,18 +26,10 @@ import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest
  * @typeParam The type
  */
 export abstract class AbstractNullCollectionHolderForTest<const T, >
-    extends AbstractCollectionHolderForTest<T>
+    extends AbstractUnimplementedCollectionHolderForTest<T>
     implements CollectionHolder_FromExtension<T> {
 
     public constructor() { super() }
-
-    public override get amountOfCall(): never {
-        throw new Error("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
-    }
-
-    public override set amountOfCall(_: unknown,) {
-        throw new Error("The setter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
-    }
 
     public override get size(): never {
         throw new Error("The method “size” was not expected to be called directly.",)

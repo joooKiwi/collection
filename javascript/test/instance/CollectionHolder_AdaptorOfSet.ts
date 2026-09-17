@@ -18,36 +18,26 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {SetAsCollectionHolder}           from "../../src/SetAsCollectionHolder"
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
+import {SetAsCollectionHolder}                        from "../../src/SetAsCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /** A class to test the functionality of a {@link SetAsCollectionHolder} */
 export class CollectionHolder_AdaptorOfSet<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     //#region -------------------- Fields --------------------
 
     /** The internal instance that is tested */
     public readonly instance: SetAsCollectionHolder<T>
 
-    /** The set containing the {@link array} received in the {@link constructor} */
+    /** The set that is sent to the {@link instance} */
     public readonly set: Set<T>
 
     //#endregion -------------------- Fields --------------------
 
     public constructor(/** The array received in the {@link constructor} */ public readonly array: Array<T>,) {
         super()
-        const set = this.set = new Set(array,)
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetBySetAdaptor
-            extends SetAsCollectionHolder<T> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-        }(set,)
+        this.instance = new SetAsCollectionHolder(this.set = new Set(array,),)
     }
 
     //#region -------------------- Size methods --------------------

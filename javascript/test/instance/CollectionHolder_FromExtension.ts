@@ -26,17 +26,6 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src
 export interface CollectionHolder_FromExtension<out T, >
     extends CollectionHolder<T> {
 
-    /** The never possible amount of call {@link CollectionHolder.get} has been called */
-    get amountOfCall(): never
-
-    /**
-     * Never modify the amount of call of {@link CollectionHolder.get}
-     *
-     * @param _ The never used value
-     * @throws Error (<i>always</i>) The never possible change of the {@link amountOfCall}
-     */
-    set amountOfCall(_: unknown,)
-
     hasOneWithArray(values: Nullable<Array<T>>,): boolean
     hasOneWithSet(values: Nullable<Set<T>>,): boolean
     hasOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean

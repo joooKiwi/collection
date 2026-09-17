@@ -18,35 +18,27 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {IteratorAsCollectionHolder}      from "../../src/IteratorAsCollectionHolder"
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {CollectionIteratorFromArray}     from "./CollectionIteratorFromArray"
+import {IteratorAsCollectionHolder}                   from "../../src/IteratorAsCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
+import {CollectionIteratorFromArray}                  from "./CollectionIteratorFromArray"
 
 /** A class to test the functionality of a {@link IteratorAsCollectionHolder} */
 export class CollectionHolder_AdaptorOfIterator<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     //#region -------------------- Fields --------------------
 
     /** The internal instance that is tested */
     public readonly instance: IteratorAsCollectionHolder<T, CollectionIteratorFromArray<T>>
 
+    /** The reference that is sent to the {@link instance} */
     public readonly reference: CollectionIteratorFromArray<T>
 
     //#endregion -------------------- Fields --------------------
 
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetByIteratorAdaptor
-            extends IteratorAsCollectionHolder<T, CollectionIteratorFromArray<T>> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-        }(this.reference = new CollectionIteratorFromArray(array,),)
+        this.instance = new IteratorAsCollectionHolder(this.reference = new CollectionIteratorFromArray(array,),)
     }
 
     //#region -------------------- Size methods --------------------

@@ -65,14 +65,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
 
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) { super() }
 
-    public override get amountOfCall(): never {
-        throw new Error("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
-    }
-
-    public override set amountOfCall(_: unknown,) {
-        throw new Error("The setter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
-    }
-
     public override get size(): number {
         return this.array.length
     }

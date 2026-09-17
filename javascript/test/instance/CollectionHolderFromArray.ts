@@ -12,7 +12,7 @@
 
 import type {Array} from "@joookiwi/type"
 
-import {AbstractCollectionHolder} from "../../src/AbstractCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A {@link CollectionHolder} having the functionality from an {@link ReadonlyArray array}
@@ -21,7 +21,7 @@ import {AbstractCollectionHolder} from "../../src/AbstractCollectionHolder"
  * @typeParam T The type
  */
 export class CollectionHolderFromArray<const T, >
-    extends AbstractCollectionHolder<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     public readonly array
     readonly #size

@@ -145,7 +145,7 @@ import {toReverseByCollectionHolder}                               from "../../s
 import {toSetByCollectionHolder}                                   from "../../src/method/toSet"
 import {toStringByCollectionHolder}                                from "../../src/method/toString"
 import {toUpperCaseStringByCollectionHolder}                       from "../../src/method/toUpperCaseString"
-import {AbstractCollectionHolderForTest}                           from "./AbstractCollectionHolderForTest"
+import {AbstractUnimplementedCollectionHolderForTest}              from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A test instance to exclusively test the extension methods for
@@ -154,22 +154,11 @@ import {AbstractCollectionHolderForTest}                           from "./Abstr
  * @typeParam T The type
  */
 export class CollectionHolder_FromExtensionFunction<const T, >
-    extends AbstractCollectionHolderForTest<T>
+    extends AbstractUnimplementedCollectionHolderForTest<T>
     implements CollectionHolder_FromExtension<T> {
 
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) { super() }
 
-    //#region -------------------- Test utility methods --------------------
-
-    public override get amountOfCall(): never {
-        throw new Error("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
-    }
-
-    public override set amountOfCall(_: unknown,) {
-        throw new Error("The setter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
-    }
-
-    //#endregion -------------------- Test utility methods --------------------
     //#region -------------------- Size methods --------------------
 
     public get size(): number {
