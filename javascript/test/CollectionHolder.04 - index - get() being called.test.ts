@@ -21,7 +21,6 @@ import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                      
 describe("CollectionHolderTest (index) ~ get() being called", () => {
     //README: The adaptor classes are ignored since they rely on the apdated class instead.
     //        The lazy classes are ignored since they use inner class(es) instead.
-    //        The viewer instances are ignored since they rely on the viewed class instead.
     //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
     describe("empty ~ collection (by minimalist)", () => {

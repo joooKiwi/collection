@@ -17,8 +17,10 @@ import {CollectionHolder_ArrayOf1Follower}                                      
 import {CollectionHolder_ArrayOf2Follower}                                                                 from "./instance/CollectionHolder_ArrayOf2.follower"
 import {CollectionHolder_1Follower}                                                                        from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                        from "./instance/CollectionHolder_2.follower"
+import {CollectionHolder_ByViewer}                                                                         from "./instance/CollectionHolder_ByViewer"
 import {CollectionHolder_ByViewerFollower}                                                                 from "./instance/CollectionHolder_ByViewer.follower"
 import {CollectionHolder_ByGenericCollectionFollower}                                                      from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_ByMinimalistViewer}                                                               from "./instance/CollectionHolder_ByMinimalistViewer"
 import {CollectionHolder_AdaptorOfIteratorFollower}                                                        from "./instance/CollectionHolder_AdaptorOfIterator.follower"
 import {CollectionHolder_AdaptorOfJsIteratorFollower}                                                      from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
 import {CollectionHolder_AdaptorOfJsIterableFollower}                                                      from "./instance/CollectionHolder_AdaptorOfJsIterable.follower"
@@ -730,6 +732,18 @@ describe("CollectionHolderTest (size)", () => {
         test("hasExactly2Elements", () => expect(instance.hasExactly2Elements,).toBeFalse(),)
         test("hasAtMost2Elements",  () => expect(instance.hasAtMost2Elements,) .toBeTrue(),)
     },)},)
+
+    describe("viewer", () => {
+        test("minimalist ~ size",   () => expect(new CollectionHolder_ByMinimalistViewer().execute(it => it.size,)               .size_amountOfCall,)               .toBe(1,),)
+        test("normal ~ size",       () => expect(new CollectionHolder_ByViewer()          .execute(it => it.size,)               .size_amountOfCall,)               .toBe(1,),)
+        test("isEmpty",             () => expect(new CollectionHolder_ByViewer()          .execute(it => it.isEmpty,)            .isEmpty_amountOfCall,)            .toBe(1,),)
+        test("isNotEmpty",          () => expect(new CollectionHolder_ByViewer()          .execute(it => it.isNotEmpty,)         .isNotEmpty_amountOfCall,)         .toBe(1,),)
+        test("hasExactly1Element",  () => expect(new CollectionHolder_ByViewer()          .execute(it => it.hasExactly1Element,) .hasExactly1Element_amountOfCall,) .toBe(1,),)
+        test("hasAtMost1Element",   () => expect(new CollectionHolder_ByViewer()          .execute(it => it.hasAtMost1Element,)  .hasAtMost1Element_amountOfCall,)  .toBe(1,),)
+        test("hasAtLeast2Elements", () => expect(new CollectionHolder_ByViewer()          .execute(it => it.hasAtLeast2Elements,).hasAtLeast2Elements_amountOfCall,).toBe(1,),)
+        test("hasExactly2Elements", () => expect(new CollectionHolder_ByViewer()          .execute(it => it.hasExactly2Elements,).hasExactly2Elements_amountOfCall,).toBe(1,),)
+        test("hasAtMost2Elements",  () => expect(new CollectionHolder_ByViewer()          .execute(it => it.hasAtMost2Elements,) .hasAtMost2Elements_amountOfCall,) .toBe(1,),)
+    },)
 
     describe("instances", () => {
         describe("empty", () => {

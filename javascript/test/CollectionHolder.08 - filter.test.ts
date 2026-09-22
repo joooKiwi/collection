@@ -15,6 +15,7 @@ import {describe, expect, test} from "vitest"
 import {expectToBeInstance}                                                                                                                                                                                                  from "./expect/expectToBeInstance"
 import {CollectionHolder_ByGenericCollection}                                                                                                                                                                                from "./instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByMinimalistCollection}                                                                                                                                                                             from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByViewer}                                                                                                                                                                                           from "./instance/CollectionHolder_ByViewer"
 import {A, A_NULL_B, A_NULL_UNDEFINED_B, A_UNDEFINED_B, AB, AB_NULL, AB_UNDEFINED, ABC, ABCD, ABD, AC, ACD, B, BCD, BD, C, D, EMPTY, NULL_AB, UNDEFINED_AB}                                                                  from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}                                                                                                             from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                   from "./value/callbacks (fail)"
@@ -48,7 +49,6 @@ describe("CollectionHolderTest (filter)", () => {
     describe("get() being called", () => {
         //README: The adaptor classes are ignored since they rely on the apdated class instead.
         //        The lazy classes are ignored since they use inner class(es) instead.
-        //        The viewer instances are ignored since they rely on the viewed class instead.
         //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
         describe("empty ~ collection (by minimalist)", () => {
@@ -330,6 +330,14 @@ describe("CollectionHolderTest (filter)", () => {
 
     describe("filterNotNull ~ same instance validation", () => {
         //TODO: add Same instance validations for filterNotNull
+    },)
+
+    describe("viewer", () => {
+        test("filter",           () => expect(new CollectionHolder_ByViewer().execute(it => it.filter(callbackAsTrue0,),)          .filter_amountOfCall,)          .toBe(1,),)
+        test("filterNot",        () => expect(new CollectionHolder_ByViewer().execute(it => it.filterNot(callbackAsTrue0,),)       .filterNot_amountOfCall,)       .toBe(1,),)
+        test("filterIndexed",    () => expect(new CollectionHolder_ByViewer().execute(it => it.filterIndexed(callbackAsTrue0,),)   .filterIndexed_amountOfCall,)   .toBe(1,),)
+        test("filterNotIndexed", () => expect(new CollectionHolder_ByViewer().execute(it => it.filterNotIndexed(callbackAsTrue0,),).filterNotIndexed_amountOfCall,).toBe(1,),)
+        test("filterNotNull",    () => expect(new CollectionHolder_ByViewer().execute(it => it.filterNotNull(),)                   .filterNotNull_amountOfCall,)   .toBe(1,),)
     },)
 
     describe("instances", () => {

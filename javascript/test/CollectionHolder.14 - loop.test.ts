@@ -14,6 +14,7 @@ import {describe, expect, test} from "vitest"
 
 import {CollectionHolder_ByGenericCollection}                                                                                                                                                                                                                                                                       from "./instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByMinimalistCollection}                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByViewer}                                                                                                                                                                                                                                                                                  from "./instance/CollectionHolder_ByViewer"
 import {expectToBeInstance}                                                                                                                                                                                                                                                                                         from "./expect/expectToBeInstance"
 import {A, AB, ABCD, EMPTY}                                                                                                                                                                                                                                                                                         from "./value/arrays"
 import {callback0, callback1, callback2}                                                                                                                                                                                                                                                                            from "./value/callbacks"
@@ -44,7 +45,6 @@ describe("CollectionHolderTest (loop)", () => {
     describe("get() being called", () => {
         //README: The adaptor classes are ignored since they rely on the apdated class instead.
         //        The lazy classes are ignored since they use inner class(es) instead.
-        //        The viewer instances are ignored since they rely on the viewed class instead.
         //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
         describe("empty ~ collection (by minimalist)", () => {
@@ -235,6 +235,13 @@ describe("CollectionHolderTest (loop)", () => {
             },)
         },)
 
+    },)
+
+    describe("viewer", () => {
+        test("forEach",        () => expect(new CollectionHolder_ByViewer().execute(it => it.forEach(callback0,),)       .forEach_amountOfCall,)       .toBe(1,),)
+        test("forEachIndexed", () => expect(new CollectionHolder_ByViewer().execute(it => it.forEachIndexed(callback0,),).forEachIndexed_amountOfCall,).toBe(1,),)
+        test("onEach",         () => expect(new CollectionHolder_ByViewer().execute(it => it.onEach(callback0,),)        .forEach_amountOfCall,)       .toBe(1,),)
+        test("onEachIndexed",  () => expect(new CollectionHolder_ByViewer().execute(it => it.onEachIndexed(callback0,),) .forEachIndexed_amountOfCall,).toBe(1,),)
     },)
 
     describe("for‥of", () => {

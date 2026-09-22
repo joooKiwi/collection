@@ -18,6 +18,7 @@ import {CollectionHolderFromArray}                                              
 import {CollectionHolder_ByMinimalistCollection}                                                                                                                                           from "./instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByGenericCollection}                                                                                                                                              from "./instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByStructure}                                                                                                                                                      from "./instance/CollectionHolder_ByStructure"
+import {CollectionHolder_ByViewer}                                                                                                                                                         from "./instance/CollectionHolder_ByViewer"
 import {CollectionIteratorFromArray}                                                                                                                                                       from "./instance/CollectionIteratorFromArray"
 import {CollectionIterator_ByStructure}                                                                                                                                                    from "./instance/CollectionIterator_ByStructure"
 import {IterableForTest}                                                                                                                                                                   from "./instance/IterableForTest"
@@ -60,7 +61,6 @@ describe("CollectionHolderTest (slice)", () => {
     describe("get() being called", () => {
         //README: The adaptor classes are ignored since they rely on the apdated class instead.
         //        The lazy classes are ignored since they use inner class(es) instead.
-        //        The viewer instances are ignored since they rely on the viewed class instead.
         //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
         describe("empty ~ collection (by minimalist)", () => {
@@ -1984,6 +1984,8 @@ describe("CollectionHolderTest (slice)", () => {
         },)
 
     },)
+
+    test("viewer", () => expect(new CollectionHolder_ByViewer().execute(it => it.slice(),).slice_amountOfCall,).toBe(1,),)
 
     describe("instances", () => {
         describe("empty", () => {

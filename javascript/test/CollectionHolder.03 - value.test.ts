@@ -25,7 +25,9 @@ import {CollectionHolder_ArrayOf2Follower}                                      
 import {CollectionHolder_ByGenericCollection}                                                              from "./instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByGenericCollectionFollower}                                                      from "./instance/CollectionHolder_ByGenericCollection.follower"
 import {CollectionHolder_ByMinimalistCollection}                                                           from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByMinimalistViewer}                                                               from "./instance/CollectionHolder_ByMinimalistViewer"
 import {CollectionHolder_ByViewerFollower}                                                                 from "./instance/CollectionHolder_ByViewer.follower"
+import {CollectionHolder_ByViewer}                                                                         from "./instance/CollectionHolder_ByViewer"
 import {CollectionHolder_LazyFollower}                                                                     from "./instance/CollectionHolder_Lazy.follower"
 import {CollectionHolder_LazyOf0Or1Follower}                                                               from "./instance/CollectionHolder_LazyOf0Or1.follower"
 import {CollectionHolder_LazyOf0Or1Or2Follower}                                                            from "./instance/CollectionHolder_LazyOf0Or1Or2.follower"
@@ -712,7 +714,6 @@ describe("CollectionHolderTest (value)", () => {
     describe("get() being called", () => {
         //README: The adaptor classes are ignored since they rely on the apdated class instead.
         //        The lazy classes are ignored since they use inner class(es) instead.
-        //        The viewer instances are ignored since they rely on the viewed class instead.
         //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
         describe("empty ~ collection (by minimalist)", () => {
@@ -824,13 +825,25 @@ describe("CollectionHolderTest (value)", () => {
         },)
     },)
 
+    describe("viewer", () => {
+        test("minimalist ~ get", () => expect(new CollectionHolder_ByMinimalistViewer().execute(it => it.get(0,),)                         .get_amountOfCall,)           .toBe(1,),)
+        test("normal ~ get",     () => expect(new CollectionHolder_ByViewer()          .execute(it => it.get(0,),)                         .get_amountOfCall,)           .toBe(1,),)
+        test("getFirst",         () => expect(new CollectionHolder_ByViewer()          .execute(it => it.getFirst(),)                      .getFirst_amountOfCall,)      .toBe(1,),)
+        test("getLast",          () => expect(new CollectionHolder_ByViewer()          .execute(it => it.getLast(),)                       .getLast_amountOfCall,)       .toBe(1,),)
+        test("getOrElse",        () => expect(new CollectionHolder_ByViewer()          .execute(it => it.getOrElse(0, callbackAsFail0,),)  .getOrElse_amountOfCall,)     .toBe(1,),)
+        test("getFirstOrElse",   () => expect(new CollectionHolder_ByViewer()          .execute(it => it.getFirstOrElse(callbackAsFail0,),).getFirstOrElse_amountOfCall,).toBe(1,),)
+        test("getLastOrElse",    () => expect(new CollectionHolder_ByViewer()          .execute(it => it.getLastOrElse(callbackAsFail0,),) .getLastOrElse_amountOfCall,) .toBe(1,),)
+        test("getOrNull",        () => expect(new CollectionHolder_ByViewer()          .execute(it => it.getOrNull(0,),)                   .getOrNull_amountOfCall,)     .toBe(1,),)
+        test("getFirstOrNull",   () => expect(new CollectionHolder_ByViewer()          .execute(it => it.getFirstOrNull(),)                .getFirstOrNull_amountOfCall,).toBe(1,),)
+        test("getLastOrNull",    () => expect(new CollectionHolder_ByViewer()          .execute(it => it.getLastOrNull(),)                 .getLastOrNull_amountOfCall,) .toBe(1,),)
+    },)
+
     describe("instances", () => {
         describe("empty", () => {
-        describe.each(every0Instances,)("%s", ({value: {newInstance, type, isViewer,},},) => {
-            /** The instance is a {@link MinimalistAsCollectionHolder} */
-            const isMinimalistAdaptor = type === "minimalist adaptor";
+        describe.each(every0Instances,)("%s", ({value: {newInstance, type,},},) => {
+            const describeIfNotMinimalistAdaptor = type === "minimalist adaptor" ? describe.skip : describe
 
-            (isMinimalistAdaptor || isViewer ? describe.skip : describe)("get", () => {
+            describeIfNotMinimalistAdaptor("get", () => {
                 test("NaN", () => expect(() => newInstance().get(NaN,),)      .toThrow(EmptyCollectionException,),)
                 test("-∞",  () => expect(() => newInstance().get(-Infinity,),).toThrow(EmptyCollectionException,),)
                 test("-2",  () => expect(() => newInstance().get(-2,),)       .toThrow(EmptyCollectionException,),)
@@ -868,22 +881,20 @@ describe("CollectionHolderTest (value)", () => {
 
         },)},)
         describe("1 field", () => {
-        describe.each(every1Instances,)("%s", ({value: {newInstance, type, isViewer,},},) => {
-            /** The instance is a {@link MinimalistAsCollectionHolder} */
-            const isMinimalistAdaptor = type === "minimalist adaptor"
+        describe.each(every1Instances,)("%s", ({value: {newInstance, type,},},) => {
+            const describeIfNotMinimalistAdaptor = type === "minimalist adaptor" ? describe.skip : describe
 
-            if (!isMinimalistAdaptor && !isViewer)
-                describe("get", () => {
-                    test("NaN", () => expect(() => newInstance('a',).get(NaN,),)      .toThrow(ForbiddenIndexException,),)
-                    test("-∞",  () => expect(() => newInstance('a',).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-3",  () => expect(() => newInstance('a',).get(-3,),)       .toThrow(IndexOutOfBoundsException,),)
-                    test("-2",  () => expect(() => newInstance('a',).get(-2,),)       .toThrow(IndexOutOfBoundsException,),)
-                    test("-1",  () => expect(      newInstance('a',).get(-1,),)       .toBe('a',),)
-                    test('0',   () => expect(      newInstance('a',).get(0,),)        .toBe('a',),)
-                    test('1',   () => expect(() => newInstance('a',).get(1,),)        .toThrow(IndexOutOfBoundsException,),)
-                    test('2',   () => expect(() => newInstance('a',).get(2,),)        .toThrow(IndexOutOfBoundsException,),)
-                    test("+∞",  () => expect(() => newInstance('a',).get(Infinity,),) .toThrow(ForbiddenIndexException,),)
-                },)
+            describeIfNotMinimalistAdaptor("get", () => {
+                test("NaN", () => expect(() => newInstance('a',).get(NaN,),)      .toThrow(ForbiddenIndexException,),)
+                test("-∞",  () => expect(() => newInstance('a',).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-3",  () => expect(() => newInstance('a',).get(-3,),)       .toThrow(IndexOutOfBoundsException,),)
+                test("-2",  () => expect(() => newInstance('a',).get(-2,),)       .toThrow(IndexOutOfBoundsException,),)
+                test("-1",  () => expect(      newInstance('a',).get(-1,),)       .toBe('a',),)
+                test('0',   () => expect(      newInstance('a',).get(0,),)        .toBe('a',),)
+                test('1',   () => expect(() => newInstance('a',).get(1,),)        .toThrow(IndexOutOfBoundsException,),)
+                test('2',   () => expect(() => newInstance('a',).get(2,),)        .toThrow(IndexOutOfBoundsException,),)
+                test("+∞",  () => expect(() => newInstance('a',).get(Infinity,),) .toThrow(ForbiddenIndexException,),)
+            },)
             test("getFirst", () => expect(newInstance('a',).getFirst(),).toBe('a',),)
             test("getLast", () => expect(newInstance('a',).getLast(),).toBe('a',),)
 
@@ -916,24 +927,22 @@ describe("CollectionHolderTest (value)", () => {
             test("getLastOrNull", () => expect(newInstance('a',).getLastOrNull(),).toBe('a',),)
         },)},)
         describe("2 fields", () => {
-        describe.each(every2Instances,)("%s", ({value: {newInstance, type, isViewer,},},) => {
-            /** The instance is a {@link MinimalistAsCollectionHolder} */
-            const isMinimalistAdaptor = type === "minimalist adaptor"
+        describe.each(every2Instances,)("%s", ({value: {newInstance, type,},},) => {
+            const describeIfNotMinimalistAdaptor = type === "minimalist adaptor" ? describe.skip : describe
 
-            if (!isMinimalistAdaptor && !isViewer)
-                describe("get", () => {
-                    test("NaN", () => expect(() => newInstance('a', 'b',).get(NaN,),)      .toThrow(ForbiddenIndexException,),)
-                    test("-∞",  () => expect(() => newInstance('a', 'b',).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-4",  () => expect(() => newInstance('a', 'b',).get(-4,),)       .toThrow(IndexOutOfBoundsException,),)
-                    test("-3",  () => expect(() => newInstance('a', 'b',).get(-3,),)       .toThrow(IndexOutOfBoundsException,),)
-                    test("-2",  () => expect(      newInstance('a', 'b',).get(-2,),)       .toBe('a',),)
-                    test("-1",  () => expect(      newInstance('a', 'b',).get(-1,),)       .toBe('b',),)
-                    test('0',   () => expect(      newInstance('a', 'b',).get(0,),)        .toBe('a',),)
-                    test('1',   () => expect(      newInstance('a', 'b',).get(1,),)        .toBe('b',),)
-                    test('2',   () => expect(() => newInstance('a', 'b',).get(2,),)        .toThrow(IndexOutOfBoundsException,),)
-                    test('3',   () => expect(() => newInstance('a', 'b',).get(3,),)        .toThrow(IndexOutOfBoundsException,),)
-                    test("+∞",  () => expect(() => newInstance('a', 'b',).get(Infinity,),) .toThrow(ForbiddenIndexException,),)
-                },)
+            describeIfNotMinimalistAdaptor("get", () => {
+                test("NaN", () => expect(() => newInstance('a', 'b',).get(NaN,),)      .toThrow(ForbiddenIndexException,),)
+                test("-∞",  () => expect(() => newInstance('a', 'b',).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-4",  () => expect(() => newInstance('a', 'b',).get(-4,),)       .toThrow(IndexOutOfBoundsException,),)
+                test("-3",  () => expect(() => newInstance('a', 'b',).get(-3,),)       .toThrow(IndexOutOfBoundsException,),)
+                test("-2",  () => expect(      newInstance('a', 'b',).get(-2,),)       .toBe('a',),)
+                test("-1",  () => expect(      newInstance('a', 'b',).get(-1,),)       .toBe('b',),)
+                test('0',   () => expect(      newInstance('a', 'b',).get(0,),)        .toBe('a',),)
+                test('1',   () => expect(      newInstance('a', 'b',).get(1,),)        .toBe('b',),)
+                test('2',   () => expect(() => newInstance('a', 'b',).get(2,),)        .toThrow(IndexOutOfBoundsException,),)
+                test('3',   () => expect(() => newInstance('a', 'b',).get(3,),)        .toThrow(IndexOutOfBoundsException,),)
+                test("+∞",  () => expect(() => newInstance('a', 'b',).get(Infinity,),) .toThrow(ForbiddenIndexException,),)
+            },)
             test("getFirst", () => expect(newInstance('a', 'b',).getFirst(),).toBe('a',),)
             test("getLast", () => expect(newInstance('a', 'b',).getLast(),).toBe('b',),)
 
@@ -970,28 +979,26 @@ describe("CollectionHolderTest (value)", () => {
             test("getLastOrNull", () => expect(newInstance('a', 'b',).getLastOrNull(),).toBe('b',),)
         },)},)
         describe("N fields", () => {
-        describe.each(everyNInstances,)("%s", ({value: {instance, type, isViewer,},},) => {
-            /** The instance is a {@link MinimalistAsCollectionHolder} */
-            const isMinimalistAdaptor = type === "minimalist adaptor"
+        describe.each(everyNInstances,)("%s", ({value: {instance, type,},},) => {
+            const describeIfNotMinimalistAdaptor = type === "minimalist adaptor" ? describe.skip : describe
 
-            if (!isMinimalistAdaptor && !isViewer)
-                describe("get", () => {
-                    test("NaN", () => expect(() => new instance(ABCD,).get(NaN,),)      .toThrow(ForbiddenIndexException,),)
-                    test("-∞",  () => expect(() => new instance(ABCD,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-6",  () => expect(() => new instance(ABCD,).get(-6,),)       .toThrow(IndexOutOfBoundsException,),)
-                    test("-5",  () => expect(() => new instance(ABCD,).get(-5,),)       .toThrow(IndexOutOfBoundsException,),)
-                    test("-4",  () => expect(      new instance(ABCD,).get(-4,),)       .toBe('a',),)
-                    test("-3",  () => expect(      new instance(ABCD,).get(-3,),)       .toBe('b',),)
-                    test("-2",  () => expect(      new instance(ABCD,).get(-2,),)       .toBe('c',),)
-                    test("-1",  () => expect(      new instance(ABCD,).get(-1,),)       .toBe('d',),)
-                    test('0',   () => expect(      new instance(ABCD,).get(0,),)        .toBe('a',),)
-                    test('1',   () => expect(      new instance(ABCD,).get(1,),)        .toBe('b',),)
-                    test('2',   () => expect(      new instance(ABCD,).get(2,),)        .toBe('c',),)
-                    test('3',   () => expect(      new instance(ABCD,).get(3,),)        .toBe('d',),)
-                    test('4',   () => expect(() => new instance(ABCD,).get(4,),)        .toThrow(IndexOutOfBoundsException,),)
-                    test('5',   () => expect(() => new instance(ABCD,).get(5,),)        .toThrow(IndexOutOfBoundsException,),)
-                    test("+∞",  () => expect(() => new instance(ABCD,).get(Infinity,),) .toThrow(ForbiddenIndexException,),)
-                },)
+            describeIfNotMinimalistAdaptor("get", () => {
+                test("NaN", () => expect(() => new instance(ABCD,).get(NaN,),)      .toThrow(ForbiddenIndexException,),)
+                test("-∞",  () => expect(() => new instance(ABCD,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-6",  () => expect(() => new instance(ABCD,).get(-6,),)       .toThrow(IndexOutOfBoundsException,),)
+                test("-5",  () => expect(() => new instance(ABCD,).get(-5,),)       .toThrow(IndexOutOfBoundsException,),)
+                test("-4",  () => expect(      new instance(ABCD,).get(-4,),)       .toBe('a',),)
+                test("-3",  () => expect(      new instance(ABCD,).get(-3,),)       .toBe('b',),)
+                test("-2",  () => expect(      new instance(ABCD,).get(-2,),)       .toBe('c',),)
+                test("-1",  () => expect(      new instance(ABCD,).get(-1,),)       .toBe('d',),)
+                test('0',   () => expect(      new instance(ABCD,).get(0,),)        .toBe('a',),)
+                test('1',   () => expect(      new instance(ABCD,).get(1,),)        .toBe('b',),)
+                test('2',   () => expect(      new instance(ABCD,).get(2,),)        .toBe('c',),)
+                test('3',   () => expect(      new instance(ABCD,).get(3,),)        .toBe('d',),)
+                test('4',   () => expect(() => new instance(ABCD,).get(4,),)        .toThrow(IndexOutOfBoundsException,),)
+                test('5',   () => expect(() => new instance(ABCD,).get(5,),)        .toThrow(IndexOutOfBoundsException,),)
+                test("+∞",  () => expect(() => new instance(ABCD,).get(Infinity,),) .toThrow(ForbiddenIndexException,),)
+            },)
             test("getFirst", () => expect(new instance(ABCD,).getFirst(),).toBe('a',),)
             test("getLast", () => expect(new instance(ABCD,).getLast(),).toBe('d',),)
 

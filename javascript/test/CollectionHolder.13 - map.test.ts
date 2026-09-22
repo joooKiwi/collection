@@ -14,6 +14,7 @@ import {describe, expect, test} from "vitest"
 
 import {CollectionHolder_ByGenericCollection}                                                                                                                                      from "./instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByMinimalistCollection}                                                                                                                                   from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByViewer}                                                                                                                                                 from "./instance/CollectionHolder_ByViewer"
 import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL_B_NULL_D, NULL_x2, NULL_x4, UNDEFINED, UNDEFINED_x2, UNDEFINED_x4, UPPER_E, UPPER_EE, UPPER_EEEE} from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                         from "./value/callbacks (fail)"
 import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                 from "./value/callbacks (null)"
@@ -45,7 +46,6 @@ describe("CollectionHolderTest (map)", () => {
     describe("get() being called", () => {
         //README: The adaptor classes are ignored since they rely on the apdated class instead.
         //        The lazy classes are ignored since they use inner class(es) instead.
-        //        The viewer instances are ignored since they rely on the viewed class instead.
         //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
         describe("empty ~ collection (by minimalist)", () => {
@@ -236,6 +236,13 @@ describe("CollectionHolderTest (map)", () => {
             },)
         },)
 
+    },)
+
+    describe("viewer", () => {
+        test("map",               () => expect(new CollectionHolder_ByViewer().execute(it => it.map(callbackToString0,),)              .map_amountOfCall,)              .toBe(1,),)
+        test("mapIndexed",        () => expect(new CollectionHolder_ByViewer().execute(it => it.mapIndexed(callbackToString0,),)       .mapIndexed_amountOfCall,)       .toBe(1,),)
+        test("mapNotNull",        () => expect(new CollectionHolder_ByViewer().execute(it => it.mapNotNull(callbackToString0,),)       .mapNotNull_amountOfCall,)       .toBe(1,),)
+        test("mapNotNullIndexed", () => expect(new CollectionHolder_ByViewer().execute(it => it.mapNotNullIndexed(callbackToString0,),).mapNotNullIndexed_amountOfCall,).toBe(1,),)
     },)
 
     describe("instances", () => {

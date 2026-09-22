@@ -25,6 +25,7 @@ import {CollectionHolder_ArrayOf2Follower}                                      
 import {CollectionHolder_ByGenericCollection}                                                                                                                                                                                                                                                                                                                                                       from "./instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByGenericCollectionFollower}                                                                                                                                                                                                                                                                                                                                               from "./instance/CollectionHolder_ByGenericCollection.follower"
 import {CollectionHolder_ByMinimalistCollection}                                                                                                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByViewer}                                                                                                                                                                                                                                                                                                                                                                  from "./instance/CollectionHolder_ByViewer"
 import {CollectionHolder_ByViewerFollower}                                                                                                                                                                                                                                                                                                                                                          from "./instance/CollectionHolder_ByViewer.follower"
 import {CollectionHolder_LazyFollower}                                                                                                                                                                                                                                                                                                                                                              from "./instance/CollectionHolder_Lazy.follower"
 import {CollectionHolder_LazyOf0Or1Follower}                                                                                                                                                                                                                                                                                                                                                        from "./instance/CollectionHolder_LazyOf0Or1.follower"
@@ -416,7 +417,6 @@ describe("CollectionHolderTest (take)", () => {
     describe("get() being called", () => {
         //README: The adaptor classes are ignored since they rely on the apdated class instead.
         //        The lazy classes are ignored since they use inner class(es) instead.
-        //        The viewer instances are ignored since they rely on the viewed class instead.
         //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
         describe("empty ~ collection (by minimalist)", () => {
@@ -771,6 +771,15 @@ describe("CollectionHolderTest (take)", () => {
             },)
         },)
 
+    },)
+
+    describe("viewer", () => {
+        test("take",                 () => expect(new CollectionHolder_ByViewer().execute(it => it.take(0,),)                              .take_amountOfCall,)                .toBe(1,),)
+        test("takeWhile",            () => expect(new CollectionHolder_ByViewer().execute(it => it.takeWhile(callbackAsTrue0,),)           .takeWhile_amountOfCall,)           .toBe(1,),)
+        test("takeWhileIndexed",     () => expect(new CollectionHolder_ByViewer().execute(it => it.takeWhileIndexed(callbackAsTrue0,),)    .takeWhileIndexed_amountOfCall,)    .toBe(1,),)
+        test("takeLast",             () => expect(new CollectionHolder_ByViewer().execute(it => it.takeLast(0,),)                          .takeLast_amountOfCall,)            .toBe(1,),)
+        test("takeLastWhile",        () => expect(new CollectionHolder_ByViewer().execute(it => it.takeLastWhile(callbackAsTrue0,),)       .takeLastWhile_amountOfCall,)       .toBe(1,),)
+        test("takeLastWhileIndexed", () => expect(new CollectionHolder_ByViewer().execute(it => it.takeLastWhileIndexed(callbackAsTrue0,),).takeLastWhileIndexed_amountOfCall,).toBe(1,),)
     },)
 
     describe("instances", () => {
