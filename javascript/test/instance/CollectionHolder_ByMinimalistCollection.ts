@@ -12,10 +12,8 @@
 
 import type {Array} from "@joookiwi/type"
 
-import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHolder"
-
+import {__get}                                     from "../../src/method/_array utility"
 import {AbstractMinimalistCollectionHolderForTest} from "./AbstractMinimalistCollectionHolderForTest"
-import {CollectionHolderFromArray}                 from "./CollectionHolderFromArray"
 
 /**
  * A class to test the functionality of a {@link MinimalistCollectionHolder}
@@ -31,21 +29,17 @@ export class CollectionHolder_ByMinimalistCollection<const T, >
     /** The amount of time the specific method ({@link MinimalistCollectionHolder.get}) has been called */
     public amountOfCall = 0
 
-    /** The internal instance that is tested */
-    public readonly instance: CollectionHolderFromArray<T>
-
-    public constructor(array: Array<T>,) {
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        this.instance = new CollectionHolderFromArray(array,)
     }
 
     public override get size(): number {
-        return this.instance.size
+        return this.array.length
     }
 
     public override get(index: number,): T {
         this.amountOfCall++
-        return this.instance.get(index,)
+        return __get(this.array, index,)
     }
 
 }

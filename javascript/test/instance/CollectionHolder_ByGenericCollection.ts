@@ -12,8 +12,8 @@
 
 import type {Array} from "@joookiwi/type"
 
+import {__get}                           from "../../src/method/_array utility"
 import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {CollectionHolderFromArray}       from "./CollectionHolderFromArray"
 
 /**
  * A class to test the functionality of a {@link CollectionHolder}
@@ -29,19 +29,15 @@ export class CollectionHolder_ByGenericCollection<const T, >
     /** The amount of time the specific method ({@link CollectionHolder.get}) has been called */
     public amountOfCall = 0
 
-    /** The internal instance that is tested */
-    public readonly instance: CollectionHolderFromArray<T>
-
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        this.instance = new CollectionHolderFromArray(array,)
     }
 
-    public override get size(): number { return this.instance.size }
+    public override get size(): number { return this.array.length }
 
     public override get(index: number,): T {
         this.amountOfCall++
-        return this.instance.get(index,)
+        return __get(this.array, index,)
     }
 
 }
