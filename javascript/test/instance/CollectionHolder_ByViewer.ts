@@ -191,13 +191,9 @@ export class CollectionHolder_ByViewer
     public forEach_amountOfCall = 0
     /** The amount of time {@link CollectionViewer.forEachIndexed} has been called */
     public forEachIndexed_amountOfCall = 0
-    /** The amount of time {@link CollectionViewer.onEach} has been called */
-    public onEach_amountOfCall = 0
-    /** The amount of time {@link CollectionViewer.onEachIndexed} has been called */
-    public onEachIndexed_amountOfCall = 0
 
-    /** The amount of time {@link CollectionViewer.toReversed} has been called */
-    public toReversed_amountOfCall = 0
+    /** The amount of time {@link CollectionViewer.toReverse} has been called */
+    public toReverse_amountOfCall = 0
 
     /** The amount of time {@link CollectionViewer.toIterator} has been called */
     public toIterator_amountOfCall = 0
@@ -458,17 +454,17 @@ export class CollectionHolder_ByViewer
             }
 
             public override indexOfLastOrNull(predicate: BooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
-                $this.indexOfLastIndexed_amountOfCall++
+                $this.indexOfLastOrNull_amountOfCall++
                 return super.indexOfLastOrNull(predicate, from, to,)
             }
 
             public override indexOfLastIndexed(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): number {
-                $this.indexOfLastIndexedOrNull_amountOfCall++
+                $this.indexOfLastIndexed_amountOfCall++
                 return super.indexOfLastIndexed(predicate, from, to,)
             }
 
             public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
-                $this.indexOfLastOrNull_amountOfCall++
+                $this.indexOfLastIndexedOrNull_amountOfCall++
                 return super.indexOfLastIndexedOrNull(predicate, from, to,)
             }
 
@@ -761,22 +757,11 @@ export class CollectionHolder_ByViewer
                 super.forEachIndexed(action,)
             }
 
-
-            public override onEach(action: ValueIndexCallback<string>,): this {
-                $this.onEach_amountOfCall++
-                return super.onEach(action,)
-            }
-
-            public override onEachIndexed(action: IndexValueCallback<string>,): this {
-                $this.onEachIndexed_amountOfCall++
-                return super.onEachIndexed(action,)
-            }
-
             //#endregion -------------------- Loop methods --------------------
             //#region -------------------- Reordering methods --------------------
 
             public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<string> {
-                $this.toReversed_amountOfCall++
+                $this.toReverse_amountOfCall++
                 return super.toReverse(from, to,)
             }
 
@@ -1053,7 +1038,7 @@ export class CollectionHolder_ByViewer
 
     public override requireNoNulls(): CollectionHolder<NonNullable<string>> {
         if (this.instance.requireNoNulls() !== this.instance)
-            throw new Error("stringhe expected return type for the method “requireNoNulls” was supposed to be the same instance",)
+            throw new Error("The expected return type for the method “requireNoNulls” was supposed to be the same instance",)
         return this as CollectionHolder<NonNullable<string>>
     }
 
@@ -1192,14 +1177,14 @@ export class CollectionHolder_ByViewer
     public override onEach(action: ValueIndexCallback<string>,): this {
         const instance = this.instance
         if (instance.onEach(action,) !== instance)
-            throw new Error("stringhe expected return type for the method “onEach” was supposed to be the same instance",)
+            throw new Error("The expected return type for the method “onEach” was supposed to be the same instance",)
         return this
     }
 
     public override onEachIndexed(action: IndexValueCallback<string>,): this {
         const instance = this.instance
         if (instance.onEachIndexed(action,) !== instance)
-            throw new Error("stringhe expected return type for the method “onEachIndexed” was supposed to be the same instance",)
+            throw new Error("The expected return type for the method “onEachIndexed” was supposed to be the same instance",)
         return this
     }
 
