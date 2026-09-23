@@ -174,7 +174,7 @@ describe("CollectionHolderTest (filter)", () => {
                 test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
             },)
 
-            test("filterNotNull", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(1,),)
+            test("filterNotNull", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(2,),)
         },)
 
         describe("2 fields ~ collection (by minimalist)", () => {
@@ -249,7 +249,7 @@ describe("CollectionHolderTest (filter)", () => {
                 test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
             },)
 
-            test("filterNotNull", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(2,),)
+            test("filterNotNull", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(4,),)
         },)
 
         describe("N fields ~ collection (by minimalist)", () => {
