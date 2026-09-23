@@ -13,36 +13,35 @@
 import type {Array, Nullable, NullableNumber, NullOrUndefined, NumberArray, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                   from "./CollectionHolder"
+import type {CollectionHolderOf1}                                from "./CollectionHolderOf1"
 import type {MinimalistCollectionHolder}                         from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                 from "./iterator/CollectionIterator"
-import type {BooleanCallback}                                    from "./type/callback"
+import type {BooleanCallback, RestrainedBooleanCallback}         from "./type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "./type/possibleInstance"
 
-import {AbstractUnimplementedCollectionHolder}   from "./AbstractUnimplementedCollectionHolder"
-import {isArrayByStructure}                      from "./method/isArrayByStructure"
-import {isCollectionHolder}                      from "./method/isCollectionHolder"
-import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
-import {isCollectionIterator}                    from "./method/isCollectionIterator"
-import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
-import {isIteratorByStructure}                   from "./method/isIteratorByStructure"
-import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
-import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
-import {isSetByStructure}                        from "./method/isSetByStructure"
+import {AbstractUnimplementedCollectionHolderOf1} from "./AbstractUnimplementedCollectionHolderOf1"
+import {isArrayByStructure}                       from "./method/isArrayByStructure"
+import {isCollectionHolder}                       from "./method/isCollectionHolder"
+import {isCollectionHolderByStructure}            from "./method/isCollectionHolderByStructure"
+import {isCollectionIterator}                     from "./method/isCollectionIterator"
+import {isCollectionIteratorByStructure}          from "./method/isCollectionIteratorByStructure"
+import {isIteratorByStructure}                    from "./method/isIteratorByStructure"
+import {isMinimalistCollectionHolder}             from "./method/isMinimalistCollectionHolder"
+import {isMinimalistCollectionHolderByStructure}  from "./method/isMinimalistCollectionHolderByStructure"
+import {isSetByStructure}                         from "./method/isSetByStructure"
 
 /**
- * A definition of a {@link CollectionHolder} to have a common ancestor.
- * It does not use any implementation like its parent {@link AbstractUnimplementedCollectionHolder},
+ * A definition of a {@link CollectionHolderOf1} to have a common ancestor.
+ * It does not use any implementation like its parent {@link AbstractUnimplementedCollectionHolderOf1},
  * but gives less overhead on the methods that have multiple possible arguments.
  *
  * @apiNote This class is used to reduce complexity of methods that can support different type of arguments
  * @typeParam T The type (by default `unknown`)
- * @see AbstractPartiallyUnimplementedCollectionHolderOf1
+ * @see AbstractPartiallyUnimplementedCollectionHolder
  * @see AbstractPartiallyUnimplementedCollectionHolderOf2
- * @see ArrayAsCollectionHolder
- * @see GenericCollectionHolder
  */
-export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = unknown, >
-    extends AbstractUnimplementedCollectionHolder<T> {
+export abstract class AbstractPartiallyUnimplementedCollectionHolderOf1<const T = unknown, >
+    extends AbstractUnimplementedCollectionHolderOf1<T> {
 
     //#region -------------------- Constructor --------------------
 
@@ -56,6 +55,8 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     //#region -------------------- Any --------------------
 
     public override any(): this["isNotEmpty"]
+    public override any<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolderOf1<S>
+    public override any(predicate: NullOrUndefined,): this["isNotEmpty"]
     public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override any(predicate?: Nullable<BooleanCallback<T>>,) {
         if (predicate == null)
@@ -64,6 +65,8 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     }
 
     public override some(): this["isNotEmpty"]
+    public override some<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolderOf1<S>
+    public override some(predicate: NullOrUndefined,): this["isNotEmpty"]
     public override some(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override some(predicate?: Nullable<BooleanCallback<T>>,) {
         if (predicate == null)
@@ -72,13 +75,15 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     }
 
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.any CollectionHolder.any(predicate)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.any CollectionHolderOf1.any(predicate)} */
     protected abstract _any(predicate: BooleanCallback<T>,): boolean
 
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
     public override none(): this["isEmpty"]
+    public override none<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolderOf1<Exclude<T, S>>
+    public override none(predicate: NullOrUndefined,): this["isEmpty"]
     public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override none(predicate?: Nullable<BooleanCallback<T>>,) {
         if (predicate == null)
@@ -87,7 +92,7 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     }
 
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.none CollectionHolder.none(predicate)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.none CollectionHolderOf1.none(predicate)} */
     protected abstract _none(predicate: BooleanCallback<T>,): boolean
 
     //#endregion -------------------- None --------------------
@@ -136,30 +141,30 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     }
 
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: NullOrUndefined)} */
-    protected _hasOneByNull(_values: NullOrUndefined,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasOne CollectionHolderOf1.hasOne(values: NullOrUndefined)} */
+    protected _hasOneByNull(_values: NullOrUndefined,): this["isNotEmpty"] {
         return this.isNotEmpty
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Array<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasOne CollectionHolderOf1.hasOne(values: Array<T>)} */
     protected abstract _hasOneByArray(values: Array<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Set<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasOne CollectionHolderOf1.hasOne(values: Set<T>)} */
     protected abstract _hasOneBySet(values: Set<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: MinimalistCollectionHolder<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasOne CollectionHolderOf1.hasOne(values: MinimalistCollectionHolder<T>)} */
     protected abstract _hasOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: CollectionHolder<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasOne CollectionHolderOf1.hasOne(values: CollectionHolder<T>)} */
     protected abstract _hasOneByCollectionHolder(values: CollectionHolder<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: CollectionIterator<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasOne CollectionHolderOf1.hasOne(values: CollectionIterator<T>)} */
     protected abstract _hasOneByCollectionIterator(values: CollectionIterator<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Iterator<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasOne CollectionHolderOf1.hasOne(values: Iterator<T>)} */
     protected abstract _hasOneByIterator(values: Iterator<T, unknown, unknown>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Iterable<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasOne CollectionHolderOf1.hasOne(values: Iterable<T>)} */
     protected abstract _hasOneByIterable(values: Iterable<T, unknown, unknown>,): boolean
 
     //#endregion -------------------- Has one --------------------
@@ -207,30 +212,30 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     }
 
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: NullOrUndefined)} */
-    protected _hasNotOneByNull(_values: NullOrUndefined,): boolean {
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotOne CollectionHolderOf1.hasNotOne(values: NullOrUndefined)} */
+    protected _hasNotOneByNull(_values: NullOrUndefined,): this["isEmpty"] {
         return this.isEmpty
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Array<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotOne CollectionHolderOf1.hasNotOne(values: Array<T>)} */
     protected abstract _hasNotOneByArray(values: Array<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Set<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotOne CollectionHolderOf1.hasNotOne(values: Set<T>)} */
     protected abstract _hasNotOneBySet(values: Set<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: MinimalistCollectionHolder<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotOne CollectionHolderOf1.hasNotOne(values: MinimalistCollectionHolder<T>)} */
     protected abstract _hasNotOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionHolder<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotOne CollectionHolderOf1.hasNotOne(values: CollectionHolder<T>)} */
     protected abstract _hasNotOneByCollectionHolder(values: CollectionHolder<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionIterator<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotOne CollectionHolderOf1.hasNotOne(values: CollectionIterator<T>)} */
     protected abstract _hasNotOneByCollectionIterator(values: CollectionIterator<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterator<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotOne CollectionHolderOf1.hasNotOne(values: Iterator<T>)} */
     protected abstract _hasNotOneByIterator(values: Iterator<T, unknown, unknown>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterable<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotOne CollectionHolderOf1.hasNotOne(values: Iterable<T>)} */
     protected abstract _hasNotOneByIterable(values: Iterable<T, unknown, unknown>,): boolean
 
     //#endregion -------------------- Has not one --------------------
@@ -278,30 +283,30 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     }
 
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: NullOrUndefined)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasAll CollectionHolderOf1.hasAll(values: NullOrUndefined)} */
     protected _hasAllByNull(_values: NullOrUndefined,): true {
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Array<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasAll CollectionHolderOf1.hasAll(values: Array<T>)} */
     protected abstract _hasAllByArray(values: Array<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Set<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasAll CollectionHolderOf1.hasAll(values: Set<T>)} */
     protected abstract _hasAllBySet(values: Set<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: MinimalistCollectionHolder<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasAll CollectionHolderOf1.hasAll(values: MinimalistCollectionHolder<T>)} */
     protected abstract _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: CollectionHolder<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasAll CollectionHolderOf1.hasAll(values: CollectionHolder<T>)} */
     protected abstract _hasAllByCollectionHolder(values: CollectionHolder<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: CollectionIterator<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasAll CollectionHolderOf1.hasAll(values: CollectionIterator<T>)} */
     protected abstract _hasAllByCollectionIterator(values: CollectionIterator<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterator<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasAll CollectionHolderOf1.hasAll(values: Iterator<T>)} */
     protected abstract _hasAllByIterator(values: Iterator<T, unknown, unknown>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterable<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasAll CollectionHolderOf1.hasAll(values: Iterable<T>)} */
     protected abstract _hasAllByIterable(values: Iterable<T, unknown, unknown>,): boolean
 
     //#endregion -------------------- Has all --------------------
@@ -349,30 +354,30 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     }
 
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: NullOrUndefined)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotAll CollectionHolderOf1.hasNotAll(values: NullOrUndefined)} */
     protected _hasNotAllByNull(_values: NullOrUndefined,): false {
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Array<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotAll CollectionHolderOf1.hasNotAll(values: Array<T>)} */
     protected abstract _hasNotAllByArray(values: Array<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Set<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotAll CollectionHolderOf1.hasNotAll(values: Set<T>)} */
     protected abstract _hasNotAllBySet(values: Set<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: MinimalistCollectionHolder<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotAll CollectionHolderOf1.hasNotAll(values: MinimalistCollectionHolder<T>)} */
     protected abstract _hasNotAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionHolder<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotAll CollectionHolderOf1.hasNotAll(values: CollectionHolder<T>)} */
     protected abstract _hasNotAllByCollectionHolder(values: CollectionHolder<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionIterator<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotAll CollectionHolderOf1.hasNotAll(values: CollectionIterator<T>)} */
     protected abstract _hasNotAllByCollectionIterator(values: CollectionIterator<T>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterator<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotAll CollectionHolderOf1.hasNotAll(values: Iterator<T>)} */
     protected abstract _hasNotAllByIterator(values: Iterator<T, unknown, unknown>,): boolean
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterable<T>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.hasNotAll CollectionHolderOf1.hasNotAll(values: Iterable<T>)} */
     protected abstract _hasNotAllByIterable(values: Iterable<T, unknown, unknown>,): boolean
 
     //#endregion -------------------- Has not all --------------------
@@ -382,7 +387,7 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
 
     //#region -------------------- Slice --------------------
 
-    public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
+    public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOf1<T>
     public override slice(indices: NumberArray,): CollectionHolder<T>
     public override slice(indices: NumberSet,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
@@ -510,37 +515,37 @@ export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = u
     }
 
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice()} */
-    protected abstract _sliceWith0Argument(): CollectionHolder<T>
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice()} */
+    protected abstract _sliceWith0Argument(): CollectionHolderOf1<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from)} */
-    protected abstract _sliceWith1Argument(from: number,): CollectionHolder<T>
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(from)} */
+    protected abstract _sliceWith1Argument(from: number,): CollectionHolderOf1<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from, to)} */
-    protected abstract _sliceWith2Argument(from: number, to: number,): CollectionHolder<T>
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(from, to)} */
+    protected abstract _sliceWith2Argument(from: number, to: number,): CollectionHolderOf1<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, to)} */
-    protected abstract _sliceWith2ArgumentWhere1stIsNull(from: NullOrUndefined, to: number,): CollectionHolder<T>
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(null, to)} */
+    protected abstract _sliceWith2ArgumentWhere1stIsNull(from: NullOrUndefined, to: number,): CollectionHolderOf1<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberArray)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(indices: NumberArray)} */
     protected abstract _sliceByArray(indices: NumberArray,): CollectionHolder<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberSet)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(indices: NumberSet)} */
     protected abstract _sliceBySet(indices: NumberSet,): CollectionHolder<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: MinimalistCollectionHolder<number>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(indices: MinimalistCollectionHolder<number>)} */
     protected abstract _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: CollectionHolder<number>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(indices: CollectionHolder<number>)} */
     protected abstract _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: CollectionIterator<number>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(indices: CollectionIterator<number>)} */
     protected abstract _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: Iterator<number>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(indices: Iterator<number>)} */
     protected abstract _sliceByIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: Iterable<number>)} */
+    /** An additional method to be the equivalent of {@link CollectionHolderOf1.slice CollectionHolderOf1.slice(indices: Iterable<number>)} */
     protected abstract _sliceByIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------

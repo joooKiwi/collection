@@ -317,6 +317,8 @@ export abstract class AbstractUnimplementedCollectionHolderOf1<const T, >
     public override some(predicate: NullOrUndefined,): this["isNotEmpty"]
     public override some(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override some(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return this.any()
         return this.any(predicate,)
     }
 

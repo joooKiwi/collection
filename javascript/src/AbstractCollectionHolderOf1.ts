@@ -19,25 +19,15 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
 import type {CollectionHolderOf0Or1}                                                                                                                                                                                                                            from "./type/collection"
 import type {IndexOf1}                                                                                                                                                                                                                                          from "./type/indexOf"
-import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                from "./type/possibleInstance"
 import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIndexOrNull}                                                                                                                                                                      from "./type/value"
 
-import {AbstractUnimplementedCollectionHolderOf1}                                                                         from "./AbstractUnimplementedCollectionHolderOf1"
+import {AbstractPartiallyUnimplementedCollectionHolderOf1}                                                                from "./AbstractPartiallyUnimplementedCollectionHolderOf1"
 import {EmptyCollectionHolder}                                                                                            from "./EmptyCollectionHolder"
 import {CollectionIteratorOf1}                                                                                            from "./iterator/CollectionIteratorOf1"
 import {ForbiddenIndexException}                                                                                          from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                        from "./exception/IndexOutOfBoundsException"
 import {IndexNotFoundException}                                                                                           from "./exception/IndexNotFoundException"
 import {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./method/asString"
-import {isArrayByStructure}                                                                                               from "./method/isArrayByStructure"
-import {isCollectionHolder}                                                                                               from "./method/isCollectionHolder"
-import {isCollectionHolderByStructure}                                                                                    from "./method/isCollectionHolderByStructure"
-import {isCollectionIterator}                                                                                             from "./method/isCollectionIterator"
-import {isCollectionIteratorByStructure}                                                                                  from "./method/isCollectionIteratorByStructure"
-import {isIteratorByStructure}                                                                                            from "./method/isIteratorByStructure"
-import {isMinimalistCollectionHolder}                                                                                     from "./method/isMinimalistCollectionHolder"
-import {isMinimalistCollectionHolderByStructure}                                                                          from "./method/isMinimalistCollectionHolderByStructure"
-import {isSetByStructure}                                                                                                 from "./method/isSetByStructure"
 import {EmptyOptional}                                                                                                    from "./optional/EmptyOptional"
 import {Optional}                                                                                                         from "./optional/Optional"
 
@@ -56,7 +46,7 @@ import {Optional}                                                               
  * @see SetOf1AsCollectionHolder
  */
 export abstract class AbstractCollectionHolderOf1<const T = unknown, >
-    extends AbstractUnimplementedCollectionHolderOf1<T> {
+    extends AbstractPartiallyUnimplementedCollectionHolderOf1<T> {
 
     //#region -------------------- Constructor --------------------
 
@@ -403,18 +393,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
 
-    public override any(): this["isNotEmpty"]
-    public override any<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolderOf1<S>
-    public override any(predicate: NullOrUndefined,): this["isNotEmpty"]
-    public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override any(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (predicate == null)
-            return true
-        return this._any(predicate,)
-    }
-
-    /** An additional method to be the equivalent of {@link CollectionHolderOf1.any CollectionHolderOf1.any(predicate)} */
-    protected _any(predicate: BooleanCallback<T>,): boolean {
+    protected override _any(predicate: BooleanCallback<T>,): boolean {
         if (predicate.length === 1)
             return (predicate as (value: T,) => boolean)(this.value,)
         if (predicate.length >= 2)
@@ -425,18 +404,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
-    public override none(): this["isEmpty"]
-    public override none<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolderOf1<Exclude<T, S>>
-    public override none(predicate: NullOrUndefined,): this["isEmpty"]
-    public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override none(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (predicate == null)
-            return false
-        return this._none(predicate,)
-    }
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.none CollectionHolder.none(predicate)} */
-    protected _none(predicate: BooleanCallback<T>,): boolean {
+    protected override _none(predicate: BooleanCallback<T>,): boolean {
         if (predicate.length === 1)
             return !(predicate as (value: T,) => boolean)(this.value,)
         if (predicate.length >= 2)
@@ -479,53 +447,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    public override hasOne(values: Nullable<Array<T>>,): boolean
-    public override hasOne(values: Nullable<Set<T>>,): boolean
-    public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
-    public override hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
-        if (values == null)
-            return this._hasOneByNull(values,)
-
-        if (values instanceof Array)
-            return this._hasOneByArray(values,)
-        if (values instanceof Set)
-            return this._hasOneBySet(values,)
-        if (isCollectionHolder(values,))
-            return this._hasOneByCollectionHolder(values,)
-        if (isMinimalistCollectionHolder(values,))
-            return this._hasOneByMinimalistCollectionHolder(values,)
-        if (isCollectionIterator(values,))
-            return this._hasOneByCollectionIterator(values,)
-        if (values instanceof Iterator)
-            return this._hasOneByIterator(values,)
-
-        if (isArrayByStructure<T>(values,))
-            return this._hasOneByArray(values,)
-        if (isSetByStructure<T>(values,))
-            return this._hasOneBySet(values,)
-        if (isCollectionHolderByStructure<T>(values,))
-            return this._hasOneByCollectionHolder(values,)
-        if (isMinimalistCollectionHolderByStructure<T>(values,))
-            return this._hasOneByMinimalistCollectionHolder(values,)
-        if (isCollectionIteratorByStructure<T>(values,))
-            return this._hasOneByCollectionIterator(values,)
-        if (isIteratorByStructure<T>(values,))
-            return this._hasOneByIterator(values,)
-        return this._hasOneByIterable(values,)
-    }
-
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: NullOrUndefined)} */
-    protected _hasOneByNull(_values: NullOrUndefined): true { return true }
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Array<T>)} */
-    protected _hasOneByArray(values: Array<T>,): boolean {
+    protected override _hasOneByArray(values: Array<T>,): boolean {
         const size = values.length
         if (size === 0)
             return true
@@ -538,8 +460,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Set<T>)} */
-    protected _hasOneBySet(values: Set<T>,): boolean {
+    protected override _hasOneBySet(values: Set<T>,): boolean {
         const size = values.size
         if (size === 0)
             return true
@@ -553,8 +474,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: MinimalistCollectionHolder<T>)} */
-    protected _hasOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+    protected override _hasOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
         const size = values.size
         if (size === 0)
             return true
@@ -567,8 +487,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: CollectionHolder<T>)} */
-    protected _hasOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+    protected override _hasOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
         if (values.isEmpty)
             return true
 
@@ -581,8 +500,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: CollectionIterator<T>)} */
-    protected _hasOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+    protected override _hasOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
         if (values.isEmpty)
             return true
 
@@ -595,8 +513,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Iterator<T>)} */
-    protected _hasOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+    protected override _hasOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
         let iteratorResult = values.next()
         if (iteratorResult.done)
             return true
@@ -610,8 +527,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Iterable<T>)} */
-    protected _hasOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+    protected override _hasOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
         const iterator = values[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
@@ -629,54 +545,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public override hasNotOne(values: Nullable<Array<T>>,): boolean
-    public override hasNotOne(values: Nullable<Set<T>>,): boolean
-    public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasNotOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
-    public override hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
-        if (values == null)
-            return this._hasNotOneByNull(values,)
-
-        if (values instanceof Array)
-            return this._hasNotOneByArray(values,)
-        if (values instanceof Set)
-            return this._hasNotOneBySet(values,)
-        if (isCollectionHolder(values,))
-            return this._hasNotOneByCollectionHolder(values,)
-        if (isMinimalistCollectionHolder(values,))
-            return this._hasNotOneByMinimalistCollectionHolder(values,)
-        if (isCollectionIterator(values,))
-            return this._hasNotOneByCollectionIterator(values,)
-        if (values instanceof Iterator)
-            return this._hasNotOneByIterator(values,)
-
-        if (isArrayByStructure<T>(values,))
-            return this._hasNotOneByArray(values,)
-        if (isSetByStructure<T>(values,))
-            return this._hasNotOneBySet(values,)
-        if (isCollectionHolderByStructure<T>(values))
-            return this._hasNotOneByCollectionHolder(values,)
-        if (isMinimalistCollectionHolderByStructure<T>(values,))
-            return this._hasNotOneByMinimalistCollectionHolder(values,)
-        if (isCollectionIteratorByStructure<T>(values,))
-            return this._hasNotOneByCollectionIterator(values,)
-        if (isIteratorByStructure<T>(values,))
-            return this._hasNotOneByIterator(values,)
-        return this._hasNotOneByIterable(values,)
-    }
-
-
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: NullOrUndefined)} */
-    protected _hasNotOneByNull(_values: NullOrUndefined,): false { return false }
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Array<T>)} */
-    protected _hasNotOneByArray(values: Array<T>,): boolean {
+    protected override _hasNotOneByArray(values: Array<T>,): boolean {
         const size = values.length
         if (size === 0)
             return false
@@ -689,8 +558,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Set<T>)} */
-    protected _hasNotOneBySet(values: Set<T>,): boolean {
+    protected override _hasNotOneBySet(values: Set<T>,): boolean {
         const size = values.size
         if (size === 0)
             return false
@@ -704,8 +572,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: MinimalistCollectionHolder<T>)} */
-    protected _hasNotOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+    protected override _hasNotOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
         const size = values.size
         if (size === 0)
             return false
@@ -718,8 +585,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionHolder<T>)} */
-    protected _hasNotOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+    protected override _hasNotOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
         if (values.isEmpty)
             return false
 
@@ -732,8 +598,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionIterator<T>)} */
-    protected _hasNotOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+    protected override _hasNotOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
         if (values.isEmpty)
             return false
 
@@ -746,8 +611,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterator<T>)} */
-    protected _hasNotOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+    protected override _hasNotOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
         let iteratorResult = values.next()
         if (iteratorResult.done)
             return false
@@ -761,8 +625,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterable<T>)} */
-    protected _hasNotOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+    protected override _hasNotOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
         const iterator = values[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
@@ -780,55 +643,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public override hasAll(values: Nullable<Array<T>>,): boolean
-    public override hasAll(values: Nullable<Set<T>>,): boolean
-    public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
-    public override hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
-        if (values == null)
-            return this._hasAllByNull(values,)
-
-        if (values instanceof Array)
-            return this._hasAllByArray(values,)
-        if (values instanceof Set)
-            return this._hasAllBySet(values,)
-        if (isCollectionHolder(values,))
-            return this._hasAllByCollectionHolder(values,)
-        if (isMinimalistCollectionHolder(values,))
-            return this._hasAllByMinimalistCollectionHolder(values,)
-        if (isCollectionIterator(values,))
-            return this._hasAllByCollectionIterator(values,)
-        if (values instanceof Iterator)
-            return this._hasAllByIterator(values,)
-
-        if (isArrayByStructure<T>(values,))
-            return this._hasAllByArray(values,)
-        if (isSetByStructure<T>(values,))
-            return this._hasAllBySet(values,)
-        if (isCollectionHolderByStructure<T>(values,))
-            return this._hasAllByCollectionHolder(values,)
-        if (isMinimalistCollectionHolderByStructure<T>(values,))
-            return this._hasAllByMinimalistCollectionHolder(values,)
-        if (isCollectionIteratorByStructure<T>(values,))
-            return this._hasAllByCollectionIterator(values,)
-        if (isIteratorByStructure<T>(values,))
-            return this._hasAllByIterator(values,)
-        return this._hasAllByIterable(values,)
-    }
-
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: NullOrUndefined)} */
-    protected _hasAllByNull(_values: NullOrUndefined,): true {
-        return true
-    }
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Array<T>)} */
-    protected _hasAllByArray(values: Array<T>,): boolean {
+    protected override _hasAllByArray(values: Array<T>,): boolean {
         const size = values.length
         if (size === 0)
             return true
@@ -841,8 +656,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Set<T>)} */
-    protected _hasAllBySet(values: Set<T>,): boolean {
+    protected override _hasAllBySet(values: Set<T>,): boolean {
         const size = values.size
         if (size === 0)
             return true
@@ -856,8 +670,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: MinimalistCollectionHolder<T>)} */
-    protected _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+    protected override _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
         const size = values.size
         if (size === 0)
             return true
@@ -870,8 +683,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: CollectionHolder<T>)} */
-    protected _hasAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+    protected override _hasAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
         if (values.isEmpty)
             return true
 
@@ -884,8 +696,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: CollectionIterator<T>)} */
-    protected _hasAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+    protected override _hasAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
         if (values.isEmpty)
             return true
 
@@ -898,8 +709,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterator<T>)} */
-    protected _hasAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+    protected override _hasAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
         let iteratorResult = values.next()
         if (iteratorResult.done)
             return true
@@ -914,8 +724,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return true
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterable<T>)} */
-    protected _hasAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+    protected override _hasAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
         const iterator = values[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
@@ -934,55 +743,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public override hasNotAll(values: Nullable<Array<T>>,): boolean
-    public override hasNotAll(values: Nullable<Set<T>>,): boolean
-    public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasNotAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
-    public override hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
-        if (values == null)
-            return this._hasNotAllByNull(values,)
-
-        if (values instanceof Array)
-            return this._hasNotAllByArray(values,)
-        if (values instanceof Set)
-            return this._hasNotAllBySet(values,)
-        if (isCollectionHolder(values,))
-            return this._hasNotAllByCollectionHolder(values,)
-        if (isMinimalistCollectionHolder(values,))
-            return this._hasNotAllByMinimalistCollectionHolder(values,)
-        if (isCollectionIterator(values,))
-            return this._hasNotAllByCollectionIterator(values,)
-        if (values instanceof Iterator)
-            return this._hasNotAllByIterator(values,)
-
-        if (isArrayByStructure<T>(values,))
-            return this._hasNotAllByArray(values,)
-        if (isSetByStructure<T>(values,))
-            return this._hasNotAllBySet(values,)
-        if (isCollectionHolderByStructure<T>(values,))
-            return this._hasNotAllByCollectionHolder(values,)
-        if (isMinimalistCollectionHolderByStructure<T>(values,))
-            return this._hasNotAllByMinimalistCollectionHolder(values,)
-        if (isCollectionIteratorByStructure<T>(values,))
-            return this._hasNotAllByCollectionIterator(values,)
-        if (isIteratorByStructure<T>(values,))
-            return this._hasNotAllByIterator(values,)
-        return this._hasNotAllByIterable(values,)
-    }
-
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: NullOrUndefined)} */
-    protected _hasNotAllByNull(_values: NullOrUndefined,): false {
-        return false
-    }
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Array<T>)} */
-    protected _hasNotAllByArray(values: Array<T>,): boolean {
+    protected override _hasNotAllByArray(values: Array<T>,): boolean {
         const size = values.length
         if (size === 0)
             return false
@@ -995,8 +756,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Set<T>)} */
-    protected _hasNotAllBySet(values: Set<T>,): boolean {
+    protected override _hasNotAllBySet(values: Set<T>,): boolean {
         const size = values.size
         if (size === 0)
             return false
@@ -1010,8 +770,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: MinimalistCollectionHolder<T>)} */
-    protected _hasNotAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+    protected override _hasNotAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
         const size = values.size
         if (size === 0)
             return false
@@ -1024,8 +783,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionHolder<T>)} */
-    protected _hasNotAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+    protected override _hasNotAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
         if (values.isEmpty)
             return false
 
@@ -1038,8 +796,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionIterator<T>)} */
-    protected _hasNotAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+    protected override _hasNotAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
         if (values.isEmpty)
             return false
 
@@ -1052,8 +809,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterator<T>)} */
-    protected _hasNotAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+    protected override _hasNotAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
         let iteratorResult = values.next()
         if (iteratorResult.done)
             return false
@@ -1068,8 +824,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return false
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterable<T>)} */
-    protected _hasNotAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+    protected override _hasNotAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
         const iterator = values[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
@@ -1183,160 +938,27 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
-    public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOf1<T>
-    public override slice(indices: NumberArray,): CollectionHolder<T>
-    public override slice(indices: NumberSet,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: IteratorObject<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
-        //#region -------------------- 0 arguments --------------------
-
-        if (arguments.length === 0)
-            return this._sliceWith0Argument()
-
-        //#endregion -------------------- 0 arguments --------------------
-        //#region -------------------- 1 argument --------------------
-
-        if (arguments.length === 1)
-            if (indicesOrFrom == null)
-                return this._sliceWith0Argument()
-            else if (typeof indicesOrFrom == "number")
-                return this._sliceWith1Argument(indicesOrFrom,)
-            else if (indicesOrFrom instanceof Array)
-                return this._sliceByArray(indicesOrFrom,)
-            else if (indicesOrFrom instanceof Set)
-                return this._sliceBySet(indicesOrFrom,)
-            else if (isCollectionHolder(indicesOrFrom,))
-                return this._sliceByCollectionHolder(indicesOrFrom,)
-            else if (isMinimalistCollectionHolder(indicesOrFrom,))
-                return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
-            else if (isCollectionIterator(indicesOrFrom,))
-                return this._sliceByCollectionIterator(indicesOrFrom,)
-            else if (indicesOrFrom instanceof Iterator)
-                return this._sliceByIterator(indicesOrFrom,)
-
-            else if (isArrayByStructure<number>(indicesOrFrom,))
-                return this._sliceByArray(indicesOrFrom,)
-            else if (isSetByStructure<number>(indicesOrFrom,))
-                return this._sliceBySet(indicesOrFrom,)
-            else if (isCollectionHolderByStructure<number>(indicesOrFrom,))
-                return this._sliceByCollectionHolder(indicesOrFrom,)
-            else if (isMinimalistCollectionHolderByStructure<number>(indicesOrFrom,))
-                return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
-            else if (isCollectionIteratorByStructure<number>(indicesOrFrom,))
-                return this._sliceByCollectionIterator(indicesOrFrom,)
-            else if (isIteratorByStructure<number>(indicesOrFrom,))
-                return this._sliceByIterator(indicesOrFrom,)
-            else
-                return this._sliceByIterable(indicesOrFrom,)
-
-        //#endregion -------------------- 1 argument --------------------
-        //#region -------------------- 2 arguments --------------------
-
-        if (indicesOrFrom == null)
-            if (to == null)
-                return this._sliceWith0Argument()
-            else
-                return this._sliceWith2ArgumentWhere1stIsNull(indicesOrFrom, to,)
-
-
-        if (to == null)
-            if (typeof indicesOrFrom == "number")
-                return this._sliceWith1Argument(indicesOrFrom,)
-            else if (indicesOrFrom instanceof Array)
-                return this._sliceByArray(indicesOrFrom,)
-            else if (indicesOrFrom instanceof Set)
-                return this._sliceBySet(indicesOrFrom,)
-            else if (isCollectionHolder(indicesOrFrom,))
-                return this._sliceByCollectionHolder(indicesOrFrom,)
-            else if (isMinimalistCollectionHolder(indicesOrFrom,))
-                return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
-            else if (isCollectionIterator(indicesOrFrom,))
-                return this._sliceByCollectionIterator(indicesOrFrom,)
-            else if (indicesOrFrom instanceof Iterator)
-                return this._sliceByIterator(indicesOrFrom,)
-
-            else if (isArrayByStructure<number>(indicesOrFrom,))
-                return this._sliceByArray(indicesOrFrom,)
-            else if (isSetByStructure<number>(indicesOrFrom,))
-                return this._sliceBySet(indicesOrFrom,)
-            else if (isCollectionHolderByStructure<number>(indicesOrFrom,))
-                return this._sliceByCollectionHolder(indicesOrFrom,)
-            else if (isMinimalistCollectionHolderByStructure<number>(indicesOrFrom,))
-                return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
-            else if (isCollectionIteratorByStructure<number>(indicesOrFrom,))
-                return this._sliceByCollectionIterator(indicesOrFrom,)
-            else if (isIteratorByStructure<number>(indicesOrFrom,))
-                return this._sliceByIterator(indicesOrFrom,)
-            else
-                return this._sliceByIterable(indicesOrFrom,)
-
-
-        if (typeof indicesOrFrom == "number")
-            return this._sliceWith2Argument(indicesOrFrom, to,)
-        if (indicesOrFrom instanceof Array)
-            return this._sliceByArray(indicesOrFrom,)
-        if (indicesOrFrom instanceof Set)
-            return this._sliceBySet(indicesOrFrom,)
-        if (isCollectionHolder(indicesOrFrom,))
-            return this._sliceByCollectionHolder(indicesOrFrom,)
-        if (isMinimalistCollectionHolder(indicesOrFrom,))
-            return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
-        if (isCollectionIterator(indicesOrFrom,))
-            return this._sliceByCollectionIterator(indicesOrFrom,)
-        if (indicesOrFrom instanceof Iterator)
-            return this._sliceByIterator(indicesOrFrom,)
-
-        if (isArrayByStructure<number>(indicesOrFrom,))
-            return this._sliceByArray(indicesOrFrom,)
-        if (isSetByStructure<number>(indicesOrFrom,))
-            return this._sliceBySet(indicesOrFrom,)
-        if (isCollectionHolderByStructure<number>(indicesOrFrom,))
-            return this._sliceByCollectionHolder(indicesOrFrom,)
-        if (isMinimalistCollectionHolderByStructure<number>(indicesOrFrom,))
-            return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
-        if (isCollectionIteratorByStructure<number>(indicesOrFrom,))
-            return this._sliceByCollectionIterator(indicesOrFrom,)
-        if (isIteratorByStructure<number>(indicesOrFrom,))
-            return this._sliceByIterator(indicesOrFrom,)
-        return this._sliceByIterable(indicesOrFrom,)
-
-        //#endregion -------------------- 2 arguments --------------------
-    }
-
-
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice()} */
-    protected _sliceWith0Argument(): this {
+    protected override _sliceWith0Argument(): CollectionHolderOf1<T> {
         return this
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from)} */
-    protected _sliceWith1Argument(from: number,): this {
+    protected override _sliceWith1Argument(from: number,): CollectionHolderOf1<T> {
         __validateStartingIndex(from,)
         return this
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from, to)} */
-    protected _sliceWith2Argument(from: number, to: number,): this {
+    protected override _sliceWith2Argument(from: number, to: number,): CollectionHolderOf1<T> {
         __validateStartingIndex(from,)
         __validateEndingIndex(to,)
         return this
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, to)} */
-    protected _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): this {
+    protected override _sliceWith2ArgumentWhere1stIsNull(_: NullOrUndefined, to: number,): CollectionHolderOf1<T> {
         __validateEndingIndex(to,)
         return this
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberArray)} */
-    protected _sliceByArray(indices: NumberArray,): CollectionHolder<T> {
+    protected override _sliceByArray(indices: NumberArray,): CollectionHolder<T> {
         const indicesSize = indices.length
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
@@ -1355,8 +977,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         },)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberSet)} */
-    protected _sliceBySet(indices: NumberSet,): CollectionHolder<T> {
+    protected override _sliceBySet(indices: NumberSet,): CollectionHolder<T> {
         const indicesSize = indices.size
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
@@ -1376,8 +997,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         },)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: MinimalistCollectionHolder<number>)} */
-    protected _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+    protected override _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
         const indicesSize = indices.size
         if (indicesSize === 0)
             return EmptyCollectionHolder.get
@@ -1396,8 +1016,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         },)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: CollectionHolder<number>)} */
-    protected _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+    protected override _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
 
@@ -1416,8 +1035,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         },)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: CollectionIterator<number>)} */
-    protected _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+    protected override _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
 
@@ -1436,8 +1054,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         },)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: Iterator<number>)} */
-    protected _sliceByIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
+    protected override _sliceByIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
         let iteratorResult = indices.next()
         if (iteratorResult.done)
             return EmptyCollectionHolder.get
@@ -1459,8 +1076,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         },)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: Iterable<number>)} */
-    protected _sliceByIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
+    protected override _sliceByIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
         const iterator = indices[Symbol.iterator]()
         let iteratorResult = iterator.next()
         if (iteratorResult.done)
