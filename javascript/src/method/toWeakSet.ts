@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyConstants}                                  from "../EmptyConstants"
 import {__uniqueValues, __uniqueValuesByArray, __values} from "./_tables utility"
-import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
@@ -36,7 +35,7 @@ export function toWeakSet<const T extends WeakKey, >(collection: Nullable<| Mini
         return EmptyConstants.EMPTY_WEAK_SET
     if (isCollectionHolder(collection,))
         return toWeakSetByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toWeakSetByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toWeakSetByMinimalistCollectionHolder(collection,)

@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyConstants}                from "../EmptyConstants"
 import {__values, __valuesByArray}     from "./_tables utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -36,7 +35,7 @@ export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHo
         return EmptyConstants.EMPTY_ARRAY
     if (isCollectionHolder(collection,))
         return toArrayByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toArrayByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toArrayByMinimalistCollectionHolder(collection,)

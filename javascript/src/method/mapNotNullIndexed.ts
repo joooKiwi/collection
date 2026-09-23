@@ -18,7 +18,6 @@ import type {IndexValueWithReturnCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -46,7 +45,7 @@ export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>,
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return mapNotNullIndexedByCollectionHolder(collection, transform,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return mapNotNullIndexedByArray(collection, transform,)
     if (isMinimalistCollectionHolder(collection,))
         return mapNotNullIndexedByMinimalistCollectionHolder(collection, transform,)

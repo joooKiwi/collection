@@ -22,17 +22,14 @@ import type {CollectionHolderName}                               from "./type/to
 import {EmptyConstants}                          from "./EmptyConstants"
 import {EmptyCollectionException}                from "./exception/EmptyCollectionException"
 import {EmptyCollectionIterator}                 from "./iterator/EmptyCollectionIterator"
-import {isArray}                                 from "./method/isArray"
 import {isArrayByStructure}                      from "./method/isArrayByStructure"
 import {isCollectionIterator}                    from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
 import {isCollectionHolder}                      from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
-import {isIterator}                              from "./method/isIterator"
 import {isIteratorByStructure}                   from "./method/isIteratorByStructure"
 import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
-import {isSet}                                   from "./method/isSet"
 import {isSetByStructure}                        from "./method/isSetByStructure"
 import {prefixAndPostfixOnly}                    from "./method/joinToString"
 
@@ -538,9 +535,9 @@ export class EmptyCollectionHolder
     public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) {
         if (values == null)
             return true
-        if (isArray(values,))
+        if (values instanceof Array)
             return values.length === 0
-        if (isSet(values,))
+        if (values instanceof Set)
             return values.size === 0
         if (isCollectionHolder(values,))
             return values.isEmpty
@@ -548,7 +545,7 @@ export class EmptyCollectionHolder
             return values.size === 0
         if (isCollectionIterator(values,))
             return values.size === 0
-        if (isIterator(values,))
+        if (values instanceof Iterator)
             return values.next().done === true
 
         if (isArrayByStructure(values,))
@@ -601,9 +598,9 @@ export class EmptyCollectionHolder
     public hasNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) {
         if (values == null)
             return false
-        if (isArray(values,))
+        if (values instanceof Array)
             return values.length != 0
-        if (isSet(values,))
+        if (values instanceof Set)
             return values.size != 0
         if (isCollectionHolder(values,))
             return values.isNotEmpty
@@ -611,7 +608,7 @@ export class EmptyCollectionHolder
             return values.size != 0
         if (isCollectionIterator(values,))
             return values.size != 0
-        if (isIterator(values,))
+        if (values instanceof Iterator)
             return values.next().done === false
 
         if (isArrayByStructure(values,))

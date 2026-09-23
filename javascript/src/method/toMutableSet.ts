@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {__uniqueValues, __uniqueValuesByArray, __values} from "./_tables utility"
-import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
@@ -35,7 +34,7 @@ export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectio
         return new Set()
     if (isCollectionHolder(collection,))
         return toMutableSetByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toMutableSetByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toMutableSetByMinimalistCollectionHolder(collection,)
