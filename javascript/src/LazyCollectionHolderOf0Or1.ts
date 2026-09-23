@@ -399,7 +399,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     public override take(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.take(n,) }
 
-    public override limit(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.takeLast(n,) }
+    public override limit(n: number,): CollectionHolderOf0Or1<T> { return this.take(n,) }
 
     public override takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -412,7 +412,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     public override takeLast(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.takeLast(n,) }
 
-    public override limitLast(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.takeLast(n,) }
+    public override limitLast(n: number,): CollectionHolderOf0Or1<T> { return this.takeLast(n,) }
 
     public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -427,7 +427,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     public override drop(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.drop(n,) }
 
-    public override skip(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.drop(n,) }
+    public override skip(n: number,): CollectionHolderOf0Or1<T> { return this.drop(n,) }
 
     public override dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -440,7 +440,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     public override dropLast(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.dropLast(n,) }
 
-    public override skipLast(n: number,): CollectionHolderOf0Or1<T> { return this._innerCollection.dropLast(n,) }
+    public override skipLast(n: number,): CollectionHolderOf0Or1<T> { return this.dropLast(n,) }
 
     public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
