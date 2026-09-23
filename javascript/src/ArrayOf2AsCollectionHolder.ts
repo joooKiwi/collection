@@ -30,8 +30,8 @@ import {Couple}                        from "./tuple/Couple"
  * @typeParam T1 The 1st type (by default `unknown`)
  * @typeParam T2 The 2nd type (by default `unknown`)
  * @see ArrayAsCollectionHolder
- * @see SetOf2AsCollectionHolder
  * @see DualValueCollectionHolder
+ * @see SetOf2AsCollectionHolder
  * @see LazyCollectionHolderOf2
  */
 export class ArrayOf2AsCollectionHolder<const T1 = unknown,

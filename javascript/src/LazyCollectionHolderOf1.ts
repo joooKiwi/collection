@@ -30,6 +30,7 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * @typeParam T The type (by default `unknown`)
  * @see SingleValueCollectionHolder
  * @see ArrayOf1AsCollectionHolder
+ * @see SetOf1AsCollectionHolder
  */
 export class LazyCollectionHolderOf1<const T = unknown, >
     extends AbstractCollectionHolderOf1<T> {

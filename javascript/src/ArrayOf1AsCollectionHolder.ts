@@ -28,8 +28,8 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
  *
  * @typeParam T The type
  * @see ArrayAsCollectionHolder
- * @see SetOf1AsCollectionHolder
  * @see SingleValueCollectionHolder
+ * @see SetOf1AsCollectionHolder
  * @see LazyCollectionHolderOf1
  */
 export class ArrayOf1AsCollectionHolder<const T = unknown,

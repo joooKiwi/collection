@@ -25,8 +25,9 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
  * An instance of [CollectionHolder] with only a single value from its `constructor`
  *
  * @typeParam T The type (by default `unknown`)
- * @see LazyCollectionHolderOf1
  * @see ArrayOf1AsCollectionHolder
+ * @see SetOf1AsCollectionHolder
+ * @see LazyCollectionHolderOf1
  */
 export class SingleValueCollectionHolder<const T = unknown, >
     extends AbstractCollectionHolderOf1<T> {

@@ -29,8 +29,8 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
  * @typeParam T          The type (by default `unknown`)
  * @typeParam REFERENCE The reference passed in the constructor (by default `Set<T>`)
  * @see SetAsCollectionHolder
- * @see ArrayOf1AsCollectionHolder
  * @see SingleValueCollectionHolder
+ * @see ArrayOf1AsCollectionHolder
  * @see LazyCollectionHolderOf1
  */
 export class SetOf1AsCollectionHolder<const T = unknown,
