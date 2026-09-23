@@ -20,6 +20,7 @@ import {CollectionHolder_2Follower}                                             
 import {CollectionHolder_ByViewer}                                                                         from "./instance/CollectionHolder_ByViewer"
 import {CollectionHolder_ByViewerFollower}                                                                 from "./instance/CollectionHolder_ByViewer.follower"
 import {CollectionHolder_ByGenericCollectionFollower}                                                      from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_ByMinimalistCollection}                                                           from "./instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByMinimalistViewer}                                                               from "./instance/CollectionHolder_ByMinimalistViewer"
 import {CollectionHolder_AdaptorOfIteratorFollower}                                                        from "./instance/CollectionHolder_AdaptorOfIterator.follower"
 import {CollectionHolder_AdaptorOfJsIteratorFollower}                                                      from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
@@ -34,6 +35,7 @@ import {CollectionHolder_AdaptorOfMinimalistFollower}                           
 import {CollectionHolder_AdaptorOfSetFollower}                                                             from "./instance/CollectionHolder_AdaptorOfSet.follower"
 import {CollectionHolder_SetOf1Follower}                                                                   from "./instance/CollectionHolder_SetOf1.follower"
 import {CollectionHolder_SetOf2Follower}                                                                   from "./instance/CollectionHolder_SetOf2.follower"
+import {EMPTY}                                                                                             from "./value/arrays"
 import {every0Instances, every1Instances, every2Instances, everyExtensionMethodInstances, everyNInstances} from "./value/instances"
 
 import {EmptyCollectionHolder}                                                                                                                                       from "../src/EmptyCollectionHolder"
@@ -747,6 +749,7 @@ describe("CollectionHolderTest (size)", () => {
 
     describe("instances", () => {
         describe("empty", () => {
+            test("minimalist - size", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).size,).toBe(0,),)
             describe.each(every0Instances,)("%s", ({value: {newInstance,},},) => {
                 test("size",                () => expect(newInstance().size,)               .toBe(0,),)
                 test("isEmpty",             () => expect(newInstance().isEmpty,)            .toBeTrue(),)
@@ -760,6 +763,7 @@ describe("CollectionHolderTest (size)", () => {
         },)
         describe("1 field", () => {
             const value = Symbol("1 field: value",)
+            test("minimalist - size", () => expect(new CollectionHolder_ByMinimalistCollection([value,],).size,).toBe(1,),)
             describe.each(every1Instances,)("%s", ({value: {newInstance,},},) => {
                 test("size",                () => expect(newInstance(value,).size,)               .toBe(1,),)
                 test("isEmpty",             () => expect(newInstance(value,).isEmpty,)            .toBeFalse(),)
@@ -774,6 +778,7 @@ describe("CollectionHolderTest (size)", () => {
         describe("2 fields", () => {
             const value2 = Symbol("2 fields: 1st value",)
             const value1 = Symbol("2 fields: 2nd value",)
+            test("minimalist - size", () => expect(new CollectionHolder_ByMinimalistCollection([value1, value2,],).size,).toBe(2,),)
             describe.each(every2Instances,)("%s", ({value: {newInstance,},},) => {
                 test("size",                () => expect(newInstance(value1, value2,).size,)               .toBe(2,),)
                 test("isEmpty",             () => expect(newInstance(value1, value2,).isEmpty,)            .toBeFalse(),)
@@ -792,6 +797,7 @@ describe("CollectionHolderTest (size)", () => {
                 Symbol("4 fields: 3rd value",),
                 Symbol("4 fields: 4th value",),
             ]
+            test("minimalist - size", () => expect(new CollectionHolder_ByMinimalistCollection(values,).size,).toBe(4,),)
             describe.each(everyNInstances,)("%s", ({value: {instance,},},) => {
                 test("size",                () => expect(new instance(values,).size,)               .toBe(4,),)
                 test("isEmpty",             () => expect(new instance(values,).isEmpty,)            .toBeFalse(),)
