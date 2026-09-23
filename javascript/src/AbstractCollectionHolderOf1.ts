@@ -195,7 +195,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     }
 
     //#endregion -------------------- Get --------------------
-    //#region -------------------- Find first --------------------
+    //#region -------------------- Find --------------------
 
     public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findFirst(predicate: BooleanCallback<T>,): T
@@ -204,18 +204,18 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             const value = this.value
             if ((predicate as (value: T,) => boolean)(value,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst”|“findLast” predicate received in the collection.", 1,)
         }
         if (predicate.length >= 2) {
             const value = this.value
             if (predicate(value, 0,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst”|“findLast” predicate received in the collection.", 1,)
         }
 
         if ((predicate as () => boolean)())
             return this.value
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst” predicate received in the collection.", 1,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirst”|“findLast” predicate received in the collection.", 1,)
     }
 
     public override findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -246,17 +246,17 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             if ((predicate as (index: number,) => boolean)(0,))
                 return this.value
             else
-                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1,)
+                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed”|“findLastIndexed” predicate received in the collection.", 1,)
         if (predicate.length >= 2) {
             const value = this.value
             if (predicate(0, value,))
                 return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1,)
+            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed”|“findLastIndexed” predicate received in the collection.", 1,)
         }
 
         if ((predicate as () => boolean)())
             return this.value
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed” predicate received in the collection.", 1,)
+        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findFirstIndexed”|“findLastIndexed” predicate received in the collection.", 1,)
     }
 
     public override findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -279,92 +279,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return null
     }
 
-    //#endregion -------------------- Find first --------------------
-    //#region -------------------- Find last --------------------
-
-    public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
-    public override findLast(predicate: BooleanCallback<T>,): T
-    public override findLast(predicate: BooleanCallback<T>,) {
-        if (predicate.length === 1) {
-            const value = this.value
-            if ((predicate as (value: T,) => boolean)(value,))
-                return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1,)
-        }
-        if (predicate.length >= 2) {
-            const value = this.value
-            if (predicate(value, 0,))
-                return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1,)
-        }
-
-        if ((predicate as () => boolean)())
-            return this.value
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLast” predicate received in the collection.", 1,)
-    }
-
-    public override findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
-    public override findLastOrNull(predicate: BooleanCallback<T>,) {
-        if (predicate.length === 1) {
-            const value = this.value
-            if ((predicate as (value: T,) => boolean)(value,))
-                return value
-            return null
-        }
-        if (predicate.length >= 2) {
-            const value = this.value
-            if (predicate(value, 0,))
-                return value
-            return null
-        }
-
-        if ((predicate as () => boolean)())
-            return this.value
-        return null
-    }
-
-    public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): T
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
-        if (predicate.length === 1)
-            if ((predicate as (index: number,) => boolean)(0,))
-                return this.value
-            else
-                throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1,)
-        if (predicate.length >= 2) {
-            const value = this.value
-            if (predicate(0, value,))
-                return value
-            throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1,)
-        }
-
-        if ((predicate as () => boolean)())
-            return this.value
-        throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the “findLastIndexed” predicate received in the collection.", 1,)
-    }
-
-    public override findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,) {
-        if (predicate.length === 1)
-            if ((predicate as (index: number,) => boolean)(0,))
-                return this.value
-            else
-                return null
-        if (predicate.length >= 2) {
-            const value = this.value
-            if (predicate(0, value,))
-                return value
-            return null
-        }
-
-        if ((predicate as () => boolean)())
-            return this.value
-        return null
-    }
-
-    //#endregion -------------------- Find last --------------------
+    //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
