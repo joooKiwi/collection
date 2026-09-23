@@ -12,30 +12,28 @@
 
 import type {Array} from "@joookiwi/type"
 
-import {__get}                                     from "../../src/method/_array utility"
-import {AbstractMinimalistCollectionHolderForTest} from "./AbstractMinimalistCollectionHolderForTest"
+import {__get}                           from "../../src/method/_array utility"
+import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
 
 /**
- * A class to test the functionality of a {@link MinimalistCollectionHolder}
- * having its {@link MinimalistCollectionHolder.get get method} being called.
+ * A class to test the functionality of a {@link CollectionHolder}
+ * having its {@link CollectionHolder.get get method} being called.
  *
- * Note that all the methods are on the extension method for {@link MinimalistCollectionHolder}.
+ * Note that all the methods are on the extension method for {@link CollectionHolder}.
  *
  * @typeParam T The type
  */
-export class CollectionHolder_ByMinimalistCollection<const T, >
-    extends AbstractMinimalistCollectionHolderForTest<T> {
+export class CollectionHolder_GetBeingCalledOnNormal<const T, >
+    extends AbstractCollectionHolderForTest<T> {
 
-    /** The amount of time the specific method ({@link MinimalistCollectionHolder.get}) has been called */
+    /** The amount of time the specific method ({@link CollectionHolder.get}) has been called */
     public amountOfCall = 0
 
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
     }
 
-    public override get size(): number {
-        return this.array.length
-    }
+    public override get size(): number { return this.array.length }
 
     public override get(index: number,): T {
         this.amountOfCall++
