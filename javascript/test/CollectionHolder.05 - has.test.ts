@@ -2857,46 +2857,46 @@ describe("CollectionHolderTest (has)", () => {
             test("non-empty iterable",                                    () => expect(instance.hasAll(new IterableForTest(A,),),)                           .toBeFalse(),)
         },)
         describe("hasAll (array)", () => {
-            describe("null",      () => expect(instance.hasAllWithArray(null,),)     .toBeTrue(),)
-            describe("undefined", () => expect(instance.hasAllWithArray(undefined,),).toBeTrue(),)
-            describe("empty",     () => expect(instance.hasAllWithArray(EMPTY,),)    .toBeTrue(),)
-            describe("non-empty", () => expect(instance.hasAllWithArray(A,),)        .toBeFalse(),)
+            test("null",      () => expect(instance.hasAllWithArray(null,),)     .toBeTrue(),)
+            test("undefined", () => expect(instance.hasAllWithArray(undefined,),).toBeTrue(),)
+            test("empty",     () => expect(instance.hasAllWithArray(EMPTY,),)    .toBeTrue(),)
+            test("non-empty", () => expect(instance.hasAllWithArray(A,),)        .toBeFalse(),)
         },)
         describe("hasAll (set)", () => {
-            describe("null",      () => expect(instance.hasAllWithSet(null,),)       .toBeTrue(),)
-            describe("undefined", () => expect(instance.hasAllWithSet(undefined,),)  .toBeTrue(),)
-            describe("empty",     () => expect(instance.hasAllWithSet(new Set(),),)  .toBeTrue(),)
-            describe("non-empty", () => expect(instance.hasAllWithSet(new Set(A,),),).toBeFalse(),)
+            test("null",      () => expect(instance.hasAllWithSet(null,),)       .toBeTrue(),)
+            test("undefined", () => expect(instance.hasAllWithSet(undefined,),)  .toBeTrue(),)
+            test("empty",     () => expect(instance.hasAllWithSet(new Set(),),)  .toBeTrue(),)
+            test("non-empty", () => expect(instance.hasAllWithSet(new Set(A,),),).toBeFalse(),)
         },)
         describe("hasAll (collection holder)", () => {
-            describe("null",      () => expect(instance.hasAllWithCollectionHolder(null,),)                                 .toBeTrue(),)
-            describe("undefined", () => expect(instance.hasAllWithCollectionHolder(undefined,),)                            .toBeTrue(),)
-            describe("empty",     () => expect(instance.hasAllWithCollectionHolder(new CollectionHolderFromArray(EMPTY,),),).toBeTrue(),)
-            describe("non-empty", () => expect(instance.hasAllWithCollectionHolder(new CollectionHolderFromArray(A,),),)    .toBeFalse(),)
+            test("null",      () => expect(instance.hasAllWithCollectionHolder(null,),)                                 .toBeTrue(),)
+            test("undefined", () => expect(instance.hasAllWithCollectionHolder(undefined,),)                            .toBeTrue(),)
+            test("empty",     () => expect(instance.hasAllWithCollectionHolder(new CollectionHolderFromArray(EMPTY,),),).toBeTrue(),)
+            test("non-empty", () => expect(instance.hasAllWithCollectionHolder(new CollectionHolderFromArray(A,),),)    .toBeFalse(),)
         },)
         describe("hasAll (minimalist collection holder)", () => {
-            describe("null",      () => expect(instance.hasAllWithMinimalistCollectionHolder(null,),)                                           .toBeTrue(),)
-            describe("undefined", () => expect(instance.hasAllWithMinimalistCollectionHolder(undefined,),)                                      .toBeTrue(),)
-            describe("empty",     () => expect(instance.hasAllWithMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(EMPTY,),),).toBeTrue(),)
-            describe("non-empty", () => expect(instance.hasAllWithMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,),),)    .toBeFalse(),)
+            test("null",      () => expect(instance.hasAllWithMinimalistCollectionHolder(null,),)                                           .toBeTrue(),)
+            test("undefined", () => expect(instance.hasAllWithMinimalistCollectionHolder(undefined,),)                                      .toBeTrue(),)
+            test("empty",     () => expect(instance.hasAllWithMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(EMPTY,),),).toBeTrue(),)
+            test("non-empty", () => expect(instance.hasAllWithMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,),),)    .toBeFalse(),)
         },)
         describe("hasAll (collection iterator)", () => {
-            describe("null",      () => expect(instance.hasAllWithCollectionIterator(null,),)                                   .toBeTrue(),)
-            describe("undefined", () => expect(instance.hasAllWithCollectionIterator(undefined,),)                              .toBeTrue(),)
-            describe("empty",     () => expect(instance.hasAllWithCollectionIterator(new CollectionIteratorFromArray(EMPTY,),),).toBeTrue(),)
-            describe("non-empty", () => expect(instance.hasAllWithCollectionIterator(new CollectionIteratorFromArray(A,),),)    .toBeFalse(),)
+            test("null",      () => expect(instance.hasAllWithCollectionIterator(null,),)                                   .toBeTrue(),)
+            test("undefined", () => expect(instance.hasAllWithCollectionIterator(undefined,),)                              .toBeTrue(),)
+            test("empty",     () => expect(instance.hasAllWithCollectionIterator(new CollectionIteratorFromArray(EMPTY,),),).toBeTrue(),)
+            test("non-empty", () => expect(instance.hasAllWithCollectionIterator(new CollectionIteratorFromArray(A,),),)    .toBeFalse(),)
         },)
         describe("hasAll (iterator)", () => {
-            describe("null",      () => expect(instance.hasAllWithIterator(null,),)                    .toBeTrue(),)
-            describe("undefined", () => expect(instance.hasAllWithIterator(undefined,),)               .toBeTrue(),)
-            describe("empty",     () => expect(instance.hasAllWithIterator(EMPTY[Symbol.iterator](),),).toBeTrue(),)
-            describe("non-empty", () => expect(instance.hasAllWithIterator(A[Symbol.iterator](),),)    .toBeFalse(),)
+            test("null",      () => expect(instance.hasAllWithIterator(null,),)                    .toBeTrue(),)
+            test("undefined", () => expect(instance.hasAllWithIterator(undefined,),)               .toBeTrue(),)
+            test("empty",     () => expect(instance.hasAllWithIterator(EMPTY[Symbol.iterator](),),).toBeTrue(),)
+            test("non-empty", () => expect(instance.hasAllWithIterator(A[Symbol.iterator](),),)    .toBeFalse(),)
         },)
         describe("hasAll (iterable)", () => {
-            describe("null",      () => expect(instance.hasAllWithIterable(null,),)     .toBeTrue(),)
-            describe("undefined", () => expect(instance.hasAllWithIterable(undefined,),).toBeTrue(),)
-            describe("empty",     () => expect(instance.hasAllWithIterable(EMPTY,),)    .toBeTrue(),)
-            describe("non-empty", () => expect(instance.hasAllWithIterable(A,),)        .toBeFalse(),)
+            test("null",      () => expect(instance.hasAllWithIterable(null,),)     .toBeTrue(),)
+            test("undefined", () => expect(instance.hasAllWithIterable(undefined,),).toBeTrue(),)
+            test("empty",     () => expect(instance.hasAllWithIterable(EMPTY,),)    .toBeTrue(),)
+            test("non-empty", () => expect(instance.hasAllWithIterable(A,),)        .toBeFalse(),)
         },)
 
         describe("hasNotAll", () => {
@@ -2929,46 +2929,46 @@ describe("CollectionHolderTest (has)", () => {
             test("non-empty iterable",                                    () => expect(instance.hasNotAll(new IterableForTest(A,),),)                           .toBeTrue(),)
         },)
         describe("hasNotAll (array)", () => {
-            describe("null",      () => expect(instance.hasNotAllWithArray(null,),)     .toBeFalse(),)
-            describe("undefined", () => expect(instance.hasNotAllWithArray(undefined,),).toBeFalse(),)
-            describe("empty",     () => expect(instance.hasNotAllWithArray(EMPTY,),)    .toBeFalse(),)
-            describe("non-empty", () => expect(instance.hasNotAllWithArray(A,),)        .toBeTrue(),)
+            test("null",      () => expect(instance.hasNotAllWithArray(null,),)     .toBeFalse(),)
+            test("undefined", () => expect(instance.hasNotAllWithArray(undefined,),).toBeFalse(),)
+            test("empty",     () => expect(instance.hasNotAllWithArray(EMPTY,),)    .toBeFalse(),)
+            test("non-empty", () => expect(instance.hasNotAllWithArray(A,),)        .toBeTrue(),)
         },)
         describe("hasNotAll (set)", () => {
-            describe("null",      () => expect(instance.hasNotAllWithSet(null,),)       .toBeFalse(),)
-            describe("undefined", () => expect(instance.hasNotAllWithSet(undefined,),)  .toBeFalse(),)
-            describe("empty",     () => expect(instance.hasNotAllWithSet(new Set(),),)  .toBeFalse(),)
-            describe("non-empty", () => expect(instance.hasNotAllWithSet(new Set(A,),),).toBeTrue(),)
+            test("null",      () => expect(instance.hasNotAllWithSet(null,),)       .toBeFalse(),)
+            test("undefined", () => expect(instance.hasNotAllWithSet(undefined,),)  .toBeFalse(),)
+            test("empty",     () => expect(instance.hasNotAllWithSet(new Set(),),)  .toBeFalse(),)
+            test("non-empty", () => expect(instance.hasNotAllWithSet(new Set(A,),),).toBeTrue(),)
         },)
         describe("hasNotAll (collection holder)", () => {
-            describe("null",      () => expect(instance.hasNotAllWithCollectionHolder(null,),)                                 .toBeFalse(),)
-            describe("undefined", () => expect(instance.hasNotAllWithCollectionHolder(undefined,),)                            .toBeFalse(),)
-            describe("empty",     () => expect(instance.hasNotAllWithCollectionHolder(new CollectionHolderFromArray(EMPTY,),),).toBeFalse(),)
-            describe("non-empty", () => expect(instance.hasNotAllWithCollectionHolder(new CollectionHolderFromArray(A,),),)    .toBeTrue(),)
+            test("null",      () => expect(instance.hasNotAllWithCollectionHolder(null,),)                                 .toBeFalse(),)
+            test("undefined", () => expect(instance.hasNotAllWithCollectionHolder(undefined,),)                            .toBeFalse(),)
+            test("empty",     () => expect(instance.hasNotAllWithCollectionHolder(new CollectionHolderFromArray(EMPTY,),),).toBeFalse(),)
+            test("non-empty", () => expect(instance.hasNotAllWithCollectionHolder(new CollectionHolderFromArray(A,),),)    .toBeTrue(),)
         },)
         describe("hasNotAll (minimalist collection holder)", () => {
-            describe("null",      () => expect(instance.hasNotAllWithMinimalistCollectionHolder(null,),)                                           .toBeFalse(),)
-            describe("undefined", () => expect(instance.hasNotAllWithMinimalistCollectionHolder(undefined,),)                                      .toBeFalse(),)
-            describe("empty",     () => expect(instance.hasNotAllWithMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(EMPTY,),),).toBeFalse(),)
-            describe("non-empty", () => expect(instance.hasNotAllWithMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,),),)    .toBeTrue(),)
+            test("null",      () => expect(instance.hasNotAllWithMinimalistCollectionHolder(null,),)                                           .toBeFalse(),)
+            test("undefined", () => expect(instance.hasNotAllWithMinimalistCollectionHolder(undefined,),)                                      .toBeFalse(),)
+            test("empty",     () => expect(instance.hasNotAllWithMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(EMPTY,),),).toBeFalse(),)
+            test("non-empty", () => expect(instance.hasNotAllWithMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,),),)    .toBeTrue(),)
         },)
         describe("hasNotAll (collection iterator)", () => {
-            describe("null",      () => expect(instance.hasNotAllWithCollectionIterator(null,),)                                   .toBeFalse(),)
-            describe("undefined", () => expect(instance.hasNotAllWithCollectionIterator(undefined,),)                              .toBeFalse(),)
-            describe("empty",     () => expect(instance.hasNotAllWithCollectionIterator(new CollectionIteratorFromArray(EMPTY,),),).toBeFalse(),)
-            describe("non-empty", () => expect(instance.hasNotAllWithCollectionIterator(new CollectionIteratorFromArray(A,),),)    .toBeTrue(),)
+            test("null",      () => expect(instance.hasNotAllWithCollectionIterator(null,),)                                   .toBeFalse(),)
+            test("undefined", () => expect(instance.hasNotAllWithCollectionIterator(undefined,),)                              .toBeFalse(),)
+            test("empty",     () => expect(instance.hasNotAllWithCollectionIterator(new CollectionIteratorFromArray(EMPTY,),),).toBeFalse(),)
+            test("non-empty", () => expect(instance.hasNotAllWithCollectionIterator(new CollectionIteratorFromArray(A,),),)    .toBeTrue(),)
         },)
         describe("hasNotAll (iterator)", () => {
-            describe("null",      () => expect(instance.hasNotAllWithIterator(null,),)                    .toBeFalse(),)
-            describe("undefined", () => expect(instance.hasNotAllWithIterator(undefined,),)               .toBeFalse(),)
-            describe("empty",     () => expect(instance.hasNotAllWithIterator(EMPTY[Symbol.iterator](),),).toBeFalse(),)
-            describe("non-empty", () => expect(instance.hasNotAllWithIterator(A[Symbol.iterator](),),)    .toBeTrue(),)
+            test("null",      () => expect(instance.hasNotAllWithIterator(null,),)                    .toBeFalse(),)
+            test("undefined", () => expect(instance.hasNotAllWithIterator(undefined,),)               .toBeFalse(),)
+            test("empty",     () => expect(instance.hasNotAllWithIterator(EMPTY[Symbol.iterator](),),).toBeFalse(),)
+            test("non-empty", () => expect(instance.hasNotAllWithIterator(A[Symbol.iterator](),),)    .toBeTrue(),)
         },)
         describe("hasNotAll (iterable)", () => {
-            describe("null",      () => expect(instance.hasNotAllWithIterable(null,),)     .toBeFalse(),)
-            describe("undefined", () => expect(instance.hasNotAllWithIterable(undefined,),).toBeFalse(),)
-            describe("empty",     () => expect(instance.hasNotAllWithIterable(EMPTY,),)    .toBeFalse(),)
-            describe("non-empty", () => expect(instance.hasNotAllWithIterable(A,),)        .toBeTrue(),)
+            test("null",      () => expect(instance.hasNotAllWithIterable(null,),)     .toBeFalse(),)
+            test("undefined", () => expect(instance.hasNotAllWithIterable(undefined,),).toBeFalse(),)
+            test("empty",     () => expect(instance.hasNotAllWithIterable(EMPTY,),)    .toBeFalse(),)
+            test("non-empty", () => expect(instance.hasNotAllWithIterable(A,),)        .toBeTrue(),)
         },)
 
         test("hasNull",    () => expect(instance.hasNull,)   .toBeFalse(),)
@@ -7157,6 +7157,7 @@ describe("CollectionHolderTest (has)", () => {
         describe("2 fields", () => {
         describe.each(every2Instances,)("%s", ({value: {newInstance, type,},},) => {
             const isSet = type === "set adaptor" || type === "set of 2"
+            const describeIfNotSet = isSet ? describe.skip : describe
 
             describe("has", () => {
                 test('a',  () => expect(newInstance('a', 'b',)        .has('a',),).toBeTrue(),)
@@ -7576,9 +7577,9 @@ describe("CollectionHolderTest (has)", () => {
                 (isSet ? test.skip : test)("aa",                   () => expect(newInstance('a', 'a',)            .hasNoNulls,).toBeTrue(),)
                 test("ab",                                         () => expect(newInstance('a', 'b',)            .hasNoNulls,).toBeTrue(),)
                 test("ef",                                         () => expect(newInstance('e', 'f',)            .hasNoNulls,).toBeTrue(),)
-            },);
+            },)
 
-            (isSet ? describe.skip : describe)("hasDuplicate", () => {
+            describeIfNotSet("hasDuplicate", () => {
                 test("null, null",           () => expect(newInstance(null, null,)          .hasDuplicate,).toBeTrue(),)
                 test("null at start",        () => expect(newInstance(null, 'a',)           .hasDuplicate,).toBeFalse(),)
                 test("null at end",          () => expect(newInstance('a', null,)           .hasDuplicate,).toBeFalse(),)
@@ -7590,8 +7591,8 @@ describe("CollectionHolderTest (has)", () => {
                 test("aa",                   () => expect(newInstance('a', 'a',)            .hasDuplicate,).toBeTrue(),)
                 test("ab",                   () => expect(newInstance('a', 'b',)            .hasDuplicate,).toBeFalse(),)
                 test("ef",                   () => expect(newInstance('e', 'f',)            .hasDuplicate,).toBeFalse(),)
-            },);
-            (isSet ? describe.skip : describe)("hasNoDuplicates", () => {
+            },)
+            describeIfNotSet("hasNoDuplicates", () => {
                 test("null, null",           () => expect(newInstance(null, null,)          .hasNoDuplicates,).toBeFalse(),)
                 test("null at start",        () => expect(newInstance(null, 'a',)           .hasNoDuplicates,).toBeTrue(),)
                 test("null at end",          () => expect(newInstance('a', null,)           .hasNoDuplicates,).toBeTrue(),)
@@ -7623,6 +7624,7 @@ describe("CollectionHolderTest (has)", () => {
         describe("N fields", () => {
         describe.each(everyNInstances,)("%s", ({value: {instance, type,},},) => {
             const isSet = type === "set adaptor"
+            const describeIfNotSet = isSet ? describe.skip : describe
 
             describe("has", () => {
                 test('a', () => expect(new instance(ABCD,)         .has('a',),).toBeTrue(),)
@@ -8046,9 +8048,9 @@ describe("CollectionHolderTest (has)", () => {
                 (isSet ? test.skip : test)("aaaa",         () => expect(new instance(AAAA,)         .hasNoNulls,).toBeTrue(),)
                 test("abcd",                               () => expect(new instance(ABCD,)         .hasNoNulls,).toBeTrue(),)
                 test("efgh",                               () => expect(new instance(EFGH,)         .hasNoNulls,).toBeTrue(),)
-            },);
+            },)
 
-            (isSet ? describe.skip : describe)("hasDuplicate", () => {
+            describeIfNotSet("hasDuplicate", () => {
                 test("4x null",                    () => expect(new instance(NULL_x4,)                .hasDuplicate,).toBeTrue(),)
                 test("2x null",                    () => expect(new instance(A_NULL_C_NULL,)          .hasDuplicate,).toBeTrue(),)
                 test("2x null at start",           () => expect(new instance(NULL_NULL_AB,)           .hasDuplicate,).toBeTrue(),)
@@ -8074,8 +8076,8 @@ describe("CollectionHolderTest (has)", () => {
                 test("abcc",                       () => expect(new instance(ABCC,)                   .hasDuplicate,).toBeTrue(),)
                 test("abcd",                       () => expect(new instance(ABCD,)                   .hasDuplicate,).toBeFalse(),)
                 test("efgh",                       () => expect(new instance(EFGH,)                   .hasDuplicate,).toBeFalse(),)
-            },);
-            (isSet ? describe.skip : describe)("hasNoDuplicates", () => {
+            },)
+            describeIfNotSet("hasNoDuplicates", () => {
                 test("4x null",                    () => expect(new instance(NULL_x4,)                .hasNoDuplicates,).toBeFalse(),)
                 test("2x null",                    () => expect(new instance(A_NULL_C_NULL,)          .hasNoDuplicates,).toBeFalse(),)
                 test("2x null at start",           () => expect(new instance(NULL_NULL_AB,)           .hasNoDuplicates,).toBeFalse(),)

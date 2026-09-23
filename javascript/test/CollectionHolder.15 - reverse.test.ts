@@ -77,7 +77,7 @@ describe("CollectionHolderTest (reverse)", () => {
             test("toReversed", () => expect(new CollectionHolder_2Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
             test("reversed",   () => expect(new CollectionHolder_2Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
         },)
-        describe("CollectionHolder_2Follower", () => {
+        describe("CollectionViewer", () => {
             test("toReversed", () => expect(new CollectionHolder_ByViewerFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
             test("reversed",   () => expect(new CollectionHolder_ByViewerFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
         },)
