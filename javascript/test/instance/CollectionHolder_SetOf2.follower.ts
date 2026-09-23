@@ -21,7 +21,7 @@ import type {IndexOf2}                                                          
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
 import type {ToReverse_from, ToReverse_fromTo, ToReverse_to}                                                                                                from "../../src/type/toReverse"
 import type {DoubleValueFromIndex, DoubleValueFromIndexOrElse, DoubleValueFromIndexOrNull}                                                                  from "../../src/type/value"
-import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
+import type {CollectionHolderOf2Follower}                                                                                                                   from "./CollectionHolderOf2Follower"
 
 import {SetOf2AsCollectionHolder} from "../../src/SetOf2AsCollectionHolder"
 import {AB}                       from "../value/arrays"
@@ -32,7 +32,7 @@ import {AB}                       from "../value/arrays"
  */
 export class CollectionHolder_SetOf2Follower
     extends SetOf2AsCollectionHolder<string, string>
-    implements CollectionHolderFollower<string> {
+    implements CollectionHolderOf2Follower<string> {
 
     //#region -------------------- Fields --------------------
 
@@ -53,8 +53,6 @@ export class CollectionHolder_SetOf2Follower
     public getLast_amountOfCall = 0
     public getOrElse_amountOfCall = 0
     public getOrNull_amountOfCall = 0
-    public getFirstOrNull_amountOfCall = 0
-    public getLastOrNull_amountOfCall = 0
 
     public firstIndexOf_amountOfCall = 0
     public firstIndexOfOrNull_amountOfCall = 0
@@ -207,16 +205,6 @@ export class CollectionHolder_SetOf2Follower
     public override getOrNull(index: number,) {
         this.getOrNull_amountOfCall++
         return super.getOrNull(index)
-    }
-
-    public override getFirstOrNull(): string {
-        this.getFirstOrNull_amountOfCall++
-        return super.getFirstOrNull()
-    }
-
-    public override getLastOrNull(): string {
-        this.getLastOrNull_amountOfCall++
-        return super.getLastOrNull()
     }
 
     //#endregion -------------------- Get --------------------

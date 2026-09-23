@@ -20,7 +20,7 @@ import type {CollectionHolderOf0Or1}                                            
 import type {IndexOf1}                                                                                                                                      from "../../src/type/indexOf"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
 import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIndexOrNull}                                                                  from "../../src/type/value"
-import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
+import type {CollectionHolderOf1Follower}                                                                                                                   from "./CollectionHolderOf1Follower"
 
 import {SingleValueCollectionHolder} from "../../src/SingleValueCollectionHolder"
 
@@ -30,7 +30,7 @@ import {SingleValueCollectionHolder} from "../../src/SingleValueCollectionHolder
  */
 export class CollectionHolder_1Follower
     extends SingleValueCollectionHolder<string>
-    implements CollectionHolderFollower<string> {
+    implements CollectionHolderOf1Follower<string> {
 
     //#region -------------------- Fields --------------------
 
@@ -48,11 +48,8 @@ export class CollectionHolder_1Follower
 
     public get_amountOfCall = 0
     public getFirst_amountOfCall = 0
-    public getLast_amountOfCall = 0
     public getOrElse_amountOfCall = 0
     public getOrNull_amountOfCall = 0
-    public getFirstOrNull_amountOfCall = 0
-    public getLastOrNull_amountOfCall = 0
 
     public firstIndexOf_amountOfCall = 0
     public firstIndexOfOrNull_amountOfCall = 0
@@ -61,11 +58,6 @@ export class CollectionHolder_1Follower
     public indexOfFirstOrNull_amountOfCall = 0
     public indexOfFirstIndexed_amountOfCall = 0
     public indexOfFirstIndexedOrNull_amountOfCall = 0
-
-    public indexOfLast_amountOfCall = 0
-    public indexOfLastOrNull_amountOfCall = 0
-    public indexOfLastIndexed_amountOfCall = 0
-    public indexOfLastIndexedOrNull_amountOfCall = 0
 
     public all_amountOfCall = 0
     public any_amountOfCall = 0
@@ -86,24 +78,13 @@ export class CollectionHolder_1Follower
     public findFirstIndexed_amountOfCall = 0
     public findFirstIndexedOrNull_amountOfCall = 0
 
-    public findLast_amountOfCall = 0
-    public findLastOrNull_amountOfCall = 0
-    public findLastIndexed_amountOfCall = 0
-    public findLastIndexedOrNull_amountOfCall = 0
-
     public take_amountOfCall = 0
     public takeWhile_amountOfCall = 0
     public takeWhileIndexed_amountOfCall = 0
-    public takeLast_amountOfCall = 0
-    public takeLastWhile_amountOfCall = 0
-    public takeLastWhileIndexed_amountOfCall = 0
 
     public drop_amountOfCall = 0
     public dropWhile_amountOfCall = 0
     public dropWhileIndexed_amountOfCall = 0
-    public dropLast_amountOfCall = 0
-    public dropLastWhile_amountOfCall = 0
-    public dropLastWhileIndexed_amountOfCall = 0
 
     public toReverse_amountOfCall = 0
 
@@ -185,11 +166,6 @@ export class CollectionHolder_1Follower
         return super.getFirst()
     }
 
-    public override getLast(): string {
-        this.getLast_amountOfCall++
-        return super.getLast()
-    }
-
 
     public override getOrElse<const U, const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<U>,): SingleValueFromIndexOrElse<I, string, U>
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | string | U
@@ -207,18 +183,8 @@ export class CollectionHolder_1Follower
         return super.getOrNull(index)
     }
 
-    public override getFirstOrNull(): string {
-        this.getFirstOrNull_amountOfCall++
-        return super.getFirstOrNull()
-    }
-
-    public override getLastOrNull(): string {
-        this.getLastOrNull_amountOfCall++
-        return super.getLastOrNull()
-    }
-
     //#endregion -------------------- Get --------------------
-    //#region -------------------- Find first --------------------
+    //#region -------------------- Find --------------------
 
     public override findFirst<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): S
     public override findFirst(predicate: BooleanCallback<string>,): string
@@ -248,38 +214,7 @@ export class CollectionHolder_1Follower
         return super.findFirstIndexedOrNull(predicate,)
     }
 
-    //#endregion -------------------- Find first --------------------
-    //#region -------------------- Find last --------------------
-
-    public override findLast<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): S
-    public override findLast(predicate: BooleanCallback<string>,): string
-    public override findLast(predicate: BooleanCallback<string>,) {
-        this.findLast_amountOfCall++
-        return super.findLast(predicate,)
-    }
-
-    public override findLastOrNull<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): NullOr<S>
-    public override findLastOrNull(predicate: BooleanCallback<string>,): NullOr<string>
-    public override findLastOrNull(predicate: BooleanCallback<string>,) {
-        this.findLastOrNull_amountOfCall++
-        return super.findLastOrNull(predicate,)
-    }
-
-    public override findLastIndexed<const S extends string, >(predicate: ReverseRestrainedBooleanCallback<string, S>,): S
-    public override findLastIndexed(predicate: ReverseBooleanCallback<string>,): string
-    public override findLastIndexed(predicate: ReverseBooleanCallback<string>,) {
-        this.findLastIndexed_amountOfCall++
-        return super.findLastIndexed(predicate,)
-    }
-
-    public override findLastIndexedOrNull<const S extends string, >(predicate: ReverseRestrainedBooleanCallback<string, S>,): NullOr<S>
-    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<string>,): NullOr<string>
-    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<string>,) {
-        this.findLastIndexedOrNull_amountOfCall++
-        return super.findLastIndexedOrNull(predicate,)
-    }
-
-    //#endregion -------------------- Find last --------------------
+    //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
@@ -315,27 +250,6 @@ export class CollectionHolder_1Follower
     public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {
         this.indexOfFirstIndexedOrNull_amountOfCall++
         return super.indexOfFirstIndexedOrNull(predicate, from, to,)
-    }
-
-
-    public override indexOfLast(predicate: BooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): 0 {
-        this.indexOfLast_amountOfCall++
-        return super.indexOfLast(predicate, from, to,)
-    }
-
-    public override indexOfLastOrNull(predicate: BooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {
-        this.indexOfLastOrNull_amountOfCall++
-        return super.indexOfLastOrNull(predicate, from, to,)
-    }
-
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): 0 {
-        this.indexOfLastIndexed_amountOfCall++
-        return super.indexOfLastIndexed(predicate, from, to,)
-    }
-
-    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): NullOrZeroNumber {
-        this.indexOfLastIndexedOrNull_amountOfCall++
-        return super.indexOfLastIndexedOrNull(predicate, from, to,)
     }
 
     //#endregion -------------------- Index methods --------------------
@@ -432,25 +346,6 @@ export class CollectionHolder_1Follower
         return super.takeWhileIndexed(predicate,)
     }
 
-    public override takeLast(n: number,): CollectionHolderOf0Or1<string> {
-        this.takeLast_amountOfCall++
-        return super.takeLast(n,)
-    }
-
-    public override takeLastWhile<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>): CollectionHolder<S>
-    public override takeLastWhile(predicate: BooleanCallback<string>,): CollectionHolder<string>
-    public override takeLastWhile(predicate: BooleanCallback<string>,) {
-        this.takeLastWhile_amountOfCall++
-        return super.takeLastWhile(predicate,)
-    }
-
-    public override takeLastWhileIndexed<const S extends string, >(predicate: ReverseRestrainedBooleanCallback<string, S>): CollectionHolder<S>
-    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<string>,): CollectionHolder<string>
-    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<string>,) {
-        this.takeLastWhileIndexed_amountOfCall++
-        return super.takeLastWhileIndexed(predicate,)
-    }
-
     //#endregion -------------------- Take --------------------
     //#region -------------------- Drop --------------------
 
@@ -471,25 +366,6 @@ export class CollectionHolder_1Follower
     public override dropWhileIndexed(predicate: ReverseBooleanCallback<string>,) {
         this.dropWhileIndexed_amountOfCall++
         return super.dropWhileIndexed(predicate,)
-    }
-
-    public override dropLast(n: number,): CollectionHolderOf0Or1<string> {
-        this.dropLast_amountOfCall++
-        return super.dropLast(n,)
-    }
-
-    public override dropLastWhile<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>): CollectionHolder<S>
-    public override dropLastWhile(predicate: BooleanCallback<string>,): CollectionHolder<string>
-    public override dropLastWhile(predicate: BooleanCallback<string>,) {
-        this.dropLastWhile_amountOfCall++
-        return super.dropLastWhile(predicate,)
-    }
-
-    public override dropLastWhileIndexed<const S extends string, >(predicate: ReverseRestrainedBooleanCallback<string, S>): CollectionHolder<S>
-    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<string>,): CollectionHolder<string>
-    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<string>,) {
-        this.dropLastWhileIndexed_amountOfCall++
-        return super.dropLastWhileIndexed(predicate,)
     }
 
     //#endregion -------------------- Drop --------------------
