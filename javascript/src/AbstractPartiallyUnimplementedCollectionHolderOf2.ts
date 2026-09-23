@@ -38,7 +38,8 @@ import {isSetByStructure}                         from "./method/isSetByStructur
  * but gives less overhead on the methods that have multiple possible arguments.
  *
  * @apiNote This class is used to reduce complexity of methods that can support different type of arguments
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T1 The 1st type (by default `unknown`)
+ * @typeParam T2 The 2nd type (by default `unknown`)
  * @see AbstractPartiallyUnimplementedCollectionHolder
  * @see AbstractPartiallyUnimplementedCollectionHolderOf1
  */
