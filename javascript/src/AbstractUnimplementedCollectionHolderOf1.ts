@@ -67,7 +67,7 @@ export abstract class AbstractUnimplementedCollectionHolderOf1<const T, >
 
     public override getFirst(): T { return this.value }
 
-    public override getLast(): T { return this.value }
+    public override getLast(): T { return this.getFirst() }
 
 
     public abstract override getOrElse<const U, const I extends number, >(index: I, defaultValue: IndexWithReturnCallback<U>,): SingleValueFromIndexOrElse<I, T, U>
@@ -80,18 +80,28 @@ export abstract class AbstractUnimplementedCollectionHolderOf1<const T, >
 
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): T
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
-    public override getLastOrElse() { return this.value }
+    public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return this.getFirstOrElse(defaultValue,) }
 
 
     public abstract override getOrNull<const I extends number, >(index: I,): SingleValueFromIndexOrNull<I, T>
     public abstract override getOrNull(index: number,): NullOr<T>
 
-    public override getFirstOrNull(): T { return this.value }
+    public override getFirstOrNull(): T { return this.getFirst() }
 
-    public override getLastOrNull(): T { return this.value }
+    public override getLastOrNull(): T { return this.getFirst() }
 
     //#endregion -------------------- Get --------------------
-    //#region -------------------- First --------------------
+    //#region -------------------- First / last --------------------
+
+    public override last(): T
+    public override last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+    public override last(predicate: Nullable<BooleanCallback<T>>,): T
+    public override last(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return this.first()
+        return this.first(predicate,)
+    }
+
 
     public override firstOrNull(): T
     public override firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
@@ -102,6 +112,26 @@ export abstract class AbstractUnimplementedCollectionHolderOf1<const T, >
         return this.findFirstOrNull(predicate,)
     }
 
+    public override lastOrNull(): T
+    public override lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+    public override lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+    public override lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return this.firstOrNull()
+        return this.firstOrNull(predicate,)
+    }
+
+
+    public override lastIndexed(): T
+    public override lastIndexed<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+    public override lastIndexed(predicate: Nullable<ReverseBooleanCallback<T>>,): T
+    public override lastIndexed(predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return this.firstIndexed()
+        return this.firstIndexed(predicate,)
+    }
+
+
     public override firstIndexedOrNull(): T
     public override firstIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
     public override firstIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
@@ -111,28 +141,43 @@ export abstract class AbstractUnimplementedCollectionHolderOf1<const T, >
         return this.findFirstIndexedOrNull(predicate,)
     }
 
-    //#endregion -------------------- First --------------------
-    //#region -------------------- Last --------------------
-
-    public override lastOrNull(): T
-    public override lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public override lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public override lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (predicate == null)
-            return this.getLast()
-        return this.findLastOrNull(predicate,)
-    }
-
     public override lastIndexedOrNull(): T
     public override lastIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
     public override lastIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
     public override lastIndexedOrNull(predicate?: Nullable<ReverseBooleanCallback<T>>,) {
-        if (predicate == null)
-            return this.getLast()
-        return this.findLastIndexedOrNull(predicate,)
+        if (arguments.length === 0)
+            return this.firstIndexedOrNull()
+        return this.firstIndexedOrNull(predicate,)
     }
 
-    //#endregion -------------------- Last --------------------
+    //#endregion -------------------- First / last --------------------
+    //#region -------------------- Find --------------------
+
+    public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public override findLast(predicate: BooleanCallback<T>,): T
+    public override findLast(predicate: BooleanCallback<T>,) {
+        return this.findFirst(predicate,)
+    }
+
+    public override findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+    public override findLastOrNull(predicate: BooleanCallback<T>,) {
+        return this.findFirstOrNull(predicate,)
+    }
+
+    public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.findFirstIndexed(predicate,)
+    }
+
+    public override findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,) {
+        return this.findFirstIndexedOrNull(predicate,)
+    }
+
+    //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
