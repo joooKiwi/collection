@@ -25,6 +25,18 @@ import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIn
 
 import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedCollectionHolder"
 
+/**
+ * A definition of a {@link CollectionHolderOf1} to have a common ancestor.
+ * Only the aliases methods have implementation.
+ * Plus some override to change the type returned.
+ * The rest of the methods should be implemented by the inheritor(s).
+ *
+ * @apiNote This class is used when not specifically requiring an optimization on the methods, just the non-aliased methods calls
+ * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @typeParam T The type (by default `unknown`)
+ * @see AbstractUnimplementedCollectionHolder
+ * @see AbstractUnimplementedCollectionHolderOf2
+ */
 export abstract class AbstractUnimplementedCollectionHolderOf1<const T, >
     extends AbstractUnimplementedCollectionHolder<T>
     implements CollectionHolderOf1<T> {

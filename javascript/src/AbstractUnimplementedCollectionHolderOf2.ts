@@ -26,7 +26,21 @@ import type {DoubleValueFromIndex, DoubleValueFromIndexOrElse, DoubleValueFromIn
 
 import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedCollectionHolder"
 
-export abstract class AbstractUnimplementedCollectionHolderOf2<const T1, const T2, >
+/**
+ * A definition of a {@link CollectionHolderOf2} to have a common ancestor.
+ * Only the aliases methods have implementation.
+ * Plus some override to change the type returned.
+ * The rest of the methods should be implemented by the inheritor(s).
+ *
+ * @apiNote This class is used when not specifically requiring an optimization on the methods, just the non-aliased methods calls
+ * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @typeParam T1 The 1st type (by default `unknown`)
+ * @typeParam T2 The 2nd type (by default `unknown`) * @see AbstractUnimplementedCollectionHolder
+ * @see AbstractUnimplementedCollectionHolder
+ * @see AbstractUnimplementedCollectionHolderOf2
+ */
+export abstract class AbstractUnimplementedCollectionHolderOf2<const T1 = unknown,
+    const T2 = unknown, >
     extends AbstractUnimplementedCollectionHolder<| T1 | T2>
     implements CollectionHolderOf2<T1, T2> {
 
