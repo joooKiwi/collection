@@ -1253,7 +1253,7 @@ export class GenericCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Get --------------------
-    //#region -------------------- Find first --------------------
+    //#region -------------------- Find --------------------
 
     public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findFirst(predicate: BooleanCallback<T>,): T
@@ -1279,8 +1279,6 @@ export class GenericCollectionHolder<const T = unknown, >
         return findFirstIndexedOrNullByArray(this._array, predicate,)
     }
 
-    //#endregion -------------------- Find first --------------------
-    //#region -------------------- Find last --------------------
 
     public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findLast(predicate: BooleanCallback<T>,): T
@@ -1306,7 +1304,7 @@ export class GenericCollectionHolder<const T = unknown, >
         return findLastIndexedOrNullByArray(this._array, predicate,)
     }
 
-    //#endregion -------------------- Find last --------------------
+    //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
@@ -1744,8 +1742,6 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- For each --------------------
-
     public override forEach(action: ValueIndexCallback<T>,): void {
         forEachByArray(this._array, action,)
     }
@@ -1754,8 +1750,6 @@ export class GenericCollectionHolder<const T = unknown, >
         forEachIndexedByArray(this._array, action,)
     }
 
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- On each --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
         onEachByArray(this._array, action,)
@@ -1767,18 +1761,12 @@ export class GenericCollectionHolder<const T = unknown, >
         return this
     }
 
-    //#endregion -------------------- On each --------------------
-
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
-
-    //#region -------------------- To reverse --------------------
 
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return toReverseByArray(this._array, from, to,)
     }
-
-    //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------

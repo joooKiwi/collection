@@ -154,7 +154,7 @@ export abstract class AbstractCollectionHolderOf2<const T1 = unknown,
      * }
      * ```
      *
-     * @param lateArray The late couple
+     * @param lateValue The late couple
      */
     protected abstract _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2>
 
