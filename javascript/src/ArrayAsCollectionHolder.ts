@@ -23,7 +23,7 @@ import type {HasExactly2ElementsOnArray}                                        
 import type {IsEmptyOnArray}                                                                                                                                                                                                                                                    from "./type/isEmpty"
 import type {IsNotEmptyOnArray}                                                                                                                                                                                                                                                 from "./type/isNotEmpty"
 
-import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
+import {AbstractPartiallyUnimplementedCollectionHolder} from "./AbstractPartiallyUnimplementedCollectionHolder"
 import {EmptyCollectionException}                       from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                        from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                      from "./exception/IndexOutOfBoundsException"
@@ -153,7 +153,7 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  */
 export class ArrayAsCollectionHolder<const T = unknown,
     const REFERENCE extends Array<T> = Array<T>, >
-    extends AbstractCollectionHolder<T> {
+    extends AbstractPartiallyUnimplementedCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
 

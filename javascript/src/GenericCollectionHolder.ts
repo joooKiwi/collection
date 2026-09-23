@@ -22,7 +22,7 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "./type/possibleInstance"
 
-import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
+import {AbstractPartiallyUnimplementedCollectionHolder} from "./AbstractPartiallyUnimplementedCollectionHolder"
 import {CollectionConstants}                            from "./CollectionConstants"
 import {EmptyCollectionHolder}                          from "./EmptyCollectionHolder"
 import {LazyArrayAsCollectionHolder}                    from "./LazyArrayAsCollectionHolder"
@@ -166,7 +166,7 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * @see EmptyCollectionHolder
  */
 export class GenericCollectionHolder<const T = unknown, >
-    extends AbstractCollectionHolder<T> {
+    extends AbstractPartiallyUnimplementedCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
 
