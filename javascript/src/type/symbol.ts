@@ -10,9 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionConstants} from "../CollectionConstants"
+import type {SymbolConstants} from "../SymbolConstants"
 
 /** A {@link Symbol} telling that it is the value before the first element in a {@link CollectionIterator} */
-export type BeforeFirstValueInCollectionIteratorSymbol = typeof CollectionConstants["BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL"]
+export type BeforeFirstValueInCollectionIteratorSymbol = typeof SymbolConstants["BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL"]
 /** A {@link Symbol} telling that it is the value after the last element in a {@link CollectionIterator} */
-export type AfterLastValueInCollectionIteratorSymbol = typeof CollectionConstants["AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL"]
+export type AfterLastValueInCollectionIteratorSymbol = typeof SymbolConstants["AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL"]

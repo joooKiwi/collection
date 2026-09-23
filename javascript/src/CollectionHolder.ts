@@ -4605,11 +4605,11 @@ export interface CollectionHolder<out T = unknown, >
      * Note that if the current {@link CollectionHolder instance} is huge (not infinite),
      * a {@link limit} can be specified followed by a {@link truncated} value.
      *
-     * @param separator The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
-     * @param prefix    The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
-     * @param postfix   The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
+     * @param separator The value to separate the items ({@link MessageConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+     * @param prefix    The value before the juncture ({@link MessageConstants.DEFAULT_JOIN_PREFIX '['} by default)
+     * @param postfix   The value after the juncture ({@link MessageConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
      * @param limit     The maximum number of items to loop (to the end by default if `null`)
-     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+     * @param truncated The truncated string if there is a limit ({@link MessageConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
      * @param transform A callback to transform into a {@link String}
      * @throws ForbiddenIndexException The {@link limit} is a forbidden {@link Number} ({@link Number.NaN NaN})
      * @see ReadonlyArray.join
@@ -4631,11 +4631,11 @@ export interface CollectionHolder<out T = unknown, >
      * Note that if the current {@link CollectionHolder instance} is huge (not infinite),
      * a {@link limit} can be specified followed by a {@link truncated} value.
      *
-     * @param separator The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
-     * @param prefix    The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
-     * @param postfix   The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
+     * @param separator The value to separate the items ({@link MessageConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+     * @param prefix    The value before the juncture ({@link MessageConstants.DEFAULT_JOIN_PREFIX '['} by default)
+     * @param postfix   The value after the juncture ({@link MessageConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
      * @param limit     The maximum number of items to loop (to the end by default if `null`)
-     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+     * @param truncated The truncated string if there is a limit ({@link MessageConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
      * @param transform A callback to transform into a {@link String}
      * @throws ForbiddenIndexException The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see ReadonlyArray.join

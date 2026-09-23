@@ -18,7 +18,7 @@ import type {TypedArray}      from "../type/TypedArray"
  *
  * @param value The value to identify
  * @see isTypedArray
- * @see CollectionConstants.TYPED_ARRAY_MEMBERS
+ * @see MembersConstants.TYPED_ARRAY_MEMBERS
  * @doesNotValidateTheTypes
  */
 export function isTypedArrayByStructure(value: unknown,): value is (& object & Record<KeyOfTypedArray, unknown>)
@@ -27,7 +27,7 @@ export function isTypedArrayByStructure(value: unknown,): value is (& object & R
  *
  * @param value The value to identify
  * @see isTypedArray
- * @see CollectionConstants.TYPED_ARRAY_MEMBERS
+ * @see MembersConstants.TYPED_ARRAY_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */

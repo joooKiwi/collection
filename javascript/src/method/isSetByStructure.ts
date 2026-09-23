@@ -19,7 +19,7 @@ import type {KeyOfSet} from "../type/keyOf"
  *
  * @param value The value to identify
  * @see isSet
- * @see CollectionConstants.SET_MEMBERS
+ * @see MembersConstants.SET_MEMBERS
  * @doesNotValidateTheTypes
  */
 export function isSetByStructure(value: unknown,): value is (& object & Record<KeyOfSet, unknown>)
@@ -28,7 +28,7 @@ export function isSetByStructure(value: unknown,): value is (& object & Record<K
  *
  * @param value The value to identify
  * @see isSet
- * @see CollectionConstants.SET_MEMBERS
+ * @see MembersConstants.SET_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */

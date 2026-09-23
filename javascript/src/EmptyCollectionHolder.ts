@@ -19,7 +19,7 @@ import type {IndexWithReturnCallback, ReturnCallback}            from "./type/ca
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "./type/possibleInstance"
 import type {CollectionHolderName}                               from "./type/toStringTag"
 
-import {CollectionConstants}                     from "./CollectionConstants"
+import {EmptyConstants}                          from "./EmptyConstants"
 import {EmptyCollectionException}                from "./exception/EmptyCollectionException"
 import {EmptyCollectionIterator}                 from "./iterator/EmptyCollectionIterator"
 import {isArray}                                 from "./method/isArray"
@@ -39,7 +39,7 @@ import {prefixAndPostfixOnly}                    from "./method/joinToString"
 /**
  * A {@link CollectionHolder} with no values (as a singleton instance)
  *
- * @see CollectionConstants.EMPTY_COLLECTION_HOLDER
+ * @see EmptyConstants.EMPTY_COLLECTION_HOLDER
  * @see GenericMinimalistCollectionHolder
  * @see MinimalistAsCollectionHolder
  * @see GenericCollectionHolder
@@ -861,7 +861,7 @@ export class EmptyCollectionHolder
     //#region -------------------- To array --------------------
 
     public toArray(..._: Array<unknown>): EmptyArray
-    public toArray() { return CollectionConstants.EMPTY_ARRAY }
+    public toArray() { return EmptyConstants.EMPTY_ARRAY }
 
     public toMutableArray(..._: Array<unknown>): EmptyMutableArray
     public toMutableArray() { return [] }
@@ -870,7 +870,7 @@ export class EmptyCollectionHolder
     //#region -------------------- To set --------------------
 
     public toSet(..._: Array<unknown>): EmptySet
-    public toSet() { return CollectionConstants.EMPTY_SET }
+    public toSet() { return EmptyConstants.EMPTY_SET }
 
     public toMutableSet(..._: Array<unknown>): EmptyMutableSet
     public toMutableSet() { return new Set() }
@@ -879,7 +879,7 @@ export class EmptyCollectionHolder
     //#region -------------------- To weak set --------------------
 
     public toWeakSet(..._: Array<unknown>): EmptyWeakSet
-    public toWeakSet() { return CollectionConstants.EMPTY_WEAK_SET }
+    public toWeakSet() { return EmptyConstants.EMPTY_WEAK_SET }
 
     public toMutableWeakSet(..._: Array<unknown>): EmptyMutableWeakSet
     public toMutableWeakSet() { return new WeakSet() }
@@ -888,7 +888,7 @@ export class EmptyCollectionHolder
     //#region -------------------- To map --------------------
 
     public toMap(..._: Array<unknown>): EmptyMap
-    public toMap() { return CollectionConstants.EMPTY_MAP }
+    public toMap() { return EmptyConstants.EMPTY_MAP }
 
     public toMutableMap(..._: Array<unknown>): EmptyMutableMap
     public toMutableMap() { return new Map() }
@@ -897,7 +897,7 @@ export class EmptyCollectionHolder
     //#region -------------------- To weak map --------------------
 
     public toWeakMap(..._: Array<unknown>): EmptyWeakMap
-    public toWeakMap() { return CollectionConstants.EMPTY_WEAK_MAP }
+    public toWeakMap() { return EmptyConstants.EMPTY_WEAK_MAP }
 
     public toMutableWeakMap(..._: Array<unknown>): EmptyMutableWeakMap
     public toMutableWeakMap() { return new WeakMap() }

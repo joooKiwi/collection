@@ -18,7 +18,7 @@ import type {KeyOfCollectionIterator} from "../type/keyOf"
  *
  * @param value The value to identity
  * @see isCollectionIterator
- * @see CollectionConstants.COLLECTION_ITERATOR_MEMBERS
+ * @see MembersConstants.COLLECTION_ITERATOR_MEMBERS
  * @doesNotValidateTheTypes
  */
 export function isCollectionIteratorByStructure(value: unknown,): value is (& object & Record<KeyOfCollectionIterator, unknown>)
@@ -27,7 +27,7 @@ export function isCollectionIteratorByStructure(value: unknown,): value is (& ob
  *
  * @param value The value to identity
  * @see isCollectionIterator
- * @see CollectionConstants.COLLECTION_ITERATOR_MEMBERS
+ * @see MembersConstants.COLLECTION_ITERATOR_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */

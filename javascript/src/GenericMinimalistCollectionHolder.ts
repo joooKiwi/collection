@@ -21,9 +21,9 @@ import type {CollectionIterator}                                 from "./iterato
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "./type/possibleInstance"
 
 import {AbstractMinimalistCollectionHolder}      from "./AbstractMinimalistCollectionHolder"
-import {CollectionConstants}                     from "./CollectionConstants"
 import {MinimalistCollectionHolder}              from "./MinimalistCollectionHolder"
 import {EmptyCollectionException}                from "./exception/EmptyCollectionException"
+import {EmptyConstants}                          from "./EmptyConstants"
 import {ForbiddenIndexException}                 from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}               from "./exception/IndexOutOfBoundsException"
 import {isArrayByStructure}                      from "./method/isArrayByStructure"
@@ -106,7 +106,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -148,7 +148,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -191,7 +191,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             if (reference.isEmpty) {
                 this.#size = 0
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -234,7 +234,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -275,7 +275,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             if (reference.isEmpty) {
                 this.#size = 0
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -319,7 +319,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             if (iteratorResult.done === true) {
                 this.#size = 0
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -349,7 +349,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -391,7 +391,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -434,7 +434,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             if (reference.isEmpty) {
                 this.#size = 0
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -477,7 +477,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -518,7 +518,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             if (reference.isEmpty) {
                 this.#size = 0
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -562,7 +562,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
             if (iteratorResult.done === true) {
                 this.#size = 0
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -595,7 +595,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -641,7 +641,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -687,7 +687,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (size === 0) {
-                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#array = EmptyConstants.EMPTY_ARRAY
                 return
             }
 
@@ -732,7 +732,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
         if (iteratorResult.done) {
             this.#size = 0
-            this.#array = CollectionConstants.EMPTY_ARRAY
+            this.#array = EmptyConstants.EMPTY_ARRAY
             return
         }
 

@@ -18,7 +18,7 @@ import type {KeyOfCollectionHolder} from "../type/keyOf"
  *
  * @param value The value to identify
  * @see isCollectionHolder
- * @see CollectionConstants.COLLECTION_MEMBERS
+ * @see MembersConstants.COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
  */
 export function isCollectionHolderByStructure(value: unknown,): value is (& object & Record<KeyOfCollectionHolder, unknown>)
@@ -27,7 +27,7 @@ export function isCollectionHolderByStructure(value: unknown,): value is (& obje
  *
  * @param value The value to identify
  * @see isCollectionHolder
- * @see CollectionConstants.COLLECTION_MEMBERS
+ * @see MembersConstants.COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */

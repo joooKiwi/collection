@@ -15,7 +15,7 @@ import type {Array, Nullable, Set} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                             from "../CollectionConstants"
+import {EmptyConstants}                                  from "../EmptyConstants"
 import {__uniqueValues, __uniqueValuesByArray, __values} from "./_tables utility"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}                    from "./isMinimalistCol
  */
 export function toSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): Set<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_SET
+        return EmptyConstants.EMPTY_SET
     if (isCollectionHolder(collection,))
         return toSetByCollectionHolder(collection,)
     if (collection instanceof Array)
@@ -56,11 +56,11 @@ export function toSet<const T, >(collection: Nullable<| MinimalistCollectionHold
  */
 export function toSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Set<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_SET
+        return EmptyConstants.EMPTY_SET
 
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_SET
+        return EmptyConstants.EMPTY_SET
     return __withDuplicate(collection, size,)
 }
 
@@ -72,9 +72,9 @@ export function toSetByMinimalistCollectionHolder<const T, >(collection: Nullabl
  */
 export function toSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Set<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_SET
+        return EmptyConstants.EMPTY_SET
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_SET
+        return EmptyConstants.EMPTY_SET
     if (collection.hasDuplicate)
         return __withDuplicate(collection, collection.size,)
     return __withoutDuplicate(collection, collection.size,)
@@ -88,11 +88,11 @@ export function toSetByCollectionHolder<const T, >(collection: Nullable<Collecti
  */
 export function toSetByArray<const T, >(collection: Nullable<Array<T>>,): Set<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_SET
+        return EmptyConstants.EMPTY_SET
 
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_SET
+        return EmptyConstants.EMPTY_SET
     return __withDuplicateByArray(collection, size,)
 }
 

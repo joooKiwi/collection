@@ -35,7 +35,6 @@ import {CollectionHolder_LazyOf2Follower}               from "./instance/Collect
 import {A, AB, EMPTY}                                   from "./value/arrays"
 import {emptyCollectionHolder, emptyCollectionIterator} from "./value/instances"
 
-import {CollectionConstants}           from "../src/CollectionConstants"
 import {ArrayAsCollectionHolder}       from "../src/ArrayAsCollectionHolder"
 import {ArrayOf1AsCollectionHolder}    from "../src/ArrayOf1AsCollectionHolder"
 import {ArrayOf2AsCollectionHolder}    from "../src/ArrayOf2AsCollectionHolder"
@@ -56,6 +55,7 @@ import {SetAsCollectionHolder}         from "../src/SetAsCollectionHolder"
 import {SetOf1AsCollectionHolder}      from "../src/SetOf1AsCollectionHolder"
 import {SetOf2AsCollectionHolder}      from "../src/SetOf2AsCollectionHolder"
 import {SingleValueCollectionHolder}   from "../src/SingleValueCollectionHolder"
+import {SymbolConstants}               from "../src/SymbolConstants"
 import {EmptyCollectionHolder}         from "../src/EmptyCollectionHolder"
 import {EmptyOptional}                 from "../src/optional/EmptyOptional"
 import {Couple}                        from "../src/tuple/Couple"
@@ -65,32 +65,32 @@ describe("CollectionHolderTest (javascript exclusive)", () => {
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
 
-        test("Symbol.toStringTag", () => expect(instance[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+        test("Symbol.toStringTag", () => expect(instance[Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
         test("Symbol.iterator",    () => expect(instance[Symbol.iterator](),).toBe(emptyCollectionIterator,),)
     },)
 
     describe("instances", () => {
         describe("Symbol.toStringTag", () => {
-            test("GenericCollectionHolder",       () => expect(new GenericCollectionHolder(EMPTY,)                                        [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("SingleValueCollectionHolder",   () => expect(new SingleValueCollectionHolder(null,)                                     [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("DualValueCollectionHolder",     () => expect(new DualValueCollectionHolder(null, null,)                                 [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("ArrayAsCollectionHolder",       () => expect(new ArrayAsCollectionHolder(EMPTY,)                                        [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("ArrayOf1AsCollectionHolder",    () => expect(new ArrayOf1AsCollectionHolder(A,)                                         [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("ArrayOf2AsCollectionHolder",    () => expect(new ArrayOf2AsCollectionHolder(AB,)                                        [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("SetAsCollectionHolder",         () => expect(new SetAsCollectionHolder(new Set(),)                                      [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("SetOf1AsCollectionHolder",      () => expect(new SetOf1AsCollectionHolder(new Set(A,),)                                 [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("SetOf2AsCollectionHolder",      () => expect(new SetOf2AsCollectionHolder(new Set(AB,),)                                [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("IteratorAsCollectionHolder",    () => expect(new IteratorAsCollectionHolder(emptyCollectionIterator,)                   [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("JsIteratorAsCollectionHolder",  () => expect(new JsIteratorAsCollectionHolder(emptyCollectionIterator,)                 [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("JsIterableAsCollectionHolder",  () => expect(new JsIterableAsCollectionHolder(emptyCollectionIterator,)                 [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("MinimalistAsCollectionHolder",  () => expect(new MinimalistAsCollectionHolder(emptyCollectionHolder,)                   [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("LazyCollectionHolder",          () => expect(new LazyCollectionHolder(EMPTY,)                                           [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("LazyCollectionHolderOf1",       () => expect(new LazyCollectionHolderOf1(() => null,)                                   [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("LazyCollectionHolderOf2",       () => expect(new LazyCollectionHolderOf2(() => new Couple(null, null,),)                [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("LazyCollectionHolderOf0Or1",    () => expect(new LazyCollectionHolderOf0Or1(() => EmptyOptional.get,)                   [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("LazyCollectionHolderOf0Or1Or2", () => expect(new LazyCollectionHolderOf0Or1Or2(() => null,)                             [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("LazyCollectionHolderOf1Or2",    () => expect(new LazyCollectionHolderOf1Or2(() => new Couple(null, EmptyOptional.get,),)[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-            test("CollectionViewer",              () => expect(new CollectionViewer(emptyCollectionHolder,)                               [Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("GenericCollectionHolder",       () => expect(new GenericCollectionHolder(EMPTY,)                                        [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("SingleValueCollectionHolder",   () => expect(new SingleValueCollectionHolder(null,)                                     [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("DualValueCollectionHolder",     () => expect(new DualValueCollectionHolder(null, null,)                                 [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("ArrayAsCollectionHolder",       () => expect(new ArrayAsCollectionHolder(EMPTY,)                                        [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("ArrayOf1AsCollectionHolder",    () => expect(new ArrayOf1AsCollectionHolder(A,)                                         [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("ArrayOf2AsCollectionHolder",    () => expect(new ArrayOf2AsCollectionHolder(AB,)                                        [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("SetAsCollectionHolder",         () => expect(new SetAsCollectionHolder(new Set(),)                                      [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("SetOf1AsCollectionHolder",      () => expect(new SetOf1AsCollectionHolder(new Set(A,),)                                 [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("SetOf2AsCollectionHolder",      () => expect(new SetOf2AsCollectionHolder(new Set(AB,),)                                [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("IteratorAsCollectionHolder",    () => expect(new IteratorAsCollectionHolder(emptyCollectionIterator,)                   [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("JsIteratorAsCollectionHolder",  () => expect(new JsIteratorAsCollectionHolder(emptyCollectionIterator,)                 [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("JsIterableAsCollectionHolder",  () => expect(new JsIterableAsCollectionHolder(emptyCollectionIterator,)                 [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("MinimalistAsCollectionHolder",  () => expect(new MinimalistAsCollectionHolder(emptyCollectionHolder,)                   [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("LazyCollectionHolder",          () => expect(new LazyCollectionHolder(EMPTY,)                                           [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("LazyCollectionHolderOf1",       () => expect(new LazyCollectionHolderOf1(() => null,)                                   [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("LazyCollectionHolderOf2",       () => expect(new LazyCollectionHolderOf2(() => new Couple(null, null,),)                [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("LazyCollectionHolderOf0Or1",    () => expect(new LazyCollectionHolderOf0Or1(() => EmptyOptional.get,)                   [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("LazyCollectionHolderOf0Or1Or2", () => expect(new LazyCollectionHolderOf0Or1Or2(() => null,)                             [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("LazyCollectionHolderOf1Or2",    () => expect(new LazyCollectionHolderOf1Or2(() => new Couple(null, EmptyOptional.get,),)[Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+            test("CollectionViewer",              () => expect(new CollectionViewer(emptyCollectionHolder,)                               [Symbol.toStringTag],).toBe(SymbolConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
         },)
         describe("Symbol.iterator", () => {
             test("GenericCollectionHolder",       () => expect(new CollectionHolder_ByGenericCollectionFollower().execute(it => it[Symbol.iterator](),).toIterator_amountOfCall,).toBe(1,),)

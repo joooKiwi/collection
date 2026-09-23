@@ -18,7 +18,7 @@ import type {KeyOfMinimalistCollectionHolder} from "../type/keyOf"
  *
  * @param value The value to identify
  * @see isMinimalistCollectionHolder
- * @see CollectionConstants.MINIMALIST_COLLECTION_MEMBERS
+ * @see MembersConstants.MINIMALIST_COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
@@ -28,7 +28,7 @@ export function isMinimalistCollectionHolderByStructure(value: unknown,): value 
  *
  * @param value The value to identify
  * @see isMinimalistCollectionHolder
- * @see CollectionConstants.MINIMALIST_COLLECTION_MEMBERS
+ * @see MembersConstants.MINIMALIST_COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */

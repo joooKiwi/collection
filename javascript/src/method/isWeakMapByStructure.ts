@@ -19,7 +19,7 @@ import type {KeyOfWeakMap} from "../type/keyOf"
  *
  * @param value The value to identify
  * @see isWeakMap
- * @see CollectionConstants.WEAK_MAP_MEMBERS
+ * @see MembersConstants.WEAK_MAP_MEMBERS
  * @doesNotValidateTheTypes
  */
 export function isWeakMapByStructure(value: unknown,): value is (& object & Record<KeyOfWeakMap, unknown>)
@@ -28,7 +28,7 @@ export function isWeakMapByStructure(value: unknown,): value is (& object & Reco
  *
  * @param value The value to identify
  * @see isWeakMap
- * @see CollectionConstants.WEAK_MAP_MEMBERS
+ * @see MembersConstants.WEAK_MAP_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
@@ -38,7 +38,7 @@ export function isWeakMapByStructure<const K extends WeakKey, const INSTANCE ext
  *
  * @param value The value to identify
  * @see isWeakMap
- * @see CollectionConstants.WEAK_MAP_MEMBERS
+ * @see MembersConstants.WEAK_MAP_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */

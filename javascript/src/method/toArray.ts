@@ -15,7 +15,7 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyConstants}                from "../EmptyConstants"
 import {__values, __valuesByArray}     from "./_tables utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): Array<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_ARRAY
+        return EmptyConstants.EMPTY_ARRAY
     if (isCollectionHolder(collection,))
         return toArrayByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -57,11 +57,11 @@ export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHo
  */
 export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Array<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_ARRAY
+        return EmptyConstants.EMPTY_ARRAY
 
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_ARRAY
+        return EmptyConstants.EMPTY_ARRAY
     return __newArray(collection, size,)
 }
 
@@ -73,9 +73,9 @@ export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nulla
  */
 export function toArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Array<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_ARRAY
+        return EmptyConstants.EMPTY_ARRAY
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_ARRAY
+        return EmptyConstants.EMPTY_ARRAY
     return __newArray(collection, collection.size,)
 }
 
@@ -87,11 +87,11 @@ export function toArrayByCollectionHolder<const T, >(collection: Nullable<Collec
  */
 export function toArrayByArray<const T, >(collection: Nullable<Array<T>>,): Array<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_ARRAY
+        return EmptyConstants.EMPTY_ARRAY
 
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_ARRAY
+        return EmptyConstants.EMPTY_ARRAY
     return __newArrayByArray(collection, size,)
 }
 

@@ -15,7 +15,7 @@ import type {Array, Nullable, WeakSet} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                             from "../CollectionConstants"
+import {EmptyConstants}                                  from "../EmptyConstants"
 import {__uniqueValues, __uniqueValuesByArray, __values} from "./_tables utility"
 import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}                    from "./isMinimalistCol
  */
 export function toWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): WeakSet<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_WEAK_SET
+        return EmptyConstants.EMPTY_WEAK_SET
     if (isCollectionHolder(collection,))
         return toWeakSetByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -57,11 +57,11 @@ export function toWeakSet<const T extends WeakKey, >(collection: Nullable<| Mini
  */
 export function toWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >(collection: Nullable<MinimalistCollectionHolder<T>>,): WeakSet<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_WEAK_SET
+        return EmptyConstants.EMPTY_WEAK_SET
 
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_WEAK_SET
+        return EmptyConstants.EMPTY_WEAK_SET
     return __withDuplicate(collection, size,)
 }
 
@@ -73,9 +73,9 @@ export function toWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >
  */
 export function toWeakSetByCollectionHolder<const T extends WeakKey, >(collection: Nullable<CollectionHolder<T>>,): WeakSet<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_WEAK_SET
+        return EmptyConstants.EMPTY_WEAK_SET
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_WEAK_SET
+        return EmptyConstants.EMPTY_WEAK_SET
     if (collection.hasDuplicate)
         return __withDuplicate(collection, collection.size,)
     return __withoutDuplicate(collection, collection.size,)
@@ -89,11 +89,11 @@ export function toWeakSetByCollectionHolder<const T extends WeakKey, >(collectio
  */
 export function toWeakSetByArray<const T extends WeakKey, >(collection: Nullable<Array<T>>,): WeakSet<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_WEAK_SET
+        return EmptyConstants.EMPTY_WEAK_SET
 
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_WEAK_SET
+        return EmptyConstants.EMPTY_WEAK_SET
     return __withDuplicateByArray(collection, size,)
 }
 

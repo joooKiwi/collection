@@ -16,8 +16,8 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {EmptyConstants}                from "../EmptyConstants"
 import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -198,7 +198,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 newArray[++indexToAdd] = collection.get(indexToRetrieve,)
             return newArray
         }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: () => boolean,) {
@@ -212,7 +212,7 @@ function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, p
                 newArray[++indexToAdd] = collection[indexToRetrieve] as T
             return newArray
         }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 
@@ -230,7 +230,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
             return newArray
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (value: T,) => boolean,) {
@@ -247,7 +247,7 @@ function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, p
             return newArray
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 
@@ -265,7 +265,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
             return newArray
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (value: T, index: number,) => boolean,) {
@@ -282,7 +282,7 @@ function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, p
             return newArray
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 //#endregion -------------------- Loop methods --------------------

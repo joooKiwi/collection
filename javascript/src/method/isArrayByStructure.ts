@@ -17,7 +17,7 @@ import type {KeyOfArray} from "../type/keyOf"
  *
  * @param value The value to identify
  * @see isArray
- * @see CollectionConstants.ARRAY_MEMBERS
+ * @see MembersConstants.ARRAY_MEMBERS
  * @doesNotValidateTheTypes
  */
 export function isArrayByStructure(value: unknown,): value is (& object & Record<KeyOfArray, unknown>)
@@ -26,7 +26,7 @@ export function isArrayByStructure(value: unknown,): value is (& object & Record
  *
  * @param value The value to identify
  * @see isArray
- * @see CollectionConstants.ARRAY_MEMBERS
+ * @see MembersConstants.ARRAY_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */

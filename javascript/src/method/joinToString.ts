@@ -32,11 +32,11 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * a {@link limit} can be specified followed by a {@link truncated} value.
  *
  * @param collection The nullable collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
- * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param separator  The value to separate the items ({@link MessageConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The value before the juncture ({@link MessageConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The value after the juncture ({@link MessageConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
  * @param limit      The maximum number of items to loop (to the end by default if `null`)
- * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+ * @param truncated  The truncated string if there is a limit ({@link MessageConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
@@ -75,11 +75,11 @@ export function joinToString<const T, >(collection: Nullable<| MinimalistCollect
  * a {@link limit} can be specified followed by a {@link truncated} value.
  *
  * @param collection The nullable collection
- * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
- * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param separator  The value to separate the items ({@link MessageConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The value before the juncture ({@link MessageConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The value after the juncture ({@link MessageConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
  * @param limit      The maximum number of items to loop (to the end by default if `null`)
- * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+ * @param truncated  The truncated string if there is a limit ({@link MessageConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
@@ -113,11 +113,11 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
  * a {@link limit} can be specified followed by a {@link truncated} value.
  *
  * @param collection The nullable collection
- * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
- * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param separator  The value to separate the items ({@link MessageConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The value before the juncture ({@link MessageConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The value after the juncture ({@link MessageConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
  * @param limit      The maximum number of items to loop (to the end by default if `null`)
- * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+ * @param truncated  The truncated string if there is a limit ({@link MessageConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
@@ -151,11 +151,11 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
  * a {@link limit} can be specified followed by a {@link truncated} value.
  *
  * @param collection The nullable collection
- * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
- * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param separator  The value to separate the items ({@link MessageConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The value before the juncture ({@link MessageConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The value after the juncture ({@link MessageConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
  * @param limit      The maximum number of items to loop (to the end by default if `null`)
- * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+ * @param truncated  The truncated string if there is a limit ({@link MessageConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
@@ -187,8 +187,8 @@ export function joinToStringByArray<const T, >(collection: Nullable<Array<T>>, s
 /**
  * Join both {@link prefix} and {@link postfix} together
  *
- * @param prefix The prefix to apply (or {@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix The prefix to apply (or {@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param prefix The prefix to apply (or {@link MessageConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix The prefix to apply (or {@link MessageConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
  * @see joinToString
  * @see joinToStringByMinimalistCollectionHolder
  * @see joinToStringByCollectionHolder

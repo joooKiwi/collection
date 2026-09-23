@@ -14,19 +14,19 @@ import {describe, expect, test} from "vitest"
 
 import {A, AA, AB} from "./value/arrays"
 
-import {CollectionConstants} from "../src/CollectionConstants"
-import {Empty}               from "../src/tuple/Empty"
-import {Tuple_1}             from "./instance/Tuple_1"
-import {Tuple_2}             from "./instance/Tuple_2"
+import {EmptyConstants} from "../src/EmptyConstants"
+import {Empty}          from "../src/tuple/Empty"
+import {Tuple_1}        from "./instance/Tuple_1"
+import {Tuple_2}        from "./instance/Tuple_2"
 
 describe("TupleTest (conversion)", () => {
 
     describe("Empty", () => {
         const instance = Empty.get
 
-        test("toArray",                  () => expect(instance.toArray(),).toBe(CollectionConstants.EMPTY_ARRAY,),)
+        test("toArray",                  () => expect(instance.toArray(),).toBe(EmptyConstants.EMPTY_ARRAY,),)
         test("toArray: frozen",          () => expect(instance.toArray(),).toBeFrozen(),)
-        test("toSet",                    () => expect(instance.toSet(),).toBe(CollectionConstants.EMPTY_SET,),)
+        test("toSet",                    () => expect(instance.toSet(),).toBe(EmptyConstants.EMPTY_SET,),)
         test("toSet: frozen",            () => expect(instance.toSet(),).toBeFrozen(),)
         test("toString",                 () => expect(instance.toString(),).toBe("Empty ()",),)
     },)

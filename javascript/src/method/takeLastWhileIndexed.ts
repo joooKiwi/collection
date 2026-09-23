@@ -16,8 +16,8 @@ import type {CollectionHolder}                                         from "../
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {EmptyConstants}                from "../EmptyConstants"
 import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -161,7 +161,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
         if (!predicate()) {
             const newSize = size - index - 1
             if (newSize === 0)
-                return CollectionConstants.EMPTY_ARRAY
+                return EmptyConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection.get(index + 1,),]
 
@@ -184,7 +184,7 @@ function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, p
         if (!predicate()) {
             const newSize = size - index - 1
             if (newSize === 0)
-                return CollectionConstants.EMPTY_ARRAY
+                return EmptyConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection[index + 1] as T,]
 
@@ -204,7 +204,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
         if (!predicate(index,)) {
             const newSize = size - index - 1
             if (newSize === 0)
-                return CollectionConstants.EMPTY_ARRAY
+                return EmptyConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection.get(index + 1,),]
 
@@ -227,7 +227,7 @@ function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, p
         if (!predicate(index,)) {
             const newSize = size - index - 1
             if (newSize === 0)
-                return CollectionConstants.EMPTY_ARRAY
+                return EmptyConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection[index + 1] as T,]
 
@@ -248,7 +248,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
         if (!predicate(index, newArray[index] = collection.get(index,),)) {
             const newSize = size - index - 1
             if (newSize === 0)
-                return CollectionConstants.EMPTY_ARRAY
+                return EmptyConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [newArray[index + 1] as T,]
 
@@ -268,7 +268,7 @@ function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, p
         if (!predicate(index, newArray[index] = collection[index] as T,)) {
             const newSize = size - index - 1
             if (newSize === 0)
-                return CollectionConstants.EMPTY_ARRAY
+                return EmptyConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [newArray[index + 1] as T,]
 

@@ -17,7 +17,7 @@ import type {KeyOfIterator} from "../type/keyOf"
  *
  * @param value The value to identity
  * @see isIterator
- * @see CollectionConstants.ITERATOR_MEMBERS
+ * @see MembersConstants.ITERATOR_MEMBERS
  * @doesNotValidateTheTypes
  */
 export function isIteratorByStructure(value: unknown,): value is (& object & Record<KeyOfIterator, unknown>)
@@ -26,7 +26,7 @@ export function isIteratorByStructure(value: unknown,): value is (& object & Rec
  *
  * @param value The value to identity
  * @see isIterator
- * @see CollectionConstants.ITERATOR_MEMBERS
+ * @see MembersConstants.ITERATOR_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */

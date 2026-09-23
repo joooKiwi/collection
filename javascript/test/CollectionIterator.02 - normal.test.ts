@@ -19,7 +19,7 @@ import {CollectionIterator_2Follower}                                           
 import {ABCD, EMPTY}                                                                        from "./value/arrays"
 import {afterLastIteratorValue, beforeFirstIteratorValue, every1Iterators, every2Iterators} from "./value/instances"
 
-import {CollectionConstants}                 from "../src/CollectionConstants"
+import {SymbolConstants}                     from "../src/SymbolConstants"
 import {NoElementFoundInCollectionException} from "../src/exception/NoElementFoundInCollectionException"
 import {EmptyCollectionIterator}             from "../src/iterator/EmptyCollectionIterator"
 import {GenericCollectionIteratorValue}      from "../src/iterator/value/GenericCollectionIteratorValue"
@@ -66,11 +66,11 @@ describe("CollectionIteratorTest", () => {
             test("next, done",          () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().done,)           .toBeTrue(),)
             test("next, isDone",        () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().isDone(),)       .toBeTrue(),)
             test("next, isNotDone",     () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().isNotDone(),)    .toBeFalse(),)
-            test("next, value",         () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().value,)          .toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
+            test("next, value",         () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).next().value,)          .toBe(SymbolConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
             test("previous, done",      () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().done,)       .toBeTrue(),)
             test("previous, isDone",    () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().isDone(),)   .toBeTrue(),)
             test("previous, isNotDone", () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().isNotDone(),).toBeFalse(),)
-            test("previous, value",     () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().value,)      .toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
+            test("previous, value",     () => expect(new CollectionIterator_ByGenericIterator(EMPTY,).previous().value,)      .toBe(SymbolConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
         },)
     },) },)
 
