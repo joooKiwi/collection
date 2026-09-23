@@ -13,8 +13,8 @@
 import type {CollectionHolder}        from "../CollectionHolder"
 import type {CollectionIteratorValue} from "./value/CollectionIteratorValue"
 
-import {GenericCollectionIteratorValue} from "./value/GenericCollectionIteratorValue"
 import {AbstractCollectionIterator}     from "./AbstractCollectionIterator"
+import {GenericCollectionIteratorValue} from "./value/GenericCollectionIteratorValue"
 
 export class GenericCollectionIterator<const T = unknown,
     const REFERENCE extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -87,7 +87,9 @@ export class GenericCollectionIterator<const T = unknown,
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public override [Symbol.iterator](): GenericCollectionIterator<T, REFERENCE> { return new GenericCollectionIterator(this._reference,) }
+    public override [Symbol.iterator](): GenericCollectionIterator<T, REFERENCE> {
+        return new GenericCollectionIterator(this._reference,)
+    }
 
     //#endregion -------------------- JavaScript methods --------------------
 
