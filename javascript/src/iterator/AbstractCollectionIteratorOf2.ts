@@ -18,24 +18,22 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {PossibleIteratorValue}                                                                from "../type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 
-import {AbstractUnimplementedCollectionIterator} from "./AbstractUnimplementedCollectionIterator"
-import {NoElementFoundInCollectionException}     from "../exception/NoElementFoundInCollectionException"
-import {GenericAfterLastIteratorValue}           from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirstIteratorValue"
+import {AbstractUnimplementedCollectionIteratorOf2} from "./AbstractUnimplementedCollectionIteratorOf2"
+import {NoElementFoundInCollectionException}        from "../exception/NoElementFoundInCollectionException"
+import {GenericAfterLastIteratorValue}              from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}            from "./value/GenericBeforeFirstIteratorValue"
 
 /**
- * A definition of a {@link CollectionIterator} of 2 values to have a common ancestor.
- * It is a specialization of the {@link AbstractCollectionIterator}
- * without the internal values required for an unknown amount of elements.
+ * A definition of a {@link CollectionIteratorOf2} to have a common ancestor.
+ * Only the previous|current|next index are stored and updated (if needed).
  *
- * @see EmptyCollectionIterator
- * @see CollectionIteratorOf2
  * @typeParam T1 The 1st type (**mandatory**)
  * @typeParam T2 The 2nd type (**mandatory**)
+ * @see DualValueCollectionIterator
  */
-export abstract class AbstractCollectionIteratorOf2<const T1 = unknown,
-    const T2 = unknown, >
-    extends AbstractUnimplementedCollectionIterator<| T1 | T2> {
+export abstract class AbstractCollectionIteratorOf2<const T1,
+    const T2, >
+    extends AbstractUnimplementedCollectionIteratorOf2<T1, T2> {
 
     //#region -------------------- Fields --------------------
 
@@ -56,15 +54,9 @@ export abstract class AbstractCollectionIteratorOf2<const T1 = unknown,
 
     //#region -------------------- Reference methods --------------------
 
-    /** The first value (out of 2) of the current instance */
-    public abstract get value1(): T1
+    protected abstract readonly _valueResult1: IteratorValueOf1On2<T1>
 
-    /** The second value (out of 2) of the current instance */
-    public abstract get value2(): T2
-
-    protected abstract get _valueResult1(): IteratorValueOf1On2<T1>
-
-    protected abstract get _valueResult2(): IteratorValueOf2On2<T2>
+    protected abstract readonly _valueResult2: IteratorValueOf2On2<T2>
 
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
@@ -324,6 +316,14 @@ export abstract class AbstractCollectionIteratorOf2<const T1 = unknown,
         if (currentIndex != null)
             return this
 
+        if (currentIndex === 0) {
+            operation(this.value1, 0,)
+            this._previousIndex = null
+            this._currentIndex = 0
+            this._nextIndex = 1
+            return this
+        }
+
         operation(this.value1, 0,)
         operation(this.value2, 1,)
         this._previousIndex = 0
@@ -336,6 +336,14 @@ export abstract class AbstractCollectionIteratorOf2<const T1 = unknown,
         const currentIndex = this._currentIndex
         if (currentIndex != null)
             return this
+
+        if (currentIndex === 0) {
+            operation(0, this.value1,)
+            this._previousIndex = null
+            this._currentIndex = 0
+            this._nextIndex = 1
+            return this
+        }
 
         operation(0, this.value1,)
         operation(1, this.value2,)
