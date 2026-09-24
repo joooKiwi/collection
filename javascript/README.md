@@ -541,40 +541,47 @@ classDiagram
     <<interface>> CollectionHolderOf2
     class EmptyCollectionHolder <<singleton>>
 
-    AbstractMinimalistCollectionHolder~T~ ..|>             MinimalistCollectionHolder
-    AbstractUnimplementedCollectionHolder~T~ --|>          AbstractMinimalistCollectionHolder
-    AbstractUnimplementedCollectionHolder ..|>             CollectionHolder
-    AbstractPartiallyUnimplementedCollectionHolder~T~ --|> AbstractUnimplementedCollectionHolder
-    AbstractUnimplementedCollectionHolderOf1~T~ --|>       AbstractUnimplementedCollectionHolder
-    AbstractUnimplementedCollectionHolderOf1 ..|>          CollectionHolderOf1
-    AbstractCollectionHolderOf1~T~ --|>                    AbstractUnimplementedCollectionHolderOf1
-    AbstractCollectionHolderOf1 --()                       via-its-content: LazyCollectionHolderOf1, LazyCollectionHolderOf0Or1, LazyArrayAsCollectionHolder
-    AbstractUnimplementedCollectionHolderOf2~T1, T2~ --|>   AbstractUnimplementedCollectionHolder
-    AbstractUnimplementedCollectionHolderOf2 ..|>          CollectionHolderOf2
-    AbstractCollectionHolderOf2~T1, T2~ --|>                AbstractUnimplementedCollectionHolderOf2
-    AbstractCollectionHolderOf2 --()                       via-its-content: SingleValueCollectionHolder, DualValueCollectionHolder, LazyCollectionHolderOf2, LazyCollectionHolderOf0Or1Or2, LazyArrayAsCollectionHolder
-    AbstractCollectionHolder~T~ --|>                       AbstractPartiallyUnimplementedCollectionHolder
-    AbstractCollectionHolder --()                          via-the-extension-methods: EmptyCollectionHolder, LazyCollectionHolderOf1, LazyCollectionHolderOf2, MinimalistAsCollectionHolder, LazyArrayAsCollectionHolder
+    AbstractMinimalistCollectionHolder~T~ ..|>                     MinimalistCollectionHolder
+    AbstractUnimplementedCollectionHolder~T~ --|>                  AbstractMinimalistCollectionHolder
+    AbstractUnimplementedCollectionHolder ..|>                     CollectionHolder
+    AbstractUnimplementedCollectionHolderOf1~T~ --|>               AbstractUnimplementedCollectionHolder
+    AbstractUnimplementedCollectionHolderOf1 ..|>                  CollectionHolderOf1
+    AbstractPartiallyUnimplementedCollectionHolderOf1~T~ --|>      AbstractUnimplementedCollectionHolderOf1
+    AbstractIndependentCollectionHolderOf1~T~ --|>                 AbstractPartiallyUnimplementedCollectionHolderOf1
+    AbstractCollectionHolderOf1~T~ --|>                            AbstractIndependentCollectionHolderOf1
+    AbstractCollectionHolderOf1 --()                               via-its-content: LazyCollectionHolderOf1, LazyCollectionHolderOf0Or1, LazyArrayAsCollectionHolder
+    AbstractUnimplementedCollectionHolderOf2~T1, T2~ --|>          AbstractUnimplementedCollectionHolder
+    AbstractUnimplementedCollectionHolderOf2 ..|>                  CollectionHolderOf2
+    AbstractPartiallyUnimplementedCollectionHolderOf2~T1, T2~ --|> AbstractUnimplementedCollectionHolderOf2
+    AbstractIndependentCollectionHolderOf2~T1, T2~ --|>            AbstractPartiallyUnimplementedCollectionHolderOf2
+    AbstractCollectionHolderOf2~T1, T2~ --|>                       AbstractIndependentCollectionHolderOf2
+    AbstractCollectionHolderOf2 --()                               via-its-content: SingleValueCollectionHolder, DualValueCollectionHolder, LazyCollectionHolderOf2, LazyCollectionHolderOf0Or1Or2, LazyArrayAsCollectionHolder
+    AbstractCollectionHolder~T~ --|>                               AbstractPartiallyUnimplementedCollectionHolder
+    AbstractCollectionHolder --()                                  via-the-extension-methods: EmptyCollectionHolder, LazyCollectionHolderOf1, LazyCollectionHolderOf2, MinimalistAsCollectionHolder, LazyArrayAsCollectionHolder
     <<abstract>> AbstractCollectionHolder
     <<abstract>> AbstractMinimalistCollectionHolder
     <<abstract>> AbstractUnimplementedCollectionHolder
     <<abstract>> AbstractUnimplementedCollectionHolderOf1
     <<abstract>> AbstractUnimplementedCollectionHolderOf2
     <<abstract>> AbstractPartiallyUnimplementedCollectionHolder
+    <<abstract>> AbstractPartiallyUnimplementedCollectionHolderOf1
+    <<abstract>> AbstractPartiallyUnimplementedCollectionHolderOf2
+    <<abstract>> AbstractIndependentCollectionHolderOf1
+    <<abstract>> AbstractIndependentCollectionHolderOf2
     <<abstract>> AbstractCollectionHolderOf1
     <<abstract>> AbstractCollectionHolderOf2
 
-    SingleValueCollectionHolder --|>   AbstractCollectionHolderOf1
-    ArrayOf1AsCollectionHolder --|>    AbstractCollectionHolderOf1
-    SetOf1AsCollectionHolder --|>      AbstractCollectionHolderOf1
-    LazyCollectionHolderOf1 --|>       AbstractCollectionHolderOf1
-    IteratorOf1AsCollectionHolder --|> AbstractCollectionHolderOf1
+    SingleValueCollectionHolder --|>   AbstractIndependentCollectionHolderOf1
+    ArrayOf1AsCollectionHolder --|>    AbstractIndependentCollectionHolderOf1
+    SetOf1AsCollectionHolder --|>      AbstractIndependentCollectionHolderOf1
+    LazyCollectionHolderOf1 --|>       AbstractIndependentCollectionHolderOf1
+    IteratorOf1AsCollectionHolder --|> AbstractIndependentCollectionHolderOf1
 
-    DualValueCollectionHolder --|>     AbstractCollectionHolderOf2
-    ArrayOf2AsCollectionHolder --|>    AbstractCollectionHolderOf2
-    SetOf2AsCollectionHolder --|>      AbstractCollectionHolderOf2
-    LazyCollectionHolderOf2 --|>       AbstractCollectionHolderOf2
-    IteratorOf2AsCollectionHolder --|> AbstractCollectionHolderOf2
+    DualValueCollectionHolder --|>     AbstractIndependentCollectionHolderOf2
+    ArrayOf2AsCollectionHolder --|>    AbstractIndependentCollectionHolderOf2
+    SetOf2AsCollectionHolder --|>      AbstractIndependentCollectionHolderOf2
+    LazyCollectionHolderOf2 --|>       AbstractIndependentCollectionHolderOf2
+    IteratorOf2AsCollectionHolder --|> AbstractIndependentCollectionHolderOf2
 
     EmptyCollectionHolder ..|>                         CollectionHolder
     GenericCollectionHolder~T~ --|>                    AbstractPartiallyUnimplementedCollectionHolder
