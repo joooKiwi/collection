@@ -16,10 +16,10 @@ import type {CollectionHolder}    from "./CollectionHolder"
 import type {CollectionHolderOf1} from "./CollectionHolderOf1"
 import type {Optional}            from "./optional/Optional"
 
-import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
-import {LazyArrayAsCollectionHolder} from "./LazyArrayAsCollectionHolder"
-import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
-import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
+import {AbstractIndependentCollectionHolderOf1} from "./AbstractIndependentCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1}             from "./LazyCollectionHolderOf0Or1"
+import {LazyCollectionHolderOf1}                from "./LazyCollectionHolderOf1"
 
 /**
  * An instance of {@link CollectionHolder} adapted from an {@link ReadonlyArray Array} having a lone value inside.
@@ -36,10 +36,8 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
  */
 export class ArrayOf1AsCollectionHolder<const T = unknown,
     const REFERENCE extends readonly [T,] = readonly [T,], >
-    extends AbstractCollectionHolderOf1<T> {
+    extends AbstractIndependentCollectionHolderOf1<T> {
 
-    /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
-    public override readonly 0: T
     readonly #reference: WeakRef<REFERENCE>
     readonly #value: T
     readonly #hasNull: boolean
@@ -51,7 +49,7 @@ export class ArrayOf1AsCollectionHolder<const T = unknown,
         if (reference.length !== 1)
             throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 1.`,)
         this.#reference = new WeakRef(reference,)
-        this.#hasNoNulls = !(this.#hasNull = (this.#value = this[0] = reference[0]) == null)
+        this.#hasNoNulls = !(this.#hasNull = (this.#value = reference[0]) == null)
     }
 
     public override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {

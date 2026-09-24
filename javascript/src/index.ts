@@ -13,6 +13,7 @@
 export {AbstractCollectionHolder}                          from "./AbstractCollectionHolder"
 export {AbstractCollectionHolderOf1}                       from "./AbstractCollectionHolderOf1"
 export {AbstractCollectionHolderOf2}                       from "./AbstractCollectionHolderOf2"
+export {AbstractIndependentCollectionHolderOf1}            from "./AbstractIndependentCollectionHolderOf1"
 export {AbstractMinimalistCollectionHolder}                from "./AbstractMinimalistCollectionHolder"
 export {AbstractPartiallyUnimplementedCollectionHolder}    from "./AbstractPartiallyUnimplementedCollectionHolder"
 export {AbstractPartiallyUnimplementedCollectionHolderOf1} from "./AbstractPartiallyUnimplementedCollectionHolderOf1"

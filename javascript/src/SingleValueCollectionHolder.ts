@@ -16,10 +16,10 @@ import type {CollectionHolder}    from "./CollectionHolder"
 import type {CollectionHolderOf1} from "./CollectionHolderOf1"
 import type {Optional}            from "./optional/Optional"
 
-import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
-import {LazyArrayAsCollectionHolder} from "./LazyArrayAsCollectionHolder"
-import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
-import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
+import {AbstractIndependentCollectionHolderOf1} from "./AbstractIndependentCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1}             from "./LazyCollectionHolderOf0Or1"
+import {LazyCollectionHolderOf1}                from "./LazyCollectionHolderOf1"
 
 /**
  * An instance of [CollectionHolder] with only a single value from its `constructor`
@@ -31,17 +31,15 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
  * @see LazyCollectionHolderOf1
  */
 export class SingleValueCollectionHolder<const T = unknown, >
-    extends AbstractCollectionHolderOf1<T> {
+    extends AbstractIndependentCollectionHolderOf1<T> {
 
-    /** The internal value passed through the {@link constructor} */
-    public override readonly 0: T
     readonly #value: T
     readonly #hasNull: boolean
     readonly #hasNoNulls: boolean
 
     public constructor(value: T,) {
         super()
-        this.#hasNoNulls = !(this.#hasNull = (this[0] = this.#value = value) == null)
+        this.#hasNoNulls = !(this.#hasNull = (this.#value = value) == null)
     }
 
     protected override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {

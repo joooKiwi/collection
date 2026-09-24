@@ -16,9 +16,9 @@ import type {CollectionHolder}    from "./CollectionHolder"
 import type {CollectionHolderOf1} from "./CollectionHolderOf1"
 import type {Optional}            from "./optional/Optional"
 
-import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
-import {LazyArrayAsCollectionHolder} from "./LazyArrayAsCollectionHolder"
-import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
+import {AbstractIndependentCollectionHolderOf1} from "./AbstractIndependentCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1}             from "./LazyCollectionHolderOf0Or1"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
 
@@ -34,7 +34,7 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * @see IteratorOf1AsCollectionHolder
  */
 export class LazyCollectionHolderOf1<const T = unknown, >
-    extends AbstractCollectionHolderOf1<T> {
+    extends AbstractIndependentCollectionHolderOf1<T> {
 
     //#region -------------------- Field --------------------
 
@@ -67,9 +67,6 @@ export class LazyCollectionHolderOf1<const T = unknown, >
     protected override _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T> {
         return new LazyArrayAsCollectionHolder(lateArray,)
     }
-
-    /** The internal value passed through the {@link constructor} */
-    public override get 0() { return this.value }
 
     /** The internal value passed through the {@link constructor} */
     public override get value(): T {

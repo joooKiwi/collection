@@ -17,10 +17,10 @@ import type {CollectionHolderOf1}   from "./CollectionHolderOf1"
 import type {CollectionIteratorOf1} from "./iterator/CollectionIteratorOf1"
 import type {Optional}              from "./optional/Optional"
 
-import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
-import {LazyArrayAsCollectionHolder} from "./LazyArrayAsCollectionHolder"
-import {LazyCollectionHolderOf0Or1}  from "./LazyCollectionHolderOf0Or1"
-import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
+import {AbstractIndependentCollectionHolderOf1} from "./AbstractIndependentCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1}             from "./LazyCollectionHolderOf0Or1"
+import {LazyCollectionHolderOf1}                from "./LazyCollectionHolderOf1"
 
 /**
  * An instance of {@link CollectionHolder} adapted from an {@link CollectionIteratorOf1} having a lone value inside.
@@ -37,10 +37,8 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
  */
 export class IteratorOf1AsCollectionHolder<const T = unknown,
     const REFERENCE extends CollectionIteratorOf1<T> = CollectionIteratorOf1<T>, >
-    extends AbstractCollectionHolderOf1<T> {
+    extends AbstractIndependentCollectionHolderOf1<T> {
 
-    /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
-    public readonly 0: T
     readonly #reference: WeakRef<REFERENCE>
     readonly #value: T
     readonly #hasNull: boolean
@@ -50,7 +48,7 @@ export class IteratorOf1AsCollectionHolder<const T = unknown,
     public constructor(reference: REFERENCE,) {
         super()
         this.#reference = new WeakRef(reference,)
-        this.#hasNoNulls = !(this.#hasNull = (this.#value = this[0] = reference.value) == null)
+        this.#hasNoNulls = !(this.#hasNull = (this.#value = reference.value) == null)
     }
 
     override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
