@@ -10,16 +10,20 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr} from "@joookiwi/type"
 
 import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionHolderOf1} from "./CollectionHolderOf1"
 import type {CollectionHolderOf2} from "./CollectionHolderOf2"
 import type {Optional}            from "./optional/Optional"
 
-import {AbstractCollectionHolderOf2}   from "./AbstractCollectionHolderOf2"
-import {DualValueCollectionHolder}     from "./DualValueCollectionHolder"
-import {LazyCollectionHolderOf0Or1Or2} from "./LazyCollectionHolderOf0Or1Or2"
-import {Couple}                        from "./tuple/Couple"
+import {AbstractIndependentCollectionHolderOf2} from "./AbstractIndependentCollectionHolderOf2"
+import {DualValueCollectionHolder}              from "./DualValueCollectionHolder"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1Or2}          from "./LazyCollectionHolderOf0Or1Or2"
+import {LazyCollectionHolderOf2}                from "./LazyCollectionHolderOf2"
+import {SingleValueCollectionHolder}            from "./SingleValueCollectionHolder"
+import {Couple}                                 from "./tuple/Couple"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
 
@@ -37,7 +41,7 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  */
 export class LazyCollectionHolderOf2<const T1 = unknown,
     const T2 = unknown, >
-    extends AbstractCollectionHolderOf2<T1, T2> {
+    extends AbstractIndependentCollectionHolderOf2<T1, T2> {
 
     //#region -------------------- Field --------------------
 
@@ -69,11 +73,15 @@ export class LazyCollectionHolderOf2<const T1 = unknown,
         return new Couple(value1, value2,)
     }
 
+    protected override _create1<const U,>(value: U,): CollectionHolderOf1<U>  {
+        return new SingleValueCollectionHolder(value,)
+    }
+
     protected override _create2(value2: T2, value1: T1,): CollectionHolderOf2<T2, T1> {
         return new DualValueCollectionHolder(value2, value1,)
     }
 
-    protected _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2> {
+    protected override _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2> {
         return new LazyCollectionHolderOf2(lateValue,)
     }
 
@@ -81,12 +89,10 @@ export class LazyCollectionHolderOf2<const T1 = unknown,
         return new LazyCollectionHolderOf0Or1Or2(latePossibleValue,)
     }
 
+    protected override _createLazyArray(lateArray: () => Array<| T1 | T2>,): CollectionHolder<| T1 | T2> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
+    }
 
-    /** The internal 1st value (out of 2) passed through the {@link constructor} */
-    public get 0(): T1 { return this.value1 }
-
-    /** The internal 2nd value (out of 2) passed through the {@link constructor} */
-    public get 1(): T2 { return this.value2 }
 
     /** The internal 1st value (out of 2) passed through the {@link constructor} */
     public override get value1(): T1 {

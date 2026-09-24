@@ -10,16 +10,19 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionHolderOf1} from "./CollectionHolderOf1"
 import type {CollectionHolderOf2} from "./CollectionHolderOf2"
 import type {Optional}            from "./optional/Optional"
 
-import {AbstractCollectionHolderOf2}   from "./AbstractCollectionHolderOf2"
-import {LazyCollectionHolderOf0Or1Or2} from "./LazyCollectionHolderOf0Or1Or2"
-import {LazyCollectionHolderOf2}       from "./LazyCollectionHolderOf2"
-import {Couple}                        from "./tuple/Couple"
+import {AbstractIndependentCollectionHolderOf2} from "./AbstractIndependentCollectionHolderOf2"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1Or2}          from "./LazyCollectionHolderOf0Or1Or2"
+import {LazyCollectionHolderOf2}                from "./LazyCollectionHolderOf2"
+import {SingleValueCollectionHolder}            from "./SingleValueCollectionHolder"
+import {Couple}                                 from "./tuple/Couple"
 
 /**
  * An instance of [CollectionHolder] with only 2 values from its `constructor`
@@ -33,14 +36,10 @@ import {Couple}                        from "./tuple/Couple"
  */
 export class DualValueCollectionHolder<const T1 = unknown,
     const T2 = unknown, >
-    extends AbstractCollectionHolderOf2<T1, T2> {
+    extends AbstractIndependentCollectionHolderOf2<T1, T2> {
 
     //#region -------------------- Field --------------------
 
-    /** The internal 1st value (out of 2) passed through the {@link constructor} */
-    public override readonly 0: T1
-    /** The internal 2nd value (out of 2) passed through the {@link constructor} */
-    public override readonly 1: T2
     readonly #value1: T1
     readonly #value2: T2
     readonly #hasNull?: boolean
@@ -53,8 +52,8 @@ export class DualValueCollectionHolder<const T1 = unknown,
 
     public constructor(value1: T1, value2: T2,) {
         super()
-        this[0] = this.#value1 = value1
-        this[1] = this.#value2 = value2
+        this.#value1 = value1
+        this.#value2 = value2
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -64,16 +63,24 @@ export class DualValueCollectionHolder<const T1 = unknown,
         return new Couple(value1, value2,)
     }
 
+    protected override _create1<const U,>(value: U,): CollectionHolderOf1<U>  {
+        return new SingleValueCollectionHolder(value,)
+    }
+
     protected override _create2(value2: T2, value1: T1,): CollectionHolderOf2<T2, T1> {
         return new DualValueCollectionHolder(value2, value1,)
     }
 
-    protected _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2> {
+    protected override _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2> {
         return new LazyCollectionHolderOf2(lateValue,)
     }
 
     protected override _create0Or1Or2<const U1, const U2, >(latePossibleValue: () => Nullable<Couple<Optional<| U1 | U2>, Optional<U2>>>,): CollectionHolder<| U1 | U2> {
         return new LazyCollectionHolderOf0Or1Or2(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<| T1 | T2>,): CollectionHolder<| T1 | T2> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
     }
 
 

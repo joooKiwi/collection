@@ -10,18 +10,21 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, UndefinedOr} from "@joookiwi/type"
+import type {Array, Nullable, UndefinedOr} from "@joookiwi/type"
 
 import type {CollectionHolder}      from "./CollectionHolder"
+import type {CollectionHolderOf1}   from "./CollectionHolderOf1"
 import type {CollectionHolderOf2}   from "./CollectionHolderOf2"
 import type {CollectionIteratorOf2} from "./iterator/CollectionIteratorOf2"
 import type {Optional}              from "./optional/Optional"
 
-import {AbstractCollectionHolderOf2}   from "./AbstractCollectionHolderOf2"
-import {DualValueCollectionHolder}     from "./DualValueCollectionHolder"
-import {LazyCollectionHolderOf0Or1Or2} from "./LazyCollectionHolderOf0Or1Or2"
-import {LazyCollectionHolderOf2}       from "./LazyCollectionHolderOf2"
-import {Couple}                        from "./tuple/Couple"
+import {AbstractIndependentCollectionHolderOf2} from "./AbstractIndependentCollectionHolderOf2"
+import {DualValueCollectionHolder}              from "./DualValueCollectionHolder"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1Or2}          from "./LazyCollectionHolderOf0Or1Or2"
+import {LazyCollectionHolderOf2}                from "./LazyCollectionHolderOf2"
+import {SingleValueCollectionHolder}            from "./SingleValueCollectionHolder"
+import {Couple}                                 from "./tuple/Couple"
 
 /**
  * An instance of {@link CollectionHolder} adapted from an {@link CollectionIteratorOf2} having 2 values inside.
@@ -40,14 +43,10 @@ import {Couple}                        from "./tuple/Couple"
 export class IteratorOf2AsCollectionHolder<const T1 = unknown,
     const T2 = unknown,
     const REFERENCE extends CollectionIteratorOf2<T1, T2> = CollectionIteratorOf2<T1, T2>, >
-    extends AbstractCollectionHolderOf2<T1, T2> {
+    extends AbstractIndependentCollectionHolderOf2<T1, T2> {
 
     //#region -------------------- Field --------------------
 
-    /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
-    public override readonly 0: T1
-    /** The internal value passed through the {@link constructor} in the {@link _reference} second field */
-    public override readonly 1: T2
     readonly #reference: WeakRef<REFERENCE>
     readonly #value1: T1
     readonly #value2: T2
@@ -63,8 +62,8 @@ export class IteratorOf2AsCollectionHolder<const T1 = unknown,
     public constructor(reference: REFERENCE,) {
         super()
         this.#reference = new WeakRef(reference,)
-        const value1 = this[0] = this.#value1 = reference.value1
-        const value2 = this[1] = this.#value2 = reference.value2
+        const value1 = this.#value1 = reference.value1
+        const value2 = this.#value2 = reference.value2
         this.#hasNoNulls = !(this.#hasNull = (value1 == null || value2 == null))
         this.#hasNoDuplicates = !(this.#hasDuplicate = value1 as (| T1 | T2) === value2)
     }
@@ -76,16 +75,24 @@ export class IteratorOf2AsCollectionHolder<const T1 = unknown,
         return new Couple(value1, value2,)
     }
 
+    protected override _create1<const U,>(value: U,): CollectionHolderOf1<U>  {
+        return new SingleValueCollectionHolder(value,)
+    }
+
     protected override _create2(value2: T2, value1: T1,): CollectionHolderOf2<T2, T1> {
         return new DualValueCollectionHolder(value2, value1,)
     }
 
-    protected _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2> {
+    protected override _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2> {
         return new LazyCollectionHolderOf2(lateValue,)
     }
 
     protected override _create0Or1Or2<const U1, const U2, >(latePossibleValue: () => Nullable<Couple<Optional<| U1 | U2>, Optional<U2>>>,): CollectionHolder<| U1 | U2> {
         return new LazyCollectionHolderOf0Or1Or2(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<| T1 | T2>,): CollectionHolder<| T1 | T2> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
     }
 
 
