@@ -10,22 +10,22 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionHolderOf1} from "../CollectionHolderOf1"
+import type {CollectionHolderOf2} from "../CollectionHolderOf2"
 
-import {AbstractUnimplementedCollectionHolderOf1} from "../AbstractUnimplementedCollectionHolderOf1"
+import {AbstractUnimplementedCollectionHolderOf2} from "../AbstractUnimplementedCollectionHolderOf2"
 
 /**
- * Tell that the value is a {@link CollectionHolderOf1}
- * if it is an {@link AbstractUnimplementedCollectionHolderOf1}
+ * Tell that the value is a {@link CollectionHolderOf2}
+ * if it is an {@link AbstractUnimplementedCollectionHolderOf2}
  *
  * @param value The value to identify
- * @see isCollectionHolderOf1ByStructure
+ * @see isCollectionHolderOf2ByStructure
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isCollectionHolderOf2<const T, const INSTANCE extends CollectionHolderOf1<T> = CollectionHolderOf1<T>, >(value: unknown,): value is INSTANCE {
+export function isCollectionHolderOf2<const T1, const T2, const INSTANCE extends CollectionHolderOf2<T1, T2> = CollectionHolderOf2<T1, T2>, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
-    if (value instanceof AbstractUnimplementedCollectionHolderOf1)
+    if (value instanceof AbstractUnimplementedCollectionHolderOf2)
         return true
     return false
 }
