@@ -17,22 +17,20 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {PossibleIteratorValue}                                                                from "../type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 
-import {AbstractUnimplementedCollectionIterator} from "./AbstractUnimplementedCollectionIterator"
-import {NoElementFoundInCollectionException}     from "../exception/NoElementFoundInCollectionException"
-import {GenericAfterLastIteratorValue}           from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirstIteratorValue"
+import {AbstractUnimplementedCollectionIteratorOf1} from "./AbstractUnimplementedCollectionIteratorOf1"
+import {NoElementFoundInCollectionException}        from "../exception/NoElementFoundInCollectionException"
+import {GenericAfterLastIteratorValue}              from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}            from "./value/GenericBeforeFirstIteratorValue"
 
 /**
- * A definition of a {@link CollectionIterator} of 1 value to have a common ancestor.
- * It is a specialization of the {@link AbstractCollectionIterator}
- * without the internal values required for an unknown amount of elements.
+ * A definition of a {@link CollectionIteratorOf1} to have a common ancestor.
+ * Only the current value follower is stored and updated (if needed).
  *
- * @see EmptyCollectionIterator
- * @see CollectionIteratorOf1
  * @typeParam T The type (**mandatory**)
+ * @see SingleValueCollectionIterator
  */
 export abstract class AbstractCollectionIteratorOf1<const T, >
-    extends AbstractUnimplementedCollectionIterator<T> {
+    extends AbstractUnimplementedCollectionIteratorOf1<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -48,10 +46,7 @@ export abstract class AbstractCollectionIteratorOf1<const T, >
 
     //#region -------------------- Reference methods --------------------
 
-    /** The only value of the current instance */
-    public abstract get value(): T
-
-    protected abstract get _valueResult(): IteratorValueOf1<T>
+    protected abstract readonly _valueResult: IteratorValueOf1<T>
 
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
