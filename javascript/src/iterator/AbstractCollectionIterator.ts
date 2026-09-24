@@ -25,7 +25,8 @@ import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirs
 
 /**
  * A definition of a {@link CollectionIterator} to have a common ancestor.
- * Only the indexes are stored and updated (if needed).
+ * Only the previous|current|next are stored and updated (if needed).
+ * Plus, the first and last index is stored but lazily retrieved only once.
  *
  * @typeParam T The type (**mandatory**)
  * @see EmptyCollectionIterator
@@ -56,11 +57,34 @@ export abstract class AbstractCollectionIterator<const T, >
 
     //#region -------------------- Size methods --------------------
 
+    public override get isEmpty(): boolean { return this.size === 0 }
+    public override get isNotEmpty(): boolean { return this.size !== 0 }
+
     /** The {@link size} minus 1 */
     protected get _sizeMinus1(): number { return this.size - 1 }
 
     /** The {@link size} minus 2 */
     protected get _sizeMinus2(): number { return this.size - 2 }
+
+
+    public override get hasExactly1Element(): boolean { return this.size === 1 }
+
+    public override get hasAtMost1Element(): boolean {
+        const size = this.size
+
+        return size === 0 || size === 1
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean { return this.size >= 2 }
+
+    public override get hasExactly2Elements(): boolean { return this.size === 2 }
+
+    public override get hasAtMost2Elements(): boolean {
+        const size = this.size
+
+        return size === 0 || size === 1 || size === 2
+    }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------
