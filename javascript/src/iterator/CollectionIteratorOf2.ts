@@ -301,7 +301,7 @@ export interface CollectionIteratorOf2<T1 = unknown,
     //#region -------------------- Loop methods --------------------
 
     /**
-     * Do a certain operation on the {@link value1}&{@link value2} if not at it in the {@link CollectionIteratorOf1 iterator}
+     * Do a certain operation on the {@link value1}&{@link value2} if not at it in the {@link CollectionIteratorOf2 iterator}
      *
      * @see IteratorObject.forEach
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
@@ -310,7 +310,7 @@ export interface CollectionIteratorOf2<T1 = unknown,
     forEach(operation: ValueIndexCallback<| T1 | T2>,): this
 
     /**
-     * Do a certain operation on the {@link value1}&{@link value2} if not at it in the {@link CollectionIteratorOf1 iterator}
+     * Do a certain operation on the {@link value1}&{@link value2} if not at it in the {@link CollectionIteratorOf2 iterator}
      *
      * @see IteratorObject.forEach
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)

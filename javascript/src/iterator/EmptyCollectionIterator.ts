@@ -26,8 +26,8 @@ import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIte
  *
  * @see MembersConstants.EMPTY_COLLECTION_ITERATOR
  * @see GenericCollectionIterator
- * @see CollectionIteratorOf1
- * @see CollectionIteratorOf2
+ * @see SingleValueCollectionIterator
+ * @see DualValueCollectionIterator
  * @singleton
  */
 export class EmptyCollectionIterator
