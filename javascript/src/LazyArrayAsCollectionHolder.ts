@@ -26,6 +26,8 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 
 import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedCollectionHolder"
 import {ArrayAsCollectionHolder}               from "./ArrayAsCollectionHolder"
+import {ArrayOf1AsCollectionHolder}            from "./ArrayOf1AsCollectionHolder"
+import {ArrayOf2AsCollectionHolder}            from "./ArrayOf2AsCollectionHolder"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
 
@@ -47,7 +49,7 @@ export class LazyArrayAsCollectionHolder<const T = unknown,
     //#region -------------------- Fields --------------------
 
     #lateArray: () => REFERENCE
-    #innerCollection?: ArrayAsCollectionHolder<T, REFERENCE>
+    #innerCollection?: | ArrayAsCollectionHolder<T, REFERENCE> | ArrayOf1AsCollectionHolder<T, & REFERENCE & readonly [T,]> | ArrayOf2AsCollectionHolder<T, T, & REFERENCE & readonly [T, T,]>
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -66,13 +68,18 @@ export class LazyArrayAsCollectionHolder<const T = unknown,
      *
      * @initializedOnFirstCall
      */
-    protected get _innerCollection(): ArrayAsCollectionHolder<T, REFERENCE> {
+    protected get _innerCollection(): | ArrayAsCollectionHolder<T, REFERENCE> | ArrayOf1AsCollectionHolder<T, & REFERENCE & readonly [T,]> | ArrayOf2AsCollectionHolder<T, T, & REFERENCE & readonly [T, T,]> {
         const value = this.#innerCollection
         if (value != null)
             return value
 
         const lateArray = this.#lateArray()
         this.#lateArray = FAIL_CALLBACK // We do not need the callback anymore once the value has been retrieved
+        const size = lateArray.length
+        if (size === 1)
+            return this.#innerCollection = new ArrayOf1AsCollectionHolder(lateArray as & REFERENCE & readonly [T,],)
+        if (size === 2)
+            return this.#innerCollection = new ArrayOf2AsCollectionHolder(lateArray as & REFERENCE & readonly [T, T,],)
         return this.#innerCollection = new ArrayAsCollectionHolder(lateArray,)
     }
 
@@ -80,26 +87,30 @@ export class LazyArrayAsCollectionHolder<const T = unknown,
 
     public override get size(): REFERENCE["length"] { return this._innerCollection.size }
 
-    public override get isEmpty(): IsEmptyOnArray<REFERENCE> { return this._innerCollection.isEmpty }
+    public override get isEmpty(): IsEmptyOnArray<REFERENCE> { return this._innerCollection.isEmpty as IsEmptyOnArray<REFERENCE> }
 
-    public override get isNotEmpty(): IsNotEmptyOnArray<REFERENCE> { return this._innerCollection.isNotEmpty }
+    public override get isNotEmpty(): IsNotEmptyOnArray<REFERENCE> { return this._innerCollection.isNotEmpty as IsNotEmptyOnArray<REFERENCE> }
 
-    public override get hasExactly1Element(): HasExactly1ElementOnArray<REFERENCE> { return this._innerCollection.hasExactly1Element }
+    public override get hasExactly1Element(): HasExactly1ElementOnArray<REFERENCE> { return this._innerCollection.hasExactly1Element as HasExactly1ElementOnArray<REFERENCE> }
 
-    public override get hasAtMost1Element(): HasAtMost1ElementOnArray<REFERENCE> { return this._innerCollection.hasAtMost1Element }
+    public override get hasAtMost1Element(): HasAtMost1ElementOnArray<REFERENCE> { return this._innerCollection.hasAtMost1Element as HasAtMost1ElementOnArray<REFERENCE> }
 
     public override get hasAtLeast2Elements(): boolean { return this._innerCollection.hasAtLeast2Elements }
 
-    public override get hasExactly2Elements(): HasExactly2ElementsOnArray<REFERENCE> { return this._innerCollection.hasExactly2Elements }
+    public override get hasExactly2Elements(): HasExactly2ElementsOnArray<REFERENCE> { return this._innerCollection.hasExactly2Elements as HasExactly2ElementsOnArray<REFERENCE> }
 
-    public override get hasAtMost2Elements(): HasAtMost2ElementsOnArray<REFERENCE> { return this._innerCollection.hasAtMost2Elements }
+    public override get hasAtMost2Elements(): HasAtMost2ElementsOnArray<REFERENCE> { return this._innerCollection.hasAtMost2Elements as HasAtMost2ElementsOnArray<REFERENCE> }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 
     //#region -------------------- Get --------------------
 
-    public override get<const I extends number, >(index: I,): REFERENCE[I] { return this._innerCollection.get(index,) }
+    public override get<const I extends number, >(index: I,): REFERENCE[I]
+    public override get(index: number,): T
+    public override get(index: number,) { return this._innerCollection
+        //@ts-ignore: This call is possible even though TypeScript does not reconize it as valid
+        .get(index,) }
 
     public override getFirst(): T { return this._innerCollection.getFirst() }
 

@@ -26,6 +26,8 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 
 import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedCollectionHolder"
 import {SetAsCollectionHolder}                 from "./SetAsCollectionHolder"
+import {SetOf1AsCollectionHolder}              from "./SetOf1AsCollectionHolder"
+import {SetOf2AsCollectionHolder}              from "./SetOf2AsCollectionHolder"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
 
@@ -49,7 +51,7 @@ export class LazySetAsCollectionHolder<const T = unknown,
     //#region -------------------- Fields --------------------
 
     #lateSet: () => REFERENCE
-    #innerCollection?: SetAsCollectionHolder<T, REFERENCE>
+    #innerCollection?: | SetAsCollectionHolder<T, REFERENCE> | SetOf1AsCollectionHolder<T, REFERENCE> | SetOf2AsCollectionHolder<T, T, REFERENCE>
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -68,13 +70,18 @@ export class LazySetAsCollectionHolder<const T = unknown,
      *
      * @initializedOnFirstCall
      */
-    protected get _innerCollection(): SetAsCollectionHolder<T, REFERENCE> {
+    protected get _innerCollection(): | SetAsCollectionHolder<T, REFERENCE> | SetOf1AsCollectionHolder<T, REFERENCE> | SetOf2AsCollectionHolder<T, T, REFERENCE> {
         const value = this.#innerCollection
         if (value != null)
             return value
 
         const lateSet = this.#lateSet()
         this.#lateSet = FAIL_CALLBACK // We do not need the callback anymore once the value has been retrieved
+        const size = lateSet.size
+        if (size === 1)
+            return this.#innerCollection = new SetOf1AsCollectionHolder(lateSet,)
+        if (size === 2)
+            return this.#innerCollection = new SetOf2AsCollectionHolder(lateSet,)
         return this.#innerCollection = new SetAsCollectionHolder(lateSet,)
     }
 
@@ -82,19 +89,19 @@ export class LazySetAsCollectionHolder<const T = unknown,
 
     public override get size(): REFERENCE["size"] { return this._innerCollection.size }
 
-    public override get isEmpty(): IsEmptyOnSet<REFERENCE> { return this._innerCollection.isEmpty }
+    public override get isEmpty(): IsEmptyOnSet<REFERENCE> { return this._innerCollection.isEmpty as IsEmptyOnSet<REFERENCE> }
 
-    public override get isNotEmpty(): IsNotEmptyOnSet<REFERENCE> { return this._innerCollection.isNotEmpty }
+    public override get isNotEmpty(): IsNotEmptyOnSet<REFERENCE> { return this._innerCollection.isNotEmpty as IsNotEmptyOnSet<REFERENCE> }
 
-    public override get hasExactly1Element(): HasExactly1ElementOnSet<REFERENCE> { return this._innerCollection.hasExactly1Element }
+    public override get hasExactly1Element(): HasExactly1ElementOnSet<REFERENCE> { return this._innerCollection.hasExactly1Element as HasExactly1ElementOnSet<REFERENCE> }
 
-    public override get hasAtMost1Element(): HasAtMost1ElementOnSet<REFERENCE> { return this._innerCollection.hasAtMost1Element }
+    public override get hasAtMost1Element(): HasAtMost1ElementOnSet<REFERENCE> { return this._innerCollection.hasAtMost1Element as HasAtMost1ElementOnSet<REFERENCE> }
 
     public override get hasAtLeast2Elements(): boolean { return this._innerCollection.hasAtLeast2Elements }
 
-    public override get hasExactly2Elements(): HasExactly2ElementsOnSet<REFERENCE> { return this._innerCollection.hasExactly2Elements }
+    public override get hasExactly2Elements(): HasExactly2ElementsOnSet<REFERENCE> { return this._innerCollection.hasExactly2Elements as HasExactly2ElementsOnSet<REFERENCE> }
 
-    public override get hasAtMost2Elements(): HasAtMost2ElementsOnSet<REFERENCE> { return this._innerCollection.hasAtMost2Elements }
+    public override get hasAtMost2Elements(): HasAtMost2ElementsOnSet<REFERENCE> { return this._innerCollection.hasAtMost2Elements as HasAtMost2ElementsOnSet<REFERENCE> }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
