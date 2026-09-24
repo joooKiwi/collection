@@ -23,7 +23,7 @@ import type {CollectionIteratorName}                                            
  *
  * When the first call it {@link CollectionIterator.next next()} or {@link CollectionIterator.nextValue nextValue},
  * it is in the order from start to end.
- * <pre>
+ * ```typescript
  * function normalOrderIteration<T>(iterator: CollectionIterator<T>) {
  *     iterator.next()     // 1st element
  *     iterator.next()     // 2nd element
@@ -31,11 +31,11 @@ import type {CollectionIteratorName}                                            
  *     iterator.next()     // 2nd element
  *     iterator.next()     // 3rd element
  * }
- * </pre>
+ * ```
  *
  * When the first call it {@link CollectionIterator.previous previous()} or {@link CollectionIterator.previousValue previousValue},
  * it is in the order from end to start.
- * <pre>
+ * ```typescript
  * function reverseOrderIteration<T>(iterator: CollectionIterator<T>) {
  *     iterator.previous() // last element
  *     iterator.previous() // 2nd last element
@@ -43,12 +43,12 @@ import type {CollectionIteratorName}                                            
  *     iterator.previous() // 2nd last element
  *     iterator.previous() // 3rd last element
  * }
- * </pre>
+ * ```
  *
  * And when there is a {@link CollectionIterator.reset reset()} being called,
  * everything (excluding {@link CollectionIterator.firstIndex firstIndex} and {@link CollectionIterator.lastIndex lastIndex})
  * is being changed to its initial value
- * <pre>
+ * ```typescript
  * function varyingOrderIteration<T>(iterator: CollectionIterator<T>) {
  *     iterator.next()     // 1st element
  *     iterator.next()     // 2nd element
@@ -56,7 +56,7 @@ import type {CollectionIteratorName}                                            
  *     iterator.previous() // last element
  *     iterator.previous() // 2nd last element
  * }
- * </pre>
+ * ```
  *
  * @typeParam T The type (`unknown` by default)
  * @see IteratorObject
@@ -235,24 +235,24 @@ export interface CollectionIterator<out T = unknown, >
 
     //#region -------------------- Current methods --------------------
 
-    /** Get the index that the {@link CollectionIterator} is at */
-    get currentIndex(): NullOrNumber
+    /** Get the index that the {@link CollectionIterator iterator} is at */
+    readonly currentIndex: NullOrNumber
 
     /**
      * Get the index that the {@link CollectionIterator iterator} is at
      *
-     * @alias currentIndex
+     * @alias CollectionIterator.currentIndex
      */
-    get index(): this["currentIndex"]
+    readonly index: this["currentIndex"]
 
     //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------
 
-    /** Tell if the iteration has more elements <b>after</b> the current element */
-    get hasNext(): boolean
+    /** Tell if the {@link CollectionIterator iterator} has more elements <b>after</b> the current element */
+    readonly hasNext: boolean
 
     /** Get the index that will be used at a later {@link nextValue} or {@link next} call */
-    get nextIndex(): NullOrNumber
+    readonly nextIndex: NullOrNumber
 
     /**
      * Retrieve the next value in the line
@@ -260,7 +260,7 @@ export interface CollectionIterator<out T = unknown, >
      * @note This is the equivalent to the Java <b>ListIterator.next()</b> method
      * @throws NoElementFoundInCollectionException Is at the end of the line or after it
      */
-    get nextValue(): T
+    readonly nextValue: T
 
     /** Retrieve the next value in the line */
     next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol>
@@ -269,7 +269,10 @@ export interface CollectionIterator<out T = unknown, >
     //#region -------------------- Previous methods --------------------
 
     /** Tell if the iteration has more elements <b>before</b> the current element */
-    get hasPrevious(): boolean
+    readonly hasPrevious: boolean
+
+    /** Get the index that will be used at a later {@link previousValue} or {@link previous} call */
+    readonly previousIndex: NullOrNumber
 
     /**
      * Retrieve the previous value in the line
@@ -277,10 +280,7 @@ export interface CollectionIterator<out T = unknown, >
      * @note This is the equivalent to the Java <b>ListIterator.previous()</b> method
      * @throws NoElementFoundInCollectionException Is at the start of the line or before it
      */
-    get previousValue(): T
-
-    /** Get the index that will be used at a later {@link previousValue} or {@link previous} call */
-    get previousIndex(): NullOrNumber
+    readonly previousValue: T
 
     /** Retrieve the previous value in the line */
     previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol>
