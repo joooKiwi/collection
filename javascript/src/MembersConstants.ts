@@ -12,10 +12,10 @@
 
 import type {Array} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                           from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                 from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                         from "./iterator/CollectionIterator"
-import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfIterator, KeyOfMap, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableMap, KeyOfMutableSet, KeyOfMutableWeakMap, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakMap, KeyOfWeakSet} from "./type/keyOf"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                                                               from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                     from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                                                                                     from "./iterator/CollectionIterator"
+import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionHolderOf1, KeyOfCollectionHolderOf2, KeyOfCollectionIterator, KeyOfCollectionIteratorOf1, KeyOfCollectionIteratorOf2, KeyOfIterator, KeyOfMap, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableMap, KeyOfMutableSet, KeyOfMutableWeakMap, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakMap, KeyOfWeakSet} from "./type/keyOf"
 
 import {ArrayAsCollectionHolder}   from "./ArrayAsCollectionHolder"
 import {DualValueCollectionHolder} from "./DualValueCollectionHolder"
@@ -40,6 +40,9 @@ export class MembersConstants {
 
     static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<KeyOfMinimalistCollectionHolder>
     static #COLLECTION_MEMBERS?: CollectionHolder<KeyOfCollectionHolder>
+    static #COLLECTION_OF_1_MEMBERS?: CollectionHolder<KeyOfCollectionHolderOf1>
+    static #COLLECTION_OF_2_MEMBERS?: CollectionHolder<KeyOfCollectionHolderOf2>
+
     static #ARRAY_MEMBERS?: CollectionHolder<KeyOfArray>
     static #MUTABLE_ARRAY_MEMBERS?: CollectionHolder<KeyOfMutableArray>
     static #TYPED_ARRAY_MEMBERS?: CollectionHolder<KeyOfTypedArray>
@@ -52,7 +55,10 @@ export class MembersConstants {
     static #WEAK_MAP_MEMBERS?: CollectionHolder<KeyOfWeakMap>
     static #MUTABLE_WEAK_MAP_MEMBERS?: CollectionHolder<KeyOfMutableWeakMap>
     static #ITERATOR_MEMBERS?: CollectionHolder<KeyOfIterator>
+
     static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<KeyOfCollectionIterator>
+    static #COLLECTION_ITERATOR_OF_1_MEMBERS?: CollectionHolder<KeyOfCollectionIteratorOf1>
+    static #COLLECTION_ITERATOR_OF_2_MEMBERS?: CollectionHolder<KeyOfCollectionIteratorOf2>
 
     //#endregion -------------------- Fields held --------------------
 
@@ -75,6 +81,213 @@ export class MembersConstants {
     /** Every method applicable to a {@link CollectionHolder} */
     public static get COLLECTION_MEMBERS(): CollectionHolder<KeyOfCollectionHolder> {
         return MembersConstants.#COLLECTION_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfCollectionHolder>([
+            "size", "length", "count",
+            "isEmpty", "isNotEmpty",
+            "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
+            "hasExactly1Element", "includesExactly1Element", "containsExactly1Element",
+            "hasAtMost1Element", "includesAtMost1Element", "containsAtMost1Element",
+            "hasAtLeast2Elements", "includesAtLeast2Elements", "containsAtLeast2Elements",
+            "hasExactly2Elements", "includesExactly2Elements", "containsExactly2Elements",
+            "hasAtMost2Elements", "includesAtMost2Elements", "containsAtMost2Elements",
+            "get", "at", "elementAt",
+            "getFirst",
+            "getLast",
+            "getOrElse", "atOrElse", "elementAtOrElse",
+            "getFirstOrElse",
+            "getLastOrElse",
+            "getOrNull", "atOrNull", "elementAtOrNull",
+            "getFirstOrNull",
+            "getLastOrNull",
+            "first", "firstOrNull", "firstIndexed", "firstIndexedOrNull",
+            "last", "lastOrNull", "lastIndexed", "lastIndexedOrNull",
+            "findFirst", "find",
+            "findFirstOrNull","findOrNull",
+            "findFirstIndexed", "findIndexed",
+            "findFirstIndexedOrNull", "findIndexedOrNull",
+            "findLast",
+            "findLastOrNull",
+            "findLastIndexed",
+            "findLastIndexedOrNull",
+            "firstIndexOf", "indexOf",
+            "firstIndexOfOrNull", "indexOfOrNull",
+            "lastIndexOf",
+            "lastIndexOfOrNull",
+            "indexOfFirst", "findIndex", "findFirstIndex",
+            "indexOfFirstOrNull", "findIndexOrNull", "findFirstIndexOrNull",
+            "indexOfFirstIndexed", "findIndexIndexed", "findFirstIndexIndexed",
+            "indexOfFirstIndexedOrNull", "findIndexIndexedOrNull", "findFirstIndexIndexedOrNull",
+            "indexOfLast", "findLastIndex",
+            "indexOfLastOrNull", "findLastIndexOrNull",
+            "indexOfLastIndexed", "findLastIndexIndexed",
+            "indexOfLastIndexedOrNull", "findLastIndexIndexedOrNull",
+            "all", "every",
+            "any", "some",
+            "none",
+            "hasNull", "includesNull", "containsNull",
+            "hasNoNulls", "includesNoNulls", "containsNoNulls",
+            "hasDuplicate", "includesDuplicate", "containsDuplicate",
+            "hasNoDuplicates", "includesNoDuplicates", "containsNoDuplicates",
+            "has", "includes", "contains",
+            "hasNot", "includesNot", "containsNot",
+            "hasOne", "includesOne", "containsOne",
+            "hasNotOne", "includesNotOne", "containsNotOne",
+            "hasAll", "includesAll", "containsAll",
+            "hasNotAll", "includesNotAll", "containsNotAll",
+            "requireNoNulls",
+            "filter",
+            "filterIndexed",
+            "filterNot",
+            "filterNotIndexed",
+            "filterNotNull",
+            "slice",
+            "take", "limit",
+            "takeWhile", "limitWhile",
+            "takeWhileIndexed", "limitWhileIndexed",
+            "takeLast", "limitLast",
+            "takeLastWhile", "limitLastWhile",
+            "takeLastWhileIndexed", "limitLastWhileIndexed",
+            "drop", "skip",
+            "dropWhile", "skipWhile",
+            "dropWhileIndexed", "skipWhileIndexed",
+            "dropLast", "skipLast",
+            "dropLastWhile", "skipLastWhile",
+            "dropLastWhileIndexed", "skipLastWhileIndexed",
+            "map",
+            "mapIndexed",
+            "mapNotNull",
+            "mapNotNullIndexed",
+            "forEach",
+            "forEachIndexed",
+            "onEach",
+            "onEachIndexed",
+            "toReverse", "toReversed", "reversed",
+            Symbol.iterator,
+            Symbol.toStringTag,
+            "toIterator",
+            "toArray",
+            "toMutableArray",
+            "toSet",
+            "toMutableSet",
+            "toMap",
+            "toMutableMap",
+            "toString",
+            "toLocaleString",
+            "toLowerCaseString",
+            "toLocaleLowerCaseString",
+            "toUpperCaseString",
+            "toLocaleUpperCaseString",
+            "joinToString", 'join',
+        ] as const,),)
+    }
+
+    /** Every method applicable to a {@link CollectionHolderOf1} */
+    public static get COLLECTION_OF_1_MEMBERS(): CollectionHolder<KeyOfCollectionHolderOf1> {
+        return MembersConstants.#COLLECTION_OF_1_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfCollectionHolderOf1>([
+            0, "value",
+            "size", "length", "count",
+            "isEmpty", "isNotEmpty",
+            "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
+            "hasExactly1Element", "includesExactly1Element", "containsExactly1Element",
+            "hasAtMost1Element", "includesAtMost1Element", "containsAtMost1Element",
+            "hasAtLeast2Elements", "includesAtLeast2Elements", "containsAtLeast2Elements",
+            "hasExactly2Elements", "includesExactly2Elements", "containsExactly2Elements",
+            "hasAtMost2Elements", "includesAtMost2Elements", "containsAtMost2Elements",
+            "get", "at", "elementAt",
+            "getFirst",
+            "getLast",
+            "getOrElse", "atOrElse", "elementAtOrElse",
+            "getFirstOrElse",
+            "getLastOrElse",
+            "getOrNull", "atOrNull", "elementAtOrNull",
+            "getFirstOrNull",
+            "getLastOrNull",
+            "first", "firstOrNull", "firstIndexed", "firstIndexedOrNull",
+            "last", "lastOrNull", "lastIndexed", "lastIndexedOrNull",
+            "findFirst", "find",
+            "findFirstOrNull","findOrNull",
+            "findFirstIndexed", "findIndexed",
+            "findFirstIndexedOrNull", "findIndexedOrNull",
+            "findLast",
+            "findLastOrNull",
+            "findLastIndexed",
+            "findLastIndexedOrNull",
+            "firstIndexOf", "indexOf",
+            "firstIndexOfOrNull", "indexOfOrNull",
+            "lastIndexOf",
+            "lastIndexOfOrNull",
+            "indexOfFirst", "findIndex", "findFirstIndex",
+            "indexOfFirstOrNull", "findIndexOrNull", "findFirstIndexOrNull",
+            "indexOfFirstIndexed", "findIndexIndexed", "findFirstIndexIndexed",
+            "indexOfFirstIndexedOrNull", "findIndexIndexedOrNull", "findFirstIndexIndexedOrNull",
+            "indexOfLast", "findLastIndex",
+            "indexOfLastOrNull", "findLastIndexOrNull",
+            "indexOfLastIndexed", "findLastIndexIndexed",
+            "indexOfLastIndexedOrNull", "findLastIndexIndexedOrNull",
+            "all", "every",
+            "any", "some",
+            "none",
+            "hasNull", "includesNull", "containsNull",
+            "hasNoNulls", "includesNoNulls", "containsNoNulls",
+            "hasDuplicate", "includesDuplicate", "containsDuplicate",
+            "hasNoDuplicates", "includesNoDuplicates", "containsNoDuplicates",
+            "has", "includes", "contains",
+            "hasNot", "includesNot", "containsNot",
+            "hasOne", "includesOne", "containsOne",
+            "hasNotOne", "includesNotOne", "containsNotOne",
+            "hasAll", "includesAll", "containsAll",
+            "hasNotAll", "includesNotAll", "containsNotAll",
+            "requireNoNulls",
+            "filter",
+            "filterIndexed",
+            "filterNot",
+            "filterNotIndexed",
+            "filterNotNull",
+            "slice",
+            "take", "limit",
+            "takeWhile", "limitWhile",
+            "takeWhileIndexed", "limitWhileIndexed",
+            "takeLast", "limitLast",
+            "takeLastWhile", "limitLastWhile",
+            "takeLastWhileIndexed", "limitLastWhileIndexed",
+            "drop", "skip",
+            "dropWhile", "skipWhile",
+            "dropWhileIndexed", "skipWhileIndexed",
+            "dropLast", "skipLast",
+            "dropLastWhile", "skipLastWhile",
+            "dropLastWhileIndexed", "skipLastWhileIndexed",
+            "map",
+            "mapIndexed",
+            "mapNotNull",
+            "mapNotNullIndexed",
+            "forEach",
+            "forEachIndexed",
+            "onEach",
+            "onEachIndexed",
+            "toReverse", "toReversed", "reversed",
+            Symbol.iterator,
+            Symbol.toStringTag,
+            "toIterator",
+            "toArray",
+            "toMutableArray",
+            "toSet",
+            "toMutableSet",
+            "toMap",
+            "toMutableMap",
+            "toString",
+            "toLocaleString",
+            "toLowerCaseString",
+            "toLocaleLowerCaseString",
+            "toUpperCaseString",
+            "toLocaleUpperCaseString",
+            "joinToString", 'join',
+        ] as const,),)
+    }
+
+    /** Every method applicable to a {@link CollectionHolderOf2} */
+    public static get COLLECTION_OF_2_MEMBERS(): CollectionHolder<KeyOfCollectionHolderOf2> {
+        return MembersConstants.#COLLECTION_OF_2_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfCollectionHolderOf2>([
+            0, "value1",
+            1, "value2",
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
             "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
@@ -448,6 +661,65 @@ export class MembersConstants {
     /** Every method applicable to a {@link CollectionIterator} */
     public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<KeyOfCollectionIterator> {
         return MembersConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfCollectionIterator>([
+            "size", "length", "count",
+            "isEmpty",
+            "isNotEmpty", "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
+            "hasExactly1Element", "includesExactly1Element", "containsExactly1Element",
+            "hasAtMost1Element", "includesAtMost1Element", "containsAtMost1Element",
+            "hasAtLeast2Elements", "includesAtLeast2Elements", "containsAtLeast2Elements",
+            "hasExactly2Elements", "includesExactly2Elements", "containsExactly2Elements",
+            "hasAtMost2Elements", "includesAtMost2Elements", "containsAtMost2Elements",
+            "currentIndex", "index",
+            "hasNext",
+            "nextIndex",
+            "nextValue",
+            "next",
+            "hasPrevious",
+            "previousIndex",
+            "previousValue",
+            "previous",
+            "reset",
+            "forEach",
+            "forEachIndexed",
+            Symbol.iterator,
+            Symbol.toStringTag,
+        ],),)
+    }
+
+    /** Every method applicable to a {@link CollectionIteratorOf1} */
+    public static get COLLECTION_ITERATOR_OF_1_MEMBERS(): CollectionHolder<KeyOfCollectionIteratorOf1> {
+        return MembersConstants.#COLLECTION_ITERATOR_OF_1_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfCollectionIteratorOf1>([
+            0, "value",
+            "size", "length", "count",
+            "isEmpty",
+            "isNotEmpty", "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
+            "hasExactly1Element", "includesExactly1Element", "containsExactly1Element",
+            "hasAtMost1Element", "includesAtMost1Element", "containsAtMost1Element",
+            "hasAtLeast2Elements", "includesAtLeast2Elements", "containsAtLeast2Elements",
+            "hasExactly2Elements", "includesExactly2Elements", "containsExactly2Elements",
+            "hasAtMost2Elements", "includesAtMost2Elements", "containsAtMost2Elements",
+            "currentIndex", "index",
+            "hasNext",
+            "nextIndex",
+            "nextValue",
+            "next",
+            "hasPrevious",
+            "previousIndex",
+            "previousValue",
+            "previous",
+            "reset",
+            "forEach",
+            "forEachIndexed",
+            Symbol.iterator,
+            Symbol.toStringTag,
+        ],),)
+    }
+
+    /** Every method applicable to a {@link CollectionIteratorOf2} */
+    public static get COLLECTION_ITERATOR_OF_2_MEMBERS(): CollectionHolder<KeyOfCollectionIteratorOf2> {
+        return MembersConstants.#COLLECTION_ITERATOR_OF_2_MEMBERS ??= Object.freeze(new ArrayAsCollectionHolder<KeyOfCollectionIteratorOf2>([
+            0, "value1",
+            1, "value2",
             "size", "length", "count",
             "isEmpty",
             "isNotEmpty", "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",

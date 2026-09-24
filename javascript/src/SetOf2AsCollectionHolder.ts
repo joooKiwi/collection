@@ -32,6 +32,7 @@ import {Couple}                        from "./tuple/Couple"
  * @see SetAsCollectionHolder
  * @see DualValueCollectionHolder
  * @see ArrayOf2AsCollectionHolder
+ * @see IteratorOf2AsCollectionHolder
  * @see LazyCollectionHolderOf2
  */
 export class SetOf2AsCollectionHolder<const T1 = unknown,

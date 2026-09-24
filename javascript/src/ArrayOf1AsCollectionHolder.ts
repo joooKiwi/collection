@@ -31,6 +31,7 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
  * @see ArrayAsCollectionHolder
  * @see SingleValueCollectionHolder
  * @see SetOf1AsCollectionHolder
+ * @see IteratorOf1AsCollectionHolder
  * @see LazyCollectionHolderOf1
  */
 export class ArrayOf1AsCollectionHolder<const T = unknown,

@@ -16,6 +16,7 @@ import type {CollectionHolder}                                                  
 import type {CollectionHolderOf1}                                                                                                                                                                                                                               from "./CollectionHolderOf1"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
+import type {CollectionIteratorOf1}                                                                                                                                                                                                                             from "./iterator/CollectionIteratorOf1"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
 import type {CollectionHolderOf0Or1}                                                                                                                                                                                                                            from "./type/collection"
 import type {IndexOf1}                                                                                                                                                                                                                                          from "./type/indexOf"
@@ -23,7 +24,7 @@ import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIn
 
 import {AbstractPartiallyUnimplementedCollectionHolderOf1}                                                                from "./AbstractPartiallyUnimplementedCollectionHolderOf1"
 import {EmptyCollectionHolder}                                                                                            from "./EmptyCollectionHolder"
-import {CollectionIteratorOf1}                                                                                            from "./iterator/CollectionIteratorOf1"
+import {SingleValueCollectionIterator}                                                                                    from "./iterator/SingleValueCollectionIterator"
 import {ForbiddenIndexException}                                                                                          from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                        from "./exception/IndexOutOfBoundsException"
 import {IndexNotFoundException}                                                                                           from "./exception/IndexNotFoundException"
@@ -1360,7 +1361,7 @@ export abstract class AbstractCollectionHolderOf1<const T, >
 
     //#region -------------------- To other structure --------------------
 
-    public override toIterator(): CollectionIteratorOf1<T> { return new CollectionIteratorOf1(this.value,) }
+    public override toIterator(): CollectionIteratorOf1<T> { return new SingleValueCollectionIterator(this.value,) }
 
     public override toArray(): readonly [T,] {
         return Object.freeze([this.value,],)

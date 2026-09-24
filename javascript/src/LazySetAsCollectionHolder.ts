@@ -39,6 +39,8 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * @adaptor
  * @beta
  * @see SetAsCollectionHolder
+ * @see SetOf1AsCollectionHolder
+ * @see SetOf2AsCollectionHolder
  */
 export class LazySetAsCollectionHolder<const T = unknown,
     const REFERENCE extends Set<T> = Set<T>, >

@@ -29,6 +29,8 @@ import {CollectionIterator}        from "./iterator/CollectionIterator"
  * @typeParam REFERENCE The reference passed in the constructor (`CollectionIterator<T>` by default)
  * @adaptor
  * @beta
+ * @see IteratorOf1AsCollectionHolder
+ * @see IteratorOf2AsCollectionHolder
  * @see LazyIteratorAsCollectionHolder
  */
 export class IteratorAsCollectionHolder<const T = unknown,

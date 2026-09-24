@@ -12,9 +12,10 @@
 
 import type {Nullable, UndefinedOr} from "@joookiwi/type"
 
-import type {CollectionHolder}    from "./CollectionHolder"
-import type {CollectionHolderOf2} from "./CollectionHolderOf2"
-import type {Optional}            from "./optional/Optional"
+import type {CollectionHolder}      from "./CollectionHolder"
+import type {CollectionHolderOf2}   from "./CollectionHolderOf2"
+import type {CollectionIteratorOf2} from "./iterator/CollectionIteratorOf2"
+import type {Optional}              from "./optional/Optional"
 
 import {AbstractCollectionHolderOf2}   from "./AbstractCollectionHolderOf2"
 import {DualValueCollectionHolder}     from "./DualValueCollectionHolder"
@@ -23,22 +24,22 @@ import {LazyCollectionHolderOf2}       from "./LazyCollectionHolderOf2"
 import {Couple}                        from "./tuple/Couple"
 
 /**
- * An instance of {@link CollectionHolder} adapted from an {@link ReadonlyArray Array} having 2 values inside.
+ * An instance of {@link CollectionHolder} adapted from an {@link CollectionIteratorOf2} having 2 values inside.
  *
- * Note that the value is directly retrieved from the array and it is kept
+ * Note that the value is directly retrieved from the {@link CollectionIteratorOf2} and it is kept
  *
  * @typeParam T1        The 1st type (`unknown` by default)
  * @typeParam T2        The 2nd type (`unknown` by default)
- * @typeParam REFERENCE The reference passed in the constructor (`readonly [T1, T2]` by default)
- * @see ArrayAsCollectionHolder
+ * @typeParam REFERENCE The reference passed in the constructor (`CollectionIteratorOf2<T1, T2>` by default)
+ * @see IteratorAsCollectionHolder
  * @see DualValueCollectionHolder
+ * @see ArrayOf2AsCollectionHolder
  * @see SetOf2AsCollectionHolder
- * @see IteratorOf2AsCollectionHolder
  * @see LazyCollectionHolderOf2
  */
-export class ArrayOf2AsCollectionHolder<const T1 = unknown,
+export class IteratorOf2AsCollectionHolder<const T1 = unknown,
     const T2 = unknown,
-    const REFERENCE extends readonly [T1, T2,] = readonly [T1, T2,], >
+    const REFERENCE extends CollectionIteratorOf2<T1, T2> = CollectionIteratorOf2<T1, T2>, >
     extends AbstractCollectionHolderOf2<T1, T2> {
 
     //#region -------------------- Field --------------------
@@ -58,14 +59,12 @@ export class ArrayOf2AsCollectionHolder<const T1 = unknown,
     //#endregion -------------------- Field --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(reference: & readonly [T1, T2,] & REFERENCE,)
+    public constructor(reference: & CollectionIteratorOf2<T1, T2> & REFERENCE,)
     public constructor(reference: REFERENCE,) {
         super()
-        if (reference.length !== 2)
-            throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 2.`,)
         this.#reference = new WeakRef(reference,)
-        const value1 = this[0] = this.#value1 = reference[0]
-        const value2 = this[1] = this.#value2 = reference[1]
+        const value1 = this[0] = this.#value1 = reference.value1
+        const value2 = this[1] = this.#value2 = reference.value2
         this.#hasNoNulls = !(this.#hasNull = (value1 == null || value2 == null))
         this.#hasNoDuplicates = !(this.#hasDuplicate = value1 as (| T1 | T2) === value2)
     }

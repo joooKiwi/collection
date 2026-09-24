@@ -37,6 +37,8 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * @typeParam REFERENCE The reference passed in the constructor (`Array<T>` by default)
  * @adaptor
  * @see ArrayAsCollectionHolder
+ * @see ArrayOf1AsCollectionHolder
+ * @see ArrayOf2AsCollectionHolder
  */
 export class LazyArrayAsCollectionHolder<const T = unknown,
     const REFERENCE extends Array<T> = Array<T>, >

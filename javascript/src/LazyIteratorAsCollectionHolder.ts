@@ -33,6 +33,8 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * @adaptor
  * @beta
  * @see IteratorAsCollectionHolder
+ * @see IteratorOf1AsCollectionHolder
+ * @see IteratorOf2AsCollectionHolder
  */
 export class LazyIteratorAsCollectionHolder<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>, >

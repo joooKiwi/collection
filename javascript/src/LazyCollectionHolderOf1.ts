@@ -31,6 +31,7 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * @see SingleValueCollectionHolder
  * @see ArrayOf1AsCollectionHolder
  * @see SetOf1AsCollectionHolder
+ * @see IteratorOf1AsCollectionHolder
  */
 export class LazyCollectionHolderOf1<const T = unknown, >
     extends AbstractCollectionHolderOf1<T> {

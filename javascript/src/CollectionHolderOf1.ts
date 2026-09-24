@@ -26,6 +26,11 @@ import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIn
  * An instance of {@link CollectionHolder} with only a single value
  *
  * @typeParam T The type (`unknown` by default)
+ * @see SingleValueCollectionHolder
+ * @see ArrayOf1AsCollectionHolder
+ * @see SetOf1AsCollectionHolder
+ * @see IteratorOf1AsCollectionHolder
+ * @see LazyCollectionHolderOf1
  */
 export interface CollectionHolderOf1<out T = unknown, >
     extends CollectionHolder<T> {
@@ -4266,8 +4271,6 @@ export interface CollectionHolderOf1<out T = unknown, >
 
     /** Convert the current {@link CollectionHolderOf1 instance} to a new {@link Map mutable map} of 1 */
     toMutableMap(): MutableNumberKeyMap<T, 0>
-
-    //#endregion -------------------- To map --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

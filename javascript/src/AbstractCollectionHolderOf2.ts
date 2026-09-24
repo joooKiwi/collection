@@ -17,6 +17,7 @@ import type {CollectionHolderOf1}                                               
 import type {CollectionHolderOf2}                                                                                                                                                                                                                                               from "./CollectionHolderOf2"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
+import type {CollectionIteratorOf2}                                                                                                                                                                                                                                             from "./iterator/CollectionIteratorOf2"
 import type {Couple}                                                                                                                                                                                                                                                            from "./tuple/Couple"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
 import type {CollectionHolderOf0Or1Or2, CollectionHolderOf1Or2, CollectionHolderOfAny0Or1Or2, CollectionHolderOfAny1Or2, CollectionHolderOfLast0Or1Or2, CollectionHolderOfLast1Or2}                                                                                             from "./type/collection"
@@ -28,7 +29,7 @@ import {AbstractPartiallyUnimplementedCollectionHolderOf2}                      
 import {EmptyCollectionHolder}                                                                                            from "./EmptyCollectionHolder"
 import {LazyArrayAsCollectionHolder}                                                                                      from "./LazyArrayAsCollectionHolder"
 import {SingleValueCollectionHolder}                                                                                      from "./SingleValueCollectionHolder"
-import {CollectionIteratorOf2}                                                                                            from "./iterator/CollectionIteratorOf2"
+import {DualValueCollectionIterator}                                                                                      from "./iterator/DualValueCollectionIterator"
 import {ForbiddenIndexException}                                                                                          from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                        from "./exception/IndexOutOfBoundsException"
 import {IndexNotFoundException}                                                                                           from "./exception/IndexNotFoundException"
@@ -3701,7 +3702,7 @@ export abstract class AbstractCollectionHolderOf2<const T1,
     //#region -------------------- To other structure --------------------
 
     public override toIterator(): CollectionIteratorOf2<T1, T2> {
-        return new CollectionIteratorOf2(this.value1, this.value2,)
+        return new DualValueCollectionIterator(this.value1, this.value2,)
     }
 
     public override toArray(): readonly [T1, T2,] {

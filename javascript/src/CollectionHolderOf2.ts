@@ -27,12 +27,13 @@ import type {DoubleValueFromIndex, DoubleValueFromIndexOrElse, DoubleValueFromIn
 /**
  * An instance of [CollectionHolder] with only 2 values from its `constructor`
  *
- * @see LazyCollectionHolderOf2
  * @typeParam T1 The 1st type (`unknown` by default)
  * @typeParam T2 The 2nd type (`unknown` by default)
  * @see DualValueCollectionHolder
  * @see ArrayOf2AsCollectionHolder
  * @see SetOf2AsCollectionHolder
+ * @see IteratorOf2AsCollectionHolder
+ * @see LazyCollectionHolderOf2
  */
 export interface CollectionHolderOf2<out T1 = unknown,
     out T2 = unknown, >
