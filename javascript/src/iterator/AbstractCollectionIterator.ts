@@ -27,7 +27,7 @@ import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirs
  * A definition of a {@link CollectionIterator} to have a common ancestor.
  * Only the indexes are stored and updated (if needed).
  *
- * @typeParam T The element type
+ * @typeParam T The type (**mandatory**)
  * @see EmptyCollectionIterator
  * @see GenericCollectionIterator
  */

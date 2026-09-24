@@ -24,7 +24,7 @@ import {CollectionHolderFromArray}      from "./CollectionHolderFromArray"
  *
  * Internally, it is using {@link CollectionHolderFromArray} as the {@link CollectionIterator.collection}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionIteratorFromArray<const T, >
     extends AbstractCollectionIterator<T> {

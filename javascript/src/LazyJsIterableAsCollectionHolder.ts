@@ -37,8 +37,8 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  *       {@link #hasAtLeast2Elements}, {@link #hasExactly2Elements}, {@link #hasAtMost2Elements},
  *       {@link #hasNull}, {@link #hasNoNulls},
  *       {@link #hasDuplicate} and {@link #hasNoDuplicates}) are mostly stable.
- * @typeParam T         The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `IterableWithPossibleSize<T>`)
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`IterableWithPossibleSize<T>` by default)
  * @adaptor
  * @beta
  * @see JsIterableAsCollectionHolder

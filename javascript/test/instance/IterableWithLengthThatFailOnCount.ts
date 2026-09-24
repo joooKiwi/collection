@@ -14,6 +14,14 @@ import type {Array} from "@joookiwi/type"
 
 import type {IterableWithPossibleSize} from "../../src/iterable/IterableWithPossibleSize"
 
+/**
+ * An {@link IterableWithPossibleSize} that is made for the tests with an {@link ReadonlyArray Array} under the hood.
+ * Plus, the {@link #size} always returns `null`,
+ * the {@link #length} always returns the `array.length`
+ * and the {@link #count} always throws an {@link Error}
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class IterableWithLengthThatFailOnCount<const T, >
     implements IterableWithPossibleSize<T> {
 

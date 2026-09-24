@@ -31,8 +31,8 @@ import {IndexOutOfBoundsException} from "./exception/IndexOutOfBoundsException"
  * are kept in the instance.
  *
  * @note This class is still under construction, but the core feature ({@link #get} and {@link #size}) is stable.
- * @typeParam T         The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `Set<T>`)
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`Set<T>` by default)
  * @adaptor
  * @beta
  * @see LazySetAsCollectionHolder

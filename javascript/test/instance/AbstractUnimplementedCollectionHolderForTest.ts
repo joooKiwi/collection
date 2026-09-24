@@ -29,7 +29,7 @@ import {InvalidIndexRangeException} from "../../src/exception/InvalidIndexRangeE
  *
  * Plus, all the aliases should always throw {@link Error}.
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export abstract class AbstractUnimplementedCollectionHolderForTest<const T, >
     implements CollectionHolderForTest<T> {

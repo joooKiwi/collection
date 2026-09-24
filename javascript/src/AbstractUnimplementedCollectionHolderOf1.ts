@@ -33,7 +33,7 @@ import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedColl
  *
  * @apiNote This class is used when not specifically requiring an optimization on the methods, just the non-aliased methods calls
  * @note This class should be inherited if new classes are being made to be more usable by the tools
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (**mandatory**)
  * @see AbstractUnimplementedCollectionHolder
  * @see AbstractUnimplementedCollectionHolderOf2
  */

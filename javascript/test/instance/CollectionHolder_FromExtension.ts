@@ -21,7 +21,7 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src
  * A test instance declaration of a {@link CollectionHolder} to test the extension methods directly
  * (when there are multiple starting with the same name)
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export interface CollectionHolder_FromExtension<out T, >
     extends CollectionHolder<T> {

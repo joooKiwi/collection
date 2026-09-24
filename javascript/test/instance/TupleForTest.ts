@@ -16,6 +16,8 @@ import type {Tuple} from "../../src/tuple/Tuple"
  * A {@link Tuple} that is specialized for the tests.
  *
  * It does so by providing common methods to be used in the tests
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export interface TupleForTest<out T, >
     extends Tuple<T> {

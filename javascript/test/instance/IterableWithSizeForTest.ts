@@ -14,7 +14,11 @@ import type {Array} from "@joookiwi/type"
 
 import type {IterableWithSize} from "../../src/iterable/IterableWithSize"
 
-/** An {@link IterableWithSize} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
+/**
+ * An {@link IterableWithSize} that is made for the tests with an {@link ReadonlyArray Array} under the hood
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class IterableWithSizeForTest<const T, >
     implements IterableWithSize<T> {
 

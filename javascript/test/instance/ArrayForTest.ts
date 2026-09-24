@@ -19,6 +19,7 @@ import type {FlatMapCallback, MutableReduceCallback, MutableRestrainedReduceCall
  * A {@link globalThis.Array MutableArray} made for the tests
  * with only the immutable methods of an instance.
  *
+ * @typeParam T The type (**mandatory**)
  * @see ArrayByStructureForTest
  */
 export class ArrayForTest<const T, >

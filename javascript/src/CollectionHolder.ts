@@ -26,7 +26,7 @@ import type {CollectionHolderName}                                              
  * & {@link ReadonlyMap} to give functionalities.
  * Some methods are inspired by other languages to give more cross-language features.
  *
- * @param T The type (by default <em>unknown</em>)
+ * @param T The type (`unknown` by default)
  *
  * @see ReadonlyArray
  * @see ReadonlySet

@@ -18,6 +18,7 @@ import type {ValueCallback} from "../type/set"
  * An {@link globalThis.ReadonlySet Set} made for the tests
  * with all the methods that makes it not modifiable.
  *
+ * @typeParam T The type (**mandatory**)
  * @see SetForTest
  */
 export class SetByStructureForTest<const T, >

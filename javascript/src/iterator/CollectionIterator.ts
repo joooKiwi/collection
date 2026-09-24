@@ -58,6 +58,7 @@ import type {CollectionIteratorName}                                            
  * }
  * </pre>
  *
+ * @typeParam T The type (`unknown` by default)
  * @see IteratorObject
  * @see ArrayIterator
  * @see SetIterator

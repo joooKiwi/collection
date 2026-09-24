@@ -24,7 +24,7 @@ import {SetOf1AsCollectionHolder}                     from "../../src/SetOf1AsCo
 /**
  * A class to test the functionality of a {@link SetOf1AsCollectionHolder}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_SetOf1<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {

@@ -21,7 +21,7 @@ import {AbstractMinimalistCollectionHolderForTest} from "./AbstractMinimalistCol
  *
  * Note that all the methods are on the extension method for {@link MinimalistCollectionHolder}.
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_GetBeingCalledOnMinimalist<const T, >
     extends AbstractMinimalistCollectionHolderForTest<T> {

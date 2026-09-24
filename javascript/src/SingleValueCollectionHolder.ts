@@ -24,9 +24,10 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
 /**
  * An instance of [CollectionHolder] with only a single value from its `constructor`
  *
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (`unknown` by default)
  * @see ArrayOf1AsCollectionHolder
  * @see SetOf1AsCollectionHolder
+ * @see IteratorOf1AsCollectionHolder
  * @see LazyCollectionHolderOf1
  */
 export class SingleValueCollectionHolder<const T = unknown, >

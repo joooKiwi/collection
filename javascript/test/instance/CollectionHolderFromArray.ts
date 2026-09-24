@@ -22,7 +22,7 @@ import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplemen
  *
  * It also only supports the methods that are used within the framework for the tests.
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolderFromArray<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {

@@ -20,7 +20,7 @@ import {SingleValueCollectionHolder} from "../SingleValueCollectionHolder"
 /**
  * An instance of [Tuple] with only a single value from its `constructor`
  *
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (`unknown` by default)
  */
 export class Monuple<const T = unknown, >
     extends AbstractTuple<T> {

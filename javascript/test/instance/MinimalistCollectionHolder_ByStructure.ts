@@ -20,7 +20,9 @@ import {MinimalistCollectionHolderFromArray} from "./MinimalistCollectionHolderF
  * A {@link MinimalistCollectionHolder} having the structure of it,
  * but without inheriting the {@link AbstractMinimalistCollectionHolder}.
  *
- * Internally, it is using a {@link MinimalistCollectionHolderFromArray} for every method
+ * Internally, it is using a {@link MinimalistCollectionHolderFromArray} for every method.
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export class MinimalistCollectionHolder_ByStructure<const out T, >
     implements MinimalistCollectionHolder<T> {

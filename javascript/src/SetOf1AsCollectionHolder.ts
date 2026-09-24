@@ -26,8 +26,8 @@ import {LazyCollectionHolderOf1}     from "./LazyCollectionHolderOf1"
  *
  * Note that the value is directly retrieved from the array and it is kept
  *
- * @typeParam T          The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `Set<T>`)
+ * @typeParam T          The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`Set<T>` by default)
  * @see SetAsCollectionHolder
  * @see SingleValueCollectionHolder
  * @see ArrayOf1AsCollectionHolder

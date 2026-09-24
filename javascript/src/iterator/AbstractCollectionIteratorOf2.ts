@@ -28,10 +28,10 @@ import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirs
  * It is a specialization of the {@link AbstractCollectionIterator}
  * without the internal values required for an unknown amount of elements.
  *
- * @typeParam T1 The first element type (`unknown` by default)
- * @typeParam T2 The second element type (`unknown` by default)
  * @see EmptyCollectionIterator
  * @see CollectionIteratorOf2
+ * @typeParam T1 The 1st type (**mandatory**)
+ * @typeParam T2 The 2nd type (**mandatory**)
  */
 export abstract class AbstractCollectionIteratorOf2<const T1 = unknown,
     const T2 = unknown, >

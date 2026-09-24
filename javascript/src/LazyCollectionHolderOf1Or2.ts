@@ -34,7 +34,7 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * The first as {@link CollectionHolderOf1} and the second as {@link CollectionHolderOf2}.
  * Plus, the inner-collection is lazily retrieved.
  *
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (`unknown` by default)
  */
 export class LazyCollectionHolderOf1Or2<const T = unknown, >
     extends AbstractUnimplementedCollectionHolder<T> {

@@ -15,7 +15,9 @@ import type {CollectionIterator} from "../../src/iterator/CollectionIterator"
 /**
  * A {@link CollectionIterator} that is specialized for the tests.
  *
- * It does so by providing common methods to be used in the tests
+ * It does so by providing common methods to be used in the tests.
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export interface CollectionIteratorForTest<out T, >
     extends CollectionIterator<T> {

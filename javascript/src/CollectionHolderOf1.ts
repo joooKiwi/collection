@@ -25,7 +25,7 @@ import type {SingleValueFromIndex, SingleValueFromIndexOrElse, SingleValueFromIn
 /**
  * An instance of {@link CollectionHolder} with only a single value
  *
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (`unknown` by default)
  */
 export interface CollectionHolderOf1<out T = unknown, >
     extends CollectionHolder<T> {

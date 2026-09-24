@@ -23,7 +23,7 @@ import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplemen
 /**
  * A base-bone implementation of a {@link CollectionHolderForTest} with `null` or `undefined` being the value
  *
- * @typeParam The type
+ * @typeParam T The type (**mandatory**)
  */
 export abstract class AbstractNullCollectionHolderForTest<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T>

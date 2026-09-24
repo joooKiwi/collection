@@ -146,8 +146,8 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * Note that nothing excepting the {@link ReadonlyArray Array} received
  * are kept in the instance.
  *
- * @typeParam T         The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `Array<T>`)
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`Array<T>` by default)
  * @adaptor
  * @see LazyArrayAsCollectionHolder
  */

@@ -20,10 +20,11 @@ import {AbstractTupleForTest} from "./AbstractTupleForTest"
 /**
  * A class to test the functionality of a {@link Couple}
  *
- * @typeParam T The type
+ * @typeParam T1 The 1st type (**mandatory**)
+ * @typeParam T1 The 2nd type (**mandatory**)
  */
-export class Tuple_2<const T1 = unknown,
-    const T2 = unknown, >
+export class Tuple_2<const T1,
+    const T2, >
     extends AbstractTupleForTest<| T1 | T2> {
 
     /** The internal instance that is tested */

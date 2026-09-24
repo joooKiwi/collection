@@ -23,7 +23,7 @@ import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplemen
  *
  * Internally, it is using a {@link CollectionHolderFromArray} for every method (that is supported by it).
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_ByStructure<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {

@@ -27,9 +27,9 @@ import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirs
  * It is a specialization of the {@link AbstractCollectionIterator}
  * without the internal values required for an unknown amount of elements.
  *
- * @typeParam T The element type
  * @see EmptyCollectionIterator
  * @see CollectionIteratorOf1
+ * @typeParam T The type (**mandatory**)
  */
 export abstract class AbstractCollectionIteratorOf1<const T, >
     extends AbstractUnimplementedCollectionIterator<T> {

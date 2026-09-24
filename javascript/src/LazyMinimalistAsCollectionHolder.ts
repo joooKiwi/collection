@@ -27,8 +27,8 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * A {@link CollectionHolder} having a {@link MinimalistCollectionHolder} value associated to it, but lazily retrieved.
  * It acts as both an adaptor and a lazy instance since the value is retrieved until is is necessary
  *
- * @typeParam T         The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `MinimalistCollectionHolder<T>`)
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`MinimalistCollectionHolder<T>` by default)
  * @adaptor
  * @see MinimalistAsCollectionHolder
  */

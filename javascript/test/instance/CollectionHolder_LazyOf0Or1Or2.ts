@@ -29,9 +29,9 @@ import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplemen
 /**
  * A class to test the functionality of a {@link LazyCollectionHolderOf0Or1Or2}
  *
- * @typeParam T  The type
- * @typeParam T1 The 1st type (by default `T`)
- * @typeParam T2 The 2nd type (by default `T`)
+ * @typeParam T  The type (**mandatory**)
+ * @typeParam T1 The 1st type (`T` by default)
+ * @typeParam T2 The 2nd type (`T` by default)
  */
 export class CollectionHolder_LazyOf0Or1Or2<const T,
     const T1 extends T = T,

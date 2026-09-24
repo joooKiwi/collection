@@ -14,6 +14,8 @@ import type {CollectionHolderOf2} from "../../src/CollectionHolderOf2"
 
 /**
  * A {@link CollectionHolderOf2} having the utility to follow every non-aliased methods that have an alias
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export interface CollectionHolderOf2Follower<out T, >
     extends CollectionHolderOf2<T, T> {

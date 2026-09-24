@@ -52,7 +52,7 @@ import {Couple}                                  from "./tuple/Couple"
  *
  * Meaning that the value in the instance are not retrieved until it is necessary.
  *
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (`unknown` by default)
  * @note The index in the instance may not be initialized if retrieved directly
  * @see GenericMinimalistCollectionHolder
  * @see GenericCollectionHolder

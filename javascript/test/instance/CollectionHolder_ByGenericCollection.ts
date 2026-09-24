@@ -24,7 +24,7 @@ import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplemen
 /**
  * A class to test the functionality of a {@link GenericCollectionHolder}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_ByGenericCollection<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {

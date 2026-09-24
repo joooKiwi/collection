@@ -34,13 +34,13 @@ import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedColl
  *
  * @apiNote This class is used when not specifically requiring an optimization on the methods, just the non-aliased methods calls
  * @note This class should be inherited if new classes are being made to be more usable by the tools
- * @typeParam T1 The 1st type (by default `unknown`)
- * @typeParam T2 The 2nd type (by default `unknown`) * @see AbstractUnimplementedCollectionHolder
+ * @typeParam T1 The 1st type (**mandatory**)
+ * @typeParam T2 The 2nd type (**mandatory**)
  * @see AbstractUnimplementedCollectionHolder
  * @see AbstractUnimplementedCollectionHolderOf2
  */
-export abstract class AbstractUnimplementedCollectionHolderOf2<const T1 = unknown,
-    const T2 = unknown, >
+export abstract class AbstractUnimplementedCollectionHolderOf2<const T1,
+    const T2, >
     extends AbstractUnimplementedCollectionHolder<| T1 | T2>
     implements CollectionHolderOf2<T1, T2> {
 

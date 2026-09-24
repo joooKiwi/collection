@@ -35,13 +35,13 @@ import {isSetByStructure}                        from "./method/isSetByStructure
  * but gives less overhead on the methods that have multiple possible arguments.
  *
  * @apiNote This class is used to reduce complexity of methods that can support different type of arguments
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (**mandatory**)
  * @see AbstractPartiallyUnimplementedCollectionHolderOf1
  * @see AbstractPartiallyUnimplementedCollectionHolderOf2
  * @see ArrayAsCollectionHolder
  * @see GenericCollectionHolder
  */
-export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T = unknown, >
+export abstract class AbstractPartiallyUnimplementedCollectionHolder<const T, >
     extends AbstractUnimplementedCollectionHolder<T> {
 
     //#region -------------------- Constructor --------------------

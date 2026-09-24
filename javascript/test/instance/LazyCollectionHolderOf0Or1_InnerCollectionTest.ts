@@ -16,6 +16,11 @@ import type {Optional}              from "../../src/optional/Optional"
 
 import {LazyCollectionHolderOf0Or1} from "../../src/LazyCollectionHolderOf0Or1"
 
+/**
+ * A {@link LazyCollectionHolderOf0Or1} that exposes the inner-collection for the purpose of the tests
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class LazyCollectionHolderOf0Or1_InnerCollectionTest<const T, >
     extends LazyCollectionHolderOf0Or1<T> {
 

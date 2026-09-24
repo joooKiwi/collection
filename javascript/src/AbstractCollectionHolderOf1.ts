@@ -38,6 +38,7 @@ import {Optional}                                                               
  * Most of the methods are being optimized for a single value comparison
  * instead of using the extension function.
  *
+ * @typeParam T The type (**mandatory**)
  * @see AbstractCollectionHolder
  * @see AbstractCollectionHolderOf2
  * @see SingleValueCollectionHolder
@@ -45,7 +46,7 @@ import {Optional}                                                               
  * @see ArrayOf1AsCollectionHolder
  * @see SetOf1AsCollectionHolder
  */
-export abstract class AbstractCollectionHolderOf1<const T = unknown, >
+export abstract class AbstractCollectionHolderOf1<const T, >
     extends AbstractPartiallyUnimplementedCollectionHolderOf1<T> {
 
     //#region -------------------- Constructor --------------------

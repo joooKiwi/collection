@@ -26,6 +26,8 @@ import {CollectionHolderFromArray}                    from "./CollectionHolderFr
  * A class to test the functionality of a {@link MinimalistAsCollectionHolder}
  *
  * The array is encapsulated in a {@link CollectionHolderFromArray} instance
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_AdaptorOfMinimalist<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {

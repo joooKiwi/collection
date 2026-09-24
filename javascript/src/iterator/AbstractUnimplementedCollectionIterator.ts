@@ -23,7 +23,7 @@ import type {CollectionIteratorName}                                            
  * But requiring nothing out of the instance in comparison to the direct implementors.
  *
  * @note This class should be inherited if new classes are being made to be more usable by the tools
- * @typeParam T The element type
+ * @typeParam T The type (**mandatory**)
  * @see AbstractCollectionIterator
  * @see AbstractCollectionIteratorOf1
  * @see AbstractCollectionIteratorOf2

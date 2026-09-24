@@ -110,7 +110,11 @@ import {toStringByMinimalistCollectionHolder}                  from "../../src/m
 import {toUpperCaseStringByMinimalistCollectionHolder}         from "../../src/method/toUpperCaseString"
 import {AbstractUnimplementedCollectionHolderForTest}          from "./AbstractUnimplementedCollectionHolderForTest"
 
-/** A common ancestor that have the methods reference to the {@link MinimalistCollectionHolder} extension methods */
+/**
+ * A common ancestor that have the methods reference to the {@link MinimalistCollectionHolder} extension methods
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {
 

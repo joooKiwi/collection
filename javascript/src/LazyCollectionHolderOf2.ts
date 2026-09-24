@@ -28,8 +28,8 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  *
  * It does retrieve the value only once from the callback received in its `constructor`.
  *
- * @typeParam T1 The 1st type (by default `unknown`)
- * @typeParam T2 The 2nd type (by default `unknown`)
+ * @typeParam T1 The 1st type (`unknown` by default)
+ * @typeParam T2 The 2nd type (`unknown` by default)
  * @see DualValueCollectionHolder
  * @see ArrayOf2AsCollectionHolder
  * @see SetOf2AsCollectionHolder

@@ -22,7 +22,11 @@ import {IteratorAsCollectionHolder}                   from "../../src/IteratorAs
 import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 import {CollectionIteratorFromArray}                  from "./CollectionIteratorFromArray"
 
-/** A class to test the functionality of a {@link IteratorAsCollectionHolder} */
+/**
+ * A class to test the functionality of a {@link IteratorAsCollectionHolder}
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class CollectionHolder_AdaptorOfIterator<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {
 

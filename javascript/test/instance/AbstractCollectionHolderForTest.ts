@@ -110,7 +110,11 @@ import {toStringByCollectionHolder}                   from "../../src/method/toS
 import {toUpperCaseStringByCollectionHolder}          from "../../src/method/toUpperCaseString"
 import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
-/** A common ancestor that have the methods reference to the {@link CollectionHolder} extension methods */
+/**
+ * A common ancestor that have the methods reference to the {@link CollectionHolder} extension methods
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export abstract class AbstractCollectionHolderForTest<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {
 

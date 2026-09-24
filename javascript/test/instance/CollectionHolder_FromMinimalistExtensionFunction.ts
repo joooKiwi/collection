@@ -58,6 +58,8 @@ import {AbstractMinimalistCollectionHolderForTest}                           fro
 /**
  * A test instance to exclusively test the extension methods for
  * a {@link MinimalistCollectionHolder}
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
     extends AbstractMinimalistCollectionHolderForTest<T>

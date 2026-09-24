@@ -16,7 +16,7 @@ import type {CollectionHolder}                from "../../src/CollectionHolder"
  * A {@link CollectionHolder} that has utility methods
  * and is watching the amount of time {@link get} is being called for the tests
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export interface CollectionHolderForTest<out T, >
     extends CollectionHolder<T> {

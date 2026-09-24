@@ -20,8 +20,8 @@ import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollection
  * to only view it
  *
  * @apiNote It does not change any behaviour from its {@link reference}
- * @typeParam T         The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `MinimalistCollectionHolder<T>`)
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`MinimalistCollectionHolder<T>` by default)
  */
 export class MinimalistCollectionViewer<const T = unknown,
     const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >

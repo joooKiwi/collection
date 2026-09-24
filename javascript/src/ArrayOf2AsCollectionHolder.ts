@@ -27,8 +27,9 @@ import {Couple}                        from "./tuple/Couple"
  *
  * Note that the value is directly retrieved from the array and it is kept
  *
- * @typeParam T1 The 1st type (by default `unknown`)
- * @typeParam T2 The 2nd type (by default `unknown`)
+ * @typeParam T1        The 1st type (`unknown` by default)
+ * @typeParam T2        The 2nd type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`readonly [T1, T2]` by default)
  * @see ArrayAsCollectionHolder
  * @see DualValueCollectionHolder
  * @see SetOf2AsCollectionHolder

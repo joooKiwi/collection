@@ -151,7 +151,7 @@ import {AbstractUnimplementedCollectionHolderForTest}   from "./AbstractUnimplem
  * A test instance to exclusively test the extension methods for
  * an {@link ReadonlyArray Array}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_FromArrayExtensionFunction<const T , >
     extends AbstractUnimplementedCollectionHolderForTest<T>

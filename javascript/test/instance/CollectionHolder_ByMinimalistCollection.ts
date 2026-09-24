@@ -22,7 +22,7 @@ import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplemen
  *
  * Note that only {@link size} and {@link get} are valid since it is a {@link MinimalistCollectionHolder}.
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_ByMinimalistCollection<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {

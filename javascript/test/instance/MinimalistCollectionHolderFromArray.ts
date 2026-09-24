@@ -17,6 +17,8 @@ import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHol
 /**
  * A {@link MinimalistCollectionHolder} having the functionality from an {@link ReadonlyArray array}
  * without handling negative indexes in the {@link MinimalistCollectionHolder.get} method
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export class MinimalistCollectionHolderFromArray<const T, >
     implements MinimalistCollectionHolder<T> {

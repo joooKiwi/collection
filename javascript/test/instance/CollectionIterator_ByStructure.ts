@@ -24,7 +24,9 @@ import {CollectionIteratorFromArray}                    from "./CollectionIterat
  * A {@link CollectionIterator} having the structure of it,
  * but without inheriting the {@link AbstractCollectionIterator}.
  *
- * Internally, it is using a {@link CollectionIteratorFromArray} for every method
+ * Internally, it is using a {@link CollectionIteratorFromArray} for every method.
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionIterator_ByStructure<const T, >
     extends AbstractUnimplementedCollectionIteratorForTest<T> {

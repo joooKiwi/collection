@@ -23,7 +23,7 @@ import {CollectionHolderFromArray}                      from "./CollectionHolder
 /**
  * A class to test the functionality of a {@link GenericCollectionIterator}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionIterator_ByGenericIterator<const T, >
     extends AbstractUnimplementedCollectionIteratorForTest<T> {

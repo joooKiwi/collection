@@ -18,6 +18,7 @@ import type {MutableValueCallback} from "../type/set"
  * An {@link globalThis.Set MutableSet} made for the tests
  * with all the methods that makes it not modifiable.
  *
+ * @typeParam T The type (**mandatory**)
  * @see SetByStructureForTest
  */
 export class SetForTest<const T, >

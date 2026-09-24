@@ -44,6 +44,8 @@ import {Optional}                                                               
  * Most of the methods are being optimized for two value comparison
  * instead of using the extension function.
  *
+ * @typeParam T1 The 1st type (**mandatory**)
+ * @typeParam T2 The 2nd type (**mandatory**)
  * @see AbstractCollectionHolder
  * @see AbstractCollectionHolderOf1
  * @see DualValueCollectionHolder
@@ -51,8 +53,8 @@ import {Optional}                                                               
  * @see ArrayOf2AsCollectionHolder
  * @see SetOf2AsCollectionHolder
  */
-export abstract class AbstractCollectionHolderOf2<const T1 = unknown,
-    const T2 = unknown, >
+export abstract class AbstractCollectionHolderOf2<const T1,
+    const T2, >
     extends AbstractPartiallyUnimplementedCollectionHolderOf2<T1, T2> {
 
     //#region -------------------- Constructor --------------------

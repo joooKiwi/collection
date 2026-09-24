@@ -27,8 +27,8 @@ import {Couple}                        from "./tuple/Couple"
  *
  * Note that the value is directly retrieved from the set and it is kept
  *
- * @typeParam T1 The 1st type (by default `unknown`)
- * @typeParam T2 The 2nd type (by default `unknown`)
+ * @typeParam T1 The 1st type (`unknown` by default)
+ * @typeParam T2 The 2nd type (`unknown` by default)
  * @see SetAsCollectionHolder
  * @see DualValueCollectionHolder
  * @see ArrayOf2AsCollectionHolder

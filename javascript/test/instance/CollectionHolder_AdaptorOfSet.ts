@@ -21,7 +21,11 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 import {SetAsCollectionHolder}                        from "../../src/SetAsCollectionHolder"
 import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
-/** A class to test the functionality of a {@link SetAsCollectionHolder} */
+/**
+ * A class to test the functionality of a {@link SetAsCollectionHolder}
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class CollectionHolder_AdaptorOfSet<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {
 

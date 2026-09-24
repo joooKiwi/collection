@@ -21,7 +21,7 @@ import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest
  *
  * Note that all the methods are on the extension method for {@link CollectionHolder}.
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_GetBeingCalledOnNormal<const T, >
     extends AbstractCollectionHolderForTest<T> {

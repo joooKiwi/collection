@@ -22,7 +22,7 @@ import {CollectionIteratorOf1}                          from "../../src/iterator
 /**
  * A class to test the functionality of a {@link CollectionIteratorOf1}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionIterator_1<const T, >
     extends AbstractUnimplementedCollectionIteratorForTest<T> {

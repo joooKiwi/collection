@@ -21,7 +21,11 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 import {JsIterableAsCollectionHolder}                 from "../../src/JsIterableAsCollectionHolder"
 import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
-/** A class to test the functionality of a {@link JsIterableAsCollectionHolder} */
+/**
+ * A class to test the functionality of a {@link JsIterableAsCollectionHolder}
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class CollectionHolder_AdaptorOfJsIterable<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {
 

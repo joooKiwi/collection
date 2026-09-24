@@ -29,7 +29,7 @@ import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplemen
 /**
  * A class to test the functionality of a {@link LazyCollectionHolderOf0Or1}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_LazyOf0Or1<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {

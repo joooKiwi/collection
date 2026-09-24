@@ -59,7 +59,7 @@ import {AbstractCollectionHolderForTest}                           from "./Abstr
  * A test instance to exclusively test the extension methods for
  * a {@link CollectionHolder}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_FromExtensionFunction<const T, >
     extends AbstractCollectionHolderForTest<T>

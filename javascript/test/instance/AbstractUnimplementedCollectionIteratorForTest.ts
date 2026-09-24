@@ -23,7 +23,7 @@ import {CollectionIteratorForTest}                                              
  *
  * Plus, all the aliases should always throw {@link Error}.
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export abstract class AbstractUnimplementedCollectionIteratorForTest<const T, >
     implements CollectionIteratorForTest<T> {

@@ -20,7 +20,7 @@ import {AbstractTupleForTest} from "./AbstractTupleForTest"
 /**
  * A class to test the functionality of a {@link Monuple}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class Tuple_1<const T, >
     extends AbstractTupleForTest<T> {

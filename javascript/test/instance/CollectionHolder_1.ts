@@ -24,7 +24,7 @@ import {SingleValueCollectionHolder}                  from "../../src/SingleValu
 /**
  * A class to test the functionality of a {@link SingleValueCollectionHolder}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_1<const T, >
     extends AbstractUnimplementedCollectionHolderForTest<T> {
