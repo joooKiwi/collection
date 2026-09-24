@@ -12,13 +12,13 @@
 
 import type {Array} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                           from "./CollectionHolder"
-import type {EmptyCollectionHolder}                                                                                                                                                                                                                                                      from "./EmptyCollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                 from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                         from "./iterator/CollectionIterator"
-import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                    from "./iterator/EmptyCollectionIterator"
-import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfIterator, KeyOfMap, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableMap, KeyOfMutableSet, KeyOfMutableWeakMap, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakMap, KeyOfWeakSet} from "./type/keyOf"
-import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol}                                                                                                                                                                                       from "./type/symbol"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                                                                                                                       from "./CollectionHolder"
+import type {EmptyCollectionHolder}                                                                                                                                                                                                                                                                                                                                                                  from "./EmptyCollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                                                                             from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                                                                                     from "./iterator/CollectionIterator"
+import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
+import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionHolderOf1, KeyOfCollectionHolderOf2, KeyOfCollectionIterator, KeyOfCollectionIteratorOf1, KeyOfCollectionIteratorOf2, KeyOfIterator, KeyOfMap, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableMap, KeyOfMutableSet, KeyOfMutableWeakMap, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakMap, KeyOfWeakSet} from "./type/keyOf"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol}                                                                                                                                                                                                                                                                                                   from "./type/symbol"
 
 import {EmptyConstants}   from "./EmptyConstants"
 import {MembersConstants} from "./MembersConstants"
@@ -77,6 +77,16 @@ export class CollectionConstants {
     /** Every method applicable to a {@link CollectionHolder} */
     public static get COLLECTION_MEMBERS(): CollectionHolder<KeyOfCollectionHolder> {
         return MembersConstants.COLLECTION_MEMBERS
+    }
+
+    /** Every method applicable to a {@link CollectionHolderOf1} */
+    public static get COLLECTION_OF_1_MEMBERS(): CollectionHolder<KeyOfCollectionHolderOf1> {
+        return MembersConstants.COLLECTION_OF_1_MEMBERS
+    }
+
+    /** Every method applicable to a {@link CollectionHolderOf2} */
+    public static get COLLECTION_OF_2_MEMBERS(): CollectionHolder<KeyOfCollectionHolderOf2> {
+        return MembersConstants.COLLECTION_OF_2_MEMBERS
     }
 
 
@@ -198,6 +208,16 @@ export class CollectionConstants {
     /** Every method applicable to a {@link CollectionIterator} */
     public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<KeyOfCollectionIterator> {
         return MembersConstants.COLLECTION_ITERATOR_MEMBERS
+    }
+
+    /** Every method applicable to a {@link CollectionIteratorOf1} */
+    public static get COLLECTION_ITERATOR_OF_1_MEMBERS(): CollectionHolder<KeyOfCollectionIteratorOf1> {
+        return MembersConstants.COLLECTION_ITERATOR_OF_1_MEMBERS
+    }
+
+    /** Every method applicable to a {@link CollectionIteratorOf2} */
+    public static get COLLECTION_ITERATOR_OF_2_MEMBERS(): CollectionHolder<KeyOfCollectionIteratorOf2> {
+        return MembersConstants.COLLECTION_ITERATOR_OF_2_MEMBERS
     }
 
     //#endregion -------------------- Members references --------------------

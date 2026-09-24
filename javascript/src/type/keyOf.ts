@@ -13,8 +13,12 @@
 import type {Array, Map, MutableArray, MutableMap, MutableSet, MutableWeakMap, MutableWeakSet, Set, WeakMap, WeakSet} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
+import type {CollectionHolderOf1}        from "../CollectionHolderOf1"
+import type {CollectionHolderOf2}        from "../CollectionHolderOf2"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionIterator}         from "../iterator/CollectionIterator"
+import type {CollectionIteratorOf1}      from "../iterator/CollectionIteratorOf1"
+import type {CollectionIteratorOf2}      from "../iterator/CollectionIteratorOf2"
 import type {TypedArray}                 from "./TypedArray"
 
 //#region -------------------- Array key --------------------
@@ -124,6 +128,12 @@ export type KeyOfMinimalistCollectionHolder = keyof MinimalistCollectionHolder
 /** The keys applicable to a {@link CollectionHolder} */
 export type KeyOfCollectionHolder = keyof CollectionHolder
 
+/** The keys applicable to a {@link CollectionHolderOf1} */
+export type KeyOfCollectionHolderOf1 = keyof CollectionHolderOf1
+
+/** The keys applicable to a {@link CollectionHolderOf2} */
+export type KeyOfCollectionHolderOf2 = keyof CollectionHolderOf2
+
 //#endregion -------------------- Collection holder key --------------------
 //#region -------------------- Iterator key --------------------
 
@@ -139,5 +149,11 @@ export type KeyOfIterator = Exclude<keyof IteratorObject<unknown, unknown, unkno
 
 /** The keys applicable to a {@link CollectionIterator} */
 export type KeyOfCollectionIterator = keyof CollectionIterator
+
+/** The keys applicable to a {@link CollectionIteratorOf1} */
+export type KeyOfCollectionIteratorOf1 = keyof CollectionIteratorOf1
+
+/** The keys applicable to a {@link CollectionIteratorOf2} */
+export type KeyOfCollectionIteratorOf2 = keyof CollectionIteratorOf2
 
 //#endregion -------------------- Collection iterator key --------------------
