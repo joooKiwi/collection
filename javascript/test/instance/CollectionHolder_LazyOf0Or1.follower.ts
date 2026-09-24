@@ -13,10 +13,9 @@
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                              from "../../src/CollectionHolder"
-import type {CollectionIteratorOf1}                                                                                                                         from "../../src/iterator/CollectionIteratorOf1"
-import type {EmptyCollectionIterator}                                                                                                                       from "../../src/iterator/EmptyCollectionIterator"
 import type {BooleanCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback} from "../../src/type/callback"
 import type {CollectionHolderOf0Or1}                                                                                                                        from "../../src/type/collection"
+import type {CollectionIteratorOf0Or1}                                                                                                                      from "../../src/type/iterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
 import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
 
@@ -495,7 +494,7 @@ export class CollectionHolder_LazyOf0Or1Follower
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toIterator(): | CollectionIteratorOf1<string> | EmptyCollectionIterator {
+    public override toIterator(): CollectionIteratorOf0Or1<string> {
         this.toIterator_amountOfCall++
         return super.toIterator()
     }

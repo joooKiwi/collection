@@ -15,10 +15,9 @@ import type {Array, EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, Em
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "../../src/iterator/CollectionIteratorOf1"
-import type {EmptyCollectionIterator}                                                                                                                                                                                                                                           from "../../src/iterator/EmptyCollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {CollectionHolderOf0Or1}                                                                                                                                                                                                                                            from "../../src/type/collection"
+import type {CollectionIteratorOf0Or1}                                                                                                                                                                                                                                          from "../../src/type/iterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
 import {LazyCollectionHolderOf0Or1}                   from "../../src/LazyCollectionHolderOf0Or1"
@@ -392,7 +391,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toIterator(): | CollectionIteratorOf1<T> | EmptyCollectionIterator { return this.instance.toIterator() }
+    public override toIterator(): CollectionIteratorOf0Or1<T> { return this.instance.toIterator() }
 
     public override toArray(): | readonly [T,] | EmptyArray { return this.instance.toArray() }
     public override toMutableArray(): | [T,] | EmptyMutableArray { return this.instance.toMutableArray() }
