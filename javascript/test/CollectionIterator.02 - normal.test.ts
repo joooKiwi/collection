@@ -45,9 +45,9 @@ describe("CollectionIteratorTest", () => {
     },)
 
     describe("aliases", () => {
-        test("GenericCollectionIterator", () => expect(new CollectionIterator_ByGenericIteratorFollower().execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
-        test("CollectionIteratorOf1",     () => expect(new CollectionIterator_1Follower()                .execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
-        test("CollectionIteratorOf2",     () => expect(new CollectionIterator_2Follower()                .execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
+        test("GenericCollectionIterator",     () => expect(new CollectionIterator_ByGenericIteratorFollower().execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
+        test("SingleValueCollectionIterator", () => expect(new CollectionIterator_1Follower()                .execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
+        test("DualValueCollectionIterator",   () => expect(new CollectionIterator_2Follower()                .execute(it => it.index,).currentIndex_amountOfCall,).toBe(1,),)
     },)
 
     describe("empty", () => {

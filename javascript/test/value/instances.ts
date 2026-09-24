@@ -181,7 +181,7 @@ export const every1Instances = [
  */
 export const every1Iterators = [
     new Holder({iteratorValue: GenericCollectionIteratorValue, newInstance: <const T, >(value: T,) => new CollectionIterator_ByGenericIterator(arrayOf1(value,),),}, "GenericCollectionIterator",),
-    new Holder({iteratorValue: IteratorValueOf1,               newInstance: <const T, >(value: T,) => new CollectionIterator_1(value,),},                            "CollectionIteratorOf1",),
+    new Holder({iteratorValue: IteratorValueOf1,               newInstance: <const T, >(value: T,) => new CollectionIterator_1(value,),},                            "SingleValueCollectionIterator",),
 ] as const
 
 /**
@@ -219,7 +219,7 @@ export const every2Instances = [
  */
 export const every2Iterators = [
     new Holder({iteratorValue1: GenericCollectionIteratorValue, iteratorValue2: GenericCollectionIteratorValue, newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionIterator_ByGenericIterator(arrayOf2(value1, value2,),),}, "GenericCollectionIterator",),
-    new Holder({iteratorValue1: IteratorValueOf1On2,            iteratorValue2: IteratorValueOf2On2,            newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionIterator_2(value1, value2,),},                            "CollectionIteratorOf2",),
+    new Holder({iteratorValue1: IteratorValueOf1On2,            iteratorValue2: IteratorValueOf2On2,            newInstance: <const T, const T1 extends T = T, const T2 extends T = T, >(value1: T1, value2: T2,) => new CollectionIterator_2(value1, value2,),},                            "DualValueCollectionIterator",),
 ] as const
 
 /**

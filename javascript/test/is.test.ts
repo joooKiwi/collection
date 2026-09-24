@@ -41,9 +41,9 @@ import {SetAsCollectionHolder}                   from "../src/SetAsCollectionHol
 import {SetOf1AsCollectionHolder}                from "../src/SetOf1AsCollectionHolder"
 import {SetOf2AsCollectionHolder}                from "../src/SetOf2AsCollectionHolder"
 import {SingleValueCollectionHolder}             from "../src/SingleValueCollectionHolder"
-import {CollectionIteratorOf1}                   from "../src/iterator/CollectionIteratorOf1"
-import {CollectionIteratorOf2}                   from "../src/iterator/CollectionIteratorOf2"
+import {DualValueCollectionIterator}             from "../src/iterator/DualValueCollectionIterator"
 import {GenericCollectionIterator}               from "../src/iterator/GenericCollectionIterator"
+import {SingleValueCollectionIterator}           from "../src/iterator/SingleValueCollectionIterator"
 import {isArray}                                 from "../src/method/isArray"
 import {isArrayByStructure}                      from "../src/method/isArrayByStructure"
 import {isBigInt64Array}                         from "../src/method/isBigInt64Array"
@@ -2362,7 +2362,7 @@ describe("is", () => {
         test("collection iterator by structure",          () => expect(isCollectionIteratorByStructure(instance,),)        .toBeTrue(),)
     },)
     describe("collection iterator (of 1)", () => {
-        const instance = new CollectionIteratorOf1(null,)
+        const instance = new SingleValueCollectionIterator(null,)
 
         test("array",                                     () => expect(isArray(instance,),)                                .toBeFalse(),)
         test("array by structure",                        () => expect(isArrayByStructure(instance,),)                     .toBeFalse(),)
@@ -2397,7 +2397,7 @@ describe("is", () => {
         test("collection iterator by structure",          () => expect(isCollectionIteratorByStructure(instance,),)        .toBeTrue(),)
     },)
     describe("collection iterator (of 2)", () => {
-        const instance = new CollectionIteratorOf2(null, null,)
+        const instance = new DualValueCollectionIterator(null, null,)
 
         test("array",                                     () => expect(isArray(instance,),)                                .toBeFalse(),)
         test("array by structure",                        () => expect(isArrayByStructure(instance,),)                     .toBeFalse(),)

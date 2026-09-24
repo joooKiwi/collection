@@ -17,10 +17,10 @@ import type {PossibleIteratorValue}                                             
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
 
 import {AbstractUnimplementedCollectionIteratorForTest} from "./AbstractUnimplementedCollectionIteratorForTest"
-import {CollectionIteratorOf2}                          from "../../src/iterator/CollectionIteratorOf2"
+import {DualValueCollectionIterator}                    from "../../src/iterator/DualValueCollectionIterator"
 
 /**
- * A class to test the functionality of a {@link CollectionIteratorOf2}
+ * A class to test the functionality of a {@link DualValueCollectionIterator}
  *
  * @typeParam T1 The 1st type (**mandatory**)
  * @typeParam T2 The 2nd type (**mandatory**)
@@ -30,11 +30,11 @@ export class CollectionIterator_2<const T1,
     extends AbstractUnimplementedCollectionIteratorForTest<| T1 | T2> {
 
     /** The internal instance that is tested */
-    public readonly instance: CollectionIteratorOf2<T1, T2>
+    public readonly instance: DualValueCollectionIterator<T1, T2>
 
     public constructor(public readonly value1: T1, public readonly value2: T2,) {
         super()
-        this.instance = new CollectionIteratorOf2(value1, value2,)
+        this.instance = new DualValueCollectionIterator(value1, value2,)
     }
 
     //#region -------------------- Size methods --------------------

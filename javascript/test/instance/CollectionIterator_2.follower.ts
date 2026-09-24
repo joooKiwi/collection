@@ -14,14 +14,14 @@ import type {NullOrNumber} from "@joookiwi/type"
 
 import type {CollectionIteratorFollower} from "./CollectionIteratorFollower"
 
-import {CollectionIteratorOf2} from "../../src/iterator/CollectionIteratorOf2"
+import {DualValueCollectionIterator} from "../../src/iterator/DualValueCollectionIterator"
 
 /**
- * An inherited instance of {@link CollectionIteratorOf2}
+ * An inherited instance of {@link DualValueCollectionIterator}
  * made to have the followed methods based on the specific non-aliased method
  */
 export class CollectionIterator_2Follower
-    extends CollectionIteratorOf2<string, string>
+    extends DualValueCollectionIterator<string, string>
     implements CollectionIteratorFollower<string> {
 
     //#region -------------------- Fields --------------------

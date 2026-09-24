@@ -12,15 +12,15 @@
 
 import type {CollectionIteratorFollower} from "./CollectionIteratorFollower"
 
-import {CollectionIteratorOf1} from "../../src/iterator/CollectionIteratorOf1"
+import {SingleValueCollectionIterator} from "../../src/iterator/SingleValueCollectionIterator"
 import {NullOrZeroNumber}      from "@joookiwi/type"
 
 /**
- * An inherited instance of {@link CollectionIteratorOf1}
+ * An inherited instance of {@link SingleValueCollectionIterator}
  * made to have the followed methods based on the specific non-aliased method
  */
 export class CollectionIterator_1Follower
-    extends CollectionIteratorOf1<string>
+    extends SingleValueCollectionIterator<string>
     implements CollectionIteratorFollower<string> {
 
     //#region -------------------- Fields --------------------

@@ -70,7 +70,7 @@ describe("CollectionIteratorTest (size)", () => {
             test("containsAtMost2Elements",  () => expect(new CollectionIterator_ByGenericIteratorFollower().execute(it => it.containsAtMost2Elements,) .hasAtMost2Elements_amountOfCall,) .toBe(1,),)
             test("includesAtMost2Elements",  () => expect(new CollectionIterator_ByGenericIteratorFollower().execute(it => it.includesAtMost2Elements,) .hasAtMost2Elements_amountOfCall,) .toBe(1,),)
         },)
-        describe("CollectionIteratorOf1", () => {
+        describe("SingleValueCollectionIterator", () => {
             test("length",                   () => expect(new CollectionIterator_1Follower().execute(it => it.length,).size_amountOfCall,).toBe(1,),)
             test("count",                    () => expect(new CollectionIterator_1Follower().execute(it => it.count,).size_amountOfCall,).toBe(1,),)
             test("hasAtLeast1Element",       () => expect(new CollectionIterator_1Follower().execute(it => it.hasAtLeast1Element,)      .isNotEmpty_amountOfCall,)         .toBe(1,),)
@@ -87,7 +87,7 @@ describe("CollectionIteratorTest (size)", () => {
             test("containsAtMost2Elements",  () => expect(new CollectionIterator_1Follower().execute(it => it.containsAtMost2Elements,) .hasAtMost2Elements_amountOfCall,) .toBe(1,),)
             test("includesAtMost2Elements",  () => expect(new CollectionIterator_1Follower().execute(it => it.includesAtMost2Elements,) .hasAtMost2Elements_amountOfCall,) .toBe(1,),)
         },)
-        describe("CollectionIteratorOf2", () => {
+        describe("DualValueCollectionIterator", () => {
             test("length",                   () => expect(new CollectionIterator_2Follower().execute(it => it.length,).size_amountOfCall,).toBe(1,),)
             test("count",                    () => expect(new CollectionIterator_2Follower().execute(it => it.count,).size_amountOfCall,).toBe(1,),)
             test("hasAtLeast1Element",       () => expect(new CollectionIterator_2Follower().execute(it => it.hasAtLeast1Element,)      .isNotEmpty_amountOfCall,)         .toBe(1,),)
@@ -130,7 +130,7 @@ describe("CollectionIteratorTest (size)", () => {
             test("hasExactly2Elements", () => expect(new CollectionIterator_ByGenericIterator(A,).hasExactly2Elements,).toBeFalse(),)
             test("hasAtMost2Elements",  () => expect(new CollectionIterator_ByGenericIterator(A,).hasAtMost2Elements,) .toBeTrue(),)
         },)
-        describe("CollectionIteratorOf1", () => {
+        describe("SingleValueCollectionIterator", () => {
             test("size",                () => expect(new CollectionIterator_1('a',).size,)               .toBe(1,),)
             test("isEmpty",             () => expect(new CollectionIterator_1('a',).isEmpty,)            .toBeFalse(),)
             test("isNotEmpty",          () => expect(new CollectionIterator_1('a',).isNotEmpty,)         .toBeTrue(),)
@@ -153,7 +153,7 @@ describe("CollectionIteratorTest (size)", () => {
             test("hasExactly2Elements", () => expect(new CollectionIterator_ByGenericIterator(AB,).hasExactly2Elements,).toBeTrue(),)
             test("hasAtMost2Elements",  () => expect(new CollectionIterator_ByGenericIterator(AB,).hasAtMost2Elements,) .toBeTrue(),)
         },)
-        describe("CollectionIteratorOf2", () => {
+        describe("DualValueCollectionIterator", () => {
             test("size",                () => expect(new CollectionIterator_2('a', 'b',).size,)               .toBe(2,),)
             test("isEmpty",             () => expect(new CollectionIterator_2('a', 'b',).isEmpty,)            .toBeFalse(),)
             test("isNotEmpty",          () => expect(new CollectionIterator_2('a', 'b',).isNotEmpty,)         .toBeTrue(),)

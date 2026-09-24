@@ -16,11 +16,11 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
 
+import {SingleValueCollectionIterator}                  from "../../src/iterator/SingleValueCollectionIterator"
 import {AbstractUnimplementedCollectionIteratorForTest} from "./AbstractUnimplementedCollectionIteratorForTest"
-import {CollectionIteratorOf1}                          from "../../src/iterator/CollectionIteratorOf1"
 
 /**
- * A class to test the functionality of a {@link CollectionIteratorOf1}
+ * A class to test the functionality of a {@link SingleValueCollectionIterator}
  *
  * @typeParam T The type (**mandatory**)
  */
@@ -28,11 +28,11 @@ export class CollectionIterator_1<const T, >
     extends AbstractUnimplementedCollectionIteratorForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: CollectionIteratorOf1<T>
+    public readonly instance: SingleValueCollectionIterator<T>
 
     public constructor(public readonly value: T,) {
         super()
-        this.instance = new CollectionIteratorOf1(value,)
+        this.instance = new SingleValueCollectionIterator(value,)
     }
 
     //#region -------------------- Size methods --------------------
@@ -108,7 +108,7 @@ export class CollectionIterator_1<const T, >
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public [Symbol.iterator](): CollectionIteratorOf1<T> { return this.instance[Symbol.iterator]() }
+    public [Symbol.iterator](): SingleValueCollectionIterator<T> { return this.instance[Symbol.iterator]() }
 
     //#endregion -------------------- JavaScript methods --------------------
 

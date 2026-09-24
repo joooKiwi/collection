@@ -15,12 +15,12 @@ import {describe, expect, test} from "vitest"
 import {A, AA, AB, AB_AB, ABAB, ABCD}                                                                                               from "./value/arrays"
 import {emptyCollectionIterator, every0Instances, every1Instances, every2Instances, everyExtensionMethodInstances, everyNInstances} from "./value/instances"
 
-import {DefaultConstants}          from "../src/DefaultConstants"
-import {EmptyCollectionHolder}     from "../src/EmptyCollectionHolder"
-import {EmptyConstants}            from "../src/EmptyConstants"
-import {CollectionIteratorOf1}     from "../src/iterator/CollectionIteratorOf1"
-import {CollectionIteratorOf2}     from "../src/iterator/CollectionIteratorOf2"
-import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
+import {DefaultConstants}              from "../src/DefaultConstants"
+import {EmptyCollectionHolder}         from "../src/EmptyCollectionHolder"
+import {EmptyConstants}                from "../src/EmptyConstants"
+import {DualValueCollectionIterator}   from "../src/iterator/DualValueCollectionIterator"
+import {GenericCollectionIterator}     from "../src/iterator/GenericCollectionIterator"
+import {SingleValueCollectionIterator} from "../src/iterator/SingleValueCollectionIterator"
 
 describe("CollectionHolderTest (conversion)", () => {
 
@@ -97,7 +97,7 @@ describe("CollectionHolderTest (conversion)", () => {
         },)},)
         describe("1 field", () => {
         describe.each(every1Instances,)("%s", ({value: {newInstance, isLazy, isOf1,},},) => {
-            test("toIterator",              () => expect(newInstance('a',).toIterator(),)             .toBeInstanceOf(isLazy || isOf1 ? CollectionIteratorOf1 : GenericCollectionIterator,),)
+            test("toIterator",              () => expect(newInstance('a',).toIterator(),)             .toBeInstanceOf(isLazy || isOf1 ? SingleValueCollectionIterator : GenericCollectionIterator,),)
             test("toArray",                 () => expect(newInstance('a',).toArray(),)                .toStrictEqual(A,),)
             test("toArray: frozen",         () => expect(newInstance('a',).toArray(),)                .toBeFrozen(),)
             test("toMutableArray",          () => expect(newInstance('a',).toMutableArray(),)         .toStrictEqual(A,),)
@@ -123,7 +123,7 @@ describe("CollectionHolderTest (conversion)", () => {
             const isSet = type === "set adaptor" || type === "set of 2"
             const testIfNotSet = isSet ? test.skip : test
 
-            test("toIterator",                          () => expect(newInstance('a', 'b',).toIterator(),)             .toBeInstanceOf(isLazy || isOf2 ? CollectionIteratorOf2 : GenericCollectionIterator,),)
+            test("toIterator",                          () => expect(newInstance('a', 'b',).toIterator(),)             .toBeInstanceOf(isLazy || isOf2 ? DualValueCollectionIterator : GenericCollectionIterator,),)
             test("toArray ~ unique",                    () => expect(newInstance('a', 'b',).toArray(),)                .toStrictEqual(AB,),)
             testIfNotSet("toArray ~ duplicated",        () => expect(newInstance('a', 'a',).toArray(),)                .toStrictEqual(AA,),)
             test("toArray: frozen",                     () => expect(newInstance('a', 'b',).toArray(),)                .toBeFrozen(),)
