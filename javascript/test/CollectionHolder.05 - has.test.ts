@@ -6480,7 +6480,7 @@ describe("CollectionHolderTest (has)", () => {
         },)
     },)
 
-    test("viewer", () => {
+    describe("viewer", () => {
         test("has",             () => expect(new CollectionHolder_ByViewer().execute(it => it.has('a',),)       .has_amountOfCall,)            .toBe(1,),)
         test("hasNot",          () => expect(new CollectionHolder_ByViewer().execute(it => it.hasNot('a',),)    .hasNot_amountOfCall,)         .toBe(1,),)
         test("hasOne",          () => expect(new CollectionHolder_ByViewer().execute(it => it.hasOne(A,),)      .hasOne_amountOfCall,)         .toBe(1,),)
