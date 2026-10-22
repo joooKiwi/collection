@@ -10,6 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {TestOptions}       from "vitest"
 import {describe, expect, test} from "vitest"
 
 import {callbackAsFail0}        from "./value/callbacks (fail)"
@@ -18,9 +19,16 @@ import {everyInfiniteInstances} from "./value/instances"
 
 import {ForbiddenIndexException} from "../src/exception/ForbiddenIndexException"
 
+/**
+ * In order to make the test of overflow exception. This whould take up to ≈7-10 seconds.
+ * Meaning that the default vitest timeout of 5 seconds is not enough.
+ *
+ * By that, it gives a timeout of 20 seconds to ensure it is possible
+ */
+const REALLY_LONG_TIMEOUT = {timeout: 20_000,} as const satisfies TestOptions
+
 describe("CollectionHolderTest (∞)", () => {
 describe.each(everyInfiniteInstances,)("%s", ({value: {instance,},},) => {
-    //README: A stack overflow exception is expected to be done (and it may take a while → ≈7-10 seconds)
 
     describe("fields after method call", () => {
         test("isEmpty[0]",             () => expect(new instance().execute(it => it.isEmpty,)[0],)            .toBe('a',),)
@@ -457,47 +465,47 @@ describe.each(everyInfiniteInstances,)("%s", ({value: {instance,},},) => {
     },)
 
     describe("size", () => {
-        test.concurrent("size",               async () => expect(() => new instance().size,)                     .toThrow(RangeError,),)
-        test(           "is empty",                 () => expect(      new instance().isEmpty,)            .toBeFalse(),)
-        test(           "is not empty",             () => expect(      new instance().isNotEmpty,)         .toBeTrue(),)
-        test(           "has exactly 1 element",    () => expect(      new instance().hasExactly1Element,) .toBeFalse(),)
-        test(           "has at most 1 element",    () => expect(      new instance().hasAtMost1Element,)  .toBeFalse(),)
-        test(           "has at least 2 elements",  () => expect(      new instance().hasAtLeast2Elements,).toBeTrue(),)
-        test(           "has exactly 2 elements",   () => expect(      new instance().hasExactly2Elements,).toBeFalse(),)
-        test(           "has at most 2 elements",   () => expect(      new instance().hasAtMost2Elements,) .toBeFalse(),)
+        test("size", REALLY_LONG_TIMEOUT, () => expect(() => new instance().size,)                .toThrow(RangeError,),)
+        test("is empty",                  () => expect(      new instance().isEmpty,)            .toBeFalse(),)
+        test("is not empty",              () => expect(      new instance().isNotEmpty,)         .toBeTrue(),)
+        test("has exactly 1 element",     () => expect(      new instance().hasExactly1Element,) .toBeFalse(),)
+        test("has at most 1 element",     () => expect(      new instance().hasAtMost1Element,)  .toBeFalse(),)
+        test("has at least 2 elements",   () => expect(      new instance().hasAtLeast2Elements,).toBeTrue(),)
+        test("has exactly 2 elements",    () => expect(      new instance().hasExactly2Elements,).toBeFalse(),)
+        test("has at most 2 elements",    () => expect(      new instance().hasAtMost2Elements,) .toBeFalse(),)
     },)
     describe("get", () => {
-        test(           "get: NaN",       () => expect(() => new instance().get(NaN,),)      .toThrow(ForbiddenIndexException,),)
-        test(           "get: -∞",        () => expect(() => new instance().get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-        test.concurrent("get: -1",  async () => expect(() => new instance().get(-1,),)       .toThrow(RangeError,),)
-        test(           "get: 0",         () => expect(      new instance().get(0,),)        .toBe('a',),)
-        test(           "get: 1",         () => expect(      new instance().get(1,),)        .toBe('a',),)
-        test(           "get: +∞",        () => expect(() => new instance().get(Infinity,),) .toThrow(ForbiddenIndexException,),)
+        test("get: NaN",                     () => expect(() => new instance().get(NaN,),)      .toThrow(ForbiddenIndexException,),)
+        test("get: -∞",                      () => expect(() => new instance().get(-Infinity,),).toThrow(ForbiddenIndexException,),)
+        test("get: -1", REALLY_LONG_TIMEOUT, () => expect(() => new instance().get(-1,),)       .toThrow(RangeError,),)
+        test("get: 0",                       () => expect(      new instance().get(0,),)        .toBe('a',),)
+        test("get: 1",                       () => expect(      new instance().get(1,),)        .toBe('a',),)
+        test("get: +∞",                      () => expect(() => new instance().get(Infinity,),) .toThrow(ForbiddenIndexException,),)
     },)
     test("getFirst", () => expect(new instance().getFirst(),).toBe('a',),)
     describe("getOrElse", () => {
-        test(           "getOrElse: NaN",       () => expect(      new instance().getOrElse(NaN, callbackToString0,),)      .toBe('E',),)
-        test(           "getOrElse: -∞",        () => expect(      new instance().getOrElse(-Infinity, callbackToString0,),).toBe('E',),)
-        test.concurrent("getOrElse: -1",  async () => expect(() => new instance().getOrElse(-1, callbackAsFail0,),)         .toThrow(RangeError,),)
-        test(           "getOrElse: 0",         () => expect(      new instance().getOrElse(0, callbackAsFail0,),)          .toBe('a',),)
-        test(           "getOrElse: 1",         () => expect(      new instance().getOrElse(1, callbackAsFail0,),)          .toBe('a',),)
-        test(           "getOrElse: +∞",        () => expect(      new instance().getOrElse(Infinity, callbackToString0,),) .toBe('E',),)
+        test("getOrElse: NaN",                     () => expect(      new instance().getOrElse(NaN, callbackToString0,),)      .toBe('E',),)
+        test("getOrElse: -∞",                      () => expect(      new instance().getOrElse(-Infinity, callbackToString0,),).toBe('E',),)
+        test("getOrElse: -1", REALLY_LONG_TIMEOUT, () => expect(() => new instance().getOrElse(-1, callbackAsFail0,),)         .toThrow(RangeError,),)
+        test("getOrElse: 0",                       () => expect(      new instance().getOrElse(0, callbackAsFail0,),)          .toBe('a',),)
+        test("getOrElse: 1",                       () => expect(      new instance().getOrElse(1, callbackAsFail0,),)          .toBe('a',),)
+        test("getOrElse: +∞",                      () => expect(      new instance().getOrElse(Infinity, callbackToString0,),) .toBe('E',),)
     },)
     test("getFirstOrElse", () => expect(new instance().getFirstOrElse(callbackAsFail0,),).toBe('a',),)
     describe("getOrNull", () => {
-        test(           "getOrNull: NaN",       () => expect(      new instance().getOrNull(NaN,),)      .toBeNull(),)
-        test(           "getOrNull: -∞",        () => expect(      new instance().getOrNull(-Infinity,),).toBeNull(),)
-        test.concurrent("getOrNull: -1",  async () => expect(() => new instance().getOrNull(-1,),)       .toThrow(RangeError,),)
-        test(           "getOrNull: 0",         () => expect(      new instance().getOrNull(0,),)        .toBe('a',),)
-        test(           "getOrNull: 1",         () => expect(      new instance().getOrNull(1,),)        .toBe('a',),)
-        test(           "getOrNull: +∞",        () => expect(      new instance().getOrNull(Infinity,),) .toBeNull(),)
+        test("getOrNull: NaN",                     () => expect(      new instance().getOrNull(NaN,),)      .toBeNull(),)
+        test("getOrNull: -∞",                      () => expect(      new instance().getOrNull(-Infinity,),).toBeNull(),)
+        test("getOrNull: -1", REALLY_LONG_TIMEOUT, () => expect(() => new instance().getOrNull(-1,),)       .toThrow(RangeError,),)
+        test("getOrNull: 0",                       () => expect(      new instance().getOrNull(0,),)        .toBe('a',),)
+        test("getOrNull: 1",                       () => expect(      new instance().getOrNull(1,),)        .toBe('a',),)
+        test("getOrNull: +∞",                      () => expect(      new instance().getOrNull(Infinity,),) .toBeNull(),)
     },)
     test("getFirstOrNull", () => expect(new instance().getFirstOrNull(),).toBe('a',),)
     describe("has", () => {
-        test.concurrent("has null",          async () => expect(() => new instance().hasNull,)        .toThrow(RangeError,),)
-        test.concurrent("has no nulls",      async () => expect(() => new instance().hasNoNulls,)     .toThrow(RangeError,),)
-        test(           "has duplicate",           () => expect(      new instance().hasDuplicate,)   .toBeTrue(),)
-        test(           "has no duplicates",       () => expect(      new instance().hasNoDuplicates,).toBeFalse(),)
+        test("has null", REALLY_LONG_TIMEOUT,     () => expect(() => new instance().hasNull,)        .toThrow(RangeError,),)
+        test("has no nulls", REALLY_LONG_TIMEOUT, () => expect(() => new instance().hasNoNulls,)     .toThrow(RangeError,),)
+        test("has duplicate",                     () => expect(      new instance().hasDuplicate,)   .toBeTrue(),)
+        test("has no duplicates",                 () => expect(      new instance().hasNoDuplicates,).toBeFalse(),)
     },)
 
 },)},)
