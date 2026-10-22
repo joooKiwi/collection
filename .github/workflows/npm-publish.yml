@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - name: Checkout of the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Configuration of the Node v${{matrix.node-version}} setup
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version: ${{matrix.node-version}}
 
@@ -54,10 +54,10 @@ jobs:
 
     steps:
       - name: Checkout of the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Configuration of the Node v${{matrix.node-version}} setup
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version: ${{matrix.node-version}}
           registry-url: https://registry.npmjs.org/
