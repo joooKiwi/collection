@@ -21,7 +21,6 @@ import {AbstractIndependentCollectionHolderOf2} from "./AbstractIndependentColle
 import {DualValueCollectionHolder}              from "./DualValueCollectionHolder"
 import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
 import {LazyCollectionHolderOf0Or1Or2}          from "./LazyCollectionHolderOf0Or1Or2"
-import {LazyCollectionHolderOf2}                from "./LazyCollectionHolderOf2"
 import {SingleValueCollectionHolder}            from "./SingleValueCollectionHolder"
 import {Couple}                                 from "./tuple/Couple"
 
