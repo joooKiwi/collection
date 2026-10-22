@@ -272,11 +272,11 @@ export abstract class AbstractIndependentCollectionHolderOf2<const T1,
 
     public override getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): T1
     public override getFirstOrElse(defaultValue: ReturnCallback<| T1 | T2>,): T1
-    public override getFirstOrElse() { return this.value1 }
+     public override getFirstOrElse() { return this.getFirst() }
 
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): T2
     public override getLastOrElse(defaultValue: ReturnCallback<| T1 | T2>,): T2
-    public override getLastOrElse() { return this.value2 }
+    public override getLastOrElse() { return this.getLast() }
 
 
     public override getOrNull<const I extends number, >(index: I,): DoubleValueFromIndexOrNull<I, T1, T2>
@@ -293,9 +293,9 @@ export abstract class AbstractIndependentCollectionHolderOf2<const T1,
         return null
     }
 
-    public override getFirstOrNull(): T1 { return this.value1 }
+    public override getFirstOrNull(): T1 { return this.getFirst() }
 
-    public override getLastOrNull(): T2 { return this.value2 }
+    public override getLastOrNull(): T2 { return this.getLast() }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- Find first --------------------
