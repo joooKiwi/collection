@@ -36,11 +36,11 @@ describe("CollectionHolderTest (map)", () => {
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
-        describe("map",               () => expect(instance.map(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
-        describe("mapIndexed",        () => expect(instance.mapIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        test("map",               () => expect(instance.map(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        test("mapIndexed",        () => expect(instance.mapIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
 
-        describe("mapNotNull",        () => expect(instance.mapNotNull(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
-        describe("mapNotNullIndexed", () => expect(instance.mapNotNullIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        test("mapNotNull",        () => expect(instance.mapNotNull(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        test("mapNotNullIndexed", () => expect(instance.mapNotNullIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
     },)},)
 
     describe("get() being called", () => {

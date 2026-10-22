@@ -39,11 +39,11 @@ describe("CollectionHolderTest (filter)", () => {
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
-        describe("filter",           () => expect(instance.filter(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
-        describe("filterIndexed",    () => expect(instance.filterIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
-        describe("filterNot",        () => expect(instance.filterNot(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
-        describe("filterNotIndexed", () => expect(instance.filterNotIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
-        describe("filterNotNull",    () => expect(instance.filterNotNull(),).toBe(emptyCollectionHolder,),)
+        test("filter",           () => expect(instance.filter(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        test("filterIndexed",    () => expect(instance.filterIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        test("filterNot",        () => expect(instance.filterNot(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        test("filterNotIndexed", () => expect(instance.filterNotIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        test("filterNotNull",    () => expect(instance.filterNotNull(),).toBe(emptyCollectionHolder,),)
     },)},)
 
     describe("get() being called", () => {

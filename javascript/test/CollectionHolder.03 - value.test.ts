@@ -722,16 +722,16 @@ describe("CollectionHolderTest (value)", () => {
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance, emptyException,},},) => {
-        describe("getOrElse", () => expect(instance.getOrElse(0, callback,) === value,).toBeTrue(),)
-        describe("getOrNull", () => expect(instance.getOrNull(0,),).toBeNull(),)
+        test("getOrElse", () => expect(instance.getOrElse(0, callback,) === value,).toBeTrue(),)
+        test("getOrNull", () => expect(instance.getOrNull(0,),).toBeNull(),)
 
-        describe("getFirst", () => expect(() => instance.getFirst(),).toThrow(emptyException,),)
-        describe("getFirstOrNull", () => expect(instance.getFirstOrNull(),).toBeNull(),)
-        describe("getFirstOrElse", () => expect(instance.getFirstOrElse(callback,),).toBe(value,),)
+        test("getFirst", () => expect(() => instance.getFirst(),).toThrow(emptyException,),)
+        test("getFirstOrNull", () => expect(instance.getFirstOrNull(),).toBeNull(),)
+        test("getFirstOrElse", () => expect(instance.getFirstOrElse(callback,),).toBe(value,),)
 
-        describe("getLast", () => expect(() => instance.getLast(),).toThrow(emptyException,),)
-        describe("getLastOrNull", () => expect(instance.getLastOrNull(),).toBeNull(),)
-        describe("getLastOrElse", () => expect(instance.getLastOrElse(callback,),).toBe(value,),)
+        test("getLast", () => expect(() => instance.getLast(),).toThrow(emptyException,),)
+        test("getLastOrNull", () => expect(instance.getLastOrNull(),).toBeNull(),)
+        test("getLastOrElse", () => expect(instance.getLastOrElse(callback,),).toBe(value,),)
     },)},)
 
     describe("get() being called", () => {

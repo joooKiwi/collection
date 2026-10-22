@@ -36,10 +36,10 @@ describe("CollectionHolderTest (loop)", () => {
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
-        describe("forEach",         () => expect(() => instance.forEach(callbackAsFail0,),).not.toThrow(),)
-        describe("forEachIndexed",  () => expect(() => instance.forEachIndexed(callbackAsFail0,),).not.toThrow(),)
-        describe("onEach",          () => expect(instance.onEach(callbackAsFail0,),).toBe(instance,),)
-        describe("onEachIndexed",   () => expect(instance.onEachIndexed(callbackAsFail0,),).toBe(instance,),)
+        test("forEach",         () => expect(() => instance.forEach(callbackAsFail0,),).not.toThrow(),)
+        test("forEachIndexed",  () => expect(() => instance.forEachIndexed(callbackAsFail0,),).not.toThrow(),)
+        test("onEach",          () => expect(instance.onEach(callbackAsFail0,),).toBe(instance,),)
+        test("onEachIndexed",   () => expect(instance.onEachIndexed(callbackAsFail0,),).toBe(instance,),)
     },)},)
 
     describe("get() being called", () => {
