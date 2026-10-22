@@ -51,6 +51,9 @@ jobs:
       matrix:
         node-version: [26.x]
         path: [./javascript/]
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout of the repository
