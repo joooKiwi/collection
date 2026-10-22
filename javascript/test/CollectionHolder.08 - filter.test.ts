@@ -366,7 +366,7 @@ describe("CollectionHolderTest (filter)", () => {
                 test("() → boolean",          () => expect(newInstance().filterNotIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
 
-            describe("filterNotNull", () => expect(newInstance().filterNotNull(),).toBe(emptyCollectionHolder,),)
+            test("filterNotNull", () => expect(newInstance().filterNotNull(),).toBe(emptyCollectionHolder,),)
 
         },)},)
         describe("1 field", () => {
