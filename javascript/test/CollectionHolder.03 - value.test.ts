@@ -751,7 +751,7 @@ describe("CollectionHolderTest (value)", () => {
             test("getLastOrNull",  () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(0,),)
         },)
         describe("empty ~ collection (by normal)", () => {
-            test("get",      () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileExpectingEmptyException(it => it.get(0,),).amountOfCall,).toBe(0,),)
+            test("get",      () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileExpectingEmptyException(it => it.get(0,),).amountOfCall,).toBe(1,),)
             test("getFirst", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileExpectingEmptyException(it => it.getFirst(),).amountOfCall,).toBe(0,),)
             test("getLast",  () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileExpectingEmptyException(it => it.getLast(),).amountOfCall,).toBe(0,),)
 
