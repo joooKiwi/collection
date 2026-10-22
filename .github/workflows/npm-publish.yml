@@ -17,15 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [24.x]
+        node-version: [26.x]
         path: [./javascript/]
 
     steps:
       - name: Checkout of the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Configuration of the Node v${{matrix.node-version}} setup
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version: ${{matrix.node-version}}
 
@@ -49,15 +49,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [24.x]
+        node-version: [26.x]
         path: [./javascript/]
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout of the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Configuration of the Node v${{matrix.node-version}} setup
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version: ${{matrix.node-version}}
           registry-url: https://registry.npmjs.org/
@@ -79,5 +82,3 @@ jobs:
 
       - name: Publishing to NPM
         run: npm --prefix ${{matrix.path}} run publish-to-npm
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

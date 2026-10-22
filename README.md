@@ -2607,6 +2607,7 @@ This is the most bare-bones structure
 
 | JS/TS              | Date                 | Quick note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |--------------------|----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [2.1.0][js-v2.1]   | October 21st, 2026   | Upgrade on the TypeScript (v5 → v7)<br/>[type][type] (~1.2.2~ → [1.2.3][js-type-v1.3]), [lazy][lazy] (~1.7.3~ → [1.8.0][js-lazy-v1.8])                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | 2.0.1              | August 12th, 2026    | Addition of the missing dependency [lazy][lazy] (~~1.7.2~~ → 1.7.3)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | [2.0.0][js-v2.0]   | August 12th, 2026    | Big update to add new instances `CollectionHolderOf`1\|2, `LazyCollectionHolderOf`0Or1\|0Or1Or2\|1\|1Or2\|2, Array\|ArrayOf1\|ArrayOf2\|Set\|SetOf1\|SetOf2\|Minimalist\|Iterator\|JsIterator\|JsIterable`AsCollectionHolder`, `CollectionViewer` & `MinimalistCollectionViewer`,<br/>New iterators `CollectionIteratorOf1` & `CollectionIteratorOf2`,<br/>New methods `hasExactly1Element`, `hasAtMost1Element`, `hasAtLeast2Elements`, `hasExactly2Elements` & `hasAtMost2Elements`,<br/>New tuples `Tuple`, `Couple`, `Monuple` & `Empty`,<br/>New optionals `Optional` and `EmptyOptional` |
 | [1.14.0][js-v1.14] | Febuary 24th, 2026   | 2026 update,<br/>Handling of `Nullable` for `hasOne`, `hasNotOne`, `hasAll`, `hasNotAll`,<br/>Removal of `get collection` in `CollectionIterator`,<br/>[lazy][lazy] (~~1.7.1~~ → 1.7.2), [type][type] (~~1.2.1~~ → 1.2.2)                                                                                                                                                                                                                                                                                                                                                                      |
@@ -2655,6 +2656,7 @@ This is the most bare-bones structure
 [js-v1.13]: https://github.com/joooKiwi/collection/releases/tag/v1.13.0-js
 [js-v1.14]: https://github.com/joooKiwi/collection/releases/tag/v1.14.0-js
 [js-v2.0]:  https://github.com/joooKiwi/collection/releases/tag/v2.0.1-js
+[js-v2.1]:  https://github.com/joooKiwi/collection/releases/tag/v2.1.0-js
 
 [lazy]: https://github.com/joookiwi/lazy
 [js-lazy-v1.2]: https://github.com/joooKiwi/lazy/releases/tag/v1.2.0-js
@@ -2662,9 +2664,11 @@ This is the most bare-bones structure
 [js-lazy-v1.5]: https://github.com/joooKiwi/lazy/releases/tag/v1.5.0-js
 [js-lazy-v1.6]: https://github.com/joooKiwi/lazy/releases/tag/v1.6.0-js
 [js-lazy-v1.7]: https://github.com/joooKiwi/lazy/releases/tag/v1.7.3-js
+[js-lazy-v1.8]: https://github.com/joooKiwi/lazy/releases/tag/v1.8.0-js
 
 [type]: https://github.com/joooKiwi/type
 [ts-type-v1.1]: https://github.com/joooKiwi/type/releases/tag/v1.1.0-ts
 [ts-type-v1.2]: https://github.com/joooKiwi/type/releases/tag/v1.2.3-ts
+[ts-type-v1.3]: https://github.com/joooKiwi/type/releases/tag/v1.3.0-ts
 
 <!-- Version references -->
