@@ -12,6 +12,7 @@
 
 import type {NullOrNumber} from "@joookiwi/type"
 
+import type {CollectionIteratorOf2}                                                                from "../../src/iterator/CollectionIteratorOf2"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../../src/type/callback"
 import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"

@@ -13,6 +13,7 @@
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrOneNumber, NullOrString, NullOrUndefined, NullOrZeroNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                              from "../../src/CollectionHolder"
+import type {CollectionHolderOf1}                                                                                                                           from "../../src/CollectionHolderOf1"
 import type {CollectionHolderOf2}                                                                                                                           from "../../src/CollectionHolderOf2"
 import type {CollectionIteratorOf2}                                                                                                                         from "../../src/iterator/CollectionIteratorOf2"
 import type {BooleanCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback} from "../../src/type/callback"
@@ -344,6 +345,8 @@ export class CollectionHolder_ArrayOf2Follower
     }
 
     public override any(): this["isNotEmpty"]
+    public override any<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolderOf1<S>
+    public override any(predicate: NullOrUndefined,): this["isNotEmpty"]
     public override any(predicate: Nullable<BooleanCallback<string>>,): boolean
     public override any(predicate?: Nullable<BooleanCallback<string>>,) {
         this.any_amountOfCall++
