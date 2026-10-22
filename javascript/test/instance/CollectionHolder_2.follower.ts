@@ -343,6 +343,12 @@ export class CollectionHolder_2Follower
         return super.all(predicate,)
     }
 
+    public override _all(predicate: BooleanCallback<string>,): boolean {
+        this.all_amountOfCall++
+        return super._all(predicate,)
+    }
+
+
     public override any(): this["isNotEmpty"]
     public override any<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolderOf1<S>
     public override any(predicate: NullOrUndefined,): this["isNotEmpty"]
@@ -350,6 +356,11 @@ export class CollectionHolder_2Follower
     public override any(predicate?: Nullable<BooleanCallback<string>>,) {
         this.any_amountOfCall++
         return super.any(predicate,)
+    }
+
+    protected override _any(predicate: BooleanCallback<string>,): boolean {
+        this.any_amountOfCall++
+        return super._any(predicate,)
     }
 
 

@@ -272,6 +272,11 @@ export class CollectionHolder_SetOf1Follower
         return super.any(predicate,)
     }
 
+    protected override _any(predicate: BooleanCallback<string>,): boolean {
+        this.any_amountOfCall++
+        return super._any(predicate,)
+    }
+
 
     public override get hasNull(): boolean {
         this.hasNull_amountOfCall++
