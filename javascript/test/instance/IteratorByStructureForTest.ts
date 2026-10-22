@@ -17,6 +17,7 @@ import type {BooleanCallback, RestrainedBooleanCallback, ValueIndexCallback, Val
 /**
  * An {@link Iterator} that is made for the tests with an {@link ReadonlyArray Array} under the hood
  *
+ * @typeParam T The type (**mandatory**)
  * @see IteratorForTest
  */
 export class IteratorByStructureForTest<const T, >

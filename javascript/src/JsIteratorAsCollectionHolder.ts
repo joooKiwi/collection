@@ -34,10 +34,11 @@ import {IndexOutOfBoundsException} from "./exception/IndexOutOfBoundsException"
  *       {@link #hasAtLeast2Elements}, {@link #hasExactly2Elements}, {@link #hasAtMost2Elements},
  *       {@link #hasNull}, {@link #hasNoNulls},
  *       {@link #hasDuplicate} and {@link #hasNoDuplicates}) are mostly stable.
- * @typeParam T         The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `Iterator<T, unknown, unknown>`)
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`Iterator<T, unknown, unknown>` by default)
  * @adaptor
  * @beta
+ * @see LazyJsIteratorAsCollectionHolder
  */
 export class JsIteratorAsCollectionHolder<const T = unknown,
     const REFERENCE extends Iterator<T, unknown, unknown> = Iterator<T, unknown, unknown>, >

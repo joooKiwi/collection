@@ -211,25 +211,25 @@ export interface Tuple<out T, > {
     //#region -------------------- Has null --------------------
 
     /**
-     * The {@link Tuple} has at least one <b>null</b> or <b>undefined</b>
+     * The {@link Tuple} has at least one `null` or `undefined`
      *
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if one element is `null` or `undefined`
      */
     readonly hasNull: boolean
 
     /**
-     * The {@link Tuple} has at least one <b>null</b> or <b>undefined</b>
+     * The {@link Tuple} has at least one `null` or `undefined`
      *
      * @alias Tuple.hasNull
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if one element is `null` or `undefined`
      */
     readonly includesNull: this["hasNull"]
 
     /**
-     * The {@link Tuple} has at least one <b>null</b> or <b>undefined</b>
+     * The {@link Tuple} has at least one `null` or `undefined`
      *
      * @alias Tuple.hasNull
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if one element is `null` or `undefined`
      */
     readonly containsNull: this["hasNull"]
 
@@ -237,25 +237,25 @@ export interface Tuple<out T, > {
     //#region -------------------- Has no nulls --------------------
 
     /**
-     * The {@link Tuple} has no <b>null</b> or <b>undefined</b>
+     * The {@link Tuple} has no `null` or `undefined`
      *
-     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if no element is `null` or `undefined`
      */
     readonly hasNoNulls: boolean
 
     /**
-     * The {@link Tuple} has no <b>null</b> or <b>undefined</b>
+     * The {@link Tuple} has no `null` or `undefined`
      *
      * @alias Tuple.hasNoNulls
-     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if no element is `null` or `undefined`
      */
     readonly includesNoNulls: this["hasNoNulls"]
 
     /**
-     * The {@link Tuple} has no <b>null</b> or <b>undefined</b>
+     * The {@link Tuple} has no `null` or `undefined`
      *
      * @alias Tuple.hasNoNulls
-     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     * @return {boolean} `true` only if no element is `null` or `undefined`
      */
     readonly containsNoNulls: this["hasNoNulls"]
 
@@ -265,7 +265,7 @@ export interface Tuple<out T, > {
     /**
      * The {@link Tuple} has at least one duplicate value
      *
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     * @return {boolean} `true` only if one element is equal (===) to another one
      */
     readonly hasDuplicate: boolean
 
@@ -273,7 +273,7 @@ export interface Tuple<out T, > {
      * The {@link Tuple} has at least one duplicate value
      *
      * @alias Tuple.hasDuplicate
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     * @return {boolean} `true` only if one element is equal (===) to another one
      */
     readonly includesDuplicate: this["hasDuplicate"]
 
@@ -281,7 +281,7 @@ export interface Tuple<out T, > {
      * The {@link Tuple} has at least one duplicate value
      *
      * @alias Tuple.hasDuplicate
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     * @return {boolean} `true` only if one element is equal (===) to another one
      */
     readonly containsDuplicate: this["hasDuplicate"]
 
@@ -291,7 +291,7 @@ export interface Tuple<out T, > {
     /**
      * The {@link Tuple} has no duplicated value
      *
-     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     * @return {boolean} `true` only if no element is equal (===) to another one
      */
     readonly hasNoDuplicates: boolean
 
@@ -299,7 +299,7 @@ export interface Tuple<out T, > {
      * The {@link Tuple} has no duplicated value
      *
      * @alias Tuple.hasNoDuplicates
-     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     * @return {boolean} `true` only if no element is equal (===) to another one
      */
     readonly includesNoDuplicates: this["hasNoDuplicates"]
 
@@ -307,7 +307,7 @@ export interface Tuple<out T, > {
      * The {@link Tuple} has no duplicated value
      *
      * @alias Tuple.hasNoDuplicates
-     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     * @return {boolean} `true` only if no element is equal (===) to another one
      */
     readonly containsNoDuplicates: this["hasNoDuplicates"]
 

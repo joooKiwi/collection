@@ -10,39 +10,58 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Set, UndefinedOr} from "@joookiwi/type"
+import type {Array, Set, UndefinedOr} from "@joookiwi/type"
 
-import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
+import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionHolderOf1} from "./CollectionHolderOf1"
+import type {Optional}            from "./optional/Optional"
+
+import {AbstractIndependentCollectionHolderOf1} from "./AbstractIndependentCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1}             from "./LazyCollectionHolderOf0Or1"
+import {LazyCollectionHolderOf1}                from "./LazyCollectionHolderOf1"
 
 /**
  * An instance of {@link CollectionHolder} adapted from an {@link ReadonlySet Set} having a lone value inside.
  *
  * Note that the value is directly retrieved from the array and it is kept
  *
- * @typeParam T          The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `Set<T>`)
+ * @typeParam T          The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`Set<T>` by default)
  * @see SetAsCollectionHolder
+ * @see SingleValueCollectionHolder
  * @see ArrayOf1AsCollectionHolder
- * @see CollectionHolderOf1
+ * @see IteratorOf1AsCollectionHolder
  * @see LazyCollectionHolderOf1
  */
 export class SetOf1AsCollectionHolder<const T = unknown,
     const REFERENCE extends Set<T> = Set<T>, >
-    extends AbstractCollectionHolderOf1<T> {
+    extends AbstractIndependentCollectionHolderOf1<T> {
 
-    /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
-    public readonly 0: T
     readonly #reference: WeakRef<REFERENCE>
     readonly #value: T
     readonly #hasNull: boolean
     readonly #hasNoNulls: boolean
 
+    public constructor(reference: & Set<T> & REFERENCE,)
     public constructor(reference: REFERENCE,) {
         super()
         if (reference.size !== 1)
             throw new TypeError(`The set received in the “${this.constructor.name}” cannot have a different size than 1.`,)
         this.#reference = new WeakRef(reference,)
-        this.#hasNoNulls = !(this.#hasNull = (this.#value = this[0] = reference[Symbol.iterator]().next().value as T) == null)
+        this.#hasNoNulls = !(this.#hasNull = (this.#value = reference[Symbol.iterator]().next().value as T) == null)
+    }
+
+    override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
+        return new LazyCollectionHolderOf1(lateValue,)
+    }
+
+    protected override _create0Or1<const U, >(latePossibleValue: () => Optional<U>,): CollectionHolder<U> {
+        return new LazyCollectionHolderOf0Or1(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
     }
 
     /** The internal value passed through the {@link constructor} in the {@link _reference} first field */

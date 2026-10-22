@@ -15,11 +15,11 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {ArrayAsCollectionHolder}       from "../ArrayAsCollectionHolder"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LateRetriever}                 from "../LateRetriever"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
+import {MinimalistAsCollectionHolder}  from "../MinimalistAsCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -28,7 +28,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ * Get a new {@link CollectionHolder} without `null` or `undefined`
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
@@ -40,7 +40,7 @@ export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollec
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterNotNullByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return filterNotNullByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return filterNotNullByMinimalistCollectionHolder(collection,)
@@ -54,7 +54,7 @@ export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollec
 
 
 /**
- * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ * Get a new {@link CollectionHolder} without `null` or `undefined`
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
@@ -72,12 +72,12 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
     let index = -1
     while (++index < size)
         if ((temporaryArray[index] = collection.get(index,) as T) == null)
-            return new LazyCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
-    return new LateRetriever.MinimalistAsCollectionHolder<NonNullable<T>>(collection as MinimalistCollectionHolder<NonNullable<T>>,)
+            return new LazyArrayAsCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
+    return new MinimalistAsCollectionHolder(collection as MinimalistCollectionHolder<NonNullable<T>>,)
 }
 
 /**
- * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ * Get a new {@link CollectionHolder} without `null` or `undefined`
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
@@ -90,12 +90,12 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (collection.hasNull)
-        return new LazyCollectionHolder(() => __filterNotNull(collection,),)
+        return new LazyArrayAsCollectionHolder(() => __filterNotNull(collection,),)
     return collection as CollectionHolder<NonNullable<T>>
 }
 
 /**
- * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ * Get a new {@link CollectionHolder} without `null` or `undefined`
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
@@ -113,8 +113,8 @@ export function filterNotNullByArray<const T, >(collection: Nullable<Array<T>>,)
     let index = -1
     while (++index < size)
         if ((temporaryArray[index] = collection[index] as T) == null)
-            return new LazyCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
-    return new LateRetriever.ArrayAsCollectionHolder<NonNullable<T>>(collection as readonly NonNullable<T>[],)
+            return new LazyArrayAsCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
+    return new ArrayAsCollectionHolder(collection as readonly NonNullable<T>[],)
 }
 
 //#endregion -------------------- Facade method --------------------

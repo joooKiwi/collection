@@ -15,7 +15,6 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -24,10 +23,10 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * The {@link collection} has at least one <b>null</b> or <b>undefined</b>
+ * The {@link collection} has at least one `null` or `undefined`
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+ * @return {boolean} `true` only if one element is `null` or `undefined`
  * @extensionFunction
  */
 export function hasNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
@@ -35,7 +34,7 @@ export function hasNull<const T, >(collection: Nullable<| MinimalistCollectionHo
         return false
     if (isCollectionHolder(collection,))
         return hasNullByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasNullByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return hasNullByMinimalistCollectionHolder(collection,)
@@ -49,10 +48,10 @@ export function hasNull<const T, >(collection: Nullable<| MinimalistCollectionHo
 
 
 /**
- * The {@link collection} has at least one <b>null</b> or <b>undefined</b>
+ * The {@link collection} has at least one `null` or `undefined`
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+ * @return {boolean} `true` only if one element is `null` or `undefined`
  * @extensionFunction
  */
 export function hasNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
@@ -66,10 +65,10 @@ export function hasNullByMinimalistCollectionHolder<const T, >(collection: Nulla
 }
 
 /**
- * The {@link collection} has at least one <b>null</b> or <b>undefined</b>
+ * The {@link collection} has at least one `null` or `undefined`
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+ * @return {boolean} `true` only if one element is `null` or `undefined`
  * @extensionFunction
  */
 export function hasNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): boolean {
@@ -81,10 +80,10 @@ export function hasNullByCollectionHolder<const T, >(collection: Nullable<Collec
 }
 
 /**
- * The {@link collection} has at least one <b>null</b> or <b>undefined</b>
+ * The {@link collection} has at least one `null` or `undefined`
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+ * @return {boolean} `true` only if one element is `null` or `undefined`
  * @extensionFunction
  */
 export function hasNullByArray<const T, >(collection: Nullable<Array<T>>,): boolean {

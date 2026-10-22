@@ -16,9 +16,8 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyCollectionHolder}                             from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}                              from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}                       from "../LazyArrayAsCollectionHolder"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
-import {isArray}                                           from "./isArray"
 import {isArrayByStructure}                                from "./isArrayByStructure"
 import {isCollectionHolder}                                from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                     from "./isCollectionHolderByStructure"
@@ -42,7 +41,7 @@ export function sliceWithARange<const T, >(collection: Nullable<| MinimalistColl
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -57,7 +56,7 @@ export function sliceWithARange<const T, >(collection: Nullable<| MinimalistColl
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -98,7 +97,7 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} is not within a valid range
@@ -113,7 +112,7 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
  * in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -153,7 +152,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -168,7 +167,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
  * in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -208,7 +207,7 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<Array<T>>
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -222,7 +221,7 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<Array<T>>
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -254,7 +253,7 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<Array<T>>
 function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core0ByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return __core0ByMinimalistCollectionHolder(collection,)
@@ -270,20 +269,20 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const size = collection.size
     if (size === 0)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArrayInRange(collection, 0, size - 1,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRange(collection, 0, size - 1,),)
 }
 
 function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) {
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArrayInRange(collection, 0, collection.size - 1,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRange(collection, 0, collection.size - 1,),)
 }
 
 function __core0ByArray<const T, >(collection: Array<T>,) {
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArrayInRangeByArray(collection, 0, size - 1,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRangeByArray(collection, 0, size - 1,),)
 }
 
 //#endregion -------------------- ∅ --------------------
@@ -292,7 +291,7 @@ function __core0ByArray<const T, >(collection: Array<T>,) {
 function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, from,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core1ByArray(collection, from,)
     if (isMinimalistCollectionHolder(collection,))
         return __core1ByMinimalistCollectionHolder(collection, from,)
@@ -310,7 +309,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
         return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
-    return new LazyCollectionHolder(() => __newArrayInRange(collection, startingIndex, size - 1,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRange(collection, startingIndex, size - 1,),)
 }
 
 function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,) {
@@ -319,7 +318,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
 
     const size = collection.size
     const startingIndex = __startingIndex(from, size,)
-    return new LazyCollectionHolder(() => __newArrayInRange(collection, startingIndex, size - 1,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRange(collection, startingIndex, size - 1,),)
 }
 
 function __core1ByArray<const T, >(collection: Array<T>, from: number,) {
@@ -328,7 +327,7 @@ function __core1ByArray<const T, >(collection: Array<T>, from: number,) {
         return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
-    return new LazyCollectionHolder(() => __newArrayInRangeByArray(collection, startingIndex, size - 1,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRangeByArray(collection, startingIndex, size - 1,),)
 }
 
 //#endregion -------------------- from --------------------
@@ -337,7 +336,7 @@ function __core1ByArray<const T, >(collection: Array<T>, from: number,) {
 function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, from, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core2ByArray(collection, from, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __core2ByMinimalistCollectionHolder(collection, from, to,)
@@ -357,7 +356,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    return new LazyCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,) {
@@ -368,7 +367,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    return new LazyCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByArray<const T, >(collection: Array<T>, from: number, to: number,) {
@@ -379,7 +378,7 @@ function __core2ByArray<const T, >(collection: Array<T>, from: number, to: numbe
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    return new LazyCollectionHolder(() => __newArrayInRangeByArray(collection, startingIndex, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRangeByArray(collection, startingIndex, endingIndex,),)
 }
 
 //#endregion -------------------- from, to --------------------
@@ -388,7 +387,7 @@ function __core2ByArray<const T, >(collection: Array<T>, from: number, to: numbe
 function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __coreWithNoFromByArray(collection, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __coreWithNoFromByMinimalistCollectionHolder(collection, to,)
@@ -406,7 +405,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
         return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, size,)
-    return new LazyCollectionHolder(() => __newArrayInRange(collection, 0, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRange(collection, 0, endingIndex,),)
 }
 
 function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,) {
@@ -414,7 +413,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
         return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, collection.size,)
-    return new LazyCollectionHolder(() => __newArrayInRange(collection, 0, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRange(collection, 0, endingIndex,),)
 }
 
 function __coreWithNoFromByArray<const T, >(collection: Array<T>, to: number,) {
@@ -423,7 +422,7 @@ function __coreWithNoFromByArray<const T, >(collection: Array<T>, to: number,) {
         return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, size,)
-    return new LazyCollectionHolder(() => __newArrayInRangeByArray(collection, 0, endingIndex,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayInRangeByArray(collection, 0, endingIndex,),)
 }
 
 //#endregion -------------------- to --------------------

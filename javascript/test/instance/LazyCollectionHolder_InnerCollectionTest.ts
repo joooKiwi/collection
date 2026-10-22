@@ -23,6 +23,11 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src
 
 import {LazyCollectionHolder} from "../../src/LazyCollectionHolder"
 
+/**
+ * A {@link LazyCollectionHolder} that exposes the inner-collection for the purpose of the tests
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class LazyCollectionHolder_InnerCollectionTest<const T, >
     extends LazyCollectionHolder<T> {
 

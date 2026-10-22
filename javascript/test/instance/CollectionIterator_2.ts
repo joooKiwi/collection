@@ -16,25 +16,25 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
 
-import {CollectionIteratorOf2}             from "../../src/iterator/CollectionIteratorOf2"
-import {AbstractCollectionIteratorForTest} from "./AbstractCollectionIteratorForTest"
+import {AbstractUnimplementedCollectionIteratorForTest} from "./AbstractUnimplementedCollectionIteratorForTest"
+import {DualValueCollectionIterator}                    from "../../src/iterator/DualValueCollectionIterator"
 
 /**
- * A class to test the functionality of a {@link CollectionIteratorOf2}
+ * A class to test the functionality of a {@link DualValueCollectionIterator}
  *
- * @typeParam T The type
+ * @typeParam T1 The 1st type (**mandatory**)
+ * @typeParam T2 The 2nd type (**mandatory**)
  */
-export class CollectionIterator_2<const T,
-    const T1 extends T = T,
-    const T2 extends T = T, >
-    extends AbstractCollectionIteratorForTest<T> {
+export class CollectionIterator_2<const T1,
+    const T2, >
+    extends AbstractUnimplementedCollectionIteratorForTest<| T1 | T2> {
 
     /** The internal instance that is tested */
-    public readonly instance: CollectionIteratorOf2<T, T1, T2>
+    public readonly instance: DualValueCollectionIterator<T1, T2>
 
     public constructor(public readonly value1: T1, public readonly value2: T2,) {
         super()
-        this.instance = new CollectionIteratorOf2(value1, value2,)
+        this.instance = new DualValueCollectionIterator(value1, value2,)
     }
 
     //#region -------------------- Size methods --------------------
@@ -70,9 +70,9 @@ export class CollectionIterator_2<const T,
 
     public get nextIndex(): NullOrNumber<| 0 | 1> { return this.instance.nextIndex }
 
-    public get nextValue(): T { return this.instance.nextValue }
+    public get nextValue(): | T1 | T2 { return this.instance.nextValue }
 
-    public next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> { return this.instance.next() }
+    public next(): PossibleIteratorValue<| T1 | T2, AfterLastValueInCollectionIteratorSymbol> { return this.instance.next() }
 
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
@@ -81,9 +81,9 @@ export class CollectionIterator_2<const T,
 
     public get previousIndex(): NullOrNumber<| 0 | 1> { return this.instance.previousIndex }
 
-    public get previousValue(): T { return this.instance.previousValue }
+    public get previousValue(): | T1 | T2 { return this.instance.previousValue }
 
-    public previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> { return this.instance.previous() }
+    public previous(): PossibleIteratorValue<| T1 | T2, BeforeFirstValueInCollectionIteratorSymbol> { return this.instance.previous() }
 
     //#endregion -------------------- Previous methods --------------------
     //#region -------------------- Reset methods --------------------
@@ -93,14 +93,14 @@ export class CollectionIterator_2<const T,
     //#endregion -------------------- Reset methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    public override forEach(operation: ValueIndexCallback<T>,): this {
+    public override forEach(operation: ValueIndexCallback<| T1 | T2>,): this {
         const instance = this.instance
         if (instance.forEach(operation,) !== instance)
             throw new Error("The expected return type for the method “forEach” was supposed to be the same instance",)
         return this
     }
 
-    public override forEachIndexed(operation: IndexValueCallback<T>,): this {
+    public override forEachIndexed(operation: IndexValueCallback<| T1 | T2>,): this {
         const instance = this.instance
         if (instance.forEachIndexed(operation,) !== instance)
             throw new Error("The expected return type for the method “forEachIndexed” was supposed to be the same instance",)
@@ -110,7 +110,7 @@ export class CollectionIterator_2<const T,
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public [Symbol.iterator](): CollectionIteratorOf2<T, T1, T2> { return this.instance[Symbol.iterator]() }
+    public [Symbol.iterator](): CollectionIteratorOf2<T1, T2> { return this.instance[Symbol.iterator]() }
 
     //#endregion -------------------- JavaScript methods --------------------
 

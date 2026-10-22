@@ -17,7 +17,7 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -27,7 +27,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*first-to-last*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -40,7 +40,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function takeWhile<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*first-to-last*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -70,7 +70,7 @@ export function takeWhile<const T, >(collection: Nullable<| MinimalistCollection
 
 
 /**
- * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*first-to-last*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -83,7 +83,7 @@ export function takeWhile<const T, >(collection: Nullable<| MinimalistCollection
  */
 export function takeWhileByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*first-to-last*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -102,14 +102,14 @@ export function takeWhileByMinimalistCollectionHolder<const T, >(collection: Nul
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, size, predicate,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, size, predicate as () => boolean,),)
 }
 
 /**
- * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*first-to-last*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -122,7 +122,7 @@ export function takeWhileByMinimalistCollectionHolder<const T, >(collection: Nul
  */
 export function takeWhileByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*first-to-last*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -139,14 +139,14 @@ export function takeWhileByCollectionHolder<const T, >(collection: Nullable<Coll
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, collection.size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, collection.size, predicate as () => boolean,),)
 }
 
 /**
- * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*first-to-last*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -159,7 +159,7 @@ export function takeWhileByCollectionHolder<const T, >(collection: Nullable<Coll
  */
 export function takeWhileByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} having the elements (*first-to-last*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -178,10 +178,10 @@ export function takeWhileByArray<const T, >(collection: Nullable<Array<T>>, pred
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)
-    return new LazyCollectionHolder(() => __with0ArgumentByArray(collection, size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0ArgumentByArray(collection, size, predicate as () => boolean,),)
 }
 
 //#endregion -------------------- Facade method --------------------

@@ -15,9 +15,8 @@ import type {Array, Nullable, NumberKeyMap} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                             from "../CollectionConstants"
+import {EmptyConstants}                                  from "../EmptyConstants"
 import {__associativeValues, __associativeValuesByArray} from "./_tables utility"
-import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
@@ -33,10 +32,10 @@ import {isMinimalistCollectionHolder}                    from "./isMinimalistCol
  */
 export function toMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): NumberKeyMap<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_MAP
+        return EmptyConstants.EMPTY_MAP
     if (isCollectionHolder(collection,))
         return toMapByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toMapByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toMapByMinimalistCollectionHolder(collection,)
@@ -57,11 +56,11 @@ export function toMap<const T, >(collection: Nullable<| MinimalistCollectionHold
  */
 export function toMapByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): NumberKeyMap<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_MAP
+        return EmptyConstants.EMPTY_MAP
 
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_MAP
+        return EmptyConstants.EMPTY_MAP
     return __newMap(collection, size,)
 }
 
@@ -73,9 +72,9 @@ export function toMapByMinimalistCollectionHolder<const T, >(collection: Nullabl
  */
 export function toMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): NumberKeyMap<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_MAP
+        return EmptyConstants.EMPTY_MAP
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_MAP
+        return EmptyConstants.EMPTY_MAP
     return __newMap(collection, collection.size,)
 }
 
@@ -87,11 +86,11 @@ export function toMapByCollectionHolder<const T, >(collection: Nullable<Collecti
  */
 export function toMapByArray<const T, >(collection: Nullable<Array<T>>,): NumberKeyMap<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_MAP
+        return EmptyConstants.EMPTY_MAP
 
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_MAP
+        return EmptyConstants.EMPTY_MAP
     return __newMapByArray(collection, size,)
 }
 

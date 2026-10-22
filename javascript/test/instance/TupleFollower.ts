@@ -12,6 +12,11 @@
 
 import type {Tuple} from "../../src/tuple/Tuple"
 
+/**
+ * A {@link Tuple} having the utility to follow every non-aliased methods that have an alias
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export interface TupleFollower<out T, >
     extends Tuple<T> {
 

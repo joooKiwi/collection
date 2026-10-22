@@ -12,7 +12,11 @@
 
 import type {Array} from "@joookiwi/type"
 
-/** An {@link Iterable} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
+/**
+ * An {@link Iterable} that is made for the tests with an {@link ReadonlyArray Array} under the hood
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class IterableForTest<const T, >
     implements Iterable<T, unknown, unknown> {
 

@@ -16,10 +16,10 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionIterator}         from "../iterator/CollectionIterator"
 
-import {LateRetriever}                 from "../LateRetriever"
+import {ArrayAsCollectionHolder}       from "../ArrayAsCollectionHolder"
+import {MinimalistAsCollectionHolder}  from "../MinimalistAsCollectionHolder"
 import {EmptyCollectionIterator}       from "../iterator/EmptyCollectionIterator"
 import {GenericCollectionIterator}     from "../iterator/GenericCollectionIterator"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -36,7 +36,7 @@ export function toIterator<const T, >(collection: Nullable<| MinimalistCollectio
         return EmptyCollectionIterator.get
     if (isCollectionHolder(collection,))
         return toIteratorByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toIteratorByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toIteratorByMinimalistCollectionHolder(collection,)
@@ -60,7 +60,7 @@ export function toIteratorByMinimalistCollectionHolder<const T, >(collection: Nu
         return EmptyCollectionIterator.get
     if (collection.size === 0)
         return EmptyCollectionIterator.get
-    return new GenericCollectionIterator(new LateRetriever.MinimalistAsCollectionHolder<T>(collection,),)
+    return new GenericCollectionIterator(new MinimalistAsCollectionHolder<T>(collection,),)
 }
 
 /**
@@ -88,5 +88,5 @@ export function toIteratorByArray<const T, >(collection: Nullable<Array<T>>,): C
         return EmptyCollectionIterator.get
     if (collection.length === 0)
         return EmptyCollectionIterator.get
-    return new GenericCollectionIterator(new LateRetriever.ArrayAsCollectionHolder<T>(collection,),)
+    return new GenericCollectionIterator(new ArrayAsCollectionHolder<T>(collection,),)
 }

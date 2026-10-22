@@ -17,9 +17,8 @@ import type {MinimalistCollectionHolder}                               from "../
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -65,7 +64,7 @@ export function filterIndexed<const T, >(collection: Nullable<| MinimalistCollec
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterIndexedByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return filterIndexedByArray(collection, predicate)
     if (isMinimalistCollectionHolder(collection,))
         return filterIndexedByMinimalistCollectionHolder(collection, predicate,)
@@ -119,10 +118,10 @@ export function filterIndexedByMinimalistCollectionHolder<const T, >(collection:
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, predicate, size,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, predicate, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
 }
 
 /**
@@ -164,10 +163,10 @@ export function filterIndexedByCollectionHolder<const T, >(collection: Nullable<
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
 }
 
 /**
@@ -211,10 +210,10 @@ export function filterIndexedByArray<const T, >(collection: Nullable<Array<T>>, 
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, predicate as (index: number,) => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1ArgumentByArray(collection, predicate as (index: number,) => boolean, size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, predicate, size,),)
-    return new LazyCollectionHolder(() => __with0ArgumentByArray(collection, predicate as () => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, predicate, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0ArgumentByArray(collection, predicate as () => boolean, size,),)
 }
 
 //#endregion -------------------- Facade method --------------------

@@ -19,7 +19,7 @@ import type {TupleForTest} from "./TupleForTest"
 /**
  * A bare-bone implementation of a {@link TupleForTest} with nothing implemented
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export abstract class AbstractTupleForTest<const T, >
     implements TupleForTest<T> {

@@ -17,8 +17,7 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
-import {isArray}                       from "./isArray"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -29,7 +28,7 @@ import {__reduceTo}                    from "./_array utility"
 
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -46,7 +45,7 @@ import {__reduceTo}                    from "./_array utility"
 export function filterNot<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -65,7 +64,7 @@ export function filterNot<const T, >(collection: Nullable<| MinimalistCollection
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterNotByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return filterNotByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return filterNotByMinimalistCollectionHolder(collection, predicate,)
@@ -80,7 +79,7 @@ export function filterNot<const T, >(collection: Nullable<| MinimalistCollection
 
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -97,7 +96,7 @@ export function filterNot<const T, >(collection: Nullable<| MinimalistCollection
 export function filterNotByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -119,15 +118,15 @@ export function filterNotByMinimalistCollectionHolder<const T, >(collection: Nul
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, predicate, size,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, predicate, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
 }
 
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -144,7 +143,7 @@ export function filterNotByMinimalistCollectionHolder<const T, >(collection: Nul
 export function filterNotByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -164,15 +163,15 @@ export function filterNotByCollectionHolder<const T, >(collection: Nullable<Coll
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
 }
 
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -189,7 +188,7 @@ export function filterNotByCollectionHolder<const T, >(collection: Nullable<Coll
 export function filterNotByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
- * <b>not</b> matching the given {@link predicate}
+ * __NOT__ matching the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -211,10 +210,10 @@ export function filterNotByArray<const T, >(collection: Nullable<Array<T>>, pred
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, size,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, predicate, size,),)
-    return new LazyCollectionHolder(() => __with0ArgumentByArray(collection, predicate as () => boolean, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, predicate, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0ArgumentByArray(collection, predicate as () => boolean, size,),)
 }
 
 //#endregion -------------------- Facade method --------------------

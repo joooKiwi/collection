@@ -15,7 +15,6 @@ import type {Array, Nullable, NullOr} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -25,7 +24,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * Get the first element in the {@link collection}
- * or <b>null</b> if it <b>is empty</b>
+ * or `null` if it <b>is empty</b>
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -37,7 +36,7 @@ export function getFirstOrNull<const T, >(collection: Nullable<| MinimalistColle
         return null
     if (isCollectionHolder(collection,))
         return getFirstOrNullByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return getFirstOrNullByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return getFirstOrNullByMinimalistCollectionHolder(collection,)
@@ -52,7 +51,7 @@ export function getFirstOrNull<const T, >(collection: Nullable<| MinimalistColle
 
 /**
  * Get the first element in the {@link collection}
- * or <b>null</b> if it <b>is empty</b>
+ * or `null` if it <b>is empty</b>
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -71,7 +70,7 @@ export function getFirstOrNullByMinimalistCollectionHolder<const T, >(collection
 
 /**
  * Get the first element in the {@link collection}
- * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+ * or `null` if it {@link CollectionHolder.isEmpty is empty}
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -90,7 +89,7 @@ export function getFirstOrNullByCollectionHolder<const T, >(collection: Nullable
 
 /**
  * Get the first element in the {@link collection}
- * or <b>null</b> if it <b>is empty</b>
+ * or `null` if it <b>is empty</b>
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()

@@ -1,6 +1,10 @@
 {
     "extends": "../tsconfig.json",
-    "files": [
-        "jestExtended.d.ts",
-    ],
+    "compilerOptions": {
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "types": ["node", "jest-extended", "vitest",],
+
+        "rootDir": "./",
+    },
 }

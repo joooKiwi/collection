@@ -18,39 +18,29 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {MinimalistAsCollectionHolder}    from "../../src/MinimalistAsCollectionHolder"
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {CollectionHolderFromArray}       from "./CollectionHolderFromArray"
+import {MinimalistAsCollectionHolder}                 from "../../src/MinimalistAsCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
+import {CollectionHolderFromArray}                    from "./CollectionHolderFromArray"
 
 /**
  * A class to test the functionality of a {@link MinimalistAsCollectionHolder}
  *
  * The array is encapsulated in a {@link CollectionHolderFromArray} instance
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_AdaptorOfMinimalist<const T, >
-    extends AbstractCollectionHolderForTest<T> {
-
-    //#region -------------------- Fields --------------------
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: MinimalistAsCollectionHolder<T, CollectionHolderFromArray<T>>
 
+    /** The reference that is sent to the {@link instance} */
     public readonly reference: CollectionHolderFromArray<T>
-
-    //#endregion -------------------- Fields --------------------
 
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetByMinimalistAdaptor
-            extends MinimalistAsCollectionHolder<T, CollectionHolderFromArray<T>> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-        }(this.reference = new CollectionHolderFromArray(array,),)
+        this.instance = new MinimalistAsCollectionHolder(this.reference = new CollectionHolderFromArray(array,),)
     }
 
     //#region -------------------- Size methods --------------------
@@ -158,7 +148,7 @@ export class CollectionHolder_AdaptorOfMinimalist<const T, >
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) { return this.instance.all(predicate,) }
 

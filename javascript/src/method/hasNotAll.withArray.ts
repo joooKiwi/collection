@@ -15,7 +15,6 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -24,7 +23,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
@@ -33,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 export function hasNotAllWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Array<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithArrayByCollectionHolder(collection, values,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasNotAllWithArrayByArray(collection, values,)
     if (isMinimalistCollectionHolder(collection,))
         return hasNotAllWithArrayByMinimalistCollectionHolder(collection, values,)
@@ -47,7 +46,7 @@ export function hasNotAllWithArray<const T, >(collection: Nullable<| MinimalistC
 
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare
@@ -70,7 +69,7 @@ export function hasNotAllWithArrayByMinimalistCollectionHolder<const T, >(collec
 }
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare
@@ -91,7 +90,7 @@ export function hasNotAllWithArrayByCollectionHolder<const T, >(collection: Null
 }
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare

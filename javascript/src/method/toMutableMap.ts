@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {__associativeValues, __associativeValuesByArray} from "./_tables utility"
-import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
@@ -35,7 +34,7 @@ export function toMutableMap<const T, >(collection: Nullable<| MinimalistCollect
         return new Map()
     if (isCollectionHolder(collection,))
         return toMutableMapByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return toMutableMapByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return toMutableMapByMinimalistCollectionHolder(collection,)

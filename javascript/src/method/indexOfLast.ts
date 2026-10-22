@@ -20,7 +20,6 @@ import {EmptyCollectionException}                          from "../exception/Em
 import {IndexNotFoundException}                            from "../exception/IndexNotFoundException"
 import {NullCollectionException}                           from "../exception/NullCollectionException"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
-import {isArray}                                           from "./isArray"
 import {isArrayByStructure}                                from "./isArrayByStructure"
 import {isCollectionHolder}                                from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                     from "./isCollectionHolderByStructure"
@@ -34,7 +33,7 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.findLastIndex
@@ -50,9 +49,9 @@ export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
  * @throws IndexNotFoundException    No index could be found
@@ -70,10 +69,10 @@ export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
- * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexNotFoundException     No index could be found
@@ -106,7 +105,7 @@ export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollecti
  * @param collection The nullable collection
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.findLastIndex
@@ -122,9 +121,9 @@ export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: N
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
  * @throws IndexNotFoundException    No index could be found
@@ -142,10 +141,10 @@ export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: N
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
- * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexNotFoundException     No index could be found
@@ -177,7 +176,7 @@ export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: N
  * @param collection The nullable collection
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.findLastIndex
@@ -193,9 +192,9 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
  * @throws IndexNotFoundException    No index could be found
@@ -213,10 +212,10 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
- * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexNotFoundException     No index could be found
@@ -248,7 +247,7 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
  * @param collection The nullable collection
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @throws IndexNotFoundException   No index could be found
  * @see ReadonlyArray.findLastIndex
@@ -264,9 +263,9 @@ export function indexOfLastByArray<const T, >(collection: Nullable<Array<T>>, pr
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException   The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
  * @throws IndexNotFoundException    No index could be found
@@ -284,10 +283,10 @@ export function indexOfLastByArray<const T, >(collection: Nullable<Array<T>>, pr
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
- * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException    The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexNotFoundException     No index could be found
@@ -321,7 +320,7 @@ export function indexOfLastByArray<const T, >(collection: Nullable<Array<T>>, pr
 function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core0ByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return __core0ByMinimalistCollectionHolder(collection, predicate,)
@@ -371,7 +370,7 @@ function __core0ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, predicate, from,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core1ByArray(collection, predicate, from,)
     if (isMinimalistCollectionHolder(collection,))
         return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
@@ -423,7 +422,7 @@ function __core1ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, predicate, from, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core2ByArray(collection, predicate, from, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
@@ -486,7 +485,7 @@ function __core2ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __coreWithNoFromByArray(collection, predicate, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)

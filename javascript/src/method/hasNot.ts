@@ -15,7 +15,6 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionHolder}           from "../CollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -28,14 +27,14 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is not present in the {@link collection}
  */
 export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, value: T,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
         return hasNotByCollectionHolder(collection, value,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasNotByArray(collection, value,)
     if (isMinimalistCollectionHolder(collection,))
         return hasNotByMinimalistCollectionHolder(collection, value,)
@@ -53,7 +52,7 @@ export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHol
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is not present in the {@link collection}
  */
 export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: T,): boolean {
     if (collection == null)
@@ -70,7 +69,7 @@ export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullab
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is not present in the {@link collection}
  */
 export function hasNotByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: T,): boolean {
     if (collection == null)
@@ -85,7 +84,7 @@ export function hasNotByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is not present in the {@link collection}
  */
 export function hasNotByArray<const T, >(collection: Nullable<Array<T>>, value: T,): boolean {
     if (collection == null)

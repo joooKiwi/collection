@@ -16,7 +16,6 @@ import type {CollectionHolder}                                                  
 import type {HasExactly1ElementOn, HasExactly1ElementOnArray, HasExactly1ElementOnCollectionHolder, HasExactly1ElementOnMinimalistCollectionHolder, HasExactly1ElementOnNullable, HasExactly1ElementOnNullableArray, HasExactly1ElementOnNullableCollectionHolder, HasExactly1ElementOnNullableMinimalistCollectionHolder} from "../type/hasExactly1Element"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                   from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -83,7 +82,7 @@ export function hasExactly1Element<const T, >(collection: Nullable<| MinimalistC
         return false
     if (isCollectionHolder(collection,))
         return hasExactly1ElementByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasExactly1ElementByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return hasExactly1ElementByMinimalistCollectionHolder(collection,)

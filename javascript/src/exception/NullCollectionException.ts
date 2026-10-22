@@ -16,7 +16,7 @@ import {EmptyCollectionException} from "./EmptyCollectionException"
 
 /**
  * An {@link Error exception} made to tell that the <code>collection</code>
- * was <b>null</b> or <b>undefined</b> while not being expected to be
+ * was `null` or `undefined` while not being expected to be
  */
 export class NullCollectionException<const T extends NullOr<NumericOrObject> = null,
     const CAUSE extends Error = never, >
@@ -25,7 +25,7 @@ export class NullCollectionException<const T extends NullOr<NumericOrObject> = n
     /**
      * The default message that is used in the {@link constructor} when the message is <code>null</code>
      *
-     * @see CollectionConstants.NULL_COLLECTION_MESSAGE
+     * @see MessageConstants.NULL_COLLECTION_MESSAGE
      */
     public static override readonly DEFAULT_MESSAGE: string = "Null collection. No element at any index could be found since it is null."
 

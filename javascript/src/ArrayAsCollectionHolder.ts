@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined, NumberArray, NumberKeyMap, NumberSet, Set, UndefinedOr} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -23,7 +23,7 @@ import type {HasExactly2ElementsOnArray}                                        
 import type {IsEmptyOnArray}                                                                                                                                                                                                                                                    from "./type/isEmpty"
 import type {IsNotEmptyOnArray}                                                                                                                                                                                                                                                 from "./type/isNotEmpty"
 
-import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
+import {AbstractPartiallyUnimplementedCollectionHolder} from "./AbstractPartiallyUnimplementedCollectionHolder"
 import {EmptyCollectionException}                       from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                        from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                      from "./exception/IndexOutOfBoundsException"
@@ -146,26 +146,36 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * Note that nothing excepting the {@link ReadonlyArray Array} received
  * are kept in the instance.
  *
- * @typeParam T         The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `Array<T>`)
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`Array<T>` by default)
  * @adaptor
+ * @see ArrayOf1AsCollectionHolder
+ * @see ArrayOf2AsCollectionHolder
+ * @see LazyArrayAsCollectionHolder
  */
 export class ArrayAsCollectionHolder<const T = unknown,
     const REFERENCE extends Array<T> = Array<T>, >
-    extends AbstractCollectionHolder<T> {
+    extends AbstractPartiallyUnimplementedCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
 
-    readonly #reference: WeakRef<REFERENCE>
+    readonly #reference: REFERENCE
     readonly #size: REFERENCE["length"]
     readonly #isEmpty: boolean
+    #isNotEmpty?: boolean
+    #hasExactly1Element?: boolean
+    #hasAtMost1Element?: boolean
+    #hasAtLeast2Elements?: boolean
+    #hasExactly2Elements?: boolean
+    #hasAtMost2Elements?: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
+    public constructor(reference: & Array<T> & REFERENCE,)
     public constructor(reference: REFERENCE,) {
         super()
-        this.#reference = new WeakRef(reference,)
+        this.#reference = reference
         const size = this.#size = reference.length
         if (this.#isEmpty = size === 0)
             return
@@ -180,13 +190,9 @@ export class ArrayAsCollectionHolder<const T = unknown,
 
     //#region -------------------- Reference methods --------------------
 
-    /**
-     * The internal referenced passed through the {@link constructor}
-     *
-     * It returns `undefined` if the reference has been garbed-collected.
-     */
-    protected get _reference(): UndefinedOr<REFERENCE> {
-        return this.#reference.deref()
+    /** The internal referenced passed through the {@link constructor} */
+    protected get _reference(): REFERENCE {
+        return this.#reference
     }
 
     //#endregion -------------------- Reference methods --------------------
@@ -197,22 +203,25 @@ export class ArrayAsCollectionHolder<const T = unknown,
 
     public override get isEmpty(): IsEmptyOnArray<REFERENCE> { return this.#isEmpty as IsEmptyOnArray<REFERENCE> }
 
-    public override get isNotEmpty(): IsNotEmptyOnArray<REFERENCE> { return !this.isEmpty as IsNotEmptyOnArray<REFERENCE> }
+    public override get isNotEmpty(): IsNotEmptyOnArray<REFERENCE> { return (this.#isNotEmpty ??= !this.isEmpty) as IsNotEmptyOnArray<REFERENCE> }
 
-    public override get hasExactly1Element(): HasExactly1ElementOnArray<REFERENCE> { return (this.size === 1) as HasExactly1ElementOnArray<REFERENCE> }
+    public override get hasExactly1Element(): HasExactly1ElementOnArray<REFERENCE> { return (this.#hasExactly1Element ??= this.size === 1) as HasExactly1ElementOnArray<REFERENCE> }
 
-    public override get hasAtMost1Element(): HasAtMost1ElementOnArray<REFERENCE> { return (this.isEmpty || this.size === 1) as HasAtMost1ElementOnArray<REFERENCE> }
+    public override get hasAtMost1Element(): HasAtMost1ElementOnArray<REFERENCE> { return (this.#hasAtMost1Element ??= this.isEmpty || this.size === 1) as HasAtMost1ElementOnArray<REFERENCE> }
 
-    public override get hasAtLeast2Elements(): boolean { return this.size >= 2 }
+    public override get hasAtLeast2Elements(): boolean { return this.#hasAtLeast2Elements ??= this.size >= 2 }
 
-    public override get hasExactly2Elements(): HasExactly2ElementsOnArray<REFERENCE> { return (this.size === 2) as HasExactly2ElementsOnArray<REFERENCE> }
+    public override get hasExactly2Elements(): HasExactly2ElementsOnArray<REFERENCE> { return (this.#hasExactly2Elements ??= this.size === 2) as HasExactly2ElementsOnArray<REFERENCE> }
 
     public override get hasAtMost2Elements(): HasAtMost2ElementsOnArray<REFERENCE> {
+        const value = this.#hasAtMost2Elements
+        if (value != null)
+            return value as HasAtMost2ElementsOnArray<REFERENCE>
         if (this.isEmpty)
-            return true as HasAtMost2ElementsOnArray<REFERENCE>
+            return (this.#hasAtMost2Elements = true) as HasAtMost2ElementsOnArray<REFERENCE>
 
         const size = this.size
-        return (size === 1 || size === 2) as HasAtMost2ElementsOnArray<REFERENCE>
+        return (this.#hasAtMost2Elements = size === 1 || size === 2) as HasAtMost2ElementsOnArray<REFERENCE>
     }
 
     //#endregion -------------------- Size methods --------------------
@@ -220,7 +229,7 @@ export class ArrayAsCollectionHolder<const T = unknown,
 
     //#region -------------------- Get --------------------
 
-    public override get<const I extends number, > (index: I,): REFERENCE[I] //TODO add better array value reflection type
+    public override get<const I extends number, >(index: I,): REFERENCE[I] //TODO add better array value reflection type
     public override get(index: number,) {
         if (this.isEmpty)
             throw new EmptyCollectionException(null, index,)
@@ -294,7 +303,7 @@ export class ArrayAsCollectionHolder<const T = unknown,
     }
 
     //#endregion -------------------- Get --------------------
-    //#region -------------------- Find first --------------------
+    //#region -------------------- Find --------------------
 
     public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findFirst(predicate: BooleanCallback<T>,): T
@@ -320,8 +329,6 @@ export class ArrayAsCollectionHolder<const T = unknown,
         return findFirstIndexedOrNullByArray(this._reference, predicate,)
     }
 
-    //#endregion -------------------- Find first --------------------
-    //#region -------------------- Find last --------------------
 
     public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findLast(predicate: BooleanCallback<T>,): T
@@ -347,7 +354,7 @@ export class ArrayAsCollectionHolder<const T = unknown,
         return findLastIndexedOrNullByArray(this._reference, predicate,)
     }
 
-    //#endregion -------------------- Find last --------------------
+    //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
@@ -408,7 +415,7 @@ export class ArrayAsCollectionHolder<const T = unknown,
 
     //#region -------------------- All --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) {
         return allByArray(this._reference, predicate,)
@@ -774,8 +781,6 @@ export class ArrayAsCollectionHolder<const T = unknown,
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- For each --------------------
-
     public override forEach(action: ValueIndexCallback<T>,): void {
         forEachByArray(this._reference, action,)
     }
@@ -784,8 +789,6 @@ export class ArrayAsCollectionHolder<const T = unknown,
         forEachIndexedByArray(this._reference, action,)
     }
 
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- On each --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
         forEachByArray(this._reference, action,)
@@ -797,18 +800,12 @@ export class ArrayAsCollectionHolder<const T = unknown,
         return this
     }
 
-    //#endregion -------------------- On each --------------------
-
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
-
-    //#region -------------------- To reverse --------------------
 
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return toReverseByArray(this._reference, from, to,)
     }
-
-    //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------

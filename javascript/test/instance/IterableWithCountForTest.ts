@@ -14,7 +14,11 @@ import type {Array} from "@joookiwi/type"
 
 import type {IterableWithCount} from "../../src/iterable/IterableWithCount"
 
-/** An {@link IterableWithCount} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
+/**
+ * An {@link IterableWithCount} that is made for the tests with an {@link ReadonlyArray Array} under the hood
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class IterableWithCountForTest<const T, >
     implements IterableWithCount<T> {
 

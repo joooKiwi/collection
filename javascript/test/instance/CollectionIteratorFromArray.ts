@@ -24,17 +24,15 @@ import {CollectionHolderFromArray}      from "./CollectionHolderFromArray"
  *
  * Internally, it is using {@link CollectionHolderFromArray} as the {@link CollectionIterator.collection}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionIteratorFromArray<const T, >
     extends AbstractCollectionIterator<T> {
 
-    public readonly array
     public readonly collection
 
-    public constructor(array: Array<T>,) {
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        this.array = array
         this.collection = new CollectionHolderFromArray(array,)
     }
 

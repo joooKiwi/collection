@@ -13,5 +13,9 @@
 import type {InsideIteratorValue}  from "../iterator/value/InsideIteratorValue"
 import type {OutsideIteratorValue} from "../iterator/value/OutsideIteratorValue"
 
-export type PossibleIteratorValue<T = unknown, Symbol extends symbol = symbol, > = | InsideIteratorValue<T>
-                                                                                   | OutsideIteratorValue<Symbol>
+/**
+ * Give either {@link InsideIteratorValue} with the type
+ * or {@link OutsideIteratorValue} with the `symbol`
+ */
+export type PossibleIteratorValue<T = unknown, S extends symbol = symbol, > = | InsideIteratorValue<T>
+                                                                              | OutsideIteratorValue<S>

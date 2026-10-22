@@ -10,27 +10,29 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionConstants} from "../src/CollectionConstants"
-import {Couple}              from "../src/tuple/Couple"
-import {Empty}               from "../src/tuple/Empty"
-import {Monuple}             from "../src/tuple/Monuple"
+import {describe, expect, test} from "vitest"
+
+import {SymbolConstants} from "../src/SymbolConstants"
+import {Couple}          from "../src/tuple/Couple"
+import {Empty}           from "../src/tuple/Empty"
+import {Monuple}         from "../src/tuple/Monuple"
 
 describe("TupleTest (javascript exclusive)", () => {
 
     describe("Empty", () => {
         const instance = Empty.get
 
-        test("Symbol.toStringTag", () => expect(instance[Symbol.toStringTag],).toBe(CollectionConstants.TUPLE_TO_STRING_TAG,),)
+        test("Symbol.toStringTag", () => expect(instance[Symbol.toStringTag],).toBe(SymbolConstants.TUPLE_TO_STRING_TAG,),)
     },)
     describe("Monuple", () => {
         const newInstance = () => new Monuple('a',)
 
-        test("Symbol.toStringTag", () => expect(newInstance()[Symbol.toStringTag],).toBe(CollectionConstants.TUPLE_TO_STRING_TAG,),)
+        test("Symbol.toStringTag", () => expect(newInstance()[Symbol.toStringTag],).toBe(SymbolConstants.TUPLE_TO_STRING_TAG,),)
     },)
     describe("Couple", () => {
         const newInstance = () => new Couple('a', 'b',)
 
-        test("Symbol.toStringTag", () => expect(newInstance()[Symbol.toStringTag],).toBe(CollectionConstants.TUPLE_TO_STRING_TAG,),)
+        test("Symbol.toStringTag", () => expect(newInstance()[Symbol.toStringTag],).toBe(SymbolConstants.TUPLE_TO_STRING_TAG,),)
     },)
 
 },)

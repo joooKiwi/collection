@@ -13,30 +13,28 @@
 import type {Array, EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptySet, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberKeyMap, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {CollectionHolderOf1}                                                                                                                                                                                                                                               from "../../src/CollectionHolderOf1"
-import type {EmptyCollectionHolder}                                                                                                                                                                                                                                             from "../../src/EmptyCollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "../../src/iterator/CollectionIteratorOf1"
-import type {EmptyCollectionIterator}                                                                                                                                                                                                                                           from "../../src/iterator/EmptyCollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
+import type {CollectionHolderOf0Or1}                                                                                                                                                                                                                                            from "../../src/type/collection"
+import type {CollectionIteratorOf0Or1}                                                                                                                                                                                                                                          from "../../src/type/iterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-import {LazyCollectionHolderOf0Or1}      from "../../src/LazyCollectionHolderOf0Or1"
-import {EmptyOptional}                   from "../../src/optional/EmptyOptional"
-import {Optional}                        from "../../src/optional/Optional"
+import {LazyCollectionHolderOf0Or1}                   from "../../src/LazyCollectionHolderOf0Or1"
+import {EmptyOptional}                                from "../../src/optional/EmptyOptional"
+import {Optional}                                     from "../../src/optional/Optional"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A class to test the functionality of a {@link LazyCollectionHolderOf0Or1}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_LazyOf0Or1<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: LazyCollectionHolderOf0Or1ForTest<T>
+    public readonly instance: LazyCollectionHolderOf0Or1<T>
 
     public readonly value: Optional<T>
 
@@ -45,19 +43,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     public constructor(value?: T,) {
         super()
         const optional = this.value = arguments.length === 0 ? EmptyOptional.get : new Optional(value as T,)
-        const $this = this
-        this.instance = new class CollectionHolder_CountingGetOnLazyOf0Or1
-            extends LazyCollectionHolderOf0Or1<T>
-            implements LazyCollectionHolderOf0Or1ForTest<T> {
-
-            public override get(index: number,): T {
-                $this.amountOfCall++
-                return super.get(index,)
-            }
-
-            public get innerCollection(): | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection }
-
-        }(() => optional,)
+        this.instance = new LazyCollectionHolderOf0Or1(() => optional,)
     }
 
     //#region -------------------- Size methods --------------------
@@ -165,7 +151,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) { return this.instance.all(predicate,) }
 
@@ -274,7 +260,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
         const instance = this.instance
-        const newInstance = instance.filterNotNull()
+        const newInstance: CollectionHolder<NonNullable<T>> = instance.filterNotNull()
         if (newInstance === instance)
             return this as CollectionHolder<NonNullable<T>>
         return newInstance
@@ -400,12 +386,12 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolderOf1<T> | EmptyCollectionHolder { return this.instance.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOf0Or1<T> { return this.instance.toReverse(from, to,) }
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toIterator(): | CollectionIteratorOf1<T> | EmptyCollectionIterator { return this.instance.toIterator() }
+    public override toIterator(): CollectionIteratorOf0Or1<T> { return this.instance.toIterator() }
 
     public override toArray(): | readonly [T,] | EmptyArray { return this.instance.toArray() }
     public override toMutableArray(): | [T,] | EmptyMutableArray { return this.instance.toMutableArray() }
@@ -440,12 +426,5 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.instance.joinToString(separator, prefix, postfix, limit, truncated, transform,) }
 
     //#endregion -------------------- Conversion methods --------------------
-
-}
-
-interface LazyCollectionHolderOf0Or1ForTest<T,>
-    extends LazyCollectionHolderOf0Or1<T> {
-
-    readonly innerCollection: | CollectionHolderOf1<T> | EmptyCollectionHolder
 
 }

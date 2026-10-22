@@ -16,7 +16,6 @@ import type {CollectionHolder}                                         from "../
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -26,7 +25,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -38,7 +37,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 export function findFirstIndexedOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -52,7 +51,7 @@ export function findFirstIndexedOrNull<const T, >(collection: Nullable<| Minimal
         return null
     if (isCollectionHolder(collection,))
         return findFirstIndexedOrNullByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return findFirstIndexedOrNullByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return findFirstIndexedOrNullByMinimalistCollectionHolder(collection, predicate,)
@@ -67,7 +66,7 @@ export function findFirstIndexedOrNull<const T, >(collection: Nullable<| Minimal
 
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -79,7 +78,7 @@ export function findFirstIndexedOrNull<const T, >(collection: Nullable<| Minimal
 export function findFirstIndexedOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -104,7 +103,7 @@ export function findFirstIndexedOrNullByMinimalistCollectionHolder<const T, >(co
 
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -116,7 +115,7 @@ export function findFirstIndexedOrNullByMinimalistCollectionHolder<const T, >(co
 export function findFirstIndexedOrNullByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -139,7 +138,7 @@ export function findFirstIndexedOrNullByCollectionHolder<const T, >(collection: 
 
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -151,7 +150,7 @@ export function findFirstIndexedOrNullByCollectionHolder<const T, >(collection: 
 export function findFirstIndexedOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate

@@ -25,10 +25,13 @@ import {CollectionIterator}        from "./iterator/CollectionIterator"
  * are kept in the instance.
  *
  * @note This class is still under construction, but the core feature ({@link #get} and {@link #size}) is stable.
- * @typeParam T         The type (by default `unknown`)
- * @typeParam REFERENCE The reference passed in the constructor (by default `CollectionIterator<T>`)
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`CollectionIterator<T>` by default)
  * @adaptor
  * @beta
+ * @see IteratorOf1AsCollectionHolder
+ * @see IteratorOf2AsCollectionHolder
+ * @see LazyIteratorAsCollectionHolder
  */
 export class IteratorAsCollectionHolder<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>, >
@@ -139,7 +142,6 @@ export class IteratorAsCollectionHolder<const T = unknown,
     }
 
     //#endregion -------------------- Get --------------------
-
 
     //#endregion -------------------- Research methods --------------------
 

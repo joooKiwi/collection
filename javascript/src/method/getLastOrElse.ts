@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {ReturnCallback}             from "../type/callback"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -49,7 +48,7 @@ export function getLastOrElse<const T, >(collection: Nullable<| MinimalistCollec
         return defaultValue()
     if (isCollectionHolder(collection,))
         return getLastOrElseByCollectionHolder(collection, defaultValue,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return getLastOrElseByArray(collection, defaultValue,)
     if (isMinimalistCollectionHolder(collection,))
         return getLastOrElseByMinimalistCollectionHolder(collection, defaultValue,)

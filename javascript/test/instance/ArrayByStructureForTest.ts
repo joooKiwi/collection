@@ -19,6 +19,7 @@ import type {FlatMapCallback, ReduceCallback, RestrainedReduceCallback, SortedCa
  * An {@link globalThis.ReadonlyArray Array} made for the tests
  * with all the methods that makes it not modifiable.
  *
+ * @typeParam T The type (**mandatory**)
  * @see ArrayForTest
  */
 export class ArrayByStructureForTest<const T, >
@@ -63,7 +64,7 @@ export class ArrayByStructureForTest<const T, >
 
     public join(separator?: string,): string { return this.array.join(separator,) }
 
-    public filter<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): MutableArray<S>
+    public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): MutableArray<S>
     public filter(predicate: BooleanCallback<T>,): MutableArray<T>
     public filter(predicate: BooleanCallback<T>,) { return this.array.filter(predicate,) }
 

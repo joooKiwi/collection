@@ -10,13 +10,15 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {MutableMap} from "@joookiwi/type"
+
 /**
- * Tell that the value is a {@link Map}
+ * Tell that the value is a {@link Map MutableMap}
  *
  * @param value The value to identify
  * @see isMapByStructure
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isMap<const K, const V, const INSTANCE extends Map<K, V> = Map<K, V>, >(value: unknown,): value is INSTANCE {
+export function isMap<const K, const V, const INSTANCE extends MutableMap<K, V> = MutableMap<K, V>, >(value: unknown,): value is INSTANCE {
     return value instanceof Map
 }

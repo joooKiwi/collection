@@ -13,7 +13,7 @@
 import type {BeforeFirstValueInCollectionIteratorSymbol} from "../../type/symbol"
 import type {OutsideIteratorValue}                       from "./OutsideIteratorValue"
 
-import {CollectionConstants}   from "../../CollectionConstants"
+import {SymbolConstants}       from "../../SymbolConstants"
 import {AbstractIteratorValue} from "./AbstractIteratorValue"
 
 /**
@@ -42,7 +42,7 @@ export class GenericBeforeFirstIteratorValue
     public override isNotDone(): false { return false }
 
     public override get value(): BeforeFirstValueInCollectionIteratorSymbol {
-        return CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL
+        return SymbolConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL
     }
 
 }

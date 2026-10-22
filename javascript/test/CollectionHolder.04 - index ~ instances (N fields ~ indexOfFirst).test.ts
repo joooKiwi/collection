@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {AAAA, ABAB, ABCD}                                                                                                                                                                                                    from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}                                                                                                             from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                   from "./value/callbacks (fail)"

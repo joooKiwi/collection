@@ -28,7 +28,7 @@ import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollection
  *
  * @apiNote This class is used when not specifically requiring an optimization on the methods, just the non-aliased methods calls
  * @note This class should be inherited if new classes are being made to be more usable by the tools
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (**mandatory**)
  * @see AbstractCollectionHolder
  * @see AbstractCollectionHolderOf1
  * @see AbstractCollectionHolderOf2
@@ -37,8 +37,14 @@ import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollection
  * @see LazyCollectionHolderOf0Or1
  * @see LazyCollectionHolderOf0Or1Or2
  * @see LazyCollectionHolderOf1Or2
+ * @see LazyArrayAsCollectionHolder
+ * @see LazySetAsCollectionHolder
+ * @see LazyMinimalistAsCollectionHolder
+ * @see LazyIteratorAsCollectionHolder
+ * @see LazyJsIteratorAsCollectionHolder
+ * @see LazyJsIterableAsCollectionHolder
  */
-export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
+export abstract class AbstractUnimplementedCollectionHolder<const T, >
     extends AbstractMinimalistCollectionHolder<T>
     implements CollectionHolder<T> {
 
@@ -467,10 +473,10 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
 
     //#region -------------------- All --------------------
 
-    public abstract all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public abstract all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public abstract all(predicate: BooleanCallback<T>,): boolean
 
-    public every<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public every<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public every(predicate: BooleanCallback<T>,): boolean
     public every(predicate: BooleanCallback<T>,) {
         return this.all(predicate,)

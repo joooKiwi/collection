@@ -24,17 +24,14 @@ import {hasAllWithIterable, hasAllWithIterableByArray, hasAllWithIterableByColle
 import {hasAllWithIterator, hasAllWithIteratorByArray, hasAllWithIteratorByCollectionHolder, hasAllWithIteratorByMinimalistCollectionHolder}                                                                         from "./hasAll.withIterator"
 import {hasAllWithMinimalistCollectionHolder, hasAllWithMinimalistCollectionHolderByArray, hasAllWithMinimalistCollectionHolderByCollectionHolder, hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "./hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSet, hasAllWithSetByArray, hasAllWithSetByCollectionHolder, hasAllWithSetByMinimalistCollectionHolder}                                                                                             from "./hasAll.withSet"
-import {isArray}                                                                                                                                                                                                     from "./isArray"
 import {isArrayByStructure}                                                                                                                                                                                          from "./isArrayByStructure"
 import {isCollectionIterator}                                                                                                                                                                                        from "./isCollectionIterator"
 import {isCollectionIteratorByStructure}                                                                                                                                                                             from "./isCollectionIteratorByStructure"
 import {isCollectionHolder}                                                                                                                                                                                          from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                                                                                                                                                                               from "./isCollectionHolderByStructure"
-import {isIterator}                                                                                                                                                                                                  from "./isIterator"
 import {isIteratorByStructure}                                                                                                                                                                                       from "./isIteratorByStructure"
 import {isMinimalistCollectionHolder}                                                                                                                                                                                from "./isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}                                                                                                                                                                     from "./isMinimalistCollectionHolderByStructure"
-import {isSet}                                                                                                                                                                                                       from "./isSet"
 import {isSetByStructure}                                                                                                                                                                                            from "./isSetByStructure"
 
 //#region -------------------- Facade method --------------------
@@ -132,9 +129,9 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
     if (values == null)
         return true
 
-    if (isArray(values,))
+    if (values instanceof Array)
         return hasAllWithArray(collection, values,)
-    if (isSet(values,))
+    if (values instanceof Set)
         return hasAllWithSet(collection, values,)
     if (isCollectionHolder(values,))
         return hasAllWithCollectionHolder(collection, values,)
@@ -142,7 +139,7 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
         return hasAllWithMinimalistCollectionHolder(collection, values,)
     if (isCollectionIterator(values,))
         return hasAllWithCollectionIterator(collection, values,)
-    if (isIterator(values,))
+    if (values instanceof Iterator)
         return hasAllWithIterator(collection, values,)
 
     if (isArrayByStructure<T>(values,))
@@ -255,9 +252,9 @@ export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullab
     if (values == null)
         return true
 
-    if (isArray(values,))
+    if (values instanceof Array)
         return hasAllWithArrayByMinimalistCollectionHolder(collection, values,)
-    if (isSet(values,))
+    if (values instanceof Set)
         return hasAllWithSetByMinimalistCollectionHolder(collection, values,)
     if (isCollectionHolder(values,))
         return hasAllWithCollectionHolderByMinimalistCollectionHolder(collection, values,)
@@ -265,7 +262,7 @@ export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullab
         return hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder(collection, values,)
     if (isCollectionIterator(values,))
         return hasAllWithCollectionIteratorByMinimalistCollectionHolder(collection, values,)
-    if (isIterator(values,))
+    if (values instanceof Iterator)
         return hasAllWithIteratorByMinimalistCollectionHolder(collection, values,)
 
     if (isArrayByStructure<T>(values,))
@@ -377,9 +374,9 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
     if (values == null)
         return true
 
-    if (isArray(values,))
+    if (values instanceof Array)
         return hasAllWithArrayByCollectionHolder(collection, values,)
-    if (isSet(values,))
+    if (values instanceof Set)
         return hasAllWithSetByCollectionHolder(collection, values,)
     if (isCollectionHolder(values,))
         return hasAllWithCollectionHolderByCollectionHolder(collection, values,)
@@ -387,7 +384,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
         return hasAllWithMinimalistCollectionHolderByCollectionHolder(collection, values,)
     if (isCollectionIterator(values,))
         return hasAllWithCollectionIteratorByCollectionHolder(collection, values,)
-    if (isIterator(values,))
+    if (values instanceof Iterator)
         return hasAllWithIteratorByCollectionHolder(collection, values,)
 
     if (isArrayByStructure<T>(values,))
@@ -499,9 +496,9 @@ export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values:
     if (values == null)
         return true
 
-    if (isArray(values,))
+    if (values instanceof Array)
         return hasAllWithArrayByArray(collection, values,)
-    if (isSet(values,))
+    if (values instanceof Set)
         return hasAllWithSetByArray(collection, values,)
     if (isCollectionHolder(values,))
         return hasAllWithCollectionHolderByArray(collection, values,)
@@ -509,7 +506,7 @@ export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values:
         return hasAllWithMinimalistCollectionHolderByArray(collection, values,)
     if (isCollectionIterator(values,))
         return hasAllWithCollectionIteratorByArray(collection, values,)
-    if (isIterator(values,))
+    if (values instanceof Iterator)
         return hasAllWithIteratorByArray(collection, values,)
 
     if (isArrayByStructure<T>(values,))

@@ -16,9 +16,9 @@ import type {CollectionHolder}                                         from "../
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {EmptyConstants}                from "../EmptyConstants"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -27,7 +27,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -36,7 +36,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function dropLastWhileIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -62,7 +62,7 @@ export function dropLastWhileIndexed<const T, >(collection: Nullable<| Minimalis
 
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -71,7 +71,7 @@ export function dropLastWhileIndexed<const T, >(collection: Nullable<| Minimalis
  */
 export function dropLastWhileIndexedByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -86,14 +86,14 @@ export function dropLastWhileIndexedByMinimalistCollectionHolder<const T, >(coll
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, size, predicate as (index: number,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, size, predicate as (index: number,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, size, predicate,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, size, predicate as () => boolean,),)
 }
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -102,7 +102,7 @@ export function dropLastWhileIndexedByMinimalistCollectionHolder<const T, >(coll
  */
 export function dropLastWhileIndexedByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -115,14 +115,14 @@ export function dropLastWhileIndexedByCollectionHolder<const T, >(collection: Nu
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (index: number,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (index: number,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, collection.size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, collection.size, predicate as () => boolean,),)
 }
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -131,7 +131,7 @@ export function dropLastWhileIndexedByCollectionHolder<const T, >(collection: Nu
  */
 export function dropLastWhileIndexedByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -146,10 +146,10 @@ export function dropLastWhileIndexedByArray<const T, >(collection: Nullable<Arra
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (index: number,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (index: number,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)
-    return new LazyCollectionHolder(() => __with0ArgumentByArray(collection, size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0ArgumentByArray(collection, size, predicate as () => boolean,),)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -165,7 +165,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 newArrayFrom0ToIndex[index2] = collection.get(index2,)
             return newArrayFrom0ToIndex
         }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: () => boolean,) {
@@ -178,7 +178,7 @@ function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, p
                 newArrayFrom0ToIndex[index2] = collection[index2] as T
             return newArrayFrom0ToIndex
         }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 
@@ -192,7 +192,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 newArrayFrom0ToIndex[index2] = collection.get(index2,)
             return newArrayFrom0ToIndex
         }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (index: number,) => boolean,) {
@@ -205,7 +205,7 @@ function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, p
                 newArrayFrom0ToIndex[index2] = collection[index2] as T
             return newArrayFrom0ToIndex
         }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 
@@ -222,7 +222,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
             return newArrayFrom0ToIndex
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (index: number, value: T,) => boolean,) {
@@ -238,7 +238,7 @@ function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, p
             return newArrayFrom0ToIndex
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 //#endregion -------------------- Loop methods --------------------

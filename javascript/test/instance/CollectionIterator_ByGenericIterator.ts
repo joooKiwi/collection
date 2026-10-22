@@ -16,17 +16,17 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
 
-import {GenericCollectionIterator}         from "../../src/iterator/GenericCollectionIterator"
-import {AbstractCollectionIteratorForTest} from "./AbstractCollectionIteratorForTest"
-import {CollectionHolderFromArray}         from "./CollectionHolderFromArray"
+import {GenericCollectionIterator}                      from "../../src/iterator/GenericCollectionIterator"
+import {AbstractUnimplementedCollectionIteratorForTest} from "./AbstractUnimplementedCollectionIteratorForTest"
+import {CollectionHolderFromArray}                      from "./CollectionHolderFromArray"
 
 /**
  * A class to test the functionality of a {@link GenericCollectionIterator}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionIterator_ByGenericIterator<const T, >
-    extends AbstractCollectionIteratorForTest<T> {
+    extends AbstractUnimplementedCollectionIteratorForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: GenericCollectionIterator<T>

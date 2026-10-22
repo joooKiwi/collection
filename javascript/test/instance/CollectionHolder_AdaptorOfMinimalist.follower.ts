@@ -332,16 +332,18 @@ export class CollectionHolder_AdaptorOfMinimalistFollower
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    public override all<S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolder<S>
+    public override all<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<string>,): boolean
     public override all(predicate: BooleanCallback<string>,) {
         this.all_amountOfCall++
         return super.all(predicate,)
     }
 
-    protected override _any(predicate: BooleanCallback<string>,): boolean {
+    public override any(): this["isNotEmpty"]
+    public override any(predicate: Nullable<BooleanCallback<string>>,): boolean
+    public override any(predicate?: Nullable<BooleanCallback<string>>,) {
         this.any_amountOfCall++
-        return super._any(predicate,)
+        return super.any(predicate,)
     }
 
 

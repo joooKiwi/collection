@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, Set, StringOrSymbol} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
@@ -18,45 +18,23 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {GenericCollectionHolder}         from "../../src/GenericCollectionHolder"
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
-
-const NUMBER_REGEX = /\d+/
+import {GenericCollectionHolder}                      from "../../src/GenericCollectionHolder"
+import {AbstractUnimplementedCollectionHolderForTest} from "./AbstractUnimplementedCollectionHolderForTest"
 
 /**
  * A class to test the functionality of a {@link GenericCollectionHolder}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_ByGenericCollection<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
     public readonly instance: GenericCollectionHolder<T>
 
-    /** The {@link CollectionHolder_ByGenericCollection.array array} encapsulated in a {@link Proxy} */
-    public readonly proxiedArray: Array<T>
-    /** The handler associated to the {@link proxiedArray} */
-    public readonly proxyHandler: ProxyHandler<Array<T>>
-
     public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
-        const $this = this
-        const handler = this.proxyHandler = {
-            get(target: Array<T>, property: StringOrSymbol, receiver: unknown,) {
-                if (typeof property == "string")
-                    if (NUMBER_REGEX.test(property,))
-                        $this.amountOfCall++
-                return Reflect.get(target, property, receiver,)
-            },
-        }
-        this.instance = new class CollectionHolder_CountingGetByGenericCollection
-            extends GenericCollectionHolder<T> {
-
-            protected override get _array(): Array<T> { return $this.proxiedArray }
-
-        }(array,)
-        this.proxiedArray = new Proxy(array, handler,)
+        this.instance = new GenericCollectionHolder(array,)
     }
 
     //#region -------------------- Size methods --------------------
@@ -164,7 +142,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) { return this.instance.all(predicate,) }
 
@@ -183,6 +161,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
             return this.instance.none()
         return this.instance.none(predicate,)
     }
+
 
     public override get hasNull(): boolean { return this.instance.hasNull }
 

@@ -18,6 +18,7 @@ import type {MutableValueCallback} from "../type/set"
  * An {@link globalThis.Set MutableSet} made for the tests
  * with all the methods that makes it not modifiable.
  *
+ * @typeParam T The type (**mandatory**)
  * @see SetByStructureForTest
  */
 export class SetForTest<const T, >
@@ -76,7 +77,7 @@ export class SetForTest<const T, >
 
     public override isDisjointFrom(other: ReadonlySetLike<unknown>,): boolean { return this.set.isDisjointFrom(other,) }
 
-    public override [Symbol.iterator](): ArrayIterator<T> { return this.set[Symbol.iterator]() }
+    public override [Symbol.iterator](): SetIterator<T> { return this.set[Symbol.iterator]() }
 
     public override get [Symbol.toStringTag](): "Set" { return "Set" }
 

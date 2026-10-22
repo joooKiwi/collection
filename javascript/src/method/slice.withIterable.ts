@@ -16,7 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {__get}                         from "./_array utility"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -75,7 +75,7 @@ export function sliceWithIterableByMinimalistCollectionHolder<const T, >(collect
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
+    return new LazyArrayAsCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
 }
 
 /**
@@ -99,7 +99,7 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
+    return new LazyArrayAsCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
 }
 
 /**
@@ -123,7 +123,7 @@ export function sliceWithIterableByArray<const T, >(collection: Nullable<Array<T
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new LazyCollectionHolder(() => __newArrayByArray(collection, iterator, iteratorResult.value,),)
+    return new LazyArrayAsCollectionHolder(() => __newArrayByArray(collection, iterator, iteratorResult.value,),)
 }
 
 //#endregion -------------------- Facade method --------------------

@@ -24,17 +24,14 @@ import {hasNotOneWithIterable, hasNotOneWithIterableByArray, hasNotOneWithIterab
 import {hasNotOneWithIterator, hasNotOneWithIteratorByArray, hasNotOneWithIteratorByCollectionHolder, hasNotOneWithIteratorByMinimalistCollectionHolder}                                                                         from "./hasNotOne.withIterator"
 import {hasNotOneWithMinimalistCollectionHolder, hasNotOneWithMinimalistCollectionHolderByArray, hasNotOneWithMinimalistCollectionHolderByCollectionHolder, hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "./hasNotOne.withMinimalistCollectionHolder"
 import {hasNotOneWithSet, hasNotOneWithSetByArray, hasNotOneWithSetByCollectionHolder, hasNotOneWithSetByMinimalistCollectionHolder}                                                                                             from "./hasNotOne.withSet"
-import {isArray}                                                                                                                                                                                                                 from "./isArray"
 import {isArrayByStructure}                                                                                                                                                                                                      from "./isArrayByStructure"
 import {isCollectionIterator}                                                                                                                                                                                                    from "./isCollectionIterator"
 import {isCollectionIteratorByStructure}                                                                                                                                                                                         from "./isCollectionIteratorByStructure"
 import {isCollectionHolder}                                                                                                                                                                                                      from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                                                                                                                                                                                           from "./isCollectionHolderByStructure"
-import {isIterator}                                                                                                                                                                                                              from "./isIterator"
 import {isIteratorByStructure}                                                                                                                                                                                                   from "./isIteratorByStructure"
 import {isMinimalistCollectionHolder}                                                                                                                                                                                            from "./isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}                                                                                                                                                                                 from "./isMinimalistCollectionHolderByStructure"
-import {isSet}                                                                                                                                                                                                                   from "./isSet"
 import {isSetByStructure}                                                                                                                                                                                                        from "./isSetByStructure"
 
 //#region -------------------- Facade method --------------------
@@ -113,9 +110,9 @@ export function hasNotOne<const T, >(collection: Nullable<| MinimalistCollection
  */
 export function hasNotOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 export function hasNotOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
-    if (isArray(values,))
+    if (values instanceof Array)
         return hasNotOneWithArray(collection, values,)
-    if (isSet(values,))
+    if (values instanceof Set)
         return hasNotOneWithSet(collection, values,)
     if (isCollectionHolder(values,))
         return hasNotOneWithCollectionHolder(collection, values,)
@@ -123,7 +120,7 @@ export function hasNotOne<const T, >(collection: Nullable<| MinimalistCollection
         return hasNotOneWithMinimalistCollectionHolder(collection, values,)
     if (isCollectionIterator(values,))
         return hasNotOneWithCollectionIterator(collection, values,)
-    if (isIterator(values,))
+    if (values instanceof Iterator)
         return hasNotOneWithIterator(collection, values,)
 
     if (isArrayByStructure<T>(values,))
@@ -216,9 +213,9 @@ export function hasNotOneByMinimalistCollectionHolder<const T, >(collection: Nul
  */
 export function hasNotOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 export function hasNotOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
-    if (isArray(values,))
+    if (values instanceof Array)
         return hasNotOneWithArrayByMinimalistCollectionHolder(collection, values,)
-    if (isSet(values,))
+    if (values instanceof Set)
         return hasNotOneWithSetByMinimalistCollectionHolder(collection, values,)
     if (isCollectionHolder(values,))
         return hasNotOneWithCollectionHolderByMinimalistCollectionHolder(collection, values,)
@@ -226,7 +223,7 @@ export function hasNotOneByMinimalistCollectionHolder<const T, >(collection: Nul
         return hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder(collection, values,)
     if (isCollectionIterator(values,))
         return hasNotOneWithCollectionIteratorByMinimalistCollectionHolder(collection, values,)
-    if (isIterator(values,))
+    if (values instanceof Iterator)
         return hasNotOneWithIteratorByMinimalistCollectionHolder(collection, values,)
 
     if (isArrayByStructure<T>(values,))
@@ -318,9 +315,9 @@ export function hasNotOneByCollectionHolder<const T, >(collection: Nullable<Coll
  */
 export function hasNotOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 export function hasNotOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
-    if (isArray(values,))
+    if (values instanceof Array)
         return hasNotOneWithArrayByCollectionHolder(collection, values,)
-    if (isSet(values,))
+    if (values instanceof Set)
         return hasNotOneWithSetByCollectionHolder(collection, values,)
     if (isCollectionHolder(values,))
         return hasNotOneWithCollectionHolderByCollectionHolder(collection, values,)
@@ -328,7 +325,7 @@ export function hasNotOneByCollectionHolder<const T, >(collection: Nullable<Coll
         return hasNotOneWithMinimalistCollectionHolderByCollectionHolder(collection, values,)
     if (isCollectionIterator(values,))
         return hasNotOneWithCollectionIteratorByCollectionHolder(collection, values,)
-    if (isIterator(values,))
+    if (values instanceof Iterator)
         return hasNotOneWithIteratorByCollectionHolder(collection, values,)
 
     if (isArrayByStructure<T>(values,))
@@ -420,9 +417,9 @@ export function hasNotOneByArray<const T, >(collection: Nullable<Array<T>>, valu
  */
 export function hasNotOneByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 export function hasNotOneByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
-    if (isArray(values,))
+    if (values instanceof Array)
         return hasNotOneWithArrayByArray(collection, values,)
-    if (isSet(values,))
+    if (values instanceof Set)
         return hasNotOneWithSetByArray(collection, values,)
     if (isCollectionHolder(values,))
         return hasNotOneWithCollectionHolderByArray(collection, values,)
@@ -430,7 +427,7 @@ export function hasNotOneByArray<const T, >(collection: Nullable<Array<T>>, valu
         return hasNotOneWithMinimalistCollectionHolderByArray(collection, values,)
     if (isCollectionIterator(values,))
         return hasNotOneWithCollectionIteratorByArray(collection, values,)
-    if (isIterator(values,))
+    if (values instanceof Iterator)
         return hasNotOneWithIteratorByArray(collection, values,)
 
     if (isArrayByStructure<T>(values,))

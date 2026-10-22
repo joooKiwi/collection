@@ -10,8 +10,11 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolder_ByGenericCollection}                                                                                                                                      from "./instance/CollectionHolder_ByGenericCollection"
-import {CollectionHolder_ByMinimalistCollection}                                                                                                                                   from "./instance/CollectionHolder_ByMinimalistCollection"
+import {describe, expect, test} from "vitest"
+
+import {CollectionHolder_ByViewer}                                                                                                                                                 from "./instance/CollectionHolder_ByViewer"
+import {CollectionHolder_GetBeingCalledOnNormal}                                                                                                                                   from "./instance/CollectionHolder_GetBeingCalledOnNormal"
+import {CollectionHolder_GetBeingCalledOnMinimalist}                                                                                                                               from "./instance/CollectionHolder_GetBeingCalledOnMinimalist"
 import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL_B_NULL_D, NULL_x2, NULL_x4, UNDEFINED, UNDEFINED_x2, UNDEFINED_x4, UPPER_E, UPPER_EE, UPPER_EEEE} from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                         from "./value/callbacks (fail)"
 import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                 from "./value/callbacks (null)"
@@ -43,197 +46,203 @@ describe("CollectionHolderTest (map)", () => {
     describe("get() being called", () => {
         //README: The adaptor classes are ignored since they rely on the apdated class instead.
         //        The lazy classes are ignored since they use inner class(es) instead.
-        //        The viewer instances are ignored since they rely on the viewed class instead.
         //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
         describe("empty ~ collection (by minimalist)", () => {
             describe("map", () => {
-                test("(T, number) → U", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
-                test("(T) → U",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
-                test("() → U",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
+                test("(T, number) → U", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
+                test("(T) → U",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
             },)
             describe("mapIndexed", () => {
-                test("(number, T) → U", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
-                test("(number) → U",    () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
-                test("() → U",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
+                test("(number, T) → U", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
+                test("(number) → U",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
             },)
 
             describe("mapNotNull", () => {
-                test("(T, number) → U?", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
-                test("(T) → U?",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
+                test("(T, number) → U?", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
+                test("(T) → U?",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
             },)
             describe("mapNotNullIndexed", () => {
-                test("(number, T) → U?", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
-                test("(number) → U?",    () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
+                test("(number, T) → U?", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
+                test("(number) → U?",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
             },)
         },)
         describe("empty ~ collection (by normal)", () => {
             describe("map", () => {
-                test("(T, number) → U", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
-                test("(T) → U",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
-                test("() → U",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
+                test("(T, number) → U", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
+                test("(T) → U",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.map(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
             },)
             describe("mapIndexed", () => {
-                test("(number, T) → U", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
-                test("(number) → U",    () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
-                test("() → U",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
+                test("(number, T) → U", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
+                test("(number) → U",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
             },)
 
             describe("mapNotNull", () => {
-                test("(T, number) → U?", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
-                test("(T) → U?",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
+                test("(T, number) → U?", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
+                test("(T) → U?",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
             },)
             describe("mapNotNullIndexed", () => {
-                test("(number, T) → U?", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
-                test("(number) → U?",    () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
+                test("(number, T) → U?", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
+                test("(number) → U?",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsFail2,),)  .amountOfCall,).toBe(0,),)
             },)
         },)
 
         describe("1 field ~ collection (by minimalist)", () => {
             describe("map", () => {
-                test("(T, number) → U",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(1,),)
-                test("() → U",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(1,),)
+                test("(T, number) → U",  () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(1,),)
+                test("() → U",           () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(1,),)
             },)
             describe("mapIndexed", () => {
-                test("(number, T) → U",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(1,),)
+                test("(number, T) → U",  () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U",     () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U",           () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(1,),)
             },)
 
             describe("mapNotNull", () => {
-                test("(T, number) → U?",  () => expect(new CollectionHolder_ByMinimalistCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U?",          () => expect(new CollectionHolder_ByMinimalistCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(1,),)
-                test("() → U?",           () => expect(new CollectionHolder_ByMinimalistCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(1,),)
+                test("(T, number) → U?",  () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U?",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(1,),)
+                test("() → U?",           () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(1,),)
             },)
             describe("mapNotNullIndexed", () => {
-                test("(number, T) → U?",  () => expect(new CollectionHolder_ByMinimalistCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U?",     () => expect(new CollectionHolder_ByMinimalistCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U?",           () => expect(new CollectionHolder_ByMinimalistCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(1,),)
+                test("(number, T) → U?",  () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U?",     () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U?",           () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(1,),)
             },)
         },)
         describe("1 field ~ collection (by normal)", () => {
             describe("map", () => {
-                test("(T, number) → U",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(1,),)
-                test("() → U",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(1,),)
+                test("(T, number) → U",  () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(1,),)
+                test("() → U",           () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(1,),)
             },)
             describe("mapIndexed", () => {
-                test("(number, T) → U",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U",     () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(1,),)
+                test("(number, T) → U",  () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U",     () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U",           () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(1,),)
             },)
 
             describe("mapNotNull", () => {
-                test("(T, number) → U?",  () => expect(new CollectionHolder_ByGenericCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U?",          () => expect(new CollectionHolder_ByGenericCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(1,),)
-                test("() → U?",           () => expect(new CollectionHolder_ByGenericCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(1,),)
+                test("(T, number) → U?",  () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U?",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(1,),)
+                test("() → U?",           () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(1,),)
             },)
             describe("mapNotNullIndexed", () => {
-                test("(number, T) → U?",  () => expect(new CollectionHolder_ByGenericCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U?",     () => expect(new CollectionHolder_ByGenericCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U?",           () => expect(new CollectionHolder_ByGenericCollection(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(1,),)
+                test("(number, T) → U?",  () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U?",     () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U?",           () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,) .executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(1,),)
             },)
         },)
 
         describe("2 fields ~ collection (by minimalist)", () => {
             describe("map", () => {
-                test("(T, number) → U", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(2,),)
-                test("() → U",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(2,),)
+                test("(T, number) → U", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(2,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(2,),)
             },)
             describe("mapIndexed", () => {
-                test("(number, T) → U", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(2,),)
+                test("(number, T) → U", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(2,),)
             },)
 
             describe("mapNotNull", () => {
-                test("(T, number) → U?", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U?",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(2,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(2,),)
+                test("(T, number) → U?", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U?",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(2,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(2,),)
             },)
             describe("mapNotNullIndexed", () => {
-                test("(number, T) → U?", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U?",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(2,),)
+                test("(number, T) → U?", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U?",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(2,),)
             },)
         },)
         describe("2 fields ~ collection (by normal)", () => {
             describe("map", () => {
-                test("(T, number) → U", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U",         () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(2,),)
-                test("() → U",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(2,),)
+                test("(T, number) → U", () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(2,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(2,),)
             },)
             describe("mapIndexed", () => {
-                test("(number, T) → U", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U",    () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(2,),)
+                test("(number, T) → U", () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(2,),)
             },)
 
             describe("mapNotNull", () => {
-                test("(T, number) → U?", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U?",         () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(2,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(2,),)
+                test("(T, number) → U?", () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U?",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(2,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(2,),)
             },)
             describe("mapNotNullIndexed", () => {
-                test("(number, T) → U?", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U?",    () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(2,),)
+                test("(number, T) → U?", () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U?",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(2,),)
             },)
         },)
 
         describe("N fields ~ collection (by minimalist)", () => {
             describe("map", () => {
-                test("(T, number) → U", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(4,),)
-                test("() → U",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(4,),)
+                test("(T, number) → U", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(4,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
             describe("mapIndexed", () => {
-                test("(number, T) → U", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
+                test("(number, T) → U", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
 
             describe("mapNotNull", () => {
-                test("(T, number) → U?", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U?",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(4,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(4,),)
+                test("(T, number) → U?", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U?",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(4,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
             describe("mapNotNullIndexed", () => {
-                test("(number, T) → U?", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U?",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
+                test("(number, T) → U?", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U?",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
         },)
         describe("N fields ~ collection (by normal)", () => {
             describe("map", () => {
-                test("(T, number) → U", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(4,),)
-                test("() → U",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(4,),)
+                test("(T, number) → U", () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString1,),).amountOfCall,).toBe(4,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.map(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
             describe("mapIndexed", () => {
-                test("(number, T) → U", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
+                test("(number, T) → U", () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
 
             describe("mapNotNull", () => {
-                test("(T, number) → U?", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(T) → U?",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(4,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(4,),)
+                test("(T, number) → U?", () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(T) → U?",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString1,),).amountOfCall,).toBe(4,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
             describe("mapNotNullIndexed", () => {
-                test("(number, T) → U?", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
-                test("(number) → U?",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
-                test("() → U?",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
+                test("(number, T) → U?", () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString0,),).amountOfCall,).toBe(0,),)
+                test("(number) → U?",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
+                test("() → U?",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).executeWhileHavingIndexesOnField(it => it.mapNotNullIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
         },)
 
+    },)
+
+    describe("viewer", () => {
+        test("map",               () => expect(new CollectionHolder_ByViewer().execute(it => it.map(callbackToString0,),)              .map_amountOfCall,)              .toBe(1,),)
+        test("mapIndexed",        () => expect(new CollectionHolder_ByViewer().execute(it => it.mapIndexed(callbackToString0,),)       .mapIndexed_amountOfCall,)       .toBe(1,),)
+        test("mapNotNull",        () => expect(new CollectionHolder_ByViewer().execute(it => it.mapNotNull(callbackToString0,),)       .mapNotNull_amountOfCall,)       .toBe(1,),)
+        test("mapNotNullIndexed", () => expect(new CollectionHolder_ByViewer().execute(it => it.mapNotNullIndexed(callbackToString0,),).mapNotNullIndexed_amountOfCall,).toBe(1,),)
     },)
 
     describe("instances", () => {

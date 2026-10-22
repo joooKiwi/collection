@@ -17,8 +17,7 @@ import type {MinimalistCollectionHolder}   from "../MinimalistCollectionHolder"
 import type {IndexValueWithReturnCallback} from "../type/callback"
 
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
-import {isArray}                       from "./isArray"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -27,8 +26,8 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each non-null element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the non-null results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param transform  The given transform
@@ -46,7 +45,7 @@ export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>,
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return mapNotNullIndexedByCollectionHolder(collection, transform,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return mapNotNullIndexedByArray(collection, transform,)
     if (isMinimalistCollectionHolder(collection,))
         return mapNotNullIndexedByMinimalistCollectionHolder(collection, transform,)
@@ -60,8 +59,8 @@ export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>,
 
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each non-null element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the non-null results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform
@@ -82,15 +81,15 @@ export function mapNotNullIndexedByMinimalistCollectionHolder<const T, const U e
     if (size === 0)
         return EmptyCollectionHolder.get
     if (transform.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
     if (transform.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, transform, size,),)
-    return new LazyCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, transform, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
 }
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each non-null element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the non-null results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform
@@ -109,15 +108,15 @@ export function mapNotNullIndexedByCollectionHolder<const T, const U extends Non
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (transform.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, collection.size,),)
     if (transform.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, transform, collection.size,),)
-    return new LazyCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, collection.size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, transform, collection.size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, collection.size,),)
 }
 
 /**
- * Create a new {@link CollectionHolder} applying a {@link transform} function
- * on each non-null element of the {@link collection}
+ * Create a new {@link CollectionHolder} containing the non-null results
+ * applying the given {@link transform} function on each element of the {@link collection}
  *
  * @param collection The nullable collection
  * @param transform  The given transform
@@ -138,10 +137,10 @@ export function mapNotNullIndexedByArray<const T, const U extends NonNullable<un
     if (size === 0)
         return EmptyCollectionHolder.get
     if (transform.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
     if (transform.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)
-    return new LazyCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
 }
 
 //#endregion -------------------- Facade method --------------------

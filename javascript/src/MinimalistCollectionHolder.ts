@@ -13,7 +13,7 @@
 /**
  * A minimalistic declaration of the {@link CollectionHolder}
  *
- * @param T The type (by default `unknown`)
+ * @param T The type (`unknown` by default)
  */
 export interface MinimalistCollectionHolder<out T = unknown, > {
 

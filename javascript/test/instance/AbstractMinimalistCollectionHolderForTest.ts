@@ -108,14 +108,17 @@ import {toReverseByMinimalistCollectionHolder}                 from "../../src/m
 import {toSetByMinimalistCollectionHolder}                     from "../../src/method/toSet"
 import {toStringByMinimalistCollectionHolder}                  from "../../src/method/toString"
 import {toUpperCaseStringByMinimalistCollectionHolder}         from "../../src/method/toUpperCaseString"
-import {AbstractCollectionHolderForTest}                       from "./AbstractCollectionHolderForTest"
+import {AbstractUnimplementedCollectionHolderForTest}          from "./AbstractUnimplementedCollectionHolderForTest"
 
-/** A common ancestor that have the methods reference to the {@link MinimalistCollectionHolder} extension methods */
-export abstract class AbstractMinimalistCollectionHolderForTest<const T,
-    const REFERENCE extends Array<T>, >
-    extends AbstractCollectionHolderForTest<T> {
+/**
+ * A common ancestor that have the methods reference to the {@link MinimalistCollectionHolder} extension methods
+ *
+ * @typeParam T The type (**mandatory**)
+ */
+export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
+    extends AbstractUnimplementedCollectionHolderForTest<T> {
 
-    public constructor(/** The array received in the constructor */ public readonly array: REFERENCE,) { super() }
+    protected constructor() { super() }
 
     //#region -------------------- Size methods --------------------
 

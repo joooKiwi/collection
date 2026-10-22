@@ -24,10 +24,10 @@ import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIte
 /**
  * A {@link CollectionIterator} with no values (as a singleton instance)
  *
- * @see CollectionConstants.EMPTY_COLLECTION_ITERATOR
+ * @see MembersConstants.EMPTY_COLLECTION_ITERATOR
  * @see GenericCollectionIterator
- * @see CollectionIteratorOf1
- * @see CollectionIteratorOf2
+ * @see SingleValueCollectionIterator
+ * @see DualValueCollectionIterator
  * @singleton
  */
 export class EmptyCollectionIterator

@@ -10,11 +10,20 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {NullOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr} from "@joookiwi/type"
 
-import type {Couple} from "./tuple/Couple"
+import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionHolderOf1} from "./CollectionHolderOf1"
+import type {CollectionHolderOf2} from "./CollectionHolderOf2"
+import type {Optional}            from "./optional/Optional"
 
-import {AbstractCollectionHolderOf2} from "./AbstractCollectionHolderOf2"
+import {AbstractIndependentCollectionHolderOf2} from "./AbstractIndependentCollectionHolderOf2"
+import {DualValueCollectionHolder}              from "./DualValueCollectionHolder"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1Or2}          from "./LazyCollectionHolderOf0Or1Or2"
+import {LazyCollectionHolderOf2}                from "./LazyCollectionHolderOf2"
+import {SingleValueCollectionHolder}            from "./SingleValueCollectionHolder"
+import {Couple}                                 from "./tuple/Couple"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
 
@@ -23,22 +32,21 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  *
  * It does retrieve the value only once from the callback received in its `constructor`.
  *
- * @typeParam T The type (by default `unknown`)
- * @typeParam T1 The 1st type (by default `T`)
- * @typeParam T2 The 2nd type (by default `T`)
- * @see CollectionHolderOf2
+ * @typeParam T1 The 1st type (`unknown` by default)
+ * @typeParam T2 The 2nd type (`unknown` by default)
+ * @see DualValueCollectionHolder
  * @see ArrayOf2AsCollectionHolder
  * @see SetOf2AsCollectionHolder
+ * @see IteratorOf2AsCollectionHolder
  */
-export class LazyCollectionHolderOf2<const T = unknown,
-    const T1 extends T = T,
-    const T2 extends T = T, >
-    extends AbstractCollectionHolderOf2<T, T1, T2> {
+export class LazyCollectionHolderOf2<const T1 = unknown,
+    const T2 = unknown, >
+    extends AbstractIndependentCollectionHolderOf2<T1, T2> {
 
     //#region -------------------- Field --------------------
 
-    #lateValues: () => Couple<T, T1, T2>
-    #values?: NullOr<Couple<T, T1, T2>>
+    #lateValues: () => Couple<T1, T2>
+    #values?: NullOr<Couple<T1, T2>>
     #value1?: T1
     #isValue1Initialized: boolean
     #value2?: T2
@@ -52,7 +60,7 @@ export class LazyCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Field --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(lateValues: () => Couple<T, T1, T2>,) {
+    public constructor(lateValues: () => Couple<T1, T2>,) {
         super()
         this.#lateValues = lateValues
         this.#isValue1Initialized = this.#isValue2Initialized = false
@@ -61,11 +69,30 @@ export class LazyCollectionHolderOf2<const T = unknown,
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    /** The internal 1st value (out of 2) passed through the {@link constructor} */
-    public get 0(): T1 { return this.value1 }
+    protected override _createCouple<const U1, const U2, >(value1: U1, value2: U2,): Couple<U1, U2> {
+        return new Couple(value1, value2,)
+    }
 
-    /** The internal 2nd value (out of 2) passed through the {@link constructor} */
-    public get 1(): T2 { return this.value2 }
+    protected override _create1<const U,>(value: U,): CollectionHolderOf1<U>  {
+        return new SingleValueCollectionHolder(value,)
+    }
+
+    protected override _create2(value2: T2, value1: T1,): CollectionHolderOf2<T2, T1> {
+        return new DualValueCollectionHolder(value2, value1,)
+    }
+
+    protected override _createLazy2<const U1, const U2, >(lateValue: () => Couple<U1, U2>,): CollectionHolderOf2<U1, U2> {
+        return new LazyCollectionHolderOf2(lateValue,)
+    }
+
+    protected override _create0Or1Or2<const U1, const U2, >(latePossibleValue: () => Nullable<Couple<Optional<| U1 | U2>, Optional<U2>>>,): CollectionHolder<| U1 | U2> {
+        return new LazyCollectionHolderOf0Or1Or2(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<| T1 | T2>,): CollectionHolder<| T1 | T2> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
+    }
+
 
     /** The internal 1st value (out of 2) passed through the {@link constructor} */
     public override get value1(): T1 {

@@ -20,6 +20,11 @@ import type {Couple}                from "../../src/tuple/Couple"
 
 import {LazyCollectionHolderOf0Or1Or2} from "../../src/LazyCollectionHolderOf0Or1Or2"
 
+/**
+ * A {@link LazyCollectionHolderOf0Or1Or2} that exposes the inner-collection for the purpose of the tests
+ *
+ * @typeParam T The type (**mandatory**)
+ */
 export class LazyCollectionHolderOf0Or1Or2_InnerCollectionTest<const T, >
     extends LazyCollectionHolderOf0Or1Or2<T> {
 

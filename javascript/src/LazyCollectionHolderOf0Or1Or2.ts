@@ -15,18 +15,16 @@ import type {Array, EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, Em
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
-import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "./iterator/CollectionIteratorOf1"
-import type {CollectionIteratorOf2}                                                                                                                                                                                                                                             from "./iterator/CollectionIteratorOf2"
-import type {EmptyCollectionIterator}                                                                                                                                                                                                                                           from "./iterator/EmptyCollectionIterator"
 import type {Optional}                                                                                                                                                                                                                                                          from "./optional/Optional"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
+import type {CollectionHolderOfSame0Or1Or2}                                                                                                                                                                                                                                     from "./type/collection"
+import type {CollectionIteratorOfSame0Or1Or2}                                                                                                                                                                                                                                   from "./type/iterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "./type/possibleInstance"
 
 import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedCollectionHolder"
-import type {CollectionHolderOf1}              from "./CollectionHolderOf1"
-import type {CollectionHolderOf2}              from "./CollectionHolderOf2"
-import {LateRetriever}                         from "./LateRetriever"
+import {DualValueCollectionHolder}             from "./DualValueCollectionHolder"
 import {EmptyCollectionHolder}                 from "./EmptyCollectionHolder"
+import {SingleValueCollectionHolder}           from "./SingleValueCollectionHolder"
 import {IndexOutOfBoundsException}             from "./exception/IndexOutOfBoundsException"
 import {Couple}                                from "./tuple/Couple"
 
@@ -37,26 +35,26 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  * The first as {@link EmptyCollectionHolder}, the second as {@link CollectionHolderOf1} and the third as {@link CollectionHolderOf2}.
  * Plus, the inner-collection is lazily retrieved.
  *
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (`unknown` by default)
  */
 export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     extends AbstractUnimplementedCollectionHolder<T> {
 
     //#region -------------------- Field --------------------
 
-    #latePossibleValue: () => Nullable<Couple<Optional<T>>>
+    #latePossibleValue: () => Nullable<Couple<Optional<T>, Optional<T>>>
     #value1?: T
     #isValue1Initialized: boolean
     #value2?: T
     #isValue2Initialized: boolean
-    #innerCollection?: | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder
+    #innerCollection?: CollectionHolderOfSame0Or1Or2<T>
 
     //#endregion -------------------- Field --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(latePossibleValue: () => Nullable<Couple<Optional<T>>>,)
-    public constructor(latePossibleValue: () => Optional<Couple<Optional<T>>>,)
-    public constructor(latePossibleValue: () => | Nullable<Couple<Optional<T>>> | Optional<Couple<Optional<T>>>,) {
+    public constructor(latePossibleValue: () => Nullable<Couple<Optional<T>, Optional<T>>>,)
+    public constructor(latePossibleValue: () => Optional<Couple<Optional<T>, Optional<T>>>,)
+    public constructor(latePossibleValue: () => | Nullable<Couple<Optional<T>, Optional<T>>> | Optional<Couple<Optional<T>, Optional<T>>>,) {
         super()
         this.#latePossibleValue = () => {
             const possibleValue = latePossibleValue()
@@ -79,7 +77,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
      *
      * @initializedOnFirstCall
      */
-    protected get _innerCollection(): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder {
+    protected get _innerCollection(): CollectionHolderOfSame0Or1Or2<T> {
         const value = this.#innerCollection
         if (value != null)
             return value
@@ -95,10 +93,10 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
             if (value2.isEmpty)
                 return this.#innerCollection = EmptyCollectionHolder.get // Even though not efficient, it is still possible
             else
-                return this.#innerCollection = new LateRetriever.CollectionHolderOf1(value2.get,)
+                return this.#innerCollection = new SingleValueCollectionHolder(value2.get,)
         if (value2.isEmpty)
-            return this.#innerCollection = new LateRetriever.CollectionHolderOf1(value1.get,)
-        return this.#innerCollection = new LateRetriever.CollectionHolderOf2(value1.get, value2.get,)
+            return this.#innerCollection = new SingleValueCollectionHolder(value1.get,)
+        return this.#innerCollection = new DualValueCollectionHolder(value1.get, value2.get,)
     }
 
     public get 0(): T { return this.value1 }
@@ -247,7 +245,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
 
     //#region -------------------- All --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) { return this._innerCollection.all(predicate,) }
 
@@ -346,8 +344,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        if (this._innerCollection.hasNull)
-            throw new TypeError("Forbidden null value. The current collection contains null values.",)
+        this._innerCollection.requireNoNulls()
         return this as CollectionHolder<NonNullable<T>>
     }
 
@@ -397,7 +394,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     //#endregion -------------------- Slice --------------------
     //#region -------------------- Take --------------------
 
-    public override take(n: number,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.take(n,) }
+    public override take(n: number,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.take(n,) }
 
     public override takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -408,7 +405,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this._innerCollection.takeWhileIndexed(predicate,) }
 
 
-    public override takeLast(n: number,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.takeLast(n,) }
+    public override takeLast(n: number,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.takeLast(n,) }
 
     public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -421,7 +418,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     //#endregion -------------------- Take --------------------
     //#region -------------------- Drop --------------------
 
-    public override drop(n: number,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.drop(n,) }
+    public override drop(n: number,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.drop(n,) }
 
     public override dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -432,7 +429,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this._innerCollection.dropWhileIndexed(predicate,) }
 
 
-    public override dropLast(n: number,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.dropLast(n,) }
+    public override dropLast(n: number,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.dropLast(n,) }
 
     public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -479,14 +476,14 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
 
     //#region -------------------- To reverse --------------------
 
-    public override toReverse(from?: NullableNumber, to?: NullableNumber,): | CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.toReverse(from, to,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolderOfSame0Or1Or2<T> { return this._innerCollection.toReverse(from, to,) }
 
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public override [Symbol.iterator](): | CollectionIteratorOf2<T> | CollectionIteratorOf1<T> | EmptyCollectionIterator {
+    public override [Symbol.iterator](): CollectionIteratorOfSame0Or1Or2<T> {
         return this.toIterator()
     }
 
@@ -495,7 +492,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
 
     //#region -------------------- To other structure --------------------
 
-    public override toIterator(): | CollectionIteratorOf2<T> | CollectionIteratorOf1<T> | EmptyCollectionIterator { return this._innerCollection.toIterator() }
+    public override toIterator(): CollectionIteratorOfSame0Or1Or2<T> { return this._innerCollection.toIterator() }
 
     public override toArray(): | readonly [T, T,] | readonly [T,] | EmptyArray { return this._innerCollection.toArray() }
 

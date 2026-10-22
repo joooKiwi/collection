@@ -10,16 +10,16 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionConstants} from "../CollectionConstants"
+import type {SymbolConstants} from "../SymbolConstants"
 
 /** A type-alias of {@link CollectionHolder}[{@link Symbol.toStringTag}] */
-export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER_TO_STRING_TAG"]
+export type CollectionHolderName = typeof SymbolConstants["COLLECTION_HOLDER_TO_STRING_TAG"]
 
 /** A type-alias of {@link CollectionIterator}[{@link Symbol.toStringTag}] */
-export type CollectionIteratorName = typeof CollectionConstants["COLLECTION_ITERATOR_TO_STRING_TAG"]
+export type CollectionIteratorName = typeof SymbolConstants["COLLECTION_ITERATOR_TO_STRING_TAG"]
 
 /** A type-alias of {@link Tuple}[{@link Symbol.toStringTag}] */
-export type TupleName = typeof CollectionConstants["TUPLE_TO_STRING_TAG"]
+export type TupleName = typeof SymbolConstants["TUPLE_TO_STRING_TAG"]
 
 /** A type-alias of {@link Optional}[{@link Symbol.toStringTag}] */
-export type OptionalName = typeof CollectionConstants["OPTIONAL_TO_STRING_TAG"]
+export type OptionalName = typeof SymbolConstants["OPTIONAL_TO_STRING_TAG"]

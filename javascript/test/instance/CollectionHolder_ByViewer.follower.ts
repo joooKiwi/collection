@@ -18,9 +18,9 @@ import type {BooleanCallback, IndexWithReturnCallback, RestrainedBooleanCallback
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
 import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
 
+import {ArrayAsCollectionHolder}   from "../../src/ArrayAsCollectionHolder"
 import {CollectionViewer}          from "../../src/CollectionViewer"
 import {ABCD}                      from "../value/arrays"
-import {CollectionHolderFromArray} from "./CollectionHolderFromArray"
 
 /**
  * An inherited instance of {@link CollectionViewer}
@@ -111,7 +111,7 @@ export class CollectionHolder_ByViewerFollower
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor() { super(new CollectionHolderFromArray(ABCD,),) }
+    public constructor() { super(new ArrayAsCollectionHolder(ABCD,),) }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
@@ -332,7 +332,7 @@ export class CollectionHolder_ByViewerFollower
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    public override all<S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolder<S>
+    public override all<const S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<string>,): boolean
     public override all(predicate: BooleanCallback<string>,) {
         this.all_amountOfCall++

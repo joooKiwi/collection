@@ -10,8 +10,11 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolder_ByGenericCollection}                                                                                                                                                                                                                                                                       from "./instance/CollectionHolder_ByGenericCollection"
-import {CollectionHolder_ByMinimalistCollection}                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_ByMinimalistCollection"
+import {describe, expect, test} from "vitest"
+
+import {CollectionHolder_ByViewer}                                                                                                                                                                                                                                                                                  from "./instance/CollectionHolder_ByViewer"
+import {CollectionHolder_GetBeingCalledOnNormal}                                                                                                                                                                                                                                                                    from "./instance/CollectionHolder_GetBeingCalledOnNormal"
+import {CollectionHolder_GetBeingCalledOnMinimalist}                                                                                                                                                                                                                                                                from "./instance/CollectionHolder_GetBeingCalledOnMinimalist"
 import {expectToBeInstance}                                                                                                                                                                                                                                                                                         from "./expect/expectToBeInstance"
 import {A, AB, ABCD, EMPTY}                                                                                                                                                                                                                                                                                         from "./value/arrays"
 import {callback0, callback1, callback2}                                                                                                                                                                                                                                                                            from "./value/callbacks"
@@ -20,7 +23,7 @@ import {every0Instances, every1Instances, every2Instances, everyExtensionMethodI
 
 import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
-describe("CollectionHolderTest (forEach / onEach)", () => {
+describe("CollectionHolderTest (loop)", () => {
 
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
@@ -42,197 +45,203 @@ describe("CollectionHolderTest (forEach / onEach)", () => {
     describe("get() being called", () => {
         //README: The adaptor classes are ignored since they rely on the apdated class instead.
         //        The lazy classes are ignored since they use inner class(es) instead.
-        //        The viewer instances are ignored since they rely on the viewed class instead.
         //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
 
         describe("empty ~ collection (by minimalist)", () => {
             describe("forEach", () => {
-                test("empty: (T, number) → void", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.forEach(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                test("empty: (T) → void",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.forEach(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                test("empty: () → void",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.forEach(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                test("empty: (T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.forEach(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                test("empty: (T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.forEach(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                test("empty: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.forEach(callbackAsFail0,),).amountOfCall,).toBe(0,),)
             },)
             describe("forEachIndexed", () => {
-                test("empty: (number, T) → void", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                test("empty: (number) → void",    () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                test("empty: () → void",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                test("empty: (number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                test("empty: (number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                test("empty: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
             },)
 
             describe("onEach", () => {
-                test("empty: (T, number) → void", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.onEach(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                test("empty: (T) → void",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.onEach(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                test("empty: () → void",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.onEach(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                test("empty: (T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.onEach(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                test("empty: (T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.onEach(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                test("empty: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.onEach(callbackAsFail0,),).amountOfCall,).toBe(0,),)
             },)
             describe("onEachIndexed", () => {
-                test("empty: (number, T) → void", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                test("empty: (number) → void",    () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                test("empty: () → void",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                test("empty: (number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                test("empty: (number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                test("empty: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
             },)
         },)
         describe("empty ~ collection (by normal)", () => {
             describe("forEach", () => {
-                test("empty: (T, number) → void", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.forEach(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                test("empty: (T) → void",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.forEach(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                test("empty: () → void",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.forEach(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                test("empty: (T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.forEach(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                test("empty: (T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.forEach(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                test("empty: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.forEach(callbackAsFail0,),).amountOfCall,).toBe(0,),)
             },)
             describe("forEachIndexed", () => {
-                test("empty: (number, T) → void", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                test("empty: (number) → void",    () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                test("empty: () → void",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                test("empty: (number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                test("empty: (number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                test("empty: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.forEachIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
             },)
 
             describe("onEach", () => {
-                test("empty: (T, number) → void", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.onEach(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                test("empty: (T) → void",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.onEach(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                test("empty: () → void",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.onEach(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                test("empty: (T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.onEach(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                test("empty: (T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.onEach(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                test("empty: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.onEach(callbackAsFail0,),).amountOfCall,).toBe(0,),)
             },)
             describe("onEachIndexed", () => {
-                test("empty: (number, T) → void", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                test("empty: (number) → void",    () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                test("empty: () → void",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                test("empty: (number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                test("empty: (number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                test("empty: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(EMPTY,).execute(it => it.onEachIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
             },)
         },)
 
         describe("1 field ~ collection (by minimalist)", () => {
             describe("forEach", () => {
-                test("1 field: (T, number) → void", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(1,),)
-                test("1 field: (T) → void",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(1,),)
-                test("1 field: () → void",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("1 field: (T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(1,),)
+                test("1 field: (T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(1,),)
+                test("1 field: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("forEachIndexed", () => {
-                test("1 field: (number, T) → void", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(1,),)
-                test("1 field: (number) → void",    () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("1 field: () → void",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("1 field: (number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(1,),)
+                test("1 field: (number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("1 field: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
 
             describe("onEach", () => {
-                test("1 field: (T, number) → void", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(1,),)
-                test("1 field: (T) → void",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(1,),)
-                test("1 field: () → void",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("1 field: (T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(1,),)
+                test("1 field: (T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(1,),)
+                test("1 field: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("onEachIndexed", () => {
-                test("1 field: (number, T) → void", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(1,),)
-                test("1 field: (number) → void",    () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("1 field: () → void",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("1 field: (number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(1,),)
+                test("1 field: (number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("1 field: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(A,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
         },)
         describe("1 field ~ collection (by normal)", () => {
             describe("forEach", () => {
-                test("1 field: (T, number) → void", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(1,),)
-                test("1 field: (T) → void",         () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(1,),)
-                test("1 field: () → void",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("1 field: (T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(1,),)
+                test("1 field: (T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(1,),)
+                test("1 field: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("forEachIndexed", () => {
-                test("1 field: (number, T) → void", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(1,),)
-                test("1 field: (number) → void",    () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("1 field: () → void",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("1 field: (number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(1,),)
+                test("1 field: (number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("1 field: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
 
             describe("onEach", () => {
-                test("1 field: (T, number) → void", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(1,),)
-                test("1 field: (T) → void",         () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(1,),)
-                test("1 field: () → void",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("1 field: (T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(1,),)
+                test("1 field: (T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(1,),)
+                test("1 field: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("onEachIndexed", () => {
-                test("1 field: (number, T) → void", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(1,),)
-                test("1 field: (number) → void",    () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("1 field: () → void",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("1 field: (number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(1,),)
+                test("1 field: (number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("1 field: () → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(A,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
         },)
 
         describe("2 fields ~ collection (by minimalist)", () => {
             describe("forEach", () => {
-                test("(T, number) → void", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(2,),)
-                test("(T) → void",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(2,),)
-                test("() → void",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("(T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(2,),)
+                test("(T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(2,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("forEachIndexed", () => {
-                test("(number, T) → void", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(2,),)
-                test("(number) → void",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("() → void",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("(number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(2,),)
+                test("(number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
 
             describe("onEach", () => {
-                test("(T, number) → void", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(2,),)
-                test("(T) → void",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(2,),)
-                test("() → void",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("(T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(2,),)
+                test("(T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(2,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("onEachIndexed", () => {
-                test("(number, T) → void", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(2,),)
-                test("(number) → void",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("() → void",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("(number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(2,),)
+                test("(number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(AB,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
         },)
         describe("2 fields ~ collection (by normal)", () => {
             describe("forEach", () => {
-                test("(T, number) → void", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(2,),)
-                test("(T) → void",         () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(2,),)
-                test("() → void",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("(T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(2,),)
+                test("(T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(2,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("forEachIndexed", () => {
-                test("(number, T) → void", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(2,),)
-                test("(number) → void",    () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("() → void",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("(number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(2,),)
+                test("(number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
 
             describe("onEach", () => {
-                test("(T, number) → void", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(2,),)
-                test("(T) → void",         () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(2,),)
-                test("() → void",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("(T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(2,),)
+                test("(T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(2,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("onEachIndexed", () => {
-                test("(number, T) → void", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(2,),)
-                test("(number) → void",    () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("() → void",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("(number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(2,),)
+                test("(number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(AB,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
         },)
 
         describe("N fields ~ collection (by minimalist)", () => {
             describe("forEach", () => {
-                test("(T, number) → void", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(4,),)
-                test("(T) → void",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(4,),)
-                test("() → void",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("(T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(4,),)
+                test("(T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(4,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("forEachIndexed", () => {
-                test("(number, T) → void", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(4,),)
-                test("(number) → void",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("() → void",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("(number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(4,),)
+                test("(number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
 
             describe("onEach", () => {
-                test("(T, number) → void", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(4,),)
-                test("(T) → void",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(4,),)
-                test("() → void",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("(T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(4,),)
+                test("(T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(4,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("onEachIndexed", () => {
-                test("(number, T) → void", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(4,),)
-                test("(number) → void",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("() → void",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("(number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(4,),)
+                test("(number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnMinimalist(ABCD,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
         },)
         describe("N fields ~ collection (by normal)", () => {
             describe("forEach", () => {
-                test("(T, number) → void", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(4,),)
-                test("(T) → void",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(4,),)
-                test("() → void",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("(T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.forEach(callback2,),).amountOfCall,).toBe(4,),)
+                test("(T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.forEach(callback1,),).amountOfCall,).toBe(4,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.forEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("forEachIndexed", () => {
-                test("(number, T) → void", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(4,),)
-                test("(number) → void",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("() → void",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("(number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.forEachIndexed(callback2,),).amountOfCall,).toBe(4,),)
+                test("(number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.forEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.forEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
 
             describe("onEach", () => {
-                test("(T, number) → void", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(4,),)
-                test("(T) → void",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(4,),)
-                test("() → void",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
+                test("(T, number) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.onEach(callback2,),).amountOfCall,).toBe(4,),)
+                test("(T) → void",         () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.onEach(callback1,),).amountOfCall,).toBe(4,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.onEach(callback0,),).amountOfCall,).toBe(0,),)
             },)
             describe("onEachIndexed", () => {
-                test("(number, T) → void", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(4,),)
-                test("(number) → void",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
-                test("() → void",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
+                test("(number, T) → void", () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.onEachIndexed(callback2,),).amountOfCall,).toBe(4,),)
+                test("(number) → void",    () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.onEachIndexed(callback1,),).amountOfCall,).toBe(0,),)
+                test("() → void",          () => expect(new CollectionHolder_GetBeingCalledOnNormal(ABCD,).execute(it => it.onEachIndexed(callback0,),).amountOfCall,).toBe(0,),)
             },)
         },)
 
+    },)
+
+    describe("viewer", () => {
+        test("forEach",        () => expect(new CollectionHolder_ByViewer().execute(it => it.forEach(callback0,),)       .forEach_amountOfCall,)       .toBe(1,),)
+        test("forEachIndexed", () => expect(new CollectionHolder_ByViewer().execute(it => it.forEachIndexed(callback0,),).forEachIndexed_amountOfCall,).toBe(1,),)
+        test("onEach",         () => expect(new CollectionHolder_ByViewer().execute(it => it.onEach(callback0,),)        .forEach_amountOfCall,)       .toBe(1,),)
+        test("onEachIndexed",  () => expect(new CollectionHolder_ByViewer().execute(it => it.onEachIndexed(callback0,),) .forEachIndexed_amountOfCall,).toBe(1,),)
     },)
 
     describe("for‥of", () => {

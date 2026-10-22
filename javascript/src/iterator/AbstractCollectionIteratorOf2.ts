@@ -18,26 +18,22 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {PossibleIteratorValue}                                                                from "../type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 
-import {AbstractUnimplementedCollectionIterator} from "./AbstractUnimplementedCollectionIterator"
-import {NoElementFoundInCollectionException}     from "../exception/NoElementFoundInCollectionException"
-import {GenericAfterLastIteratorValue}           from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirstIteratorValue"
+import {AbstractUnimplementedCollectionIteratorOf2} from "./AbstractUnimplementedCollectionIteratorOf2"
+import {NoElementFoundInCollectionException}        from "../exception/NoElementFoundInCollectionException"
+import {GenericAfterLastIteratorValue}              from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}            from "./value/GenericBeforeFirstIteratorValue"
 
 /**
- * A definition of a {@link CollectionIterator} of 2 values to have a common ancestor.
- * It is a specialization of the {@link AbstractCollectionIterator}
- * without the internal values required for an unknown amount of elements.
+ * A definition of a {@link CollectionIteratorOf2} to have a common ancestor.
+ * Only the previous|current|next index are stored and updated (if needed).
  *
- * @typeParam T  The element type
- * @typeParam T1 The first element type (`T` by default)
- * @typeParam T2 The second element type (`T` by default)
- * @see EmptyCollectionIterator
- * @see CollectionIteratorOf2
+ * @typeParam T1 The 1st type (**mandatory**)
+ * @typeParam T2 The 2nd type (**mandatory**)
+ * @see DualValueCollectionIterator
  */
-export abstract class AbstractCollectionIteratorOf2<const T,
-    const T1 extends T = T,
-    const T2 extends T = T, >
-    extends AbstractUnimplementedCollectionIterator<T> {
+export abstract class AbstractCollectionIteratorOf2<const T1,
+    const T2, >
+    extends AbstractUnimplementedCollectionIteratorOf2<T1, T2> {
 
     //#region -------------------- Fields --------------------
 
@@ -58,15 +54,9 @@ export abstract class AbstractCollectionIteratorOf2<const T,
 
     //#region -------------------- Reference methods --------------------
 
-    /** The first value (out of 2) of the current instance */
-    public abstract get value1(): T1
+    protected abstract readonly _valueResult1: IteratorValueOf1On2<T1>
 
-    /** The second value (out of 2) of the current instance */
-    public abstract get value2(): T2
-
-    protected abstract get _valueResult1(): IteratorValueOf1On2<T1>
-
-    protected abstract get _valueResult2(): IteratorValueOf2On2<T2>
+    protected abstract readonly _valueResult2: IteratorValueOf2On2<T2>
 
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
@@ -142,11 +132,11 @@ export abstract class AbstractCollectionIteratorOf2<const T,
      */
     protected set _nextIndex(value: NullOrNumber<| 0 | 1>,) { this.#nextIndex = value }
 
-    /** Tell that the next index has been initialized to either <b>null</b> or a {@link Number} */
+    /** Tell that the next index has been initialized to either `null` or a {@link Number} */
     protected get _isNextIndexInitialized(): boolean { return this.#nextIndex !== undefined }
 
 
-    public override get nextValue(): T {
+    public override get nextValue(): | T1 | T2 {
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
@@ -178,7 +168,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     }
 
 
-    public override next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> {
+    public override next(): PossibleIteratorValue<| T1 | T2, AfterLastValueInCollectionIteratorSymbol> {
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
@@ -241,11 +231,11 @@ export abstract class AbstractCollectionIteratorOf2<const T,
      */
     protected set _previousIndex(value: NullOrNumber<| 0 | 1>,) { this.#previousIndex = value }
 
-    /** Tell that the previous index has been initialized to either <b>null</b> or a {@link Number} */
+    /** Tell that the previous index has been initialized to either `null` or a {@link Number} */
     protected get _isPreviousIndexInitialized(): boolean { return this.#previousIndex !== undefined }
 
 
-    public override get previousValue(): T {
+    public override get previousValue(): | T1 | T2 {
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
@@ -277,7 +267,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     }
 
 
-    public override previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> {
+    public override previous(): PossibleIteratorValue<| T1 | T2, BeforeFirstValueInCollectionIteratorSymbol> {
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
@@ -321,10 +311,18 @@ export abstract class AbstractCollectionIteratorOf2<const T,
 
     //#region -------------------- Loop methods --------------------
 
-    public override forEach(operation: ValueIndexCallback<T>,): this {
+    public override forEach(operation: ValueIndexCallback<| T1 | T2>,): this {
         const currentIndex = this._currentIndex
         if (currentIndex != null)
             return this
+
+        if (currentIndex === 0) {
+            operation(this.value1, 0,)
+            this._previousIndex = null
+            this._currentIndex = 0
+            this._nextIndex = 1
+            return this
+        }
 
         operation(this.value1, 0,)
         operation(this.value2, 1,)
@@ -334,10 +332,18 @@ export abstract class AbstractCollectionIteratorOf2<const T,
         return this
     }
 
-    public override forEachIndexed(operation: IndexValueCallback<T>,): this {
+    public override forEachIndexed(operation: IndexValueCallback<| T1 | T2>,): this {
         const currentIndex = this._currentIndex
         if (currentIndex != null)
             return this
+
+        if (currentIndex === 0) {
+            operation(0, this.value1,)
+            this._previousIndex = null
+            this._currentIndex = 0
+            this._nextIndex = 1
+            return this
+        }
 
         operation(0, this.value1,)
         operation(1, this.value2,)
@@ -350,7 +356,7 @@ export abstract class AbstractCollectionIteratorOf2<const T,
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public abstract override [Symbol.iterator](): AbstractCollectionIteratorOf2<T, T1, T2>
+    public abstract override [Symbol.iterator](): AbstractCollectionIteratorOf2<T1, T2>
 
     //#endregion -------------------- JavaScript methods --------------------
 

@@ -16,7 +16,6 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -26,7 +25,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -40,7 +39,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 export function findLastOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -56,7 +55,7 @@ export function findLastOrNull<const T, >(collection: Nullable<| MinimalistColle
         return null
     if (isCollectionHolder(collection,))
         return findLastOrNullByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return findLastOrNullByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return findLastOrNullByMinimalistCollectionHolder(collection, predicate,)
@@ -71,7 +70,7 @@ export function findLastOrNull<const T, >(collection: Nullable<| MinimalistColle
 
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -85,7 +84,7 @@ export function findLastOrNull<const T, >(collection: Nullable<| MinimalistColle
 export function findLastOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -112,7 +111,7 @@ export function findLastOrNullByMinimalistCollectionHolder<const T, >(collection
 
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -126,7 +125,7 @@ export function findLastOrNullByMinimalistCollectionHolder<const T, >(collection
 export function findLastOrNullByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -151,7 +150,7 @@ export function findLastOrNullByCollectionHolder<const T, >(collection: Nullable
 
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -165,7 +164,7 @@ export function findLastOrNullByCollectionHolder<const T, >(collection: Nullable
 export function findLastOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate

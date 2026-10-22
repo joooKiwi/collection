@@ -23,7 +23,7 @@ import {findFirstOrNull, findFirstOrNullByArray, findFirstOrNullByCollectionHold
 
 /**
  * Get the first element in the {@link collection}
- * or <b>null</b> if it <b>is empty</b>
+ * or `null` if it <b>is empty</b>
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -34,7 +34,7 @@ import {findFirstOrNull, findFirstOrNullByArray, findFirstOrNullByCollectionHold
 export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
@@ -49,7 +49,7 @@ export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollecti
 export function firstOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
@@ -70,7 +70,7 @@ export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollecti
 
 /**
  * Get the first element in the {@link collection}
- * or <b>null</b> if it <b>is empty</b>
+ * or `null` if it <b>is empty</b>
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -81,7 +81,7 @@ export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollecti
 export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -96,7 +96,7 @@ export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: N
 export function firstOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -116,7 +116,7 @@ export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: N
 
 /**
  * Get the first element in the {@link collection}
- * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+ * or `null` if it {@link CollectionHolder.isEmpty is empty}
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -127,7 +127,7 @@ export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: N
 export function firstOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -142,7 +142,7 @@ export function firstOrNullByCollectionHolder<const T, >(collection: Nullable<Co
 export function firstOrNullByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -162,7 +162,7 @@ export function firstOrNullByCollectionHolder<const T, >(collection: Nullable<Co
 
 /**
  * Get the first element in the {@link collection}
- * or <b>null</b> if it <b>is empty</b>
+ * or `null` if it <b>is empty</b>
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -173,7 +173,7 @@ export function firstOrNullByCollectionHolder<const T, >(collection: Nullable<Co
 export function firstOrNullByArray<const T, >(collection: Nullable<Array<T>>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate
@@ -188,7 +188,7 @@ export function firstOrNullByArray<const T, >(collection: Nullable<Array<T>>,): 
 export function firstOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
- * or <b>null</b> otherwise
+ * or `null` otherwise
  *
  * @param collection The nullable collection
  * @param predicate  The matching predicate

@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {__endingIndexOrNull, __startingIndexOrNull} from "./_indexes utility"
-import {isArray}                                    from "./isArray"
 import {isArrayByStructure}                         from "./isArrayByStructure"
 import {isCollectionHolder}                         from "./isCollectionHolder"
 import {isCollectionHolderByStructure}              from "./isCollectionHolderByStructure"
@@ -26,14 +25,14 @@ import {isMinimalistCollectionHolder}               from "./isMinimalistCollecti
 
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
- * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -54,14 +53,14 @@ export function firstIndexOfOrNull<const T, >(collection: Nullable<| MinimalistC
 
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param element    The element to find
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -81,14 +80,14 @@ export function firstIndexOfOrNullByMinimalistCollectionHolder<const T, >(collec
 
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param element    The element to find
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -108,14 +107,14 @@ export function firstIndexOfOrNullByCollectionHolder<const T, >(collection: Null
 
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param element    The element to find
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
- * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -141,7 +140,7 @@ export function firstIndexOfOrNullByArray<const T, >(collection: Nullable<Array<
 function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, element,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core0ByArray(collection, element,)
     if (isMinimalistCollectionHolder(collection,))
         return __core0ByMinimalistCollectionHolder(collection, element,)
@@ -179,7 +178,7 @@ function __core0ByArray<const T, >(collection: Array<T>, element: T,): NullOrNum
 function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, element, from,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core1ByArray(collection, element, from,)
     if (isMinimalistCollectionHolder(collection,))
         return __core1ByMinimalistCollectionHolder(collection, element, from,)
@@ -230,7 +229,7 @@ function __core1ByArray<const T, >(collection: Array<T>, element: T, from: numbe
 function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, element, from, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core2ByArray(collection, element, from, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __core2ByMinimalistCollectionHolder(collection, element, from, to,)
@@ -299,7 +298,7 @@ function __core2ByArray<const T, >(collection: Array<T>, element: T, from: numbe
 function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, element, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __coreWithNoFromByArray(collection, element, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __coreWithNoFromByMinimalistCollectionHolder(collection, element, to,)

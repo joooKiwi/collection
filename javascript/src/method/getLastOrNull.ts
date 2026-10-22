@@ -15,7 +15,6 @@ import type {Array, Nullable, NullOr} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -25,7 +24,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * Get the last element in the {@link collection}
- * or <b>null</b> if the {@link collection} <b>is empty</b>
+ * or `null` if the {@link collection} <b>is empty</b>
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -37,7 +36,7 @@ export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollec
         return null
     if (isCollectionHolder(collection,))
         return getLastOrNullByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return getLastOrNullByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return getLastOrNullByMinimalistCollectionHolder(collection,)
@@ -52,7 +51,7 @@ export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollec
 
 /**
  * Get the last element in the {@link collection}
- * or <b>null</b> if the {@link collection} <b>is empty</b>
+ * or `null` if the {@link collection} <b>is empty</b>
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -71,7 +70,7 @@ export function getLastOrNullByMinimalistCollectionHolder<const T, >(collection:
 
 /**
  * Get the last element in the {@link collection}
- * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * or `null` if the {@link collection} {@link CollectionHolder.isEmpty is empty}
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -88,7 +87,7 @@ export function getLastOrNullByCollectionHolder<const T, >(collection: Nullable<
 
 /**
  * Get the last element in the {@link collection}
- * or <b>null</b> if the {@link collection} <b>is empty</b>
+ * or `null` if the {@link collection} <b>is empty</b>
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()

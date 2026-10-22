@@ -54,7 +54,7 @@ export function slice<const T, >(collection: Nullable<| MinimalistCollectionHold
  * from the {@link from starting index} to the end of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} <code>size</code>
@@ -69,7 +69,7 @@ export function slice<const T, >(collection: Nullable<| MinimalistCollectionHold
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -259,7 +259,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * from the {@link from starting index} to the end of the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link MinimalistCollectionHolder.size size}
@@ -274,7 +274,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -463,7 +463,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * from the {@link from starting index} to the end of the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
@@ -478,7 +478,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -667,7 +667,7 @@ export function sliceByArray<const T, >(collection: Nullable<Array<T>>,): Collec
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException {@link from} is not within the {@link collection} {@link ReadonyArray.length size}
@@ -682,7 +682,7 @@ export function sliceByArray<const T, >(collection: Nullable<Array<T>>, from: Nu
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
  * @param collection The nullable collection
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)

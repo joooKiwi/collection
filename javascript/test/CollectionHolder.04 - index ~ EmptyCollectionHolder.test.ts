@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {describe, expect, test} from "vitest"
+
 import {EmptyCollectionHolder}    from "../src/EmptyCollectionHolder"
 import {EmptyCollectionException} from "../src/exception/EmptyCollectionException"
 

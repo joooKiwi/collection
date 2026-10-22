@@ -16,9 +16,9 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
-import {LazyCollectionHolder}          from "../LazyCollectionHolder"
+import {EmptyConstants}                from "../EmptyConstants"
+import {LazyArrayAsCollectionHolder}   from "../LazyArrayAsCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -27,7 +27,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -36,7 +36,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function dropLastWhile<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
@@ -62,7 +62,7 @@ export function dropLastWhile<const T, >(collection: Nullable<| MinimalistCollec
 
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -71,7 +71,7 @@ export function dropLastWhile<const T, >(collection: Nullable<| MinimalistCollec
  */
 export function dropLastWhileByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -86,14 +86,14 @@ export function dropLastWhileByMinimalistCollectionHolder<const T, >(collection:
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, size, predicate,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, size, predicate as () => boolean,),)
 }
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -102,7 +102,7 @@ export function dropLastWhileByMinimalistCollectionHolder<const T, >(collection:
  */
 export function dropLastWhileByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -115,14 +115,14 @@ export function dropLastWhileByCollectionHolder<const T, >(collection: Nullable<
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
-    return new LazyCollectionHolder(() => __with0Argument(collection, collection.size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2Argument(collection, collection.size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0Argument(collection, collection.size, predicate as () => boolean,),)
 }
 
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -131,7 +131,7 @@ export function dropLastWhileByCollectionHolder<const T, >(collection: Nullable<
  */
 export function dropLastWhileByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
- * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+ * Get a new {@link CollectionHolder} __NOT__ having the elements (*last-to-first*) satisfying the given {@link predicate}
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
@@ -146,10 +146,10 @@ export function dropLastWhileByArray<const T, >(collection: Nullable<Array<T>>, 
     if (size === 0)
         return EmptyCollectionHolder.get
     if (predicate.length === 1)
-        return new LazyCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (value: T,) => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)
-    return new LazyCollectionHolder(() => __with0ArgumentByArray(collection, size, predicate as () => boolean,),)
+        return new LazyArrayAsCollectionHolder(() => __with2ArgumentByArray(collection, size, predicate,),)
+    return new LazyArrayAsCollectionHolder(() => __with0ArgumentByArray(collection, size, predicate as () => boolean,),)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -165,7 +165,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 newArrayFrom0ToIndex[index2] = collection.get(index2,)
             return newArrayFrom0ToIndex
         }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: () => boolean,) {
@@ -178,7 +178,7 @@ function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, p
                 newArrayFrom0ToIndex[index2] = collection[index2] as T
             return newArrayFrom0ToIndex
         }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 
@@ -195,7 +195,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
             return newArrayFrom0ToIndex
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (value: T,) => boolean,) {
@@ -211,7 +211,7 @@ function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, p
             return newArrayFrom0ToIndex
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 
@@ -228,7 +228,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
             return newArrayFrom0ToIndex
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (value: T, index: number,) => boolean,) {
@@ -244,7 +244,7 @@ function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, p
             return newArrayFrom0ToIndex
         }
     }
-    return CollectionConstants.EMPTY_ARRAY
+    return EmptyConstants.EMPTY_ARRAY
 }
 
 //#endregion -------------------- Loop methods --------------------

@@ -12,7 +12,7 @@
 
 import type {Array} from "@joookiwi/type"
 
-import {CollectionConstants}       from "../CollectionConstants"
+import {EmptyConstants}            from "../EmptyConstants"
 import {EmptyCollectionException}  from "../exception/EmptyCollectionException"
 import {ForbiddenIndexException}   from "../exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException} from "../exception/IndexOutOfBoundsException"
@@ -62,7 +62,7 @@ export function __get<const T, >(array: Array<T>, index: number,): T {
  */
 export function __reduceTo<const T, >(array: Array<T>, newSize: number,): Array<T> {
     if (newSize === 0)
-        return CollectionConstants.EMPTY_ARRAY
+        return EmptyConstants.EMPTY_ARRAY
 
     const newArray = new Array<T>(newSize,)
     let index = -1

@@ -58,18 +58,14 @@ import {AbstractMinimalistCollectionHolderForTest}                           fro
 /**
  * A test instance to exclusively test the extension methods for
  * a {@link MinimalistCollectionHolder}
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
-    extends AbstractMinimalistCollectionHolderForTest<T, Array<T>>
+    extends AbstractMinimalistCollectionHolderForTest<T>
     implements CollectionHolder_FromExtension<T> {
 
-    public override get amountOfCall(): never {
-        throw new Error("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
-    }
-
-    public override set amountOfCall(_: unknown,) {
-        throw new Error("The setter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
-    }
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) { super() }
 
     public override get size(): number {
         return this.array.length

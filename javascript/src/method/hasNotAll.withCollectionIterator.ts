@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionIterator}         from "../iterator/CollectionIterator"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -25,7 +24,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
@@ -34,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 export function hasNotAllWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithCollectionIteratorByCollectionHolder(collection, values,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasNotAllWithCollectionIteratorByArray(collection, values,)
     if (isMinimalistCollectionHolder(collection,))
         return hasNotAllWithCollectionIteratorByMinimalistCollectionHolder(collection, values,)
@@ -48,7 +47,7 @@ export function hasNotAllWithCollectionIterator<const T, >(collection: Nullable<
 
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare
@@ -69,7 +68,7 @@ export function hasNotAllWithCollectionIteratorByMinimalistCollectionHolder<cons
 }
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare
@@ -88,7 +87,7 @@ export function hasNotAllWithCollectionIteratorByCollectionHolder<const T, >(col
 }
 
 /**
- * Tell that not a single item in the {@link values} exist in the {@link collection}
+ * Tell that nothing in the {@link values} exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param values     The values to compare

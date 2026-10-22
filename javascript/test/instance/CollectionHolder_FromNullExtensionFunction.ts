@@ -150,7 +150,7 @@ import {AbstractNullCollectionHolderForTest}                       from "./Abstr
  * A test instance to exclusively test the extension methods for
  * a `null` {@link CollectionHolder}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_FromNullExtensionFunction<const T, >
     extends AbstractNullCollectionHolderForTest<T> {

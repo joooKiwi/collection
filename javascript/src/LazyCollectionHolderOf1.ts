@@ -10,7 +10,15 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
+import type {Array}                  from "@joookiwi/type"
+
+import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionHolderOf1} from "./CollectionHolderOf1"
+import type {Optional}            from "./optional/Optional"
+
+import {AbstractIndependentCollectionHolderOf1} from "./AbstractIndependentCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1}             from "./LazyCollectionHolderOf0Or1"
 
 const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callback is never supposed to be called normally.",) }
 
@@ -19,12 +27,14 @@ const FAIL_CALLBACK: () => never = () => { throw new ReferenceError("This callba
  *
  * It does retrieve the value only once from the callback received in its `constructor`.
  *
- * @typeParam T The type (by default `unknown`)
- * @see CollectionHolderOf1
+ * @typeParam T The type (`unknown` by default)
+ * @see SingleValueCollectionHolder
  * @see ArrayOf1AsCollectionHolder
+ * @see SetOf1AsCollectionHolder
+ * @see IteratorOf1AsCollectionHolder
  */
 export class LazyCollectionHolderOf1<const T = unknown, >
-    extends AbstractCollectionHolderOf1<T> {
+    extends AbstractIndependentCollectionHolderOf1<T> {
 
     //#region -------------------- Field --------------------
 
@@ -46,8 +56,17 @@ export class LazyCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    /** The internal value passed through the {@link constructor} */
-    public override get 0() { return this.value }
+    public override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
+        return new LazyCollectionHolderOf1(lateValue,)
+    }
+
+    protected override _create0Or1<const U, >(latePossibleValue: () => Optional<U>,): CollectionHolder<U> {
+        return new LazyCollectionHolderOf0Or1(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
+    }
 
     /** The internal value passed through the {@link constructor} */
     public override get value(): T {

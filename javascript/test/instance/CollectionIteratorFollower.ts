@@ -14,6 +14,8 @@ import type {CollectionIterator} from "../../src/iterator/CollectionIterator"
 
 /**
  * A {@link CollectionIterator} having the utility to follow every non-aliased methods that have an alias
+ *
+ * @typeParam T The type (**mandatory**)
  */
 export interface CollectionIteratorFollower<out T, >
     extends CollectionIterator<T> {

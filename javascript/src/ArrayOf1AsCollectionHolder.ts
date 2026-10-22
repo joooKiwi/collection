@@ -10,38 +10,58 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {UndefinedOr} from "@joookiwi/type"
+import type {Array, UndefinedOr} from "@joookiwi/type"
 
-import {AbstractCollectionHolderOf1} from "./AbstractCollectionHolderOf1"
+import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionHolderOf1} from "./CollectionHolderOf1"
+import type {Optional}            from "./optional/Optional"
+
+import {AbstractIndependentCollectionHolderOf1} from "./AbstractIndependentCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1}             from "./LazyCollectionHolderOf0Or1"
+import {LazyCollectionHolderOf1}                from "./LazyCollectionHolderOf1"
 
 /**
  * An instance of {@link CollectionHolder} adapted from an {@link ReadonlyArray Array} having a lone value inside.
  *
  * Note that the value is directly retrieved from the array and it is kept
  *
- * @typeParam T The type
+ * @typeParam T         The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`readonly [T]` by default)
  * @see ArrayAsCollectionHolder
+ * @see SingleValueCollectionHolder
  * @see SetOf1AsCollectionHolder
- * @see CollectionHolderOf1
+ * @see IteratorOf1AsCollectionHolder
  * @see LazyCollectionHolderOf1
  */
 export class ArrayOf1AsCollectionHolder<const T = unknown,
     const REFERENCE extends readonly [T,] = readonly [T,], >
-    extends AbstractCollectionHolderOf1<T> {
+    extends AbstractIndependentCollectionHolderOf1<T> {
 
-    /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
-    public override readonly 0: T
     readonly #reference: WeakRef<REFERENCE>
     readonly #value: T
     readonly #hasNull: boolean
     readonly #hasNoNulls: boolean
 
+    public constructor(reference: & readonly [T,] & REFERENCE,)
     public constructor(reference: REFERENCE,) {
         super()
         if (reference.length !== 1)
             throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 1.`,)
         this.#reference = new WeakRef(reference,)
-        this.#hasNoNulls = !(this.#hasNull = (this.#value = this[0] = reference[0]) == null)
+        this.#hasNoNulls = !(this.#hasNull = (this.#value = reference[0]) == null)
+    }
+
+    public override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
+        return new LazyCollectionHolderOf1(lateValue,)
+    }
+
+    protected override _create0Or1<const U, >(latePossibleValue: () => Optional<U>,): CollectionHolder<U> {
+        return new LazyCollectionHolderOf0Or1(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
     }
 
     /** The internal value passed through the {@link constructor} in the {@link _reference} first field */

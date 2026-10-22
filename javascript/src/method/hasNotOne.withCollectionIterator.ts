@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionIterator}         from "../iterator/CollectionIterator"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -36,7 +35,7 @@ export function hasNotOneWithCollectionIterator<const T, >(collection: Nullable<
         return true
     if (isCollectionHolder(collection,))
         return hasNotOneWithCollectionIteratorByCollectionHolder(collection, values,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasNotOneWithCollectionIteratorByArray(collection, values,)
     if (isMinimalistCollectionHolder(collection,))
         return hasNotOneWithCollectionIteratorByMinimalistCollectionHolder(collection, values,)

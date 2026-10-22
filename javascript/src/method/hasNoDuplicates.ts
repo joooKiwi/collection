@@ -15,7 +15,6 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -27,7 +26,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * The {@link collection} has no duplicated value
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+ * @return {boolean} `true` only if no element is equal (===) to another one
  * @extensionFunction
  */
 export function hasNoDuplicates<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
@@ -35,7 +34,7 @@ export function hasNoDuplicates<const T, >(collection: Nullable<| MinimalistColl
         return true
     if (isCollectionHolder(collection,))
         return hasNoDuplicatesByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasNoDuplicatesByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return hasNoDuplicatesByMinimalistCollectionHolder(collection,)
@@ -52,7 +51,7 @@ export function hasNoDuplicates<const T, >(collection: Nullable<| MinimalistColl
  * The {@link collection} has no duplicated value
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+ * @return {boolean} `true` only if no element is equal (===) to another one
  * @extensionFunction
  */
 export function hasNoDuplicatesByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
@@ -71,7 +70,7 @@ export function hasNoDuplicatesByMinimalistCollectionHolder<const T, >(collectio
  * The {@link collection} has no duplicated value
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+ * @return {boolean} `true` only if no element is equal (===) to another one
  * @extensionFunction
  */
 export function hasNoDuplicatesByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): boolean {
@@ -88,7 +87,7 @@ export function hasNoDuplicatesByCollectionHolder<const T, >(collection: Nullabl
  * The {@link collection} has no duplicated value
  *
  * @param collection The nullable collection
- * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+ * @return {boolean} `true` only if no element is equal (===) to another one
  * @extensionFunction
  */
 export function hasNoDuplicatesByArray<const T, >(collection: Nullable<Array<T>>,): boolean {

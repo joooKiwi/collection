@@ -25,7 +25,7 @@ export class EmptyCollectionException<const T extends NullOr<NumericOrObject> = 
     /**
      * The default message that is used in the {@link constructor} when the message is <code>null</code>
      *
-     * @see CollectionConstants.EMPTY_COLLECTION_MESSAGE
+     * @see MessageConstants.EMPTY_COLLECTION_MESSAGE
      */
     public static readonly DEFAULT_MESSAGE: string = "Empty collection. No element at any index could be found since it it empty."
 

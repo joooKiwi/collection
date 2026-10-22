@@ -150,7 +150,7 @@ import {AbstractNullCollectionHolderForTest}     from "./AbstractNullCollectionH
  * A test instance to exclusively test the extension methods for
  * an `undefined` {@link CollectionHolder}|{@link MinimalistCollectionHolder}|{@link ReadonlyArray Array}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_FromUndefinedPublicExtensionFunction<const T, >
     extends AbstractNullCollectionHolderForTest<T> {

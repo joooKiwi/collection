@@ -150,7 +150,7 @@ import {AbstractNullCollectionHolderForTest}                                 fro
  * A test instance to exclusively test the extension methods for
  * an `undefined` {@link MinimalistCollectionHolder}
  *
- * @typeParam T The type
+ * @typeParam T The type (**mandatory**)
  */
 export class CollectionHolder_FromUndefinedMinimalistExtensionFunction<const T, >
     extends AbstractNullCollectionHolderForTest<T> {

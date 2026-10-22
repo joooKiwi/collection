@@ -13,7 +13,7 @@
 import type {AfterLastValueInCollectionIteratorSymbol} from "../../type/symbol"
 import type {OutsideIteratorValue}                     from "./OutsideIteratorValue"
 
-import {CollectionConstants}   from "../../CollectionConstants"
+import {SymbolConstants}       from "../../SymbolConstants"
 import {AbstractIteratorValue} from "./AbstractIteratorValue"
 
 /**
@@ -42,7 +42,7 @@ export class GenericAfterLastIteratorValue
     public override isNotDone(): false { return false }
 
     public override get value(): AfterLastValueInCollectionIteratorSymbol {
-        return CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL
+        return SymbolConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL
     }
 
 }

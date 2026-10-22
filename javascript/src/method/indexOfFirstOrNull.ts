@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {BooleanCallback}            from "../type/callback"
 
 import {__endingIndexOrNull, __startingIndexOrNull} from "./_indexes utility"
-import {isArray}                                    from "./isArray"
 import {isArrayByStructure}                         from "./isArrayByStructure"
 import {isCollectionHolder}                         from "./isCollectionHolder"
 import {isCollectionHolderByStructure}              from "./isCollectionHolderByStructure"
@@ -27,14 +26,14 @@ import {isMinimalistCollectionHolder}               from "./isMinimalistCollecti
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>size - 1</code> by default)
- * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -55,14 +54,14 @@ export function indexOfFirstOrNull<const T, >(collection: Nullable<| MinimalistC
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -82,14 +81,14 @@ export function indexOfFirstOrNullByMinimalistCollectionHolder<const T, >(collec
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -109,14 +108,14 @@ export function indexOfFirstOrNullByCollectionHolder<const T, >(collection: Null
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
+ * or `null` if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
- * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or `null`
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -142,7 +141,7 @@ export function indexOfFirstOrNullByArray<const T, >(collection: Nullable<Array<
 function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core0ByArray(collection, predicate,)
     if (isMinimalistCollectionHolder(collection,))
         return __core0ByMinimalistCollectionHolder(collection, predicate,)
@@ -192,7 +191,7 @@ function __core0ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, predicate, from,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core1ByArray(collection, predicate, from,)
     if (isMinimalistCollectionHolder(collection,))
         return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
@@ -255,7 +254,7 @@ function __core1ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, predicate, from, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __core2ByArray(collection, predicate, from, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
@@ -336,7 +335,7 @@ function __core2ByArray<const T, >(collection: Array<T>, predicate: BooleanCallb
 function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: BooleanCallback<T>, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return __coreWithNoFromByArray(collection, predicate, to,)
     if (isMinimalistCollectionHolder(collection,))
         return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)

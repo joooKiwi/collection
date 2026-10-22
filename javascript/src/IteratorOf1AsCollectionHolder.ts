@@ -1,0 +1,80 @@
+//··························································
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
+//
+// This project is free to use.
+// All the right is reserved to the author of this project.
+// My projects:
+//  - https://github.com/joooKiwi/type
+//  - https://github.com/joooKiwi/lazy
+//  - https://github.com/joooKiwi/collection
+//  - https://github.com/joooKiwi/enumeration
+//··························································
+
+import type {Array, UndefinedOr} from "@joookiwi/type"
+
+import type {CollectionHolder}      from "./CollectionHolder"
+import type {CollectionHolderOf1}   from "./CollectionHolderOf1"
+import type {CollectionIteratorOf1} from "./iterator/CollectionIteratorOf1"
+import type {Optional}              from "./optional/Optional"
+
+import {AbstractIndependentCollectionHolderOf1} from "./AbstractIndependentCollectionHolderOf1"
+import {LazyArrayAsCollectionHolder}            from "./LazyArrayAsCollectionHolder"
+import {LazyCollectionHolderOf0Or1}             from "./LazyCollectionHolderOf0Or1"
+import {LazyCollectionHolderOf1}                from "./LazyCollectionHolderOf1"
+
+/**
+ * An instance of {@link CollectionHolder} adapted from an {@link CollectionIteratorOf1} having a lone value inside.
+ *
+ * Note that the value is directly retrieved from the {@link CollectionIteratorOf1} and it is kept
+ *
+ * @typeParam T          The type (`unknown` by default)
+ * @typeParam REFERENCE The reference passed in the constructor (`CollectionIteratorOf1<T>` by default)
+ * @see IteratorAsCollectionHolder
+ * @see SingleValueCollectionHolder
+ * @see ArrayOf1AsCollectionHolder
+ * @see SetOf1AsCollectionHolder
+ * @see LazyCollectionHolderOf1
+ */
+export class IteratorOf1AsCollectionHolder<const T = unknown,
+    const REFERENCE extends CollectionIteratorOf1<T> = CollectionIteratorOf1<T>, >
+    extends AbstractIndependentCollectionHolderOf1<T> {
+
+    readonly #reference: WeakRef<REFERENCE>
+    readonly #value: T
+    readonly #hasNull: boolean
+    readonly #hasNoNulls: boolean
+
+    public constructor(reference: & CollectionIteratorOf1<T> & REFERENCE,)
+    public constructor(reference: REFERENCE,) {
+        super()
+        this.#reference = new WeakRef(reference,)
+        this.#hasNoNulls = !(this.#hasNull = (this.#value = reference.value) == null)
+    }
+
+    override _create<const U, >(lateValue: () => U,): CollectionHolderOf1<U> {
+        return new LazyCollectionHolderOf1(lateValue,)
+    }
+
+    protected override _create0Or1<const U, >(latePossibleValue: () => Optional<U>,): CollectionHolder<U> {
+        return new LazyCollectionHolderOf0Or1(latePossibleValue,)
+    }
+
+    protected override _createLazyArray(lateArray: () => Array<T>,): CollectionHolder<T> {
+        return new LazyArrayAsCollectionHolder(lateArray,)
+    }
+
+    /** The internal value passed through the {@link constructor} in the {@link _reference} first field */
+    public override get value(): T { return this.#value }
+
+    /**
+     * The internal referenced passed through the {@link constructor}.
+     *
+     * It returns `undefined` if the reference has been garbed-collected.
+     */
+    protected get _reference(): UndefinedOr<REFERENCE> { return this.#reference.deref() }
+
+    public override get hasNull(): boolean { return this.#hasNull }
+
+    public override get hasNoNulls(): boolean { return this.#hasNoNulls }
+
+}

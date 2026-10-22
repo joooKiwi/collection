@@ -16,7 +16,6 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {ValueIndexCallback}         from "../type/callback"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -46,7 +45,7 @@ export function onEach<const T, >(collection: Nullable<| MinimalistCollectionHol
         return collection
     if (isCollectionHolder(collection,))
         return onEachByCollectionHolder(collection, action,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return onEachByArray(collection, action,)
     if (isMinimalistCollectionHolder(collection,))
         return onEachByMinimalistCollectionHolder(collection, action,)

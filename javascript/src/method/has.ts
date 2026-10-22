@@ -15,7 +15,6 @@ import type {Array, Nullable} from "@joookiwi/type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionHolder}           from "../CollectionHolder"
 
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -28,7 +27,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -42,7 +41,7 @@ export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder
         return false
     if (isCollectionHolder(collection,))
         return hasByCollectionHolder(collection, value,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return hasByArray(collection, value,)
     if (isMinimalistCollectionHolder(collection,))
         return hasByMinimalistCollectionHolder(collection, value,)
@@ -60,7 +59,7 @@ export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -84,7 +83,7 @@ export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -106,7 +105,7 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
  *
  * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
+ * @return {boolean} `true` if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)

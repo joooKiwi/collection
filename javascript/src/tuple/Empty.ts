@@ -15,8 +15,8 @@ import type {EmptyArray, EmptySet} from "@joookiwi/type"
 import type {Tuple}     from "./Tuple"
 import type {TupleName} from "../type/toStringTag"
 
-import {CollectionConstants}     from "../CollectionConstants"
 import {EmptyCollectionHolder}   from "../EmptyCollectionHolder"
+import {EmptyConstants}          from "../EmptyConstants"
 import {EmptyCollectionIterator} from "../iterator/EmptyCollectionIterator"
 
 /**
@@ -103,9 +103,9 @@ export class Empty
 
     public toIterator(): EmptyCollectionIterator { return EmptyCollectionIterator.get }
 
-    public toArray(): EmptyArray { return CollectionConstants.EMPTY_ARRAY }
+    public toArray(): EmptyArray { return EmptyConstants.EMPTY_ARRAY }
 
-    public toSet(): EmptySet { return CollectionConstants.EMPTY_SET }
+    public toSet(): EmptySet { return EmptyConstants.EMPTY_SET }
 
     public toCollection(): EmptyCollectionHolder { return EmptyCollectionHolder.get }
 

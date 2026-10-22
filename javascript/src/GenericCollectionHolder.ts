@@ -22,10 +22,10 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "./type/possibleInstance"
 
-import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
-import {CollectionConstants}                            from "./CollectionConstants"
+import {AbstractPartiallyUnimplementedCollectionHolder} from "./AbstractPartiallyUnimplementedCollectionHolder"
 import {EmptyCollectionHolder}                          from "./EmptyCollectionHolder"
-import {LazyCollectionHolder}                           from "./LazyCollectionHolder"
+import {EmptyConstants}                                 from "./EmptyConstants"
+import {LazyArrayAsCollectionHolder}                    from "./LazyArrayAsCollectionHolder"
 import {EmptyCollectionException}                       from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                        from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                      from "./exception/IndexOutOfBoundsException"
@@ -160,13 +160,13 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * But it is not {@link Object.isFrozen frozen} to ensure
  * the children can do their initialization.
  *
- * @typeParam T The type (by default `unknown`)
+ * @typeParam T The type (`unknown` by default)
  * @see GenericMinimalistCollectionHolder
  * @see LazyCollectionHolder
  * @see EmptyCollectionHolder
  */
 export class GenericCollectionHolder<const T = unknown, >
-    extends AbstractCollectionHolder<T> {
+    extends AbstractPartiallyUnimplementedCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -235,8 +235,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -296,8 +297,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -355,8 +357,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -418,8 +421,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -477,8 +481,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -541,8 +546,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -581,8 +587,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -642,8 +649,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -701,8 +709,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -764,8 +773,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -823,8 +833,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -887,8 +898,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -930,8 +942,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -995,8 +1008,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -1060,8 +1074,9 @@ export class GenericCollectionHolder<const T = unknown, >
                 this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
                 this.#hasAtMost1Element = this.#hasAtMost2Elements = true
                 this.#hasNull = this.#hasDuplicate = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
+                this.#array = EmptyConstants.EMPTY_ARRAY
+                this.#set = EmptyConstants.EMPTY_SET
+                this.#map = EmptyConstants.EMPTY_MAP
                 return
             }
 
@@ -1123,8 +1138,9 @@ export class GenericCollectionHolder<const T = unknown, >
             this.#isNotEmpty = this.#hasExactly1Element = this.#hasAtLeast2Elements = this.#hasExactly2Elements = false
             this.#hasAtMost1Element = this.#hasAtMost2Elements = true
             this.#hasNull = this.#hasDuplicate = false
-            this.#array = CollectionConstants.EMPTY_ARRAY
-            this.#set = CollectionConstants.EMPTY_SET
+            this.#array = EmptyConstants.EMPTY_ARRAY
+            this.#set = EmptyConstants.EMPTY_SET
+            this.#map = EmptyConstants.EMPTY_MAP
             return
         }
 
@@ -1253,7 +1269,7 @@ export class GenericCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Get --------------------
-    //#region -------------------- Find first --------------------
+    //#region -------------------- Find --------------------
 
     public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findFirst(predicate: BooleanCallback<T>,): T
@@ -1279,8 +1295,6 @@ export class GenericCollectionHolder<const T = unknown, >
         return findFirstIndexedOrNullByArray(this._array, predicate,)
     }
 
-    //#endregion -------------------- Find first --------------------
-    //#region -------------------- Find last --------------------
 
     public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findLast(predicate: BooleanCallback<T>,): T
@@ -1306,7 +1320,7 @@ export class GenericCollectionHolder<const T = unknown, >
         return findLastIndexedOrNullByArray(this._array, predicate,)
     }
 
-    //#endregion -------------------- Find last --------------------
+    //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
@@ -1367,7 +1381,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
     //#region -------------------- All --------------------
 
-    public override all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) {
         return allByArray(this._array, predicate,)
@@ -1584,7 +1598,7 @@ export class GenericCollectionHolder<const T = unknown, >
         if (this.isEmpty)
             return EmptyCollectionHolder.get
         if (this.hasNull)
-            return new LazyCollectionHolder(() => {
+            return new LazyArrayAsCollectionHolder(() => {
                 const array = this._array
                 const size = array.length
                 const tempArray = new Array<NonNullable<T>>(size,)
@@ -1744,8 +1758,6 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- For each --------------------
-
     public override forEach(action: ValueIndexCallback<T>,): void {
         forEachByArray(this._array, action,)
     }
@@ -1754,8 +1766,6 @@ export class GenericCollectionHolder<const T = unknown, >
         forEachIndexedByArray(this._array, action,)
     }
 
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- On each --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
         onEachByArray(this._array, action,)
@@ -1767,18 +1777,12 @@ export class GenericCollectionHolder<const T = unknown, >
         return this
     }
 
-    //#endregion -------------------- On each --------------------
-
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
-
-    //#region -------------------- To reverse --------------------
 
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return toReverseByArray(this._array, from, to,)
     }
-
-    //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------

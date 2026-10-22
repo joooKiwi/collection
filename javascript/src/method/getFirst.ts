@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {EmptyCollectionException}      from "../exception/EmptyCollectionException"
 import {NullCollectionException}       from "../exception/NullCollectionException"
-import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
@@ -29,7 +28,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
@@ -41,7 +40,7 @@ export function getFirst<const T, >(collection: Nullable<| MinimalistCollectionH
         throw new NullCollectionException()
     if (isCollectionHolder(collection,))
         return getFirstByCollectionHolder(collection,)
-    if (isArray(collection,))
+    if (collection instanceof Array)
         return getFirstByArray(collection,)
     if (isMinimalistCollectionHolder(collection,))
         return getFirstByMinimalistCollectionHolder(collection,)
@@ -58,7 +57,7 @@ export function getFirst<const T, >(collection: Nullable<| MinimalistCollectionH
  * Get the first element in the {@link collection}
  *
  * @param collection The nullable collection
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
@@ -79,7 +78,7 @@ export function getFirstByMinimalistCollectionHolder<const T, >(collection: Null
  * Get the first element in the {@link collection}
  *
  * @param collection The nullable collection
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
@@ -100,7 +99,7 @@ export function getFirstByCollectionHolder<const T, >(collection: Nullable<Colle
  * Get the first element in the {@link collection}
  *
  * @param collection The nullable collection
- * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionException  The {@link collection} was `null` or `undefined`
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
