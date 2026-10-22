@@ -2665,6 +2665,6 @@ This is the most bare-bones structure
 
 [type]: https://github.com/joooKiwi/type
 [ts-type-v1.1]: https://github.com/joooKiwi/type/releases/tag/v1.1.0-ts
-[ts-type-v1.2]: https://github.com/joooKiwi/type/releases/tag/v1.2.2-ts
+[ts-type-v1.2]: https://github.com/joooKiwi/type/releases/tag/v1.2.3-ts
 
 <!-- Version references -->
