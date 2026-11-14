@@ -230,6 +230,7 @@ export class ArrayAsCollectionHolder<const T = unknown,
     //#region -------------------- Get --------------------
 
     public override get<const I extends number, >(index: I,): REFERENCE[I] //TODO add better array value reflection type
+    public override get(index: number,): T
     public override get(index: number,) {
         if (this.isEmpty)
             throw new EmptyCollectionException(null, index,)

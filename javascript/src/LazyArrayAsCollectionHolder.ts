@@ -108,9 +108,7 @@ export class LazyArrayAsCollectionHolder<const T = unknown,
 
     public override get<const I extends number, >(index: I,): REFERENCE[I]
     public override get(index: number,): T
-    public override get(index: number,) { return this._innerCollection
-        //@ts-ignore: This call is possible even though TypeScript does not reconize it as valid
-        .get(index,) }
+    public override get(index: number,) { return this._innerCollection.get(index,) }
 
     public override getFirst(): T { return this._innerCollection.getFirst() }
 
