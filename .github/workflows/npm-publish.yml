@@ -64,6 +64,7 @@ jobs:
         with:
           node-version: ${{matrix.node-version}}
           registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
 
       - name: Installation of the dependencies (for NPM)
         run: npm --prefix ${{matrix.path}} ci
