@@ -261,7 +261,8 @@ export class ArrayAsCollectionHolder<const T = unknown,
         return this[indexToRetrieve] as T
     }
 
-    public override getFirst(): T {
+    public override getFirst(): & REFERENCE[0] & T
+    public override getFirst() {
         return getFirstByArray(this._reference,)
     }
 
