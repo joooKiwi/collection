@@ -24,7 +24,7 @@ import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIte
 /**
  * A {@link CollectionIterator} with no values (as a singleton instance)
  *
- * @see MembersConstants.EMPTY_COLLECTION_ITERATOR
+ * @see EmptyConstants.EMPTY_COLLECTION_ITERATOR
  * @see GenericCollectionIterator
  * @see SingleValueCollectionIterator
  * @see DualValueCollectionIterator
