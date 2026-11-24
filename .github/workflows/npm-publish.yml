@@ -13,7 +13,7 @@ on:
     paths: javascript/**
 
 jobs:
-  build:
+  collection-tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,12 +28,35 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: ${{matrix.node-version}}
+          registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
 
       - name: Installation of the dependencies (for NPM)
         run: npm --prefix ${{matrix.path}} ci
 
       - name: Running the Collection tests
         run: npm --prefix ${{matrix.path}} run test-collection
+
+  other-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [26.x]
+        path: [./javascript/]
+
+    steps:
+      - name: Checkout of the repository
+        uses: actions/checkout@v7
+
+      - name: Configuration of the Node v${{matrix.node-version}} setup
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{matrix.node-version}}
+          registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
+
+      - name: Installation of the dependencies (for NPM)
+        run: npm --prefix ${{matrix.path}} ci
 
       - name: Running the Iterator tests
         run: npm --prefix ${{matrix.path}} run test-iterator
@@ -44,8 +67,8 @@ jobs:
       - name: Running the methods tests
         run: npm --prefix ${{matrix.path}} run test-is
 
-  publish-npm:
-    needs: build
+  publish-to-npm:
+    needs: [collection-tests, other-tests,]
     runs-on: ubuntu-latest
     strategy:
       matrix:
