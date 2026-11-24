@@ -13,7 +13,8 @@
 import type {Array} from "@joookiwi/type"
 
 /**
- * A utility class containing every {@link symbol} used by any {@link CollectionIterator} instances and the {@link Symbol.toString} values.
+ * A utility class containing every {@link symbol} used by any {@link CollectionHolder}|{@link CollectionIterator} instances
+ * and the {@link Symbol.toString} values.
  *
  * Note that attempting to create it will result in a {@link EvalError}
  * due to being a utility class and not a namespace.

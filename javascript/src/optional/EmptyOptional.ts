@@ -16,6 +16,7 @@ import type {ReturnCallback} from "../type/callback"
 
 import {Optional} from "./Optional"
 
+/** @singleton */
 export class EmptyOptional
     extends Optional<never> {
 
